@@ -1,0 +1,26 @@
+{
+  "name": "kkk-cesium-map",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "keywords": [
+    "cesium",
+    "map"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "author": "kkk",
+  "license": "MIT",
+  "description": "kkk",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/kangshuolei/kkk-cesium-map.git"
+  }
+}
+
