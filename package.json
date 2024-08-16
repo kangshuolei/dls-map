@@ -1,7 +1,7 @@
 {
   "name": "dls-map",
   "version": "1.0.0",
-  "description": "",
+  "description": "dls-map",
   "main": "index.js",
   "scripts": {
     "publish:dls": "gulp -f script/publish/index.ts",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "kkk",
   "license": "ISC",
   "devDependencies": {
     "@types/gulp": "^4.0.17",
