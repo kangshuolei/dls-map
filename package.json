@@ -19,9 +19,6 @@
     "dls-map",
     "map"
   ],
-  "sideEffects": [
-    "**/*.css"
-  ],
   "author": "kkk",
   "license": "MIT",
   "devDependencies": {
