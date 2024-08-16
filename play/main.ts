@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./app.vue";
-import kkk from "@kkk-cesium-map/components"
+import './style.css'
 
 const app = createApp(App);
-app.use(kkk)
+
 app.mount("#app");

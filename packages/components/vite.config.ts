@@ -21,7 +21,7 @@ export default defineConfig({
                     preserveModules: true,
                     exports: "named",
                     //配置打包根目录
-                    dir: "../kkk/es",
+                    dir: "../../dls/es",
                 },
                 {
                     //打包格式
@@ -32,7 +32,7 @@ export default defineConfig({
                     preserveModules: true,
                     exports: "named",
                     //配置打包根目录
-                    dir: "../kkk/lib",
+                    dir: "../../dls/lib",
                 },
             ],
         },
@@ -44,7 +44,7 @@ export default defineConfig({
         vue(),
         dts({
             entryRoot: "./src",
-            outputDir: ["../kkk/es/src", "../kkk/lib/src"],
+            outputDir: ["../../dls/es/src", "../../dls/lib/src"],
             //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
             tsConfigFilePath: "../../tsconfig.json",
         }),

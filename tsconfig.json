@@ -8,6 +8,9 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom"],
+    "types": ["node", "cesium"],
+    "include": ["packages", "typings"],
+    "exclude": ["node_modules", "**/dist"]
   }
 }

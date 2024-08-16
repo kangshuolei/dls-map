@@ -6,11 +6,11 @@ import { App } from "vue";
 type Components = Record<string, any>;
 
 export default {
-    install: (app: App) => {
-        // 通过类型断言告诉 TypeScript c omponents 的类型
-        const comp = components as Components;
-        for (let c in comp) {
-            app.use(comp[c]);
-        }
-    },
+  install: (app: App) => {
+    // 通过类型断言告诉 TypeScript c omponents 的类型
+    const comp = components as Components;
+    for (let c in comp) {
+      app.use(comp[c]);
+    }
+  },
 };

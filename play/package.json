@@ -7,6 +7,7 @@
     "dev": "vite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,6 +16,8 @@
     "vite": "^5.3.5"
   },
   "dependencies": {
-    "@kkk-cesium-map/components": "workspace:^"
+    "@dls-map/components": "workspace:^1.0.0",
+    "@dls-map/composables": "workspace:^1.0.0",
+    "vue": "^3.4.35"
   }
 }
