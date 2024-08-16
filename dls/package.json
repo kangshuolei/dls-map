@@ -1,0 +1,30 @@
+{
+  "name": "dls-map",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "keywords": [
+    "dls-map",
+    "vue3组件库",
+    "cesium",
+    "map"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "author": "kkk",
+  "license": "MIT",
+  "description": "",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "release": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qddidi/easyest"
+  }
+}
