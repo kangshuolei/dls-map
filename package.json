@@ -2,15 +2,28 @@
   "name": "dls-map",
   "version": "1.0.0",
   "description": "dls-map",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
   "scripts": {
     "publish:dls": "gulp -f script/publish/index.ts",
     "build:dls": "gulp -f script/build/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "files": [
+    "es",
+    "lib"
+  ],
+  "keywords": [
+    "vue3组件库",
+    "cesium",
+    "dls-map",
+    "map"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "author": "kkk",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/gulp": "^4.0.17",
     "@types/gulp-autoprefixer": "^0.0.37",
