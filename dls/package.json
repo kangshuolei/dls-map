@@ -1,6 +1,6 @@
 {
-  "name": "dls-map-temporary",
-  "version": "1.0.3",
+  "name": "dls-map",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "files": [
