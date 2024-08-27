@@ -63,7 +63,7 @@ const handleDrawLine = () => {
 };
 
 const handleCesiumPlot = () => {
-  const geometry = new CesiumPlot.Polygon(Cesium, dataM.viewer, {
+  const geometry = new CesiumPlot.SwallowtailSquadCombat(Cesium, dataM.viewer, {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,

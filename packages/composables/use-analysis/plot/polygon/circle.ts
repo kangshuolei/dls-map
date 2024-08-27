@@ -61,13 +61,13 @@ export default class Circle extends Base {
 
     const radius = Utils.MathDistance(center, pnt2);
 
-    const res = this.generatePoints(center, radius);
-    const temp = [].concat(...res);
+    const res: any = this.generatePoints(center, radius);
+    const temp: any = [].concat(...res);
     const cartesianPoints = this.cesium.Cartesian3.fromDegreesArray(temp);
     return cartesianPoints;
   }
 
-  generatePoints(center, radius) {
+  generatePoints(center: any, radius: any) {
     let x, y, angle;
     const points = [];
     for (let i = 0; i <= 100; i++) {
