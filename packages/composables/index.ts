@@ -8,3 +8,4 @@ export * from './use-analysis/useDrawGraph'; //画线测量
 export * from './use-entity/useCesiumAddEntity'; //添加点线
 export { default as DlsDivLabel } from './use-coverage/CesiumSetDiv'; //生成弹框
 export { default as CesiumPlot } from './use-analysis/plot/index'; //标绘
+export * from './use-environment/useEnvironment'; //加载环境

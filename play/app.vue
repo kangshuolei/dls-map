@@ -31,6 +31,8 @@ import {
   useCesiumFlyTo,
   DlsDivLabel,
   CesiumPlot,
+  addSnowScene,
+  addRainScene,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
 
@@ -101,6 +103,7 @@ const onCesiumReady = (e: any) => {
     className,
   };
   dataM.dlsDivLabel = new DlsDivLabel(val);
+  addRainScene(dataM.viewer);
 };
 </script>
 
