@@ -65,7 +65,7 @@ const handleDrawLine = () => {
 };
 
 const handleCesiumPlot = () => {
-  const geometry = new CesiumPlot.SwallowtailSquadCombat(Cesium, dataM.viewer, {
+  const geometry = new CesiumPlot.ClosedCurve(Cesium, dataM.viewer, {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
@@ -103,7 +103,7 @@ const onCesiumReady = (e: any) => {
     className,
   };
   dataM.dlsDivLabel = new DlsDivLabel(val);
-  addRainScene(dataM.viewer);
+  // addRainScene(dataM.viewer);
 };
 </script>
 

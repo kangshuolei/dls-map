@@ -11,21 +11,20 @@ import FreehandLine from './line/freehand-line'; //自由线
 import FreehandPolygon from './polygon/freehand-polygon'; //自由面
 import Curve from './line/curve'; //曲线
 import Ellipse from './polygon/ellipse'; //椭圆
-import Lune from './polygon/lune'; //半月面
+import Lune from './polygon/lune'; //半月面（弓型面）
 import Reactangle from './polygon/rectangle'; //矩形
 import Triangle from './polygon/triangle'; //三角形
 import Polygon from './polygon/polygon'; //多边形
 import Circle from './polygon/circle'; //圆形
 import Sector from './polygon/sector'; //扇形
+import GatheringPlace from './polygon/gathering-place'; //集结地
+import Arc from './line/arc'; //弓形线
+import Polyline from './line/polyline'; //折线
+import ClosedCurve from './polygon/closed-curve'; //闭合曲面
 
 //目前没有的
 
 //点
-//线
-//弓形线
-//弓形面
-//闭合曲面
-//集结地
 //粗单直箭头
 //矩形标志旗
 //三角标志旗
@@ -83,6 +82,10 @@ const CesiumPlot: any = {
   Polygon,
   Circle,
   Sector,
+  GatheringPlace,
+  Arc,
+  Polyline,
+  ClosedCurve,
 };
 
 type CreateGeometryFromDataOpts = {
