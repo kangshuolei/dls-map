@@ -12,10 +12,21 @@ export type LineStyle = {
   lineWidth?: number;
 };
 
+export type PointStyle = {
+  pixelSize: number;
+  heightReference: CesiumTypeOnly.HeightReference;
+  color: CesiumTypeOnly.Color;
+};
+
 export type State = 'drawing' | 'edit' | 'static' | 'animating' | 'hidden';
 export type GeometryStyle = PolygonStyle | LineStyle;
 
-export type EventType = 'drawStart' | 'drawUpdate' | 'drawEnd' | 'editEnd' | 'editStart';
+export type EventType =
+  | 'drawStart'
+  | 'drawUpdate'
+  | 'drawEnd'
+  | 'editEnd'
+  | 'editStart';
 export type EventListener = (eventData?: any) => void;
 
 export type VisibleAnimationOpts = {

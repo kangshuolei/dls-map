@@ -5,6 +5,7 @@ import {
   GeometryStyle,
   PolygonStyle,
   LineStyle,
+  PointStyle,
   EventType,
   EventListener,
   VisibleAnimationOpts,
@@ -25,7 +26,8 @@ export default class Base {
   controlPoints: CesiumTypeOnly.EntityCollection = [];
   controlPointsEventHandler: CesiumTypeOnly.ScreenSpaceEventHandler;
   lineEntity: CesiumTypeOnly.Entity;
-  type!: 'polygon' | 'line';
+  pointEntity: CesiumTypeOnly.Entity;
+  type!: 'polygon' | 'line' | 'point';
   freehand!: boolean;
   style: GeometryStyle | undefined;
   outlineEntity: CesiumTypeOnly.Entity;
@@ -50,7 +52,7 @@ export default class Base {
     this.cartesianToLnglat = this.cartesianToLnglat.bind(this);
     this.pixelToCartesian = this.pixelToCartesian.bind(this);
     this.eventDispatcher = new EventDispatcher();
-    // Disable default behavior for double-clicking on entities.
+    // 禁用双击实体的默认行为。
     viewer.trackedEntity = undefined;
     viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(
       this.cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK
@@ -77,15 +79,24 @@ export default class Base {
         },
         style
       );
+    } else if (this.type === 'point') {
+      this.style = Object.assign(
+        {
+          pixelSize: 10,
+          heightReference: this.cesium.HeightReference.CLAMP_TO_GROUND,
+          color: this.cesium.Color.RED,
+        },
+        style
+      );
     }
-    //Cache the initial settings to avoid modification of properties due to reference type assignment.
+    //缓存初始设置以避免由于引用类型分配而修改属性。.
     this.styleCache = cloneDeep(this.style);
   }
 
   /**
-   * The base class provides a method to change the state, and different logic is implemented based on the state.
-   *  The state is controlled by individual sub-components according to the actual situation.
-   * @param state
+   * Base Class提供了更改状态的方法，并根据状态实现不同的逻辑。
+   * 状态由各个子组件根据实际情况进行控制。
+   * @param State
    */
   setState(state: State) {
     this.state = state;
@@ -96,9 +107,9 @@ export default class Base {
   }
 
   /**
-   * Bind a global click event that responds differently based on the state. When in the drawing state,
-   * a click will add points for geometric shapes. During editing, selecting a drawn shape puts it in an
-   *  editable state. Clicking on empty space sets it to a static state.
+   * 绑定根据状态而做出不同响应的全局单击事件。当处于绘图状态时，
+   * 单击即可为几何形状添加点。在编辑过程中，选择绘制的形状将其置于
+   * 可编辑状态。单击空白将其设置为静态状态。
    */
   onClick() {
     this.eventHandler = new this.cesium.ScreenSpaceEventHandler(
@@ -114,17 +125,20 @@ export default class Base {
       if (this.type === 'line') {
         activeEntity = this.lineEntity;
       }
+      if (this.type === 'point') {
+        activeEntity = this.pointEntity;
+      }
 
       if (this.state === 'drawing') {
-        // In the drawing state, the points clicked are key nodes of the shape, and they are saved in this.points.
+        // 在绘制状态下，单击的点是形状的关键节点，并保存在this.points中。
         const cartesian = this.pixelToCartesian(evt.position);
         const points = this.getPoints();
-        // If the click is outside the sphere, position information cannot be obtained.
+        // 如果单击位于球体外部，则无法获取位置信息。
         if (!cartesian) {
           return;
         }
 
-        // "For non-freehand drawn shapes, validate that the distance between two consecutive clicks is greater than 10 meters
+        // “对于非手绘形状，请验证两次连续点击之间的距离是否大于10米
         if (
           !this.freehand &&
           points.length > 0 &&
@@ -134,32 +148,34 @@ export default class Base {
         }
         this.addPoint(cartesian);
 
-        // Trigger 'drawStart' when the first point is being drawn.
+        // 当绘制第一个点时触发“drawStart”。
         if (this.getPoints().length === 1) {
           this.eventDispatcher.dispatchEvent('drawStart');
         }
         this.eventDispatcher.dispatchEvent('drawUpdate', cartesian);
       } else if (this.state === 'edit') {
-        //In edit mode, exit the editing state and delete control points when clicking outside the currently edited shape.
+        // 在编辑模式下，单击当前编辑的形状外部时退出编辑状态并删除控制点。
         if (!hitEntities || activeEntity.id !== pickedObject.id.id) {
           this.setState('static');
-          this.removeControlPoints();
+          this.type !== 'point' ? this.removeControlPoints() : null;
           this.disableDrag();
-          // Trigger 'drawEnd' and return the geometry shape points when exiting the edit mode.
+          // 退出编辑模式时触发“drawEnd”并返回几何形状点。
           this.eventDispatcher.dispatchEvent('editEnd', this.getPoints());
         }
       } else if (this.state === 'static') {
-        //When drawing multiple shapes, the click events for all shapes are triggered. Only when hitting a completed shape should it enter editing mode.
+        //绘制多个形状时，会触发所有形状的单击事件。只有当击中完成的形状时，它才能进入编辑模式。
         try {
           if (hitEntities && activeEntity.id === pickedObject.id.id) {
             const pickedGraphics =
               this.type === 'line'
                 ? pickedObject.id.polyline
-                : pickedObject.id.polygon;
+                : this.type === 'polygon'
+                  ? pickedObject.id.polygon
+                  : pickedObject.id.point;
             if (this.cesium.defined(pickedGraphics)) {
-              // Hit Geometry Shape.
+              // 点击几何形状。
               this.setState('edit');
-              this.addControlPoints();
+              this.type !== 'point' ? this.addControlPoints() : null;
               this.draggable();
               this.eventDispatcher.dispatchEvent('editStart');
             }
@@ -179,7 +195,7 @@ export default class Base {
         return;
       }
       if (this.checkDistance(cartesian, points[points.length - 1])) {
-        // Synchronize data to subclasses.If the distance is less than 10 meters, do not proceed
+        // 将数据复制到子类。如果距离小于10米，请不要继续
         this.updateMovingPoint(cartesian, points.length);
       }
     }, this.cesium.ScreenSpaceEventType.MOUSE_MOVE);
@@ -194,7 +210,7 @@ export default class Base {
   }
 
   /**
-   * Check if the distance between two points is greater than 10 meters.
+   * 检查两点之间的距离是否大于10米。
    */
   checkDistance(
     cartesian1: CesiumTypeOnly.Cartesian3,
@@ -205,28 +221,28 @@ export default class Base {
   }
 
   finishDrawing() {
-    // Some polygons draw a separate line between the first two points before drawing the complete shape;
-    // this line should be removed after drawing is complete.
+    //有些多边形在绘制完整形状之前会在前两个点之间画一条单独的线;
+    //绘制完成后应删除这条线。
     this.type === 'polygon' &&
       this.lineEntity &&
       this.viewer.entities.remove(this.lineEntity);
 
     this.removeMoveListener();
-    // Editable upon initial drawing completion.
+    // 可在初始绘图完成后编辑。
     this.setState('edit');
-    this.addControlPoints();
+    this.type !== 'point' ? this.addControlPoints() : null;
     this.draggable();
-    const entity = this.polygonEntity || this.lineEntity;
+    const entity = this.polygonEntity || this.lineEntity || this.pointEntity;
     this.entityId = entity.id;
     /**
-     * "I've noticed that CallbackProperty can lead to significant performance issues.
-     *  After drawing multiple shapes, the map becomes noticeably laggy. Using methods
-     * like requestAnimationFrame or setInterval doesn't provide a smooth way to display
-     *  shapes during the drawing process. As a temporary solution, I've set the hierarchy
-     *  or positions to static after drawing is complete. This addresses the performance
-     *  problem, but introduces a new issue: after setting the data to static, the shapes
-     *  redraw, resulting in a flicker. However, this seems to be a relatively reasonable
-     *  approach given the current circumstances."
+     * “我注意到CallbackProperty可能会导致严重的性能问题。
+     * 绘制多个形状后，地图变得明显滞后。使用方法
+     * 像请求AnimationFrame或setInterval不提供平滑的显示方式
+     * 绘制过程中的形状。作为临时解决方案，我设置了层次结构
+     * 或绘制完成后位置为静态。这解决了性能
+     * 问题，但引入了一个新问题：将数据设置为静态后，形状
+     * 重新绘制，导致闪烁。不过，这似乎是一个相对合理的
+     * 考虑到当前情况，采取的做法。"
      */
     // TODO...
     // if (this.type === 'polygon') {
@@ -279,7 +295,7 @@ export default class Base {
         }),
       });
 
-      // Due to limitations in PolygonGraphics outlining, a separate line style is drawn.
+      // 由于多边图形轮廓的限制，将绘制单独的线样式。
       this.outlineEntity = this.viewer.entities.add({
         polyline: {
           positions: new this.cesium.CallbackProperty(() => {
@@ -300,9 +316,23 @@ export default class Base {
     }
   }
 
+  drawPoint() {
+    if (!this.pointEntity) {
+      const points = this.getPoints();
+      const style = this.style as PointStyle;
+      this.pointEntity = this.viewer.entities.add({
+        position: points[0],
+        point: {
+          pixelSize: style.pixelSize,
+          heightReference: style.heightReference,
+          color: style.color,
+        },
+      });
+    }
+  }
   addTempLine() {
     if (!this.tempLineEntity) {
-      // The line style between the first two points matches the outline style.
+      //前两点之间的线样式与轮廓样式匹配。
       const style = this.style as PolygonStyle;
       const lineStyle = {
         material: style.outlineMaterial,
@@ -350,7 +380,7 @@ export default class Base {
   }
 
   /**
-   * Display key points when creating a shape, allowing dragging of these points to edit and generate new shapes.
+   *  创建形状时显示关键点，允许拖动这些点来编辑和生成新形状。
    */
   addControlPoints() {
     const points = this.getPoints();
@@ -380,7 +410,7 @@ export default class Base {
       this.viewer.canvas
     );
 
-    // Listen for left mouse button press events
+    // 收听鼠标左按钮按下事件
     this.controlPointsEventHandler.setInputAction((clickEvent: any) => {
       const pickedObject = this.viewer.scene.pick(clickEvent.position);
       if (this.cesium.defined(pickedObject)) {
@@ -389,17 +419,17 @@ export default class Base {
             isDragging = true;
             draggedIcon = this.controlPoints[i];
             dragStartPosition = draggedIcon.position._value;
-            //Save the index of dragged points for dynamic updates during movement
+            //保存拖曳点的索引，以便在移动期间动态更新
             draggedIcon.index = i;
             break;
           }
         }
-        // Disable default camera interaction.
+        // 禁用默认相机交互。
         this.viewer.scene.screenSpaceCameraController.enableRotate = false;
       }
     }, this.cesium.ScreenSpaceEventType.LEFT_DOWN);
 
-    // Listen for mouse movement events
+    // 监听鼠标移动事件
     this.controlPointsEventHandler.setInputAction((moveEvent: any) => {
       if (isDragging && draggedIcon) {
         const cartesian = this.viewer.camera.pickEllipsoid(
@@ -413,9 +443,9 @@ export default class Base {
       }
     }, this.cesium.ScreenSpaceEventType.MOUSE_MOVE);
 
-    // Listen for left mouse button release events
+    // 监听鼠标左按钮释放事件
     this.controlPointsEventHandler.setInputAction(() => {
-      // Trigger 'drawUpdate' when there is a change in coordinates before and after dragging.
+      // 当拖动前后坐标发生变化时，触发“drawUpdate”。
       if (
         draggedIcon &&
         !this.cesium.Cartesian3.equals(
@@ -452,7 +482,7 @@ export default class Base {
   }
 
   /**
-   * Allow the entire shape to be dragged while in edit mode.
+   *  在编辑模式下允许拖动整个形状。
    */
   draggable() {
     let dragging = false;
@@ -476,7 +506,7 @@ export default class Base {
         ) {
           const clickedEntity = pickedObject.id;
           if (this.isCurrentEntity(clickedEntity.id)) {
-            //Clicking on the current instance's entity initiates drag logic.
+            //单击当前实例的实体会启动拖动逻辑。
             dragging = true;
             startPosition = cartesian;
             this.viewer.scene.screenSpaceCameraController.enableRotate = false;
@@ -488,10 +518,10 @@ export default class Base {
     this.dragEventHandler.setInputAction((event: any) => {
       // console.log('dragging', dragging, startPosition);
       if (dragging && startPosition) {
-        // Retrieve the world coordinates of the current mouse position.
+        // 指定当前鼠标位置的世界坐标。
         const newPosition = this.pixelToCartesian(event.endPosition);
         if (newPosition) {
-          // Calculate the displacement vector.
+          // 计算位移量。
           const translation = this.cesium.Cartesian3.subtract(
             newPosition,
             startPosition,
@@ -505,7 +535,7 @@ export default class Base {
             );
           });
 
-          //Move all key points according to a vector.
+          //根据一个载体移动所有关键点。
           this.points = this.points.map((p) => {
             return this.cesium.Cartesian3.add(
               p,
@@ -514,7 +544,7 @@ export default class Base {
             );
           });
 
-          // Move control points in the same manner.
+          // 以相同的方式移动控制点。
           this.controlPoints.map((p: CesiumTypeOnly.Entity) => {
             const position = p.position?.getValue(this.cesium.JulianDate.now());
             const newPosition = this.cesium.Cartesian3.add(
@@ -564,7 +594,7 @@ export default class Base {
       }
     }, this.cesium.ScreenSpaceEventType.MOUSE_MOVE);
 
-    // Listen for the mouse release event to end dragging.
+    // 监听鼠标释放事件以结束拖动。
     this.dragEventHandler.setInputAction(() => {
       dragging = false;
       startPosition = undefined;
@@ -572,7 +602,7 @@ export default class Base {
     }, this.cesium.ScreenSpaceEventType.LEFT_UP);
   }
 
-  // Finish editing, disable dragging."
+  // 完成编辑，禁用拖动。
   disableDrag() {
     this.dragEventHandler.removeInputAction(
       this.cesium.ScreenSpaceEventType.LEFT_DOWN
@@ -611,7 +641,7 @@ export default class Base {
     callback?: () => void
   ) {
     if (this.state !== 'hidden') {
-      //If not in a static state or already displayed, do not process.
+      // 如果不是处于静态状态或已显示，不做处理。
       return;
     }
     this.setState('static');
@@ -619,7 +649,7 @@ export default class Base {
       let alpha = 0.3;
       const material = this.styleCache.material;
       if (material.image) {
-        // With Texture
+        // 纹理
         alpha = material.color.getValue().alpha;
       } else {
         alpha = material.alpha;
@@ -646,14 +676,14 @@ export default class Base {
       const material = this.styleCache.material;
       let alpha = 1.0;
       if (material.image) {
-        // With Texture
+        // 纹理
         alpha = material.color.alpha;
       } else if (material.dashLength) {
-        // Dashed Line
+        // 虚线
         const color = material.color.getValue();
         alpha = color.alpha;
       } else {
-        // Solid Color
+        // 纯色
         alpha = this.styleCache?.material?.alpha;
       }
       this.animateOpacity(
@@ -730,7 +760,7 @@ export default class Base {
       let material = graphics.material;
       if (material) {
         if (material.image && material.color.alpha !== undefined) {
-          // Texture material, setting the alpha channel in the color of the custom ImageFlowMaterialProperty.
+          // 纹理材质，将Alpha通道设置为自定义IMAgleFlowMaterialProperty的颜色。
           startAlpha = material.color.alpha;
         } else {
           startAlpha = material.color.getValue().alpha;
@@ -756,10 +786,10 @@ export default class Base {
 
           if (material) {
             if (material.image && material.color.alpha !== undefined) {
-              // Texture Material
+              // 纹理材料
               material.color.alpha = newAlpha;
             } else {
-              // Solid Color
+              // 纯色
               const newColor = material.color.getValue().withAlpha(newAlpha);
               material.color.setValue(newColor);
             }
@@ -772,7 +802,7 @@ export default class Base {
 
           requestAnimationFrame(animate);
         } else {
-          // Animation Ended
+          //  动画结束
           callback && callback();
           const restoredState = state ? state : 'static';
 
@@ -784,10 +814,10 @@ export default class Base {
           // this.setState('drawing');
           if (material) {
             if (material.image && material.color.alpha !== undefined) {
-              // Texture Material
+              // 纹理材料
               material.color.alpha = targetAlpha;
             } else {
-              // Solid Color
+              // 纯色
               const newColor = material.color.getValue().withAlpha(targetAlpha);
               material.color.setValue(newColor);
             }
@@ -816,12 +846,13 @@ export default class Base {
       return;
     }
     if (!this.minPointsForShape) {
+      //这种形状不支持生长动画
       console.warn('Growth animation is not supported for this type of shape');
       return;
     }
     this.setState('animating');
     if (this.minPointsForShape === 4) {
-      // For double arrows, special handling is required.
+      // 对于双箭头，需要特殊处理。
       this.doubleArrowGrowthAnimation(duration, delay, callback);
       return;
     }
@@ -844,7 +875,7 @@ export default class Base {
         const currentTime = Date.now();
         const elapsedTime = currentTime - startTime;
         if (elapsedTime >= duration) {
-          // Animation ends
+          // 动画结束
           callback && callback();
           startTime = 0;
           this.viewer.clock.shouldAnimate = false;
@@ -863,7 +894,7 @@ export default class Base {
         }
         startPoint = points[movingPointIndex - 1];
         if (currentSegment == 0 && this.minPointsForShape === 3) {
-          // The face-arrow determined by three points, with the animation starting from the midpoint of the line connecting the first two points.
+          // 面箭头由三个点确定，动画从连接前两个点的线的中点开始。
           startPoint = this.cesium.Cartesian3.midpoint(
             points[0],
             points[1],
@@ -871,9 +902,9 @@ export default class Base {
           );
         }
         let endPoint = points[movingPointIndex];
-        // To dynamically add points between the startPoint and endPoint, consistent with the initial drawing logic,
-        // update the point at index movingPointIndex in the points array with the newPosition,
-        // generate the arrow, and execute the animation.
+        //要在startPoint和endPoint之间动态添加点，与初始绘制逻辑一致，
+        //用newStatus更新points数组中index上的点movingPointIndex，
+        //生成箭头，并执行动画。
         const t =
           (elapsedTime - currentSegment * segmentDuration) / segmentDuration;
         const newPosition = this.cesium.Cartesian3.lerp(
@@ -907,7 +938,7 @@ export default class Base {
         const currentTime = Date.now();
         const elapsedTime = currentTime - startTime;
         if (elapsedTime >= duration) {
-          // Animation ends
+          // 动画结束
           callback && callback();
           startTime = 0;
           this.viewer.clock.shouldAnimate = false;
@@ -1017,6 +1048,8 @@ export default class Base {
       this.lineEntity = null;
     } else if (this.type === 'line') {
       this.viewer.entities.remove(this.lineEntity);
+    } else if (this.type === 'point') {
+      this.viewer.entities.remove(this.pointEntity);
     }
     this.removeClickListener();
     this.removeMoveListener();
@@ -1054,7 +1087,7 @@ export default class Base {
     //Abstract method that must be implemented by subclasses.
   }
 
-  getType(): 'polygon' | 'line' {
+  getType(): 'polygon' | 'line' | 'point' {
     return 'polygon';
     //Abstract method that must be implemented by subclasses.
   }

@@ -21,10 +21,10 @@ import GatheringPlace from './polygon/gathering-place'; //集结地
 import Arc from './line/arc'; //弓形线
 import Polyline from './line/polyline'; //折线
 import ClosedCurve from './polygon/closed-curve'; //闭合曲面
+import Point from './point/point'; //点的添加
 
 //目前没有的
 
-//点
 //粗单直箭头
 //矩形标志旗
 //三角标志旗
@@ -86,6 +86,7 @@ const CesiumPlot: any = {
   Arc,
   Polyline,
   ClosedCurve,
+  Point,
 };
 
 type CreateGeometryFromDataOpts = {
