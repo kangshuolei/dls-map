@@ -4,7 +4,7 @@ import { Cartesian3 } from 'cesium';
 
 import { PolygonStyle } from '../interface';
 
-export default class Polygon extends Base {
+export default class Point extends Base {
   points: Cartesian3[] = [];
 
   constructor(cesium: any, viewer: any, style?: PolygonStyle) {
@@ -24,7 +24,7 @@ export default class Polygon extends Base {
   addPoint(cartesian: Cartesian3) {
     this.points.push(cartesian);
     if (this.points.length === 1) {
-      this.drawPoint()
+      this.drawPoint();
       this.finishDrawing();
     }
   }

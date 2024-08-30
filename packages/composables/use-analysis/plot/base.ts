@@ -485,6 +485,7 @@ export default class Base {
    *  在编辑模式下允许拖动整个形状。
    */
   draggable() {
+    console.log('启动拖动。。');
     let dragging = false;
     let startPosition: CesiumTypeOnly.Cartesian3 | undefined;
     this.dragEventHandler = new this.cesium.ScreenSpaceEventHandler(
@@ -516,7 +517,7 @@ export default class Base {
     }, this.cesium.ScreenSpaceEventType.LEFT_DOWN);
 
     this.dragEventHandler.setInputAction((event: any) => {
-      // console.log('dragging', dragging, startPosition);
+      console.log('dragging', dragging, startPosition);
       if (dragging && startPosition) {
         // 指定当前鼠标位置的世界坐标。
         const newPosition = this.pixelToCartesian(event.endPosition);
@@ -527,6 +528,17 @@ export default class Base {
             startPosition,
             new this.cesium.Cartesian3()
           );
+          if (this.type === 'point') {
+            const position = this.pointEntity.position?.getValue(
+              this.cesium.JulianDate.now()
+            );
+            const newPosition = this.cesium.Cartesian3.add(
+              position,
+              translation,
+              new this.cesium.Cartesian3()
+            );
+            this.pointEntity.position?.setValue(newPosition);
+          }
           const newPoints = this.geometryPoints.map((p) => {
             return this.cesium.Cartesian3.add(
               p,

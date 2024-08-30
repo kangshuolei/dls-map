@@ -65,8 +65,8 @@ const handleDrawLine = () => {
 };
 
 const handleCesiumPlot = () => {
-  const geometry = new CesiumPlot.Point(Cesium, dataM.viewer, {
-    pixelSize: 100,
+  const geometry = new CesiumPlot.AssaultDirection(Cesium, dataM.viewer, {
+    pixelSize: 10,
   });
   console.log('geometry', geometry);
 };

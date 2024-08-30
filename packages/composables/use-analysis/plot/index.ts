@@ -1,11 +1,11 @@
-import FineArrow from './arrow/fine-arrow'; //直箭头
+import FineArrow from './arrow/fine-arrow'; //直箭头（粗单尖箭头）
 import AttackArrow from './arrow/attack-arrow'; //进攻方向箭头
 import SwallowtailAttackArrow from './arrow/swallowtail-attack-arrow'; //进攻方向箭头（燕尾）
 import SquadCombat from './arrow/squad-combat'; //分队战斗方向
 import SwallowtailSquadCombat from './arrow/swallowtail-squad-combat'; //分队战斗方向（燕尾）
 import StraightArrow from './arrow/straight-arrow'; //细直箭头
 import CurvedArrow from './arrow/curved-arrow'; //曲线箭头
-import AssaultDirection from './arrow/assault-direction'; //突击方向
+import AssaultDirection from './arrow/assault-direction'; //突击方向（粗单直箭头）
 import DoubleArrow from './arrow/double-arrow'; //双箭头（钳击）
 import FreehandLine from './line/freehand-line'; //自由线
 import FreehandPolygon from './polygon/freehand-polygon'; //自由面
@@ -21,11 +21,11 @@ import GatheringPlace from './polygon/gathering-place'; //集结地
 import Arc from './line/arc'; //弓形线
 import Polyline from './line/polyline'; //折线
 import ClosedCurve from './polygon/closed-curve'; //闭合曲面
-import Point from './point/point'; //点的添加
+import Point from './point/point'; //点
 
 //目前没有的
 
-//粗单直箭头
+
 //矩形标志旗
 //三角标志旗
 //曲线标志旗
