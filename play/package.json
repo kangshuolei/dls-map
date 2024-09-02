@@ -18,6 +18,7 @@
   "dependencies": {
     "@dls-map/components": "workspace:^1.0.0",
     "@dls-map/composables": "workspace:^1.0.0",
+    "@dls-map/utils": "workspace:^1.0.0",
     "vue": "^3.4.35"
   }
 }

@@ -73,12 +73,14 @@ importers:
     specifiers:
       '@dls-map/components': workspace:^1.0.0
       '@dls-map/composables': workspace:^1.0.0
+      '@dls-map/utils': workspace:^1.0.0
       '@vitejs/plugin-vue': ^5.1.2
       vite: ^5.3.5
       vue: ^3.4.35
     dependencies:
       '@dls-map/components': link:../packages/components
       '@dls-map/composables': link:../packages/composables
+      '@dls-map/utils': link:../packages/utils
       vue: 3.4.37
     devDependencies:
       '@vitejs/plugin-vue': 5.1.2_vite@5.4.0+vue@3.4.37
@@ -1123,8 +1125,8 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.4.0_vzkj2fx2zqdzjhhcmudj5jbjny
-      vue: 3.4.37_typescript@5.5.4
+      vite: 5.4.0
+      vue: 3.4.37
     dev: true
 
   /@vue/compiler-core/3.4.37:
@@ -1187,7 +1189,7 @@ packages:
     dependencies:
       '@vue/compiler-ssr': 3.4.37
       '@vue/shared': 3.4.37
-      vue: 3.4.37_typescript@5.5.4
+      vue: 3.4.37
 
   /@vue/shared/3.4.37:
     resolution: {integrity: sha512-nIh8P2fc3DflG8+5Uw8PT/1i17ccFn0xxN/5oE9RfV5SVnd7G0XEFRwakrnNFE/jlS95fpGXDVG5zDETS26nmg==}
@@ -4658,6 +4660,7 @@ packages:
     resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: true
 
   /unc-path-regex/0.1.2:
     resolution: {integrity: sha512-eXL4nmJT7oCpkZsHZUOJo8hcX3GbsiDOa0Qu9F646fi8dT3XuSVopVqAcEiVzSKKH7UoDti23wNX3qGFxcW5Qg==}
@@ -4953,7 +4956,6 @@ packages:
       '@vue/runtime-dom': 3.4.37
       '@vue/server-renderer': 3.4.37_vue@3.4.37
       '@vue/shared': 3.4.37
-    dev: false
 
   /vue/3.4.37_typescript@5.5.4:
     resolution: {integrity: sha512-3vXvNfkKTBsSJ7JP+LyR7GBuwQuckbWvuwAid3xbqK9ppsKt/DUvfqgZ48fgOLEfpy1IacL5f8QhUVl77RaI7A==}
@@ -4969,6 +4971,7 @@ packages:
       '@vue/server-renderer': 3.4.37_vue@3.4.37
       '@vue/shared': 3.4.37
       typescript: 5.5.4
+    dev: true
 
   /wcwidth/1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}

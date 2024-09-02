@@ -25,6 +25,7 @@
 
 <script lang="ts" setup>
 import { Button, DlsMap } from '@dls-map/components';
+import wallLine from '/static/images/wall_line.png';
 import {
   useSwitchMap,
   useCesiumCoord,
@@ -33,6 +34,8 @@ import {
   CesiumPlot,
   addSnowScene,
   addRainScene,
+  addLine,
+  addWall,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
 
@@ -65,7 +68,7 @@ const handleDrawLine = () => {
 };
 
 const handleCesiumPlot = () => {
-  const geometry = new CesiumPlot.AssaultDirection(Cesium, dataM.viewer, {
+  const geometry = new CesiumPlot.Point(Cesium, dataM.viewer, {
     pixelSize: 10,
   });
   console.log('geometry', geometry);
@@ -102,6 +105,10 @@ const onCesiumReady = (e: any) => {
   };
   dataM.dlsDivLabel = new DlsDivLabel(val);
   // addRainScene(dataM.viewer);
+  //生成一个线段
+  addLine([-115.0, 37.0, -115.0, 32.0], Cesium.Color.RED, dataM.viewer, {});
+  //生成一个墙
+  addWall(dataM.viewer, wallLine);
 };
 </script>
 
