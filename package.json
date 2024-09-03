@@ -49,5 +49,11 @@
     "vite": "^5.3.5",
     "vite-plugin-dts": "1.4.1",
     "vue": "^3.4.35"
+  },
+  "dependencies": {
+    "@dls-map/components": "workspace:^1.0.0",
+    "@dls-map/composables": "workspace:^1.0.0",
+    "@dls-map/utils": "workspace:^1.0.0",
+    "echarts": "^5.5.1"
   }
 }
