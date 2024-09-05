@@ -54,6 +54,7 @@
     "@dls-map/components": "workspace:^1.0.0",
     "@dls-map/composables": "workspace:^1.0.0",
     "@dls-map/utils": "workspace:^1.0.0",
+    "@turf/turf": "^7.1.0",
     "echarts": "^5.5.1"
   }
 }

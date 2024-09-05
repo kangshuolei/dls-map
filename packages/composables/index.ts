@@ -9,4 +9,7 @@ export * from './use-entity/useCesiumAddEntity'; //添加点线
 export { default as DlsDivLabel } from './use-coverage/CesiumSetDiv'; //生成弹框
 export { default as CesiumPlot } from './use-analysis/plot/index'; //标绘
 export * from './use-environment/useEnvironment'; //加载环境
-export { default as CesiumUseEcharts } from './use-coverage/CesiumEcharts/CesiumUseEcharts/CesiumUseEcharts'; //加载echarts
+export { default as CesiumUseEcharts } from './use-coverage/CesiumUseEcharts'; //加载echarts-迁徙图
+export { default as CesiumHeatMap } from './use-coverage/CesiumHeatmap'; //热力图
+export { default as CesiumBufferAnalyze } from './use-analysis/CesiumBufferAnalyze'; //缓冲区
+export { default as CesiumTrack } from './use-entity/CesiumTrack'; //历史轨迹

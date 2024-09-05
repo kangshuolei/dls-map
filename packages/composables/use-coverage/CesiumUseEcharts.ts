@@ -1,4 +1,5 @@
-// import * as echarts from 'echarts';
+//因为目前这个只支持echarts 4.x版本
+// 所以没有通过 import 的方式引用 echarts，用 index.html 引入 echart.js的方式引用的
 export default async function CesiumUseEcharts(
   Cesium,
   viewer,

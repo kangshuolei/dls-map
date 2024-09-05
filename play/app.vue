@@ -26,6 +26,7 @@
 <script lang="ts" setup>
 import { Button, DlsMap } from '@dls-map/components';
 import wallLine from '/static/images/wall_line.png';
+import ArrowImg from '/static/images/arrowImg.png';
 import {
   useSwitchMap,
   useCesiumCoord,
@@ -37,6 +38,9 @@ import {
   addLine,
   addWall,
   CesiumUseEcharts,
+  CesiumHeatMap,
+  CesiumBufferAnalyze,
+  CesiumTrack,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
 
@@ -461,7 +465,63 @@ const onCesiumReady = (e: any) => {
     series: series,
   };
   console.log('Cesium, dataM.viewer, option', Cesium, dataM.viewer, option);
-  CesiumUseEcharts(Cesium, dataM.viewer, option);
+  // CesiumUseEcharts(Cesium, dataM.viewer, option);
+  // 加载热力图
+  let heatData = [
+    { lat: 39.258476, lng: 110.219918, value: 42 },
+    { lat: 39.277398, lng: 110.239745, value: 46 },
+    { lat: 39.319952, lng: 110.092288, value: 39 },
+    { lat: 39.474548, lng: 110.068417, value: 36 },
+    { lat: 39.437506, lng: 110.056819, value: 38 },
+    { lat: 38.971221, lng: 110.592357, value: 40 },
+    { lat: 38.95199, lng: 111.097213, value: 41 },
+    { lat: 38.846696, lng: 110.17917, value: 42 },
+    { lat: 39.352112, lng: 110.189824, value: 33 },
+    { lat: 39.431853, lng: 110.077273, value: 30 },
+    { lat: 39.351684, lng: 110.161226, value: 43 },
+    { lat: 38.994047, lng: 110.271835, value: 44 },
+    { lat: 38.733172, lng: 110.170308, value: 45 },
+    { lat: 39.042436, lng: 110.430257, value: 46 },
+  ];
+  // let heatmap = new CesiumHeatMap(Cesium, dataM.viewer, heatData, {
+  //   radius: 30,
+  //   maxOpacity: 0.9,
+  //   minOpacity: 0.2,
+  //   blur: 0.75,
+  //   // gradient: {
+  //   //     '.5': 'blue',
+  //   //     '.8': 'red',
+  //   //     '.95': ''
+  //   // }
+  // });
+  // dataM.viewer.flyTo(heatmap.entity);
+  // 加载缓冲区
+  // let buffer = new CesiumBufferAnalyze(dataM.viewer, 10000);
+  // buffer.polyBuffer();
+  //加载轨迹线
+  let data = [
+    {
+      positions: [
+        [-75.1, 39.57],
+        [-80.12, 25.46],
+        [-85.12, 30.46],
+        [-90.12, 35.46],
+        [-95.12, 40.46],
+      ],
+      color: '#FF0000',
+    },
+    {
+      positions: [
+        [-70.1, 40.57],
+        [-75.12, 35.46],
+        [-80.12, 30.46],
+        [-85.12, 25.46],
+        [-90.12, 20.46],
+      ],
+      color: '#FF0000',
+    },
+  ];
+  CesiumTrack(data, dataM.viewer, ArrowImg).then(() => {});
 };
 </script>
 
