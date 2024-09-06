@@ -1,3 +1,7 @@
+<script setup>
+import KkLayerIndex from '../../examples/layer/index.vue';
+</script>
+
 # Markdown Extension Examples
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
@@ -6,7 +10,7 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 :::demo Use `type`, `plain`, `round` and `circle` to define Button's style.
 
-button/basic
+layer/index
 
 :::
 

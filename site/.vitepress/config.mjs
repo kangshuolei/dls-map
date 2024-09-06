@@ -1,10 +1,25 @@
 import { defineConfig } from 'vitepress';
+import { mdPlugin } from '../config/plugins';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'dls-map',
   description: 'dls-map',
-  head: [['link', { rel: 'icon', href: '/earth.svg' }]],
+  head: [
+    [
+      'link',
+      { rel: 'icon', href: '/earth.svg' },
+      { rel: 'stylesheet', href: '/cesium/Cesium/Widgets/widgets.css' },
+    ],
+    [
+      'script',
+      { src: '/cesium/Cesium/Cesium.js' },
+      { src: 'https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js' },
+      {
+        src: 'https://cdn.jsdelivr.net/npm/heatmap.js@2.0.5/build/heatmap.min.js',
+      },
+    ],
+  ],
   base: process.env.NODE_ENV === 'production' ? '/dls-map/' : '/',
   themeConfig: {
     logo: '/earth.svg',
@@ -89,5 +104,8 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
+  },
+  markdown: {
+    config: (md) => mdPlugin(md),
   },
 });
