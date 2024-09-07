@@ -543,7 +543,7 @@ const onCesiumReady = (e: any) => {
   }
   .coords {
     position: absolute;
-    z-index: 9999;
+    z-index: 1;
     color: #ffffff;
     bottom: 0;
     right: 0;
@@ -555,7 +555,7 @@ const onCesiumReady = (e: any) => {
   .drawLine {
     cursor: pointer;
     position: absolute;
-    z-index: 9999;
+    z-index: 1;
     color: #ffffff;
     top: 0;
     right: 0;
@@ -566,7 +566,7 @@ const onCesiumReady = (e: any) => {
   .backCenter {
     cursor: pointer;
     position: absolute;
-    z-index: 9999;
+    z-index: 1;
     color: #ffffff;
     top: 0;
     right: 5rem;
@@ -577,7 +577,7 @@ const onCesiumReady = (e: any) => {
   .setPitchDegrees {
     cursor: pointer;
     position: absolute;
-    z-index: 9999;
+    z-index: 1;
     color: #ffffff;
     top: 0;
     right: 12rem;
@@ -588,7 +588,7 @@ const onCesiumReady = (e: any) => {
   .plot {
     cursor: pointer;
     position: absolute;
-    z-index: 9999;
+    z-index: 1;
     color: #ffffff;
     top: 0;
     right: 20rem;

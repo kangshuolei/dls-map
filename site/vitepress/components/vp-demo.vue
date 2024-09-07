@@ -1,16 +1,24 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, ref, toRef, onMounted } from 'vue';
 import { isClient, useClipboard, useToggle } from '@vueuse/core';
-import { CaretTop } from '@element-plus/icons-vue';
+import {
+  CaretTop,
+  FullScreen,
+  CopyDocument,
+  Reading,
+  ChatSquare,
+  Edit,
+} from '@element-plus/icons-vue';
 import { useSourceCode } from '../composables/source-code';
 import { usePlayground } from '../composables/use-playground';
 import SourceCode from './demo/vp-source-code.vue';
-import 'uno.css';
+// import 'uno.css';
 import {
   ElDivider,
   ElTooltip,
   ElIcon,
   ElCollapseTransition,
+  ElMessage,
 } from 'element-plus';
 
 const props = defineProps<{
@@ -53,15 +61,23 @@ const onSourceVisibleKeydown = (e: KeyboardEvent) => {
 };
 
 const copyCode = async () => {
-  const { $message } = vm.appContext.config.globalProperties;
   if (!isSupported) {
-    $message.error(locale.value['copy-error']);
+    ElMessage({
+      type: 'error',
+      message: '暂不支持复制！',
+    });
   }
   try {
     await copy();
-    $message.success(locale.value['copy-success']);
+    ElMessage({
+      type: 'success',
+      message: '复制成功',
+    });
   } catch (e: any) {
-    $message.error(e.message);
+    ElMessage({
+      type: 'error',
+      message: e.message,
+    });
   }
 };
 </script>
@@ -79,14 +95,14 @@ const copyCode = async () => {
 
     <div class="op-btns">
       <ElTooltip
-        :content="locale['edit-in-editor']"
+        content="在 playground 编辑"
         :show-arrow="false"
         :trigger="['hover', 'focus']"
         :trigger-keys="[]"
       >
         <ElIcon
           :size="16"
-          :aria-label="locale['edit-in-editor']"
+          :aria-label="1"
           tabindex="0"
           role="link"
           class="op-btn"
@@ -94,32 +110,28 @@ const copyCode = async () => {
           @keydown.prevent.enter="onPlaygroundClick"
           @keydown.prevent.space="onPlaygroundClick"
         >
-          <!--          <i-ri-flask-line />-->
+          <Edit />
         </ElIcon>
       </ElTooltip>
       <ElTooltip
-        :content="locale['edit-on-github']"
+        :content="'Gitee地址'"
         :show-arrow="false"
         :trigger="['hover', 'focus']"
         :trigger-keys="[]"
       >
-        <ElIcon
-          :size="16"
-          class="op-btn github"
-          style="color: var(--text-color-light)"
-        >
+        <ElIcon :size="16" class="op-btn github" style="color: #606266">
           <a
             :href="demoSourceUrl"
             :aria-label="locale['edit-on-github']"
             rel="noreferrer noopener"
             target="_blank"
           >
-            <!--            <i-ri-github-line />-->
+            <ChatSquare />
           </a>
         </ElIcon>
       </ElTooltip>
       <ElTooltip
-        :content="locale['copy-code']"
+        :content="'复制代码'"
         :show-arrow="false"
         :trigger="['hover', 'focus']"
         :trigger-keys="[]"
@@ -134,11 +146,11 @@ const copyCode = async () => {
           @keydown.prevent.enter="copyCode"
           @keydown.prevent.space="copyCode"
         >
-          <!--          <i-ri-file-copy-line />-->
+          <CopyDocument />
         </ElIcon>
       </ElTooltip>
       <ElTooltip
-        :content="locale['view-source']"
+        :content="'查看代码'"
         :show-arrow="false"
         :trigger="['hover', 'focus']"
         :trigger-keys="[]"
@@ -152,7 +164,7 @@ const copyCode = async () => {
           @click="toggleSourceVisible()"
         >
           <ElIcon :size="16">
-            <!--            <i-ri-code-line />-->
+            <Reading />
           </ElIcon>
         </button>
       </ElTooltip>
@@ -171,27 +183,31 @@ const copyCode = async () => {
         @click="toggleSourceVisible(false)"
         @keydown="onSourceVisibleKeydown"
       >
-        <ElIcon :size="16">
+        <ElIcon class="op-btn" :size="16">
           <CaretTop />
         </ElIcon>
-        <span>{{ locale['hide-source'] }}</span>
+        <span>{{ '隐藏源代码' }}</span>
       </div>
     </Transition>
   </div>
 </template>
 
 <style scoped lang="less">
+:deep(.el-divider--horizontal) {
+  margin: 24px 0 0 0;
+}
 .example {
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--el-border-color);
   border-radius: var(--el-border-radius-base);
+  padding: 1rem 1rem 0 1rem;
 
   .example-showcase {
     position: relative;
     width: 100%;
     height: 500px;
-    //padding: 1.5rem;
+    //padding: 1rem;
     margin: 0.5px;
-    background-color: var(--bg-color);
+    background-color: var(--el-bg-color);
   }
 
   .op-btns {
@@ -203,22 +219,23 @@ const copyCode = async () => {
 
     .el-icon {
       &:hover {
-        color: var(--text-color);
+        color: var(--el-text-color-primary);
       }
     }
 
     .op-btn {
+      //width: 18px;
       margin: 0 0.5rem;
       cursor: pointer;
-      color: var(--text-color-lighter);
+      color: var(--el-text-color-secondary);
       transition: 0.2s;
 
       &.github a {
         transition: 0.2s;
-        color: var(--text-color-lighter);
+        color: var(--el-text-color-secondary);
 
         &:hover {
-          color: var(--text-color);
+          color: var(--el-text-color-primary);
         }
       }
     }
@@ -228,10 +245,10 @@ const copyCode = async () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--el-border-color);
     height: 44px;
     box-sizing: border-box;
-    background-color: var(--bg-color, #fff);
+    background-color: var(--el-bg-color, #fff);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     margin-top: -1px;
@@ -242,6 +259,9 @@ const copyCode = async () => {
     right: 0;
     bottom: 0;
     z-index: 10;
+    .op-btn {
+      width: 18px;
+    }
     span {
       font-size: 14px;
       margin-left: 10px;

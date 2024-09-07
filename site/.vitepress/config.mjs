@@ -6,15 +6,26 @@ export default defineConfig({
   title: 'dls-map',
   description: 'dls-map',
   head: [
+    ['link', { rel: 'icon', href: '/earth.svg' }],
     [
       'link',
-      { rel: 'icon', href: '/earth.svg' },
-      { rel: 'stylesheet', href: '/cesium/Cesium/Widgets/widgets.css' },
+      {
+        rel: 'stylesheet',
+        href: 'https://unpkg.com/cesium@latest/Build/Cesium/Widgets/widgets.min.css',
+      },
     ],
     [
       'script',
-      { src: '/cesium/Cesium/Cesium.js' },
+      {
+        src: 'https://unpkg.com/cesium@latest/Build/Cesium/Cesium.js',
+      },
+    ],
+    [
+      'script',
       { src: 'https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js' },
+    ],
+    [
+      'script',
       {
         src: 'https://cdn.jsdelivr.net/npm/heatmap.js@2.0.5/build/heatmap.min.js',
       },
@@ -22,6 +33,9 @@ export default defineConfig({
   ],
   base: process.env.NODE_ENV === 'production' ? '/dls-map/' : '/',
   themeConfig: {
+    repo: 'kangshuolei',
+    docsBranch: 'master',
+    docsDir: 'dls-map',
     logo: '/earth.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -87,20 +101,20 @@ export default defineConfig({
       },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+      { icon: 'github', link: 'https://gitee.com/kangshuolei/dls-map' },
     ],
     // 底部版权部分
     // footer: {
     //   message: 'Released under the MIT License.',
     //   copyright: 'Copyright © 2024-present KKK',
     // },
-    markdown: {
-      // 代码块风格
-      theme: 'material-theme-palenight',
-      // theme:'github-light',
-      // 代码块显示行数
-      lineNumbers: true,
-    },
+    // markdown: {
+    //   // 代码块风格
+    //   theme: 'material-theme-palenight',
+    //   // theme:'github-light',
+    //   // 代码块显示行数
+    //   lineNumbers: true,
+    // },
     search: {
       provider: 'local',
     },

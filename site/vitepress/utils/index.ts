@@ -1,33 +1,33 @@
-import { isExternal } from 'vitepress/dist/client/shared'
+import { isExternal } from 'vitepress/dist/client/shared';
 
-export * from './colors'
+export * from './colors';
 
-export { isExternal, isActive } from 'vitepress/dist/client/shared'
-export { ensureStartingSlash } from 'vitepress/dist/client/theme-default/support/utils'
+export { isExternal, isActive } from 'vitepress/dist/client/shared';
+export { ensureStartingSlash } from 'vitepress/dist/client/theme-default/support/utils';
 
-const endingSlashRE = /\/$/
+const endingSlashRE = /\/$/;
 export function utoa(data: string): string {
-  return btoa(unescape(encodeURIComponent(data)))
+  return btoa(unescape(encodeURIComponent(data)));
 }
 
 export const throttleAndDebounce = (fn: () => any, delay: number) => {
-  let timeout: ReturnType<typeof setTimeout>
-  let called = false
+  let timeout: ReturnType<typeof setTimeout>;
+  let called = false;
   return () => {
     if (timeout) {
-      clearTimeout(timeout)
+      clearTimeout(timeout);
     }
     if (!called) {
-      fn()
-      called = true
+      fn();
+      called = true;
       setTimeout(() => {
-        called = false
-      }, delay)
+        called = false;
+      }, delay);
     } else {
-      timeout = setTimeout(fn, delay)
+      timeout = setTimeout(fn, delay);
     }
-  }
-}
+  };
+};
 
 export function createGitHubUrl(
   docsRepo: string,
@@ -39,20 +39,20 @@ export function createGitHubUrl(
 ) {
   const base = isExternal(docsRepo)
     ? docsRepo
-    : `https://github.com/${docsRepo}`
-  return `${base.replace(endingSlashRE, '')}/edit/${docsBranch}/${
+    : `https://gitee.com/${docsRepo}`;
+  return `${base.replace(endingSlashRE, '')}/${docsBranch}/${
     docsDir ? `${docsDir.replace(endingSlashRE, '')}/` : ''
-  }${folder || ''}${path}${ext || ''}`
+  }${folder || ''}${path}${ext || ''}`;
 }
 
 export function createCrowdinUrl(targetLang: string) {
-  let translateLang = ''
+  let translateLang = '';
   // for zh-CN zh-HK zh-TW, maybe later we will have cases like Chinese lang
   // for now we just keep it as simple as possible.
   if (targetLang.startsWith('zh-')) {
-    translateLang = targetLang.split('-').join('').toLocaleLowerCase()
+    translateLang = targetLang.split('-').join('').toLocaleLowerCase();
   } else {
-    translateLang = targetLang.split('-').shift()!.toLocaleLowerCase()
+    translateLang = targetLang.split('-').shift()!.toLocaleLowerCase();
   }
-  return `https://crowdin.com/translate/element-plus/all/en-${translateLang}`
+  return `https://crowdin.com/translate/element-plus/all/en-${translateLang}`;
 }

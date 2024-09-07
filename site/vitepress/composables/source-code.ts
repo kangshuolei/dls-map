@@ -1,22 +1,23 @@
-import { computed } from 'vue'
-import { useData } from 'vitepress'
-import { createGitHubUrl } from '../utils'
+import { computed } from 'vue';
+import { useData } from 'vitepress';
+import { createGitHubUrl } from '../utils';
 
-import type { Ref } from 'vue'
+import type { Ref } from 'vue';
 
 export const useSourceCode = (path: Ref<string>) => {
-  const { theme } = useData()
+  const { theme } = useData();
+  console.log('theme', theme.value);
 
   const demoUrl = computed(() => {
     const {
       repo,
-      docsDir = '',
-      docsBranch = 'dev',
+      docsDir = 'dls-map',
+      docsBranch = 'master',
       docsRepo = repo,
-    } = theme.value
+    } = theme.value;
+    console.log();
+    return createGitHubUrl(repo, docsDir, docsBranch, path.value);
+  });
 
-    return createGitHubUrl(docsRepo, docsDir, docsBranch, path.value)
-  })
-
-  return demoUrl
-}
+  return demoUrl;
+};
