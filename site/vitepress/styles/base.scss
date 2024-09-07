@@ -209,6 +209,7 @@ li > ol {
       text-align: left;
       //width: 100%;
       max-width: 250px;
+      white-space: pre-wrap;
     }
     tr:nth-child(even) {
       background-color: var(

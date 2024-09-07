@@ -102,8 +102,8 @@ Check out the documentation for the [full list of markdown extensions](https://v
 
 | 名称               | 描述                                    | 类型                                                                                     | 默认值  |
 | ------------------ | --------------------------------------- | ---------------------------------------------------------------------------------------- | ------- |
-| size               | 按钮尺寸                                | `enum` `'large' \| 'default' \| 'small'`                                                 | —       |
-| type               | 按钮类型                                | `enum` `'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| 'text'（已废弃）`   | —       |
+| size               | 按钮尺寸                                | `enum`                                                  | —       |
+| type               | 按钮类型                                | `enum`    | —       |
 | plain              | 是否为朴素按钮                          | `boolean`                                                                               | false   |
 | text ^(2.2.0)      | 是否为文字按钮                          | `boolean`                                                                               | false   |
 | bg ^(2.2.0)        | 是否始终显示文字按钮的背景色             | `boolean`                                                                               | false   |
@@ -115,7 +115,7 @@ Check out the documentation for the [full list of markdown extensions](https://v
 | disabled           | 是否禁用按钮                            | `boolean`                                                                               | false   |
 | icon               | 图标组件                                | `string` / `Component`                                                                   | —       |
 | autofocus          | 是否自动获取焦点，和原生按钮的 `autofocus` 属性相同 | `boolean`                                                                               | false   |
-| native-type        | 与原生按钮的 `type` 属性相同             | `enum` `'button' \| 'submit' \| 'reset'`                                                 | button  |
+| native-type        | 与原生按钮的 `type` 属性相同             | `enum`                                                 | button  |
 | auto-insert-space  | 是否自动在两个中文字符之间插入空格        | `boolean`                                                                               | —       |
 | color              | 自定义按钮颜色，自动计算 `hover` 和 `active` 状态的颜色 | `string`                                                                               | —       |
 | dark               | 暗色模式，自动将 `color` 转换为暗色模式   | `boolean`                                                                               | false   |
@@ -134,8 +134,8 @@ Check out the documentation for the [full list of markdown extensions](https://v
 | 名称            | 描述                   | 类型                                                                                                           |
 | --------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------- |
 | ref             | 按钮 HTML 元素          | `Ref<HTMLButtonElement>`                                                                                      |
-| size            | 按钮尺寸                | `ComputedRef<'' \| 'small' \| 'default' \| 'large'>`                                                        |
-| type            | 按钮类型                | `ComputedRef<'' \| 'default' \| 'primary' \| 'success' \| 'warning' \| 'info' \| 'danger' \| 'text'>`       |
+| size            | 按钮尺寸                | `ComputedRef<'' \| >`                                                        |
+| type            | 按钮类型                | `ComputedRef<'' \| >`       |
 | disabled        | 按钮禁用状态            | `ComputedRef<boolean>`                                                                                         |
 | shouldAddSpace  | 是否自动添加空格        | `ComputedRef<boolean>`                                                                                         |
 
@@ -143,10 +143,10 @@ Check out the documentation for the [full list of markdown extensions](https://v
 
 ### ButtonGroup 属性
 
-| 名称  | 描述                             | 类型                                                                | 默认值  |
-| ----- | -------------------------------- | ------------------------------------------------------------------- | ------- |
-| size  | 控制该按钮组内按钮的尺寸          | `enum` `'large' \| 'default' \| 'small'`                            | —       |
-| type  | 控制该按钮组内按钮的类型          | `enum` `'primary' \| 'success' \| 'warning' \| 'danger' \| 'info'`  | —       |
+| 名称  | 描述                             | 类型                                                              | 默认值  |
+| ----- | -------------------------------- | ----------------------------------------------------------------- | ------- |
+| size  | 控制该按钮组内按钮的尺寸          | `enum` | —       |
+| type  | 控制该按钮组内按钮的类型          | `enum`  | —       |
 
 ### ButtonGroup 插槽
 
