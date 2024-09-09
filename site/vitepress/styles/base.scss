@@ -126,6 +126,9 @@ main {
 //textarea {
 //  touch-action: manipulation;
 //}
+.content-container {
+  max-width: 100% !important;
+}
 
 button.reset-btn {
   background: none;

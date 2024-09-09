@@ -1,10 +1,10 @@
 <template>
   <div class="appMain">
-    <DlsMap
+    <dls-map
       :mapConfig="{
         id: 'dls-map-id',
         imageryProvider: dataM.imageryProvider,
-        sceneMode: 3,
+        sceneModeNum: 3,
       }"
       ref="dlsMapRef"
       @cesium-ready="onCesiumReady"
@@ -16,7 +16,11 @@
         dataM.coords.pitchDegrees
       }}°， 层级：{{ dataM.coords.zoomLevel }}
     </div>
-    <div class="plot" @click="handleCesiumPlot">标绘</div>
+    <div class="plot" @click="handleCesiumPlot">
+      <dls-button @click="handleClick" size="midium" type="primary"
+        >标绘</dls-button
+      >
+    </div>
     <div class="drawLine" @click="handleDrawLine">绘制线段</div>
     <div class="backCenter" @click="handleBackCenter">回到中心点</div>
     <div class="setPitchDegrees" @click="handleSetPitchDegrees">仰角设置</div>
@@ -24,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Button, DlsMap } from '@dls-map/components';
+import { DlsButton, DlsMap } from '@dls-map/components';
 import wallLine from '/static/images/wall_line.png';
 import ArrowImg from '/static/images/arrowImg.png';
 import {
@@ -62,6 +66,10 @@ const dataM = reactive<any>({
 watch(coords, (newValue) => {
   dataM.coords = newValue;
 });
+
+const handleClick = () => {
+  console.log('点击了。。。');
+};
 
 onMounted(() => {
   //获取viewer

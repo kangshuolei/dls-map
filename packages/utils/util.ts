@@ -1,3 +1,9 @@
+/*
+ * @Author: Kang
+ * @Date: 2024-09-03 16:10:41
+ * @Last Modified by: Kang
+ * @LastEditTime: 2024-09-09 14:51:26
+ */
 /**
  * 加载js文件
  * @param src js的地址
@@ -58,8 +64,12 @@ export function twoToCenter(point1: any, point2: any) {
  * @param point 实体点位
  */
 function getEntitiesPointLnoLat(entitiesPoint: any) {
-  let position = entitiesPoint.position.getValue(Cesium.JulianDate.now())
-  let longitude = Cesium.Math.toDegrees(Cesium.Cartographic.fromCartesian(position).longitude)
-  let latitude = Cesium.Math.toDegrees(Cesium.Cartographic.fromCartesian(position).latitude)
-  return { position: [longitude, latitude], entities: entitiesPoint }
+  let position = entitiesPoint.position.getValue(Cesium.JulianDate.now());
+  let longitude = Cesium.Math.toDegrees(
+    Cesium.Cartographic.fromCartesian(position).longitude
+  );
+  let latitude = Cesium.Math.toDegrees(
+    Cesium.Cartographic.fromCartesian(position).latitude
+  );
+  return { position: [longitude, latitude], entities: entitiesPoint };
 }
