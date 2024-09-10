@@ -2,16 +2,17 @@
  * @Author: Kang
  * @Date: 2024-08-13 21:38:44
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-09 17:48:52
+ * @LastEditTime: 2024-09-10 18:21:19
 -->
 <script lang="ts" setup>
 import './style/index.less';
 import { onMounted, ref, reactive, defineExpose, computed } from 'vue';
-import { mapProps, mapEmits } from './types';
+import { mapProps, mapEmits, ViewerConfigType } from './types';
+import * as Cesium from 'cesium';
 defineOptions({ name: 'dls-map' });
 
 const props = defineProps(mapProps);
-const emits = defineEmits(['cesiumReady']);
+const emits = defineEmits(mapEmits);
 const mapConfig = props.mapConfig;
 
 const viewer = ref(null);
@@ -59,9 +60,9 @@ onMounted(() => {
     // 不显示信息窗口
     infoBox: false,
     // 不使用默认影像提供者
-    imageryProvider: false,
-    ...props.viewerConfig,
-  });
+    imageryProvider: undefined,
+    ...(props.viewerConfig as ViewerConfigType),
+  } as ViewerConfigType);
   if (mapConfig?.defaultAccessToken || mapConfig?.imageryProvider) {
     viewerMap.imageryLayers.addImageryProvider(
       new Cesium.UrlTemplateImageryProvider(mapConfig?.imageryProvider)
@@ -78,6 +79,7 @@ onMounted(() => {
 defineExpose({
   dataM,
   viewer,
+  mapProps,
 });
 </script>
 

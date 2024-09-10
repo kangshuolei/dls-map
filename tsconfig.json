@@ -1,16 +1,25 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "baseUrl": ".",
     "jsx": "preserve",
     "strict": true,
-    "target": "ES2015",
-    "module": "ESNext",
+    "module": "esnext",
+    "target": "es2018",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
     "lib": ["esnext", "dom"],
-    "types": ["node", "cesium"],
-    "include": ["packages", "typings"],
-    "exclude": ["node_modules", "**/dist"]
-  }
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": false,
+    "resolveJsonModule": true,
+    "strictNullChecks": false,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "declaration": true, 
+  },     
+  "include": ["packages", "typings","play","site"],
+  "exclude": ["node_modules", "**/dist"],
 }
