@@ -5,7 +5,7 @@ import { Cartesian3 } from 'cesium';
 import { PolygonStyle } from '../interface';
 
 export default class SwallowtailSquadCombat extends SquadCombat {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   headHeightFactor: number;
   headWidthFactor: number;
   neckHeightFactor: number;
@@ -29,16 +29,25 @@ export default class SwallowtailSquadCombat extends SquadCombat {
   /**
    * Generate geometric shapes based on key points.
    */
-  createGraphic(positions: Cartesian3[]): Cartesian3[] {
+  createGraphic(positions: Cesium.Cartesian3[]): Cesium.Cartesian3[] {
     const lnglatPoints = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);
     });
 
     const tailPnts = this.getTailPoints(lnglatPoints);
-    const headPnts = this.getArrowHeadPoints(lnglatPoints, tailPnts[0], tailPnts[2]);
+    const headPnts = this.getArrowHeadPoints(
+      lnglatPoints,
+      tailPnts[0],
+      tailPnts[2]
+    );
     const neckLeft = headPnts[0];
     const neckRight = headPnts[4];
-    const bodyPnts = this.getArrowBodyPoints(lnglatPoints, neckLeft, neckRight, this.tailWidthFactor);
+    const bodyPnts = this.getArrowBodyPoints(
+      lnglatPoints,
+      neckLeft,
+      neckRight,
+      this.tailWidthFactor
+    );
     const count = bodyPnts.length;
     let leftPnts = [tailPnts[0]].concat(bodyPnts.slice(0, count / 2));
     leftPnts.push(neckLeft);
@@ -47,7 +56,10 @@ export default class SwallowtailSquadCombat extends SquadCombat {
     leftPnts = Utils.getQBSplinePoints(leftPnts);
     rightPnts = Utils.getQBSplinePoints(rightPnts);
 
-    const points = leftPnts.concat(headPnts, rightPnts.reverse(), [tailPnts[1], leftPnts[0]]);
+    const points = leftPnts.concat(headPnts, rightPnts.reverse(), [
+      tailPnts[1],
+      leftPnts[0],
+    ]);
     const temp = [].concat(...points);
     const cartesianPoints = this.cesium.Cartesian3.fromDegreesArray(temp);
     return cartesianPoints;
@@ -56,10 +68,28 @@ export default class SwallowtailSquadCombat extends SquadCombat {
   getTailPoints(points) {
     const allLen = Utils.getBaseLength(points);
     const tailWidth = allLen * this.tailWidthFactor;
-    const tailLeft = Utils.getThirdPoint(points[1], points[0], Math.PI / 2, tailWidth, false);
-    const tailRight = Utils.getThirdPoint(points[1], points[0], Math.PI / 2, tailWidth, true);
+    const tailLeft = Utils.getThirdPoint(
+      points[1],
+      points[0],
+      Math.PI / 2,
+      tailWidth,
+      false
+    );
+    const tailRight = Utils.getThirdPoint(
+      points[1],
+      points[0],
+      Math.PI / 2,
+      tailWidth,
+      true
+    );
     const len = tailWidth * this.swallowTailFactor;
-    const swallowTailPnt = Utils.getThirdPoint(points[1], points[0], 0, len, true);
+    const swallowTailPnt = Utils.getThirdPoint(
+      points[1],
+      points[0],
+      0,
+      len,
+      true
+    );
     return [tailLeft, swallowTailPnt, tailRight];
   }
 }

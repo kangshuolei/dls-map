@@ -2,13 +2,13 @@
  * @Author: Kang
  * @Date: 2024-08-13 21:38:44
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-10 18:21:19
+ * @LastEditTime: 2024-09-11 17:09:20
 -->
 <script lang="ts" setup>
 import './style/index.less';
 import { onMounted, ref, reactive, defineExpose, computed } from 'vue';
 import { mapProps, mapEmits, ViewerConfigType } from './types';
-import * as Cesium from 'cesium';
+// import * as Cesium from 'cesium';
 defineOptions({ name: 'dls-map' });
 
 const props = defineProps(mapProps);
@@ -60,7 +60,7 @@ onMounted(() => {
     // 不显示信息窗口
     infoBox: false,
     // 不使用默认影像提供者
-    imageryProvider: undefined,
+    imageryProvider: false,
     ...(props.viewerConfig as ViewerConfigType),
   } as ViewerConfigType);
   if (mapConfig?.defaultAccessToken || mapConfig?.imageryProvider) {
@@ -79,7 +79,6 @@ onMounted(() => {
 defineExpose({
   dataM,
   viewer,
-  mapProps,
 });
 </script>
 

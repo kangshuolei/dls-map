@@ -2,3 +2,5 @@ node_modules
 play/public/cesium/*
 site/.vitepress/dist
 site/public/cesium/*
+dls/es/*
+dls/lib/*

@@ -2,10 +2,9 @@
  * @Author: Kang
  * @Date: 2024-09-09 14:49:32
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-10 18:20:42
+ * @LastEditTime: 2024-09-11 11:06:18
  */
 import { ExtractPropTypes, PropType } from 'vue';
-import * as Cesium from 'cesium';
 
 export type ViewerConfigType = {
   // 不显示基础图层选择器
@@ -35,7 +34,7 @@ export type ViewerConfigType = {
   // 不显示信息窗口
   infoBox?: boolean;
   // 不使用默认影像提供者
-  imageryProvider?: Cesium.ImageryProvider | undefined;
+  imageryProvider?: Cesium.ImageryProvider | boolean | undefined;
   [key: string]: any;
 };
 
@@ -65,7 +64,7 @@ export const mapProps = {
 };
 
 export const mapEmits = {
-  cesiumReady: (payload: typeof Cesium.Viewer | undefined) => true,
+  cesiumReady: (payload: Cesium.Viewer | undefined) => true,
 };
 
 export type mapProps = ExtractPropTypes<typeof mapProps>;

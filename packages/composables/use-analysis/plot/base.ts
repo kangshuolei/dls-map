@@ -1,5 +1,5 @@
 // @ts-ignore
-import * as CesiumTypeOnly from 'cesium';
+import * as Cesium from 'cesium';
 import {
   State,
   GeometryStyle,
@@ -17,33 +17,29 @@ import cloneDeep from 'lodash.clonedeep';
 import * as Utils from './utils';
 
 export default class Base {
-  cesium: typeof CesiumTypeOnly;
-  viewer: CesiumTypeOnly.Viewer;
-  eventHandler: CesiumTypeOnly.ScreenSpaceEventHandler;
-  polygonEntity: CesiumTypeOnly.Entity;
-  geometryPoints: CesiumTypeOnly.Cartesian3[] = [];
+  cesium: typeof Cesium;
+  viewer: Cesium.Viewer;
+  eventHandler: Cesium.ScreenSpaceEventHandler;
+  polygonEntity: Cesium.Entity;
+  geometryPoints: Cesium.Cesium.Cartesian3[] = [];
   state: State = 'drawing';
-  controlPoints: CesiumTypeOnly.EntityCollection = [];
-  controlPointsEventHandler: CesiumTypeOnly.ScreenSpaceEventHandler;
-  lineEntity: CesiumTypeOnly.Entity;
-  pointEntity: CesiumTypeOnly.Entity;
+  controlPoints: Cesium.EntityCollection = [];
+  controlPointsEventHandler: Cesium.ScreenSpaceEventHandler;
+  lineEntity: Cesium.Entity;
+  pointEntity: Cesium.Entity;
   type!: 'polygon' | 'line' | 'point';
   freehand!: boolean;
   style: GeometryStyle | undefined;
-  outlineEntity: CesiumTypeOnly.Entity;
+  outlineEntity: Cesium.Entity;
   eventDispatcher: EventDispatcher;
-  dragEventHandler: CesiumTypeOnly.ScreenSpaceEventHandler;
+  dragEventHandler: Cesium.ScreenSpaceEventHandler;
   entityId: string = '';
-  points: CesiumTypeOnly.Cartesian3[] = [];
+  points: Cesium.Cesium.Cartesian3[] = [];
   styleCache: GeometryStyle | undefined;
   minPointsForShape: number = 0;
-  tempLineEntity: CesiumTypeOnly.Entity;
+  tempLineEntity: Cesium.Entity;
 
-  constructor(
-    cesium: CesiumTypeOnly,
-    viewer: CesiumTypeOnly.Viewer,
-    style?: GeometryStyle
-  ) {
+  constructor(cesium: Cesium, viewer: Cesium.Viewer, style?: GeometryStyle) {
     this.cesium = cesium;
     this.viewer = viewer;
     this.type = this.getType();
@@ -116,7 +112,6 @@ export default class Base {
       this.viewer.canvas
     );
     this.eventHandler.setInputAction((evt: any) => {
-      console.log('this.state', this.state);
       const pickedObject = this.viewer.scene.pick(evt.position);
       const hitEntities =
         this.cesium.defined(pickedObject) &&
@@ -212,10 +207,7 @@ export default class Base {
   /**
    * 检查两点之间的距离是否大于10米。
    */
-  checkDistance(
-    cartesian1: CesiumTypeOnly.Cartesian3,
-    cartesian2: CesiumTypeOnly.Cartesian3
-  ) {
+  checkDistance(cartesian1: Cesium.Cartesian3, cartesian2: Cesium.Cartesian3) {
     const distance = this.cesium.Cartesian3.distance(cartesian1, cartesian2);
     return distance > 10;
   }
@@ -273,11 +265,11 @@ export default class Base {
     );
   }
 
-  setGeometryPoints(geometryPoints: CesiumTypeOnly.Cartesian3[]) {
+  setGeometryPoints(geometryPoints: Cesium.Cesium.Cartesian3[]) {
     this.geometryPoints = geometryPoints;
   }
 
-  getGeometryPoints(): CesiumTypeOnly.Cartesian3[] {
+  getGeometryPoints(): Cesium.Cesium.Cartesian3[] {
     return this.geometryPoints;
   }
 
@@ -363,7 +355,7 @@ export default class Base {
     return entity;
   }
 
-  cartesianToLnglat(cartesian: CesiumTypeOnly.Cartesian3): [number, number] {
+  cartesianToLnglat(cartesian: Cesium.Cartesian3): [number, number] {
     const lnglat =
       this.viewer.scene.globe.ellipsoid.cartesianToCartographic(cartesian);
     const lat = this.cesium.Math.toDegrees(lnglat.latitude);
@@ -371,9 +363,7 @@ export default class Base {
     return [lng, lat];
   }
 
-  pixelToCartesian(
-    position: CesiumTypeOnly.Cartesian2
-  ): CesiumTypeOnly.Cartesian3 | undefined {
+  pixelToCartesian(position: Cesium.Cartesian2): Cesium.Cartesian3 | undefined {
     const ray = this.viewer.camera.getPickRay(position);
     const cartesian = this.viewer.scene.globe.pick(ray, this.viewer.scene);
     return cartesian;
@@ -403,8 +393,8 @@ export default class Base {
     });
 
     let isDragging = false;
-    let draggedIcon: CesiumTypeOnly.Entity = null;
-    let dragStartPosition: CesiumTypeOnly.Cartesian3;
+    let draggedIcon: Cesium.Entity = null;
+    let dragStartPosition: Cesium.Cartesian3;
 
     this.controlPointsEventHandler = new this.cesium.ScreenSpaceEventHandler(
       this.viewer.canvas
@@ -466,7 +456,7 @@ export default class Base {
 
   removeControlPoints() {
     if (this.controlPoints.length > 0) {
-      this.controlPoints.forEach((entity: CesiumTypeOnly.Entity) => {
+      this.controlPoints.forEach((entity: Cesium.Entity) => {
         this.viewer.entities.remove(entity);
       });
       this.controlPointsEventHandler.removeInputAction(
@@ -485,9 +475,8 @@ export default class Base {
    *  在编辑模式下允许拖动整个形状。
    */
   draggable() {
-    console.log('启动拖动。。');
     let dragging = false;
-    let startPosition: CesiumTypeOnly.Cartesian3 | undefined;
+    let startPosition: Cesium.Cartesian3 | undefined;
     this.dragEventHandler = new this.cesium.ScreenSpaceEventHandler(
       this.viewer.canvas
     );
@@ -517,7 +506,7 @@ export default class Base {
     }, this.cesium.ScreenSpaceEventType.LEFT_DOWN);
 
     this.dragEventHandler.setInputAction((event: any) => {
-      console.log('dragging', dragging, startPosition);
+      // console.log('dragging', dragging, startPosition);
       if (dragging && startPosition) {
         // 指定当前鼠标位置的世界坐标。
         const newPosition = this.pixelToCartesian(event.endPosition);
@@ -557,7 +546,7 @@ export default class Base {
           });
 
           // 以相同的方式移动控制点。
-          this.controlPoints.map((p: CesiumTypeOnly.Entity) => {
+          this.controlPoints.map((p: Cesium.Entity) => {
             const position = p.position?.getValue(this.cesium.JulianDate.now());
             const newPosition = this.cesium.Cartesian3.add(
               position,
@@ -759,7 +748,7 @@ export default class Base {
   }
 
   animateOpacity(
-    entity: CesiumTypeOnly.Entity,
+    entity: Cesium.Entity,
     targetAlpha: number,
     duration: number,
     delay: number,
@@ -1082,20 +1071,20 @@ export default class Base {
     return this.entityId === id;
   }
 
-  addPoint(cartesian: CesiumTypeOnly.Cartesian3) {
+  addPoint(cartesian: Cesium.Cartesian3) {
     //Abstract method that must be implemented by subclasses.
   }
 
-  getPoints(): CesiumTypeOnly.Cartesian3[] {
+  getPoints(): Cesium.Cesium.Cartesian3[] {
     //Abstract method that must be implemented by subclasses.
     return [new this.cesium.Cartesian3()];
   }
 
-  updateMovingPoint(cartesian: CesiumTypeOnly.Cartesian3, index?: number) {
+  updateMovingPoint(cartesian: Cesium.Cartesian3, index?: number) {
     //Abstract method that must be implemented by subclasses.
   }
 
-  updateDraggingPoint(cartesian: CesiumTypeOnly.Cartesian3, index: number) {
+  updateDraggingPoint(cartesian: Cesium.Cartesian3, index: number) {
     //Abstract method that must be implemented by subclasses.
   }
 
@@ -1105,8 +1094,8 @@ export default class Base {
   }
 
   createGraphic(
-    points: CesiumTypeOnly.Cartesian3[]
-  ): CesiumTypeOnly.Cartesian3[] {
+    points: Cesium.Cesium.Cartesian3[]
+  ): Cesium.Cesium.Cartesian3[] {
     //Abstract method that must be implemented by subclasses.
     return points;
   }

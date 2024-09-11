@@ -25,7 +25,6 @@ import Point from './point/point'; //点
 
 //目前没有的
 
-
 //矩形标志旗
 //三角标志旗
 //曲线标志旗
@@ -99,10 +98,11 @@ type CreateGeometryFromDataOpts = {
  * @param points
  */
 CesiumPlot.createGeometryFromData = (
-  cesium: any,
-  viewer: any,
+  cesium: typeof Cesium,
+  viewer: Cesium.Viewer,
   opts: CreateGeometryFromDataOpts
 ) => {
+  console.log('执行了');
   const { type, style, cartesianPoints } = opts;
   const geometry = new CesiumPlot[type](cesium, viewer, style);
 

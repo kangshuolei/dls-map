@@ -1,21 +1,26 @@
+/*
+ * @Author: Kang
+ * @Date: 2024-05-29 10:56:07
+ * @Last Modified by: Kang
+ * @LastEditTime: 2024-09-11 16:05:07
+ */
 // @ts-ignore
-import * as CesiumTypeOnly from 'cesium';
 
 export type PolygonStyle = {
-  material?: CesiumTypeOnly.MaterialProperty | CesiumTypeOnly.Color;
+  material?: Cesium.MaterialProperty | Cesium.Color;
   outlineWidth?: number;
-  outlineMaterial?: CesiumTypeOnly.MaterialProperty | CesiumTypeOnly.Color;
+  outlineMaterial?: Cesium.MaterialProperty | Cesium.Color;
 };
 
 export type LineStyle = {
-  material?: CesiumTypeOnly.Color;
+  material?: Cesium.Color;
   lineWidth?: number;
 };
 
 export type PointStyle = {
   pixelSize: number;
-  heightReference: CesiumTypeOnly.HeightReference;
-  color: CesiumTypeOnly.Color;
+  heightReference: Cesium.HeightReference;
+  color: Cesium.Color;
 };
 
 export type State = 'drawing' | 'edit' | 'static' | 'animating' | 'hidden';

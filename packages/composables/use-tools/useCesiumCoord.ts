@@ -12,7 +12,7 @@ export function useCesiumCoord() {
     zoomLevel: 0, //级别
   });
 
-  function listenToMouseMovement(viewer: any = null) {
+  function listenToMouseMovement(viewer: Cesium.Viewer = null) {
     if (!viewer) {
       console.error('viewer is undefined');
       return false;

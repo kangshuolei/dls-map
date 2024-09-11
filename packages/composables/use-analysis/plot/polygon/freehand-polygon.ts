@@ -4,7 +4,7 @@ import { Cartesian3 } from 'cesium';
 import { PolygonStyle } from '../interface';
 
 export default class FreehandPolygon extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   freehand: boolean;
 
   constructor(cesium: any, viewer: any, style?: PolygonStyle) {

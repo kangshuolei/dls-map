@@ -17,9 +17,10 @@
     "resolveJsonModule": true,
     "strictNullChecks": false,
     "removeComments": false,
-    "noImplicitAny": false,
-    "declaration": true, 
-  },     
-  "include": ["packages", "typings","play","site"],
+    "noImplicitAny": true,
+    "declaration": true,   
+    // "typeRoots": ["./types","node_modules/@types"]
+  },           
+  "include": ["packages","types","play/**/*.ts","play/**/*.vue","site/**/*.vue","site/**/*.ts"],
   "exclude": ["node_modules", "**/dist"],
-}
+} 

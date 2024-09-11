@@ -5,7 +5,7 @@ import { Cartesian3 } from 'cesium';
 import { PolygonStyle } from '../interface';
 
 export default class SquadCombat extends AttackArrow {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   headHeightFactor: number;
   headWidthFactor: number;
   neckHeightFactor: number;
@@ -53,15 +53,24 @@ export default class SquadCombat extends AttackArrow {
   /**
    * Generate geometric shapes based on key points.
    */
-  createGraphic(positions: Cartesian3[]): Cartesian3[] {
+  createGraphic(positions: Cesium.Cartesian3[]): Cesium.Cartesian3[] {
     const lnglatPoints = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);
     });
     const tailPnts = this.getTailPoints(lnglatPoints);
-    const headPnts = this.getArrowHeadPoints(lnglatPoints, tailPnts[0], tailPnts[1]);
+    const headPnts = this.getArrowHeadPoints(
+      lnglatPoints,
+      tailPnts[0],
+      tailPnts[1]
+    );
     const neckLeft = headPnts[0];
     const neckRight = headPnts[4];
-    const bodyPnts = this.getArrowBodyPoints(lnglatPoints, neckLeft, neckRight, this.tailWidthFactor);
+    const bodyPnts = this.getArrowBodyPoints(
+      lnglatPoints,
+      neckLeft,
+      neckRight,
+      this.tailWidthFactor
+    );
     const count = bodyPnts.length;
     let leftPnts = [tailPnts[0]].concat(bodyPnts.slice(0, count / 2));
     leftPnts.push(neckLeft);
@@ -78,8 +87,20 @@ export default class SquadCombat extends AttackArrow {
   getTailPoints(points) {
     const allLen = Utils.getBaseLength(points);
     const tailWidth = allLen * this.tailWidthFactor;
-    const tailLeft = Utils.getThirdPoint(points[1], points[0], Math.PI / 2, tailWidth, false);
-    const tailRight = Utils.getThirdPoint(points[1], points[0], Math.PI / 2, tailWidth, true);
+    const tailLeft = Utils.getThirdPoint(
+      points[1],
+      points[0],
+      Math.PI / 2,
+      tailWidth,
+      false
+    );
+    const tailRight = Utils.getThirdPoint(
+      points[1],
+      points[0],
+      Math.PI / 2,
+      tailWidth,
+      true
+    );
     return [tailLeft, tailRight];
   }
 }

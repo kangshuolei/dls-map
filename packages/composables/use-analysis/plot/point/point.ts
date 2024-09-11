@@ -5,7 +5,7 @@ import { Cartesian3 } from 'cesium';
 import { PolygonStyle } from '../interface';
 
 export default class Point extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
 
   constructor(cesium: any, viewer: any, style?: PolygonStyle) {
     super(cesium, viewer, style);

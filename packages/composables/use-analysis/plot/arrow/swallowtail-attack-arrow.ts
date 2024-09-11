@@ -5,7 +5,7 @@ import { Cartesian3 } from 'cesium';
 import { PolygonStyle } from '../interface';
 
 export default class SwallowtailAttackArrow extends AttackArrow {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   headHeightFactor: number;
   headWidthFactor: number;
   neckHeightFactor: number;
@@ -32,7 +32,7 @@ export default class SwallowtailAttackArrow extends AttackArrow {
   /**
    * Generate geometric shapes based on key points.
    */
-  createGraphic(positions: Cartesian3[]): Cartesian3[] {
+  createGraphic(positions: Cesium.Cartesian3[]): Cesium.Cartesian3[] {
     const lnglatPoints = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);
     });
@@ -48,9 +48,20 @@ export default class SwallowtailAttackArrow extends AttackArrow {
     const tailWidth = Utils.MathDistance(tailLeft, tailRight);
     const allLen = Utils.getBaseLength(bonePnts);
     const len = allLen * this.tailWidthFactor * this.swallowTailFactor;
-    this.swallowTailPnt = Utils.getThirdPoint(bonePnts[1], bonePnts[0], 0, len, true);
+    this.swallowTailPnt = Utils.getThirdPoint(
+      bonePnts[1],
+      bonePnts[0],
+      0,
+      len,
+      true
+    );
     const factor = tailWidth / allLen;
-    const bodyPnts = this.getArrowBodyPoints(bonePnts, neckLeft, neckRight, factor);
+    const bodyPnts = this.getArrowBodyPoints(
+      bonePnts,
+      neckLeft,
+      neckRight,
+      factor
+    );
     const count = bodyPnts.length;
     let leftPnts = [tailLeft].concat(bodyPnts.slice(0, count / 2));
     leftPnts.push(neckLeft);
@@ -58,7 +69,10 @@ export default class SwallowtailAttackArrow extends AttackArrow {
     rightPnts.push(neckRight);
     leftPnts = Utils.getQBSplinePoints(leftPnts);
     rightPnts = Utils.getQBSplinePoints(rightPnts);
-    const points = leftPnts.concat(headPnts, rightPnts.reverse(), [this.swallowTailPnt, leftPnts[0]]);
+    const points = leftPnts.concat(headPnts, rightPnts.reverse(), [
+      this.swallowTailPnt,
+      leftPnts[0],
+    ]);
     const temp = [].concat(...points);
     const cartesianPoints = this.cesium.Cartesian3.fromDegreesArray(temp);
     return cartesianPoints;

@@ -5,7 +5,7 @@ import { Cartesian3 } from 'cesium';
 import { PolygonStyle } from '../interface';
 
 export default class Rectangle extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
 
   constructor(cesium: any, viewer: any, style?: PolygonStyle) {
     super(cesium, viewer, style);
@@ -49,7 +49,7 @@ export default class Rectangle extends Base {
     this.drawPolygon();
   }
 
-  createGraphic(positions: Cartesian3[]) {
+  createGraphic(positions: Cesium.Cartesian3[]) {
     const [p1, p2] = positions.map(this.cartesianToLnglat);
     const coords = [...p1, p1[0], p2[1], ...p2, p2[0], p1[1], ...p1];
     const cartesianPoints = this.cesium.Cartesian3.fromDegreesArray(coords);

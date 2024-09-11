@@ -5,7 +5,7 @@ import { Cartesian3 } from 'cesium';
 import { LineStyle } from '../interface';
 
 export default class CurvedArrow extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   arrowLengthScale: number = 5;
   maxArrowLength: number = 3000000;
   t: number;
@@ -44,13 +44,25 @@ export default class CurvedArrow extends Base {
     this.drawLine();
   }
 
-  createStraightArrow(positions: Cartesian3[]) {
+  createStraightArrow(positions: Cesium.Cartesian3[]) {
     const [pnt1, pnt2] = positions.map(this.cartesianToLnglat);
     const distance = Utils.MathDistance(pnt1, pnt2);
     let len = distance / this.arrowLengthScale;
     len = len > this.maxArrowLength ? this.maxArrowLength : len;
-    const leftPnt = Utils.getThirdPoint(pnt1, pnt2, Math.PI / 6, len / 2, false);
-    const rightPnt = Utils.getThirdPoint(pnt1, pnt2, Math.PI / 6, len / 2, true);
+    const leftPnt = Utils.getThirdPoint(
+      pnt1,
+      pnt2,
+      Math.PI / 6,
+      len / 2,
+      false
+    );
+    const rightPnt = Utils.getThirdPoint(
+      pnt1,
+      pnt2,
+      Math.PI / 6,
+      len / 2,
+      true
+    );
     const points = [...pnt1, ...pnt2, ...leftPnt, ...pnt2, ...rightPnt];
     const cartesianPoints = this.cesium.Cartesian3.fromDegreesArray(points);
     return cartesianPoints;
@@ -69,7 +81,7 @@ export default class CurvedArrow extends Base {
   /**
    * Generate geometric shapes based on key points.
    */
-  createGraphic(positions: Cartesian3[]) {
+  createGraphic(positions: Cesium.Cartesian3[]) {
     const lnglatPoints = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);
     });
@@ -86,8 +98,20 @@ export default class CurvedArrow extends Base {
     const distance = Utils.wholeDistance(lnglatPoints);
     let len = distance / this.arrowLengthScale;
     len = len > this.maxArrowLength ? this.maxArrowLength : len;
-    const leftPnt = Utils.getThirdPoint(curvePoints[curvePoints.length - 2], curvePoints[curvePoints.length - 1], Math.PI / 6, len / 2, false);
-    const rightPnt = Utils.getThirdPoint(curvePoints[curvePoints.length - 2], curvePoints[curvePoints.length - 1], Math.PI / 6, len / 2, true);
+    const leftPnt = Utils.getThirdPoint(
+      curvePoints[curvePoints.length - 2],
+      curvePoints[curvePoints.length - 1],
+      Math.PI / 6,
+      len / 2,
+      false
+    );
+    const rightPnt = Utils.getThirdPoint(
+      curvePoints[curvePoints.length - 2],
+      curvePoints[curvePoints.length - 1],
+      Math.PI / 6,
+      len / 2,
+      true
+    );
     const temp = [].concat(...curvePoints);
     const points = [...temp, ...leftPnt, ...pnt2, ...rightPnt];
     const cartesianPoints = this.cesium.Cartesian3.fromDegreesArray(points);

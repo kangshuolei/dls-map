@@ -47,6 +47,15 @@ export default defineConfig({
         text: '组件',
         items: [
           {
+            text: '开始',
+            items: [
+              {
+                text: '开始',
+                link: '/components/start/index.md',
+              },
+            ],
+          },
+          {
             text: '影像类',
             items: [
               {
@@ -68,8 +77,8 @@ export default defineConfig({
             text: '分析类',
             items: [
               {
-                text: 'Markdown Examples',
-                link: '/components/analysis/index.md',
+                text: '标绘',
+                link: '/components/analysis/plot/index.md',
               },
             ],
           },

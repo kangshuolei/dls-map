@@ -5,7 +5,7 @@ import * as Utils from '../utils';
 import { PolygonStyle } from '../interface';
 
 export default class Sector extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
 
   constructor(cesium: any, viewer: any, style?: PolygonStyle) {
     super(cesium, viewer, style);
@@ -24,7 +24,7 @@ export default class Sector extends Base {
     this.points.push(cartesian);
     if (this.points.length === 1) {
       this.onMouseMove();
-    }else if (this.points.length === 3) {
+    } else if (this.points.length === 3) {
       this.finishDrawing();
     }
   }
@@ -45,11 +45,15 @@ export default class Sector extends Base {
     }
   }
 
-  createGraphic(positions: Cartesian3[]) {
+  createGraphic(positions: Cesium.Cartesian3[]) {
     const lnglatPoints = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);
     });
-    const [center, pnt2, pnt3] = [lnglatPoints[0], lnglatPoints[1], lnglatPoints[2]];
+    const [center, pnt2, pnt3] = [
+      lnglatPoints[0],
+      lnglatPoints[1],
+      lnglatPoints[2],
+    ];
     const radius = Utils.MathDistance(pnt2, center);
     const startAngle = Utils.getAzimuth(pnt2, center);
     const endAngle = Utils.getAzimuth(pnt3, center);

@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const o=require("./src/index.js"),i=require("./src/button/index.js"),s=require("./src/dlsMap/index.js"),u={install:t=>{const e=o;for(let n in e)t.use(e[n])}};exports.Button=i.Button;exports.DlsMap=s.DlsMap;exports.default=u;

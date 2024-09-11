@@ -5,7 +5,7 @@ import { Cartesian3 } from 'cesium';
 import { PolygonStyle } from '../interface';
 
 export default class ClosedCurve extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   freehand: boolean;
   t: number;
 
@@ -52,7 +52,7 @@ export default class ClosedCurve extends Base {
     this.drawPolygon();
   }
 
-  createGraphic(positions: Cartesian3[]) {
+  createGraphic(positions: Cesium.Cartesian3[]) {
     let arr: any = [];
     let lnglatPoints: any = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);

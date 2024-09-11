@@ -5,7 +5,7 @@ import { Cartesian3 } from 'cesium';
 import { PolygonStyle } from '../interface';
 
 export default class AttackArrow extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   headHeightFactor: number;
   headWidthFactor: number;
   neckHeightFactor: number;
@@ -62,7 +62,7 @@ export default class AttackArrow extends Base {
   /**
    * Generate geometric shapes based on key points.
    */
-  createGraphic(positions: Cartesian3[]): Cartesian3[] {
+  createGraphic(positions: Cesium.Cartesian3[]): Cesium.Cartesian3[] {
     const lnglatPoints = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);
     });
@@ -77,8 +77,14 @@ export default class AttackArrow extends Base {
     const bonePnts = [midTail].concat(lnglatPoints.slice(2));
     const headPnts = this.getArrowHeadPoints(bonePnts, tailLeft, tailRight);
     const [neckLeft, neckRight] = [headPnts[0], headPnts[4]];
-    const tailWidthFactor = Utils.MathDistance(tailLeft, tailRight) / Utils.getBaseLength(bonePnts);
-    const bodyPnts = this.getArrowBodyPoints(bonePnts, neckLeft, neckRight, tailWidthFactor);
+    const tailWidthFactor =
+      Utils.MathDistance(tailLeft, tailRight) / Utils.getBaseLength(bonePnts);
+    const bodyPnts = this.getArrowBodyPoints(
+      bonePnts,
+      neckLeft,
+      neckRight,
+      tailWidthFactor
+    );
     const count = bodyPnts.length;
     let leftPnts = [tailLeft].concat(bodyPnts.slice(0, count / 2));
     leftPnts.push(neckLeft);
@@ -96,7 +102,7 @@ export default class AttackArrow extends Base {
     return this.points;
   }
 
-  getArrowHeadPoints(points, tailLeft, tailRight) {
+  getArrowHeadPoints(points: any, tailLeft: any, tailRight: any) {
     try {
       let len = Utils.getBaseLength(points);
       let headHeight = len * this.headHeightFactor;
@@ -110,31 +116,87 @@ export default class AttackArrow extends Base {
       const neckWidth = headHeight * this.neckWidthFactor;
       headHeight = headHeight > len ? len : headHeight;
       const neckHeight = headHeight * this.neckHeightFactor;
-      const headEndPnt = Utils.getThirdPoint(points[points.length - 2], headPnt, 0, headHeight, true);
-      const neckEndPnt = Utils.getThirdPoint(points[points.length - 2], headPnt, 0, neckHeight, true);
-      const headLeft = Utils.getThirdPoint(headPnt, headEndPnt, Math.PI / 2, headWidth, false);
-      const headRight = Utils.getThirdPoint(headPnt, headEndPnt, Math.PI / 2, headWidth, true);
-      const neckLeft = Utils.getThirdPoint(headPnt, neckEndPnt, Math.PI / 2, neckWidth, false);
-      const neckRight = Utils.getThirdPoint(headPnt, neckEndPnt, Math.PI / 2, neckWidth, true);
+      const headEndPnt = Utils.getThirdPoint(
+        points[points.length - 2],
+        headPnt,
+        0,
+        headHeight,
+        true
+      );
+      const neckEndPnt = Utils.getThirdPoint(
+        points[points.length - 2],
+        headPnt,
+        0,
+        neckHeight,
+        true
+      );
+      const headLeft = Utils.getThirdPoint(
+        headPnt,
+        headEndPnt,
+        Math.PI / 2,
+        headWidth,
+        false
+      );
+      const headRight = Utils.getThirdPoint(
+        headPnt,
+        headEndPnt,
+        Math.PI / 2,
+        headWidth,
+        true
+      );
+      const neckLeft = Utils.getThirdPoint(
+        headPnt,
+        neckEndPnt,
+        Math.PI / 2,
+        neckWidth,
+        false
+      );
+      const neckRight = Utils.getThirdPoint(
+        headPnt,
+        neckEndPnt,
+        Math.PI / 2,
+        neckWidth,
+        true
+      );
       return [neckLeft, headLeft, headPnt, headRight, neckRight];
     } catch (e) {
       console.log(e);
     }
   }
 
-  getArrowBodyPoints(points, neckLeft, neckRight, tailWidthFactor) {
+  getArrowBodyPoints(
+    points: any,
+    neckLeft: any,
+    neckRight: any,
+    tailWidthFactor: any
+  ) {
     const allLen = Utils.wholeDistance(points);
     const len = Utils.getBaseLength(points);
     const tailWidth = len * tailWidthFactor;
     const neckWidth = Utils.MathDistance(neckLeft, neckRight);
     const widthDif = (tailWidth - neckWidth) / 2;
-    let [tempLen, leftBodyPnts, rightBodyPnts] = [0, [], []];
+    let [tempLen, leftBodyPnts, rightBodyPnts]: any = [0, [], []];
     for (let i = 1; i < points.length - 1; i++) {
-      const angle = Utils.getAngleOfThreePoints(points[i - 1], points[i], points[i + 1]) / 2;
+      const angle =
+        Utils.getAngleOfThreePoints(points[i - 1], points[i], points[i + 1]) /
+        2;
       tempLen += Utils.MathDistance(points[i - 1], points[i]);
-      const w = (tailWidth / 2 - (tempLen / allLen) * widthDif) / Math.sin(angle);
-      const left = Utils.getThirdPoint(points[i - 1], points[i], Math.PI - angle, w, true);
-      const right = Utils.getThirdPoint(points[i - 1], points[i], angle, w, false);
+      const w =
+        (tailWidth / 2 - (tempLen / allLen) * widthDif) / Math.sin(angle);
+      const left = Utils.getThirdPoint(
+        points[i - 1],
+        points[i],
+        Math.PI - angle,
+        w,
+        true
+      );
+      const right = Utils.getThirdPoint(
+        points[i - 1],
+        points[i],
+        angle,
+        w,
+        false
+      );
       leftBodyPnts.push(left);
       rightBodyPnts.push(right);
     }

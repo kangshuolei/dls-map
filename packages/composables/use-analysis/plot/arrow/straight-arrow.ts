@@ -5,7 +5,7 @@ import { Cartesian3 } from 'cesium';
 import { LineStyle } from '../interface';
 
 export default class StraightArrow extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   arrowLengthScale: number = 5;
   maxArrowLength: number = 3000000;
   minPointsForShape: number;
@@ -60,13 +60,25 @@ export default class StraightArrow extends Base {
   /**
    * Generate geometric shapes based on key points.
    */
-  createGraphic(positions: Cartesian3[]) {
+  createGraphic(positions: Cesium.Cartesian3[]) {
     const [pnt1, pnt2] = positions.map(this.cartesianToLnglat);
     const distance = Utils.MathDistance(pnt1, pnt2);
     let len = distance / this.arrowLengthScale;
     len = len > this.maxArrowLength ? this.maxArrowLength : len;
-    const leftPnt = Utils.getThirdPoint(pnt1, pnt2, Math.PI / 6, len / 2, false);
-    const rightPnt = Utils.getThirdPoint(pnt1, pnt2, Math.PI / 6, len / 2, true);
+    const leftPnt = Utils.getThirdPoint(
+      pnt1,
+      pnt2,
+      Math.PI / 6,
+      len / 2,
+      false
+    );
+    const rightPnt = Utils.getThirdPoint(
+      pnt1,
+      pnt2,
+      Math.PI / 6,
+      len / 2,
+      true
+    );
     const points = [...pnt1, ...pnt2, ...leftPnt, ...pnt2, ...rightPnt];
     const cartesianPoints = this.cesium.Cartesian3.fromDegreesArray(points);
     return cartesianPoints;

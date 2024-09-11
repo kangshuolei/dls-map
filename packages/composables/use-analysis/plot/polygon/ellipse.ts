@@ -6,7 +6,7 @@ import { Cartesian3 } from 'cesium';
 import { PolygonStyle } from '../interface';
 
 export default class Ellipse extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   freehand: boolean;
 
   constructor(cesium: any, viewer: any, style?: PolygonStyle) {
@@ -52,7 +52,7 @@ export default class Ellipse extends Base {
     this.drawPolygon();
   }
 
-  createGraphic(positions: Cartesian3[]) {
+  createGraphic(positions: Cesium.Cartesian3[]) {
     const lnglatPoints = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);
     });

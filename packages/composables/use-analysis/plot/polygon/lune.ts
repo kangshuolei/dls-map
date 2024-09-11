@@ -5,7 +5,7 @@ import { Cartesian3 } from 'cesium';
 import { PolygonStyle } from '../interface';
 
 export default class Lune extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   freehand: boolean;
 
   constructor(cesium: any, viewer: any, style?: PolygonStyle) {
@@ -52,7 +52,7 @@ export default class Lune extends Base {
     this.drawPolygon();
   }
 
-  createGraphic(positions: Cartesian3[]) {
+  createGraphic(positions: Cesium.Cartesian3[]) {
     const lnglatPoints = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);
     });
@@ -60,7 +60,13 @@ export default class Lune extends Base {
     if (lnglatPoints.length === 2) {
       const mid = Utils.Mid(lnglatPoints[0], lnglatPoints[1]);
       const d = Utils.MathDistance(lnglatPoints[0], mid);
-      const pnt = Utils.getThirdPoint(lnglatPoints[0], mid, Math.PI / 2, d, false);
+      const pnt = Utils.getThirdPoint(
+        lnglatPoints[0],
+        mid,
+        Math.PI / 2,
+        d,
+        false
+      );
       lnglatPoints.push(pnt);
     }
     let [pnt1, pnt2, pnt3, startAngle, endAngle] = [

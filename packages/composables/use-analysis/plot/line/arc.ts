@@ -5,7 +5,7 @@ import { Cartesian3 } from 'kmap-3d-engine';
 import { LineStyle } from '../interface';
 
 export default class Arc extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   arrowLengthScale: number = 5;
   maxArrowLength: number = 3000000;
   t: number;
@@ -65,7 +65,7 @@ export default class Arc extends Base {
   /**
    * Generate geometric shape points based on key points..
    */
-  createGraphic(positions: Cartesian3[]) {
+  createGraphic(positions: Cesium.Cartesian3[]) {
     const lnglatPoints = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);
     });

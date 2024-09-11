@@ -6,7 +6,7 @@ import { PolygonStyle } from '../interface';
 type Position = [number, number];
 
 export default class DoubleArrow extends Base {
-  points: Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   arrowLengthScale: number = 5;
   maxArrowLength: number = 2;
   neckWidthFactor: number;
@@ -75,8 +75,14 @@ export default class DoubleArrow extends Base {
   }
 
   finishDrawing() {
-    this.curveControlPointLeft = this.cesium.Cartesian3.fromDegrees(this.llBodyPnts[2][0], this.llBodyPnts[2][1]);
-    this.curveControlPointRight = this.cesium.Cartesian3.fromDegrees(this.rrBodyPnts[1][0], this.rrBodyPnts[1][1]);
+    this.curveControlPointLeft = this.cesium.Cartesian3.fromDegrees(
+      this.llBodyPnts[2][0],
+      this.llBodyPnts[2][1]
+    );
+    this.curveControlPointRight = this.cesium.Cartesian3.fromDegrees(
+      this.rrBodyPnts[1][0],
+      this.rrBodyPnts[1][1]
+    );
     super.finishDrawing();
   }
   /**
@@ -108,11 +114,15 @@ export default class DoubleArrow extends Base {
   /**
    * Generate geometric shapes based on key points.
    */
-  createGraphic(positions: Cartesian3[]) {
+  createGraphic(positions: Cesium.Cartesian3[]) {
     const lnglatPoints = positions.map((pnt) => {
       return this.cartesianToLnglat(pnt);
     });
-    const [pnt1, pnt2, pnt3] = [lnglatPoints[0], lnglatPoints[1], lnglatPoints[2]];
+    const [pnt1, pnt2, pnt3] = [
+      lnglatPoints[0],
+      lnglatPoints[1],
+      lnglatPoints[2],
+    ];
     const count = lnglatPoints.length;
     if (count === 3) {
       this.tempPoint4 = this.getTempPoint4(pnt1, pnt2, pnt3);
@@ -128,11 +138,21 @@ export default class DoubleArrow extends Base {
     let rightArrowPnts;
     this.isClockWise = Utils.isClockWise(pnt1, pnt2, pnt3);
     if (this.isClockWise) {
-      leftArrowPnts = this.getArrowPoints(pnt1, this.connPoint, this.tempPoint4, false);
+      leftArrowPnts = this.getArrowPoints(
+        pnt1,
+        this.connPoint,
+        this.tempPoint4,
+        false
+      );
       rightArrowPnts = this.getArrowPoints(this.connPoint, pnt2, pnt3, true);
     } else {
       leftArrowPnts = this.getArrowPoints(pnt2, this.connPoint, pnt3, false);
-      rightArrowPnts = this.getArrowPoints(this.connPoint, pnt1, this.tempPoint4, true);
+      rightArrowPnts = this.getArrowPoints(
+        this.connPoint,
+        pnt1,
+        this.tempPoint4,
+        true
+      );
     }
     const m = leftArrowPnts.length;
     const t = (m - 5) / 2;
@@ -145,15 +165,26 @@ export default class DoubleArrow extends Base {
     const rrBodyPnts = rightArrowPnts.slice(t + 5, m);
     this.rrBodyPnts = rrBodyPnts;
     rlBodyPnts = Utils.getBezierPoints(rlBodyPnts);
-    const bodyPnts = Utils.getBezierPoints(rrBodyPnts.concat(llBodyPnts.slice(1)));
+    const bodyPnts = Utils.getBezierPoints(
+      rrBodyPnts.concat(llBodyPnts.slice(1))
+    );
     lrBodyPnts = Utils.getBezierPoints(lrBodyPnts);
-    const pnts = rlBodyPnts.concat(rArrowPnts, bodyPnts, lArrowPnts, lrBodyPnts);
+    const pnts = rlBodyPnts.concat(
+      rArrowPnts,
+      bodyPnts,
+      lArrowPnts,
+      lrBodyPnts
+    );
     const temp = [].concat(...pnts);
     const cartesianPoints = this.cesium.Cartesian3.fromDegreesArray(temp);
     return cartesianPoints;
   }
 
-  getTempPoint4(linePnt1: Position, linePnt2: Position, point: Position): Position {
+  getTempPoint4(
+    linePnt1: Position,
+    linePnt2: Position,
+    point: Position
+  ): Position {
     const midPnt = Utils.Mid(linePnt1, linePnt2);
     const len = Utils.MathDistance(midPnt, point);
     const angle = Utils.getAngleOfThreePoints(linePnt1, midPnt, point);
@@ -164,12 +195,24 @@ export default class DoubleArrow extends Base {
     if (angle < Math.PI / 2) {
       distance1 = len * Math.sin(angle);
       distance2 = len * Math.cos(angle);
-      mid = Utils.getThirdPoint(linePnt1, midPnt, Math.PI / 2, distance1, false);
+      mid = Utils.getThirdPoint(
+        linePnt1,
+        midPnt,
+        Math.PI / 2,
+        distance1,
+        false
+      );
       symPnt = Utils.getThirdPoint(midPnt, mid, Math.PI / 2, distance2, true);
     } else if (angle >= Math.PI / 2 && angle < Math.PI) {
       distance1 = len * Math.sin(Math.PI - angle);
       distance2 = len * Math.cos(Math.PI - angle);
-      mid = Utils.getThirdPoint(linePnt1, midPnt, Math.PI / 2, distance1, false);
+      mid = Utils.getThirdPoint(
+        linePnt1,
+        midPnt,
+        Math.PI / 2,
+        distance1,
+        false
+      );
       symPnt = Utils.getThirdPoint(midPnt, mid, Math.PI / 2, distance2, false);
     } else if (angle >= Math.PI && angle < Math.PI * 1.5) {
       distance1 = len * Math.sin(angle - Math.PI);
@@ -185,21 +228,44 @@ export default class DoubleArrow extends Base {
     return symPnt;
   }
 
-  getArrowPoints(pnt1: Position, pnt2: Position, pnt3: Position, clockWise: boolean): Position[] {
+  getArrowPoints(
+    pnt1: Position,
+    pnt2: Position,
+    pnt3: Position,
+    clockWise: boolean
+  ): Position[] {
     const midPnt = Utils.Mid(pnt1, pnt2);
     const len = Utils.MathDistance(midPnt, pnt3);
     let midPnt1 = Utils.getThirdPoint(pnt3, midPnt, 0, len * 0.3, true);
     let midPnt2 = Utils.getThirdPoint(pnt3, midPnt, 0, len * 0.5, true);
-    midPnt1 = Utils.getThirdPoint(midPnt, midPnt1, Math.PI / 2, len / 5, clockWise);
+    midPnt1 = Utils.getThirdPoint(
+      midPnt,
+      midPnt1,
+      Math.PI / 2,
+      len / 5,
+      clockWise
+    );
 
-    midPnt2 = Utils.getThirdPoint(midPnt, midPnt2, Math.PI / 2, len / 4, clockWise);
+    midPnt2 = Utils.getThirdPoint(
+      midPnt,
+      midPnt2,
+      Math.PI / 2,
+      len / 4,
+      clockWise
+    );
     const points = [midPnt, midPnt1, midPnt2, pnt3];
     const arrowPnts = this.getArrowHeadPoints(points);
     if (arrowPnts && Array.isArray(arrowPnts) && arrowPnts.length > 0) {
       const neckLeftPoint: Position = arrowPnts[0];
       const neckRightPoint: Position = arrowPnts[4];
-      const tailWidthFactor = Utils.MathDistance(pnt1, pnt2) / Utils.getBaseLength(points) / 2;
-      const bodyPnts = this.getArrowBodyPoints(points, neckLeftPoint, neckRightPoint, tailWidthFactor);
+      const tailWidthFactor =
+        Utils.MathDistance(pnt1, pnt2) / Utils.getBaseLength(points) / 2;
+      const bodyPnts = this.getArrowBodyPoints(
+        points,
+        neckLeftPoint,
+        neckRightPoint,
+        tailWidthFactor
+      );
       if (bodyPnts) {
         const n = bodyPnts.length;
         let lPoints = bodyPnts.slice(0, n / 2);
@@ -217,7 +283,12 @@ export default class DoubleArrow extends Base {
     }
   }
 
-  getArrowBodyPoints(points: Position[], neckLeft: Position, neckRight: Position, tailWidthFactor: number): Position[] {
+  getArrowBodyPoints(
+    points: Position[],
+    neckLeft: Position,
+    neckRight: Position,
+    tailWidthFactor: number
+  ): Position[] {
     const allLen = Utils.wholeDistance(points);
     const len = Utils.getBaseLength(points);
     const tailWidth = len * tailWidthFactor;
@@ -227,11 +298,26 @@ export default class DoubleArrow extends Base {
     let leftBodyPnts: Position[] = [];
     let rightBodyPnts: Position[] = [];
     for (let i = 1; i < points.length - 1; i++) {
-      const angle = Utils.getAngleOfThreePoints(points[i - 1], points[i], points[i + 1]) / 2;
+      const angle =
+        Utils.getAngleOfThreePoints(points[i - 1], points[i], points[i + 1]) /
+        2;
       tempLen += Utils.MathDistance(points[i - 1], points[i]);
-      const w = (tailWidth / 2 - (tempLen / allLen) * widthDif) / Math.sin(angle);
-      const left = Utils.getThirdPoint(points[i - 1], points[i], Math.PI - angle, w, true);
-      const right = Utils.getThirdPoint(points[i - 1], points[i], angle, w, false);
+      const w =
+        (tailWidth / 2 - (tempLen / allLen) * widthDif) / Math.sin(angle);
+      const left = Utils.getThirdPoint(
+        points[i - 1],
+        points[i],
+        Math.PI - angle,
+        w,
+        true
+      );
+      const right = Utils.getThirdPoint(
+        points[i - 1],
+        points[i],
+        angle,
+        w,
+        false
+      );
       leftBodyPnts.push(left);
       rightBodyPnts.push(right);
     }
@@ -245,12 +331,48 @@ export default class DoubleArrow extends Base {
     const headWidth = headHeight * this.headWidthFactor;
     const neckWidth = headHeight * this.neckWidthFactor;
     const neckHeight = headHeight * this.neckHeightFactor;
-    const headEndPnt = Utils.getThirdPoint(points[points.length - 2], headPnt, 0, headHeight, true);
-    const neckEndPnt = Utils.getThirdPoint(points[points.length - 2], headPnt, 0, neckHeight, true);
-    const headLeft = Utils.getThirdPoint(headPnt, headEndPnt, Math.PI / 2, headWidth, false);
-    const headRight = Utils.getThirdPoint(headPnt, headEndPnt, Math.PI / 2, headWidth, true);
-    const neckLeft = Utils.getThirdPoint(headPnt, neckEndPnt, Math.PI / 2, neckWidth, false);
-    const neckRight = Utils.getThirdPoint(headPnt, neckEndPnt, Math.PI / 2, neckWidth, true);
+    const headEndPnt = Utils.getThirdPoint(
+      points[points.length - 2],
+      headPnt,
+      0,
+      headHeight,
+      true
+    );
+    const neckEndPnt = Utils.getThirdPoint(
+      points[points.length - 2],
+      headPnt,
+      0,
+      neckHeight,
+      true
+    );
+    const headLeft = Utils.getThirdPoint(
+      headPnt,
+      headEndPnt,
+      Math.PI / 2,
+      headWidth,
+      false
+    );
+    const headRight = Utils.getThirdPoint(
+      headPnt,
+      headEndPnt,
+      Math.PI / 2,
+      headWidth,
+      true
+    );
+    const neckLeft = Utils.getThirdPoint(
+      headPnt,
+      neckEndPnt,
+      Math.PI / 2,
+      neckWidth,
+      false
+    );
+    const neckRight = Utils.getThirdPoint(
+      headPnt,
+      neckEndPnt,
+      Math.PI / 2,
+      neckWidth,
+      true
+    );
     return [neckLeft, headLeft, headPnt, headRight, neckRight];
   }
 
