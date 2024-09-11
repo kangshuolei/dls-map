@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
+    "outDir": "./dls",
     "jsx": "preserve",
     "strict": true,
     "module": "esnext",
@@ -18,9 +19,10 @@
     "strictNullChecks": false,
     "removeComments": false,
     "noImplicitAny": true,
-    "declaration": true,   
+    "declaration": true, 
+    "emitDeclarationOnly": true,  
     // "typeRoots": ["./types","node_modules/@types"]
   },           
-  "include": ["packages","types","play/**/*.ts","play/**/*.vue","site/**/*.vue","site/**/*.ts"],
+  "include": ["packages/**/*.*","types/**/*.d.ts","play/**/*.ts","play/**/*.vue","site/**/*.vue","site/**/*.ts"],
   "exclude": ["node_modules", "**/dist"],
 } 

@@ -101,15 +101,13 @@ importers:
 
   site:
     specifiers:
-      '@dls-map/components': workspace:^1.0.0
-      '@dls-map/composables': workspace:^1.0.0
-      '@dls-map/utils': workspace:^1.0.0
       '@element-plus/icons-vue': ^2.3.1
       '@mdit-vue/shared': ^2.1.3
       '@types/markdown-it': ^14.1.2
       '@types/markdown-it-container': ^2.0.10
       '@vitejs/plugin-vue': ^5.1.2
       '@vueuse/core': ^11.0.3
+      dls-map: ^1.0.4
       element-plus: ^2.8.1
       fast-glob: ^3.3.2
       markdown-it-container: 4.0.0
@@ -117,14 +115,12 @@ importers:
       vitepress: ^1.3.4
       vue: ^3.4.35
     dependencies:
-      '@dls-map/components': link:../packages/components
-      '@dls-map/composables': link:../packages/composables
-      '@dls-map/utils': link:../packages/utils
       '@element-plus/icons-vue': 2.3.1_vue@3.4.37
       '@mdit-vue/shared': 2.1.3
       '@types/markdown-it': 14.1.2
       '@vitejs/plugin-vue': 5.1.2_vite@5.4.3+vue@3.4.37
       '@vueuse/core': 11.0.3_vue@3.4.37
+      dls-map: 1.0.4
       element-plus: 2.8.1_vue@3.4.37
       fast-glob: 3.3.2
       markdown-it-container: 4.0.0
@@ -2928,7 +2924,7 @@ packages:
     dependencies:
       '@vue/compiler-ssr': 3.4.37
       '@vue/shared': 3.4.37
-      vue: 3.4.37_typescript@5.5.4
+      vue: 3.4.37
 
   /@vue/server-renderer/3.5.1_vue@3.5.1:
     resolution: {integrity: sha512-C5V/fjQTitgVaRNH5wCoHynaWysjZ+VH68drNsAvQYg4ArHsZUQNz0nHoEWRj41nzqkVn2RUlnWaEOTl2o1Ppg==}
@@ -3841,6 +3837,10 @@ packages:
     dependencies:
       path-type: 4.0.0
     dev: true
+
+  /dls-map/1.0.4:
+    resolution: {integrity: sha512-1B6IbqFzByn1To7jwE9qJRaM1GGH1MmN8D32e2bsqUbn92nD8kS8fTXqp0nz6824BQMXkafBsqSdLB4a8mu8jg==}
+    dev: false
 
   /dot-prop/6.0.1:
     resolution: {integrity: sha512-tE7ztYzXHIeyvc7N+hR3oi7FIbf/NIjVP9hmAt3yMXzrQ072/fpjGLx2GxNxGxUl5V73MEqYzioOMoVhGMJ5cA==}
@@ -6853,6 +6853,7 @@ packages:
     resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: true
 
   /uc.micro/2.1.0:
     resolution: {integrity: sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==}
@@ -7292,6 +7293,7 @@ packages:
       '@vue/server-renderer': 3.4.37_vue@3.4.37
       '@vue/shared': 3.4.37
       typescript: 5.5.4
+    dev: true
 
   /vue/3.5.1:
     resolution: {integrity: sha512-k4UNnbPOEskodSxMtv+B9GljdB0C9ubZDOmW6vnXVGIfMqmEsY2+ohasjGguhGkMkrcP/oOrbH0dSD41x5JQFw==}
