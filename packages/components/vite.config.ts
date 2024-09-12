@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-08-09 09:45:00
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-11 18:02:02
+ * @LastEditTime: 2024-09-12 09:09:56
  */
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -49,6 +49,11 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
+      include: [
+        '../../packages/components',
+        '../../packages/composables',
+        '../../packages/utils',
+      ],
       //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
       tsConfigFilePath: '../../tsconfig.json',
     }),
