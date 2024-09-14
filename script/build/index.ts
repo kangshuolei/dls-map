@@ -2,11 +2,11 @@
  * @Author: Kang
  * @Date: 2024-08-09 09:45:00
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-12 09:17:31
+ * @LastEditTime: 2024-09-14 10:25:22
  */
 import delPath from '../utils/delpath';
 import { series, parallel, src, dest } from 'gulp';
-import { pkgPath, componentPath, packagesPath } from '../utils/paths';
+import { pkgPath, componentPath, buildPath } from '../utils/paths';
 import less from 'gulp-less';
 import autoprefixer from 'gulp-autoprefixer';
 import run from '../utils/run';
@@ -28,7 +28,7 @@ export const buildStyle = () => {
 
 //打包组件
 export const buildComponent = async () => {
-  run('pnpm run build', packagesPath);
+  run('pnpm run build', buildPath);
 };
 export default series(
   async () => removeDist(),

@@ -2,21 +2,21 @@
  * @Author: Kang
  * @Date: 2024-08-09 09:45:00
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-12 09:09:56
+ * @LastEditTime: 2024-09-14 10:31:08
  */
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
+import DefineOptions from 'unplugin-vue-define-options/vite';
+import path from 'path';
 export default defineConfig({
   build: {
-    //打包文件目录
-    outDir: 'es',
     //压缩
-    //minify: false,
+    minify: false,
     rollupOptions: {
       //忽略打包vue文件
-      external: ['vue', /\.less/],
-      input: ['index.ts'],
+      external: ['vue', /\.less/, /node_modules/],
+      // input: ['index.ts'],
       output: [
         {
           //打包格式
@@ -27,7 +27,7 @@ export default defineConfig({
           preserveModules: true,
           exports: 'named',
           //配置打包根目录
-          dir: '../../dls/es',
+          dir: './dls/es',
         },
         {
           //打包格式
@@ -38,25 +38,25 @@ export default defineConfig({
           preserveModules: true,
           exports: 'named',
           //配置打包根目录
-          dir: '../../dls/lib',
+          dir: './dls/lib',
         },
       ],
     },
     lib: {
-      entry: './index.ts',
+      entry: './packages/index.ts',
+      name: 'dls-map',
     },
   },
   plugins: [
     vue(),
     dts({
-      include: [
-        '../../packages/components',
-        '../../packages/composables',
-        '../../packages/utils',
-      ],
+      include: ['./packages/**/*.ts'],
+      outputDir: ['./dls/es', './dls/lib'],
+      // outputDir: ['../../dls/es/src', '../../dls/lib/src'],
       //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
-      tsConfigFilePath: '../../tsconfig.json',
+      tsConfigFilePath: './tsconfig.json',
     }),
+    DefineOptions(),
     {
       name: 'style',
       generateBundle(config, bundle) {

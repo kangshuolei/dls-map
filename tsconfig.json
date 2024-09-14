@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
-    "outDir": "./dls",
     "jsx": "preserve",
     "strict": true,
     "module": "esnext",
@@ -23,6 +22,6 @@
     "emitDeclarationOnly": true,  
     // "typeRoots": ["./types","node_modules/@types"]
   },           
-  "include": ["packages/**/*.*","types/**/*.d.ts","play/**/*.ts","play/**/*.vue","site/**/*.vue","site/**/*.ts"],
+  "include": ["packages","types/**/*.d.ts","play/**/*.ts","play/**/*.vue","site/**/*.vue","site/**/*.ts", "vite.config.ts"],
   "exclude": ["node_modules", "**/dist"],
 } 
