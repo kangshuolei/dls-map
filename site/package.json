@@ -24,10 +24,11 @@
     "@types/markdown-it": "^14.1.2",
     "@vitejs/plugin-vue": "^5.1.2",
     "@vueuse/core": "^11.0.3",
-    "dls-map": "^1.0.5",
+    "dls-map": "^1.0.6",
     "element-plus": "^2.8.1",
     "fast-glob": "^3.3.2",
     "markdown-it-container": "4.0.0",
-    "vite": "^5.3.5"
+    "vite": "^5.3.5",
+    "vue-cesium": "^3.2.8"
   }
 }

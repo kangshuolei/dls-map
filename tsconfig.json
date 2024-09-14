@@ -18,13 +18,21 @@
     "strictNullChecks": false,
     "removeComments": false,
     "noImplicitAny": true,
-    "declaration": true, 
-    "emitDeclarationOnly": true,  
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "paths": {
       "@vue/*": ["node_modules/@vue/*"],
-      "*":["/types/*"]
+      "*": ["/types/*"]
     }
-  },           
-  "include": ["packages","types/**/*.d.ts","play/**/*.ts","play/**/*.vue","site/**/*.vue","site/**/*.ts", "vite.config.ts", "packages/index.ts"],
-  "exclude": ["node_modules", "**/dist"],
-} 
+  },
+  "include": [
+    "packages",
+    "types/**/*.d.ts",
+    "play/**/*.ts",
+    "play/**/*.vue",
+    "site",
+    "vite.config.ts",
+    "packages/index.ts",
+  ],
+  "exclude": ["**/dist"]
+}
