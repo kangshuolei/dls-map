@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Button, DlsMap } from '@dls-map/components';
+import { DlsMap } from 'dls-map';
 import wallLine from '/static/images/wall_line.png';
 import ArrowImg from '/static/images/arrowImg.png';
 import {
@@ -41,7 +41,7 @@ import {
   CesiumHeatMap,
   CesiumBufferAnalyze,
   CesiumTrack,
-} from '@dls-map/composables';
+} from 'dls-map';
 import { onMounted, ref, reactive, watch } from 'vue';
 
 const { listenToMouseMovement, coords } = useCesiumCoord();

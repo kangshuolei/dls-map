@@ -2,13 +2,13 @@
  * @Author: Kang
  * @Date: 2024-08-13 21:38:44
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-11 17:09:20
+ * @LastEditTime: 2024-09-14 13:41:12
 -->
 <script lang="ts" setup>
 import './style/index.less';
 import { onMounted, ref, reactive, defineExpose, computed } from 'vue';
 import { mapProps, mapEmits, ViewerConfigType } from './types';
-// import * as Cesium from 'cesium';
+
 defineOptions({ name: 'dls-map' });
 
 const props = defineProps(mapProps);

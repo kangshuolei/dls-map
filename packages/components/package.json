@@ -2,7 +2,7 @@
   "name": "@dls-map/components",
   "version": "1.0.0",
   "description": "",
-  "main": "./index.ts",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "build": "vite build",

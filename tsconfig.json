@@ -20,8 +20,11 @@
     "noImplicitAny": true,
     "declaration": true, 
     "emitDeclarationOnly": true,  
-    // "typeRoots": ["./types","node_modules/@types"]
+    "paths": {
+      "@vue/*": ["node_modules/@vue/*"],
+      "*":["/types/*"]
+    }
   },           
-  "include": ["packages","types/**/*.d.ts","play/**/*.ts","play/**/*.vue","site/**/*.vue","site/**/*.ts", "vite.config.ts"],
+  "include": ["packages","types/**/*.d.ts","play/**/*.ts","play/**/*.vue","site/**/*.vue","site/**/*.ts", "vite.config.ts", "packages/index.ts"],
   "exclude": ["node_modules", "**/dist"],
 } 

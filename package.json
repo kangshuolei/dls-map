@@ -60,6 +60,7 @@
     "@dls-map/utils": "workspace:^1.0.0",
     "@turf/turf": "^7.1.0",
     "echarts": "^5.5.1",
+    "rollup-plugin-copy": "^3.5.0",
     "sass": "1.53.0",
     "unplugin-vue-define-options": "^1.5.0"
   }

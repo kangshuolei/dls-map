@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-11 17:50:05
+ * @LastEditTime: 2024-09-14 10:46:56
 -->
 <template>
   <div class="appMain">
@@ -27,7 +27,7 @@
 
 <script lang="ts" setup>
 import { DlsMap } from 'dls-map';
-import { useCesiumCoord } from '@dls-map/composables';
+import { useCesiumCoord } from 'dls-map';
 import { onMounted, ref, reactive, watch } from 'vue';
 
 const { listenToMouseMovement, coords } = useCesiumCoord();
