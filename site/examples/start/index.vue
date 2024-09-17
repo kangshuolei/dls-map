@@ -2,16 +2,18 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-14 17:57:24
+ * @LastEditTime: 2024-09-17 11:39:39
 -->
 <template>
   <div class="appMain">
     <dls-map
       :mapConfig="{
-        id: 'dls-map-id',
+        id: 'dls-map-start',
         imageryProvider: dataM.imageryProvider,
         sceneModeNum: 3,
       }"
+      :viewer-width="'100%'"
+      :viewer-height="'500px'"
       ref="dlsMapRef"
       @cesium-ready="onCesiumReady"
     />
@@ -26,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { DlsMap } from 'dls-map';
+import { DlsMap } from '@dls-map/components';
 import { useCesiumCoord } from 'dls-map';
 import { onMounted, ref, reactive, watch } from 'vue';
 
@@ -55,6 +57,7 @@ onMounted(() => {
 //cesium初始化完成之后
 const onCesiumReady = (viewer: Cesium.Viewer) => {
   listenToMouseMovement(viewer);
+  console.log('viewer', viewer, Cesium);
 };
 </script>
 

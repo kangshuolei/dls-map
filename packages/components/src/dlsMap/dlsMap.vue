@@ -2,12 +2,20 @@
  * @Author: Kang
  * @Date: 2024-08-13 21:38:44
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-14 13:41:12
+ * @LastEditTime: 2024-09-17 11:38:23
 -->
 <script lang="ts" setup>
 import './style/index.less';
-import { onMounted, ref, reactive, defineExpose, computed } from 'vue';
+import {
+  onMounted,
+  ref,
+  reactive,
+  defineExpose,
+  computed,
+  nextTick,
+} from 'vue';
 import { mapProps, mapEmits, ViewerConfigType } from './types';
+import LoadingSpinner from './LoadingSpinner.vue';
 
 defineOptions({ name: 'dls-map' });
 
@@ -17,13 +25,29 @@ const mapConfig = props.mapConfig;
 
 const viewer = ref(null);
 
-const dataM = reactive({});
+const dataM = reactive({
+  isCesiumLoaded: false,
+});
 
 const containerId = computed<string>(() => {
   return mapConfig?.id || 'cesiumContainer';
 });
 
-onMounted(() => {
+const checkCesium = () => {
+  const checkInterval = setInterval(() => {
+    try {
+      if (Cesium) {
+        dataM.isCesiumLoaded = true;
+        nextTick(() => {
+          clearInterval(checkInterval);
+          initializeCesium();
+        });
+      }
+    } catch (error) {}
+  }, 100); // 每 100ms 检查一次
+};
+
+const initializeCesium = () => {
   if (mapConfig?.defaultAccessToken) {
     Cesium.Ion.defaultAccessToken = mapConfig.defaultAccessToken;
   }
@@ -63,6 +87,12 @@ onMounted(() => {
     imageryProvider: false,
     ...(props.viewerConfig as ViewerConfigType),
   } as ViewerConfigType);
+  // 获取 canvas 元素
+  var canvas = viewerMap.scene.canvas;
+
+  // 调整 canvas 的大小
+  canvas.style.width = props.viewerWidth || '100%';
+  canvas.style.height = props.viewerHeight || '100%';
   if (mapConfig?.defaultAccessToken || mapConfig?.imageryProvider) {
     viewerMap.imageryLayers.addImageryProvider(
       new Cesium.UrlTemplateImageryProvider(mapConfig?.imageryProvider)
@@ -74,7 +104,10 @@ onMounted(() => {
   );
   viewer.value = viewerMap;
   emits('cesiumReady', viewer.value);
-  //显示 比例尺、缩放控制
+};
+
+onMounted(() => {
+  checkCesium();
 });
 defineExpose({
   dataM,
@@ -84,8 +117,10 @@ defineExpose({
 
 <template>
   <div
+    v-if="dataM.isCesiumLoaded"
     :id="containerId"
     style="position: absolute; width: 100%; height: 100%"
     class="dlsMapContainer"
   ></div>
+  <LoadingSpinner v-else />
 </template>

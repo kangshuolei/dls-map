@@ -1,3 +1,9 @@
+/*
+ * @Author: Kang
+ * @Date: 2024-09-05 15:58:59
+ * @Last Modified by: Kang
+ * @LastEditTime: 2024-09-16 22:14:06
+ */
 import DefaultTheme from 'vitepress/theme';
 import { globals } from '../../vitepress';
 import { useDark } from '@vueuse/core';

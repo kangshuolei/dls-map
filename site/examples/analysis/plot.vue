@@ -2,13 +2,13 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-14 18:09:42
+ * @LastEditTime: 2024-09-17 09:29:30
 -->
 <template>
   <div class="appMain">
     <dls-map
       :mapConfig="{
-        id: 'dls-map-id',
+        id: 'dls-map-plot',
         imageryProvider: dataM.imageryProvider,
         sceneModeNum: 3,
       }"

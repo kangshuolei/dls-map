@@ -2,7 +2,14 @@
   "name": "site",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.js"
+    }
+  },
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
@@ -29,6 +36,7 @@
     "fast-glob": "^3.3.2",
     "markdown-it-container": "4.0.0",
     "vite": "^5.3.5",
+    "vite-plugin-css": "^1.0.4",
     "vue-cesium": "^3.2.8"
   }
 }

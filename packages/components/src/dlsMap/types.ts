@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-09 14:49:32
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-14 13:29:45
+ * @LastEditTime: 2024-09-17 11:40:21
  */
 import { ExtractPropTypes, PropType } from 'vue';
 
@@ -60,6 +60,14 @@ export const mapProps = {
   viewerConfig: {
     type: Object as PropType<ViewerConfigType>,
     // required: false,
+  },
+  viewerWidth: {
+    type: String,
+    require: false,
+  },
+  viewerHeight: {
+    type: String,
+    require: false,
   },
 };
 

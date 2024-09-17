@@ -209,6 +209,9 @@ const copyCode = async () => {
     margin: 0.5px;
     background-color: var(--el-bg-color);
   }
+  .example-showcase canvas {
+    height: 500px !important;
+  }
 
   .op-btns {
     padding: 0.5rem;

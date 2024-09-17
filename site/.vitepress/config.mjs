@@ -7,13 +7,13 @@ export default defineConfig({
   description: 'dls-map',
   head: [
     ['link', { rel: 'icon', href: '/earth.svg' }],
-    [
-      'link',
-      {
-        rel: 'stylesheet',
-        href: 'https://unpkg.com/cesium@latest/Build/Cesium/Widgets/widgets.min.css',
-      },
-    ],
+    // [
+    //   'link',
+    //   {
+    //     rel: 'stylesheet',
+    //     href: 'https://unpkg.com/cesium@latest/Build/Cesium/Widgets/widgets.min.css',
+    //   },
+    // ],
     [
       'script',
       {

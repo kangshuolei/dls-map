@@ -27,12 +27,11 @@
   },
   "include": [
     "packages",
-    "types/**/*.d.ts",
+    "types/*.d.ts",
     "play/**/*.ts",
     "play/**/*.vue",
-    "site",
     "vite.config.ts",
-    "packages/index.ts",
+    "packages/index.ts"
   ],
-  "exclude": ["**/dist"]
+  "exclude": ["node_modules","**/dist"]
 }

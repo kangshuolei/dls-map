@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "strict": true,
+    "module": "esnext",
+    "target": "es2018",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "lib": ["esnext", "dom"],
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": false,
+    "resolveJsonModule": true,
+    "strictNullChecks": false,
+    "removeComments": false,
+    "noImplicitAny": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "paths": {
+      "@vue/*": ["node_modules/@vue/*"],
+      "*": ["./types/*"]
+    }
+  },
+  "include": [
+    "examples/**/*.ts",
+    "examples/**/*.vue",
+    "./types/*.d.ts",
+  ]
+}
