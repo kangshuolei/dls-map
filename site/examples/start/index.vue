@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-17 11:39:39
+ * @LastEditTime: 2024-09-17 11:45:55
 -->
 <template>
   <div class="appMain">
@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { DlsMap } from '@dls-map/components';
+import { DlsMap } from 'dls-map';
 import { useCesiumCoord } from 'dls-map';
 import { onMounted, ref, reactive, watch } from 'vue';
 

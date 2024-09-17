@@ -9,7 +9,7 @@
     "dev:play": "pnpm run -C play dev",
     "dev:site": "pnpm run -C site docs:dev",
     "build:site": "pnpm run -C site docs:build",
-    "publish:dls": "gulp -f script/publish/index.ts",
+    "publish:dls": "gulp -f script/build/index.ts && gulp -f script/publish/index.ts",
     "build:dls": "gulp -f script/build/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

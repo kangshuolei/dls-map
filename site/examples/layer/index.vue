@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-17 11:28:51
+ * @LastEditTime: 2024-09-17 11:43:32
 -->
 <template>
   <div class="appMain">
@@ -13,6 +13,8 @@
         sceneModeNum: 3,
       }"
       ref="dlsMapRef"
+      :viewer-width="'100%'"
+      :viewer-height="'500px'"
       @cesium-ready="onCesiumReady"
     />
     <div class="coords">

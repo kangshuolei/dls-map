@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-17 09:29:30
+ * @LastEditTime: 2024-09-17 11:43:35
 -->
 <template>
   <div class="appMain">
@@ -12,6 +12,8 @@
         imageryProvider: dataM.imageryProvider,
         sceneModeNum: 3,
       }"
+      :viewer-width="'100%'"
+      :viewer-height="'500px'"
       ref="dlsMapRef"
       @cesium-ready="onCesiumReady"
     />
