@@ -111,7 +111,7 @@ importers:
       '@types/markdown-it-container': ^2.0.10
       '@vitejs/plugin-vue': ^5.1.2
       '@vueuse/core': ^11.0.3
-      dls-map: ^1.0.7
+      dls-map: ^1.0.8
       element-plus: ^2.8.1
       fast-glob: ^3.3.2
       markdown-it-container: 4.0.0
@@ -126,7 +126,7 @@ importers:
       '@types/markdown-it': 14.1.2
       '@vitejs/plugin-vue': 5.1.3_vite@5.4.6+vue@3.5.6
       '@vueuse/core': 11.1.0_vue@3.5.6
-      dls-map: 1.0.7
+      dls-map: 1.0.8
       element-plus: 2.8.3_vue@3.5.6
       fast-glob: 3.3.2
       markdown-it-container: 4.0.0
@@ -4154,8 +4154,8 @@ packages:
     dependencies:
       path-type: 4.0.0
 
-  /dls-map/1.0.7:
-    resolution: {integrity: sha512-9w5Sf/XwPGngUF+1yOyFQIevqv+7uwYYBCmizad7H6C8bNBEoT27q0HO2eFxfa69mFNRxD05ibXkq9Nyr97eaA==}
+  /dls-map/1.0.8:
+    resolution: {integrity: sha512-TwHr+8UthLuhwNUI7yDJSGlSYXWwPoUnwkdL46iymUJQC9GoKs7MjuzPYQx7U5icbqMwZLevkmY5g/hyB1PIwg==}
     dev: false
 
   /dot-prop/6.0.1:
