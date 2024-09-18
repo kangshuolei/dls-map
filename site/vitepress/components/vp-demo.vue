@@ -49,7 +49,7 @@ const decodedDescription = computed(() =>
 const onPlaygroundClick = () => {
   ElMessage({
     type: 'warning',
-    message: '开法中，敬请期待！',
+    message: '开发中，敬请期待！',
   });
   // const { link } = usePlayground(props.rawSource);
   // if (!isClient) return;
