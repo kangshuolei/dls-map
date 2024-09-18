@@ -2,11 +2,8 @@
  * @Author: Kang
  * @Date: 2024-09-11 16:54:34
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-17 09:52:35
+ * @LastEditTime: 2024-09-18 14:35:06
 -->
-<script setup>
-import KkAnalysisPlot from '../../../examples/analysis/plot.vue';
-</script>
 
 # 开始
 

@@ -2,12 +2,8 @@
  * @Author: Kang
  * @Date: 2024-09-11 16:54:34
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-17 09:56:13
+ * @LastEditTime: 2024-09-18 14:36:18
 -->
-<script setup>
-import KkStartIndex from '../../examples/start/index.vue';
-</script>
-
 # 开始
 
 引入 dls-map 并加载 cesium地球
