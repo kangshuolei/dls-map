@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-11 16:54:34
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-18 14:35:06
+ * @LastEditTime: 2024-09-18 15:59:58
 -->
 
 # 开始
@@ -11,7 +11,7 @@
 
 ## 创建地球
 
-:::demo  -->
+:::demo 
 
 analysis/plot
 

@@ -6,7 +6,7 @@ export default defineConfig({
   title: 'dls-map',
   description: 'dls-map',
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', href: '/dls-map/favicon.ico' }],
     // [
     //   'link',
     //   {

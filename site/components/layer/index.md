@@ -4,7 +4,7 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 ## Syntax Highlighting
 
-:::demo Use `type`, `plain`, `round` and `circle` to define Button's style. -->
+:::demo Use `type`, `plain`, `round` and `circle` to define Button's style.
 
 layer/index
 

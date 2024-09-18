@@ -83,118 +83,118 @@ const copyCode = async () => {
 </script>
 
 <template>
-  <!-- danger here DO NOT USE INLINE SCRIPT TAG -->
-  <div text="sm" m="y-4" v-html="decodedDescription" />
+  <ClientOnly>
+    <div text="sm" m="y-4" v-html="decodedDescription" />
+    <div class="example">
+      <div class="example-showcase">
+        <slot name="source" />
+      </div>
 
-  <div class="example">
-    <div class="example-showcase">
-      <slot name="source" />
-    </div>
+      <ElDivider class="m-0" />
 
-    <ElDivider class="m-0" />
-
-    <div class="op-btns">
-      <ElTooltip
-        content="在 playground 编辑"
-        :show-arrow="false"
-        :trigger="['hover', 'focus']"
-        :trigger-keys="[]"
-      >
-        <ElIcon
-          :size="16"
-          :aria-label="1"
-          tabindex="0"
-          role="link"
-          class="op-btn"
-          @click="onPlaygroundClick"
-          @keydown.prevent.enter="onPlaygroundClick"
-          @keydown.prevent.space="onPlaygroundClick"
+      <div class="op-btns">
+        <ElTooltip
+          content="在 playground 编辑"
+          :show-arrow="false"
+          :trigger="['hover', 'focus']"
+          :trigger-keys="[]"
         >
-          <Edit />
-        </ElIcon>
-      </ElTooltip>
-      <ElTooltip
-        :content="'Gitee地址'"
-        :show-arrow="false"
-        :trigger="['hover', 'focus']"
-        :trigger-keys="[]"
-      >
-        <ElIcon :size="16" class="op-btn github" style="color: #606266">
-          <a
-            :href="demoSourceUrl"
-            :aria-label="locale['edit-on-github']"
-            rel="noreferrer noopener"
-            target="_blank"
+          <ElIcon
+            :size="16"
+            :aria-label="1"
+            tabindex="0"
+            role="link"
+            class="op-btn"
+            @click="onPlaygroundClick"
+            @keydown.prevent.enter="onPlaygroundClick"
+            @keydown.prevent.space="onPlaygroundClick"
           >
-            <ChatSquare />
-          </a>
-        </ElIcon>
-      </ElTooltip>
-      <ElTooltip
-        :content="'复制代码'"
-        :show-arrow="false"
-        :trigger="['hover', 'focus']"
-        :trigger-keys="[]"
-      >
-        <ElIcon
-          :size="16"
-          :aria-label="locale['copy-code']"
-          class="op-btn"
+            <Edit />
+          </ElIcon>
+        </ElTooltip>
+        <ElTooltip
+          :content="'Gitee地址'"
+          :show-arrow="false"
+          :trigger="['hover', 'focus']"
+          :trigger-keys="[]"
+        >
+          <ElIcon :size="16" class="op-btn github" style="color: #606266">
+            <a
+              :href="demoSourceUrl"
+              :aria-label="locale['edit-on-github']"
+              rel="noreferrer noopener"
+              target="_blank"
+            >
+              <ChatSquare />
+            </a>
+          </ElIcon>
+        </ElTooltip>
+        <ElTooltip
+          :content="'复制代码'"
+          :show-arrow="false"
+          :trigger="['hover', 'focus']"
+          :trigger-keys="[]"
+        >
+          <ElIcon
+            :size="16"
+            :aria-label="locale['copy-code']"
+            class="op-btn"
+            tabindex="0"
+            role="button"
+            @click="copyCode"
+            @keydown.prevent.enter="copyCode"
+            @keydown.prevent.space="copyCode"
+          >
+            <CopyDocument />
+          </ElIcon>
+        </ElTooltip>
+        <ElTooltip
+          :content="'查看代码'"
+          :show-arrow="false"
+          :trigger="['hover', 'focus']"
+          :trigger-keys="[]"
+        >
+          <button
+            ref="sourceCodeRef"
+            :aria-label="
+              sourceVisible ? locale['hide-source'] : locale['view-source']
+            "
+            class="reset-btn el-icon op-btn"
+            @click="toggleSourceVisible()"
+          >
+            <ElIcon :size="16">
+              <Reading />
+            </ElIcon>
+          </button>
+        </ElTooltip>
+      </div>
+
+      <ElCollapseTransition>
+        <SourceCode :visible="sourceVisible" :source="source" />
+      </ElCollapseTransition>
+
+      <Transition name="el-fade-in-linear">
+        <div
+          v-show="sourceVisible"
+          class="example-float-control"
           tabindex="0"
           role="button"
-          @click="copyCode"
-          @keydown.prevent.enter="copyCode"
-          @keydown.prevent.space="copyCode"
+          @click="toggleSourceVisible(false)"
+          @keydown="onSourceVisibleKeydown"
         >
-          <CopyDocument />
-        </ElIcon>
-      </ElTooltip>
-      <ElTooltip
-        :content="'查看代码'"
-        :show-arrow="false"
-        :trigger="['hover', 'focus']"
-        :trigger-keys="[]"
-      >
-        <button
-          ref="sourceCodeRef"
-          :aria-label="
-            sourceVisible ? locale['hide-source'] : locale['view-source']
-          "
-          class="reset-btn el-icon op-btn"
-          @click="toggleSourceVisible()"
-        >
-          <ElIcon :size="16">
-            <Reading />
+          <ElIcon class="op-btn" :size="16">
+            <CaretTop />
           </ElIcon>
-        </button>
-      </ElTooltip>
+          <span>{{ '隐藏源代码' }}</span>
+        </div>
+      </Transition>
     </div>
-
-    <ElCollapseTransition>
-      <SourceCode :visible="sourceVisible" :source="source" />
-    </ElCollapseTransition>
-
-    <Transition name="el-fade-in-linear">
-      <div
-        v-show="sourceVisible"
-        class="example-float-control"
-        tabindex="0"
-        role="button"
-        @click="toggleSourceVisible(false)"
-        @keydown="onSourceVisibleKeydown"
-      >
-        <ElIcon class="op-btn" :size="16">
-          <CaretTop />
-        </ElIcon>
-        <span>{{ '隐藏源代码' }}</span>
-      </div>
-    </Transition>
-  </div>
+  </ClientOnly>
 </template>
 
 <style scoped lang="less">
 :deep(.el-divider--horizontal) {
-  margin: 24px 0 0 0;
+  margin: 24px 0 0 0 !important;
 }
 .example {
   border: 1px solid var(--el-border-color);
