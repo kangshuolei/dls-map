@@ -113,10 +113,10 @@ export default defineConfig({
       { icon: 'github', link: 'https://gitee.com/kangshuolei/dls-map' },
     ],
     // 底部版权部分
-    // footer: {
-    //   message: 'Released under the MIT License.',
-    //   copyright: 'Copyright © 2024-present KKK',
-    // },
+    footer: {
+      // message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2024-present KKK',
+    },
     // markdown: {
     //   // 代码块风格
     //   theme: 'material-theme-palenight',
