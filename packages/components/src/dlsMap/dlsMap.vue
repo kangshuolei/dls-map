@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-08-13 21:38:44
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-17 11:38:23
+ * @LastEditTime: 2024-09-18 10:50:39
 -->
 <script lang="ts" setup>
 import './style/index.less';
@@ -27,6 +27,7 @@ const viewer = ref(null);
 
 const dataM = reactive({
   isCesiumLoaded: false,
+  isClient: false,
 });
 
 const containerId = computed<string>(() => {
@@ -107,6 +108,7 @@ const initializeCesium = () => {
 };
 
 onMounted(() => {
+  dataM.isClient = true;
   checkCesium();
 });
 defineExpose({
@@ -116,11 +118,13 @@ defineExpose({
 </script>
 
 <template>
-  <div
-    v-if="dataM.isCesiumLoaded"
-    :id="containerId"
-    style="position: absolute; width: 100%; height: 100%"
-    class="dlsMapContainer"
-  ></div>
-  <LoadingSpinner v-else />
+  <div v-if="dataM.isClient">
+    <div
+      v-if="dataM.isCesiumLoaded"
+      :id="containerId"
+      style="position: absolute; width: 100%; height: 100%"
+      class="dlsMapContainer"
+    ></div>
+    <LoadingSpinner v-else />
+  </div>
 </template>
