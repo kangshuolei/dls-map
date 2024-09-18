@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-11 16:54:34
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-18 14:36:18
+ * @LastEditTime: 2024-09-18 14:52:05
 -->
 # 开始
 
@@ -10,12 +10,12 @@
 
 ## 创建地球
 
-:::demo 
+<!-- :::demo 
 
 start/index
 
-:::
-
+::: -->
+<KkStartIndex />
 
 ## Dls-Map API
 

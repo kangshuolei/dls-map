@@ -1,3 +1,9 @@
+/*
+ * @Author: Kang
+ * @Date: 2024-09-06 09:02:45
+ * @Last Modified by: Kang
+ * @LastEditTime: 2024-09-18 15:17:07
+ */
 import path from 'path';
 import fs from 'fs';
 
@@ -18,7 +24,6 @@ interface ContainerOpts {
     self: Renderer
   ): string;
 }
-
 function createDemoContainer(md: MarkdownIt): ContainerOpts {
   return {
     validate(params) {
@@ -33,19 +38,23 @@ function createDemoContainer(md: MarkdownIt): ContainerOpts {
         let source = '';
         const sourceFile = sourceFileToken.children?.[0].content ?? '';
 
-        if (sourceFileToken.type === 'inline') {
-          source = fs.readFileSync(
-            path.resolve('', 'examples', `${sourceFile}.vue`),
-            'utf-8'
-          );
+        // 只在 SSR 环境读取文件-更改了
+        if (typeof window === 'undefined') {
+          if (sourceFileToken.type === 'inline') {
+            source = fs.readFileSync(
+              path.resolve('', 'examples', `${sourceFile}.vue`),
+              'utf-8'
+            );
+          }
+          if (!source) throw new Error(`Incorrect source file: ${sourceFile}`);
         }
-        if (!source) throw new Error(`Incorrect source file: ${sourceFile}`);
 
-        return `<Demo source="${encodeURIComponent(
-          md.render(`\`\`\` vue\n${source}\`\`\``)
-        )}" path="${sourceFile}" raw-source="${encodeURIComponent(
+        // 确保在客户端不会执行 fs 相关代码
+        return `<Demo source="${
           source
-        )}" description="${encodeURIComponent(md.render(description))}">
+            ? encodeURIComponent(md.render(`\`\`\` vue\n${source}\`\`\``))
+            : ''
+        }" path="${sourceFile}" raw-source="${source ? encodeURIComponent(source) : ''}" description="${encodeURIComponent(md.render(description))}">
   <template #source><kk-${sourceFile.replaceAll('/', '-')}/></template>`;
       } else {
         return '</Demo>\n';
@@ -53,5 +62,4 @@ function createDemoContainer(md: MarkdownIt): ContainerOpts {
     },
   };
 }
-
 export default createDemoContainer;
