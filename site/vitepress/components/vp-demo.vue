@@ -47,9 +47,13 @@ const decodedDescription = computed(() =>
 );
 
 const onPlaygroundClick = () => {
-  const { link } = usePlayground(props.rawSource);
-  if (!isClient) return;
-  window.open(link);
+  ElMessage({
+    type: 'warning',
+    message: '开法中，敬请期待！',
+  });
+  // const { link } = usePlayground(props.rawSource);
+  // if (!isClient) return;
+  // window.open(link);
 };
 
 const onSourceVisibleKeydown = (e: KeyboardEvent) => {
@@ -94,7 +98,7 @@ const copyCode = async () => {
 
       <div class="op-btns">
         <ElTooltip
-          content="在 playground 编辑"
+          content="前往 codeopen.io 运行代码"
           :show-arrow="false"
           :trigger="['hover', 'focus']"
           :trigger-keys="[]"
