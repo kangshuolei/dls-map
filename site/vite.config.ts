@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-06 12:43:09
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-17 10:05:22
+ * @LastEditTime: 2024-09-25 15:11:17
  */
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -14,6 +14,15 @@ export default defineConfig({
   resolve: {
     alias: {
       'dls-map': '/node_modules/dls-map/es', // 强制使用 `es` 文件夹
+    },
+  },
+  server: {
+    proxy: {
+      '/map': {
+        target: 'http://127.0.0.1',
+        changeOrigin: true,
+        rewrite: (p) => p.replace(/^\/map/, ''),
+      },
     },
   },
 });

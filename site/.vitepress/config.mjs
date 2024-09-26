@@ -17,7 +17,7 @@ export default defineConfig({
     [
       'script',
       {
-        src: 'https://unpkg.com/cesium@latest/Build/Cesium/Cesium.js',
+        src: 'https://cdn.staticfile.net/cesium/1.106.1/Cesium.js',
       },
     ],
     [
@@ -44,23 +44,35 @@ export default defineConfig({
     ],
     sidebar: [
       {
-        text: '组件',
+        text: '开发指南',
         items: [
           {
-            text: '开始',
-            items: [
-              {
-                text: '开始',
-                link: '/components/start/index.md',
-              },
-            ],
+            text: '安装',
+            link: '/components/developmentGuide/installation.md',
           },
+          {
+            text: '快速上手',
+            link: '/components/developmentGuide/quickStart.md',
+          }
+        ]
+      },
+      {
+        text: '组件',
+        items: [
           {
             text: '影像类',
             items: [
               {
                 text: '加载地图',
-                link: '/components/layer/index.md',
+                link: '/components/layer/map.md',
+              },
+              {
+                text: '加载地形',
+                link: '/components/layer/terrain.md',
+              },
+              {
+                text: '加载倾斜摄影',
+                link: '/components/layer/photography.md',
               },
             ],
           },
@@ -68,8 +80,8 @@ export default defineConfig({
             text: '图形类',
             items: [
               {
-                text: 'Markdown Examples',
-                link: '/components/entity/index.md',
+                text: '加载图形',
+                link: '/components/entity/graphics.md',
               },
             ],
           },
@@ -78,7 +90,23 @@ export default defineConfig({
             items: [
               {
                 text: '标绘',
-                link: '/components/analysis/plot/index.md',
+                link: '/components/analysis/plot.md',
+              },
+              {
+                text: '测量',
+                link: '/components/analysis/measure.md',
+              },
+              {
+                text: '路线轨迹',
+                link: '/components/analysis/trajectory.md',
+              },
+              {
+                text: '空间点查询',
+                link: '/components/analysis/spacePoint.md',
+              },
+              {
+                text: '缓冲区',
+                link: '/components/analysis/bufferArea.md',
               },
             ],
           },
@@ -86,8 +114,16 @@ export default defineConfig({
             text: '覆盖类',
             items: [
               {
-                text: 'Markdown Examples',
-                link: '/components/coverage/index.md',
+                text: '热力图',
+                link: '/components/coverage/heatMap.md',
+              },
+              {
+                text: '信息面板',
+                link: '/components/coverage/panel.md',
+              },
+              {
+                text: '图层覆盖',
+                link: '/components/coverage/layers.md',
               },
             ],
           },
@@ -95,15 +131,23 @@ export default defineConfig({
             text: '环境类',
             items: [
               {
-                text: 'Markdown Examples',
-                link: '/components/environment/index.md',
+                text: '下雨',
+                link: '/components/environment/rain.md',
+              },
+              {
+                text: '下雪',
+                link: '/components/environment/snow.md',
               },
             ],
           },
           {
             text: '工具类',
             items: [
-              { text: 'Markdown Examples', link: '/components/tools/index.md' },
+              { text: '清除图层', link: '/components/tools/removeLayer.md' },
+              {
+                text: '地图操作工具',
+                link: '/components/tools/tools.md',
+              },
             ],
           },
         ],

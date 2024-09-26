@@ -19,7 +19,7 @@ hero:
     - theme: brand
       # 按钮文字
       text: 快速开始
-      link: /components/start/index.md
+      link: /components/layer/map.md
     - theme: alt
       text: 了解dls-map
       link: https://vitepress.dev/

@@ -14,7 +14,7 @@ import DefineOptions from 'unplugin-vue-define-options/vite';
 export default defineConfig({
   build: {
     //压缩
-    minify: false,
+    minify: true,
     rollupOptions: {
       //忽略打包vue文件
       external: ['vue', /\.less/, /node_modules/],

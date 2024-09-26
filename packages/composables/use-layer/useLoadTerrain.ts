@@ -1,3 +1,9 @@
+/*
+ * @Author: Kang
+ * @Date: 2024-07-22 09:02:25
+ * @Last Modified by: Kang
+ * @LastEditTime: 2024-09-25 14:44:19
+ */
 /**
  *
  * @param {*} terrainAry 一个数组对象，{url,type,range}  url:地形的地址，type: global | region 全球和区域，range：区域的范围
@@ -9,7 +15,7 @@
 
 type TerrainAryType = {
   url: string; //地形的链接
-  range: [number, number, number, number]; // 必须是包含四个数字的元组
+  range?: [number, number, number, number] | null; // 必须是包含四个数字的元组
   type: 'global' | 'region'; //整个地球或者是区域
 };
 

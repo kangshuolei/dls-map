@@ -2,37 +2,47 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-11 16:41:27
+ * @LastEditTime: 2024-09-26 16:49:02
 -->
 <template>
   <div class="appMain">
     <dls-map
       :mapConfig="{
-        id: 'dls-map-id',
+        id: 'dls-map-start',
         imageryProvider: dataM.imageryProvider,
         sceneModeNum: 3,
       }"
+      :viewer-config="{
+        contextOptions: {
+          webgl: {
+            antialias: true, // 启用抗锯齿
+          },
+        },
+      }"
+      :viewer-width="'100%'"
+      :viewer-height="'100%'"
       ref="dlsMapRef"
       @cesium-ready="onCesiumReady"
     />
-    <!-- 标绘列表 -->
-    <div class="plot_list">
-      <div
-        v-for="(item, index) in dataM.plotList"
-        :class="{ active: dataM.currentIndex === index }"
-        @click="handleClickPlot(item, index)"
-        class="plot_btn"
-      >
-        {{ item.label }}
-      </div>
+    <div class="coords">
+      <canvas id="colorRamp"></canvas>
+      <!-- 经度：{{ dataM.coords.longitude }}， 纬度：{{ dataM.coords.latitude }}，
+      海拔：{{ dataM.coords.altitude }}m， 高度：{{ dataM.coords.height }}m，
+      方向：{{ dataM.coords.cameraHeading }}°， 俯仰角：{{
+        dataM.coords.pitchDegrees
+      }}°， 层级：{{ dataM.coords.zoomLevel }} -->
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { DlsMap } from '@dls-map/components';
-import { useCesiumCoord, CesiumPlot } from '@dls-map/composables';
-import { onMounted, ref, reactive } from 'vue';
+import {
+  useCesiumCoord,
+  useCesiumFlyTo,
+  useLoadTerrain,
+} from '@dls-map/composables';
+import { onMounted, ref, reactive, watch } from 'vue';
 
 const { listenToMouseMovement, coords } = useCesiumCoord();
 const dlsMapRef = ref(null);
@@ -45,106 +55,10 @@ const dataM = reactive<any>({
     tileMatrixSetID: 'GoogleMapsCompatible',
   },
   coords: {},
-  currentIndex: null,
-  viewer: null,
-  plotList: [
-    {
-      label: '点',
-      key: 'Point',
-    },
-    {
-      label: '线',
-      key: 'Polyline',
-    },
-    {
-      label: '面',
-      key: 'Polygon',
-    },
-    {
-      label: '直箭头（粗单尖箭头）',
-      key: 'FineArrow',
-    },
-    {
-      label: '进攻方向箭头',
-      key: 'AttackArrow',
-    },
-    {
-      label: '进攻方向箭头（燕尾）',
-      key: 'SwallowtailAttackArrow',
-    },
-    {
-      label: '分队战斗方向',
-      key: 'SquadCombat',
-    },
-    {
-      label: '分队战斗方向（燕尾）',
-      key: 'SwallowtailSquadCombat',
-    },
-    {
-      label: '细直箭头',
-      key: 'StraightArrow',
-    },
-    {
-      label: '曲线箭头',
-      key: 'CurvedArrow',
-    },
-    {
-      label: '突击方向（粗单直箭头）',
-      key: 'AssaultDirection',
-    },
-    {
-      label: '双箭头（钳击）',
-      key: 'DoubleArrow',
-    },
-    {
-      label: '自由线',
-      key: 'FreehandLine',
-    },
-    {
-      label: '自由面',
-      key: 'FreehandPolygon',
-    },
-    {
-      label: '曲线',
-      key: 'Curve',
-    },
-    {
-      label: '椭圆',
-      key: 'Ellipse',
-    },
-    {
-      label: '半月面（弓型面）',
-      key: 'Lune',
-    },
-    {
-      label: '矩形',
-      key: 'Reactangle',
-    },
-    {
-      label: '三角形',
-      key: 'Triangle',
-    },
-    {
-      label: '圆形',
-      key: 'Circle',
-    },
-    {
-      label: '扇形',
-      key: 'Sector',
-    },
-    {
-      label: '集结地',
-      key: 'GatheringPlace',
-    },
-    {
-      label: '弓形线',
-      key: 'Arc',
-    },
-    {
-      label: '闭合曲面',
-      key: 'ClosedCurve',
-    },
-  ],
+});
+
+watch(coords, (newValue) => {
+  // dataM.coords = newValue;
 });
 
 onMounted(() => {
@@ -152,24 +66,243 @@ onMounted(() => {
   console.log('dlsMapRef', dlsMapRef.value);
 });
 
-const handleClickPlot = (data: any, index: number) => {
-  dataM.currentIndex = index;
-  const geometry = new CesiumPlot[data.key](Cesium, dataM.viewer, {
-    material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
-    outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
-    outlineWidth: 3,
-  });
-  console.log('geometry', geometry);
-};
-
 //cesium初始化完成之后
-const onCesiumReady = (viewer: Cesium.Viewer) => {
-  dataM.viewer = viewer;
-  listenToMouseMovement(viewer);
+const onCesiumReady = async (viewer: Cesium.Viewer) => {
+  // useLoadTerrain(
+  //   [
+  //     {
+  //       type: 'global',
+  //       url: '/map/nanahaidixing',
+  //       range: [0, 0, 0, 0],
+  //     },
+  //   ],
+  //   28000,
+  //   viewer
+  // );
+
+  function formatNumberLength(num = 0, radix = 10, length = 0) {
+    let str = num.toString(radix);
+    if (length === 0) {
+      return str;
+    }
+    while (str.length < length) {
+      str = '0' + str;
+    }
+    return str;
+  }
+  const arcgis_layer = new Cesium.UrlTemplateImageryProvider({
+    url: '/map/alllayers/_alllayers/{zz}/{yy}/{xx}.png',
+    // rectangle: Cesium.Rectangle.fromDegrees(0, 0, 0, 0),
+    // rectangle: Cesium.Rectangle.fromDegrees(
+    //   101.7594,
+    //   3.173675,
+    //   125.6025,
+    //   30.06546
+    // ), // 瓦片原点调整
+    // rectangle: Cesium.Rectangle.fromDegrees(
+    //   101.7594,
+    //   3.173675,
+    //   125.6025,
+    //   30.06546
+    // ),
+    // minimumLevel: 0,
+    // maximumLevel: 11,
+    // CGCS2000坐标系的切片使用GeographicTilingScheme切片方案也可以加载，目前没有发现异常
+    tilingScheme: new Cesium.GeographicTilingScheme({
+      // tileWidth: 1024, // 瓦片宽度
+      // tileHeight: 1024, // 瓦片高度
+      // rectangle: Cesium.Rectangle.fromDegrees(
+      //   101.7594,
+      //   3.173675,
+      //   125.6025,
+      //   30.06546
+      // ), // 瓦片原点调整
+      numberOfLevelZeroTilesX: 2,
+      numberOfLevelZeroTilesY: 1,
+    }),
+    // 解析自定义占位符号
+    customTags: {
+      xx: (imageryProvider: any, x: any, y: any, level: any) => {
+        const xx = 'C' + formatNumberLength(x, 16, 8);
+        return xx;
+      },
+      yy: (imageryProvider: any, x: any, y: any, level: any) => {
+        const yy = 'R' + formatNumberLength(y, 16, 8);
+        return yy;
+      },
+      zz: (imageryProvider: any, x: any, y: any, level: any) => {
+        const zz = 'L' + formatNumberLength(level, 10, 2);
+        return zz;
+      },
+    },
+  });
+  viewer.scene.imageryLayers.addImageryProvider(arcgis_layer);
+  // const tileUrl = '/map/alllayers/L{z}/R{y}/C{x}.png';
+  // viewer.scene.imageryLayers.addImageryProvider(
+  //   //lab切的影像图
+  //   await Cesium.ArcGisMapServerImageryProvider.fromUrl('/map/alllayers')
+  // );
+  // viewer.scene.globe.enableLighting = false; // 禁用默认光照效果
+
+  //viewer.scene.globe.maximumScreenSpaceError = 0.5; // 默认值为2，减小可以提高细节
+  // listenToMouseMovement(viewer);
+  useCesiumFlyTo(viewer, [114.62, 15.02, 2800000]);
+  // viewer.terrainProvider = await  ({
+  //   requestVertexNormals: true,
+  // });
+  viewer.terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
+    '/map/nanahaidixing',
+    // 'https://data.mars3d.cn/terrain',
+    {
+      // requestWaterMask: true,
+      // requestVertexNormals: true,
+      // minimumPixelSize: 64,
+      // maximumScale: 20000,
+      // requestMetadata: true,
+      requestVertexNormals: true,
+    }
+  );
+  // viewer.scene.globe.terrainExaggeration = 50.0;
+
+  const scene: Cesium.Scene = viewer.scene;
+
+  const globe: Cesium.Globe = scene.globe;
+
+  viewer.scene.globe.showGroundAtmosphere = false;
+  viewer.scene.globe.showSkyAtmosphere = false;
+
+  // globe.maximumScreenSpaceError = 1;
+
+  const minHeight = -10000.0;
+  const maxHeight = 2000.0;
+  // const minHeight = -8926.0;
+  // const maxHeight = 5775.0;
+
+  const range = maxHeight - minHeight;
+  const d = (height: any) => (height - minHeight) / range;
+  function getColorRamp() {
+    const ramp: any = document.getElementById('colorRamp');
+    ramp.width = 100;
+    ramp.height = 15;
+    const ctx = ramp.getContext('2d');
+    const grd = ctx.createLinearGradient(0, 0, 100, 0);
+    grd.addColorStop(d(maxHeight), '#FF0000'); // rgb(255, 0, 0)
+    grd.addColorStop(d(100), '#FF5500'); // rgb(255, 85, 0)
+    grd.addColorStop(d(0), '#E69900'); // rgb(230, 153, 0)
+    grd.addColorStop(d(-500), '#FFD280'); // rgb(255, 210, 128)
+    // grd.addColorStop(d(-1000), '#F9FCCA');
+    grd.addColorStop(d(-1000), '#FFFF73'); // rgb(255, 255, 115)
+    grd.addColorStop(d(-1500), '#FFFFBF'); // rgb(255, 255, 191)
+    grd.addColorStop(d(-2000), '#006FFF'); // rgb(0, 111, 255)
+    grd.addColorStop(d(-2500), '#00A8E6'); // rgb(0, 168, 230)
+    grd.addColorStop(d(-5000), '#0084A8'); // rgb(0, 132, 168)
+    grd.addColorStop(d(minHeight), '#004CA8'); // rgb(0, 76, 168)
+    // grd.addColorStop(d(-8000.0), 'rbg(255,85,0)');
+    // grd.addColorStop(d(minHeight), 'rbg(255,85,0)');
+
+    // grd.addColorStop(d(maxHeight), '#B79E6C');
+    // grd.addColorStop(d(100.0), '#FBFFEE');
+    // grd.addColorStop(d(0.0), '#F9FCCA');
+    // grd.addColorStop(d(-500.0), '#BDE7AD');
+    // grd.addColorStop(d(-1000.0), '#81D2A3');
+    // grd.addColorStop(d(-1500.0), '#5AB7A4');
+    // grd.addColorStop(d(-2000.0), '#4C9AA0');
+    // grd.addColorStop(d(-2500.0), '#437D9A');
+    // grd.addColorStop(d(-4000.0), '#3E6194');
+    // grd.addColorStop(d(-5000.0), '#424380');
+    // grd.addColorStop(d(-8000.0), '#392D52');
+    // grd.addColorStop(d(minHeight), '#291C2F');
+
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, ramp.width, ramp.height);
+
+    return ramp;
+  }
+  function showTerrain() {
+    let material = Cesium.Material.fromType('ElevationRamp');
+    // viewer.scene.sun.lightIntensity = 0.5; // 调整光照强度
+    const shadingUniforms = material.uniforms;
+    shadingUniforms.image = getColorRamp();
+    shadingUniforms.minimumHeight = minHeight * scene.verticalExaggeration;
+    shadingUniforms.maximumHeight = maxHeight * scene.verticalExaggeration;
+    globe.material = material;
+    return;
+  }
+  scene.verticalExaggeration = 10;
+
+  // scene.skyAtmosphere.show = true;
+
+  // scene.fog.enabled = true;
+  // globe.showGroundAtmosphere = true;
+
+  // // 启用阴影
+  // viewer.scene.shadows = Cesium.ShadowMode.ENABLED;
+
+  // // 启用光照
+  viewer.scene.globe.enableLighting = true;
+
+  viewer.scene.fxaa = true;
+
+  // 调整太阳位置和强度
+  // viewer.scene.sun.show = true;
+  // viewer.scene.sun.lightIntensity = 1.0;
+
+  // 设置背景颜色
+  viewer.scene.backgroundColor = Cesium.Color.BLACK;
+
+  viewer.scene.globe.tileCacheSize = 1000;
+
+  viewer.scene.globe.depthTestAgainstTerrain = true;
+
+  viewer.scene.globe.maximumScreenSpaceError = 1;
+
+  // function updateGlobeMaterialUniforms(zoomMagnitude: any) {
+  //   const material = globe.material;
+  //   if (!Cesium.defined(material)) {
+  //     return;
+  //   }
+
+  //   const spacing = 5.0 * Math.pow(10, Math.floor(4 * zoomMagnitude));
+
+  //   const uniforms = material.uniforms;
+  //   uniforms.spacing = spacing * scene.verticalExaggeration;
+  //   uniforms.minimumHeight = minHeight * scene.verticalExaggeration;
+  //   uniforms.maximumHeight = maxHeight * scene.verticalExaggeration;
+  // }
+
+  // const camera = scene.camera;
+  // const cameraMaxHeight = globe.ellipsoid.maximumRadius * 2;
+  // const scratchNormal = new Cesium.Cartesian3();
+  // scene.preRender.addEventListener(function (scene, time) {
+  //   const surfaceNormal = globe.ellipsoid.geodeticSurfaceNormal(
+  //     camera.positionWC,
+  //     scratchNormal
+  //   );
+  //   const negativeNormal = Cesium.Cartesian3.negate(
+  //     surfaceNormal,
+  //     surfaceNormal
+  //   );
+  //   scene.light.direction = Cesium.Cartesian3.normalize(
+  //     Cesium.Cartesian3.add(negativeNormal, camera.rightWC, surfaceNormal),
+  //     scene.light.direction
+  //   );
+
+  //   const zoomMagnitude =
+  //     Cesium.Cartesian3.magnitude(camera.positionWC) / cameraMaxHeight;
+
+  //   updateGlobeMaterialUniforms(zoomMagnitude);
+  // });
+
+  // // 添加太阳光源
+  // viewer.scene.light = new Cesium.DirectionalLight({
+  //   direction: new Cesium.Cartesian3(0.0, -1.0, -1.0),
+  // });
+
+  showTerrain();
 };
 </script>
 
-<style lang="less" scoped>
+<style>
 .appMain {
   width: 100%;
   height: 100%;
@@ -182,29 +315,6 @@ const onCesiumReady = (viewer: Cesium.Viewer) => {
     width: auto;
     padding: 0.5rem;
     background-color: rgba(0, 0, 0, 0.5);
-  }
-  .plot_list {
-    position: absolute;
-    z-index: 1;
-    color: #ffffff;
-    top: 0;
-    left: 0;
-    width: auto;
-    padding: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.5);
-    width: 300px;
-    height: 100%;
-    overflow-y: auto;
-    .plot_btn {
-      cursor: pointer;
-      width: auto;
-      padding: 5px;
-      background-color: rgb(136, 180, 90);
-      margin-bottom: 5px;
-    }
-    .active {
-      background-color: rgb(97, 183, 6);
-    }
   }
 }
 </style>

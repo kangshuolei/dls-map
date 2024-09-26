@@ -2,14 +2,14 @@
  * @Author: Kang
  * @Date: 2024-09-11 16:54:34
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-18 15:59:58
+ * @LastEditTime: 2024-09-25 15:49:33
 -->
 
 # 开始
 
-引入 dls-map 并加载 cesium地球
+引入 dls-map 并加载 标绘服务
 
-## 创建地球
+## 标绘
 
 :::demo 
 
