@@ -1,54 +1,32 @@
+<!--
+ * @Author: Kang
+ * @Date: 2024-09-04 09:25:58
+ * @Last Modified by: Kang
+ * @LastEditTime: 2024-09-29 15:28:30
+-->
 <template>
   <div class="appMain">
     <dls-map
       :mapConfig="{
-        id: 'dls-map-id',
+        id: 'dls-map-layer-terrain',
         imageryProvider: dataM.imageryProvider,
         sceneModeNum: 3,
       }"
       ref="dlsMapRef"
+      :viewer-width="'100%'"
+      :viewer-height="'500px'"
       @cesium-ready="onCesiumReady"
     />
-    <div class="coords">
-      经度：{{ dataM.coords.longitude }}， 纬度：{{ dataM.coords.latitude }}，
-      海拔：{{ dataM.coords.altitude }}m， 高度：{{ dataM.coords.height }}m，
-      方向：{{ dataM.coords.cameraHeading }}°， 俯仰角：{{
-        dataM.coords.pitchDegrees
-      }}°， 层级：{{ dataM.coords.zoomLevel }}
+    <div class="operation">
+      <el-button @click="handleEcharts" type="primary">加载迁徙图</el-button>
     </div>
-    <div class="plot" @click="handleCesiumPlot">
-      <dls-button @click="handleClick" size="midium" type="primary"
-        >标绘</dls-button
-      >
-    </div>
-    <div class="drawLine" @click="handleDrawLine">绘制线段</div>
-    <div class="backCenter" @click="handleBackCenter">回到中心点</div>
-    <div class="setPitchDegrees" @click="handleSetPitchDegrees">仰角设置</div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { DlsButton, DlsMap } from '@dls-map/components';
-import wallLine from '/static/images/wall_line.png';
-import ArrowImg from '/static/images/arrowImg.png';
-import {
-  useSwitchMap,
-  useCesiumCoord,
-  useCesiumFlyTo,
-  DlsDivLabel,
-  CesiumPlot,
-  addSnowScene,
-  addRainScene,
-  addLine,
-  addWall,
-  CesiumUseEcharts,
-  CesiumHeatMap,
-  CesiumBufferAnalyze,
-  CesiumTrack,
-} from '@dls-map/composables';
-import { onMounted, ref, reactive, watch } from 'vue';
+import { CesiumUseEcharts, DlsMap } from 'dls-map';
+import { onMounted, ref, reactive } from 'vue';
 
-const { listenToMouseMovement, coords } = useCesiumCoord();
 const dlsMapRef = ref(null);
 const dataM = reactive<any>({
   imageryProvider: {
@@ -58,79 +36,16 @@ const dataM = reactive<any>({
     format: 'image/png',
     tileMatrixSetID: 'GoogleMapsCompatible',
   },
-  coords: {},
   viewer: null,
-  dlsDivLabel: null,
 });
-
-watch(coords, (newValue) => {
-  dataM.coords = newValue;
-});
-
-const handleClick = () => {
-  console.log('点击了。。。');
-};
 
 onMounted(() => {
   //获取viewer
   console.log('dlsMapRef', dlsMapRef.value);
-  // console.log(dataM.imageryProvider);
 });
-const handleDrawLine = () => {
-  // dlsMapContainer.value.DrawSoildLine(dataM.viewer,'lines', [255, 10, 255], 5)
-};
 
-const handleCesiumPlot = () => {
-  const geometry = new CesiumPlot.Point(Cesium, dataM.viewer, {
-    pixelSize: 10,
-  });
-  console.log('geometry', geometry);
-};
-
-const handleBackCenter = () => {
-  useCesiumFlyTo(dataM.viewer, [116.4134, 39.911, 11000000]);
-};
-
-const handleSetPitchDegrees = () => {
-  // dlsMapContainer.value.handlePitchDegrees(dataM.viewer,-11)
-};
-//cesium初始化完成之后
-const onCesiumReady = (e: any) => {
-  dataM.viewer = e;
-  // useSwitchMap({},e)
-  listenToMouseMovement(e);
-  if (dataM.dlsDivLabel) {
-    dataM.dlsDivLabel.removeCountryAllDiv('.LayerTitle');
-  }
-  const jsxContent = `
-          <div class="ip-model-style">
-            123
-          </div>
-        `;
-  let className = 'LayerTitle';
-  let val = {
-    viewer: dataM.viewer,
-    position: [116.4134, 39.911],
-    height: 0,
-    offset: [0, -90],
-    dom: jsxContent,
-    className,
-  };
-  dataM.dlsDivLabel = new DlsDivLabel(val);
-  // addRainScene(dataM.viewer);
-  //生成一个线段
-  addLine([-115.0, 37.0, -115.0, 32.0], Cesium.Color.RED, dataM.viewer, {});
-  //生成一个墙
-  addWall(
-    dataM.viewer,
-    [
-      -115.0, 37.0, 100000, -115.0, 32.0, 100000, -107.0, 33.0, 100000, -115.0,
-      37.0, 100000,
-    ],
-    '#00FFFF',
-    0.7,
-    1
-  );
+//加载热力图
+const handleEcharts = () => {
   //生成一个echarts
   const chinaGeoCoordMap = {
     黑龙江: [127.9688, 45.368],
@@ -472,122 +387,27 @@ const onCesiumReady = (e: any) => {
     // viewer:viewer,
     series: series,
   };
-  console.log('Cesium, dataM.viewer, option', Cesium, dataM.viewer, option);
-  // CesiumUseEcharts(Cesium, dataM.viewer, option);
-  // 加载热力图
-  let heatData = [
-    { lat: 39.258476, lng: 110.219918, value: 42 },
-    { lat: 39.277398, lng: 110.239745, value: 46 },
-    { lat: 39.319952, lng: 110.092288, value: 39 },
-    { lat: 39.474548, lng: 110.068417, value: 36 },
-    { lat: 39.437506, lng: 110.056819, value: 38 },
-    { lat: 38.971221, lng: 110.592357, value: 40 },
-    { lat: 38.95199, lng: 111.097213, value: 41 },
-    { lat: 38.846696, lng: 110.17917, value: 42 },
-    { lat: 39.352112, lng: 110.189824, value: 33 },
-    { lat: 39.431853, lng: 110.077273, value: 30 },
-    { lat: 39.351684, lng: 110.161226, value: 43 },
-    { lat: 38.994047, lng: 110.271835, value: 44 },
-    { lat: 38.733172, lng: 110.170308, value: 45 },
-    { lat: 39.042436, lng: 110.430257, value: 46 },
-  ];
-  // let heatmap = new CesiumHeatMap(Cesium, dataM.viewer, heatData, {
-  //   radius: 30,
-  //   maxOpacity: 0.9,
-  //   minOpacity: 0.2,
-  //   blur: 0.75,
-  //   // gradient: {
-  //   //     '.5': 'blue',
-  //   //     '.8': 'red',
-  //   //     '.95': ''
-  //   // }
-  // });
-  // dataM.viewer.flyTo(heatmap.entity);
-  // 加载缓冲区
-  // let buffer = new CesiumBufferAnalyze(dataM.viewer, 10000);
-  // buffer.polyBuffer();
-  //加载轨迹线
-  let data = [
-    {
-      positions: [
-        [-75.1, 39.57],
-        [-80.12, 25.46],
-        [-85.12, 30.46],
-        [-90.12, 35.46],
-        [-95.12, 40.46],
-      ],
-      color: '#FF0000',
-    },
-    {
-      positions: [
-        [-70.1, 40.57],
-        [-75.12, 35.46],
-        [-80.12, 30.46],
-        [-85.12, 25.46],
-        [-90.12, 20.46],
-      ],
-      color: '#FF0000',
-    },
-  ];
-  CesiumTrack(data, dataM.viewer, ArrowImg).then(() => {});
+  CesiumUseEcharts(Cesium, dataM.viewer, option);
+};
+
+//cesium初始化完成之后
+const onCesiumReady = (viewer: Cesium.Viewer) => {
+  //加载地形
+  dataM.viewer = viewer;
+  console.log('执行了', viewer);
 };
 </script>
 
-<style>
+<style lang="less" scoped>
 .appMain {
   width: 100%;
   height: 100%;
-  .coords {
+  .operation {
     position: absolute;
-    z-index: 9999;
-    color: #ffffff;
-    bottom: 0;
-    right: 0;
-    width: auto;
-    padding: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .drawLine {
-    cursor: pointer;
-    position: absolute;
-    z-index: 9999;
+    z-index: 1;
     color: #ffffff;
     top: 0;
     right: 0;
-    width: auto;
-    padding: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .backCenter {
-    cursor: pointer;
-    position: absolute;
-    z-index: 9999;
-    color: #ffffff;
-    top: 0;
-    right: 5rem;
-    width: auto;
-    padding: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .setPitchDegrees {
-    cursor: pointer;
-    position: absolute;
-    z-index: 9999;
-    color: #ffffff;
-    top: 0;
-    right: 12rem;
-    width: auto;
-    padding: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .plot {
-    cursor: pointer;
-    position: absolute;
-    z-index: 9999;
-    color: #ffffff;
-    top: 0;
-    right: 20rem;
     width: auto;
     padding: 0.5rem;
     background-color: rgba(0, 0, 0, 0.5);

@@ -2,9 +2,10 @@
  * @Author: Kang
  * @Date: 2024-09-06 12:43:09
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-25 15:11:17
+ * @LastEditTime: 2024-09-29 14:19:53
  */
 import { defineConfig } from 'vite';
+import path, { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 // import UnoCSS from 'unocss/vite';
 // import { MarkdownTransform } from './plugins/markdown-transform';
@@ -14,6 +15,7 @@ export default defineConfig({
   resolve: {
     alias: {
       'dls-map': '/node_modules/dls-map/es', // 强制使用 `es` 文件夹
+      '@': resolve(__dirname, './'),
     },
   },
   server: {

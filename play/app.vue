@@ -1,46 +1,50 @@
-<!--
- * @Author: Kang
- * @Date: 2024-09-04 09:25:58
- * @Last Modified by: Kang
- * @LastEditTime: 2024-09-26 16:49:02
--->
 <template>
   <div class="appMain">
     <dls-map
       :mapConfig="{
-        id: 'dls-map-start',
+        id: 'dls-map-id',
         imageryProvider: dataM.imageryProvider,
         sceneModeNum: 3,
       }"
-      :viewer-config="{
-        contextOptions: {
-          webgl: {
-            antialias: true, // 启用抗锯齿
-          },
-        },
-      }"
-      :viewer-width="'100%'"
-      :viewer-height="'100%'"
       ref="dlsMapRef"
       @cesium-ready="onCesiumReady"
     />
     <div class="coords">
-      <canvas id="colorRamp"></canvas>
-      <!-- 经度：{{ dataM.coords.longitude }}， 纬度：{{ dataM.coords.latitude }}，
+      经度：{{ dataM.coords.longitude }}， 纬度：{{ dataM.coords.latitude }}，
       海拔：{{ dataM.coords.altitude }}m， 高度：{{ dataM.coords.height }}m，
       方向：{{ dataM.coords.cameraHeading }}°， 俯仰角：{{
         dataM.coords.pitchDegrees
-      }}°， 层级：{{ dataM.coords.zoomLevel }} -->
+      }}°， 层级：{{ dataM.coords.zoomLevel }}
     </div>
+    <div class="plot" @click="handleCesiumPlot">
+      <dls-button @click="handleClick" size="midium" type="primary"
+        >标绘</dls-button
+      >
+    </div>
+    <div class="drawLine" @click="handleDrawLine">绘制线段</div>
+    <div class="backCenter" @click="handleBackCenter">回到中心点</div>
+    <div class="setPitchDegrees" @click="handleSetPitchDegrees">仰角设置</div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { DlsMap } from '@dls-map/components';
+import { DlsButton, DlsMap } from '@dls-map/components';
+import wallLine from '/static/images/wall_line.png';
+import ArrowImg from '/static/images/arrowImg.png';
 import {
+  useSwitchMap,
   useCesiumCoord,
   useCesiumFlyTo,
-  useLoadTerrain,
+  DlsDivLabel,
+  CesiumPlot,
+  addSnowScene,
+  addRainScene,
+  addLine,
+  addWall,
+  CesiumUseEcharts,
+  CesiumHeatMap,
+  CesiumBufferAnalyze,
+  CesiumTrack,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
 
@@ -55,250 +59,477 @@ const dataM = reactive<any>({
     tileMatrixSetID: 'GoogleMapsCompatible',
   },
   coords: {},
+  viewer: null,
+  dlsDivLabel: null,
 });
 
 watch(coords, (newValue) => {
-  // dataM.coords = newValue;
+  dataM.coords = newValue;
 });
+
+const handleClick = () => {
+  console.log('点击了。。。');
+};
 
 onMounted(() => {
   //获取viewer
   console.log('dlsMapRef', dlsMapRef.value);
+  // console.log(dataM.imageryProvider);
 });
+const handleDrawLine = () => {
+  // dlsMapContainer.value.DrawSoildLine(dataM.viewer,'lines', [255, 10, 255], 5)
+};
 
-//cesium初始化完成之后
-const onCesiumReady = async (viewer: Cesium.Viewer) => {
-  // useLoadTerrain(
-  //   [
-  //     {
-  //       type: 'global',
-  //       url: '/map/nanahaidixing',
-  //       range: [0, 0, 0, 0],
-  //     },
-  //   ],
-  //   28000,
-  //   viewer
-  // );
-
-  function formatNumberLength(num = 0, radix = 10, length = 0) {
-    let str = num.toString(radix);
-    if (length === 0) {
-      return str;
-    }
-    while (str.length < length) {
-      str = '0' + str;
-    }
-    return str;
-  }
-  const arcgis_layer = new Cesium.UrlTemplateImageryProvider({
-    url: '/map/alllayers/_alllayers/{zz}/{yy}/{xx}.png',
-    // rectangle: Cesium.Rectangle.fromDegrees(0, 0, 0, 0),
-    // rectangle: Cesium.Rectangle.fromDegrees(
-    //   101.7594,
-    //   3.173675,
-    //   125.6025,
-    //   30.06546
-    // ), // 瓦片原点调整
-    // rectangle: Cesium.Rectangle.fromDegrees(
-    //   101.7594,
-    //   3.173675,
-    //   125.6025,
-    //   30.06546
-    // ),
-    // minimumLevel: 0,
-    // maximumLevel: 11,
-    // CGCS2000坐标系的切片使用GeographicTilingScheme切片方案也可以加载，目前没有发现异常
-    tilingScheme: new Cesium.GeographicTilingScheme({
-      // tileWidth: 1024, // 瓦片宽度
-      // tileHeight: 1024, // 瓦片高度
-      // rectangle: Cesium.Rectangle.fromDegrees(
-      //   101.7594,
-      //   3.173675,
-      //   125.6025,
-      //   30.06546
-      // ), // 瓦片原点调整
-      numberOfLevelZeroTilesX: 2,
-      numberOfLevelZeroTilesY: 1,
-    }),
-    // 解析自定义占位符号
-    customTags: {
-      xx: (imageryProvider: any, x: any, y: any, level: any) => {
-        const xx = 'C' + formatNumberLength(x, 16, 8);
-        return xx;
-      },
-      yy: (imageryProvider: any, x: any, y: any, level: any) => {
-        const yy = 'R' + formatNumberLength(y, 16, 8);
-        return yy;
-      },
-      zz: (imageryProvider: any, x: any, y: any, level: any) => {
-        const zz = 'L' + formatNumberLength(level, 10, 2);
-        return zz;
-      },
-    },
+const handleCesiumPlot = () => {
+  const geometry = new CesiumPlot.Point(Cesium, dataM.viewer, {
+    pixelSize: 10,
   });
-  viewer.scene.imageryLayers.addImageryProvider(arcgis_layer);
-  // const tileUrl = '/map/alllayers/L{z}/R{y}/C{x}.png';
-  // viewer.scene.imageryLayers.addImageryProvider(
-  //   //lab切的影像图
-  //   await Cesium.ArcGisMapServerImageryProvider.fromUrl('/map/alllayers')
-  // );
-  // viewer.scene.globe.enableLighting = false; // 禁用默认光照效果
+  console.log('geometry', geometry);
+};
 
-  //viewer.scene.globe.maximumScreenSpaceError = 0.5; // 默认值为2，减小可以提高细节
-  // listenToMouseMovement(viewer);
-  useCesiumFlyTo(viewer, [114.62, 15.02, 2800000]);
-  // viewer.terrainProvider = await  ({
-  //   requestVertexNormals: true,
-  // });
-  viewer.terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
-    '/map/nanahaidixing',
-    // 'https://data.mars3d.cn/terrain',
-    {
-      // requestWaterMask: true,
-      // requestVertexNormals: true,
-      // minimumPixelSize: 64,
-      // maximumScale: 20000,
-      // requestMetadata: true,
-      requestVertexNormals: true,
-    }
+const handleBackCenter = () => {
+  useCesiumFlyTo(dataM.viewer, [116.4134, 39.911, 11000000]);
+};
+
+const handleSetPitchDegrees = () => {
+  // dlsMapContainer.value.handlePitchDegrees(dataM.viewer,-11)
+};
+//cesium初始化完成之后
+const onCesiumReady = (e: any) => {
+  dataM.viewer = e;
+  // useSwitchMap({},e)
+  listenToMouseMovement(e);
+  if (dataM.dlsDivLabel) {
+    dataM.dlsDivLabel.removeCountryAllDiv('.LayerTitle');
+  }
+  const jsxContent = `
+          <div class="ip-model-style">
+            123
+          </div>
+        `;
+  let className = 'LayerTitle';
+  let val = {
+    viewer: dataM.viewer,
+    position: [116.4134, 39.911],
+    height: 0,
+    offset: [0, -90],
+    dom: jsxContent,
+    className,
+  };
+  dataM.dlsDivLabel = new DlsDivLabel(val);
+  // addRainScene(dataM.viewer);
+  //生成一个线段
+  addLine([-115.0, 37.0, -115.0, 32.0], Cesium.Color.RED, dataM.viewer, {});
+  //生成一个墙
+  addWall(
+    dataM.viewer,
+    [
+      -115.0, 37.0, 100000, -115.0, 32.0, 100000, -107.0, 33.0, 100000, -115.0,
+      37.0, 100000,
+    ],
+    '#00FFFF',
+    0.7,
+    1
   );
-  // viewer.scene.globe.terrainExaggeration = 50.0;
+  //生成一个echarts
+  const chinaGeoCoordMap = {
+    黑龙江: [127.9688, 45.368],
+    内蒙古: [110.3467, 41.4899],
+    吉林: [125.8154, 44.2584],
+    北京市: [116.4551, 40.2539],
+    辽宁: [123.1238, 42.1216],
+    河北: [114.4995, 38.1006],
+    天津: [117.4219, 39.4189],
+    山西: [112.3352, 37.9413],
+    陕西: [109.1162, 34.2004],
+    甘肃: [103.5901, 36.3043],
+    宁夏: [106.3586, 38.1775],
+    青海: [101.4038, 36.8207],
+    新疆: [87.9236, 43.5883],
+    西藏: [91.11, 29.97],
+    四川: [103.9526, 30.7617],
+    重庆: [108.384366, 30.439702],
+    山东: [117.1582, 36.8701],
+    河南: [113.4668, 34.6234],
+    江苏: [118.8062, 31.9208],
+    安徽: [117.29, 32.0581],
+    湖北: [114.3896, 30.6628],
+    浙江: [119.5313, 29.8773],
+    福建: [119.4543, 25.9222],
+    江西: [116.0046, 28.6633],
+    湖南: [113.0823, 28.2568],
+    贵州: [106.6992, 26.7682],
+    云南: [102.9199, 25.4663],
+    广东: [113.12244, 23.009505],
+    广西: [108.479, 23.1152],
+    海南: [110.3893, 19.8516],
+    上海: [121.4648, 31.2891],
+  };
+  const chinaDatas = [
+    [
+      {
+        name: '黑龙江',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '内蒙古',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '吉林',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '辽宁',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '河北',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '天津',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '山西',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '陕西',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '甘肃',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '宁夏',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '青海',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '新疆',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '西藏',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '四川',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '重庆',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '山东',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '河南',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '江苏',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '安徽',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '湖北',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '浙江',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '福建',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '江西',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '湖南',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '贵州',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '广西',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '海南',
+        value: 0,
+      },
+    ],
+    [
+      {
+        name: '上海',
+        value: 1,
+      },
+    ],
+  ];
 
-  const scene: Cesium.Scene = viewer.scene;
-
-  const globe: Cesium.Globe = scene.globe;
-
-  viewer.scene.globe.showGroundAtmosphere = false;
-  viewer.scene.globe.showSkyAtmosphere = false;
-
-  // globe.maximumScreenSpaceError = 1;
-
-  const minHeight = -10000.0;
-  const maxHeight = 2000.0;
-  // const minHeight = -8926.0;
-  // const maxHeight = 5775.0;
-
-  const range = maxHeight - minHeight;
-  const d = (height: any) => (height - minHeight) / range;
-  function getColorRamp() {
-    const ramp: any = document.getElementById('colorRamp');
-    ramp.width = 100;
-    ramp.height = 15;
-    const ctx = ramp.getContext('2d');
-    const grd = ctx.createLinearGradient(0, 0, 100, 0);
-    grd.addColorStop(d(maxHeight), '#FF0000'); // rgb(255, 0, 0)
-    grd.addColorStop(d(100), '#FF5500'); // rgb(255, 85, 0)
-    grd.addColorStop(d(0), '#E69900'); // rgb(230, 153, 0)
-    grd.addColorStop(d(-500), '#FFD280'); // rgb(255, 210, 128)
-    // grd.addColorStop(d(-1000), '#F9FCCA');
-    grd.addColorStop(d(-1000), '#FFFF73'); // rgb(255, 255, 115)
-    grd.addColorStop(d(-1500), '#FFFFBF'); // rgb(255, 255, 191)
-    grd.addColorStop(d(-2000), '#006FFF'); // rgb(0, 111, 255)
-    grd.addColorStop(d(-2500), '#00A8E6'); // rgb(0, 168, 230)
-    grd.addColorStop(d(-5000), '#0084A8'); // rgb(0, 132, 168)
-    grd.addColorStop(d(minHeight), '#004CA8'); // rgb(0, 76, 168)
-    // grd.addColorStop(d(-8000.0), 'rbg(255,85,0)');
-    // grd.addColorStop(d(minHeight), 'rbg(255,85,0)');
-
-    // grd.addColorStop(d(maxHeight), '#B79E6C');
-    // grd.addColorStop(d(100.0), '#FBFFEE');
-    // grd.addColorStop(d(0.0), '#F9FCCA');
-    // grd.addColorStop(d(-500.0), '#BDE7AD');
-    // grd.addColorStop(d(-1000.0), '#81D2A3');
-    // grd.addColorStop(d(-1500.0), '#5AB7A4');
-    // grd.addColorStop(d(-2000.0), '#4C9AA0');
-    // grd.addColorStop(d(-2500.0), '#437D9A');
-    // grd.addColorStop(d(-4000.0), '#3E6194');
-    // grd.addColorStop(d(-5000.0), '#424380');
-    // grd.addColorStop(d(-8000.0), '#392D52');
-    // grd.addColorStop(d(minHeight), '#291C2F');
-
-    ctx.fillStyle = grd;
-    ctx.fillRect(0, 0, ramp.width, ramp.height);
-
-    return ramp;
-  }
-  function showTerrain() {
-    let material = Cesium.Material.fromType('ElevationRamp');
-    // viewer.scene.sun.lightIntensity = 0.5; // 调整光照强度
-    const shadingUniforms = material.uniforms;
-    shadingUniforms.image = getColorRamp();
-    shadingUniforms.minimumHeight = minHeight * scene.verticalExaggeration;
-    shadingUniforms.maximumHeight = maxHeight * scene.verticalExaggeration;
-    globe.material = material;
-    return;
-  }
-  scene.verticalExaggeration = 10;
-
-  // scene.skyAtmosphere.show = true;
-
-  // scene.fog.enabled = true;
-  // globe.showGroundAtmosphere = true;
-
-  // // 启用阴影
-  // viewer.scene.shadows = Cesium.ShadowMode.ENABLED;
-
-  // // 启用光照
-  viewer.scene.globe.enableLighting = true;
-
-  viewer.scene.fxaa = true;
-
-  // 调整太阳位置和强度
-  // viewer.scene.sun.show = true;
-  // viewer.scene.sun.lightIntensity = 1.0;
-
-  // 设置背景颜色
-  viewer.scene.backgroundColor = Cesium.Color.BLACK;
-
-  viewer.scene.globe.tileCacheSize = 1000;
-
-  viewer.scene.globe.depthTestAgainstTerrain = true;
-
-  viewer.scene.globe.maximumScreenSpaceError = 1;
-
-  // function updateGlobeMaterialUniforms(zoomMagnitude: any) {
-  //   const material = globe.material;
-  //   if (!Cesium.defined(material)) {
-  //     return;
-  //   }
-
-  //   const spacing = 5.0 * Math.pow(10, Math.floor(4 * zoomMagnitude));
-
-  //   const uniforms = material.uniforms;
-  //   uniforms.spacing = spacing * scene.verticalExaggeration;
-  //   uniforms.minimumHeight = minHeight * scene.verticalExaggeration;
-  //   uniforms.maximumHeight = maxHeight * scene.verticalExaggeration;
-  // }
-
-  // const camera = scene.camera;
-  // const cameraMaxHeight = globe.ellipsoid.maximumRadius * 2;
-  // const scratchNormal = new Cesium.Cartesian3();
-  // scene.preRender.addEventListener(function (scene, time) {
-  //   const surfaceNormal = globe.ellipsoid.geodeticSurfaceNormal(
-  //     camera.positionWC,
-  //     scratchNormal
-  //   );
-  //   const negativeNormal = Cesium.Cartesian3.negate(
-  //     surfaceNormal,
-  //     surfaceNormal
-  //   );
-  //   scene.light.direction = Cesium.Cartesian3.normalize(
-  //     Cesium.Cartesian3.add(negativeNormal, camera.rightWC, surfaceNormal),
-  //     scene.light.direction
-  //   );
-
-  //   const zoomMagnitude =
-  //     Cesium.Cartesian3.magnitude(camera.positionWC) / cameraMaxHeight;
-
-  //   updateGlobeMaterialUniforms(zoomMagnitude);
+  const convertData = function (data) {
+    const res = [];
+    for (let i = 0; i < data.length; i++) {
+      const dataItem = data[i];
+      const fromCoord = chinaGeoCoordMap[dataItem[0].name];
+      const toCoord = [116.4551, 40.2539];
+      if (fromCoord && toCoord) {
+        res.push([
+          {
+            coord: fromCoord,
+            value: dataItem[0].value,
+          },
+          {
+            coord: toCoord,
+          },
+        ]);
+      }
+    }
+    return res;
+  };
+  const series = [];
+  [['北京市', chinaDatas]].forEach(function (item, i) {
+    series.push(
+      {
+        type: 'lines',
+        coordinateSystem: 'GLMap',
+        zlevel: 2,
+        effect: {
+          show: true,
+          period: 4, //箭头指向速度，值越小速度越快
+          trailLength: 0.02, //特效尾迹长度[0,1]值越大，尾迹越长重
+          symbol: 'arrow', //箭头图标
+          symbolSize: 5, //图标大小
+        },
+        lineStyle: {
+          normal: {
+            width: 1, //尾迹线条宽度
+            opacity: 1, //尾迹线条透明度
+            color: '#00EAFF', //线的颜色
+            curveness: 0.3, //尾迹线条曲直度
+          },
+        },
+        data: convertData(item[1]),
+      },
+      {
+        type: 'effectScatter',
+        coordinateSystem: 'GLMap',
+        zlevel: 2,
+        rippleEffect: {
+          //涟漪特效
+          period: 4, //动画时间，值越小速度越快
+          brushType: 'stroke', //波纹绘制方式 stroke, fill
+          scale: 4, //波纹圆环最大限制，值越大波纹越大
+        },
+        label: {
+          normal: {
+            show: true,
+            position: 'right', //显示位置
+            offset: [5, 0], //偏移设置
+            formatter: function (params) {
+              //圆环显示文字
+              return params.data.name;
+            },
+            fontSize: 13,
+          },
+          emphasis: {
+            show: true,
+          },
+        },
+        symbol: 'circle',
+        symbolSize: function (val) {
+          return 5 + val[2] * 5; //圆环大小
+        },
+        itemStyle: {
+          normal: {
+            show: false,
+            color: '#32ff9d', //颜色
+          },
+        },
+        data: item[1].map(function (dataItem) {
+          return {
+            name: dataItem[0].name,
+            value: chinaGeoCoordMap[dataItem[0].name].concat([
+              dataItem[0].value,
+            ]),
+          };
+        }),
+      },
+      //被攻击点
+      {
+        type: 'scatter',
+        coordinateSystem: 'GLMap',
+        zlevel: 2,
+        rippleEffect: {
+          period: 4,
+          brushType: 'stroke',
+          scale: 4,
+        },
+        itemStyle: {
+          normal: {
+            color: '#ff0617', //颜色
+          },
+        },
+        label: {
+          normal: {
+            show: true,
+            position: 'right',
+            //offset:[5, 0],
+            color: '#0f0',
+            formatter: '{b}',
+            textStyle: {
+              color: '#0f0',
+            },
+          },
+          emphasis: {
+            show: true,
+            color: '#f60',
+          },
+        },
+        symbol: 'pin',
+        symbolSize: 50,
+        data: [
+          {
+            name: item[0],
+            value: chinaGeoCoordMap[item[0]].concat([10]),
+          },
+        ],
+      }
+    );
+  });
+  let option = {
+    animation: !1,
+    GLMap: {},
+    // viewer:viewer,
+    series: series,
+  };
+  console.log('Cesium, dataM.viewer, option', Cesium, dataM.viewer, option);
+  // CesiumUseEcharts(Cesium, dataM.viewer, option);
+  // 加载热力图
+  let heatData = [
+    { lat: 39.258476, lng: 110.219918, value: 42 },
+    { lat: 39.277398, lng: 110.239745, value: 46 },
+    { lat: 39.319952, lng: 110.092288, value: 39 },
+    { lat: 39.474548, lng: 110.068417, value: 36 },
+    { lat: 39.437506, lng: 110.056819, value: 38 },
+    { lat: 38.971221, lng: 110.592357, value: 40 },
+    { lat: 38.95199, lng: 111.097213, value: 41 },
+    { lat: 38.846696, lng: 110.17917, value: 42 },
+    { lat: 39.352112, lng: 110.189824, value: 33 },
+    { lat: 39.431853, lng: 110.077273, value: 30 },
+    { lat: 39.351684, lng: 110.161226, value: 43 },
+    { lat: 38.994047, lng: 110.271835, value: 44 },
+    { lat: 38.733172, lng: 110.170308, value: 45 },
+    { lat: 39.042436, lng: 110.430257, value: 46 },
+  ];
+  // let heatmap = new CesiumHeatMap(Cesium, dataM.viewer, heatData, {
+  //   radius: 30,
+  //   maxOpacity: 0.9,
+  //   minOpacity: 0.2,
+  //   blur: 0.75,
+  //   // gradient: {
+  //   //     '.5': 'blue',
+  //   //     '.8': 'red',
+  //   //     '.95': ''
+  //   // }
   // });
-
-  // // 添加太阳光源
-  // viewer.scene.light = new Cesium.DirectionalLight({
-  //   direction: new Cesium.Cartesian3(0.0, -1.0, -1.0),
-  // });
-
-  showTerrain();
+  // dataM.viewer.flyTo(heatmap.entity);
+  // 加载缓冲区
+  let buffer = new CesiumBufferAnalyze(dataM.viewer, 10000);
+  buffer.polyBuffer();
+  //加载轨迹线
+  let data = [
+    {
+      positions: [
+        [-75.1, 39.57],
+        [-80.12, 25.46],
+        [-85.12, 30.46],
+        [-90.12, 35.46],
+        [-95.12, 40.46],
+      ],
+      color: '#FF0000',
+    },
+    {
+      positions: [
+        [-70.1, 40.57],
+        [-75.12, 35.46],
+        [-80.12, 30.46],
+        [-85.12, 25.46],
+        [-90.12, 20.46],
+      ],
+      color: '#FF0000',
+    },
+  ];
+  CesiumTrack(data, dataM.viewer, ArrowImg).then(() => {});
 };
 </script>
 
@@ -308,10 +539,55 @@ const onCesiumReady = async (viewer: Cesium.Viewer) => {
   height: 100%;
   .coords {
     position: absolute;
-    z-index: 1;
+    z-index: 9999;
     color: #ffffff;
     bottom: 0;
     right: 0;
+    width: auto;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .drawLine {
+    cursor: pointer;
+    position: absolute;
+    z-index: 9999;
+    color: #ffffff;
+    top: 0;
+    right: 0;
+    width: auto;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .backCenter {
+    cursor: pointer;
+    position: absolute;
+    z-index: 9999;
+    color: #ffffff;
+    top: 0;
+    right: 5rem;
+    width: auto;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .setPitchDegrees {
+    cursor: pointer;
+    position: absolute;
+    z-index: 9999;
+    color: #ffffff;
+    top: 0;
+    right: 12rem;
+    width: auto;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .plot {
+    cursor: pointer;
+    position: absolute;
+    z-index: 9999;
+    color: #ffffff;
+    top: 0;
+    right: 20rem;
     width: auto;
     padding: 0.5rem;
     background-color: rgba(0, 0, 0, 0.5);

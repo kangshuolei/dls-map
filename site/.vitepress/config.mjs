@@ -40,7 +40,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '组件', link: '/components' },
+      { text: '组件', link: '/components/layer/map.md' },
     ],
     sidebar: [
       {
@@ -118,6 +118,10 @@ export default defineConfig({
                 link: '/components/coverage/heatMap.md',
               },
               {
+                text: 'Echarts图',
+                link: '/components/coverage/loadEcharts.md',
+              },
+              {
                 text: '信息面板',
                 link: '/components/coverage/panel.md',
               },
@@ -143,13 +147,15 @@ export default defineConfig({
           {
             text: '工具类',
             items: [
-              { text: '清除图层', link: '/components/tools/removeLayer.md' },
               {
                 text: '地图操作工具',
                 link: '/components/tools/tools.md',
               },
             ],
           },
+          {
+            text: '其他'
+          }
         ],
       },
     ],

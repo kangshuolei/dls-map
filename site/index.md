@@ -22,7 +22,7 @@ hero:
       link: /components/layer/map.md
     - theme: alt
       text: 了解dls-map
-      link: https://vitepress.dev/
+      link: /components/developmentGuide/installation.html
 
 # 特色
 features:

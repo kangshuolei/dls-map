@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-25 15:29:40
+ * @LastEditTime: 2024-09-29 09:53:14
 -->
 <template>
   <div class="appMain">
@@ -55,8 +55,8 @@ const onCesiumReady = (viewer: Cesium.Viewer) => {
     28000,
     viewer
   );
-  viewer.scene.globe.terrainExaggeration = 10.0;
-  useCesiumFlyTo(viewer, [114.62, 15.02, 28000]);
+  viewer.scene.globe.terrainExaggeration = 1.0;
+  useCesiumFlyTo(viewer, [116.0339, 40.0144, 1000]);
 };
 </script>
 
