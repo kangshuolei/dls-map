@@ -18,6 +18,7 @@ importers:
       '@typescript-eslint/parser': ^8.1.0
       '@vitejs/plugin-vue': ^5.1.2
       '@vue/runtime-core': ^3.4.35
+      compare-versions: ^6.1.1
       echarts: ^5.5.1
       eslint: ^9.9.0
       eslint-config-prettier: ^9.1.0
@@ -44,6 +45,7 @@ importers:
       '@dls-map/composables': link:packages/composables
       '@dls-map/utils': link:packages/utils
       '@turf/turf': 7.1.0
+      compare-versions: 6.1.1
       echarts: 5.5.1
       rollup-plugin-copy: 3.5.0
       sass: 1.53.0

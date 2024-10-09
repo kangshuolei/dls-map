@@ -8,6 +8,7 @@
       }"
       ref="dlsMapRef"
       @cesium-ready="onCesiumReady"
+      @ready="onReady"
     />
     <div class="coords">
       经度：{{ dataM.coords.longitude }}， 纬度：{{ dataM.coords.latitude }}，
@@ -24,11 +25,14 @@
     <div class="drawLine" @click="handleDrawLine">绘制线段</div>
     <div class="backCenter" @click="handleBackCenter">回到中心点</div>
     <div class="setPitchDegrees" @click="handleSetPitchDegrees">仰角设置</div>
+    <div class="eye">
+      <dls-map-eye :marst-viewer="dataM.viewer" />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { DlsButton, DlsMap } from '@dls-map/components';
+import { DlsButton, DlsMap, DlsMapEye } from '@dls-map/components';
 import wallLine from '/static/images/wall_line.png';
 import ArrowImg from '/static/images/arrowImg.png';
 import {
@@ -39,14 +43,16 @@ import {
   CesiumPlot,
   addSnowScene,
   addRainScene,
-  addLine,
-  addWall,
+  // addLine,
+  // addWall,
   CesiumUseEcharts,
   CesiumHeatMap,
   CesiumBufferAnalyze,
   CesiumTrack,
+  useDlsMap,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
+import { nextTick } from 'process';
 
 const { listenToMouseMovement, coords } = useCesiumCoord();
 const dlsMapRef = ref(null);
@@ -59,13 +65,16 @@ const dataM = reactive<any>({
     tileMatrixSetID: 'GoogleMapsCompatible',
   },
   coords: {},
-  viewer: null,
+  viewer: {},
   dlsDivLabel: null,
 });
 
 watch(coords, (newValue) => {
   dataM.coords = newValue;
 });
+
+// const currentData = useDlsMap('dls-map-id');
+// console.log('currentData', currentData);
 
 const handleClick = () => {
   console.log('点击了。。。');
@@ -94,11 +103,17 @@ const handleBackCenter = () => {
 const handleSetPitchDegrees = () => {
   // dlsMapContainer.value.handlePitchDegrees(dataM.viewer,-11)
 };
-//cesium初始化完成之后
 const onCesiumReady = (e: any) => {
-  dataM.viewer = e;
+  console.log('Cesium加载完毕', e);
+};
+
+//cesium初始化完成之后
+const onReady = (e: any) => {
+  dataM.viewer = e.viewer;
+  console.log('e', e);
   // useSwitchMap({},e)
-  listenToMouseMovement(e);
+  // listenToMouseMovement(e);
+
   if (dataM.dlsDivLabel) {
     dataM.dlsDivLabel.removeCountryAllDiv('.LayerTitle');
   }
@@ -119,18 +134,18 @@ const onCesiumReady = (e: any) => {
   dataM.dlsDivLabel = new DlsDivLabel(val);
   // addRainScene(dataM.viewer);
   //生成一个线段
-  addLine([-115.0, 37.0, -115.0, 32.0], Cesium.Color.RED, dataM.viewer, {});
+  // addLine([-115.0, 37.0, -115.0, 32.0], Cesium.Color.RED, dataM.viewer, {});
   //生成一个墙
-  addWall(
-    dataM.viewer,
-    [
-      -115.0, 37.0, 100000, -115.0, 32.0, 100000, -107.0, 33.0, 100000, -115.0,
-      37.0, 100000,
-    ],
-    '#00FFFF',
-    0.7,
-    1
-  );
+  // addWall(
+  //   dataM.viewer,
+  //   [
+  //     -115.0, 37.0, 100000, -115.0, 32.0, 100000, -107.0, 33.0, 100000, -115.0,
+  //     37.0, 100000,
+  //   ],
+  //   '#00FFFF',
+  //   0.7,
+  //   1
+  // );
   //生成一个echarts
   const chinaGeoCoordMap = {
     黑龙江: [127.9688, 45.368],
@@ -544,6 +559,18 @@ const onCesiumReady = (e: any) => {
     bottom: 0;
     right: 0;
     width: auto;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .eye {
+    width: 200px;
+    height: 150px;
+    position: absolute;
+    z-index: 9999;
+    color: #ffffff;
+    bottom: 5rem;
+    right: 0;
     padding: 0.5rem;
     background-color: rgba(0, 0, 0, 0.5);
   }

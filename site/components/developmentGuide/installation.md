@@ -2,13 +2,13 @@
  * @Author: Kang
  * @Date: 2024-09-25 10:49:17
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-29 17:28:47
+ * @LastEditTime: 2024-10-08 09:20:01
 -->
 # 环境支持
 
 dls-map 可以在支持 [ES2018](https://caniuse.com/?feats=mdn-javascript_builtins_regexp_dotall,mdn-javascript_builtins_regexp_lookbehind_assertion,mdn-javascript_builtins_regexp_named_capture_groups,mdn-javascript_builtins_regexp_property_escapes,mdn-javascript_builtins_symbol_asynciterator,mdn-javascript_functions_method_definitions_async_generator_methods,mdn-javascript_grammar_template_literals_template_literal_revision,mdn-javascript_operators_destructuring_rest_in_objects,mdn-javascript_operators_spread_spread_in_destructuring,promise-finally) 和 [WebGL](https://caniuse.com/webgl) 的浏览器上运行。 如果您确实需要支持旧版本的浏览器，请自行添加 Babel 和相应的 Polyfill.
 
-由于 Vue3 及 CesiumJS 1.85+ 不再支持 IE11，所以 Vue for Cesium 也不再支持 IE 浏览器。
+由于 Vue3 及 CesiumJS 1.85+ 不再支持 IE11，所以 dls-map 也不再支持 IE 浏览器。
 
 | ![edge](https://unpkg.com/@browser-logos/edge/edge_32x32.png) | ![Firefox](https://unpkg.com/@browser-logos/firefox/firefox_32x32.png) | ![Chrome](https://unpkg.com/@browser-logos/chrome/chrome_32x32.png) | ![Safari](https://unpkg.com/@browser-logos/safari/safari_32x32.png) |
 | :-----------------------------------------------------------: | :--------------------------------------------------------------------: | :-----------------------------------------------------------------: | :-----------------------------------------------------------------: |

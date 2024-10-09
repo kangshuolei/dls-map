@@ -13,9 +13,6 @@ interface LineData {
   country_name: string;
 }
 let groupArrPoint: any = [];
-let dataSource: any = '';
-const ImgUrl = import.meta.env.VITE_APP_IMG;
-let loading: any;
 
 //1.根据数据生成轨迹线
 /**

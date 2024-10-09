@@ -2,8 +2,9 @@
  * @Author: Kang
  * @Date: 2024-09-03 16:10:41
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-09 14:51:26
+ * @LastEditTime: 2024-10-08 16:07:02
  */
+import { compare, CompareOperator } from 'compare-versions';
 /**
  * 加载js文件
  * @param src js的地址
@@ -63,7 +64,7 @@ export function twoToCenter(point1: any, point2: any) {
  * 获取实体点的经纬度信息
  * @param point 实体点位
  */
-function getEntitiesPointLnoLat(entitiesPoint: any) {
+export function getEntitiesPointLnoLat(entitiesPoint: any) {
   let position = entitiesPoint.position.getValue(Cesium.JulianDate.now());
   let longitude = Cesium.Math.toDegrees(
     Cesium.Cartographic.fromCartesian(position).longitude
@@ -72,4 +73,29 @@ function getEntitiesPointLnoLat(entitiesPoint: any) {
     Cesium.Cartographic.fromCartesian(position).latitude
   );
   return { position: [longitude, latitude], entities: entitiesPoint };
+}
+
+// 将十六进制颜色转换为 Cesium.Color 对象
+export function hexToCesiumColor(hex: string) {
+  const bigint = parseInt(hex.slice(1), 16); // 去掉 '#' 并解析为整数
+  const r = (bigint >> 16) & 255; // 提取红色值
+  const g = (bigint >> 8) & 255; // 提取绿色值
+  const b = bigint & 255; // 提取蓝色值
+  return new Cesium.Color(r / 255, g / 255, b / 255); // 转换为 Cesium.Color 对象
+}
+
+/**
+ *
+ * @param a 当前版本
+ * @param b 指定版本
+ * @param operator 条件
+ * @returns true | false
+ */
+export function compareCesiumVersion(
+  a: string,
+  b: string,
+  operator: CompareOperator = '>='
+) {
+  a = a || '1.6.7';
+  return compare(a, b, operator);
 }

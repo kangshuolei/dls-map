@@ -1,185 +1,188 @@
-/**
- * viewer 代表 window.viewer , 所以只能在viewer挂在完后使用
- */
-/**
- * 打点billboard私有方法
- * @param {Number} lon 经度 必填
- * @param {Number} lat 纬度 必填
- * @param {String} imgUrl 图片路径 必填
- * @param {String} name 名称 可选
- * @param {Number} width 用于指定图片的宽度（以像素为单位），并覆盖原始尺寸 可选
- * @param {Number} height 用于指定图片的高度（以像素为单位），并覆盖原始尺寸 可选
- * @param {Number| Property} scale 图片缩放比例 可选
- * @param {Boolean} click 是否可点击 可选
- * @param {Number} doubleClickHeight 双击高度 可选
- * @param {Object} attribute 点属性 可选
- * @param {String} popContent 单击弹框内容 可选
- * @param {String} pointHeight 点的高度 可选
- * @param {String} doubleClickPitch 双击pitch 可选
- * @return entity
- */
-function addBillboard(
-  lon: number,
-  lat: number,
-  imgUrl: any,
-  {
-    name = 'Point',
-    width,
-    height,
-    scale,
-    click = true,
-    shengClick = false,
-    doubleClickHeight = 5000,
-    attribute = {},
-    popContent,
-    pointHeight,
-    doubleClickPitch = -90,
-  }: any,
-  viewer: any
-) {
-  let h = pointHeight ? pointHeight : 0;
-  if (!viewer) {
-    console.error('viewer is undefined');
-    return false;
-  }
-  let entity = viewer.entities.add({
-    name: name,
-    position: Cesium.Cartesian3.fromDegrees(lon, lat, h),
-    billboard: {
-      image: imgUrl,
-      width: width,
-      height: height,
-      scale: scale,
-      verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
-      HorizontalOrigin: Cesium.HorizontalOrigin.CENTER,
-    },
-    attribute: attribute,
-    click: click,
-    shengClick: shengClick,
-    doubleClickHeight: doubleClickHeight,
-    lon: lon,
-    lat: lat,
-    popContent: popContent,
-    doubleClickPitch: doubleClickPitch,
-  });
-  return entity;
-}
-/**
- * 添加飞线
- * @param {*} positions 设置指定 Cartesian3 数组的属性定义线条的位置
- * @param {MaterialProperty} material 获取或设置指定用于绘制折线的材料的属性
- * @param {String} name 名称
- * @param {Number} width 宽度
- */
-function addLine(
-  positions: any,
-  material: any,
-  viewer: any,
-  { name = 'Line', width = 3 }
-) {
-  if (!viewer) {
-    console.error('viewer is undefined');
-    return false;
-  }
-  let entity = viewer.entities.add({
-    name: name,
-    polyline: {
-      positions: Cesium.Cartesian3.fromDegreesArray(positions),
-      width: width,
-      material: material,
-    },
-  });
-  return entity;
-}
-
-/**
- *
- * @param latitude 纬度 必填
- * @param longitude 经度 必填
- * @param radius  半径 必填
- * @param color 颜色 必填
- */
-function addCircle(
-  longitude: number,
-  latitude: number,
-  radius: number,
-  color: string,
-  viewer: any,
-  name = 'Circle'
-) {
-  if (!viewer) {
-    console.error('viewer is undefined');
-    return false;
-  }
-  let entity = viewer.entities.add({
-    position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
-    ellipse: {
-      semiMinorAxis: radius,
-      semiMajorAxis: radius,
-      material: new Cesium.ColorMaterialProperty(
-        Cesium.Color.fromCssColorString(color)
-      ),
-    },
-  });
-  return entity;
-}
-
-/**
- * 创建动态墙
- * @param viewer
- * @param positions 墙体的经纬度组合
- * @param hexColor 墙体的颜色
- * @param alpha 墙体透明度
- * @param maximumHeights 定义了墙体顶部的高度（沿路径的每个点的高度）,墙体的顶部高度
- * @param minimumHeights 定义了墙体底部的高度。
- * @param MaterialIndex 1：上下移动条纹材质 2：闪烁材质  3：顶部到底部渐变效果  4：左右移动条纹
- */
-function addWall(
-  viewer: any,
-  positions: any,
-  hexColor: any,
-  alpha: any,
-  MaterialIndex: 1 | 2 | 3 | 4,
-  maximumHeights: any = [],
-  minimumHeights: any = []
-) {
-  if (!viewer) {
-    console.error('viewer is undefined');
-    return false;
-  }
-  let wallGeometry = null;
-  if (maximumHeights.length && minimumHeights.length) {
-    // 1. 创建 WallGeometry 和 WallGeometryInstance
-    wallGeometry = new Cesium.WallGeometry({
-      positions: Cesium.Cartesian3.fromDegreesArrayHeights(positions),
-      maximumHeights,
-      minimumHeights,
-    });
-  } else {
-    // 1. 创建 WallGeometry 和 WallGeometryInstance
-    wallGeometry = new Cesium.WallGeometry({
-      positions: Cesium.Cartesian3.fromDegreesArrayHeights(positions),
-    });
-  }
-
-  const wallGeometryInstance = new Cesium.GeometryInstance({
-    geometry: wallGeometry,
-    attributes: {
-      color: Cesium.ColorGeometryInstanceAttribute.fromColor(
-        Cesium.Color.WHITE
-      ),
-    },
-  });
-  let areaFabric = null;
-  if (MaterialIndex === 1) {
-    // 2. 创建自定义材质
-    areaFabric = {
-      type: 'Wave',
-      uniforms: {
-        color: Cesium.Color.fromCssColorString(hexColor).withAlpha(alpha), // 波动颜色
-        time: 0.0, // 初始时间
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+export function useCesiumEntities(viewer: Cesium.Viewer) {
+  const entities = ref<Cesium.Entity[]>([]);
+  /**
+   * viewer 代表 window.viewer , 所以只能在viewer挂在完后使用
+   */
+  /**
+   * 打点billboard私有方法
+   * @param {Number} lon 经度 必填
+   * @param {Number} lat 纬度 必填
+   * @param {String} imgUrl 图片路径 必填
+   * @param {String} name 名称 可选
+   * @param {Number} width 用于指定图片的宽度（以像素为单位），并覆盖原始尺寸 可选
+   * @param {Number} height 用于指定图片的高度（以像素为单位），并覆盖原始尺寸 可选
+   * @param {Number| Property} scale 图片缩放比例 可选
+   * @param {Boolean} click 是否可点击 可选
+   * @param {Number} doubleClickHeight 双击高度 可选
+   * @param {Object} attribute 点属性 可选
+   * @param {String} popContent 单击弹框内容 可选
+   * @param {String} pointHeight 点的高度 可选
+   * @param {String} doubleClickPitch 双击pitch 可选
+   * @return entity
+   */
+  function addBillboard(
+    lon: number,
+    lat: number,
+    imgUrl: any,
+    {
+      name = 'Point',
+      width,
+      height,
+      scale,
+      click = true,
+      shengClick = false,
+      doubleClickHeight = 5000,
+      attribute = {},
+      popContent,
+      pointHeight,
+      doubleClickPitch = -90,
+    }: any,
+    viewer: any
+  ) {
+    let h = pointHeight ? pointHeight : 0;
+    if (!viewer) {
+      console.error('viewer is undefined');
+      return false;
+    }
+    let entity = viewer.entities.add({
+      name: name,
+      position: Cesium.Cartesian3.fromDegrees(lon, lat, h),
+      billboard: {
+        image: imgUrl,
+        width: width,
+        height: height,
+        scale: scale,
+        verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+        HorizontalOrigin: Cesium.HorizontalOrigin.CENTER,
       },
-      source: `
+      attribute: attribute,
+      click: click,
+      shengClick: shengClick,
+      doubleClickHeight: doubleClickHeight,
+      lon: lon,
+      lat: lat,
+      popContent: popContent,
+      doubleClickPitch: doubleClickPitch,
+    });
+    return entity;
+  }
+  /**
+   * 添加飞线
+   * @param {*} positions 设置指定 Cartesian3 数组的属性定义线条的位置
+   * @param {MaterialProperty} material 获取或设置指定用于绘制折线的材料的属性
+   * @param {String} name 名称
+   * @param {Number} width 宽度
+   */
+  function addLine(
+    positions: any,
+    material: any,
+    viewer: any,
+    { name = 'Line', width = 3 }
+  ) {
+    if (!viewer) {
+      console.error('viewer is undefined');
+      return false;
+    }
+    let entity = viewer.entities.add({
+      name: name,
+      polyline: {
+        positions: Cesium.Cartesian3.fromDegreesArray(positions),
+        width: width,
+        material: material,
+      },
+    });
+    return entity;
+  }
+
+  /**
+   *
+   * @param latitude 纬度 必填
+   * @param longitude 经度 必填
+   * @param radius  半径 必填
+   * @param color 颜色 必填
+   */
+  function addCircle(
+    longitude: number,
+    latitude: number,
+    radius: number,
+    color: string,
+    viewer: any,
+    name = 'Circle'
+  ) {
+    if (!viewer) {
+      console.error('viewer is undefined');
+      return false;
+    }
+    let entity = viewer.entities.add({
+      position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
+      ellipse: {
+        semiMinorAxis: radius,
+        semiMajorAxis: radius,
+        material: new Cesium.ColorMaterialProperty(
+          Cesium.Color.fromCssColorString(color)
+        ),
+      },
+    });
+    return entity;
+  }
+
+  /**
+   * 创建动态墙
+   * @param viewer
+   * @param positions 墙体的经纬度组合
+   * @param hexColor 墙体的颜色
+   * @param alpha 墙体透明度
+   * @param maximumHeights 定义了墙体顶部的高度（沿路径的每个点的高度）,墙体的顶部高度
+   * @param minimumHeights 定义了墙体底部的高度。
+   * @param MaterialIndex 1：上下移动条纹材质 2：闪烁材质  3：顶部到底部渐变效果  4：左右移动条纹
+   */
+  function addWall(
+    viewer: any,
+    positions: any,
+    hexColor: any,
+    alpha: any,
+    MaterialIndex: 1 | 2 | 3 | 4,
+    maximumHeights: any = [],
+    minimumHeights: any = []
+  ) {
+    if (!viewer) {
+      console.error('viewer is undefined');
+      return false;
+    }
+    let wallGeometry = null;
+    if (maximumHeights.length && minimumHeights.length) {
+      // 1. 创建 WallGeometry 和 WallGeometryInstance
+      wallGeometry = new Cesium.WallGeometry({
+        positions: Cesium.Cartesian3.fromDegreesArrayHeights(positions),
+        maximumHeights,
+        minimumHeights,
+      });
+    } else {
+      // 1. 创建 WallGeometry 和 WallGeometryInstance
+      wallGeometry = new Cesium.WallGeometry({
+        positions: Cesium.Cartesian3.fromDegreesArrayHeights(positions),
+      });
+    }
+
+    const wallGeometryInstance = new Cesium.GeometryInstance({
+      geometry: wallGeometry,
+      attributes: {
+        color: Cesium.ColorGeometryInstanceAttribute.fromColor(
+          Cesium.Color.WHITE
+        ),
+      },
+    });
+    let areaFabric = null;
+    if (MaterialIndex === 1) {
+      // 2. 创建自定义材质
+      areaFabric = {
+        type: 'Wave',
+        uniforms: {
+          color: Cesium.Color.fromCssColorString(hexColor).withAlpha(alpha), // 波动颜色
+          time: 0.0, // 初始时间
+        },
+        source: `
         czm_material czm_getMaterial(czm_materialInput materialInput) {
             czm_material material = czm_getDefaultMaterial(materialInput);
             vec2 st = materialInput.st;
@@ -189,15 +192,15 @@ function addWall(
             material.alpha = color.a * abs(wave);
             return material;
         }`,
-    };
-  } else if (MaterialIndex === 2) {
-    areaFabric = {
-      type: 'Blinking',
-      uniforms: {
-        color: Cesium.Color.fromCssColorString(hexColor).withAlpha(alpha), // 基础颜色
-        time: 0.0, // 动态时间
-      },
-      source: `
+      };
+    } else if (MaterialIndex === 2) {
+      areaFabric = {
+        type: 'Blinking',
+        uniforms: {
+          color: Cesium.Color.fromCssColorString(hexColor).withAlpha(alpha), // 基础颜色
+          time: 0.0, // 动态时间
+        },
+        source: `
         czm_material czm_getMaterial(czm_materialInput materialInput) {
             czm_material material = czm_getDefaultMaterial(materialInput);
             float alpha = abs(sin(czm_frameNumber / 60.0)); // 闪烁效果
@@ -205,14 +208,14 @@ function addWall(
             material.alpha = color.a * alpha;
             return material;
         }`,
-    };
-  } else if (MaterialIndex === 3) {
-    areaFabric = {
-      type: 'Gradient',
-      uniforms: {
-        color: Cesium.Color.fromCssColorString(hexColor).withAlpha(alpha), // 渐变颜色
-      },
-      source: `
+      };
+    } else if (MaterialIndex === 3) {
+      areaFabric = {
+        type: 'Gradient',
+        uniforms: {
+          color: Cesium.Color.fromCssColorString(hexColor).withAlpha(alpha), // 渐变颜色
+        },
+        source: `
         czm_material czm_getMaterial(czm_materialInput materialInput) {
             czm_material material = czm_getDefaultMaterial(materialInput);
             vec2 st = materialInput.st;
@@ -220,17 +223,17 @@ function addWall(
             material.alpha = color.a;
             return material;
         }`,
-    };
-  } else if (MaterialIndex === 4) {
-    areaFabric = {
-      type: 'MovingStripe',
-      uniforms: {
-        color: Cesium.Color.fromCssColorString(hexColor).withAlpha(alpha),
-        repeat: 10.0, // 条纹重复次数
-        speed: 2.0, // 条纹移动速度
-        time: 0.0, // 动态时间
-      },
-      source: `
+      };
+    } else if (MaterialIndex === 4) {
+      areaFabric = {
+        type: 'MovingStripe',
+        uniforms: {
+          color: Cesium.Color.fromCssColorString(hexColor).withAlpha(alpha),
+          repeat: 10.0, // 条纹重复次数
+          speed: 2.0, // 条纹移动速度
+          time: 0.0, // 动态时间
+        },
+        source: `
         czm_material czm_getMaterial(czm_materialInput materialInput) {
             czm_material material = czm_getDefaultMaterial(materialInput);
             vec2 st = materialInput.st;
@@ -240,26 +243,51 @@ function addWall(
             material.alpha = color.a * stripe;
             return material;
         }`,
-    };
-  }
+      };
+    }
 
-  // 3. 创建 WallPrimitive，并应用自定义材质
-  const wallPrimitive = new Cesium.Primitive({
-    geometryInstances: wallGeometryInstance,
-    appearance: new Cesium.MaterialAppearance({
-      material: new Cesium.Material({
-        fabric: areaFabric,
+    // 3. 创建 WallPrimitive，并应用自定义材质
+    const wallPrimitive = new Cesium.Primitive({
+      geometryInstances: wallGeometryInstance,
+      appearance: new Cesium.MaterialAppearance({
+        material: new Cesium.Material({
+          fabric: areaFabric,
+        }),
+        translucent: true,
       }),
-      translucent: true,
-    }),
-    asynchronous: false,
+      asynchronous: false,
+    });
+
+    // 4. 将 WallPrimitive 添加到场景中
+    viewer.scene.primitives.add(wallPrimitive);
+    // 5. 调整视角以便看到墙
+    viewer.camera.setView({
+      destination: Cesium.Cartesian3.fromDegrees(-115.0, 37.0, 2000000.0),
+    });
+    return wallPrimitive;
+  }
+  // 移除所有实体
+  const removeAllEntities = () => {
+    entities.value.forEach((entity) => viewer.entities.remove(entity));
+    entities.value = [];
+  };
+
+  //根据指定的 entitity
+
+  // 生命周期钩子：在组件挂载时执行
+  onMounted(() => {
+    console.log('Cesium entities initialized.');
   });
 
-  // 4. 将 WallPrimitive 添加到场景中
-  viewer.scene.primitives.add(wallPrimitive);
-  // 5. 调整视角以便看到墙
-  viewer.camera.setView({
-    destination: Cesium.Cartesian3.fromDegrees(-115.0, 37.0, 2000000.0),
+  // 生命周期钩子：在组件销毁之前执行，移除所有实体
+  onBeforeUnmount(() => {
+    removeAllEntities();
+    console.log('Cesium entities removed.');
   });
+  return {
+    addBillboard,
+    addLine,
+    addCircle,
+    addWall,
+  };
 }
-export { addBillboard, addLine, addCircle, addWall };
