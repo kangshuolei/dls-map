@@ -31,7 +31,7 @@ export default defineConfig({
       },
     ],
   ],
-  base: process.env.NODE_ENV === 'production' ? '/dls-map/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/dls-map-doc/' : '/',
   themeConfig: {
     repo: 'kangshuolei',
     docsBranch: 'master',
