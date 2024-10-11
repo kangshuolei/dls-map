@@ -52,8 +52,6 @@ import {
   useDlsMap,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
-import { nextTick } from 'process';
-
 const { listenToMouseMovement, coords } = useCesiumCoord();
 const dlsMapRef = ref(null);
 const dataM = reactive<any>({
@@ -112,7 +110,7 @@ const onReady = (e: any) => {
   dataM.viewer = e.viewer;
   console.log('e', e);
   // useSwitchMap({},e)
-  // listenToMouseMovement(e);
+  listenToMouseMovement(dataM.viewer);
 
   if (dataM.dlsDivLabel) {
     dataM.dlsDivLabel.removeCountryAllDiv('.LayerTitle');
@@ -519,8 +517,8 @@ const onReady = (e: any) => {
   // });
   // dataM.viewer.flyTo(heatmap.entity);
   // 加载缓冲区
-  let buffer = new CesiumBufferAnalyze(dataM.viewer, 10000);
-  buffer.polyBuffer();
+  // let buffer = new CesiumBufferAnalyze(dataM.viewer, 10000);
+  // buffer.polyBuffer();
   //加载轨迹线
   let data = [
     {
