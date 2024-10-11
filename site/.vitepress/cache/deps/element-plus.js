@@ -44,7 +44,7 @@ import {
 } from "./chunk-VQUCFT7N.js";
 import {
   isVue2
-} from "./chunk-ZSOEVACU.js";
+} from "./chunk-VBWOPEW6.js";
 import {
   Comment,
   Fragment,
@@ -758,7 +758,7 @@ var require_isSameOrBefore = __commonJS({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/dom/aria.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/dom/aria.mjs
 var FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex="-1"]),input:not([disabled]),input:not([type="hidden"]),select:not([disabled]),textarea:not([disabled])`;
 var isVisible = (element) => {
   if (false)
@@ -823,7 +823,7 @@ var focusNode = (el) => {
   !isLeaf(el) && el.click();
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/dom/event.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/dom/event.mjs
 var composeEventHandlers = (theirsHandler, oursHandler, { checkForDefaultPrevented = true } = {}) => {
   const handleEvent = (event) => {
     const shouldPrevent = theirsHandler == null ? void 0 : theirsHandler(event);
@@ -1446,7 +1446,7 @@ var _TransitionPresets = {
 var TransitionPresets = __spreadValues({
   linear: identity
 }, _TransitionPresets);
-function useVModel(props, key, emit, options = {}) {
+function useVModel(props2, key, emit, options = {}) {
   var _a2, _b, _c, _d, _e;
   const {
     clone: clone2 = false,
@@ -1470,13 +1470,13 @@ function useVModel(props, key, emit, options = {}) {
   }
   event = eventName || event || `update:${key.toString()}`;
   const cloneFn = (val) => !clone2 ? val : isFunction(clone2) ? clone2(val) : cloneFnJSON(val);
-  const getValue3 = () => isDef(props[key]) ? cloneFn(props[key]) : defaultValue;
+  const getValue3 = () => isDef(props2[key]) ? cloneFn(props2[key]) : defaultValue;
   if (passive) {
     const initialValue = getValue3();
     const proxy = ref(initialValue);
-    watch(() => props[key], (v2) => proxy.value = cloneFn(v2));
+    watch(() => props2[key], (v2) => proxy.value = cloneFn(v2));
     watch(proxy, (v2) => {
-      if (v2 !== props[key] || deep)
+      if (v2 !== props2[key] || deep)
         _emit(event, v2);
     }, { deep });
     return proxy;
@@ -1532,10 +1532,10 @@ function useWindowSize(options = {}) {
   return { width, height };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/browser.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/browser.mjs
 var isFirefox = () => isClient && /firefox/i.test(window.navigator.userAgent);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/dom/position.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/dom/position.mjs
 var isInContainer = (el, container) => {
   if (!isClient || !el || !container)
     return false;
@@ -1584,7 +1584,7 @@ var getClientXY = (event) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/easings.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/easings.mjs
 function easeInOutCubic(t, b2, c2, d2) {
   const cc = c2 - b2;
   t /= d2 / 2;
@@ -1594,7 +1594,7 @@ function easeInOutCubic(t, b2, c2, d2) {
   return cc / 2 * ((t -= 2) * t * t + 2) + b2;
 }
 
-// ../node_modules/.pnpm/@vue+shared@3.5.6/node_modules/@vue/shared/dist/shared.esm-bundler.js
+// ../node_modules/.pnpm/@vue+shared@3.5.11/node_modules/@vue/shared/dist/shared.esm-bundler.js
 function makeMap(str) {
   const map2 = /* @__PURE__ */ Object.create(null);
   for (const key of str.split(",")) map2[key] = 1;
@@ -2776,12 +2776,12 @@ function assignValue(object4, key, value) {
 var assignValue_default = assignValue;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_copyObject.js
-function copyObject(source, props, object4, customizer) {
+function copyObject(source, props2, object4, customizer) {
   var isNew = !object4;
   object4 || (object4 = {});
-  var index = -1, length = props.length;
+  var index = -1, length = props2.length;
   while (++index < length) {
-    var key = props[index];
+    var key = props2[index];
     var newValue = customizer ? customizer(object4[key], source[key], key, object4, source) : void 0;
     if (newValue === void 0) {
       newValue = source[key];
@@ -4565,9 +4565,9 @@ function baseClone(value, bitmask, customizer, key, object4, stack) {
     });
   }
   var keysFunc = isFull ? isFlat ? getAllKeysIn_default : getAllKeys_default : isFlat ? keysIn_default : keys_default;
-  var props = isArr ? void 0 : keysFunc(value);
-  arrayEach_default(props || value, function(subValue, key2) {
-    if (props) {
+  var props2 = isArr ? void 0 : keysFunc(value);
+  arrayEach_default(props2 || value, function(subValue, key2) {
+    if (props2) {
       key2 = subValue;
       subValue = value[key2];
     }
@@ -5099,14 +5099,14 @@ function cond(pairs) {
 var cond_default = cond;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_baseConformsTo.js
-function baseConformsTo(object4, source, props) {
-  var length = props.length;
+function baseConformsTo(object4, source, props2) {
+  var length = props2.length;
   if (object4 == null) {
     return !length;
   }
   object4 = Object(object4);
   while (length--) {
-    var key = props[length], predicate = source[key], value = object4[key];
+    var key = props2[length], predicate = source[key], value = object4[key];
     if (value === void 0 && !(key in object4) || !predicate(value)) {
       return false;
     }
@@ -5117,9 +5117,9 @@ var baseConformsTo_default = baseConformsTo;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_baseConforms.js
 function baseConforms(source) {
-  var props = keys_default(source);
+  var props2 = keys_default(source);
   return function(object4) {
-    return baseConformsTo_default(object4, source, props);
+    return baseConformsTo_default(object4, source, props2);
   };
 }
 var baseConforms_default = baseConforms;
@@ -5151,9 +5151,9 @@ var arrayAggregator_default = arrayAggregator;
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_createBaseFor.js
 function createBaseFor(fromRight) {
   return function(object4, iteratee2, keysFunc) {
-    var index = -1, iterable = Object(object4), props = keysFunc(object4), length = props.length;
+    var index = -1, iterable = Object(object4), props2 = keysFunc(object4), length = props2.length;
     while (length--) {
-      var key = props[fromRight ? length : ++index];
+      var key = props2[fromRight ? length : ++index];
       if (iteratee2(iterable[key], key, iterable) === false) {
         break;
       }
@@ -5368,11 +5368,11 @@ var defaults = baseRest_default(function(object4, sources) {
   }
   while (++index < length) {
     var source = sources[index];
-    var props = keysIn_default(source);
+    var props2 = keysIn_default(source);
     var propsIndex = -1;
-    var propsLength = props.length;
+    var propsLength = props2.length;
     while (++propsIndex < propsLength) {
-      var key = props[propsIndex];
+      var key = props2[propsIndex];
       var value = object4[key];
       if (value === void 0 || eq_default(value, objectProto21[key]) && !hasOwnProperty19.call(object4, key)) {
         object4[key] = source[key];
@@ -5721,8 +5721,8 @@ function endsWith(string3, target2, position) {
 var endsWith_default = endsWith;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_baseToPairs.js
-function baseToPairs(object4, props) {
-  return arrayMap_default(props, function(key) {
+function baseToPairs(object4, props2) {
+  return arrayMap_default(props2, function(key) {
     return [key, object4[key]];
   });
 }
@@ -6129,8 +6129,8 @@ function fromPairs(pairs) {
 var fromPairs_default = fromPairs;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_baseFunctions.js
-function baseFunctions(object4, props) {
-  return arrayFilter_default(props, function(key) {
+function baseFunctions(object4, props2) {
+  return arrayFilter_default(props2, function(key) {
     return isFunction_default(object4[key]);
   });
 }
@@ -6232,8 +6232,8 @@ function isString3(value) {
 var isString_default = isString3;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_baseValues.js
-function baseValues(object4, props) {
-  return arrayMap_default(props, function(key) {
+function baseValues(object4, props2) {
+  return arrayMap_default(props2, function(key) {
     return object4[key];
   });
 }
@@ -6820,7 +6820,7 @@ var minBy_default = minBy;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/mixin.js
 function mixin(object4, source, options) {
-  var props = keys_default(source), methodNames = baseFunctions_default(source, props);
+  var props2 = keys_default(source), methodNames = baseFunctions_default(source, props2);
   var chain2 = !(isObject_default(options) && "chain" in options) || !!options.chain, isFunc = isFunction_default(object4);
   arrayEach_default(methodNames, function(methodName) {
     var func = source[methodName];
@@ -7021,11 +7021,11 @@ function pickBy(object4, predicate) {
   if (object4 == null) {
     return {};
   }
-  var props = arrayMap_default(getAllKeysIn_default(object4), function(prop) {
+  var props2 = arrayMap_default(getAllKeysIn_default(object4), function(prop) {
     return [prop];
   });
   predicate = baseIteratee_default(predicate);
-  return basePickBy_default(object4, props, function(value, path) {
+  return basePickBy_default(object4, props2, function(value, path) {
     return predicate(value, path[0]);
   });
 }
@@ -8799,25 +8799,25 @@ var zip = baseRest_default(unzip_default);
 var zip_default = zip;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/_baseZipObject.js
-function baseZipObject(props, values2, assignFunc) {
-  var index = -1, length = props.length, valsLength = values2.length, result2 = {};
+function baseZipObject(props2, values2, assignFunc) {
+  var index = -1, length = props2.length, valsLength = values2.length, result2 = {};
   while (++index < length) {
     var value = index < valsLength ? values2[index] : void 0;
-    assignFunc(result2, props[index], value);
+    assignFunc(result2, props2[index], value);
   }
   return result2;
 }
 var baseZipObject_default = baseZipObject;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/zipObject.js
-function zipObject(props, values2) {
-  return baseZipObject_default(props || [], values2 || [], assignValue_default);
+function zipObject(props2, values2) {
+  return baseZipObject_default(props2 || [], values2 || [], assignValue_default);
 }
 var zipObject_default = zipObject;
 
 // ../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/zipObjectDeep.js
-function zipObjectDeep(props, values2) {
-  return baseZipObject_default(props || [], values2 || [], baseSet_default);
+function zipObjectDeep(props2, values2) {
+  return baseZipObject_default(props2 || [], values2 || [], baseSet_default);
 }
 var zipObjectDeep_default = zipObjectDeep;
 
@@ -9288,7 +9288,7 @@ var nativeMin15 = Math.min;
 var mixin2 = /* @__PURE__ */ function(func) {
   return function(object4, source, options) {
     if (options == null) {
-      var isObj = isObject_default(source), props = isObj && keys_default(source), methodNames = props && props.length && baseFunctions_default(source, props);
+      var isObj = isObject_default(source), props2 = isObj && keys_default(source), methodNames = props2 && props2.length && baseFunctions_default(source, props2);
       if (!(methodNames ? methodNames.length : isObj)) {
         options = source;
         source = object4;
@@ -9771,7 +9771,7 @@ if (symIterator2) {
   wrapperLodash_default.prototype[symIterator2] = seq_default_default.toIterator;
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/types.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/types.mjs
 var isUndefined2 = (val) => val === void 0;
 var isBoolean2 = (val) => typeof val === "boolean";
 var isNumber3 = (val) => typeof val === "number";
@@ -9794,15 +9794,15 @@ var isWindow = (val) => {
   return val === window;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/raf.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/raf.mjs
 var rAF = (fn2) => isClient ? window.requestAnimationFrame(fn2) : setTimeout(fn2, 16);
 var cAF = (handle) => isClient ? window.cancelAnimationFrame(handle) : clearTimeout(handle);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/strings.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/strings.mjs
 var escapeStringRegexp = (string3 = "") => string3.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
 var capitalize3 = (str) => capitalize(str);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/objects.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/objects.mjs
 var keysOf = (arr) => Object.keys(arr);
 var entriesOf = (arr) => Object.entries(arr);
 var getProp = (obj, path, defaultValue) => {
@@ -9816,7 +9816,7 @@ var getProp = (obj, path, defaultValue) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/error.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/error.mjs
 var ElementPlusError = class extends Error {
   constructor(m2) {
     super(m2);
@@ -9833,7 +9833,7 @@ function debugWarn(scope, message2) {
   }
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/dom/style.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/dom/style.mjs
 var SCOPE = "utils/dom/style";
 var classNameToArray = (cls = "") => cls.split(" ").filter((item) => !!item.trim());
 var hasClass = (el, cls) => {
@@ -9881,7 +9881,7 @@ function addUnit(value, defaultUnit = "px") {
   debugWarn(SCOPE, "binding value must be a string or number");
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/dom/scroll.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/dom/scroll.mjs
 var isScroll = (el, isVertical) => {
   if (!isClient)
     return false;
@@ -9989,7 +9989,7 @@ var getScrollTop = (container) => {
   return container.scrollTop;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/dom/element.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/dom/element.mjs
 var getElement = (target2) => {
   if (!isClient || target2 === "")
     return null;
@@ -10003,7 +10003,7 @@ var getElement = (target2) => {
   return target2;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/vue/global-node.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/vue/global-node.mjs
 var globalNodes = [];
 var target = !isClient ? void 0 : document.body;
 function createGlobalNode(id) {
@@ -10022,7 +10022,7 @@ function removeGlobalNode(el) {
   el.remove();
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/vue/props/runtime.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/vue/props/runtime.mjs
 var epPropKey = "__epPropKey";
 var definePropType = (val) => val;
 var isEpProp = (val) => isObject2(val) && !!val[epPropKey];
@@ -10058,12 +10058,12 @@ var buildProp = (prop, key) => {
     epProp.default = defaultValue;
   return epProp;
 };
-var buildProps = (props) => fromPairs_default(Object.entries(props).map(([key, option]) => [
+var buildProps = (props2) => fromPairs_default(Object.entries(props2).map(([key, option]) => [
   key,
   buildProp(option, key)
 ]));
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/vue/icon.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/vue/icon.mjs
 var iconPropType = definePropType([
   String,
   Object,
@@ -10091,7 +10091,7 @@ var ValidateComponentsMap = {
   error: circle_close_default
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/vue/install.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/vue/install.mjs
 var withInstall = (main, extra) => {
   ;
   main.install = (app) => {
@@ -10129,7 +10129,7 @@ var withNoopInstall = (component2) => {
   return component2;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/vue/refs.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/vue/refs.mjs
 var composeRefs = (...refs) => {
   return (el) => {
     refs.forEach((ref2) => {
@@ -10142,7 +10142,7 @@ var composeRefs = (...refs) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/constants/aria.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/constants/aria.mjs
 var EVENT_CODE = {
   tab: "Tab",
   enter: "Enter",
@@ -10161,7 +10161,7 @@ var EVENT_CODE = {
   end: "End"
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/constants/date.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/constants/date.mjs
 var datePickTypes = [
   "year",
   "years",
@@ -10186,15 +10186,15 @@ var WEEK_DAYS = [
   "sat"
 ];
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/constants/event.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/constants/event.mjs
 var UPDATE_MODEL_EVENT = "update:modelValue";
 var CHANGE_EVENT = "change";
 var INPUT_EVENT = "input";
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/constants/key.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/constants/key.mjs
 var INSTALLED_KEY = Symbol("INSTALLED_KEY");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/constants/size.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/constants/size.mjs
 var componentSizes = ["", "default", "small", "large"];
 var componentSizeMap = {
   large: 40,
@@ -10202,10 +10202,10 @@ var componentSizeMap = {
   small: 24
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/vue/validator.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/vue/validator.mjs
 var isValidComponentSize = (val) => ["", ...componentSizes].includes(val);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/vue/vnode.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/vue/vnode.mjs
 var SCOPE2 = "utils/vue/vnode";
 var PatchFlags = ((PatchFlags2) => {
   PatchFlags2[PatchFlags2["TEXT"] = 1] = "TEXT";
@@ -10239,16 +10239,16 @@ var getNormalizedProps = (node) => {
   }
   const raw = node.props || {};
   const type4 = (isVNode(node.type) ? node.type.props : void 0) || {};
-  const props = {};
+  const props2 = {};
   Object.keys(type4).forEach((key) => {
     if (hasOwn2(type4[key], "default")) {
-      props[key] = type4[key].default;
+      props2[key] = type4[key].default;
     }
   });
   Object.keys(raw).forEach((key) => {
-    props[camelize(key)] = raw[key];
+    props2[camelize(key)] = raw[key];
   });
-  return props;
+  return props2;
 };
 var ensureOnlyChild = (children) => {
   if (!isArray(children) || children.length > 1) {
@@ -10275,7 +10275,7 @@ var flattedChildren = (children) => {
   return result2;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/arrays.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/arrays.mjs
 var unique = (arr) => [...new Set(arr)];
 var castArray2 = (arr) => {
   if (!arr && arr !== 0)
@@ -10283,13 +10283,13 @@ var castArray2 = (arr) => {
   return Array.isArray(arr) ? arr : [arr];
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/i18n.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/i18n.mjs
 var isKorean = (text) => /([\uAC00-\uD7AF\u3130-\u318F])+/gi.test(text);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/typescript.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/typescript.mjs
 var mutable = (val) => val;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/utils/throttleByRaf.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/utils/throttleByRaf.mjs
 function throttleByRaf(cb) {
   let timer = 0;
   const throttle2 = (...args) => {
@@ -10308,7 +10308,7 @@ function throttleByRaf(cb) {
   return throttle2;
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-attrs/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-attrs/index.mjs
 var DEFAULT_EXCLUDE_KEYS = ["class", "style"];
 var LISTENER_PREFIX = /^on[A-Z]/;
 var useAttrs2 = (params = {}) => {
@@ -10327,7 +10327,7 @@ var useAttrs2 = (params = {}) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-deprecated/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-deprecated/index.mjs
 var useDeprecated = ({ from, replacement, scope, version: version4, ref: ref2, type: type4 = "API" }, condition) => {
   watch(() => unref(condition), (val) => {
     if (val) {
@@ -10340,7 +10340,7 @@ For more detail, please visit: ${ref2}
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-draggable/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-draggable/index.mjs
 var useDraggable = (targetRef, dragRef, draggable2, overflow) => {
   let transform2 = {
     offsetX: 0,
@@ -10419,7 +10419,7 @@ var useDraggable = (targetRef, dragRef, draggable2, overflow) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-focus/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-focus/index.mjs
 var useFocus = (el) => {
   return {
     focus: () => {
@@ -10429,7 +10429,7 @@ var useFocus = (el) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/locale/lang/en.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/locale/lang/en.mjs
 var English = {
   name: "en",
   el: {
@@ -10610,7 +10610,7 @@ var English = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-locale/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-locale/index.mjs
 var buildTranslator = (locale) => (path, option) => translate(path, option, unref(locale));
 var translate = (path, option, locale) => get_default(locale, path, path).replace(/\{(\w+)\}/g, (_2, key) => {
   var _a2;
@@ -10631,7 +10631,7 @@ var useLocale = (localeOverrides) => {
   return buildLocaleContext(computed(() => locale.value || English));
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-namespace/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-namespace/index.mjs
 var defaultNamespace = "el";
 var statePrefix = "is-";
 var _bem = (namespace, block, blockSuffix, element, modifier) => {
@@ -10705,7 +10705,7 @@ var useNamespace = (block, namespaceOverrides) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-lockscreen/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-lockscreen/index.mjs
 var useLockscreen = (trigger, options = {}) => {
   if (!isRef(trigger)) {
     throwError("[useLockscreen]", "You need to pass a ref param to this function");
@@ -10746,7 +10746,7 @@ var useLockscreen = (trigger, options = {}) => {
   onScopeDispose(() => cleanup());
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-modal/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-modal/index.mjs
 var modalStack = [];
 var closeModal = (e) => {
   if (modalStack.length === 0)
@@ -10769,7 +10769,7 @@ var useModal = (instance, visibleRef) => {
 if (isClient)
   useEventListener(document, "keydown", closeModal);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-model-toggle/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-model-toggle/index.mjs
 var _prop = buildProp({
   type: definePropType(Boolean),
   default: null
@@ -10795,9 +10795,9 @@ var createModelToggleComposable = (name) => {
   }) => {
     const instance = getCurrentInstance();
     const { emit } = instance;
-    const props = instance.props;
-    const hasUpdateHandler = computed(() => isFunction2(props[updateEventKeyRaw2]));
-    const isModelBindingAbsent = computed(() => props[name] === null);
+    const props2 = instance.props;
+    const hasUpdateHandler = computed(() => isFunction2(props2[updateEventKeyRaw2]));
+    const isModelBindingAbsent = computed(() => props2[name] === null);
     const doShow = (event) => {
       if (indicator.value === true) {
         return;
@@ -10823,7 +10823,7 @@ var createModelToggleComposable = (name) => {
       }
     };
     const show = (event) => {
-      if (props.disabled === true || isFunction2(shouldProceed) && !shouldProceed())
+      if (props2.disabled === true || isFunction2(shouldProceed) && !shouldProceed())
         return;
       const shouldEmit = hasUpdateHandler.value && isClient;
       if (shouldEmit) {
@@ -10834,7 +10834,7 @@ var createModelToggleComposable = (name) => {
       }
     };
     const hide2 = (event) => {
-      if (props.disabled === true || !isClient)
+      if (props2.disabled === true || !isClient)
         return;
       const shouldEmit = hasUpdateHandler.value && isClient;
       if (shouldEmit) {
@@ -10847,7 +10847,7 @@ var createModelToggleComposable = (name) => {
     const onChange = (val) => {
       if (!isBoolean2(val))
         return;
-      if (props.disabled && val) {
+      if (props2.disabled && val) {
         if (hasUpdateHandler.value) {
           emit(updateEventKey, false);
         }
@@ -10866,7 +10866,7 @@ var createModelToggleComposable = (name) => {
         show();
       }
     };
-    watch(() => props[name], onChange);
+    watch(() => props2[name], onChange);
     if (shouldHideWhenRouteChanges && instance.appContext.config.globalProperties.$route !== void 0) {
       watch(() => ({
         ...instance.proxy.$route
@@ -10877,7 +10877,7 @@ var createModelToggleComposable = (name) => {
       });
     }
     onMounted(() => {
-      onChange(props[name]);
+      onChange(props2[name]);
     });
     return {
       hide: hide2,
@@ -10894,7 +10894,7 @@ var createModelToggleComposable = (name) => {
 };
 var { useModelToggle, useModelToggleProps, useModelToggleEmits } = createModelToggleComposable("modelValue");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-prevent-global/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-prevent-global/index.mjs
 var usePreventGlobal = (indicator, evt, cb) => {
   const prevent = (e) => {
     if (cb(e))
@@ -10910,7 +10910,7 @@ var usePreventGlobal = (indicator, evt, cb) => {
   }, { immediate: true });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-prop/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-prop/index.mjs
 var useProp = (name) => {
   const vm = getCurrentInstance();
   return computed(() => {
@@ -11485,7 +11485,7 @@ var vn = we({ defaultModifiers: mn });
 var gn = [Re, He, Me, Ae, wt, vt, xt, pt, bt];
 var yn = we({ defaultModifiers: gn });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-popper/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-popper/index.mjs
 var usePopper = (referenceElementRef, popperElementRef, opts = {}) => {
   const stateUpdater = {
     name: "updateState",
@@ -11575,7 +11575,7 @@ function deriveState(state) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-same-target/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-same-target/index.mjs
 var useSameTarget = (handleClick) => {
   if (!handleClick) {
     return { onClick: NOOP, onMousedown: NOOP, onMouseup: NOOP };
@@ -11597,7 +11597,7 @@ var useSameTarget = (handleClick) => {
   return { onClick, onMousedown, onMouseup };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-teleport/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-teleport/index.mjs
 var useTeleport = (contentRenderer, appendToBody) => {
   const isTeleportVisible = ref(false);
   if (!isClient) {
@@ -11634,7 +11634,7 @@ var useTeleport = (contentRenderer, appendToBody) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-throttle-render/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-throttle-render/index.mjs
 var useThrottleRender = (loading, throttle2 = 0) => {
   if (throttle2 === 0)
     return loading;
@@ -11659,7 +11659,7 @@ var useThrottleRender = (loading, throttle2 = 0) => {
   return throttled;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-timeout/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-timeout/index.mjs
 function useTimeout() {
   let timeoutHandle;
   const registerTimeout = (fn2, delay2) => {
@@ -11674,7 +11674,7 @@ function useTimeout() {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-transition-fallthrough/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-transition-fallthrough/index.mjs
 var AFTER_APPEAR = "after-appear";
 var AFTER_ENTER = "after-enter";
 var AFTER_LEAVE = "after-leave";
@@ -11735,7 +11735,7 @@ var useTransitionFallthrough = () => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-id/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-id/index.mjs
 var defaultIdInjection = {
   prefix: Math.floor(Math.random() * 1e4),
   current: 0
@@ -11758,7 +11758,7 @@ usage: app.provide(ID_INJECTION_KEY, {
   return idRef;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-escape-keydown/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-escape-keydown/index.mjs
 var registeredEscapeHandlers = [];
 var cachedHandler = (e) => {
   const event = e;
@@ -11783,7 +11783,7 @@ var useEscapeKeydown = (handler) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-popper-container/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-popper-container/index.mjs
 var cachedContainer;
 var usePopperContainerId = () => {
   const namespace = useGetDerivedNamespace();
@@ -11808,7 +11808,7 @@ var usePopperContainer = () => {
   onBeforeMount(() => {
     if (!isClient)
       return;
-    if (!cachedContainer && !document.body.querySelector(selector.value)) {
+    if (!cachedContainer || !document.body.querySelector(selector.value)) {
       cachedContainer = createContainer(id.value);
     }
   });
@@ -11818,7 +11818,7 @@ var usePopperContainer = () => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-intermediate-render/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-intermediate-render/index.mjs
 var useDelayedRender = ({
   indicator,
   intermediateIndicator,
@@ -11858,7 +11858,7 @@ var useDelayedRender = ({
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-delayed-toggle/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-delayed-toggle/index.mjs
 var useDelayedToggleProps = buildProps({
   showAfter: {
     type: Number,
@@ -11908,7 +11908,7 @@ var useDelayedToggle = ({
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-forward-ref/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-forward-ref/index.mjs
 var FORWARD_REF_INJECTION_KEY = Symbol("elForwardRef");
 var useForwardRef = (forwardRef) => {
   const setForwardRef = (el) => {
@@ -11932,7 +11932,7 @@ var useForwardRefDirective = (setForwardRef) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-z-index/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-z-index/index.mjs
 var initial2 = {
   current: 0
 };
@@ -11964,7 +11964,7 @@ usage: app.provide(ZINDEX_INJECTION_KEY, { current: 0 })`);
   };
 };
 
-// ../node_modules/.pnpm/@floating-ui+utils@0.2.7/node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
+// ../node_modules/.pnpm/@floating-ui+utils@0.2.8/node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
 var sides = ["top", "right", "bottom", "left"];
 var alignments = ["start", "end"];
 var placements = sides.reduce((acc, side) => acc.concat(side, side + "-" + alignments[0], side + "-" + alignments[1]), []);
@@ -12097,7 +12097,7 @@ function rectToClientRect(rect) {
   };
 }
 
-// ../node_modules/.pnpm/@floating-ui+core@1.6.7/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
+// ../node_modules/.pnpm/@floating-ui+core@1.6.8/node_modules/@floating-ui/core/dist/floating-ui.core.mjs
 function computeCoordsFromPlacement(_ref, placement, rtl) {
   let {
     reference,
@@ -12480,10 +12480,9 @@ async function convertValueToCoords(state, options) {
     crossAxis: 0,
     alignmentAxis: null
   } : {
-    mainAxis: 0,
-    crossAxis: 0,
-    alignmentAxis: null,
-    ...rawValue
+    mainAxis: rawValue.mainAxis || 0,
+    crossAxis: rawValue.crossAxis || 0,
+    alignmentAxis: rawValue.alignmentAxis
   };
   if (alignment && typeof alignmentAxis === "number") {
     crossAxis = alignment === "end" ? alignmentAxis * -1 : alignmentAxis;
@@ -12588,14 +12587,21 @@ var shift = function(options) {
         ...limitedCoords,
         data: {
           x: limitedCoords.x - x2,
-          y: limitedCoords.y - y
+          y: limitedCoords.y - y,
+          enabled: {
+            [mainAxis]: checkMainAxis,
+            [crossAxis]: checkCrossAxis
+          }
         }
       };
     }
   };
 };
 
-// ../node_modules/.pnpm/@floating-ui+utils@0.2.7/node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs
+// ../node_modules/.pnpm/@floating-ui+utils@0.2.8/node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs
+function hasWindow() {
+  return typeof window !== "undefined";
+}
 function getNodeName(node) {
   if (isNode(node)) {
     return (node.nodeName || "").toLowerCase();
@@ -12611,16 +12617,25 @@ function getDocumentElement(node) {
   return (_ref = (isNode(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
 }
 function isNode(value) {
+  if (!hasWindow()) {
+    return false;
+  }
   return value instanceof Node || value instanceof getWindow(value).Node;
 }
 function isElement3(value) {
+  if (!hasWindow()) {
+    return false;
+  }
   return value instanceof Element || value instanceof getWindow(value).Element;
 }
 function isHTMLElement(value) {
+  if (!hasWindow()) {
+    return false;
+  }
   return value instanceof HTMLElement || value instanceof getWindow(value).HTMLElement;
 }
 function isShadowRoot(value) {
-  if (typeof ShadowRoot === "undefined") {
+  if (!hasWindow() || typeof ShadowRoot === "undefined") {
     return false;
   }
   return value instanceof ShadowRoot || value instanceof getWindow(value).ShadowRoot;
@@ -12729,7 +12744,7 @@ function getFrameElement(win) {
   return win.parent && Object.getPrototypeOf(win.parent) ? win.frameElement : null;
 }
 
-// ../node_modules/.pnpm/@floating-ui+dom@1.6.10/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
+// ../node_modules/.pnpm/@floating-ui+dom@1.6.11/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
 function getCssDimensions(element) {
   const css = getComputedStyle2(element);
   let width = parseFloat(css.width) || 0;
@@ -12888,8 +12903,12 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
 function getClientRects(element) {
   return Array.from(element.getClientRects());
 }
-function getWindowScrollBarX(element) {
-  return getBoundingClientRect(getDocumentElement(element)).left + getNodeScroll(element).scrollLeft;
+function getWindowScrollBarX(element, rect) {
+  const leftScroll = getNodeScroll(element).scrollLeft;
+  if (!rect) {
+    return getBoundingClientRect(getDocumentElement(element)).left + leftScroll;
+  }
+  return rect.left + leftScroll;
 }
 function getDocumentRect(element) {
   const html = getDocumentElement(element);
@@ -13057,8 +13076,16 @@ function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
       offsets.x = getWindowScrollBarX(documentElement);
     }
   }
-  const x2 = rect.left + scroll.scrollLeft - offsets.x;
-  const y = rect.top + scroll.scrollTop - offsets.y;
+  let htmlX = 0;
+  let htmlY = 0;
+  if (documentElement && !isOffsetParentAnElement && !isFixed) {
+    const htmlRect = documentElement.getBoundingClientRect();
+    htmlY = htmlRect.top + scroll.scrollTop;
+    htmlX = htmlRect.left + scroll.scrollLeft - // RTL <body> scrollbar.
+    getWindowScrollBarX(documentElement, htmlRect);
+  }
+  const x2 = rect.left + scroll.scrollLeft - offsets.x - htmlX;
+  const y = rect.top + scroll.scrollTop - offsets.y - htmlY;
   return {
     x: x2,
     y,
@@ -13076,7 +13103,11 @@ function getTrueOffsetParent(element, polyfill) {
   if (polyfill) {
     return polyfill(element);
   }
-  return element.offsetParent;
+  let rawOffsetParent = element.offsetParent;
+  if (getDocumentElement(element) === rawOffsetParent) {
+    rawOffsetParent = rawOffsetParent.ownerDocument.body;
+  }
+  return rawOffsetParent;
 }
 function getOffsetParent(element, polyfill) {
   const win = getWindow(element);
@@ -13290,7 +13321,7 @@ var computePosition2 = (reference, floating, options) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-floating/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-floating/index.mjs
 var useFloatingProps = buildProps({});
 var unrefReference = (elRef) => {
   if (!isClient)
@@ -13373,7 +13404,7 @@ var arrowMiddleware = ({
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-cursor/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-cursor/index.mjs
 function useCursor(input) {
   let selectionInfo;
   function recordCursor() {
@@ -13416,7 +13447,7 @@ function useCursor(input) {
   return [recordCursor, setCursor];
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-ordered-children/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-ordered-children/index.mjs
 var getOrderedChildren = (vm, childComponentName, children) => {
   const nodes = flattedChildren(vm.subTree).filter((n) => {
     var _a2;
@@ -13443,7 +13474,7 @@ var useOrderedChildren = (vm, childComponentName) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-size/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-size/index.mjs
 var useSizeProp = buildProp({
   type: String,
   values: componentSizes,
@@ -13460,7 +13491,7 @@ var useGlobalSize = () => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-focus-controller/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-focus-controller/index.mjs
 function useFocusController(target2, {
   beforeFocus,
   afterFocus,
@@ -13479,7 +13510,7 @@ function useFocusController(target2, {
     emit("focus", event);
     afterFocus == null ? void 0 : afterFocus();
   };
-  const handleBlur2 = (event) => {
+  const handleBlur = (event) => {
     var _a2;
     const cancelBlur = isFunction2(beforeBlur) ? beforeBlur(event) : false;
     if (cancelBlur || event.relatedTarget && ((_a2 = wrapperRef.value) == null ? void 0 : _a2.contains(event.relatedTarget)))
@@ -13500,14 +13531,14 @@ function useFocusController(target2, {
     }
   });
   useEventListener(wrapperRef, "focus", handleFocus, true);
-  useEventListener(wrapperRef, "blur", handleBlur2, true);
+  useEventListener(wrapperRef, "blur", handleBlur, true);
   useEventListener(wrapperRef, "click", handleClick, true);
   if (false) {
     onMounted(() => {
       const targetEl = isElement2(target2.value) ? target2.value : document.querySelector("input,textarea");
       if (targetEl) {
         useEventListener(targetEl, "focus", handleFocus, true);
-        useEventListener(targetEl, "blur", handleBlur2, true);
+        useEventListener(targetEl, "blur", handleBlur, true);
       }
     });
   }
@@ -13515,11 +13546,11 @@ function useFocusController(target2, {
     isFocused,
     wrapperRef,
     handleFocus,
-    handleBlur: handleBlur2
+    handleBlur
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-composition/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-composition/index.mjs
 function useComposition({
   afterComposition,
   emit
@@ -13555,7 +13586,7 @@ function useComposition({
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-empty-values/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-empty-values/index.mjs
 var emptyValuesContextKey = Symbol("emptyValuesContextKey");
 var SCOPE3 = "use-empty-values";
 var DEFAULT_EMPTY_VALUES = ["", void 0, null];
@@ -13568,14 +13599,14 @@ var useEmptyValuesProps = buildProps({
     validator: (val) => isFunction2(val) ? !val() : !val
   }
 });
-var useEmptyValues = (props, defaultValue) => {
+var useEmptyValues = (props2, defaultValue) => {
   const config = getCurrentInstance() ? inject(emptyValuesContextKey, ref({})) : ref({});
-  const emptyValues = computed(() => props.emptyValues || config.value.emptyValues || DEFAULT_EMPTY_VALUES);
+  const emptyValues = computed(() => props2.emptyValues || config.value.emptyValues || DEFAULT_EMPTY_VALUES);
   const valueOnClear = computed(() => {
-    if (isFunction2(props.valueOnClear)) {
-      return props.valueOnClear();
-    } else if (props.valueOnClear !== void 0) {
-      return props.valueOnClear;
+    if (isFunction2(props2.valueOnClear)) {
+      return props2.valueOnClear();
+    } else if (props2.valueOnClear !== void 0) {
+      return props2.valueOnClear;
     } else if (isFunction2(config.value.valueOnClear)) {
       return config.value.valueOnClear();
     } else if (config.value.valueOnClear !== void 0) {
@@ -13596,7 +13627,7 @@ var useEmptyValues = (props, defaultValue) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/hooks/use-aria/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/hooks/use-aria/index.mjs
 var ariaProps = buildProps({
   ariaLabel: String,
   ariaOrientation: {
@@ -13609,10 +13640,10 @@ var useAriaProps = (arias) => {
   return pick_default(ariaProps, arias);
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/config-provider/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/config-provider/src/constants.mjs
 var configProviderContextKey = Symbol();
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/config-provider/src/hooks/use-global-config.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/config-provider/src/hooks/use-global-config.mjs
 var globalConfig = ref();
 function useGlobalConfig(key, defaultValue = void 0) {
   const config = getCurrentInstance() ? inject(configProviderContextKey, globalConfig) : globalConfig;
@@ -13691,7 +13722,7 @@ var mergeConfig = (a2, b2) => {
   return obj;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/config-provider/src/config-provider-props.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/config-provider/src/config-provider-props.mjs
 var configProviderProps = buildProps({
   a11y: {
     type: Boolean,
@@ -13722,27 +13753,27 @@ var configProviderProps = buildProps({
   ...useEmptyValuesProps
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/config-provider/src/config-provider.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/config-provider/src/config-provider.mjs
 var messageConfig = {};
 var ConfigProvider = defineComponent({
   name: "ElConfigProvider",
   props: configProviderProps,
-  setup(props, { slots }) {
-    watch(() => props.message, (val) => {
+  setup(props2, { slots }) {
+    watch(() => props2.message, (val) => {
       Object.assign(messageConfig, val != null ? val : {});
     }, { immediate: true, deep: true });
-    const config = provideGlobalConfig(props);
+    const config = provideGlobalConfig(props2);
     return () => renderSlot(slots, "default", { config: config == null ? void 0 : config.value });
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/config-provider/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/config-provider/index.mjs
 var ElConfigProvider = withInstall(ConfigProvider);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/version.mjs
-var version2 = "2.8.1";
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/version.mjs
+var version2 = "2.8.4";
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/make-installer.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/make-installer.mjs
 var makeInstaller = (components = []) => {
   const install2 = (app, options) => {
     if (app[INSTALLED_KEY])
@@ -13758,7 +13789,7 @@ var makeInstaller = (components = []) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/affix/src/affix.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/affix/src/affix.mjs
 var affixProps = buildProps({
   zIndex: {
     type: definePropType([Number, String]),
@@ -13783,16 +13814,16 @@ var affixEmits = {
   [CHANGE_EVENT]: (fixed) => isBoolean2(fixed)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs
-var _export_sfc = (sfc, props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs
+var _export_sfc = (sfc, props2) => {
   const target2 = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
+  for (const [key, val] of props2) {
     target2[key] = val;
   }
   return target2;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/affix/src/affix2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/affix/src/affix2.mjs
 var COMPONENT_NAME = "ElAffix";
 var __default__ = defineComponent({
   name: COMPONENT_NAME
@@ -13802,7 +13833,7 @@ var _sfc_main = defineComponent({
   props: affixProps,
   emits: affixEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("affix");
     const target2 = shallowRef();
     const root2 = shallowRef();
@@ -13828,21 +13859,21 @@ var _sfc_main = defineComponent({
     const affixStyle = computed(() => {
       if (!fixed.value)
         return {};
-      const offset3 = props.offset ? addUnit(props.offset) : 0;
+      const offset3 = props2.offset ? addUnit(props2.offset) : 0;
       return {
         height: `${rootHeight.value}px`,
         width: `${rootWidth.value}px`,
-        top: props.position === "top" ? offset3 : "",
-        bottom: props.position === "bottom" ? offset3 : "",
+        top: props2.position === "top" ? offset3 : "",
+        bottom: props2.position === "bottom" ? offset3 : "",
         transform: transform2.value ? `translateY(${transform2.value}px)` : "",
-        zIndex: props.zIndex
+        zIndex: props2.zIndex
       };
     });
     const update2 = () => {
       if (!scrollContainer.value)
         return;
       scrollTop.value = scrollContainer.value instanceof Window ? document.documentElement.scrollTop : scrollContainer.value.scrollTop || 0;
-      const { position, target: target22, offset: offset3 } = props;
+      const { position, target: target22, offset: offset3 } = props2;
       const rootHeightOffset = offset3 + rootHeight.value;
       if (position === "top") {
         if (target22) {
@@ -13870,10 +13901,10 @@ var _sfc_main = defineComponent({
     watch(fixed, (val) => emit("change", val));
     onMounted(() => {
       var _a2;
-      if (props.target) {
-        target2.value = (_a2 = document.querySelector(props.target)) != null ? _a2 : void 0;
+      if (props2.target) {
+        target2.value = (_a2 = document.querySelector(props2.target)) != null ? _a2 : void 0;
         if (!target2.value)
-          throwError(COMPONENT_NAME, `Target does not exist: ${props.target}`);
+          throwError(COMPONENT_NAME, `Target does not exist: ${props2.target}`);
       } else {
         target2.value = document.documentElement;
       }
@@ -13905,10 +13936,10 @@ var _sfc_main = defineComponent({
 });
 var Affix = _export_sfc(_sfc_main, [["__file", "affix.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/affix/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/affix/index.mjs
 var ElAffix = withInstall(Affix);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/icon/src/icon.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/icon/src/icon.mjs
 var iconProps = buildProps({
   size: {
     type: definePropType([Number, String])
@@ -13918,7 +13949,7 @@ var iconProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/icon/src/icon2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/icon/src/icon2.mjs
 var __default__2 = defineComponent({
   name: "ElIcon",
   inheritAttrs: false
@@ -13927,10 +13958,10 @@ var _sfc_main2 = defineComponent({
   ...__default__2,
   props: iconProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("icon");
     const style = computed(() => {
-      const { size: size3, color } = props;
+      const { size: size3, color } = props2;
       if (!size3 && !color)
         return {};
       return {
@@ -13950,10 +13981,10 @@ var _sfc_main2 = defineComponent({
 });
 var Icon = _export_sfc(_sfc_main2, [["__file", "icon.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/icon/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/icon/index.mjs
 var ElIcon = withInstall(Icon);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/alert/src/alert.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/alert/src/alert.mjs
 var alertEffects = ["light", "dark"];
 var alertProps = buildProps({
   title: {
@@ -13989,7 +14020,7 @@ var alertEmits = {
   close: (evt) => evt instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/alert/src/alert2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/alert/src/alert2.mjs
 var __default__3 = defineComponent({
   name: "ElAlert"
 });
@@ -13998,18 +14029,18 @@ var _sfc_main3 = defineComponent({
   props: alertProps,
   emits: alertEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const { Close } = TypeComponents;
     const slots = useSlots();
     const ns = useNamespace("alert");
     const visible = ref(true);
-    const iconComponent = computed(() => TypeComponentsMap[props.type]);
+    const iconComponent = computed(() => TypeComponentsMap[props2.type]);
     const iconClass = computed(() => [
       ns.e("icon"),
-      { [ns.is("big")]: !!props.description || !!slots.default }
+      { [ns.is("big")]: !!props2.description || !!slots.default }
     ]);
     const withDescription = computed(() => {
-      return { "with-description": props.description || slots.default };
+      return { "with-description": props2.description || slots.default };
     });
     const close2 = (evt) => {
       visible.value = false;
@@ -14081,14 +14112,14 @@ var _sfc_main3 = defineComponent({
 });
 var Alert = _export_sfc(_sfc_main3, [["__file", "alert.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/alert/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/alert/index.mjs
 var ElAlert = withInstall(Alert);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/form/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/form/src/constants.mjs
 var formContextKey = Symbol("formContextKey");
 var formItemContextKey = Symbol("formItemContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/form/src/hooks/use-form-common-props.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/form/src/hooks/use-form-common-props.mjs
 var useFormSize = (fallback, ignore = {}) => {
   const emptyRef = ref(void 0);
   const size3 = ignore.prop ? emptyRef : useProp("size");
@@ -14105,7 +14136,7 @@ var useFormDisabled = (fallback) => {
 var useSize = useFormSize;
 var useDisabled = useFormDisabled;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/form/src/hooks/use-form-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/form/src/hooks/use-form-item.mjs
 var useFormItem = () => {
   const form = inject(formContextKey, void 0);
   const formItem = inject(formItemContextKey, void 0);
@@ -14114,7 +14145,7 @@ var useFormItem = () => {
     formItem
   };
 };
-var useFormItemInputId = (props, {
+var useFormItemInputId = (props2, {
   formItemContext,
   disableIdGeneration,
   disableIdManagement
@@ -14129,10 +14160,10 @@ var useFormItemInputId = (props, {
   let idUnwatch = void 0;
   const isLabeledByFormItem = computed(() => {
     var _a2;
-    return !!(!(props.label || props.ariaLabel) && formItemContext && formItemContext.inputIds && ((_a2 = formItemContext.inputIds) == null ? void 0 : _a2.length) <= 1);
+    return !!(!(props2.label || props2.ariaLabel) && formItemContext && formItemContext.inputIds && ((_a2 = formItemContext.inputIds) == null ? void 0 : _a2.length) <= 1);
   });
   onMounted(() => {
-    idUnwatch = watch([toRef(props, "id"), disableIdGeneration], ([id, disableIdGeneration2]) => {
+    idUnwatch = watch([toRef(props2, "id"), disableIdGeneration], ([id, disableIdGeneration2]) => {
       const newId = id != null ? id : !disableIdGeneration2 ? useId().value : void 0;
       if (newId !== inputId.value) {
         if (formItemContext == null ? void 0 : formItemContext.removeInputId) {
@@ -14157,7 +14188,7 @@ var useFormItemInputId = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/form/src/form.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/form/src/form.mjs
 var formMetaProps = buildProps({
   size: {
     type: String,
@@ -14210,7 +14241,7 @@ var formEmits = {
   validate: (prop, isValid, message2) => (isArray(prop) || isString2(prop)) && isBoolean2(isValid) && isString2(message2)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/form/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/form/src/utils.mjs
 var SCOPE4 = "ElForm";
 function useFormLabelWidth() {
   const potentialLabelWidthArr = ref([]);
@@ -14247,12 +14278,12 @@ function useFormLabelWidth() {
     deregisterLabelWidth
   };
 }
-var filterFields = (fields, props) => {
-  const normalized = castArray_default(props);
+var filterFields = (fields, props2) => {
+  const normalized = castArray_default(props2);
   return normalized.length > 0 ? fields.filter((field) => field.prop && normalized.includes(field.prop)) : fields;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/form/src/form2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/form/src/form2.mjs
 var COMPONENT_NAME2 = "ElForm";
 var __default__4 = defineComponent({
   name: COMPONENT_NAME2
@@ -14262,12 +14293,12 @@ var _sfc_main4 = defineComponent({
   props: formProps,
   emits: formEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const fields = [];
     const formSize = useFormSize();
     const ns = useNamespace("form");
     const formClasses = computed(() => {
-      const { labelPosition, inline: inline2 } = props;
+      const { labelPosition, inline: inline2 } = props2;
       return [
         ns.b(),
         ns.m(formSize.value || "default"),
@@ -14289,26 +14320,26 @@ var _sfc_main4 = defineComponent({
       }
     };
     const resetFields = (properties = []) => {
-      if (!props.model) {
+      if (!props2.model) {
         debugWarn(COMPONENT_NAME2, "model is required for resetFields to work.");
         return;
       }
       filterFields(fields, properties).forEach((field) => field.resetField());
     };
-    const clearValidate = (props2 = []) => {
-      filterFields(fields, props2).forEach((field) => field.clearValidate());
+    const clearValidate = (props22 = []) => {
+      filterFields(fields, props22).forEach((field) => field.clearValidate());
     };
     const isValidatable = computed(() => {
-      const hasModel = !!props.model;
+      const hasModel = !!props2.model;
       if (!hasModel) {
         debugWarn(COMPONENT_NAME2, "model is required for validate to work.");
       }
       return hasModel;
     });
-    const obtainValidateFields = (props2) => {
+    const obtainValidateFields = (props22) => {
       if (fields.length === 0)
         return [];
-      const filteredFields = filterFields(fields, props2);
+      const filteredFields = filterFields(fields, props22);
       if (!filteredFields.length) {
         debugWarn(COMPONENT_NAME2, "please pass correct props!");
         return [];
@@ -14316,10 +14347,10 @@ var _sfc_main4 = defineComponent({
       return filteredFields;
     };
     const validate = async (callback) => validateField(void 0, callback);
-    const doValidateField = async (props2 = []) => {
+    const doValidateField = async (props22 = []) => {
       if (!isValidatable.value)
         return false;
-      const fields2 = obtainValidateFields(props2);
+      const fields2 = obtainValidateFields(props22);
       if (fields2.length === 0)
         return true;
       let validationErrors = {};
@@ -14349,7 +14380,7 @@ var _sfc_main4 = defineComponent({
         if (e instanceof Error)
           throw e;
         const invalidFields = e;
-        if (props.scrollToError) {
+        if (props2.scrollToError) {
           scrollToField(Object.keys(invalidFields)[0]);
         }
         await (callback == null ? void 0 : callback(false, invalidFields));
@@ -14360,16 +14391,16 @@ var _sfc_main4 = defineComponent({
       var _a2;
       const field = filterFields(fields, prop)[0];
       if (field) {
-        (_a2 = field.$el) == null ? void 0 : _a2.scrollIntoView(props.scrollIntoViewOptions);
+        (_a2 = field.$el) == null ? void 0 : _a2.scrollIntoView(props2.scrollIntoViewOptions);
       }
     };
-    watch(() => props.rules, () => {
-      if (props.validateOnRuleChange) {
+    watch(() => props2.rules, () => {
+      if (props2.validateOnRuleChange) {
         validate().catch((err) => debugWarn(err));
       }
     }, { deep: true });
     provide(formContextKey, reactive({
-      ...toRefs(props),
+      ...toRefs(props2),
       emit,
       resetFields,
       clearValidate,
@@ -15446,7 +15477,7 @@ Schema.warning = warning;
 Schema.messages = messages;
 Schema.validators = validators;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/form/src/form-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/form/src/form-item.mjs
 var formItemValidateStates = [
   "",
   "error",
@@ -15494,7 +15525,7 @@ var formItemProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/form/src/form-label-wrap.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/form/src/form-label-wrap.mjs
 var COMPONENT_NAME3 = "ElLabelWrap";
 var FormLabelWrap = defineComponent({
   name: COMPONENT_NAME3,
@@ -15502,7 +15533,7 @@ var FormLabelWrap = defineComponent({
     isAutoWidth: Boolean,
     updateAll: Boolean
   },
-  setup(props, {
+  setup(props2, {
     slots
   }) {
     const formContext = inject(formContextKey, void 0);
@@ -15523,7 +15554,7 @@ var FormLabelWrap = defineComponent({
     };
     const updateLabelWidth = (action = "update") => {
       nextTick(() => {
-        if (slots.default && props.isAutoWidth) {
+        if (slots.default && props2.isAutoWidth) {
           if (action === "update") {
             computedWidth.value = getLabelWidth();
           } else if (action === "remove") {
@@ -15541,7 +15572,7 @@ var FormLabelWrap = defineComponent({
     });
     onUpdated(() => updateLabelWidthFn());
     watch(computedWidth, (val, oldVal) => {
-      if (props.updateAll) {
+      if (props2.updateAll) {
         formContext == null ? void 0 : formContext.registerLabelWidth(val, oldVal);
       }
     });
@@ -15555,7 +15586,7 @@ var FormLabelWrap = defineComponent({
         return null;
       const {
         isAutoWidth
-      } = props;
+      } = props2;
       if (isAutoWidth) {
         const autoLabelWidth = formContext == null ? void 0 : formContext.autoLabelWidth;
         const hasLabel = formItemContext == null ? void 0 : formItemContext.hasLabel;
@@ -15582,7 +15613,7 @@ var FormLabelWrap = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/form/src/form-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/form/src/form-item2.mjs
 var __default__5 = defineComponent({
   name: "ElFormItem"
 });
@@ -15590,7 +15621,7 @@ var _sfc_main5 = defineComponent({
   ...__default__5,
   props: formItemProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const slots = useSlots();
     const formContext = inject(formContextKey, void 0);
     const parentFormItemContext = inject(formItemContextKey, void 0);
@@ -15604,12 +15635,12 @@ var _sfc_main5 = defineComponent({
     const formItemRef = ref();
     let initialValue = void 0;
     let isResettingField = false;
-    const labelPosition = computed(() => props.labelPosition || (formContext == null ? void 0 : formContext.labelPosition));
+    const labelPosition = computed(() => props2.labelPosition || (formContext == null ? void 0 : formContext.labelPosition));
     const labelStyle = computed(() => {
       if (labelPosition.value === "top") {
         return {};
       }
-      const labelWidth = addUnit(props.labelWidth || (formContext == null ? void 0 : formContext.labelWidth) || "");
+      const labelWidth = addUnit(props2.labelWidth || (formContext == null ? void 0 : formContext.labelWidth) || "");
       if (labelWidth)
         return { width: labelWidth };
       return {};
@@ -15618,11 +15649,11 @@ var _sfc_main5 = defineComponent({
       if (labelPosition.value === "top" || (formContext == null ? void 0 : formContext.inline)) {
         return {};
       }
-      if (!props.label && !props.labelWidth && isNested) {
+      if (!props2.label && !props2.labelWidth && isNested) {
         return {};
       }
-      const labelWidth = addUnit(props.labelWidth || (formContext == null ? void 0 : formContext.labelWidth) || "");
-      if (!props.label && !slots.label) {
+      const labelWidth = addUnit(props2.labelWidth || (formContext == null ? void 0 : formContext.labelWidth) || "");
+      if (!props2.label && !slots.label) {
         return { marginLeft: labelWidth };
       }
       return {};
@@ -15633,7 +15664,7 @@ var _sfc_main5 = defineComponent({
       ns.is("error", validateState.value === "error"),
       ns.is("validating", validateState.value === "validating"),
       ns.is("success", validateState.value === "success"),
-      ns.is("required", isRequired.value || props.required),
+      ns.is("required", isRequired.value || props2.required),
       ns.is("no-asterisk", formContext == null ? void 0 : formContext.hideRequiredAsterisk),
       (formContext == null ? void 0 : formContext.requireAsteriskPosition) === "right" ? "asterisk-right" : "asterisk-left",
       {
@@ -15641,21 +15672,21 @@ var _sfc_main5 = defineComponent({
         [ns.m(`label-${labelPosition.value}`)]: labelPosition.value
       }
     ]);
-    const _inlineMessage = computed(() => isBoolean2(props.inlineMessage) ? props.inlineMessage : (formContext == null ? void 0 : formContext.inlineMessage) || false);
+    const _inlineMessage = computed(() => isBoolean2(props2.inlineMessage) ? props2.inlineMessage : (formContext == null ? void 0 : formContext.inlineMessage) || false);
     const validateClasses = computed(() => [
       ns.e("error"),
       { [ns.em("error", "inline")]: _inlineMessage.value }
     ]);
     const propString = computed(() => {
-      if (!props.prop)
+      if (!props2.prop)
         return "";
-      return isString2(props.prop) ? props.prop : props.prop.join(".");
+      return isString2(props2.prop) ? props2.prop : props2.prop.join(".");
     });
     const hasLabel = computed(() => {
-      return !!(props.label || slots.label);
+      return !!(props2.label || slots.label);
     });
     const labelFor = computed(() => {
-      return props.for || (inputIds.value.length === 1 ? inputIds.value[0] : void 0);
+      return props2.for || (inputIds.value.length === 1 ? inputIds.value[0] : void 0);
     });
     const isGroup = computed(() => {
       return !labelFor.value && hasLabel.value;
@@ -15663,20 +15694,20 @@ var _sfc_main5 = defineComponent({
     const isNested = !!parentFormItemContext;
     const fieldValue = computed(() => {
       const model = formContext == null ? void 0 : formContext.model;
-      if (!model || !props.prop) {
+      if (!model || !props2.prop) {
         return;
       }
-      return getProp(model, props.prop).value;
+      return getProp(model, props2.prop).value;
     });
     const normalizedRules = computed(() => {
-      const { required: required4 } = props;
+      const { required: required4 } = props2;
       const rules2 = [];
-      if (props.rules) {
-        rules2.push(...castArray_default(props.rules));
+      if (props2.rules) {
+        rules2.push(...castArray_default(props2.rules));
       }
       const formRules = formContext == null ? void 0 : formContext.rules;
-      if (formRules && props.prop) {
-        const _rules = getProp(formRules, props.prop).value;
+      if (formRules && props2.prop) {
+        const _rules = getProp(formRules, props2.prop).value;
         if (_rules) {
           rules2.push(...castArray_default(_rules));
         }
@@ -15711,9 +15742,9 @@ var _sfc_main5 = defineComponent({
     const isRequired = computed(() => normalizedRules.value.some((rule) => rule.required));
     const shouldShowError = computed(() => {
       var _a2;
-      return validateStateDebounced.value === "error" && props.showMessage && ((_a2 = formContext == null ? void 0 : formContext.showMessage) != null ? _a2 : true);
+      return validateStateDebounced.value === "error" && props2.showMessage && ((_a2 = formContext == null ? void 0 : formContext.showMessage) != null ? _a2 : true);
     });
-    const currentLabel = computed(() => `${props.label || ""}${(formContext == null ? void 0 : formContext.labelSuffix) || ""}`);
+    const currentLabel = computed(() => `${props2.label || ""}${(formContext == null ? void 0 : formContext.labelSuffix) || ""}`);
     const setValidationState = (state) => {
       validateState.value = state;
     };
@@ -15724,12 +15755,12 @@ var _sfc_main5 = defineComponent({
         console.error(error);
       }
       setValidationState("error");
-      validateMessage.value = errors ? (_b = (_a2 = errors == null ? void 0 : errors[0]) == null ? void 0 : _a2.message) != null ? _b : `${props.prop} is required` : "";
-      formContext == null ? void 0 : formContext.emit("validate", props.prop, false, validateMessage.value);
+      validateMessage.value = errors ? (_b = (_a2 = errors == null ? void 0 : errors[0]) == null ? void 0 : _a2.message) != null ? _b : `${props2.prop} is required` : "";
+      formContext == null ? void 0 : formContext.emit("validate", props2.prop, false, validateMessage.value);
     };
     const onValidationSucceeded = () => {
       setValidationState("success");
-      formContext == null ? void 0 : formContext.emit("validate", props.prop, true, "");
+      formContext == null ? void 0 : formContext.emit("validate", props2.prop, true, "");
     };
     const doValidate = async (rules2) => {
       const modelName = propString.value;
@@ -15745,7 +15776,7 @@ var _sfc_main5 = defineComponent({
       });
     };
     const validate = async (trigger, callback) => {
-      if (isResettingField || !props.prop) {
+      if (isResettingField || !props2.prop) {
         return false;
       }
       const hasCallback = isFunction2(callback);
@@ -15775,9 +15806,9 @@ var _sfc_main5 = defineComponent({
     };
     const resetField = async () => {
       const model = formContext == null ? void 0 : formContext.model;
-      if (!model || !props.prop)
+      if (!model || !props2.prop)
         return;
-      const computedValue = getProp(model, props.prop);
+      const computedValue = getProp(model, props2.prop);
       isResettingField = true;
       computedValue.value = clone_default(initialValue);
       await nextTick();
@@ -15792,13 +15823,13 @@ var _sfc_main5 = defineComponent({
     const removeInputId = (id) => {
       inputIds.value = inputIds.value.filter((listId) => listId !== id);
     };
-    watch(() => props.error, (val) => {
+    watch(() => props2.error, (val) => {
       validateMessage.value = val || "";
       setValidationState(val ? "error" : "");
     }, { immediate: true });
-    watch(() => props.validateStatus, (val) => setValidationState(val || ""));
+    watch(() => props2.validateStatus, (val) => setValidationState(val || ""));
     const context = reactive({
-      ...toRefs(props),
+      ...toRefs(props2),
       $el: formItemRef,
       size: _size,
       validateState,
@@ -15815,7 +15846,7 @@ var _sfc_main5 = defineComponent({
     });
     provide(formItemContextKey, context);
     onMounted(() => {
-      if (props.prop) {
+      if (props2.prop) {
         formContext == null ? void 0 : formContext.addField(context);
         initialValue = clone_default(fieldValue.value);
       }
@@ -15889,13 +15920,13 @@ var _sfc_main5 = defineComponent({
 });
 var FormItem = _export_sfc(_sfc_main5, [["__file", "form-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/form/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/form/index.mjs
 var ElForm = withInstall(Form, {
   FormItem
 });
 var ElFormItem = withNoopInstall(FormItem);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/input/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/input/src/utils.mjs
 var hiddenTextarea = void 0;
 var HIDDEN_STYLE = `
   height:0 !important;
@@ -15970,7 +16001,7 @@ function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
   return result2;
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/input/src/input.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/input/src/input.mjs
 var inputProps = buildProps({
   id: {
     type: String,
@@ -16068,7 +16099,7 @@ var inputEmits = {
   compositionend: (evt) => evt instanceof CompositionEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/input/src/input2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/input/src/input2.mjs
 var __default__6 = defineComponent({
   name: "ElInput",
   inheritAttrs: false
@@ -16078,12 +16109,12 @@ var _sfc_main6 = defineComponent({
   props: inputProps,
   emits: inputEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const rawAttrs = useAttrs();
     const slots = useSlots();
     const containerAttrs = computed(() => {
       const comboBoxAttrs = {};
-      if (props.containerRole === "combobox") {
+      if (props2.containerRole === "combobox") {
         comboBoxAttrs["aria-haspopup"] = rawAttrs["aria-haspopup"];
         comboBoxAttrs["aria-owns"] = rawAttrs["aria-owns"];
         comboBoxAttrs["aria-expanded"] = rawAttrs["aria-expanded"];
@@ -16091,16 +16122,16 @@ var _sfc_main6 = defineComponent({
       return comboBoxAttrs;
     });
     const containerKls = computed(() => [
-      props.type === "textarea" ? nsTextarea.b() : nsInput.b(),
+      props2.type === "textarea" ? nsTextarea.b() : nsInput.b(),
       nsInput.m(inputSize.value),
       nsInput.is("disabled", inputDisabled.value),
       nsInput.is("exceed", inputExceed.value),
       {
         [nsInput.b("group")]: slots.prepend || slots.append,
-        [nsInput.m("prefix")]: slots.prefix || props.prefixIcon,
-        [nsInput.m("suffix")]: slots.suffix || props.suffixIcon || props.clearable || props.showPassword,
+        [nsInput.m("prefix")]: slots.prefix || props2.prefixIcon,
+        [nsInput.m("suffix")]: slots.suffix || props2.suffixIcon || props2.clearable || props2.showPassword,
         [nsInput.bm("suffix", "password-clear")]: showClear.value && showPwdVisible.value,
-        [nsInput.b("hidden")]: props.type === "hidden"
+        [nsInput.b("hidden")]: props2.type === "hidden"
       },
       rawAttrs.class
     ]);
@@ -16114,7 +16145,7 @@ var _sfc_main6 = defineComponent({
       })
     });
     const { form: elForm, formItem: elFormItem } = useFormItem();
-    const { inputId } = useFormItemInputId(props, {
+    const { inputId } = useFormItemInputId(props2, {
       formItemContext: elFormItem
     });
     const inputSize = useFormSize();
@@ -16126,12 +16157,15 @@ var _sfc_main6 = defineComponent({
     const hovering = ref(false);
     const passwordVisible = ref(false);
     const countStyle = ref();
-    const textareaCalcStyle = shallowRef(props.inputStyle);
+    const textareaCalcStyle = shallowRef(props2.inputStyle);
     const _ref = computed(() => input.value || textarea.value);
-    const { wrapperRef, isFocused, handleFocus, handleBlur: handleBlur2 } = useFocusController(_ref, {
+    const { wrapperRef, isFocused, handleFocus, handleBlur } = useFocusController(_ref, {
+      beforeFocus() {
+        return inputDisabled.value;
+      },
       afterBlur() {
         var _a2;
-        if (props.validateEvent) {
+        if (props2.validateEvent) {
           (_a2 = elFormItem == null ? void 0 : elFormItem.validate) == null ? void 0 : _a2.call(elFormItem, "blur").catch((err) => debugWarn(err));
         }
       }
@@ -16147,21 +16181,21 @@ var _sfc_main6 = defineComponent({
       rawAttrs.style
     ]);
     const textareaStyle = computed(() => [
-      props.inputStyle,
+      props2.inputStyle,
       textareaCalcStyle.value,
-      { resize: props.resize }
+      { resize: props2.resize }
     ]);
-    const nativeInputValue = computed(() => isNil_default(props.modelValue) ? "" : String(props.modelValue));
-    const showClear = computed(() => props.clearable && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (isFocused.value || hovering.value));
-    const showPwdVisible = computed(() => props.showPassword && !inputDisabled.value && !props.readonly && !!nativeInputValue.value && (!!nativeInputValue.value || isFocused.value));
-    const isWordLimitVisible = computed(() => props.showWordLimit && !!props.maxlength && (props.type === "text" || props.type === "textarea") && !inputDisabled.value && !props.readonly && !props.showPassword);
+    const nativeInputValue = computed(() => isNil_default(props2.modelValue) ? "" : String(props2.modelValue));
+    const showClear = computed(() => props2.clearable && !inputDisabled.value && !props2.readonly && !!nativeInputValue.value && (isFocused.value || hovering.value));
+    const showPwdVisible = computed(() => props2.showPassword && !inputDisabled.value && !props2.readonly && !!nativeInputValue.value && (!!nativeInputValue.value || isFocused.value));
+    const isWordLimitVisible = computed(() => props2.showWordLimit && !!props2.maxlength && (props2.type === "text" || props2.type === "textarea") && !inputDisabled.value && !props2.readonly && !props2.showPassword);
     const textLength = computed(() => nativeInputValue.value.length);
-    const inputExceed = computed(() => !!isWordLimitVisible.value && textLength.value > Number(props.maxlength));
-    const suffixVisible = computed(() => !!slots.suffix || !!props.suffixIcon || showClear.value || props.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
+    const inputExceed = computed(() => !!isWordLimitVisible.value && textLength.value > Number(props2.maxlength));
+    const suffixVisible = computed(() => !!slots.suffix || !!props2.suffixIcon || showClear.value || props2.showPassword || isWordLimitVisible.value || !!validateState.value && needStatusIcon.value);
     const [recordCursor, setCursor] = useCursor(input);
     useResizeObserver(textarea, (entries) => {
       onceInitSizeTextarea();
-      if (!isWordLimitVisible.value || props.resize !== "both")
+      if (!isWordLimitVisible.value || props2.resize !== "both")
         return;
       const entry = entries[0];
       const { width } = entry.contentRect;
@@ -16170,7 +16204,7 @@ var _sfc_main6 = defineComponent({
       };
     });
     const resizeTextarea = () => {
-      const { type: type4, autosize } = props;
+      const { type: type4, autosize } = props2;
       if (!isClient || type4 !== "textarea" || !textarea.value)
         return;
       if (autosize) {
@@ -16195,7 +16229,7 @@ var _sfc_main6 = defineComponent({
       let isInit = false;
       return () => {
         var _a2;
-        if (isInit || !props.autosize)
+        if (isInit || !props2.autosize)
           return;
         const isElHidden = ((_a2 = textarea.value) == null ? void 0 : _a2.offsetParent) === null;
         if (!isElHidden) {
@@ -16207,7 +16241,7 @@ var _sfc_main6 = defineComponent({
     const onceInitSizeTextarea = createOnceInitResize(resizeTextarea);
     const setNativeInputValue = () => {
       const input2 = _ref.value;
-      const formatterValue = props.formatter ? props.formatter(nativeInputValue.value) : nativeInputValue.value;
+      const formatterValue = props2.formatter ? props2.formatter(nativeInputValue.value) : nativeInputValue.value;
       if (!input2 || input2.value === formatterValue)
         return;
       input2.value = formatterValue;
@@ -16215,8 +16249,8 @@ var _sfc_main6 = defineComponent({
     const handleInput = async (event) => {
       recordCursor();
       let { value } = event.target;
-      if (props.formatter) {
-        value = props.parser ? props.parser(value) : value;
+      if (props2.formatter) {
+        value = props2.parser ? props2.parser(value) : value;
       }
       if (isComposing.value)
         return;
@@ -16273,21 +16307,21 @@ var _sfc_main6 = defineComponent({
       emit("clear");
       emit("input", "");
     };
-    watch(() => props.modelValue, () => {
+    watch(() => props2.modelValue, () => {
       var _a2;
       nextTick(() => resizeTextarea());
-      if (props.validateEvent) {
+      if (props2.validateEvent) {
         (_a2 = elFormItem == null ? void 0 : elFormItem.validate) == null ? void 0 : _a2.call(elFormItem, "change").catch((err) => debugWarn(err));
       }
     });
     watch(nativeInputValue, () => setNativeInputValue());
-    watch(() => props.type, async () => {
+    watch(() => props2.type, async () => {
       await nextTick();
       setNativeInputValue();
       resizeTextarea();
     });
     onMounted(() => {
-      if (!props.formatter && props.parser) {
+      if (!props2.formatter && props2.parser) {
         debugWarn("ElInput", "If you set the parser, you also need to set the formatter.");
       }
       setNativeInputValue();
@@ -16298,7 +16332,7 @@ var _sfc_main6 = defineComponent({
       textarea,
       ref: _ref,
       textareaStyle,
-      autosize: toRef(props, "autosize"),
+      autosize: toRef(props2, "autosize"),
       isComposing,
       focus,
       blur,
@@ -16476,7 +16510,7 @@ var _sfc_main6 = defineComponent({
             onCompositionend: unref(handleCompositionEnd),
             onInput: handleInput,
             onFocus: unref(handleFocus),
-            onBlur: unref(handleBlur2),
+            onBlur: unref(handleBlur),
             onChange: handleChange,
             onKeydown: handleKeydown
           }), null, 16, ["id", "minlength", "maxlength", "tabindex", "disabled", "readonly", "autocomplete", "aria-label", "placeholder", "form", "autofocus", "rows", "onCompositionstart", "onCompositionupdate", "onCompositionend", "onFocus", "onBlur"]),
@@ -16492,10 +16526,10 @@ var _sfc_main6 = defineComponent({
 });
 var Input = _export_sfc(_sfc_main6, [["__file", "input.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/input/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/input/index.mjs
 var ElInput = withInstall(Input);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/util.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/util.mjs
 var GAP = 4;
 var BAR_MAP = {
   vertical: {
@@ -16528,10 +16562,10 @@ var renderThumbStyle = ({
   transform: `translate${bar.axis}(${move}%)`
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/constants.mjs
 var scrollbarContextKey = Symbol("scrollbarContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/thumb.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/thumb.mjs
 var thumbProps = buildProps({
   vertical: Boolean,
   size: String,
@@ -16543,13 +16577,13 @@ var thumbProps = buildProps({
   always: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/thumb2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/thumb2.mjs
 var COMPONENT_NAME4 = "Thumb";
 var _sfc_main7 = defineComponent({
   __name: "thumb",
   props: thumbProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const scrollbar = inject(scrollbarContextKey);
     const ns = useNamespace("scrollbar");
     if (!scrollbar)
@@ -16561,13 +16595,13 @@ var _sfc_main7 = defineComponent({
     let cursorDown = false;
     let cursorLeave = false;
     let originalOnSelectStart = isClient ? document.onselectstart : null;
-    const bar = computed(() => BAR_MAP[props.vertical ? "vertical" : "horizontal"]);
+    const bar = computed(() => BAR_MAP[props2.vertical ? "vertical" : "horizontal"]);
     const thumbStyle = computed(() => renderThumbStyle({
-      size: props.size,
-      move: props.move,
+      size: props2.size,
+      move: props2.move,
       bar: bar.value
     }));
-    const offsetRatio = computed(() => instance.value[bar.value.offset] ** 2 / scrollbar.wrapElement[bar.value.scrollSize] / props.ratio / thumb.value[bar.value.offset]);
+    const offsetRatio = computed(() => instance.value[bar.value.offset] ** 2 / scrollbar.wrapElement[bar.value.scrollSize] / props2.ratio / thumb.value[bar.value.offset]);
     const clickThumbHandler = (e) => {
       var _a2;
       e.stopPropagation();
@@ -16620,7 +16654,7 @@ var _sfc_main7 = defineComponent({
     };
     const mouseMoveScrollbarHandler = () => {
       cursorLeave = false;
-      visible.value = !!props.size;
+      visible.value = !!props2.size;
     };
     const mouseLeaveScrollbarHandler = () => {
       cursorLeave = true;
@@ -16666,7 +16700,7 @@ var _sfc_main7 = defineComponent({
 });
 var Thumb = _export_sfc(_sfc_main7, [["__file", "thumb.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/bar.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/bar.mjs
 var barProps = buildProps({
   always: {
     type: Boolean,
@@ -16678,12 +16712,12 @@ var barProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/bar2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/bar2.mjs
 var _sfc_main8 = defineComponent({
   __name: "bar",
   props: barProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const scrollbar = inject(scrollbarContextKey);
     const moveX = ref(0);
     const moveY = ref(0);
@@ -16707,8 +16741,8 @@ var _sfc_main8 = defineComponent({
       const offsetWidth = wrap2.offsetWidth - GAP;
       const originalHeight = offsetHeight ** 2 / wrap2.scrollHeight;
       const originalWidth = offsetWidth ** 2 / wrap2.scrollWidth;
-      const height = Math.max(originalHeight, props.minSize);
-      const width = Math.max(originalWidth, props.minSize);
+      const height = Math.max(originalHeight, props2.minSize);
+      const width = Math.max(originalWidth, props2.minSize);
       ratioY.value = originalHeight / (offsetHeight - originalHeight) / (height / (offsetHeight - height));
       ratioX.value = originalWidth / (offsetWidth - originalWidth) / (width / (offsetWidth - width));
       sizeHeight.value = height + GAP < offsetHeight ? `${height}px` : "";
@@ -16739,7 +16773,7 @@ var _sfc_main8 = defineComponent({
 });
 var Bar = _export_sfc(_sfc_main8, [["__file", "bar.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/scrollbar.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/scrollbar.mjs
 var scrollbarProps = buildProps({
   height: {
     type: [String, Number],
@@ -16779,6 +16813,10 @@ var scrollbarProps = buildProps({
     type: Number,
     default: 20
   },
+  tabindex: {
+    type: [String, Number],
+    default: void 0
+  },
   id: String,
   role: String,
   ...useAriaProps(["ariaLabel", "ariaOrientation"])
@@ -16790,7 +16828,7 @@ var scrollbarEmits = {
   }) => [scrollTop, scrollLeft].every(isNumber3)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/scrollbar2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/src/scrollbar2.mjs
 var COMPONENT_NAME5 = "ElScrollbar";
 var __default__7 = defineComponent({
   name: COMPONENT_NAME5
@@ -16800,7 +16838,7 @@ var _sfc_main9 = defineComponent({
   props: scrollbarProps,
   emits: scrollbarEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("scrollbar");
     let stopResizeObserver = void 0;
     let stopResizeListener = void 0;
@@ -16812,21 +16850,21 @@ var _sfc_main9 = defineComponent({
     const barRef = ref();
     const wrapStyle = computed(() => {
       const style = {};
-      if (props.height)
-        style.height = addUnit(props.height);
-      if (props.maxHeight)
-        style.maxHeight = addUnit(props.maxHeight);
-      return [props.wrapStyle, style];
+      if (props2.height)
+        style.height = addUnit(props2.height);
+      if (props2.maxHeight)
+        style.maxHeight = addUnit(props2.maxHeight);
+      return [props2.wrapStyle, style];
     });
     const wrapKls = computed(() => {
       return [
-        props.wrapClass,
+        props2.wrapClass,
         ns.e("wrap"),
-        { [ns.em("wrap", "hidden-default")]: !props.native }
+        { [ns.em("wrap", "hidden-default")]: !props2.native }
       ];
     });
     const resizeKls = computed(() => {
-      return [ns.e("view"), props.viewClass];
+      return [ns.e("view"), props2.viewClass];
     });
     const handleScroll2 = () => {
       var _a2;
@@ -16865,7 +16903,7 @@ var _sfc_main9 = defineComponent({
       var _a2;
       (_a2 = barRef.value) == null ? void 0 : _a2.update();
     };
-    watch(() => props.noresize, (noresize) => {
+    watch(() => props2.noresize, (noresize) => {
       if (noresize) {
         stopResizeObserver == null ? void 0 : stopResizeObserver();
         stopResizeListener == null ? void 0 : stopResizeListener();
@@ -16875,8 +16913,8 @@ var _sfc_main9 = defineComponent({
         stopResizeListener = useEventListener("resize", update2);
       }
     }, { immediate: true });
-    watch(() => [props.maxHeight, props.height], () => {
-      if (!props.native)
+    watch(() => [props2.maxHeight, props2.height], () => {
+      if (!props2.native)
         nextTick(() => {
           var _a2;
           update2();
@@ -16890,11 +16928,13 @@ var _sfc_main9 = defineComponent({
       wrapElement: wrapRef
     }));
     onActivated(() => {
-      wrapRef.value.scrollTop = wrapScrollTop;
-      wrapRef.value.scrollLeft = wrapScrollLeft;
+      if (wrapRef.value) {
+        wrapRef.value.scrollTop = wrapScrollTop;
+        wrapRef.value.scrollLeft = wrapScrollLeft;
+      }
     });
     onMounted(() => {
-      if (!props.native)
+      if (!props2.native)
         nextTick(() => {
           update2();
         });
@@ -16919,6 +16959,7 @@ var _sfc_main9 = defineComponent({
           ref: wrapRef,
           class: normalizeClass(unref(wrapKls)),
           style: normalizeStyle(unref(wrapStyle)),
+          tabindex: _ctx.tabindex,
           onScroll: handleScroll2
         }, [
           (openBlock(), createBlock(resolveDynamicComponent(_ctx.tag), {
@@ -16936,7 +16977,7 @@ var _sfc_main9 = defineComponent({
             ]),
             _: 3
           }, 8, ["id", "class", "style", "role", "aria-label", "aria-orientation"]))
-        ], 38),
+        ], 46, ["tabindex"]),
         !_ctx.native ? (openBlock(), createBlock(Bar, {
           key: 0,
           ref_key: "barRef",
@@ -16950,14 +16991,14 @@ var _sfc_main9 = defineComponent({
 });
 var Scrollbar = _export_sfc(_sfc_main9, [["__file", "scrollbar.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/scrollbar/index.mjs
 var ElScrollbar = withInstall(Scrollbar);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/constants.mjs
 var POPPER_INJECTION_KEY = Symbol("popper");
 var POPPER_CONTENT_INJECTION_KEY = Symbol("popperContent");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/popper.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/popper.mjs
 var Effect = {
   LIGHT: "light",
   DARK: "dark"
@@ -16981,7 +17022,7 @@ var popperProps = buildProps({
 });
 var usePopperProps = popperProps;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/popper2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/popper2.mjs
 var __default__8 = defineComponent({
   name: "ElPopper",
   inheritAttrs: false
@@ -16990,12 +17031,12 @@ var _sfc_main10 = defineComponent({
   ...__default__8,
   props: popperProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const triggerRef = ref();
     const popperInstanceRef = ref();
     const contentRef = ref();
     const referenceRef = ref();
-    const role = computed(() => props.role);
+    const role = computed(() => props2.role);
     const popperProvides = {
       triggerRef,
       popperInstanceRef,
@@ -17012,7 +17053,7 @@ var _sfc_main10 = defineComponent({
 });
 var Popper = _export_sfc(_sfc_main10, [["__file", "popper.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/arrow.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/arrow.mjs
 var popperArrowProps = buildProps({
   arrowOffset: {
     type: Number,
@@ -17021,7 +17062,7 @@ var popperArrowProps = buildProps({
 });
 var usePopperArrowProps = popperArrowProps;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/arrow2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/arrow2.mjs
 var __default__9 = defineComponent({
   name: "ElPopperArrow",
   inheritAttrs: false
@@ -17030,10 +17071,10 @@ var _sfc_main11 = defineComponent({
   ...__default__9,
   props: popperArrowProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("popper");
     const { arrowOffset, arrowRef, arrowStyle } = inject(POPPER_CONTENT_INJECTION_KEY, void 0);
-    watch(() => props.arrowOffset, (val) => {
+    watch(() => props2.arrowOffset, (val) => {
       arrowOffset.value = val;
     });
     onBeforeUnmount(() => {
@@ -17055,7 +17096,7 @@ var _sfc_main11 = defineComponent({
 });
 var ElPopperArrow = _export_sfc(_sfc_main11, [["__file", "arrow.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slot/src/only-child.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slot/src/only-child.mjs
 var NAME = "ElOnlyChild";
 var OnlyChild = defineComponent({
   name: NAME,
@@ -17113,7 +17154,7 @@ function wrapTextContent(s2) {
   }, [s2]);
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/trigger.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/trigger.mjs
 var popperTriggerProps = buildProps({
   virtualRef: {
     type: definePropType(Object)
@@ -17145,7 +17186,7 @@ var popperTriggerProps = buildProps({
 });
 var usePopperTriggerProps = popperTriggerProps;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/trigger2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/trigger2.mjs
 var __default__10 = defineComponent({
   name: "ElPopperTrigger",
   inheritAttrs: false
@@ -17154,15 +17195,15 @@ var _sfc_main12 = defineComponent({
   ...__default__10,
   props: popperTriggerProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const { role, triggerRef } = inject(POPPER_INJECTION_KEY, void 0);
     useForwardRef(triggerRef);
     const ariaControls = computed(() => {
-      return ariaHaspopup.value ? props.id : void 0;
+      return ariaHaspopup.value ? props2.id : void 0;
     });
     const ariaDescribedby = computed(() => {
       if (role && role.value === "tooltip") {
-        return props.open && props.id ? props.id : void 0;
+        return props2.open && props2.id ? props2.id : void 0;
       }
       return void 0;
     });
@@ -17173,7 +17214,7 @@ var _sfc_main12 = defineComponent({
       return void 0;
     });
     const ariaExpanded = computed(() => {
-      return ariaHaspopup.value ? `${props.open}` : void 0;
+      return ariaHaspopup.value ? `${props2.open}` : void 0;
     });
     let virtualTriggerAriaStopWatch = void 0;
     const TRIGGER_ELE_EVENTS = [
@@ -17186,7 +17227,7 @@ var _sfc_main12 = defineComponent({
       "onContextmenu"
     ];
     onMounted(() => {
-      watch(() => props.virtualRef, (virtualEl) => {
+      watch(() => props2.virtualRef, (virtualEl) => {
         if (virtualEl) {
           triggerRef.value = unrefElement(virtualEl);
         }
@@ -17199,7 +17240,7 @@ var _sfc_main12 = defineComponent({
         if (isElement2(el)) {
           TRIGGER_ELE_EVENTS.forEach((eventName) => {
             var _a2;
-            const handler = props[eventName];
+            const handler = props2[eventName];
             if (handler) {
               ;
               el.addEventListener(eventName.slice(2).toLowerCase(), handler);
@@ -17237,7 +17278,7 @@ var _sfc_main12 = defineComponent({
       if (triggerRef.value && isElement2(triggerRef.value)) {
         const el = triggerRef.value;
         TRIGGER_ELE_EVENTS.forEach((eventName) => {
-          const handler = props[eventName];
+          const handler = props2[eventName];
           if (handler) {
             el.removeEventListener(eventName.slice(2).toLowerCase(), handler);
           }
@@ -17265,7 +17306,7 @@ var _sfc_main12 = defineComponent({
 });
 var ElPopperTrigger = _export_sfc(_sfc_main12, [["__file", "trigger.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/focus-trap/src/tokens.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/focus-trap/src/tokens.mjs
 var FOCUS_AFTER_TRAPPED = "focus-trap.focus-after-trapped";
 var FOCUS_AFTER_RELEASED = "focus-trap.focus-after-released";
 var FOCUSOUT_PREVENTED = "focus-trap.focusout-prevented";
@@ -17281,7 +17322,7 @@ var ON_TRAP_FOCUS_EVT = "focusAfterTrapped";
 var ON_RELEASE_FOCUS_EVT = "focusAfterReleased";
 var FOCUS_TRAP_INJECTION_KEY = Symbol("elFocusTrap");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/focus-trap/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/focus-trap/src/utils.mjs
 var focusReason = ref();
 var lastUserFocusTimestamp = ref(0);
 var lastAutomatedFocusTimestamp = ref(0);
@@ -17417,7 +17458,7 @@ var createFocusOutPreventedEvent = (detail) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/focus-trap/src/focus-trap.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/focus-trap/src/focus-trap.mjs
 var _sfc_main13 = defineComponent({
   name: "ElFocusTrap",
   inheritAttrs: false,
@@ -17438,13 +17479,13 @@ var _sfc_main13 = defineComponent({
     "focusout-prevented",
     "release-requested"
   ],
-  setup(props, { emit }) {
+  setup(props2, { emit }) {
     const forwardRef = ref();
     let lastFocusBeforeTrapped;
     let lastFocusAfterTrapped;
     const { focusReason: focusReason2 } = useFocusReason();
     useEscapeKeydown((event) => {
-      if (props.trapped && !focusLayer.paused) {
+      if (props2.trapped && !focusLayer.paused) {
         emit("release-requested", event);
       }
     });
@@ -17458,12 +17499,12 @@ var _sfc_main13 = defineComponent({
       }
     };
     const onKeydown = (e) => {
-      if (!props.loop && !props.trapped)
+      if (!props2.loop && !props2.trapped)
         return;
       if (focusLayer.paused)
         return;
       const { key, altKey, ctrlKey, metaKey, currentTarget, shiftKey } = e;
-      const { loop } = props;
+      const { loop } = props2;
       const isTabbing = key === EVENT_CODE.tab && !altKey && !ctrlKey && !metaKey;
       const currentFocusingEl = document.activeElement;
       if (isTabbing && currentFocusingEl) {
@@ -17509,7 +17550,7 @@ var _sfc_main13 = defineComponent({
       focusTrapRef: forwardRef,
       onKeydown
     });
-    watch(() => props.focusTrapEl, (focusTrapEl) => {
+    watch(() => props2.focusTrapEl, (focusTrapEl) => {
       if (focusTrapEl) {
         forwardRef.value = focusTrapEl;
       }
@@ -17537,7 +17578,7 @@ var _sfc_main13 = defineComponent({
       const target2 = e.target;
       const relatedTarget = e.relatedTarget;
       const isFocusedInTrap = target2 && trapContainer.contains(target2);
-      if (!props.trapped) {
+      if (!props2.trapped) {
         const isPrevFocusedInTrap = relatedTarget && trapContainer.contains(relatedTarget);
         if (!isPrevFocusedInTrap) {
           lastFocusBeforeTrapped = relatedTarget;
@@ -17547,7 +17588,7 @@ var _sfc_main13 = defineComponent({
         emit("focusin", e);
       if (focusLayer.paused)
         return;
-      if (props.trapped) {
+      if (props2.trapped) {
         if (isFocusedInTrap) {
           lastFocusAfterTrapped = target2;
         } else {
@@ -17559,11 +17600,11 @@ var _sfc_main13 = defineComponent({
       const trapContainer = unref(forwardRef);
       if (focusLayer.paused || !trapContainer)
         return;
-      if (props.trapped) {
+      if (props2.trapped) {
         const relatedTarget = e.relatedTarget;
         if (!isNil_default(relatedTarget) && !trapContainer.contains(relatedTarget)) {
           setTimeout(() => {
-            if (!focusLayer.paused && props.trapped) {
+            if (!focusLayer.paused && props2.trapped) {
               const focusoutPreventedEvent = createFocusOutPreventedEvent({
                 focusReason: focusReason2.value
               });
@@ -17595,7 +17636,7 @@ var _sfc_main13 = defineComponent({
           trapContainer.dispatchEvent(focusEvent);
           if (!focusEvent.defaultPrevented) {
             nextTick(() => {
-              let focusStartEl = props.focusStartEl;
+              let focusStartEl = props2.focusStartEl;
               if (!isString2(focusStartEl)) {
                 tryFocus(focusStartEl);
                 if (document.activeElement !== focusStartEl) {
@@ -17633,10 +17674,10 @@ var _sfc_main13 = defineComponent({
       }
     }
     onMounted(() => {
-      if (props.trapped) {
+      if (props2.trapped) {
         startTrap();
       }
-      watch(() => props.trapped, (trapped) => {
+      watch(() => props2.trapped, (trapped) => {
         if (trapped) {
           startTrap();
         } else {
@@ -17645,7 +17686,7 @@ var _sfc_main13 = defineComponent({
       });
     });
     onBeforeUnmount(() => {
-      if (props.trapped) {
+      if (props2.trapped) {
         stopTrap();
       }
       if (forwardRef.value) {
@@ -17665,7 +17706,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElFocusTrap = _export_sfc(_sfc_main13, [["render", _sfc_render], ["__file", "focus-trap.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/content.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/content.mjs
 var POSITIONING_STRATEGIES = ["fixed", "absolute"];
 var popperCoreConfigProps = buildProps({
   boundariesPadding: {
@@ -17757,14 +17798,14 @@ var usePopperCoreConfigProps = popperCoreConfigProps;
 var usePopperContentProps = popperContentProps;
 var usePopperContentEmits = popperContentEmits;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/utils.mjs
-var buildPopperOptions = (props, modifiers = []) => {
-  const { placement, strategy, popperOptions } = props;
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/utils.mjs
+var buildPopperOptions = (props2, modifiers = []) => {
+  const { placement, strategy, popperOptions } = props2;
   const options = {
     placement,
     strategy,
     ...popperOptions,
-    modifiers: [...genModifiers(props), ...modifiers]
+    modifiers: [...genModifiers(props2), ...modifiers]
   };
   deriveExtraModifiers(options, popperOptions == null ? void 0 : popperOptions.modifiers);
   return options;
@@ -17815,16 +17856,16 @@ function deriveExtraModifiers(options, modifiers) {
   }
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/composables/use-content.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/composables/use-content.mjs
 var DEFAULT_ARROW_OFFSET = 0;
-var usePopperContent = (props) => {
+var usePopperContent = (props2) => {
   const { popperInstanceRef, contentRef, triggerRef, role } = inject(POPPER_INJECTION_KEY, void 0);
   const arrowRef = ref();
   const arrowOffset = ref();
   const eventListenerModifier = computed(() => {
     return {
       name: "eventListeners",
-      enabled: !!props.visible
+      enabled: !!props2.visible
     };
   });
   const arrowModifier = computed(() => {
@@ -17845,13 +17886,13 @@ var usePopperContent = (props) => {
       onFirstUpdate: () => {
         update2();
       },
-      ...buildPopperOptions(props, [
+      ...buildPopperOptions(props2, [
         unref(arrowModifier),
         unref(eventListenerModifier)
       ])
     };
   });
-  const computedReference = computed(() => unwrapMeasurableEl(props.referenceEl) || unref(triggerRef));
+  const computedReference = computed(() => unwrapMeasurableEl(props2.referenceEl) || unref(triggerRef));
   const { attributes: attributes2, state, styles, update: update2, forceUpdate, instanceRef } = usePopper(computedReference, contentRef, options);
   watch(instanceRef, (instance) => popperInstanceRef.value = instance);
   onMounted(() => {
@@ -17875,8 +17916,8 @@ var usePopperContent = (props) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/composables/use-content-dom.mjs
-var usePopperContentDOM = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/composables/use-content-dom.mjs
+var usePopperContentDOM = (props2, {
   attributes: attributes2,
   styles,
   role
@@ -17884,24 +17925,24 @@ var usePopperContentDOM = (props, {
   const { nextZIndex } = useZIndex();
   const ns = useNamespace("popper");
   const contentAttrs = computed(() => unref(attributes2).popper);
-  const contentZIndex = ref(isNumber3(props.zIndex) ? props.zIndex : nextZIndex());
+  const contentZIndex = ref(isNumber3(props2.zIndex) ? props2.zIndex : nextZIndex());
   const contentClass = computed(() => [
     ns.b(),
-    ns.is("pure", props.pure),
-    ns.is(props.effect),
-    props.popperClass
+    ns.is("pure", props2.pure),
+    ns.is(props2.effect),
+    props2.popperClass
   ]);
   const contentStyle = computed(() => {
     return [
       { zIndex: unref(contentZIndex) },
       unref(styles).popper,
-      props.popperStyle || {}
+      props2.popperStyle || {}
     ];
   });
   const ariaModal = computed(() => role.value === "dialog" ? "false" : void 0);
   const arrowStyle = computed(() => unref(styles).arrow || {});
   const updateZIndex = () => {
-    contentZIndex.value = isNumber3(props.zIndex) ? props.zIndex : nextZIndex();
+    contentZIndex.value = isNumber3(props2.zIndex) ? props2.zIndex : nextZIndex();
   };
   return {
     ariaModal,
@@ -17914,8 +17955,8 @@ var usePopperContentDOM = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/composables/use-focus-trap.mjs
-var usePopperContentFocusTrap = (props, emit) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/composables/use-focus-trap.mjs
+var usePopperContentFocusTrap = (props2, emit) => {
   const trapped = ref(false);
   const focusStartRef = ref();
   const onFocusAfterTrapped = () => {
@@ -17929,7 +17970,7 @@ var usePopperContentFocusTrap = (props, emit) => {
     }
   };
   const onFocusInTrap = (event) => {
-    if (props.visible && !trapped.value) {
+    if (props2.visible && !trapped.value) {
       if (event.target) {
         focusStartRef.value = event.target;
       }
@@ -17937,7 +17978,7 @@ var usePopperContentFocusTrap = (props, emit) => {
     }
   };
   const onFocusoutPrevented = (event) => {
-    if (!props.trapping) {
+    if (!props2.trapping) {
       if (event.detail.focusReason === "pointer") {
         event.preventDefault();
       }
@@ -17959,7 +18000,7 @@ var usePopperContentFocusTrap = (props, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/src/content2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/src/content2.mjs
 var __default__11 = defineComponent({
   name: "ElPopperContent"
 });
@@ -17968,7 +18009,7 @@ var _sfc_main14 = defineComponent({
   props: popperContentProps,
   emits: popperContentEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const {
       focusStartRef,
       trapped,
@@ -17977,8 +18018,8 @@ var _sfc_main14 = defineComponent({
       onFocusInTrap,
       onFocusoutPrevented,
       onReleaseRequested
-    } = usePopperContentFocusTrap(props, emit);
-    const { attributes: attributes2, arrowRef, contentRef, styles, instanceRef, role, update: update2 } = usePopperContent(props);
+    } = usePopperContentFocusTrap(props2, emit);
+    const { attributes: attributes2, arrowRef, contentRef, styles, instanceRef, role, update: update2 } = usePopperContent(props2);
     const {
       ariaModal,
       arrowStyle,
@@ -17986,7 +18027,7 @@ var _sfc_main14 = defineComponent({
       contentClass,
       contentStyle,
       updateZIndex
-    } = usePopperContentDOM(props, {
+    } = usePopperContentDOM(props2, {
       styles,
       attributes: attributes2,
       role
@@ -18012,20 +18053,20 @@ var _sfc_main14 = defineComponent({
     };
     const togglePopperAlive = () => {
       updatePopper(false);
-      if (props.visible && props.focusOnShow) {
+      if (props2.visible && props2.focusOnShow) {
         trapped.value = true;
-      } else if (props.visible === false) {
+      } else if (props2.visible === false) {
         trapped.value = false;
       }
     };
     onMounted(() => {
-      watch(() => props.triggerTargetEl, (triggerTargetEl, prevTriggerTargetEl) => {
+      watch(() => props2.triggerTargetEl, (triggerTargetEl, prevTriggerTargetEl) => {
         triggerTargetAriaStopWatch == null ? void 0 : triggerTargetAriaStopWatch();
         triggerTargetAriaStopWatch = void 0;
         const el = unref(triggerTargetEl || contentRef.value);
         const prevEl = unref(prevTriggerTargetEl || contentRef.value);
         if (isElement2(el)) {
-          triggerTargetAriaStopWatch = watch([role, () => props.ariaLabel, ariaModal, () => props.id], (watches) => {
+          triggerTargetAriaStopWatch = watch([role, () => props2.ariaLabel, ariaModal, () => props2.id], (watches) => {
             ;
             ["role", "aria-label", "aria-modal", "id"].forEach((key, idx) => {
               isNil_default(watches[idx]) ? el.removeAttribute(key) : el.setAttribute(key, watches[idx]);
@@ -18039,7 +18080,7 @@ var _sfc_main14 = defineComponent({
           });
         }
       }, { immediate: true });
-      watch(() => props.visible, togglePopperAlive, { immediate: true });
+      watch(() => props2.visible, togglePopperAlive, { immediate: true });
     });
     onBeforeUnmount(() => {
       triggerTargetAriaStopWatch == null ? void 0 : triggerTargetAriaStopWatch();
@@ -18084,13 +18125,13 @@ var _sfc_main14 = defineComponent({
 });
 var ElPopperContent = _export_sfc(_sfc_main14, [["__file", "content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popper/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popper/index.mjs
 var ElPopper = withInstall(Popper);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/constants.mjs
 var TOOLTIP_INJECTION_KEY = Symbol("elTooltip");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/content.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/content.mjs
 var useTooltipContentProps = buildProps({
   ...useDelayedToggleProps,
   ...popperContentProps,
@@ -18116,7 +18157,7 @@ var useTooltipContentProps = buildProps({
   ...useAriaProps(["ariaLabel"])
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/trigger.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/trigger.mjs
 var useTooltipTriggerProps = buildProps({
   ...popperTriggerProps,
   disabled: Boolean,
@@ -18130,7 +18171,7 @@ var useTooltipTriggerProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/tooltip.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/tooltip.mjs
 var {
   useModelToggleProps: useTooltipModelToggleProps,
   useModelToggleEmits: useTooltipModelToggleEmits,
@@ -18157,7 +18198,7 @@ var tooltipEmits = [
   "close"
 ];
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/utils.mjs
 var isTriggerType = (trigger, type4) => {
   if (isArray(trigger)) {
     return trigger.includes(type4);
@@ -18170,7 +18211,7 @@ var whenTrigger = (trigger, type4, handler) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/trigger2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/trigger2.mjs
 var __default__12 = defineComponent({
   name: "ElTooltipTrigger"
 });
@@ -18178,16 +18219,16 @@ var _sfc_main15 = defineComponent({
   ...__default__12,
   props: useTooltipTriggerProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("tooltip");
     const { controlled, id, open, onOpen, onClose, onToggle } = inject(TOOLTIP_INJECTION_KEY, void 0);
     const triggerRef = ref(null);
     const stopWhenControlledOrDisabled = () => {
-      if (unref(controlled) || props.disabled) {
+      if (unref(controlled) || props2.disabled) {
         return true;
       }
     };
-    const trigger = toRef(props, "trigger");
+    const trigger = toRef(props2, "trigger");
     const onMouseenter = composeEventHandlers(stopWhenControlledOrDisabled, whenTrigger(trigger, "hover", onOpen));
     const onMouseleave = composeEventHandlers(stopWhenControlledOrDisabled, whenTrigger(trigger, "hover", onClose));
     const onClick = composeEventHandlers(stopWhenControlledOrDisabled, whenTrigger(trigger, "click", (e) => {
@@ -18203,7 +18244,7 @@ var _sfc_main15 = defineComponent({
     }));
     const onKeydown = composeEventHandlers(stopWhenControlledOrDisabled, (e) => {
       const { code } = e;
-      if (props.triggerKeys.includes(code)) {
+      if (props2.triggerKeys.includes(code)) {
         e.preventDefault();
         onToggle(e);
       }
@@ -18236,7 +18277,7 @@ var _sfc_main15 = defineComponent({
 });
 var ElTooltipTrigger = _export_sfc(_sfc_main15, [["__file", "trigger.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/teleport/src/teleport.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/teleport/src/teleport2.mjs
 var teleportProps = buildProps({
   to: {
     type: definePropType([String, Object]),
@@ -18245,7 +18286,7 @@ var teleportProps = buildProps({
   disabled: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/teleport/src/teleport2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/teleport/src/teleport.mjs
 var _sfc_main16 = defineComponent({
   __name: "teleport",
   props: teleportProps,
@@ -18262,10 +18303,10 @@ var _sfc_main16 = defineComponent({
 });
 var Teleport2 = _export_sfc(_sfc_main16, [["__file", "teleport.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/teleport/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/teleport/index.mjs
 var ElTeleport = withInstall(Teleport2);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/content2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/content2.mjs
 var __default__13 = defineComponent({
   name: "ElTooltipContent",
   inheritAttrs: false
@@ -18274,7 +18315,7 @@ var _sfc_main17 = defineComponent({
   ...__default__13,
   props: useTooltipContentProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const { selector } = usePopperContainerId();
     const ns = useNamespace("tooltip");
     const contentRef = ref(null);
@@ -18292,13 +18333,13 @@ var _sfc_main17 = defineComponent({
       onBeforeHide
     } = inject(TOOLTIP_INJECTION_KEY, void 0);
     const transitionClass = computed(() => {
-      return props.transition || `${ns.namespace.value}-fade-in-linear`;
+      return props2.transition || `${ns.namespace.value}-fade-in-linear`;
     });
     const persistentRef = computed(() => {
       if (false) {
         return true;
       }
-      return props.persistent;
+      return props2.persistent;
     });
     onBeforeUnmount(() => {
       stopHandle == null ? void 0 : stopHandle();
@@ -18307,25 +18348,26 @@ var _sfc_main17 = defineComponent({
       return unref(persistentRef) ? true : unref(open);
     });
     const shouldShow = computed(() => {
-      return props.disabled ? false : unref(open);
+      return props2.disabled ? false : unref(open);
     });
     const appendTo = computed(() => {
-      return props.appendTo || selector.value;
+      return props2.appendTo || selector.value;
     });
     const contentStyle = computed(() => {
       var _a2;
-      return (_a2 = props.style) != null ? _a2 : {};
+      return (_a2 = props2.style) != null ? _a2 : {};
     });
-    const ariaHidden = computed(() => !unref(open));
+    const ariaHidden = ref(true);
     const onTransitionLeave = () => {
       onHide();
+      ariaHidden.value = true;
     };
     const stopWhenControlled = () => {
       if (unref(controlled))
         return true;
     };
     const onContentEnter = composeEventHandlers(stopWhenControlled, () => {
-      if (props.enterable && unref(trigger) === "hover") {
+      if (props2.enterable && unref(trigger) === "hover") {
         onOpen();
       }
     });
@@ -18357,18 +18399,20 @@ var _sfc_main17 = defineComponent({
       });
     };
     const onBlur = () => {
-      if (!props.virtualTriggering) {
+      if (!props2.virtualTriggering) {
         onClose();
       }
     };
     watch(() => unref(open), (val) => {
       if (!val) {
         stopHandle == null ? void 0 : stopHandle();
+      } else {
+        ariaHidden.value = false;
       }
     }, {
       flush: "post"
     });
-    watch(() => props.content, () => {
+    watch(() => props2.content, () => {
       var _a2, _b;
       (_b = (_a2 = contentRef.value) == null ? void 0 : _a2.updatePopper) == null ? void 0 : _b.call(_a2);
     });
@@ -18396,7 +18440,7 @@ var _sfc_main17 = defineComponent({
                 ref: contentRef
               }, _ctx.$attrs, {
                 "aria-label": _ctx.ariaLabel,
-                "aria-hidden": unref(ariaHidden),
+                "aria-hidden": ariaHidden.value,
                 "boundaries-padding": _ctx.boundariesPadding,
                 "fallback-placements": _ctx.fallbackPlacements,
                 "gpu-acceleration": _ctx.gpuAcceleration,
@@ -18436,7 +18480,7 @@ var _sfc_main17 = defineComponent({
 });
 var ElTooltipContent = _export_sfc(_sfc_main17, [["__file", "content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/tooltip2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip/src/tooltip2.mjs
 var __default__14 = defineComponent({
   name: "ElTooltip"
 });
@@ -18445,7 +18489,7 @@ var _sfc_main18 = defineComponent({
   props: useTooltipProps,
   emits: tooltipEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     usePopperContainer();
     const id = useId();
     const popperRef = ref();
@@ -18464,18 +18508,18 @@ var _sfc_main18 = defineComponent({
       toggleReason
     });
     const { onOpen, onClose } = useDelayedToggle({
-      showAfter: toRef(props, "showAfter"),
-      hideAfter: toRef(props, "hideAfter"),
-      autoClose: toRef(props, "autoClose"),
+      showAfter: toRef(props2, "showAfter"),
+      hideAfter: toRef(props2, "hideAfter"),
+      autoClose: toRef(props2, "autoClose"),
       open: show,
       close: hide2
     });
-    const controlled = computed(() => isBoolean2(props.visible) && !hasUpdateHandler.value);
+    const controlled = computed(() => isBoolean2(props2.visible) && !hasUpdateHandler.value);
     provide(TOOLTIP_INJECTION_KEY, {
       controlled,
       id,
       open: readonly(open),
-      trigger: toRef(props, "trigger"),
+      trigger: toRef(props2, "trigger"),
       onOpen: (event) => {
         onOpen(event);
       },
@@ -18503,7 +18547,7 @@ var _sfc_main18 = defineComponent({
       },
       updatePopper
     });
-    watch(() => props.disabled, (disabled) => {
+    watch(() => props2.disabled, (disabled) => {
       if (disabled && open.value) {
         open.value = false;
       }
@@ -18595,10 +18639,10 @@ var _sfc_main18 = defineComponent({
 });
 var Tooltip = _export_sfc(_sfc_main18, [["__file", "tooltip.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip/index.mjs
 var ElTooltip = withInstall(Tooltip);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/autocomplete/src/autocomplete.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/autocomplete/src/autocomplete2.mjs
 var autocompleteProps = buildProps({
   valueKey: {
     type: String,
@@ -18674,7 +18718,7 @@ var autocompleteEmits = {
   select: (item) => isObject2(item)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/autocomplete/src/autocomplete2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/autocomplete/src/autocomplete.mjs
 var COMPONENT_NAME6 = "ElAutocomplete";
 var __default__15 = defineComponent({
   name: COMPONENT_NAME6,
@@ -18685,7 +18729,7 @@ var _sfc_main19 = defineComponent({
   props: autocompleteProps,
   emits: autocompleteEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const attrs = useAttrs2();
     const rawAttrs = useAttrs();
     const disabled = useFormDisabled();
@@ -18708,7 +18752,7 @@ var _sfc_main19 = defineComponent({
       const isValidData = suggestions.value.length > 0;
       return (isValidData || loading.value) && activated.value;
     });
-    const suggestionLoading = computed(() => !props.hideLoading && loading.value);
+    const suggestionLoading = computed(() => !props2.hideLoading && loading.value);
     const refInput = computed(() => {
       if (inputRef.value) {
         return Array.from(inputRef.value.$el.querySelectorAll("input"));
@@ -18732,28 +18776,28 @@ var _sfc_main19 = defineComponent({
           return;
         if (isArray(suggestionList)) {
           suggestions.value = suggestionList;
-          highlightedIndex.value = props.highlightFirstItem ? 0 : -1;
+          highlightedIndex.value = props2.highlightFirstItem ? 0 : -1;
         } else {
           throwError(COMPONENT_NAME6, "autocomplete suggestions must be an array");
         }
       };
       loading.value = true;
-      if (isArray(props.fetchSuggestions)) {
-        cb(props.fetchSuggestions);
+      if (isArray(props2.fetchSuggestions)) {
+        cb(props2.fetchSuggestions);
       } else {
-        const result2 = await props.fetchSuggestions(queryString, cb);
+        const result2 = await props2.fetchSuggestions(queryString, cb);
         if (isArray(result2))
           cb(result2);
       }
     };
-    const debouncedGetData = debounce_default(getData2, props.debounce);
+    const debouncedGetData = debounce_default(getData2, props2.debounce);
     const handleInput = (value) => {
       const valuePresented = !!value;
       emit(INPUT_EVENT, value);
       emit(UPDATE_MODEL_EVENT, value);
       suggestionDisabled.value = false;
       activated.value || (activated.value = valuePresented);
-      if (!props.triggerOnFocus && !value) {
+      if (!props2.triggerOnFocus && !value) {
         suggestionDisabled.value = true;
         suggestions.value = [];
         return;
@@ -18775,14 +18819,14 @@ var _sfc_main19 = defineComponent({
       if (!ignoreFocusEvent) {
         activated.value = true;
         emit("focus", evt);
-        if (props.triggerOnFocus && !readonly2) {
-          debouncedGetData(String(props.modelValue));
+        if (props2.triggerOnFocus && !readonly2) {
+          debouncedGetData(String(props2.modelValue));
         }
       } else {
         ignoreFocusEvent = false;
       }
     };
-    const handleBlur2 = (evt) => {
+    const handleBlur = (evt) => {
       setTimeout(() => {
         var _a2;
         if ((_a2 = popperRef.value) == null ? void 0 : _a2.isFocusInsideContent()) {
@@ -18801,8 +18845,8 @@ var _sfc_main19 = defineComponent({
     const handleKeyEnter = async () => {
       if (suggestionVisible.value && highlightedIndex.value >= 0 && highlightedIndex.value < suggestions.value.length) {
         handleSelect(suggestions.value[highlightedIndex.value]);
-      } else if (props.selectWhenUnmatched) {
-        emit("select", { value: props.modelValue });
+      } else if (props2.selectWhenUnmatched) {
+        emit("select", { value: props2.modelValue });
         suggestions.value = [];
         highlightedIndex.value = -1;
       }
@@ -18826,8 +18870,8 @@ var _sfc_main19 = defineComponent({
       (_a2 = inputRef.value) == null ? void 0 : _a2.blur();
     };
     const handleSelect = async (item) => {
-      emit(INPUT_EVENT, item[props.valueKey]);
-      emit(UPDATE_MODEL_EVENT, item[props.valueKey]);
+      emit(INPUT_EVENT, item[props2.valueKey]);
+      emit(UPDATE_MODEL_EVENT, item[props2.valueKey]);
       emit("select", item);
       suggestions.value = [];
       highlightedIndex.value = -1;
@@ -18882,7 +18926,8 @@ var _sfc_main19 = defineComponent({
       focus,
       blur,
       close: close2,
-      highlight
+      highlight,
+      getData: getData2
     });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(ElTooltip), {
@@ -18976,7 +19021,7 @@ var _sfc_main19 = defineComponent({
               onInput: handleInput,
               onChange: handleChange,
               onFocus: handleFocus,
-              onBlur: handleBlur2,
+              onBlur: handleBlur,
               onClear: handleClear,
               onKeydown: [
                 withKeys(withModifiers(($event) => highlight(highlightedIndex.value - 1), ["prevent"]), ["up"]),
@@ -19021,10 +19066,10 @@ var _sfc_main19 = defineComponent({
 });
 var Autocomplete = _export_sfc(_sfc_main19, [["__file", "autocomplete.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/autocomplete/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/autocomplete/index.mjs
 var ElAutocomplete = withInstall(Autocomplete);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/avatar/src/avatar.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/avatar/src/avatar2.mjs
 var avatarProps = buildProps({
   size: {
     type: [Number, String],
@@ -19055,7 +19100,7 @@ var avatarEmits = {
   error: (evt) => evt instanceof Event
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/avatar/src/avatar2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/avatar/src/avatar.mjs
 var __default__16 = defineComponent({
   name: "ElAvatar"
 });
@@ -19064,11 +19109,11 @@ var _sfc_main20 = defineComponent({
   props: avatarProps,
   emits: avatarEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("avatar");
     const hasLoadError = ref(false);
     const avatarClass = computed(() => {
-      const { size: size3, icon, shape } = props;
+      const { size: size3, icon, shape } = props2;
       const classList = [ns.b()];
       if (isString2(size3))
         classList.push(ns.m(size3));
@@ -19079,15 +19124,15 @@ var _sfc_main20 = defineComponent({
       return classList;
     });
     const sizeStyle = computed(() => {
-      const { size: size3 } = props;
+      const { size: size3 } = props2;
       return isNumber3(size3) ? ns.cssVarBlock({
         size: addUnit(size3) || ""
       }) : void 0;
     });
     const fitStyle = computed(() => ({
-      objectFit: props.fit
+      objectFit: props2.fit
     }));
-    watch(() => props.src, () => hasLoadError.value = false);
+    watch(() => props2.src, () => hasLoadError.value = false);
     function handleError(e) {
       hasLoadError.value = true;
       emit("error", e);
@@ -19116,10 +19161,10 @@ var _sfc_main20 = defineComponent({
 });
 var Avatar = _export_sfc(_sfc_main20, [["__file", "avatar.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/avatar/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/avatar/index.mjs
 var ElAvatar = withInstall(Avatar);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/backtop/src/backtop.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/backtop/src/backtop.mjs
 var backtopProps = {
   visibilityHeight: {
     type: Number,
@@ -19142,14 +19187,14 @@ var backtopEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/backtop/src/use-backtop.mjs
-var useBackTop = (props, emit, componentName2) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/backtop/src/use-backtop.mjs
+var useBackTop = (props2, emit, componentName2) => {
   const el = shallowRef();
   const container = shallowRef();
   const visible = ref(false);
   const handleScroll2 = () => {
     if (el.value)
-      visible.value = el.value.scrollTop >= props.visibilityHeight;
+      visible.value = el.value.scrollTop >= props2.visibilityHeight;
   };
   const handleClick = (event) => {
     var _a2;
@@ -19162,10 +19207,10 @@ var useBackTop = (props, emit, componentName2) => {
     var _a2;
     container.value = document;
     el.value = document.documentElement;
-    if (props.target) {
-      el.value = (_a2 = document.querySelector(props.target)) != null ? _a2 : void 0;
+    if (props2.target) {
+      el.value = (_a2 = document.querySelector(props2.target)) != null ? _a2 : void 0;
       if (!el.value) {
-        throwError(componentName2, `target does not exist: ${props.target}`);
+        throwError(componentName2, `target does not exist: ${props2.target}`);
       }
       container.value = el.value;
     }
@@ -19177,7 +19222,7 @@ var useBackTop = (props, emit, componentName2) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/backtop/src/backtop2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/backtop/src/backtop2.mjs
 var COMPONENT_NAME7 = "ElBacktop";
 var __default__17 = defineComponent({
   name: COMPONENT_NAME7
@@ -19187,12 +19232,12 @@ var _sfc_main21 = defineComponent({
   props: backtopProps,
   emits: backtopEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("backtop");
-    const { handleClick, visible } = useBackTop(props, emit, COMPONENT_NAME7);
+    const { handleClick, visible } = useBackTop(props2, emit, COMPONENT_NAME7);
     const backTopStyle = computed(() => ({
-      right: `${props.right}px`,
-      bottom: `${props.bottom}px`
+      right: `${props2.right}px`,
+      bottom: `${props2.bottom}px`
     }));
     return (_ctx, _cache) => {
       return openBlock(), createBlock(Transition, {
@@ -19224,10 +19269,10 @@ var _sfc_main21 = defineComponent({
 });
 var Backtop = _export_sfc(_sfc_main21, [["__file", "backtop.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/backtop/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/backtop/index.mjs
 var ElBacktop = withInstall(Backtop);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/badge/src/badge.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/badge/src/badge.mjs
 var badgeProps = buildProps({
   value: {
     type: [String, Number],
@@ -19261,7 +19306,7 @@ var badgeProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/badge/src/badge2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/badge/src/badge2.mjs
 var __default__18 = defineComponent({
   name: "ElBadge"
 });
@@ -19269,28 +19314,28 @@ var _sfc_main22 = defineComponent({
   ...__default__18,
   props: badgeProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("badge");
     const content = computed(() => {
-      if (props.isDot)
+      if (props2.isDot)
         return "";
-      if (isNumber3(props.value) && isNumber3(props.max)) {
-        if (props.max < props.value) {
-          return `${props.max}+`;
+      if (isNumber3(props2.value) && isNumber3(props2.max)) {
+        if (props2.max < props2.value) {
+          return `${props2.max}+`;
         }
-        return props.value === 0 && !props.showZero ? "" : `${props.value}`;
+        return props2.value === 0 && !props2.showZero ? "" : `${props2.value}`;
       }
-      return `${props.value}`;
+      return `${props2.value}`;
     });
     const style = computed(() => {
       var _a2, _b, _c, _d, _e;
       return [
         {
-          backgroundColor: props.color,
-          marginRight: addUnit(-((_b = (_a2 = props.offset) == null ? void 0 : _a2[0]) != null ? _b : 0)),
-          marginTop: addUnit((_d = (_c = props.offset) == null ? void 0 : _c[1]) != null ? _d : 0)
+          backgroundColor: props2.color,
+          marginRight: addUnit(-((_b = (_a2 = props2.offset) == null ? void 0 : _a2[0]) != null ? _b : 0)),
+          marginTop: addUnit((_d = (_c = props2.offset) == null ? void 0 : _c[1]) != null ? _d : 0)
         },
-        (_e = props.badgeStyle) != null ? _e : {}
+        (_e = props2.badgeStyle) != null ? _e : {}
       ];
     });
     expose({
@@ -19328,13 +19373,13 @@ var _sfc_main22 = defineComponent({
 });
 var Badge = _export_sfc(_sfc_main22, [["__file", "badge.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/badge/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/badge/index.mjs
 var ElBadge = withInstall(Badge);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/src/constants.mjs
 var breadcrumbKey = Symbol("breadcrumbKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb.mjs
 var breadcrumbProps = buildProps({
   separator: {
     type: String,
@@ -19345,7 +19390,7 @@ var breadcrumbProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb2.mjs
 var __default__19 = defineComponent({
   name: "ElBreadcrumb"
 });
@@ -19353,11 +19398,11 @@ var _sfc_main23 = defineComponent({
   ...__default__19,
   props: breadcrumbProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const { t } = useLocale();
     const ns = useNamespace("breadcrumb");
     const breadcrumb = ref();
-    provide(breadcrumbKey, props);
+    provide(breadcrumbKey, props2);
     onMounted(() => {
       const items = breadcrumb.value.querySelectorAll(`.${ns.e("item")}`);
       if (items.length) {
@@ -19379,7 +19424,7 @@ var _sfc_main23 = defineComponent({
 });
 var Breadcrumb = _export_sfc(_sfc_main23, [["__file", "breadcrumb.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item.mjs
 var breadcrumbItemProps = buildProps({
   to: {
     type: definePropType([String, Object]),
@@ -19388,7 +19433,7 @@ var breadcrumbItemProps = buildProps({
   replace: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item2.mjs
 var __default__20 = defineComponent({
   name: "ElBreadcrumbItem"
 });
@@ -19396,16 +19441,16 @@ var _sfc_main24 = defineComponent({
   ...__default__20,
   props: breadcrumbItemProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const instance = getCurrentInstance();
     const breadcrumbContext = inject(breadcrumbKey, void 0);
     const ns = useNamespace("breadcrumb");
     const router = instance.appContext.config.globalProperties.$router;
     const link = ref();
     const onClick = () => {
-      if (!props.to || !router)
+      if (!props2.to || !router)
         return;
-      props.replace ? router.replace(props.to) : router.push(props.to);
+      props2.replace ? router.replace(props2.to) : router.push(props2.to);
     };
     return (_ctx, _cache) => {
       var _a2, _b;
@@ -19440,24 +19485,24 @@ var _sfc_main24 = defineComponent({
 });
 var BreadcrumbItem = _export_sfc(_sfc_main24, [["__file", "breadcrumb-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/breadcrumb/index.mjs
 var ElBreadcrumb = withInstall(Breadcrumb, {
   BreadcrumbItem
 });
 var ElBreadcrumbItem = withNoopInstall(BreadcrumbItem);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/button/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/button/src/constants.mjs
 var buttonGroupContextKey = Symbol("buttonGroupContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/button/src/use-button.mjs
-var useButton = (props, emit) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/button/src/use-button.mjs
+var useButton = (props2, emit) => {
   useDeprecated({
     from: "type.text",
     replacement: "link",
     version: "3.0.0",
     scope: "props",
     ref: "https://element-plus.org/en-US/component/button.html#button-attributes"
-  }, computed(() => props.type === "text"));
+  }, computed(() => props2.type === "text"));
   const buttonGroupContext = inject(buttonGroupContextKey, void 0);
   const globalConfig2 = useGlobalConfig("button");
   const { form } = useFormItem();
@@ -19465,18 +19510,18 @@ var useButton = (props, emit) => {
   const _disabled = useFormDisabled();
   const _ref = ref();
   const slots = useSlots();
-  const _type = computed(() => props.type || (buttonGroupContext == null ? void 0 : buttonGroupContext.type) || "");
+  const _type = computed(() => props2.type || (buttonGroupContext == null ? void 0 : buttonGroupContext.type) || "");
   const autoInsertSpace = computed(() => {
     var _a2, _b, _c;
-    return (_c = (_b = props.autoInsertSpace) != null ? _b : (_a2 = globalConfig2.value) == null ? void 0 : _a2.autoInsertSpace) != null ? _c : false;
+    return (_c = (_b = props2.autoInsertSpace) != null ? _b : (_a2 = globalConfig2.value) == null ? void 0 : _a2.autoInsertSpace) != null ? _c : false;
   });
   const _props = computed(() => {
-    if (props.tag === "button") {
+    if (props2.tag === "button") {
       return {
-        ariaDisabled: _disabled.value || props.loading,
-        disabled: _disabled.value || props.loading,
-        autofocus: props.autofocus,
-        type: props.nativeType
+        ariaDisabled: _disabled.value || props2.loading,
+        disabled: _disabled.value || props2.loading,
+        autofocus: props2.autofocus,
+        type: props2.nativeType
       };
     }
     return {};
@@ -19494,11 +19539,11 @@ var useButton = (props, emit) => {
     return false;
   });
   const handleClick = (evt) => {
-    if (_disabled.value || props.loading) {
+    if (_disabled.value || props2.loading) {
       evt.stopPropagation();
       return;
     }
-    if (props.nativeType === "reset") {
+    if (props2.nativeType === "reset") {
       form == null ? void 0 : form.resetFields();
     }
     emit("click", evt);
@@ -19514,7 +19559,7 @@ var useButton = (props, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/button/src/button.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/button/src/button.mjs
 var buttonTypes = [
   "default",
   "primary",
@@ -20466,28 +20511,28 @@ var TinyColor = (
   }()
 );
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/button/src/button-custom.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/button/src/button-custom.mjs
 function darken(color, amount = 20) {
   return color.mix("#141414", amount).toString();
 }
-function useButtonCustomStyle(props) {
+function useButtonCustomStyle(props2) {
   const _disabled = useFormDisabled();
   const ns = useNamespace("button");
   return computed(() => {
     let styles = {};
-    let buttonColor = props.color;
+    let buttonColor = props2.color;
     if (buttonColor) {
       const match = buttonColor.match(/var\((.*?)\)/);
       if (match) {
         buttonColor = window.getComputedStyle(window.document.documentElement).getPropertyValue(match[1]);
       }
       const color = new TinyColor(buttonColor);
-      const activeBgColor = props.dark ? color.tint(20).toString() : darken(color, 20);
-      if (props.plain) {
+      const activeBgColor = props2.dark ? color.tint(20).toString() : darken(color, 20);
+      if (props2.plain) {
         styles = ns.cssVarBlock({
-          "bg-color": props.dark ? darken(color, 90) : color.tint(90).toString(),
+          "bg-color": props2.dark ? darken(color, 90) : color.tint(90).toString(),
           "text-color": buttonColor,
-          "border-color": props.dark ? darken(color, 50) : color.tint(50).toString(),
+          "border-color": props2.dark ? darken(color, 50) : color.tint(50).toString(),
           "hover-text-color": `var(${ns.cssVarName("color-white")})`,
           "hover-bg-color": buttonColor,
           "hover-border-color": buttonColor,
@@ -20496,12 +20541,12 @@ function useButtonCustomStyle(props) {
           "active-border-color": activeBgColor
         });
         if (_disabled.value) {
-          styles[ns.cssVarBlockName("disabled-bg-color")] = props.dark ? darken(color, 90) : color.tint(90).toString();
-          styles[ns.cssVarBlockName("disabled-text-color")] = props.dark ? darken(color, 50) : color.tint(50).toString();
-          styles[ns.cssVarBlockName("disabled-border-color")] = props.dark ? darken(color, 80) : color.tint(80).toString();
+          styles[ns.cssVarBlockName("disabled-bg-color")] = props2.dark ? darken(color, 90) : color.tint(90).toString();
+          styles[ns.cssVarBlockName("disabled-text-color")] = props2.dark ? darken(color, 50) : color.tint(50).toString();
+          styles[ns.cssVarBlockName("disabled-border-color")] = props2.dark ? darken(color, 80) : color.tint(80).toString();
         }
       } else {
-        const hoverBgColor = props.dark ? darken(color, 30) : color.tint(30).toString();
+        const hoverBgColor = props2.dark ? darken(color, 30) : color.tint(30).toString();
         const textColor = color.isDark() ? `var(${ns.cssVarName("color-white")})` : `var(${ns.cssVarName("color-black")})`;
         styles = ns.cssVarBlock({
           "bg-color": buttonColor,
@@ -20514,9 +20559,9 @@ function useButtonCustomStyle(props) {
           "active-border-color": activeBgColor
         });
         if (_disabled.value) {
-          const disabledButtonColor = props.dark ? darken(color, 50) : color.tint(50).toString();
+          const disabledButtonColor = props2.dark ? darken(color, 50) : color.tint(50).toString();
           styles[ns.cssVarBlockName("disabled-bg-color")] = disabledButtonColor;
-          styles[ns.cssVarBlockName("disabled-text-color")] = props.dark ? "rgba(255, 255, 255, 0.5)" : `var(${ns.cssVarName("color-white")})`;
+          styles[ns.cssVarBlockName("disabled-text-color")] = props2.dark ? "rgba(255, 255, 255, 0.5)" : `var(${ns.cssVarName("color-white")})`;
           styles[ns.cssVarBlockName("disabled-border-color")] = disabledButtonColor;
         }
       }
@@ -20525,7 +20570,7 @@ function useButtonCustomStyle(props) {
   });
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/button/src/button2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/button/src/button2.mjs
 var __default__21 = defineComponent({
   name: "ElButton"
 });
@@ -20534,22 +20579,22 @@ var _sfc_main25 = defineComponent({
   props: buttonProps,
   emits: buttonEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
-    const buttonStyle = useButtonCustomStyle(props);
+    const props2 = __props;
+    const buttonStyle = useButtonCustomStyle(props2);
     const ns = useNamespace("button");
-    const { _ref, _size, _type, _disabled, _props, shouldAddSpace, handleClick } = useButton(props, emit);
+    const { _ref, _size, _type, _disabled, _props, shouldAddSpace, handleClick } = useButton(props2, emit);
     const buttonKls = computed(() => [
       ns.b(),
       ns.m(_type.value),
       ns.m(_size.value),
       ns.is("disabled", _disabled.value),
-      ns.is("loading", props.loading),
-      ns.is("plain", props.plain),
-      ns.is("round", props.round),
-      ns.is("circle", props.circle),
-      ns.is("text", props.text),
-      ns.is("link", props.link),
-      ns.is("has-bg", props.bg)
+      ns.is("loading", props2.loading),
+      ns.is("plain", props2.plain),
+      ns.is("round", props2.round),
+      ns.is("circle", props2.circle),
+      ns.is("text", props2.text),
+      ns.is("link", props2.link),
+      ns.is("has-bg", props2.bg)
     ]);
     expose({
       ref: _ref,
@@ -20598,13 +20643,13 @@ var _sfc_main25 = defineComponent({
 });
 var Button = _export_sfc(_sfc_main25, [["__file", "button.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/button/src/button-group.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/button/src/button-group.mjs
 var buttonGroupProps = {
   size: buttonProps.size,
   type: buttonProps.type
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/button/src/button-group2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/button/src/button-group2.mjs
 var __default__22 = defineComponent({
   name: "ElButtonGroup"
 });
@@ -20612,10 +20657,10 @@ var _sfc_main26 = defineComponent({
   ...__default__22,
   props: buttonGroupProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     provide(buttonGroupContextKey, reactive({
-      size: toRef(props, "size"),
-      type: toRef(props, "type")
+      size: toRef(props2, "size"),
+      type: toRef(props2, "type")
     }));
     const ns = useNamespace("button");
     return (_ctx, _cache) => {
@@ -20629,17 +20674,17 @@ var _sfc_main26 = defineComponent({
 });
 var ButtonGroup = _export_sfc(_sfc_main26, [["__file", "button-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/button/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/button/index.mjs
 var ElButton = withInstall(Button, {
   ButtonGroup
 });
 var ElButtonGroup = withNoopInstall(ButtonGroup);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
 var import_dayjs4 = __toESM(require_dayjs_min(), 1);
 var import_customParseFormat = __toESM(require_customParseFormat(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/constants.mjs
 var timeUnits = ["hours", "minutes", "seconds"];
 var DEFAULT_FORMATS_TIME = "HH:mm:ss";
 var DEFAULT_FORMATS_DATE = "YYYY-MM-DD";
@@ -20658,7 +20703,7 @@ var DEFAULT_FORMATS_DATEPICKER = {
   datetimerange: `${DEFAULT_FORMATS_DATE} ${DEFAULT_FORMATS_TIME}`
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/utils.mjs
 var import_dayjs = __toESM(require_dayjs_min(), 1);
 var buildTimeList = (value, bound) => {
   return [
@@ -20720,7 +20765,7 @@ var makeList = (total2, method5) => {
   return arr;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/props/shared.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/props/shared.mjs
 var disabledTimeListsProps = buildProps({
   disabledHours: {
     type: definePropType(Function)
@@ -20744,7 +20789,7 @@ var timePanelSharedProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/common/props.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/common/props.mjs
 var timePickerDefaultProps = buildProps({
   id: {
     type: definePropType([Array, String])
@@ -20830,11 +20875,20 @@ var timePickerDefaultProps = buildProps({
     default: true
   },
   unlinkPanels: Boolean,
+  placement: {
+    type: definePropType(String),
+    values: Ee,
+    default: "bottom"
+  },
+  fallbackPlacements: {
+    type: definePropType(Array),
+    default: ["bottom", "top", "right", "left"]
+  },
   ...useEmptyValuesProps,
   ...useAriaProps(["ariaLabel"])
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/common/picker.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/common/picker.mjs
 var __default__23 = defineComponent({
   name: "Picker"
 });
@@ -20853,7 +20907,7 @@ var _sfc_main27 = defineComponent({
     "keydown"
   ],
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const attrs = useAttrs();
     const { lang } = useLocale();
     const nsDate = useNamespace("date");
@@ -20861,7 +20915,7 @@ var _sfc_main27 = defineComponent({
     const nsRange = useNamespace("range");
     const { form, formItem } = useFormItem();
     const elPopperOptions = inject("ElPopperOptions", {});
-    const { valueOnClear } = useEmptyValues(props, null);
+    const { valueOnClear } = useEmptyValues(props2, null);
     const refPopper = ref();
     const inputRef = ref();
     const pickerVisible = ref(false);
@@ -20871,7 +20925,7 @@ var _sfc_main27 = defineComponent({
     let ignoreFocusEvent = false;
     const rangeInputKls = computed(() => [
       nsDate.b("editor"),
-      nsDate.bm("editor", props.type),
+      nsDate.bm("editor", props2.type),
       nsInput.e("wrapper"),
       nsDate.is("disabled", pickerDisabled.value),
       nsDate.is("active", pickerVisible.value),
@@ -20888,12 +20942,12 @@ var _sfc_main27 = defineComponent({
       if (!val) {
         userInput.value = null;
         nextTick(() => {
-          emitChange(props.modelValue);
+          emitChange(props2.modelValue);
         });
       } else {
         nextTick(() => {
           if (val) {
-            valueOnOpen.value = props.modelValue;
+            valueOnOpen.value = props2.modelValue;
           }
         });
       }
@@ -20901,16 +20955,16 @@ var _sfc_main27 = defineComponent({
     const emitChange = (val, isClear) => {
       if (isClear || !valueEquals(val, valueOnOpen.value)) {
         emit("change", val);
-        props.validateEvent && (formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn(err)));
+        props2.validateEvent && (formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn(err)));
       }
     };
     const emitInput = (input) => {
-      if (!valueEquals(props.modelValue, input)) {
+      if (!valueEquals(props2.modelValue, input)) {
         let formatted;
         if (isArray(input)) {
-          formatted = input.map((item) => formatter(item, props.valueFormat, lang.value));
+          formatted = input.map((item) => formatter(item, props2.valueFormat, lang.value));
         } else if (input) {
-          formatted = formatter(input, props.valueFormat, lang.value);
+          formatted = formatter(input, props2.valueFormat, lang.value);
         }
         emit("update:modelValue", input ? formatted : input, lang.value);
       }
@@ -20992,7 +21046,7 @@ var _sfc_main27 = defineComponent({
       }
     };
     const handleFocusInput = (e) => {
-      if (props.readonly || pickerDisabled.value || pickerVisible.value || ignoreFocusEvent) {
+      if (props2.readonly || pickerDisabled.value || pickerVisible.value || ignoreFocusEvent) {
         return;
       }
       pickerVisible.value = true;
@@ -21010,7 +21064,7 @@ var _sfc_main27 = defineComponent({
               handleChange();
               pickerVisible.value = false;
               emit("blur", e);
-              props.validateEvent && (formItem == null ? void 0 : formItem.validate("blur").catch((err) => debugWarn(err)));
+              props2.validateEvent && (formItem == null ? void 0 : formItem.validate("blur").catch((err) => debugWarn(err)));
             }
             hasJustTabExitedInput = false;
           }
@@ -21020,7 +21074,7 @@ var _sfc_main27 = defineComponent({
       handleBlurDefer();
     };
     const pickerDisabled = computed(() => {
-      return props.disabled || (form == null ? void 0 : form.disabled);
+      return props2.disabled || (form == null ? void 0 : form.disabled);
     });
     const parsedValue = computed(() => {
       let dayOrDays;
@@ -21029,10 +21083,10 @@ var _sfc_main27 = defineComponent({
           dayOrDays = pickerOptions.value.getDefaultValue();
         }
       } else {
-        if (isArray(props.modelValue)) {
-          dayOrDays = props.modelValue.map((d2) => parseDate(d2, props.valueFormat, lang.value));
+        if (isArray(props2.modelValue)) {
+          dayOrDays = props2.modelValue.map((d2) => parseDate(d2, props2.valueFormat, lang.value));
         } else {
-          dayOrDays = parseDate(props.modelValue, props.valueFormat, lang.value);
+          dayOrDays = parseDate(props2.modelValue, props2.valueFormat, lang.value);
         }
       }
       if (pickerOptions.value.getRangeAvailableTime) {
@@ -21070,15 +21124,15 @@ var _sfc_main27 = defineComponent({
       }
       return "";
     });
-    const isTimeLikePicker = computed(() => props.type.includes("time"));
-    const isTimePicker = computed(() => props.type.startsWith("time"));
-    const isDatesPicker = computed(() => props.type === "dates");
-    const isMonthsPicker = computed(() => props.type === "months");
-    const isYearsPicker = computed(() => props.type === "years");
-    const triggerIcon = computed(() => props.prefixIcon || (isTimeLikePicker.value ? clock_default : calendar_default));
+    const isTimeLikePicker = computed(() => props2.type.includes("time"));
+    const isTimePicker = computed(() => props2.type.startsWith("time"));
+    const isDatesPicker = computed(() => props2.type === "dates");
+    const isMonthsPicker = computed(() => props2.type === "months");
+    const isYearsPicker = computed(() => props2.type === "years");
+    const triggerIcon = computed(() => props2.prefixIcon || (isTimeLikePicker.value ? clock_default : calendar_default));
     const showClose = ref(false);
     const onClearIconClick = (event) => {
-      if (props.readonly || pickerDisabled.value)
+      if (props2.readonly || pickerDisabled.value)
         return;
       if (showClose.value) {
         event.stopPropagation();
@@ -21090,26 +21144,26 @@ var _sfc_main27 = defineComponent({
         }
         emitChange(valueOnClear.value, true);
         showClose.value = false;
-        pickerVisible.value = false;
+        onHide();
       }
       emit("clear");
     };
     const valueIsEmpty = computed(() => {
-      const { modelValue } = props;
+      const { modelValue } = props2;
       return !modelValue || isArray(modelValue) && !modelValue.filter(Boolean).length;
     });
     const onMouseDownInput = async (event) => {
       var _a2;
-      if (props.readonly || pickerDisabled.value)
+      if (props2.readonly || pickerDisabled.value)
         return;
       if (((_a2 = event.target) == null ? void 0 : _a2.tagName) !== "INPUT" || refInput.value.includes(document.activeElement)) {
         pickerVisible.value = true;
       }
     };
     const onMouseEnter = () => {
-      if (props.readonly || pickerDisabled.value)
+      if (props2.readonly || pickerDisabled.value)
         return;
-      if (!valueIsEmpty.value && props.clearable) {
+      if (!valueIsEmpty.value && props2.clearable) {
         showClose.value = true;
       }
     };
@@ -21118,14 +21172,14 @@ var _sfc_main27 = defineComponent({
     };
     const onTouchStartInput = (event) => {
       var _a2;
-      if (props.readonly || pickerDisabled.value)
+      if (props2.readonly || pickerDisabled.value)
         return;
       if (((_a2 = event.touches[0].target) == null ? void 0 : _a2.tagName) !== "INPUT" || refInput.value.includes(document.activeElement)) {
         pickerVisible.value = true;
       }
     };
     const isRangeInput = computed(() => {
-      return props.type.includes("range");
+      return props2.type.includes("range");
     });
     const pickerSize = useFormSize();
     const popperEl = computed(() => {
@@ -21180,7 +21234,7 @@ var _sfc_main27 = defineComponent({
       return pickerOptions.value.isValidValue(value);
     };
     const handleKeydownInput = async (event) => {
-      if (props.readonly || pickerDisabled.value)
+      if (props2.readonly || pickerDisabled.value)
         return;
       const { code } = event;
       emitKeydown(event);
@@ -21294,7 +21348,7 @@ var _sfc_main27 = defineComponent({
       emit("panel-change", value, mode, view);
     };
     provide("EP_PICKER_BASE", {
-      props
+      props: props2
     });
     expose({
       focus,
@@ -21318,8 +21372,9 @@ var _sfc_main27 = defineComponent({
         transition: `${unref(nsDate).namespace.value}-zoom-in-top`,
         "popper-class": [`${unref(nsDate).namespace.value}-picker__popper`, _ctx.popperClass],
         "popper-options": unref(elPopperOptions),
-        "fallback-placements": ["bottom", "top", "right", "left"],
+        "fallback-placements": _ctx.fallbackPlacements,
         "gpu-acceleration": false,
+        placement: _ctx.placement,
         "stop-popper-mouse-event": false,
         "hide-after": 0,
         persistent: "",
@@ -21475,16 +21530,16 @@ var _sfc_main27 = defineComponent({
           })
         ]),
         _: 3
-      }, 16, ["visible", "transition", "popper-class", "popper-options"]);
+      }, 16, ["visible", "transition", "popper-class", "popper-options", "fallback-placements", "placement"]);
     };
   }
 });
 var CommonPicker = _export_sfc(_sfc_main27, [["__file", "picker.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
 var import_dayjs2 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/props/panel-time-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/props/panel-time-picker.mjs
 var panelTimePickerProps = buildProps({
   ...timePanelSharedProps,
   datetimeRole: String,
@@ -21493,7 +21548,7 @@ var panelTimePickerProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/composables/use-time-panel.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/composables/use-time-panel.mjs
 var useTimePanel = ({
   getAvailableHours,
   getAvailableMinutes,
@@ -21543,7 +21598,7 @@ var useTimePanel = ({
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/composables/use-time-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/composables/use-time-picker.mjs
 var makeAvailableArr = (disabledList) => {
   const trueOrNumber = (isDisabled, index) => isDisabled || index;
   const getNumber = (predicate) => predicate !== true;
@@ -21582,17 +21637,17 @@ var buildAvailableTimeSlotGetter = (disabledHours, disabledMinutes, disabledSeco
     getAvailableSeconds
   };
 };
-var useOldValue = (props) => {
-  const oldValue = ref(props.parsedValue);
-  watch(() => props.visible, (val) => {
+var useOldValue = (props2) => {
+  const oldValue = ref(props2.parsedValue);
+  watch(() => props2.visible, (val) => {
     if (!val) {
-      oldValue.value = props.parsedValue;
+      oldValue.value = props2.parsedValue;
     }
   });
   return oldValue;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/directives/click-outside/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/directives/click-outside/index.mjs
 var nodeList = /* @__PURE__ */ new Map();
 if (isClient) {
   let startClick;
@@ -21662,7 +21717,7 @@ var ClickOutside = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/directives/repeat-click/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/directives/repeat-click/index.mjs
 var REPEAT_INTERVAL = 100;
 var REPEAT_DELAY = 600;
 var vRepeatClick = {
@@ -21699,7 +21754,7 @@ var vRepeatClick = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/directives/trap-focus/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/directives/trap-focus/index.mjs
 var FOCUSABLE_CHILDREN = "_trap-focus-children";
 var FOCUS_STACK = [];
 var FOCUS_HANDLER = (e) => {
@@ -21851,7 +21906,7 @@ T.getEventType = function() {
 };
 var Y = T;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/directives/mousewheel/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/directives/mousewheel/index.mjs
 var mousewheel = function(element, callback) {
   if (element && element.addEventListener) {
     const fn2 = function(event) {
@@ -21867,7 +21922,7 @@ var Mousewheel = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/props/basic-time-spinner.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/props/basic-time-spinner.mjs
 var basicTimeSpinnerProps = buildProps({
   role: {
     type: String,
@@ -21889,15 +21944,15 @@ var basicTimeSpinnerProps = buildProps({
   ...disabledTimeListsProps
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker-com/basic-time-spinner.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker-com/basic-time-spinner.mjs
 var _sfc_main28 = defineComponent({
   __name: "basic-time-spinner",
   props: basicTimeSpinnerProps,
   emits: ["change", "select-range", "set-option"],
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("time");
-    const { getHoursList, getMinutesList, getSecondsList } = getTimeLists(props.disabledHours, props.disabledMinutes, props.disabledSeconds);
+    const { getHoursList, getMinutesList, getSecondsList } = getTimeLists(props2.disabledHours, props2.disabledMinutes, props2.disabledSeconds);
     let isScrolling = false;
     const currentScrollbar = ref();
     const listHoursRef = ref();
@@ -21909,10 +21964,10 @@ var _sfc_main28 = defineComponent({
       seconds: listSecondsRef
     };
     const spinnerItems = computed(() => {
-      return props.showSeconds ? timeUnits : timeUnits.slice(0, 2);
+      return props2.showSeconds ? timeUnits : timeUnits.slice(0, 2);
     });
     const timePartials = computed(() => {
-      const { spinnerDate } = props;
+      const { spinnerDate } = props2;
       const hours = spinnerDate.hour();
       const minutes = spinnerDate.minute();
       const seconds = spinnerDate.second();
@@ -21921,9 +21976,9 @@ var _sfc_main28 = defineComponent({
     const timeList = computed(() => {
       const { hours, minutes } = unref(timePartials);
       return {
-        hours: getHoursList(props.role),
-        minutes: getMinutesList(hours, props.role),
-        seconds: getSecondsList(hours, minutes, props.role)
+        hours: getHoursList(props2.role),
+        minutes: getMinutesList(hours, props2.role),
+        seconds: getSecondsList(hours, minutes, props2.role)
       };
     });
     const arrowControlTimeList = computed(() => {
@@ -21939,10 +21994,10 @@ var _sfc_main28 = defineComponent({
       adjustCurrentSpinner(type4);
     }, 200);
     const getAmPmFlag = (hour) => {
-      const shouldShowAmPm = !!props.amPmMode;
+      const shouldShowAmPm = !!props2.amPmMode;
       if (!shouldShowAmPm)
         return "";
-      const isCapital = props.amPmMode === "A";
+      const isCapital = props2.amPmMode === "A";
       let content = hour < 12 ? " am" : " pm";
       if (isCapital)
         content = content.toUpperCase();
@@ -21975,7 +22030,7 @@ var _sfc_main28 = defineComponent({
     };
     const getScrollbarElement = (el) => el.querySelector(`.${ns.namespace.value}-scrollbar__wrap`);
     const adjustSpinner = (type4, value) => {
-      if (props.arrowControl)
+      if (props2.arrowControl)
         return;
       const scrollbar = unref(listRefsMap[type4]);
       if (scrollbar && scrollbar.$el) {
@@ -22025,13 +22080,13 @@ var _sfc_main28 = defineComponent({
       let changeTo;
       switch (type4) {
         case "hours":
-          changeTo = props.spinnerDate.hour(value).minute(minutes).second(seconds);
+          changeTo = props2.spinnerDate.hour(value).minute(minutes).second(seconds);
           break;
         case "minutes":
-          changeTo = props.spinnerDate.hour(hours).minute(value).second(seconds);
+          changeTo = props2.spinnerDate.hour(hours).minute(value).second(seconds);
           break;
         case "seconds":
-          changeTo = props.spinnerDate.hour(hours).minute(minutes).second(value);
+          changeTo = props2.spinnerDate.hour(hours).minute(minutes).second(value);
           break;
       }
       emit("change", changeTo);
@@ -22067,18 +22122,18 @@ var _sfc_main28 = defineComponent({
     };
     onMounted(() => {
       nextTick(() => {
-        !props.arrowControl && bindScrollEvent();
+        !props2.arrowControl && bindScrollEvent();
         adjustSpinners();
-        if (props.role === "start")
+        if (props2.role === "start")
           emitSelectRange("hours");
       });
     });
     const setRef = (scrollbar, type4) => {
       listRefsMap[type4].value = scrollbar;
     };
-    emit("set-option", [`${props.role}_scrollDown`, scrollDown]);
-    emit("set-option", [`${props.role}_emitSelectRange`, emitSelectRange]);
-    watch(() => props.spinnerDate, () => {
+    emit("set-option", [`${props2.role}_scrollDown`, scrollDown]);
+    emit("set-option", [`${props2.role}_emitSelectRange`, emitSelectRange]);
+    watch(() => props2.spinnerDate, () => {
       if (isScrolling)
         return;
       adjustSpinners();
@@ -22178,13 +22233,13 @@ var _sfc_main28 = defineComponent({
 });
 var TimeSpinner = _export_sfc(_sfc_main28, [["__file", "basic-time-spinner.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
 var _sfc_main29 = defineComponent({
   __name: "panel-time-pick",
   props: panelTimePickerProps,
   emits: ["pick", "select-range", "set-picker-option"],
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const pickerBase = inject("EP_PICKER_BASE");
     const {
       arrowControl,
@@ -22197,17 +22252,17 @@ var _sfc_main29 = defineComponent({
     const ns = useNamespace("time");
     const { t, lang } = useLocale();
     const selectionRange = ref([0, 2]);
-    const oldValue = useOldValue(props);
+    const oldValue = useOldValue(props2);
     const transitionName = computed(() => {
-      return isUndefined2(props.actualVisible) ? `${ns.namespace.value}-zoom-in-top` : "";
+      return isUndefined2(props2.actualVisible) ? `${ns.namespace.value}-zoom-in-top` : "";
     });
     const showSeconds = computed(() => {
-      return props.format.includes("ss");
+      return props2.format.includes("ss");
     });
     const amPmMode = computed(() => {
-      if (props.format.includes("A"))
+      if (props2.format.includes("A"))
         return "A";
-      if (props.format.includes("a"))
+      if (props2.format.includes("a"))
         return "a";
       return "";
     });
@@ -22222,10 +22277,10 @@ var _sfc_main29 = defineComponent({
     const handleConfirm = (visible = false, first = false) => {
       if (first)
         return;
-      emit("pick", props.parsedValue, visible);
+      emit("pick", props2.parsedValue, visible);
     };
     const handleChange = (_date) => {
-      if (!props.visible) {
+      if (!props2.visible) {
         return;
       }
       const result2 = getRangeAvailableTime(_date).millisecond(0);
@@ -22264,17 +22319,17 @@ var _sfc_main29 = defineComponent({
       getAvailableSeconds
     });
     const getRangeAvailableTime = (date4) => {
-      return getAvailableTime(date4, props.datetimeRole || "", true);
+      return getAvailableTime(date4, props2.datetimeRole || "", true);
     };
     const parseUserInput = (value) => {
       if (!value)
         return null;
-      return (0, import_dayjs2.default)(value, props.format).locale(lang.value);
+      return (0, import_dayjs2.default)(value, props2.format).locale(lang.value);
     };
     const formatToString = (value) => {
       if (!value)
         return null;
-      return value.format(props.format);
+      return value.format(props2.format);
     };
     const getDefaultValue2 = () => {
       return (0, import_dayjs2.default)(defaultValue).locale(lang.value);
@@ -22333,10 +22388,10 @@ var _sfc_main29 = defineComponent({
 });
 var TimePickPanel = _export_sfc(_sfc_main29, [["__file", "panel-time-pick.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
 var import_dayjs3 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/props/panel-time-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/props/panel-time-range.mjs
 var panelTimeRangeProps = buildProps({
   ...timePanelSharedProps,
   parsedValue: {
@@ -22344,13 +22399,13 @@ var panelTimeRangeProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
 var _sfc_main30 = defineComponent({
   __name: "panel-time-range",
   props: panelTimeRangeProps,
   emits: ["pick", "select-range", "set-picker-option"],
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const makeSelectRange = (start, end2) => {
       const result2 = [];
       for (let i = start; i <= end2; i++) {
@@ -22381,19 +22436,19 @@ var _sfc_main30 = defineComponent({
       nsTime.is("arrow", arrowControl),
       showSeconds.value ? "has-seconds" : ""
     ]);
-    const startTime = computed(() => props.parsedValue[0]);
-    const endTime = computed(() => props.parsedValue[1]);
-    const oldValue = useOldValue(props);
+    const startTime = computed(() => props2.parsedValue[0]);
+    const endTime = computed(() => props2.parsedValue[1]);
+    const oldValue = useOldValue(props2);
     const handleCancel = () => {
       emit("pick", oldValue.value, false);
     };
     const showSeconds = computed(() => {
-      return props.format.includes("ss");
+      return props2.format.includes("ss");
     });
     const amPmMode = computed(() => {
-      if (props.format.includes("A"))
+      if (props2.format.includes("A"))
         return "A";
-      if (props.format.includes("a"))
+      if (props2.format.includes("a"))
         return "a";
       return "";
     });
@@ -22510,17 +22565,17 @@ var _sfc_main30 = defineComponent({
       if (!days)
         return null;
       if (isArray(days)) {
-        return days.map((d2) => (0, import_dayjs3.default)(d2, props.format).locale(lang.value));
+        return days.map((d2) => (0, import_dayjs3.default)(d2, props2.format).locale(lang.value));
       }
-      return (0, import_dayjs3.default)(days, props.format).locale(lang.value);
+      return (0, import_dayjs3.default)(days, props2.format).locale(lang.value);
     };
     const formatToString = (days) => {
       if (!days)
         return null;
       if (isArray(days)) {
-        return days.map((d2) => d2.format(props.format));
+        return days.map((d2) => d2.format(props2.format));
       }
-      return days.format(props.format);
+      return days.format(props2.format);
     };
     const getDefaultValue2 = () => {
       if (isArray(defaultValue)) {
@@ -22615,7 +22670,7 @@ var _sfc_main30 = defineComponent({
 });
 var TimeRangePanel = _export_sfc(_sfc_main30, [["__file", "panel-time-range.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
 import_dayjs4.default.extend(import_customParseFormat.default);
 var TimePicker = defineComponent({
   name: "ElTimePicker",
@@ -22628,11 +22683,11 @@ var TimePicker = defineComponent({
     }
   },
   emits: ["update:modelValue"],
-  setup(props, ctx) {
+  setup(props2, ctx) {
     const commonPicker = ref();
-    const [type4, Panel] = props.isRange ? ["timerange", TimeRangePanel] : ["time", TimePickPanel];
+    const [type4, Panel] = props2.isRange ? ["timerange", TimeRangePanel] : ["time", TimePickPanel];
     const modelUpdater = (value) => ctx.emit("update:modelValue", value);
-    provide("ElPopperOptions", props.popperOptions);
+    provide("ElPopperOptions", props2.popperOptions);
     ctx.expose({
       focus: (e) => {
         var _a2;
@@ -22653,23 +22708,23 @@ var TimePicker = defineComponent({
     });
     return () => {
       var _a2;
-      const format2 = (_a2 = props.format) != null ? _a2 : DEFAULT_FORMATS_TIME;
-      return createVNode(CommonPicker, mergeProps(props, {
+      const format2 = (_a2 = props2.format) != null ? _a2 : DEFAULT_FORMATS_TIME;
+      return createVNode(CommonPicker, mergeProps(props2, {
         "ref": commonPicker,
         "type": type4,
         "format": format2,
         "onUpdate:modelValue": modelUpdater
       }), {
-        default: (props2) => createVNode(Panel, props2, null)
+        default: (props22) => createVNode(Panel, props22, null)
       });
     };
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-picker/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-picker/index.mjs
 var ElTimePicker = withInstall(TimePicker);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/date-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/date-table.mjs
 var getPrevMonthLastDays = (date4, count) => {
   const lastDay = date4.subtract(1, "month").endOf("month").date();
   return rangeArr(count).map((_2, index) => lastDay - (count - index - 1));
@@ -22701,19 +22756,19 @@ var dateTableEmits = {
   pick: (value) => isObject2(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/use-date-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/use-date-table.mjs
 var import_dayjs5 = __toESM(require_dayjs_min(), 1);
 var import_localeData = __toESM(require_localeData(), 1);
-var useDateTable = (props, emit) => {
+var useDateTable = (props2, emit) => {
   import_dayjs5.default.extend(import_localeData.default);
   const firstDayOfWeek = import_dayjs5.default.localeData().firstDayOfWeek();
   const { t, lang } = useLocale();
   const now2 = (0, import_dayjs5.default)().locale(lang.value);
-  const isInRange = computed(() => !!props.range && !!props.range.length);
+  const isInRange = computed(() => !!props2.range && !!props2.range.length);
   const rows = computed(() => {
     let days = [];
     if (isInRange.value) {
-      const [start, end2] = props.range;
+      const [start, end2] = props2.range;
       const currentMonthRange = rangeArr(end2.date() - start.date() + 1).map((index) => ({
         text: start.date() + index,
         type: "current"
@@ -22726,12 +22781,12 @@ var useDateTable = (props, emit) => {
       }));
       days = currentMonthRange.concat(nextMonthRange);
     } else {
-      const firstDay = props.date.startOf("month").day();
-      const prevMonthDays = getPrevMonthLastDays(props.date, (firstDay - firstDayOfWeek + 7) % 7).map((day) => ({
+      const firstDay = props2.date.startOf("month").day();
+      const prevMonthDays = getPrevMonthLastDays(props2.date, (firstDay - firstDayOfWeek + 7) % 7).map((day) => ({
         text: day,
         type: "prev"
       }));
-      const currentMonthDays = getMonthDays(props.date).map((day) => ({
+      const currentMonthDays = getMonthDays(props2.date).map((day) => ({
         text: day,
         type: "current"
       }));
@@ -22756,11 +22811,11 @@ var useDateTable = (props, emit) => {
   const getFormattedDate = (day, type4) => {
     switch (type4) {
       case "prev":
-        return props.date.startOf("month").subtract(1, "month").date(day);
+        return props2.date.startOf("month").subtract(1, "month").date(day);
       case "next":
-        return props.date.startOf("month").add(1, "month").date(day);
+        return props2.date.startOf("month").add(1, "month").date(day);
       case "current":
-        return props.date.date(day);
+        return props2.date.date(day);
     }
   };
   const handlePickDay = ({ text, type: type4 }) => {
@@ -22770,7 +22825,7 @@ var useDateTable = (props, emit) => {
   const getSlotData = ({ text, type: type4 }) => {
     const day = getFormattedDate(text, type4);
     return {
-      isSelected: day.isSame(props.selectedDay),
+      isSelected: day.isSame(props2.selectedDay),
       type: `${type4}-month`,
       day: day.format("YYYY-MM-DD"),
       date: day.toDate()
@@ -22787,7 +22842,7 @@ var useDateTable = (props, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/date-table2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/date-table2.mjs
 var __default__24 = defineComponent({
   name: "DateTable"
 });
@@ -22796,7 +22851,7 @@ var _sfc_main31 = defineComponent({
   props: dateTableProps,
   emits: dateTableEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const {
       isInRange,
       now: now2,
@@ -22805,14 +22860,14 @@ var _sfc_main31 = defineComponent({
       getFormattedDate,
       handlePickDay,
       getSlotData
-    } = useDateTable(props, emit);
+    } = useDateTable(props2, emit);
     const nsTable = useNamespace("calendar-table");
     const nsDay = useNamespace("calendar-day");
     const getCellClass = ({ text, type: type4 }) => {
       const classes = [type4];
       if (type4 === "current") {
         const date4 = getFormattedDate(text, type4);
-        if (date4.isSame(props.selectedDay, "day")) {
+        if (date4.isSame(props2.selectedDay, "day")) {
           classes.push(nsDay.is("selected"));
         }
         if (date4.isSame(now2, "day")) {
@@ -22870,7 +22925,7 @@ var _sfc_main31 = defineComponent({
 });
 var DateTable = _export_sfc(_sfc_main31, [["__file", "date-table.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/use-calendar.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/use-calendar.mjs
 var import_dayjs6 = __toESM(require_dayjs_min(), 1);
 var adjacentMonth = (start, end2) => {
   const firstMonthLastDay = start.endOf("month");
@@ -22895,13 +22950,13 @@ var threeConsecutiveMonth = (start, end2) => {
     [lastMonthStartDay.startOf("week"), end2]
   ];
 };
-var useCalendar = (props, emit, componentName2) => {
+var useCalendar = (props2, emit, componentName2) => {
   const { lang } = useLocale();
   const selectedDay = ref();
   const now2 = (0, import_dayjs6.default)().locale(lang.value);
   const realSelectedDay = computed({
     get() {
-      if (!props.modelValue)
+      if (!props2.modelValue)
         return selectedDay.value;
       return date4.value;
     },
@@ -22915,9 +22970,9 @@ var useCalendar = (props, emit, componentName2) => {
     }
   });
   const validatedRange = computed(() => {
-    if (!props.range)
+    if (!props2.range || !isArray(props2.range) || props2.range.length !== 2 || props2.range.some((item) => !isDate(item)))
       return [];
-    const rangeArrDayjs = props.range.map((_2) => (0, import_dayjs6.default)(_2).locale(lang.value));
+    const rangeArrDayjs = props2.range.map((_2) => (0, import_dayjs6.default)(_2).locale(lang.value));
     const [startDayjs, endDayjs] = rangeArrDayjs;
     if (startDayjs.isAfter(endDayjs)) {
       debugWarn(componentName2, "end time should be greater than start time");
@@ -22934,10 +22989,10 @@ var useCalendar = (props, emit, componentName2) => {
     }
   });
   const date4 = computed(() => {
-    if (!props.modelValue) {
+    if (!props2.modelValue) {
       return realSelectedDay.value || (validatedRange.value.length ? validatedRange.value[0][0] : now2);
     } else {
-      return (0, import_dayjs6.default)(props.modelValue).locale(lang.value);
+      return (0, import_dayjs6.default)(props2.modelValue).locale(lang.value);
     }
   });
   const prevMonthDayjs = computed(() => date4.value.subtract(1, "month").date(1));
@@ -22986,7 +23041,7 @@ var useCalendar = (props, emit, componentName2) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/calendar.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/calendar.mjs
 var isValidRange = (range4) => isArray(range4) && range4.length === 2 && range4.every((item) => isDate(item));
 var calendarProps = buildProps({
   modelValue: {
@@ -23002,7 +23057,7 @@ var calendarEmits = {
   [INPUT_EVENT]: (value) => isDate(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/calendar2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/calendar/src/calendar2.mjs
 var COMPONENT_NAME8 = "ElCalendar";
 var __default__25 = defineComponent({
   name: COMPONENT_NAME8
@@ -23012,7 +23067,7 @@ var _sfc_main32 = defineComponent({
   props: calendarProps,
   emits: calendarEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("calendar");
     const {
       calculateValidatedDateRange,
@@ -23021,7 +23076,7 @@ var _sfc_main32 = defineComponent({
       realSelectedDay,
       selectDate,
       validatedRange
-    } = useCalendar(props, emit, COMPONENT_NAME8);
+    } = useCalendar(props2, emit, COMPONENT_NAME8);
     const { t } = useLocale();
     const i18nDate = computed(() => {
       const pickedMonth = `el.datepicker.month${date4.value.format("M")}`;
@@ -23127,10 +23182,10 @@ var _sfc_main32 = defineComponent({
 });
 var Calendar = _export_sfc(_sfc_main32, [["__file", "calendar.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/calendar/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/calendar/index.mjs
 var ElCalendar = withInstall(Calendar);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/card/src/card.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/card/src/card2.mjs
 var cardProps = buildProps({
   header: {
     type: String,
@@ -23152,7 +23207,7 @@ var cardProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/card/src/card2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/card/src/card.mjs
 var __default__26 = defineComponent({
   name: "ElCard"
 });
@@ -23193,10 +23248,10 @@ var _sfc_main33 = defineComponent({
 });
 var Card = _export_sfc(_sfc_main33, [["__file", "card.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/card/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/card/index.mjs
 var ElCard = withInstall(Card);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/carousel.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/carousel.mjs
 var carouselProps = buildProps({
   initialIndex: {
     type: Number,
@@ -23257,13 +23312,13 @@ var carouselEmits = {
   change: (current, prev) => [current, prev].every(isNumber3)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/constants.mjs
 var carouselContextKey = Symbol("carouselContextKey");
 var CAROUSEL_ITEM_NAME = "ElCarouselItem";
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/use-carousel.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/use-carousel.mjs
 var THROTTLE_TIME = 300;
-var useCarousel = (props, emit, componentName2) => {
+var useCarousel = (props2, emit, componentName2) => {
   const {
     children: items,
     addChild: addItem,
@@ -23278,16 +23333,16 @@ var useCarousel = (props, emit, componentName2) => {
   const isItemsTwoLength = ref(true);
   const isFirstCall = ref(true);
   const isTransitioning = ref(false);
-  const arrowDisplay = computed(() => props.arrow !== "never" && !unref(isVertical));
+  const arrowDisplay = computed(() => props2.arrow !== "never" && !unref(isVertical));
   const hasLabel = computed(() => {
     return items.value.some((item) => item.props.label.toString().length > 0);
   });
-  const isCardType = computed(() => props.type === "card");
-  const isVertical = computed(() => props.direction === "vertical");
+  const isCardType = computed(() => props2.type === "card");
+  const isVertical = computed(() => props2.direction === "vertical");
   const containerStyle = computed(() => {
-    if (props.height !== "auto") {
+    if (props2.height !== "auto") {
       return {
-        height: props.height
+        height: props2.height
       };
     }
     return {
@@ -23313,9 +23368,9 @@ var useCarousel = (props, emit, componentName2) => {
     }
   }
   function startTimer() {
-    if (props.interval <= 0 || !props.autoplay || timer.value)
+    if (props2.interval <= 0 || !props2.autoplay || timer.value)
       return;
-    timer.value = setInterval(() => playSlides(), props.interval);
+    timer.value = setInterval(() => playSlides(), props2.interval);
   }
   const playSlides = () => {
     if (!isFirstCall.value) {
@@ -23324,7 +23379,7 @@ var useCarousel = (props, emit, componentName2) => {
     isFirstCall.value = false;
     if (activeIndex.value < items.value.length - 1) {
       activeIndex.value = activeIndex.value + 1;
-    } else if (props.loop) {
+    } else if (props2.loop) {
       activeIndex.value = 0;
     } else {
       isTransitioning.value = false;
@@ -23349,9 +23404,9 @@ var useCarousel = (props, emit, componentName2) => {
     const itemCount = items.value.length;
     const oldIndex = activeIndex.value;
     if (index < 0) {
-      activeIndex.value = props.loop ? itemCount - 1 : 0;
+      activeIndex.value = props2.loop ? itemCount - 1 : 0;
     } else if (index >= itemCount) {
-      activeIndex.value = props.loop ? 0 : itemCount - 1;
+      activeIndex.value = props2.loop ? 0 : itemCount - 1;
     } else {
       activeIndex.value = index;
     }
@@ -23387,7 +23442,7 @@ var useCarousel = (props, emit, componentName2) => {
   }
   function handleMouseEnter() {
     hover.value = true;
-    if (props.pauseOnHover) {
+    if (props2.pauseOnHover) {
       pauseTimer();
     }
   }
@@ -23423,7 +23478,7 @@ var useCarousel = (props, emit, componentName2) => {
     activeIndex.value = index;
   }
   function handleIndicatorHover(index) {
-    if (props.trigger === "hover" && index !== activeIndex.value) {
+    if (props2.trigger === "hover" && index !== activeIndex.value) {
       activeIndex.value = index;
       if (!isFirstCall.value) {
         isTransitioning.value = true;
@@ -23438,11 +23493,11 @@ var useCarousel = (props, emit, componentName2) => {
   }
   function resetTimer() {
     pauseTimer();
-    if (!props.pauseOnHover)
+    if (!props2.pauseOnHover)
       startTimer();
   }
   function setContainerHeight(height) {
-    if (props.height !== "auto")
+    if (props2.height !== "auto")
       return;
     containerHeight.value = height;
   }
@@ -23455,7 +23510,7 @@ var useCarousel = (props, emit, componentName2) => {
     const normalizeSlots = flatSlots.filter((slot) => {
       return isVNode(slot) && slot.type.name === CAROUSEL_ITEM_NAME;
     });
-    if ((normalizeSlots == null ? void 0 : normalizeSlots.length) === 2 && props.loop && !isCardType.value) {
+    if ((normalizeSlots == null ? void 0 : normalizeSlots.length) === 2 && props2.loop && !isCardType.value) {
       isItemsTwoLength.value = true;
       return normalizeSlots;
     }
@@ -23472,20 +23527,20 @@ var useCarousel = (props, emit, componentName2) => {
       emit("change", current, prev2);
     }
   });
-  watch(() => props.autoplay, (autoplay) => {
+  watch(() => props2.autoplay, (autoplay) => {
     autoplay ? startTimer() : pauseTimer();
   });
-  watch(() => props.loop, () => {
+  watch(() => props2.loop, () => {
     setActiveItem(activeIndex.value);
   });
-  watch(() => props.interval, () => {
+  watch(() => props2.interval, () => {
     resetTimer();
   });
   const resizeObserver = shallowRef();
   onMounted(() => {
     watch(() => items.value, () => {
       if (items.value.length > 0)
-        setActiveItem(props.initialIndex);
+        setActiveItem(props2.initialIndex);
     }, {
       immediate: true
     });
@@ -23504,8 +23559,8 @@ var useCarousel = (props, emit, componentName2) => {
     isCardType,
     isVertical,
     items,
-    loop: props.loop,
-    cardScale: props.cardScale,
+    loop: props2.loop,
+    cardScale: props2.cardScale,
     addItem,
     removeItem,
     setActiveItem,
@@ -23539,7 +23594,7 @@ var useCarousel = (props, emit, componentName2) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/carousel2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/carousel2.mjs
 var COMPONENT_NAME9 = "ElCarousel";
 var __default__27 = defineComponent({
   name: COMPONENT_NAME9
@@ -23549,7 +23604,7 @@ var _sfc_main34 = defineComponent({
   props: carouselProps,
   emits: carouselEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const {
       root: root2,
       activeIndex,
@@ -23574,11 +23629,11 @@ var _sfc_main34 = defineComponent({
       isTwoLengthShow,
       throttledArrowClick,
       throttledIndicatorHover
-    } = useCarousel(props, emit, COMPONENT_NAME9);
+    } = useCarousel(props2, emit, COMPONENT_NAME9);
     const ns = useNamespace("carousel");
     const { t } = useLocale();
     const carouselClasses = computed(() => {
-      const classes = [ns.b(), ns.m(props.direction)];
+      const classes = [ns.b(), ns.m(props2.direction)];
       if (unref(isCardType)) {
         classes.push(ns.m("card"));
       }
@@ -23586,17 +23641,17 @@ var _sfc_main34 = defineComponent({
     });
     const carouselContainer = computed(() => {
       const classes = [ns.e("container")];
-      if (props.motionBlur && unref(isTransitioning)) {
+      if (props2.motionBlur && unref(isTransitioning) && items.value.length > 1) {
         classes.push(unref(isVertical) ? `${ns.namespace.value}-transitioning-vertical` : `${ns.namespace.value}-transitioning`);
       }
       return classes;
     });
     const indicatorsClasses = computed(() => {
-      const classes = [ns.e("indicators"), ns.em("indicators", props.direction)];
+      const classes = [ns.e("indicators"), ns.em("indicators", props2.direction)];
       if (unref(hasLabel)) {
         classes.push(ns.em("indicators", "labels"));
       }
-      if (props.indicatorPosition === "outside") {
+      if (props2.indicatorPosition === "outside") {
         classes.push(ns.em("indicators", "outside"));
       }
       if (unref(isVertical)) {
@@ -23641,7 +23696,7 @@ var _sfc_main34 = defineComponent({
             ], 42, ["aria-label", "onMouseenter", "onMouseleave", "onClick"]), [
               [
                 vShow,
-                (_ctx.arrow === "always" || unref(hover)) && (props.loop || unref(activeIndex) > 0)
+                (_ctx.arrow === "always" || unref(hover)) && (props2.loop || unref(activeIndex) > 0)
               ]
             ])
           ]),
@@ -23670,7 +23725,7 @@ var _sfc_main34 = defineComponent({
             ], 42, ["aria-label", "onMouseenter", "onMouseleave", "onClick"]), [
               [
                 vShow,
-                (_ctx.arrow === "always" || unref(hover)) && (props.loop || unref(activeIndex) < unref(items).length - 1)
+                (_ctx.arrow === "always" || unref(hover)) && (props2.loop || unref(activeIndex) < unref(items).length - 1)
               ]
             ])
           ]),
@@ -23710,7 +23765,7 @@ var _sfc_main34 = defineComponent({
             ]);
           }), 128))
         ], 2)) : createCommentVNode("v-if", true),
-        props.motionBlur ? (openBlock(), createElementBlock("svg", {
+        props2.motionBlur ? (openBlock(), createElementBlock("svg", {
           key: 3,
           xmlns: "http://www.w3.org/2000/svg",
           version: "1.1",
@@ -23737,7 +23792,7 @@ var _sfc_main34 = defineComponent({
 });
 var Carousel = _export_sfc(_sfc_main34, [["__file", "carousel.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/carousel-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/carousel-item.mjs
 var carouselItemProps = buildProps({
   name: { type: String, default: "" },
   label: {
@@ -23746,8 +23801,8 @@ var carouselItemProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/use-carousel-item.mjs
-var useCarouselItem = (props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/use-carousel-item.mjs
+var useCarouselItem = (props2) => {
   const carouselContext = inject(carouselContextKey);
   const instance = getCurrentInstance();
   if (!carouselContext) {
@@ -23832,7 +23887,7 @@ var useCarouselItem = (props) => {
   }
   onMounted(() => {
     carouselContext.addItem({
-      props,
+      props: props2,
       states: reactive({
         hover,
         translate: translate2,
@@ -23864,7 +23919,7 @@ var useCarouselItem = (props) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/carousel-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/carousel/src/carousel-item2.mjs
 var __default__28 = defineComponent({
   name: CAROUSEL_ITEM_NAME
 });
@@ -23872,7 +23927,7 @@ var _sfc_main35 = defineComponent({
   ...__default__28,
   props: carouselItemProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("carousel");
     const {
       carouselItemRef,
@@ -23886,7 +23941,7 @@ var _sfc_main35 = defineComponent({
       scale,
       ready,
       handleItemClick
-    } = useCarouselItem(props);
+    } = useCarouselItem(props2);
     const itemKls = computed(() => [
       ns.e("item"),
       ns.is("active", active.value),
@@ -23930,13 +23985,13 @@ var _sfc_main35 = defineComponent({
 });
 var CarouselItem = _export_sfc(_sfc_main35, [["__file", "carousel-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/carousel/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/carousel/index.mjs
 var ElCarousel = withInstall(Carousel, {
   CarouselItem
 });
 var ElCarouselItem = withNoopInstall(CarouselItem);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/checkbox.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/checkbox.mjs
 var checkboxProps = {
   modelValue: {
     type: [Number, String, Boolean],
@@ -23991,10 +24046,10 @@ var checkboxEmits = {
   change: (val) => isString2(val) || isNumber3(val) || isBoolean2(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/constants.mjs
 var checkboxGroupContextKey = Symbol("checkboxGroupContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-disabled.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-disabled.mjs
 var useCheckboxDisabled = ({
   model,
   isChecked
@@ -24013,8 +24068,8 @@ var useCheckboxDisabled = ({
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-event.mjs
-var useCheckboxEvent = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-event.mjs
+var useCheckboxEvent = (props2, {
   model,
   isLimitExceeded,
   hasOwnLabel,
@@ -24026,7 +24081,7 @@ var useCheckboxEvent = (props, {
   const { emit } = getCurrentInstance();
   function getLabeledValue(value) {
     var _a2, _b, _c, _d;
-    return [true, props.trueValue, props.trueLabel].includes(value) ? (_b = (_a2 = props.trueValue) != null ? _a2 : props.trueLabel) != null ? _b : true : (_d = (_c = props.falseValue) != null ? _c : props.falseLabel) != null ? _d : false;
+    return [true, props2.trueValue, props2.trueLabel].includes(value) ? (_b = (_a2 = props2.trueValue) != null ? _a2 : props2.trueLabel) != null ? _b : true : (_d = (_c = props2.falseValue) != null ? _c : props2.falseLabel) != null ? _d : false;
   }
   function emitChangeEvent(checked, e) {
     emit("change", getLabeledValue(checked), e);
@@ -24044,14 +24099,14 @@ var useCheckboxEvent = (props, {
       const eventTargets = e.composedPath();
       const hasLabel = eventTargets.some((item) => item.tagName === "LABEL");
       if (!hasLabel) {
-        model.value = getLabeledValue([false, props.falseValue, props.falseLabel].includes(model.value));
+        model.value = getLabeledValue([false, props2.falseValue, props2.falseLabel].includes(model.value));
         await nextTick();
         emitChangeEvent(model.value, e);
       }
     }
   }
-  const validateEvent = computed(() => (checkboxGroup == null ? void 0 : checkboxGroup.validateEvent) || props.validateEvent);
-  watch(() => props.modelValue, () => {
+  const validateEvent = computed(() => (checkboxGroup == null ? void 0 : checkboxGroup.validateEvent) || props2.validateEvent);
+  watch(() => props2.modelValue, () => {
     if (validateEvent.value) {
       formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn(err));
     }
@@ -24062,8 +24117,8 @@ var useCheckboxEvent = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-model.mjs
-var useCheckboxModel = (props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-model.mjs
+var useCheckboxModel = (props2) => {
   const selfModel = ref(false);
   const { emit } = getCurrentInstance();
   const checkboxGroup = inject(checkboxGroupContextKey, void 0);
@@ -24072,7 +24127,7 @@ var useCheckboxModel = (props) => {
   const model = computed({
     get() {
       var _a2, _b;
-      return isGroup.value ? (_a2 = checkboxGroup == null ? void 0 : checkboxGroup.modelValue) == null ? void 0 : _a2.value : (_b = props.modelValue) != null ? _b : selfModel.value;
+      return isGroup.value ? (_a2 = checkboxGroup == null ? void 0 : checkboxGroup.modelValue) == null ? void 0 : _a2.value : (_b = props2.modelValue) != null ? _b : selfModel.value;
     },
     set(val) {
       var _a2, _b;
@@ -24092,15 +24147,15 @@ var useCheckboxModel = (props) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-status.mjs
-var useCheckboxStatus = (props, slots, { model }) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-status.mjs
+var useCheckboxStatus = (props2, slots, { model }) => {
   const checkboxGroup = inject(checkboxGroupContextKey, void 0);
   const isFocused = ref(false);
   const actualValue = computed(() => {
-    if (!isPropAbsent(props.value)) {
-      return props.value;
+    if (!isPropAbsent(props2.value)) {
+      return props2.value;
     }
-    return props.label;
+    return props2.label;
   });
   const isChecked = computed(() => {
     const value = model.value;
@@ -24113,7 +24168,7 @@ var useCheckboxStatus = (props, slots, { model }) => {
         return value.map(toRaw).includes(actualValue.value);
       }
     } else if (value !== null && value !== void 0) {
-      return value === props.trueValue || value === props.trueLabel;
+      return value === props2.trueValue || value === props2.trueLabel;
     } else {
       return !!value;
     }
@@ -24141,10 +24196,10 @@ var useCheckboxStatus = (props, slots, { model }) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox.mjs
-var useCheckbox = (props, slots) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox.mjs
+var useCheckbox = (props2, slots) => {
   const { formItem: elFormItem } = useFormItem();
-  const { model, isGroup, isLimitExceeded } = useCheckboxModel(props);
+  const { model, isGroup, isLimitExceeded } = useCheckboxModel(props2);
   const {
     isFocused,
     isChecked,
@@ -24152,14 +24207,14 @@ var useCheckbox = (props, slots) => {
     checkboxSize,
     hasOwnLabel,
     actualValue
-  } = useCheckboxStatus(props, slots, { model });
+  } = useCheckboxStatus(props2, slots, { model });
   const { isDisabled } = useCheckboxDisabled({ model, isChecked });
-  const { inputId, isLabeledByFormItem } = useFormItemInputId(props, {
+  const { inputId, isLabeledByFormItem } = useFormItemInputId(props2, {
     formItemContext: elFormItem,
     disableIdGeneration: hasOwnLabel,
     disableIdManagement: isGroup
   });
-  const { handleChange, onClickRoot } = useCheckboxEvent(props, {
+  const { handleChange, onClickRoot } = useCheckboxEvent(props2, {
     model,
     isLimitExceeded,
     hasOwnLabel,
@@ -24172,10 +24227,10 @@ var useCheckbox = (props, slots) => {
       if (isArray(model.value) && !model.value.includes(actualValue.value)) {
         model.value.push(actualValue.value);
       } else {
-        model.value = (_b = (_a2 = props.trueValue) != null ? _a2 : props.trueLabel) != null ? _b : true;
+        model.value = (_b = (_a2 = props2.trueValue) != null ? _a2 : props2.trueLabel) != null ? _b : true;
       }
     }
-    props.checked && addToStore();
+    props2.checked && addToStore();
   };
   setStoreValue();
   useDeprecated({
@@ -24184,21 +24239,21 @@ var useCheckbox = (props, slots) => {
     version: "3.0.0",
     scope: "el-checkbox",
     ref: "https://element-plus.org/en-US/component/checkbox.html"
-  }, computed(() => isGroup.value && isPropAbsent(props.value)));
+  }, computed(() => isGroup.value && isPropAbsent(props2.value)));
   useDeprecated({
     from: "true-label",
     replacement: "true-value",
     version: "3.0.0",
     scope: "el-checkbox",
     ref: "https://element-plus.org/en-US/component/checkbox.html"
-  }, computed(() => !!props.trueLabel));
+  }, computed(() => !!props2.trueLabel));
   useDeprecated({
     from: "false-label",
     replacement: "false-value",
     version: "3.0.0",
     scope: "el-checkbox",
     ref: "https://element-plus.org/en-US/component/checkbox.html"
-  }, computed(() => !!props.falseLabel));
+  }, computed(() => !!props2.falseLabel));
   return {
     inputId,
     isLabeledByFormItem,
@@ -24215,7 +24270,7 @@ var useCheckbox = (props, slots) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/checkbox2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/checkbox2.mjs
 var __default__29 = defineComponent({
   name: "ElCheckbox"
 });
@@ -24224,7 +24279,7 @@ var _sfc_main36 = defineComponent({
   props: checkboxProps,
   emits: checkboxEmits,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const slots = useSlots();
     const {
       inputId,
@@ -24238,14 +24293,14 @@ var _sfc_main36 = defineComponent({
       actualValue,
       handleChange,
       onClickRoot
-    } = useCheckbox(props, slots);
+    } = useCheckbox(props2, slots);
     const ns = useNamespace("checkbox");
     const compKls = computed(() => {
       return [
         ns.b(),
         ns.m(checkboxSize.value),
         ns.is("disabled", isDisabled.value),
-        ns.is("bordered", props.border),
+        ns.is("bordered", props2.border),
         ns.is("checked", isChecked.value)
       ];
     });
@@ -24254,7 +24309,7 @@ var _sfc_main36 = defineComponent({
         ns.e("input"),
         ns.is("disabled", isDisabled.value),
         ns.is("checked", isChecked.value),
-        ns.is("indeterminate", props.indeterminate),
+        ns.is("indeterminate", props2.indeterminate),
         ns.is("focus", isFocused.value)
       ];
     });
@@ -24265,7 +24320,7 @@ var _sfc_main36 = defineComponent({
         onClick: unref(onClickRoot)
       }, {
         default: withCtx(() => {
-          var _a2, _b;
+          var _a2, _b, _c, _d;
           return [
             createBaseVNode("span", {
               class: normalizeClass(unref(spanKls))
@@ -24280,8 +24335,8 @@ var _sfc_main36 = defineComponent({
                 name: _ctx.name,
                 tabindex: _ctx.tabindex,
                 disabled: unref(isDisabled),
-                "true-value": (_a2 = _ctx.trueValue) != null ? _a2 : _ctx.trueLabel,
-                "false-value": (_b = _ctx.falseValue) != null ? _b : _ctx.falseLabel,
+                "true-value": (_b = (_a2 = _ctx.trueValue) != null ? _a2 : _ctx.trueLabel) != null ? _b : true,
+                "false-value": (_d = (_c = _ctx.falseValue) != null ? _c : _ctx.falseLabel) != null ? _d : false,
                 onChange: unref(handleChange),
                 onFocus: ($event) => isFocused.value = true,
                 onBlur: ($event) => isFocused.value = false,
@@ -24330,7 +24385,7 @@ var _sfc_main36 = defineComponent({
 });
 var Checkbox = _export_sfc(_sfc_main36, [["__file", "checkbox.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/checkbox-button.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/checkbox-button.mjs
 var __default__30 = defineComponent({
   name: "ElCheckboxButton"
 });
@@ -24339,7 +24394,7 @@ var _sfc_main37 = defineComponent({
   props: checkboxProps,
   emits: checkboxEmits,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const slots = useSlots();
     const {
       isFocused,
@@ -24349,7 +24404,7 @@ var _sfc_main37 = defineComponent({
       model,
       actualValue,
       handleChange
-    } = useCheckbox(props, slots);
+    } = useCheckbox(props2, slots);
     const checkboxGroup = inject(checkboxGroupContextKey, void 0);
     const ns = useNamespace("checkbox");
     const activeStyle = computed(() => {
@@ -24372,7 +24427,7 @@ var _sfc_main37 = defineComponent({
       ];
     });
     return (_ctx, _cache) => {
-      var _a2, _b;
+      var _a2, _b, _c, _d;
       return openBlock(), createElementBlock("label", {
         class: normalizeClass(unref(labelKls))
       }, [
@@ -24384,8 +24439,8 @@ var _sfc_main37 = defineComponent({
           name: _ctx.name,
           tabindex: _ctx.tabindex,
           disabled: unref(isDisabled),
-          "true-value": (_a2 = _ctx.trueValue) != null ? _a2 : _ctx.trueLabel,
-          "false-value": (_b = _ctx.falseValue) != null ? _b : _ctx.falseLabel,
+          "true-value": (_b = (_a2 = _ctx.trueValue) != null ? _a2 : _ctx.trueLabel) != null ? _b : true,
+          "false-value": (_d = (_c = _ctx.falseValue) != null ? _c : _ctx.falseLabel) != null ? _d : false,
           onChange: unref(handleChange),
           onFocus: ($event) => isFocused.value = true,
           onBlur: ($event) => isFocused.value = false,
@@ -24425,7 +24480,7 @@ var _sfc_main37 = defineComponent({
 });
 var CheckboxButton = _export_sfc(_sfc_main37, [["__file", "checkbox-button.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/checkbox-group.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/checkbox-group.mjs
 var checkboxGroupProps = buildProps({
   modelValue: {
     type: definePropType(Array),
@@ -24452,7 +24507,7 @@ var checkboxGroupEmits = {
   change: (val) => isArray(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/checkbox-group2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/src/checkbox-group2.mjs
 var __default__31 = defineComponent({
   name: "ElCheckboxGroup"
 });
@@ -24461,10 +24516,10 @@ var _sfc_main38 = defineComponent({
   props: checkboxGroupProps,
   emits: checkboxGroupEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("checkbox");
     const { formItem } = useFormItem();
-    const { inputId: groupId, isLabeledByFormItem } = useFormItemInputId(props, {
+    const { inputId: groupId, isLabeledByFormItem } = useFormItemInputId(props2, {
       formItemContext: formItem
     });
     const changeEvent = async (value) => {
@@ -24474,14 +24529,14 @@ var _sfc_main38 = defineComponent({
     };
     const modelValue = computed({
       get() {
-        return props.modelValue;
+        return props2.modelValue;
       },
       set(val) {
         changeEvent(val);
       }
     });
     provide(checkboxGroupContextKey, {
-      ...pick_default(toRefs(props), [
+      ...pick_default(toRefs(props2), [
         "size",
         "min",
         "max",
@@ -24493,8 +24548,8 @@ var _sfc_main38 = defineComponent({
       modelValue,
       changeEvent
     });
-    watch(() => props.modelValue, () => {
-      if (props.validateEvent) {
+    watch(() => props2.modelValue, () => {
+      if (props2.validateEvent) {
         formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn(err));
       }
     });
@@ -24517,7 +24572,7 @@ var _sfc_main38 = defineComponent({
 });
 var CheckboxGroup = _export_sfc(_sfc_main38, [["__file", "checkbox-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/checkbox/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/checkbox/index.mjs
 var ElCheckbox = withInstall(Checkbox, {
   CheckboxButton,
   CheckboxGroup
@@ -24525,7 +24580,7 @@ var ElCheckbox = withInstall(Checkbox, {
 var ElCheckboxButton = withNoopInstall(CheckboxButton);
 var ElCheckboxGroup = withNoopInstall(CheckboxGroup);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio.mjs
 var radioPropsBase = buildProps({
   modelValue: {
     type: [String, Number, Boolean],
@@ -24555,23 +24610,23 @@ var radioEmits = {
   [CHANGE_EVENT]: (val) => isString2(val) || isNumber3(val) || isBoolean2(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/radio/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/radio/src/constants.mjs
 var radioGroupKey = Symbol("radioGroupKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/radio/src/use-radio.mjs
-var useRadio = (props, emit) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/radio/src/use-radio.mjs
+var useRadio = (props2, emit) => {
   const radioRef = ref();
   const radioGroup = inject(radioGroupKey, void 0);
   const isGroup = computed(() => !!radioGroup);
   const actualValue = computed(() => {
-    if (!isPropAbsent(props.value)) {
-      return props.value;
+    if (!isPropAbsent(props2.value)) {
+      return props2.value;
     }
-    return props.label;
+    return props2.label;
   });
   const modelValue = computed({
     get() {
-      return isGroup.value ? radioGroup.modelValue : props.modelValue;
+      return isGroup.value ? radioGroup.modelValue : props2.modelValue;
     },
     set(val) {
       if (isGroup.value) {
@@ -24579,7 +24634,7 @@ var useRadio = (props, emit) => {
       } else {
         emit && emit(UPDATE_MODEL_EVENT, val);
       }
-      radioRef.value.checked = props.modelValue === actualValue.value;
+      radioRef.value.checked = props2.modelValue === actualValue.value;
     }
   });
   const size3 = useFormSize(computed(() => radioGroup == null ? void 0 : radioGroup.size));
@@ -24594,7 +24649,7 @@ var useRadio = (props, emit) => {
     version: "3.0.0",
     scope: "el-radio",
     ref: "https://element-plus.org/en-US/component/radio.html"
-  }, computed(() => isGroup.value && isPropAbsent(props.value)));
+  }, computed(() => isGroup.value && isPropAbsent(props2.value)));
   return {
     radioRef,
     isGroup,
@@ -24608,7 +24663,7 @@ var useRadio = (props, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio2.mjs
 var __default__32 = defineComponent({
   name: "ElRadio"
 });
@@ -24617,9 +24672,9 @@ var _sfc_main39 = defineComponent({
   props: radioProps,
   emits: radioEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("radio");
-    const { radioRef, radioGroup, focus, size: size3, disabled, modelValue, actualValue } = useRadio(props, emit);
+    const { radioRef, radioGroup, focus, size: size3, disabled, modelValue, actualValue } = useRadio(props2, emit);
     function handleChange() {
       nextTick(() => emit("change", modelValue.value));
     }
@@ -24679,12 +24734,12 @@ var _sfc_main39 = defineComponent({
 });
 var Radio = _export_sfc(_sfc_main39, [["__file", "radio.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio-button.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio-button.mjs
 var radioButtonProps = buildProps({
   ...radioPropsBase
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio-button2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio-button2.mjs
 var __default__33 = defineComponent({
   name: "ElRadioButton"
 });
@@ -24692,9 +24747,9 @@ var _sfc_main40 = defineComponent({
   ...__default__33,
   props: radioButtonProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("radio");
-    const { radioRef, focus, size: size3, disabled, modelValue, radioGroup, actualValue } = useRadio(props);
+    const { radioRef, focus, size: size3, disabled, modelValue, radioGroup, actualValue } = useRadio(props2);
     const activeStyle = computed(() => {
       return {
         backgroundColor: (radioGroup == null ? void 0 : radioGroup.fill) || "",
@@ -24746,7 +24801,7 @@ var _sfc_main40 = defineComponent({
 });
 var RadioButton = _export_sfc(_sfc_main40, [["__file", "radio-button.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio-group.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio-group.mjs
 var radioGroupProps = buildProps({
   id: {
     type: String,
@@ -24778,7 +24833,7 @@ var radioGroupProps = buildProps({
 });
 var radioGroupEmits = radioEmits;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio-group2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/radio/src/radio-group2.mjs
 var __default__34 = defineComponent({
   name: "ElRadioGroup"
 });
@@ -24787,12 +24842,12 @@ var _sfc_main41 = defineComponent({
   props: radioGroupProps,
   emits: radioGroupEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("radio");
     const radioId = useId();
     const radioGroupRef = ref();
     const { formItem } = useFormItem();
-    const { inputId: groupId, isLabeledByFormItem } = useFormItemInputId(props, {
+    const { inputId: groupId, isLabeledByFormItem } = useFormItemInputId(props2, {
       formItemContext: formItem
     });
     const changeEvent = (value) => {
@@ -24807,15 +24862,15 @@ var _sfc_main41 = defineComponent({
       }
     });
     const name = computed(() => {
-      return props.name || radioId.value;
+      return props2.name || radioId.value;
     });
     provide(radioGroupKey, reactive({
-      ...toRefs(props),
+      ...toRefs(props2),
       changeEvent,
       name
     }));
-    watch(() => props.modelValue, () => {
-      if (props.validateEvent) {
+    watch(() => props2.modelValue, () => {
+      if (props2.validateEvent) {
         formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn(err));
       }
     });
@@ -24836,7 +24891,7 @@ var _sfc_main41 = defineComponent({
 });
 var RadioGroup = _export_sfc(_sfc_main41, [["__file", "radio-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/radio/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/radio/index.mjs
 var ElRadio = withInstall(Radio, {
   RadioButton,
   RadioGroup
@@ -24844,7 +24899,7 @@ var ElRadio = withInstall(Radio, {
 var ElRadioGroup = withNoopInstall(RadioGroup);
 var ElRadioButton = withNoopInstall(RadioButton);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/node-content.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/node-content.mjs
 var NodeContent = defineComponent({
   name: "NodeContent",
   setup() {
@@ -24862,10 +24917,10 @@ var NodeContent = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/types.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/types.mjs
 var CASCADER_PANEL_INJECTION_KEY = Symbol();
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/node2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/node2.mjs
 var _sfc_main42 = defineComponent({
   name: "ElCascaderNode",
   components: {
@@ -24885,7 +24940,7 @@ var _sfc_main42 = defineComponent({
     menuId: String
   },
   emits: ["expand"],
-  setup(props, { emit }) {
+  setup(props2, { emit }) {
     const panel = inject(CASCADER_PANEL_INJECTION_KEY);
     const ns = useNamespace("cascader-node");
     const isHoverMenu = computed(() => panel.isHoverMenu);
@@ -24895,29 +24950,29 @@ var _sfc_main42 = defineComponent({
       var _a2;
       return (_a2 = panel.checkedNodes[0]) == null ? void 0 : _a2.uid;
     });
-    const isDisabled = computed(() => props.node.isDisabled);
-    const isLeaf2 = computed(() => props.node.isLeaf);
+    const isDisabled = computed(() => props2.node.isDisabled);
+    const isLeaf2 = computed(() => props2.node.isLeaf);
     const expandable = computed(() => checkStrictly.value && !isLeaf2.value || !isDisabled.value);
     const inExpandingPath = computed(() => isInPath(panel.expandingNode));
     const inCheckedPath = computed(() => checkStrictly.value && panel.checkedNodes.some(isInPath));
     const isInPath = (node) => {
       var _a2;
-      const { level, uid: uid2 } = props.node;
+      const { level, uid: uid2 } = props2.node;
       return ((_a2 = node == null ? void 0 : node.pathNodes[level - 1]) == null ? void 0 : _a2.uid) === uid2;
     };
     const doExpand = () => {
       if (inExpandingPath.value)
         return;
-      panel.expandNode(props.node);
+      panel.expandNode(props2.node);
     };
     const doCheck = (checked) => {
-      const { node } = props;
+      const { node } = props2;
       if (checked === node.checked)
         return;
       panel.handleCheckChange(node, checked);
     };
     const doLoad = () => {
-      panel.lazyLoad(props.node, () => {
+      panel.lazyLoad(props2.node, () => {
         if (!isLeaf2.value)
           doExpand();
       });
@@ -24929,7 +24984,7 @@ var _sfc_main42 = defineComponent({
       !isLeaf2.value && emit("expand", e);
     };
     const handleExpand = () => {
-      const { node } = props;
+      const { node } = props2;
       if (!expandable.value || node.loading)
         return;
       node.loaded ? doExpand() : doLoad();
@@ -24946,7 +25001,7 @@ var _sfc_main42 = defineComponent({
     const handleSelectCheck = (checked) => {
       if (checkStrictly.value) {
         doCheck(checked);
-        if (props.node.loaded) {
+        if (props2.node.loaded) {
           doExpand();
         }
       } else {
@@ -24954,7 +25009,7 @@ var _sfc_main42 = defineComponent({
       }
     };
     const handleCheck = (checked) => {
-      if (!props.node.loaded) {
+      if (!props2.node.loaded) {
         doLoad();
       } else {
         doCheck(checked);
@@ -25066,7 +25121,7 @@ function _sfc_render2(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElCascaderNode = _export_sfc(_sfc_main42, [["render", _sfc_render2], ["__file", "node.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/menu.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/menu.mjs
 var _sfc_main43 = defineComponent({
   name: "ElCascaderMenu",
   components: {
@@ -25085,7 +25140,7 @@ var _sfc_main43 = defineComponent({
       required: true
     }
   },
-  setup(props) {
+  setup(props2) {
     const instance = getCurrentInstance();
     const ns = useNamespace("cascader-menu");
     const { t } = useLocale();
@@ -25094,9 +25149,9 @@ var _sfc_main43 = defineComponent({
     let hoverTimer = null;
     const panel = inject(CASCADER_PANEL_INJECTION_KEY);
     const hoverZone = ref(null);
-    const isEmpty3 = computed(() => !props.nodes.length);
+    const isEmpty3 = computed(() => !props2.nodes.length);
     const isLoading = computed(() => !panel.initialLoaded);
-    const menuId = computed(() => `${id.value}-${props.index}`);
+    const menuId = computed(() => `${id.value}-${props2.index}`);
     const handleExpand = (e) => {
       activeNode = e.target;
     };
@@ -25188,19 +25243,23 @@ function _sfc_render3(_ctx, _cache, $props, $setup, $data, $options) {
         ], 2)) : _ctx.isEmpty ? (openBlock(), createElementBlock("div", {
           key: 1,
           class: normalizeClass(_ctx.ns.e("empty-text"))
-        }, toDisplayString(_ctx.t("el.cascader.noData")), 3)) : ((_a2 = _ctx.panel) == null ? void 0 : _a2.isHoverMenu) ? (openBlock(), createElementBlock("svg", {
+        }, [
+          renderSlot(_ctx.$slots, "empty", {}, () => [
+            createTextVNode(toDisplayString(_ctx.t("el.cascader.noData")), 1)
+          ])
+        ], 2)) : ((_a2 = _ctx.panel) == null ? void 0 : _a2.isHoverMenu) ? (openBlock(), createElementBlock("svg", {
           key: 2,
           ref: "hoverZone",
           class: normalizeClass(_ctx.ns.e("hover-zone"))
         }, null, 2)) : createCommentVNode("v-if", true)
       ];
     }),
-    _: 1
+    _: 3
   }, 8, ["class", "wrap-class", "view-class", "onMousemove", "onMouseleave"]);
 }
 var ElCascaderMenu = _export_sfc(_sfc_main43, [["render", _sfc_render3], ["__file", "menu.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/node.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/node.mjs
 var uid = 0;
 var calculatePathNodes = (node) => {
   const nodes = [node];
@@ -25316,7 +25375,7 @@ var Node2 = class _Node {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/store.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/store.mjs
 var flatNodes = (nodes, leafOnly) => {
   return nodes.reduce((res, node) => {
     if (node.isLeaf) {
@@ -25366,7 +25425,7 @@ var Store = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/config.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/config.mjs
 var CommonProps = buildProps({
   modelValue: {
     type: definePropType([Number, String, Array])
@@ -25394,14 +25453,14 @@ var DefaultProps = {
   disabled: "disabled",
   hoverThreshold: 500
 };
-var useCascaderConfig = (props) => {
+var useCascaderConfig = (props2) => {
   return computed(() => ({
     ...DefaultProps,
-    ...props.props
+    ...props2.props
   }));
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/utils.mjs
 var getMenuIndex = (el) => {
   if (!el)
     return 0;
@@ -25434,7 +25493,7 @@ var sortByOriginalOrder = (oldNodes, newNodes) => {
   return res;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/src/index.mjs
 var _sfc_main44 = defineComponent({
   name: "ElCascaderPanel",
   components: {
@@ -25449,10 +25508,10 @@ var _sfc_main44 = defineComponent({
     renderLabel: Function
   },
   emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT, "close", "expand-change"],
-  setup(props, { emit, slots }) {
+  setup(props2, { emit, slots }) {
     let manualChecked = false;
     const ns = useNamespace("cascader");
-    const config = useCascaderConfig(props);
+    const config = useCascaderConfig(props2);
     let store = null;
     const initialLoaded = ref(true);
     const menuList = ref([]);
@@ -25461,14 +25520,14 @@ var _sfc_main44 = defineComponent({
     const expandingNode = ref(null);
     const checkedNodes = ref([]);
     const isHoverMenu = computed(() => config.value.expandTrigger === "hover");
-    const renderLabelFn = computed(() => props.renderLabel || slots.default);
+    const renderLabelFn = computed(() => props2.renderLabel || slots.default);
     const initStore = () => {
-      const { options } = props;
+      const { options } = props2;
       const cfg = config.value;
       manualChecked = false;
       store = new Store(options, cfg);
       menus.value = [store.getNodes()];
-      if (cfg.lazy && isEmpty2(props.options)) {
+      if (cfg.lazy && isEmpty2(props2.options)) {
         initialLoaded.value = false;
         lazyLoad(void 0, (list) => {
           if (list) {
@@ -25556,7 +25615,7 @@ var _sfc_main44 = defineComponent({
       checkedValue.value = multiple ? values2 : (_a2 = values2[0]) != null ? _a2 : null;
     };
     const syncCheckedValue = (loaded = false, forced = false) => {
-      const { modelValue } = props;
+      const { modelValue } = props2;
       const { lazy, multiple, checkStrictly } = config.value;
       const leafOnly = !checkStrictly;
       if (!initialLoaded.value || manualChecked || !forced && isEqual_default(modelValue, checkedValue.value))
@@ -25647,24 +25706,24 @@ var _sfc_main44 = defineComponent({
       expandNode,
       handleCheckChange
     }));
-    watch([config, () => props.options], initStore, {
+    watch([config, () => props2.options], initStore, {
       deep: true,
       immediate: true
     });
-    watch(() => props.modelValue, () => {
+    watch(() => props2.modelValue, () => {
       manualChecked = false;
       syncCheckedValue();
     }, {
       deep: true
     });
     watch(() => checkedValue.value, (val) => {
-      if (!isEqual_default(val, props.modelValue)) {
+      if (!isEqual_default(val, props2.modelValue)) {
         emit(UPDATE_MODEL_EVENT, val);
         emit(CHANGE_EVENT, val);
       }
     });
     onBeforeUpdate(() => menuList.value = []);
-    onMounted(() => !isEmpty2(props.modelValue) && syncCheckedValue());
+    onMounted(() => !isEmpty2(props2.modelValue) && syncCheckedValue());
     return {
       ns,
       menuList,
@@ -25693,16 +25752,21 @@ function _sfc_render4(_ctx, _cache, $props, $setup, $data, $options) {
         ref: (item) => _ctx.menuList[index] = item,
         index,
         nodes: [...menu]
-      }, null, 8, ["index", "nodes"]);
+      }, {
+        empty: withCtx(() => [
+          renderSlot(_ctx.$slots, "empty")
+        ]),
+        _: 2
+      }, 1032, ["index", "nodes"]);
     }), 128))
   ], 42, ["onKeydown"]);
 }
 var CascaderPanel = _export_sfc(_sfc_main44, [["render", _sfc_render4], ["__file", "index.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader-panel/index.mjs
 var ElCascaderPanel = withInstall(CascaderPanel);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tag/src/tag.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tag/src/tag.mjs
 var tagProps = buildProps({
   type: {
     type: String,
@@ -25729,7 +25793,7 @@ var tagEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tag/src/tag2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tag/src/tag2.mjs
 var __default__35 = defineComponent({
   name: "ElTag"
 });
@@ -25738,11 +25802,11 @@ var _sfc_main45 = defineComponent({
   props: tagProps,
   emits: tagEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const tagSize = useFormSize();
     const ns = useNamespace("tag");
     const containerKls = computed(() => {
-      const { type: type4, hit, effect, closable, round: round3 } = props;
+      const { type: type4, hit, effect, closable, round: round3 } = props2;
       return [
         ns.b(),
         ns.is("closable", closable),
@@ -25758,6 +25822,9 @@ var _sfc_main45 = defineComponent({
     };
     const handleClick = (event) => {
       emit("click", event);
+    };
+    const handleVNodeMounted = (vnode) => {
+      vnode.component.subTree.component.bum = null;
     };
     return (_ctx, _cache) => {
       return _ctx.disableTransitions ? (openBlock(), createElementBlock("span", {
@@ -25784,7 +25851,8 @@ var _sfc_main45 = defineComponent({
       ], 6)) : (openBlock(), createBlock(Transition, {
         key: 1,
         name: `${unref(ns).namespace.value}-zoom-in-center`,
-        appear: ""
+        appear: "",
+        onVnodeMounted: handleVNodeMounted
       }, {
         default: withCtx(() => [
           createBaseVNode("span", {
@@ -25816,10 +25884,10 @@ var _sfc_main45 = defineComponent({
 });
 var Tag = _export_sfc(_sfc_main45, [["__file", "tag.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tag/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tag/index.mjs
 var ElTag = withInstall(Tag);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader/src/cascader.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader/src/cascader2.mjs
 var cascaderProps = buildProps({
   ...CommonProps,
   size: useSizeProp,
@@ -25893,7 +25961,7 @@ var cascaderEmits = {
   removeTag: (val) => !!val
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader/src/cascader2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader/src/cascader.mjs
 var COMPONENT_NAME10 = "ElCascader";
 var __default__36 = defineComponent({
   name: COMPONENT_NAME10
@@ -25903,7 +25971,7 @@ var _sfc_main46 = defineComponent({
   props: cascaderProps,
   emits: cascaderEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const popperOptions = {
       modifiers: [
         {
@@ -25927,7 +25995,7 @@ var _sfc_main46 = defineComponent({
     const nsInput = useNamespace("input");
     const { t } = useLocale();
     const { form, formItem } = useFormItem();
-    const { valueOnClear } = useEmptyValues(props);
+    const { valueOnClear } = useEmptyValues(props2);
     const { isComposing, handleComposition } = useComposition({
       afterComposition(event) {
         var _a2;
@@ -25952,38 +26020,38 @@ var _sfc_main46 = defineComponent({
     const cascaderStyle = computed(() => {
       return attrs.style;
     });
-    const isDisabled = computed(() => props.disabled || (form == null ? void 0 : form.disabled));
-    const inputPlaceholder = computed(() => props.placeholder || t("el.cascader.placeholder"));
+    const isDisabled = computed(() => props2.disabled || (form == null ? void 0 : form.disabled));
+    const inputPlaceholder = computed(() => props2.placeholder || t("el.cascader.placeholder"));
     const currentPlaceholder = computed(() => searchInputValue.value || presentTags.value.length > 0 || isComposing.value ? "" : inputPlaceholder.value);
     const realSize = useFormSize();
     const tagSize = computed(() => ["small"].includes(realSize.value) ? "small" : "default");
-    const multiple = computed(() => !!props.props.multiple);
-    const readonly2 = computed(() => !props.filterable || multiple.value);
+    const multiple = computed(() => !!props2.props.multiple);
+    const readonly2 = computed(() => !props2.filterable || multiple.value);
     const searchKeyword = computed(() => multiple.value ? searchInputValue.value : inputValue.value);
     const checkedNodes = computed(() => {
       var _a2;
       return ((_a2 = cascaderPanelRef.value) == null ? void 0 : _a2.checkedNodes) || [];
     });
     const clearBtnVisible = computed(() => {
-      if (!props.clearable || isDisabled.value || filtering.value || !inputHover.value)
+      if (!props2.clearable || isDisabled.value || filtering.value || !inputHover.value)
         return false;
       return !!checkedNodes.value.length;
     });
     const presentText = computed(() => {
-      const { showAllLevels, separator } = props;
+      const { showAllLevels, separator } = props2;
       const nodes = checkedNodes.value;
       return nodes.length ? multiple.value ? "" : nodes[0].calcText(showAllLevels, separator) : "";
     });
     const validateState = computed(() => (formItem == null ? void 0 : formItem.validateState) || "");
     const checkedValue = computed({
       get() {
-        return cloneDeep_default(props.modelValue);
+        return cloneDeep_default(props2.modelValue);
       },
       set(val) {
         const value = val != null ? val : valueOnClear.value;
         emit(UPDATE_MODEL_EVENT, value);
         emit(CHANGE_EVENT, value);
-        if (props.validateEvent) {
+        if (props2.validateEvent) {
           formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn(err));
         }
       }
@@ -26021,7 +26089,7 @@ var _sfc_main46 = defineComponent({
         if (visible) {
           updatePopperPosition();
           nextTick((_c = cascaderPanelRef.value) == null ? void 0 : _c.scrollToExpandingNode);
-        } else if (props.filterable) {
+        } else if (props2.filterable) {
           syncPresentTextValue();
         }
         emit("visibleChange", visible);
@@ -26037,7 +26105,7 @@ var _sfc_main46 = defineComponent({
       filtering.value = false;
     };
     const genTag3 = (node) => {
-      const { showAllLevels, separator } = props;
+      const { showAllLevels, separator } = props2;
       return {
         node,
         key: node.uid,
@@ -26063,11 +26131,11 @@ var _sfc_main46 = defineComponent({
       nodes.forEach((node) => allTags.push(genTag3(node)));
       allPresentTags.value = allTags;
       if (nodes.length) {
-        nodes.slice(0, props.maxCollapseTags).forEach((node) => tags.push(genTag3(node)));
-        const rest2 = nodes.slice(props.maxCollapseTags);
+        nodes.slice(0, props2.maxCollapseTags).forEach((node) => tags.push(genTag3(node)));
+        const rest2 = nodes.slice(props2.maxCollapseTags);
         const restCount = rest2.length;
         if (restCount) {
-          if (props.collapseTags) {
+          if (props2.collapseTags) {
             tags.push({
               key: -1,
               text: `+ ${restCount}`,
@@ -26083,8 +26151,8 @@ var _sfc_main46 = defineComponent({
     };
     const calculateSuggestions = () => {
       var _a2, _b;
-      const { filterMethod, showAllLevels, separator } = props;
-      const res = (_b = (_a2 = cascaderPanelRef.value) == null ? void 0 : _a2.getFlattedNodes(!props.props.checkStrictly)) == null ? void 0 : _b.filter((node) => {
+      const { filterMethod, showAllLevels, separator } = props2;
+      const res = (_b = (_a2 = cascaderPanelRef.value) == null ? void 0 : _a2.getFlattedNodes(!props2.props.checkStrictly)) == null ? void 0 : _b.filter((node) => {
         if (node.isDisabled)
           return false;
         node.calcText(showAllLevels, separator);
@@ -26168,7 +26236,7 @@ var _sfc_main46 = defineComponent({
     const handleClear = () => {
       var _a2;
       (_a2 = cascaderPanelRef.value) == null ? void 0 : _a2.clearCheckedNodes();
-      if (!popperVisible.value && props.filterable) {
+      if (!popperVisible.value && props2.filterable) {
         syncPresentTextValue();
       }
       togglePopperVisible(false);
@@ -26208,7 +26276,7 @@ var _sfc_main46 = defineComponent({
       const tags = presentTags.value;
       const lastTag = tags[tags.length - 1];
       pressDeleteCount = searchInputValue.value ? 0 : pressDeleteCount + 1;
-      if (!lastTag || !pressDeleteCount || props.collapseTags && tags.length > 1)
+      if (!lastTag || !pressDeleteCount || props2.collapseTags && tags.length > 1)
         return;
       if (lastTag.hitState) {
         deleteTag(lastTag);
@@ -26224,7 +26292,7 @@ var _sfc_main46 = defineComponent({
       }
       emit("focus", e);
     };
-    const handleBlur2 = (e) => {
+    const handleBlur = (e) => {
       filterFocus.value = false;
       emit("blur", e);
     };
@@ -26232,7 +26300,7 @@ var _sfc_main46 = defineComponent({
       const { value } = searchKeyword;
       if (!value)
         return;
-      const passed = props.beforeFilter(value);
+      const passed = props2.beforeFilter(value);
       if (isPromise(passed)) {
         passed.then(calculateSuggestions).catch(() => {
         });
@@ -26241,7 +26309,7 @@ var _sfc_main46 = defineComponent({
       } else {
         hideSuggestionPanel();
       }
-    }, props.debounce);
+    }, props2.debounce);
     const handleInput = (val, e) => {
       !popperVisible.value && togglePopperVisible(true);
       if (e == null ? void 0 : e.isComposing)
@@ -26250,7 +26318,7 @@ var _sfc_main46 = defineComponent({
     };
     const getInputInnerHeight = (inputInner) => Number.parseFloat(useCssVar(nsInput.cssVarName("input-height"), inputInner).value) - 2;
     watch(filtering, updatePopperPosition);
-    watch([checkedNodes, isDisabled, () => props.collapseTags], calculatePresentTags);
+    watch([checkedNodes, isDisabled, () => props2.collapseTags], calculatePresentTags);
     watch(presentTags, () => {
       nextTick(() => updateStyle());
     });
@@ -26271,7 +26339,8 @@ var _sfc_main46 = defineComponent({
       getCheckedNodes,
       cascaderPanelRef,
       togglePopperVisible,
-      contentRef
+      contentRef,
+      presentText
     });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(ElTooltip), {
@@ -26316,7 +26385,7 @@ var _sfc_main46 = defineComponent({
               onCompositionupdate: unref(handleComposition),
               onCompositionend: unref(handleComposition),
               onFocus: handleFocus,
-              onBlur: handleBlur2,
+              onBlur: handleBlur,
               onInput: handleInput
             }, {
               suffix: withCtx(() => [
@@ -26421,7 +26490,7 @@ var _sfc_main46 = defineComponent({
                 onCompositionupdate: unref(handleComposition),
                 onCompositionend: unref(handleComposition),
                 onFocus: handleFocus,
-                onBlur: handleBlur2
+                onBlur: handleBlur
               }, null, 42, ["onUpdate:modelValue", "placeholder", "onInput", "onClick", "onKeydown", "onCompositionstart", "onCompositionupdate", "onCompositionend"])), [
                 [vModelText, searchInputValue.value]
               ]) : createCommentVNode("v-if", true)
@@ -26437,12 +26506,17 @@ var _sfc_main46 = defineComponent({
             modelValue: unref(checkedValue),
             "onUpdate:modelValue": ($event) => isRef(checkedValue) ? checkedValue.value = $event : null,
             options: _ctx.options,
-            props: props.props,
+            props: props2.props,
             border: false,
             "render-label": _ctx.$slots.default,
             onExpandChange: handleExpandChange,
             onClose: ($event) => _ctx.$nextTick(() => togglePopperVisible(false))
-          }, null, 8, ["modelValue", "onUpdate:modelValue", "options", "props", "render-label", "onClose"]), [
+          }, {
+            empty: withCtx(() => [
+              renderSlot(_ctx.$slots, "empty")
+            ]),
+            _: 3
+          }, 8, ["modelValue", "onUpdate:modelValue", "options", "props", "render-label", "onClose"]), [
             [vShow, !filtering.value]
           ]),
           _ctx.filterable ? withDirectives((openBlock(), createBlock(unref(ElScrollbar), {
@@ -26491,12 +26565,13 @@ var _sfc_main46 = defineComponent({
 });
 var Cascader = _export_sfc(_sfc_main46, [["__file", "cascader.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/cascader/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/cascader/index.mjs
 var ElCascader = withInstall(Cascader);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/check-tag/src/check-tag.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/check-tag/src/check-tag.mjs
 var checkTagProps = buildProps({
   checked: Boolean,
+  disabled: Boolean,
   type: {
     type: String,
     values: ["primary", "success", "info", "warning", "danger"],
@@ -26508,7 +26583,7 @@ var checkTagEmits = {
   [CHANGE_EVENT]: (value) => isBoolean2(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/check-tag/src/check-tag2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/check-tag/src/check-tag2.mjs
 var __default__37 = defineComponent({
   name: "ElCheckTag"
 });
@@ -26517,15 +26592,19 @@ var _sfc_main47 = defineComponent({
   props: checkTagProps,
   emits: checkTagEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("check-tag");
+    const isDisabled = computed(() => props2.disabled);
     const containerKls = computed(() => [
       ns.b(),
-      ns.is("checked", props.checked),
-      ns.m(props.type || "primary")
+      ns.is("checked", props2.checked),
+      ns.is("disabled", isDisabled.value),
+      ns.m(props2.type || "primary")
     ]);
     const handleChange = () => {
-      const checked = !props.checked;
+      if (isDisabled.value)
+        return;
+      const checked = !props2.checked;
       emit(CHANGE_EVENT, checked);
       emit("update:checked", checked);
     };
@@ -26541,13 +26620,13 @@ var _sfc_main47 = defineComponent({
 });
 var CheckTag = _export_sfc(_sfc_main47, [["__file", "check-tag.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/check-tag/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/check-tag/index.mjs
 var ElCheckTag = withInstall(CheckTag);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/row/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/row/src/constants.mjs
 var rowContextKey = Symbol("rowContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/row/src/row.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/row/src/row.mjs
 var RowJustify = [
   "start",
   "center",
@@ -26577,7 +26656,7 @@ var rowProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/row/src/row2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/row/src/row2.mjs
 var __default__38 = defineComponent({
   name: "ElRow"
 });
@@ -26585,24 +26664,24 @@ var _sfc_main48 = defineComponent({
   ...__default__38,
   props: rowProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("row");
-    const gutter = computed(() => props.gutter);
+    const gutter = computed(() => props2.gutter);
     provide(rowContextKey, {
       gutter
     });
     const style = computed(() => {
       const styles = {};
-      if (!props.gutter) {
+      if (!props2.gutter) {
         return styles;
       }
-      styles.marginRight = styles.marginLeft = `-${props.gutter / 2}px`;
+      styles.marginRight = styles.marginLeft = `-${props2.gutter / 2}px`;
       return styles;
     });
     const rowKls = computed(() => [
       ns.b(),
-      ns.is(`justify-${props.justify}`, props.justify !== "start"),
-      ns.is(`align-${props.align}`, !!props.align)
+      ns.is(`justify-${props2.justify}`, props2.justify !== "start"),
+      ns.is(`align-${props2.align}`, !!props2.align)
     ]);
     return (_ctx, _cache) => {
       return openBlock(), createBlock(resolveDynamicComponent(_ctx.tag), {
@@ -26619,10 +26698,10 @@ var _sfc_main48 = defineComponent({
 });
 var Row = _export_sfc(_sfc_main48, [["__file", "row.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/row/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/row/index.mjs
 var ElRow = withInstall(Row);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/col/src/col.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/col/src/col.mjs
 var colProps = buildProps({
   tag: {
     type: String,
@@ -26666,7 +26745,7 @@ var colProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/col/src/col2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/col/src/col2.mjs
 var __default__39 = defineComponent({
   name: "ElCol"
 });
@@ -26674,7 +26753,7 @@ var _sfc_main49 = defineComponent({
   ...__default__39,
   props: colProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const { gutter } = inject(rowContextKey, { gutter: computed(() => 0) });
     const ns = useNamespace("col");
     const style = computed(() => {
@@ -26688,20 +26767,20 @@ var _sfc_main49 = defineComponent({
       const classes = [];
       const pos = ["span", "offset", "pull", "push"];
       pos.forEach((prop) => {
-        const size3 = props[prop];
+        const size3 = props2[prop];
         if (isNumber3(size3)) {
           if (prop === "span")
-            classes.push(ns.b(`${props[prop]}`));
+            classes.push(ns.b(`${props2[prop]}`));
           else if (size3 > 0)
-            classes.push(ns.b(`${prop}-${props[prop]}`));
+            classes.push(ns.b(`${prop}-${props2[prop]}`));
         }
       });
       const sizes = ["xs", "sm", "md", "lg", "xl"];
       sizes.forEach((size3) => {
-        if (isNumber3(props[size3])) {
-          classes.push(ns.b(`${size3}-${props[size3]}`));
-        } else if (isObject2(props[size3])) {
-          Object.entries(props[size3]).forEach(([prop, sizeProp]) => {
+        if (isNumber3(props2[size3])) {
+          classes.push(ns.b(`${size3}-${props2[size3]}`));
+        } else if (isObject2(props2[size3])) {
+          Object.entries(props2[size3]).forEach(([prop, sizeProp]) => {
             classes.push(prop !== "span" ? ns.b(`${size3}-${prop}-${sizeProp}`) : ns.b(`${size3}-${sizeProp}`));
           });
         }
@@ -26726,10 +26805,10 @@ var _sfc_main49 = defineComponent({
 });
 var Col = _export_sfc(_sfc_main49, [["__file", "col.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/col/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/col/index.mjs
 var ElCol = withInstall(Col);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/collapse.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/collapse.mjs
 var emitChangeFn = (value) => isNumber3(value) || isString2(value) || isArray(value);
 var collapseProps = buildProps({
   accordion: Boolean,
@@ -26743,20 +26822,20 @@ var collapseEmits = {
   [CHANGE_EVENT]: emitChangeFn
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/constants.mjs
 var collapseContextKey = Symbol("collapseContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/use-collapse.mjs
-var useCollapse = (props, emit) => {
-  const activeNames = ref(castArray_default(props.modelValue));
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/use-collapse.mjs
+var useCollapse = (props2, emit) => {
+  const activeNames = ref(castArray_default(props2.modelValue));
   const setActiveNames = (_activeNames) => {
     activeNames.value = _activeNames;
-    const value = props.accordion ? activeNames.value[0] : activeNames.value;
+    const value = props2.accordion ? activeNames.value[0] : activeNames.value;
     emit(UPDATE_MODEL_EVENT, value);
     emit(CHANGE_EVENT, value);
   };
   const handleItemClick = (name) => {
-    if (props.accordion) {
+    if (props2.accordion) {
       setActiveNames([activeNames.value[0] === name ? "" : name]);
     } else {
       const _activeNames = [...activeNames.value];
@@ -26769,7 +26848,7 @@ var useCollapse = (props, emit) => {
       setActiveNames(_activeNames);
     }
   };
-  watch(() => props.modelValue, () => activeNames.value = castArray_default(props.modelValue), { deep: true });
+  watch(() => props2.modelValue, () => activeNames.value = castArray_default(props2.modelValue), { deep: true });
   provide(collapseContextKey, {
     activeNames,
     handleItemClick
@@ -26787,7 +26866,7 @@ var useCollapseDOM = () => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/collapse2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/collapse2.mjs
 var __default__40 = defineComponent({
   name: "ElCollapse"
 });
@@ -26796,8 +26875,8 @@ var _sfc_main50 = defineComponent({
   props: collapseProps,
   emits: collapseEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
-    const { activeNames, setActiveNames } = useCollapse(props, emit);
+    const props2 = __props;
+    const { activeNames, setActiveNames } = useCollapse(props2, emit);
     const { rootKls } = useCollapseDOM();
     expose({
       activeNames,
@@ -26814,7 +26893,7 @@ var _sfc_main50 = defineComponent({
 });
 var Collapse = _export_sfc(_sfc_main50, [["__file", "collapse.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collapse-transition/src/collapse-transition.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collapse-transition/src/collapse-transition.mjs
 var __default__41 = defineComponent({
   name: "ElCollapseTransition"
 });
@@ -26899,10 +26978,10 @@ var _sfc_main51 = defineComponent({
 });
 var CollapseTransition = _export_sfc(_sfc_main51, [["__file", "collapse-transition.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collapse-transition/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collapse-transition/index.mjs
 var ElCollapseTransition = withInstall(CollapseTransition);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/collapse-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/collapse-item2.mjs
 var collapseItemProps = buildProps({
   title: {
     type: String,
@@ -26912,11 +26991,15 @@ var collapseItemProps = buildProps({
     type: definePropType([String, Number]),
     default: void 0
   },
+  icon: {
+    type: iconPropType,
+    default: arrow_right_default
+  },
   disabled: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/use-collapse-item.mjs
-var useCollapseItem = (props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/use-collapse-item.mjs
+var useCollapseItem = (props2) => {
   const collapse = inject(collapseContextKey);
   const { namespace } = useNamespace("collapse");
   const focusing = ref(false);
@@ -26925,7 +27008,7 @@ var useCollapseItem = (props) => {
   const id = computed(() => idInjection.current++);
   const name = computed(() => {
     var _a2;
-    return (_a2 = props.name) != null ? _a2 : `${namespace.value}-id-${idInjection.prefix}-${unref(id)}`;
+    return (_a2 = props2.name) != null ? _a2 : `${namespace.value}-id-${idInjection.prefix}-${unref(id)}`;
   });
   const isActive = computed(() => collapse == null ? void 0 : collapse.activeNames.value.includes(unref(name)));
   const handleFocus = () => {
@@ -26938,7 +27021,7 @@ var useCollapseItem = (props) => {
     }, 50);
   };
   const handleHeaderClick = () => {
-    if (props.disabled)
+    if (props2.disabled)
       return;
     collapse == null ? void 0 : collapse.handleItemClick(unref(name));
     focusing.value = false;
@@ -26956,17 +27039,17 @@ var useCollapseItem = (props) => {
     handleEnterClick
   };
 };
-var useCollapseItemDOM = (props, { focusing, isActive, id }) => {
+var useCollapseItemDOM = (props2, { focusing, isActive, id }) => {
   const ns = useNamespace("collapse");
   const rootKls = computed(() => [
     ns.b("item"),
     ns.is("active", unref(isActive)),
-    ns.is("disabled", props.disabled)
+    ns.is("disabled", props2.disabled)
   ]);
   const headKls = computed(() => [
     ns.be("item", "header"),
     ns.is("active", unref(isActive)),
-    { focusing: unref(focusing) && !props.disabled }
+    { focusing: unref(focusing) && !props2.disabled }
   ]);
   const arrowKls = computed(() => [
     ns.be("item", "arrow"),
@@ -26987,7 +27070,7 @@ var useCollapseItemDOM = (props, { focusing, isActive, id }) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/collapse-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collapse/src/collapse-item.mjs
 var __default__42 = defineComponent({
   name: "ElCollapseItem"
 });
@@ -26995,7 +27078,7 @@ var _sfc_main52 = defineComponent({
   ...__default__42,
   props: collapseItemProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const {
       focusing,
       id,
@@ -27003,7 +27086,7 @@ var _sfc_main52 = defineComponent({
       handleFocus,
       handleHeaderClick,
       handleEnterClick
-    } = useCollapseItem(props);
+    } = useCollapseItem(props2);
     const {
       arrowKls,
       headKls,
@@ -27012,7 +27095,7 @@ var _sfc_main52 = defineComponent({
       itemContentKls,
       scopedContentId,
       scopedHeadId
-    } = useCollapseItemDOM(props, { focusing, isActive, id });
+    } = useCollapseItemDOM(props2, { focusing, isActive, id });
     expose({
       isActive
     });
@@ -27036,14 +27119,16 @@ var _sfc_main52 = defineComponent({
           renderSlot(_ctx.$slots, "title", {}, () => [
             createTextVNode(toDisplayString(_ctx.title), 1)
           ]),
-          createVNode(unref(ElIcon), {
-            class: normalizeClass(unref(arrowKls))
-          }, {
-            default: withCtx(() => [
-              createVNode(unref(arrow_right_default))
-            ]),
-            _: 1
-          }, 8, ["class"])
+          renderSlot(_ctx.$slots, "icon", { isActive: unref(isActive) }, () => [
+            createVNode(unref(ElIcon), {
+              class: normalizeClass(unref(arrowKls))
+            }, {
+              default: withCtx(() => [
+                (openBlock(), createBlock(resolveDynamicComponent(_ctx.icon)))
+              ]),
+              _: 1
+            }, 8, ["class"])
+          ])
         ], 42, ["id", "aria-expanded", "aria-controls", "aria-describedby", "tabindex", "onClick", "onKeydown", "onFocus", "onBlur"]),
         createVNode(unref(ElCollapseTransition), null, {
           default: withCtx(() => [
@@ -27071,13 +27156,13 @@ var _sfc_main52 = defineComponent({
 });
 var CollapseItem = _export_sfc(_sfc_main52, [["__file", "collapse-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collapse/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collapse/index.mjs
 var ElCollapse = withInstall(Collapse, {
   CollapseItem
 });
 var ElCollapseItem = withNoopInstall(CollapseItem);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/props/alpha-slider.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/props/alpha-slider.mjs
 var alphaSliderProps = buildProps({
   color: {
     type: definePropType(Object),
@@ -27089,7 +27174,7 @@ var alphaSliderProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/utils/draggable.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/utils/draggable.mjs
 var isDragging = false;
 function draggable(element, options) {
   if (!isClient)
@@ -27127,13 +27212,13 @@ function draggable(element, options) {
   element.addEventListener("touchstart", downFn, { passive: false });
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/composables/use-alpha-slider.mjs
-var useAlphaSlider = (props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/composables/use-alpha-slider.mjs
+var useAlphaSlider = (props2) => {
   const instance = getCurrentInstance();
   const { t } = useLocale();
   const thumb = shallowRef();
   const bar = shallowRef();
-  const alpha = computed(() => props.color.get("alpha"));
+  const alpha = computed(() => props2.color.get("alpha"));
   const alphaLabel = computed(() => t("el.colorpicker.alphaLabel"));
   function handleClick(event) {
     var _a2;
@@ -27149,16 +27234,16 @@ var useAlphaSlider = (props) => {
     const el = instance.vnode.el;
     const rect = el.getBoundingClientRect();
     const { clientX, clientY } = getClientXY(event);
-    if (!props.vertical) {
+    if (!props2.vertical) {
       let left2 = clientX - rect.left;
       left2 = Math.max(thumb.value.offsetWidth / 2, left2);
       left2 = Math.min(left2, rect.width - thumb.value.offsetWidth / 2);
-      props.color.set("alpha", Math.round((left2 - thumb.value.offsetWidth / 2) / (rect.width - thumb.value.offsetWidth) * 100));
+      props2.color.set("alpha", Math.round((left2 - thumb.value.offsetWidth / 2) / (rect.width - thumb.value.offsetWidth) * 100));
     } else {
       let top = clientY - rect.top;
       top = Math.max(thumb.value.offsetHeight / 2, top);
       top = Math.min(top, rect.height - thumb.value.offsetHeight / 2);
-      props.color.set("alpha", Math.round((top - thumb.value.offsetHeight / 2) / (rect.height - thumb.value.offsetHeight) * 100));
+      props2.color.set("alpha", Math.round((top - thumb.value.offsetHeight / 2) / (rect.height - thumb.value.offsetHeight) * 100));
     }
   }
   function handleKeydown(event) {
@@ -27182,7 +27267,7 @@ var useAlphaSlider = (props) => {
   function incrementPosition(step) {
     let next = alpha.value + step;
     next = next < 0 ? 0 : next > 100 ? 100 : next;
-    props.color.set("alpha", next);
+    props2.color.set("alpha", next);
   }
   return {
     thumb,
@@ -27194,7 +27279,7 @@ var useAlphaSlider = (props) => {
     handleKeydown
   };
 };
-var useAlphaSliderDOM = (props, {
+var useAlphaSliderDOM = (props2, {
   bar,
   thumb,
   handleDrag
@@ -27207,10 +27292,10 @@ var useAlphaSliderDOM = (props, {
   function getThumbLeft() {
     if (!thumb.value)
       return 0;
-    if (props.vertical)
+    if (props2.vertical)
       return 0;
     const el = instance.vnode.el;
-    const alpha = props.color.get("alpha");
+    const alpha = props2.color.get("alpha");
     if (!el)
       return 0;
     return Math.round(alpha * (el.offsetWidth - thumb.value.offsetWidth / 2) / 100);
@@ -27219,16 +27304,16 @@ var useAlphaSliderDOM = (props, {
     if (!thumb.value)
       return 0;
     const el = instance.vnode.el;
-    if (!props.vertical)
+    if (!props2.vertical)
       return 0;
-    const alpha = props.color.get("alpha");
+    const alpha = props2.color.get("alpha");
     if (!el)
       return 0;
     return Math.round(alpha * (el.offsetHeight - thumb.value.offsetHeight / 2) / 100);
   }
   function getBackground() {
-    if (props.color && props.color.value) {
-      const { r, g, b: b2 } = props.color.toRgb();
+    if (props2.color && props2.color.value) {
+      const { r, g, b: b2 } = props2.color.toRgb();
       return `linear-gradient(to right, rgba(${r}, ${g}, ${b2}, 0) 0%, rgba(${r}, ${g}, ${b2}, 1) 100%)`;
     }
     return "";
@@ -27253,9 +27338,9 @@ var useAlphaSliderDOM = (props, {
     draggable(thumb.value, dragConfig);
     update2();
   });
-  watch(() => props.color.get("alpha"), () => update2());
-  watch(() => props.color.value, () => update2());
-  const rootKls = computed(() => [ns.b(), ns.is("vertical", props.vertical)]);
+  watch(() => props2.color.get("alpha"), () => update2());
+  watch(() => props2.color.value, () => update2());
+  const rootKls = computed(() => [ns.b(), ns.is("vertical", props2.vertical)]);
   const barKls = computed(() => ns.e("bar"));
   const thumbKls = computed(() => ns.e("thumb"));
   const barStyle = computed(() => ({ background: background.value }));
@@ -27266,7 +27351,7 @@ var useAlphaSliderDOM = (props, {
   return { rootKls, barKls, barStyle, thumbKls, thumbStyle, update: update2 };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/components/alpha-slider.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/components/alpha-slider.mjs
 var COMPONENT_NAME11 = "ElColorAlphaSlider";
 var __default__43 = defineComponent({
   name: COMPONENT_NAME11
@@ -27275,7 +27360,7 @@ var _sfc_main53 = defineComponent({
   ...__default__43,
   props: alphaSliderProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const {
       alpha,
       alphaLabel,
@@ -27284,8 +27369,8 @@ var _sfc_main53 = defineComponent({
       handleDrag,
       handleClick,
       handleKeydown
-    } = useAlphaSlider(props);
-    const { rootKls, barKls, barStyle, thumbKls, thumbStyle, update: update2 } = useAlphaSliderDOM(props, {
+    } = useAlphaSlider(props2);
+    const { rootKls, barKls, barStyle, thumbKls, thumbStyle, update: update2 } = useAlphaSliderDOM(props2, {
       bar,
       thumb,
       handleDrag
@@ -27326,7 +27411,7 @@ var _sfc_main53 = defineComponent({
 });
 var AlphaSlider = _export_sfc(_sfc_main53, [["__file", "alpha-slider.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/components/hue-slider.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/components/hue-slider.mjs
 var _sfc_main54 = defineComponent({
   name: "ElColorHueSlider",
   props: {
@@ -27336,7 +27421,7 @@ var _sfc_main54 = defineComponent({
     },
     vertical: Boolean
   },
-  setup(props) {
+  setup(props2) {
     const ns = useNamespace("color-hue-slider");
     const instance = getCurrentInstance();
     const thumb = ref();
@@ -27344,7 +27429,7 @@ var _sfc_main54 = defineComponent({
     const thumbLeft = ref(0);
     const thumbTop = ref(0);
     const hueValue = computed(() => {
-      return props.color.get("hue");
+      return props2.color.get("hue");
     });
     watch(() => hueValue.value, () => {
       update2();
@@ -27362,7 +27447,7 @@ var _sfc_main54 = defineComponent({
       const rect = el.getBoundingClientRect();
       const { clientX, clientY } = getClientXY(event);
       let hue;
-      if (!props.vertical) {
+      if (!props2.vertical) {
         let left2 = clientX - rect.left;
         left2 = Math.min(left2, rect.width - thumb.value.offsetWidth / 2);
         left2 = Math.max(thumb.value.offsetWidth / 2, left2);
@@ -27373,15 +27458,15 @@ var _sfc_main54 = defineComponent({
         top = Math.max(thumb.value.offsetHeight / 2, top);
         hue = Math.round((top - thumb.value.offsetHeight / 2) / (rect.height - thumb.value.offsetHeight) * 360);
       }
-      props.color.set("hue", hue);
+      props2.color.set("hue", hue);
     }
     function getThumbLeft() {
       if (!thumb.value)
         return 0;
       const el = instance.vnode.el;
-      if (props.vertical)
+      if (props2.vertical)
         return 0;
-      const hue = props.color.get("hue");
+      const hue = props2.color.get("hue");
       if (!el)
         return 0;
       return Math.round(hue * (el.offsetWidth - thumb.value.offsetWidth / 2) / 360);
@@ -27390,9 +27475,9 @@ var _sfc_main54 = defineComponent({
       if (!thumb.value)
         return 0;
       const el = instance.vnode.el;
-      if (!props.vertical)
+      if (!props2.vertical)
         return 0;
-      const hue = props.color.get("hue");
+      const hue = props2.color.get("hue");
       if (!el)
         return 0;
       return Math.round(hue * (el.offsetHeight - thumb.value.offsetHeight / 2) / 360);
@@ -27449,7 +27534,7 @@ function _sfc_render5(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var HueSlider = _export_sfc(_sfc_main54, [["render", _sfc_render5], ["__file", "hue-slider.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/color-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/color-picker.mjs
 var colorPickerProps = buildProps({
   modelValue: String,
   id: String,
@@ -27484,7 +27569,7 @@ var colorPickerEmits = {
 };
 var colorPickerContextKey = Symbol("colorPickerContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/utils/color.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/utils/color.mjs
 var hsv2hsl = function(hue, sat, val) {
   return [
     hue,
@@ -27770,7 +27855,7 @@ var Color = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/components/predefine.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/components/predefine.mjs
 var _sfc_main55 = defineComponent({
   props: {
     colors: {
@@ -27786,10 +27871,10 @@ var _sfc_main55 = defineComponent({
       required: true
     }
   },
-  setup(props) {
+  setup(props2) {
     const ns = useNamespace("color-predefine");
     const { currentColor } = inject(colorPickerContextKey);
-    const rgbaColors = ref(parseColors(props.colors, props.color));
+    const rgbaColors = ref(parseColors(props2.colors, props2.color));
     watch(() => currentColor.value, (val) => {
       const color = new Color();
       color.fromString(val);
@@ -27798,15 +27883,15 @@ var _sfc_main55 = defineComponent({
       });
     });
     watchEffect(() => {
-      rgbaColors.value = parseColors(props.colors, props.color);
+      rgbaColors.value = parseColors(props2.colors, props2.color);
     });
     function handleSelect(index) {
-      props.color.fromString(props.colors[index]);
+      props2.color.fromString(props2.colors[index]);
     }
     function parseColors(colors, color) {
       return colors.map((value) => {
         const c2 = new Color();
-        c2.enableAlpha = props.enableAlpha;
+        c2.enableAlpha = props2.enableAlpha;
         c2.format = "rgba";
         c2.fromString(value);
         c2.selected = c2.value === color.value;
@@ -27847,7 +27932,7 @@ function _sfc_render6(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var Predefine = _export_sfc(_sfc_main55, [["render", _sfc_render6], ["__file", "predefine.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/components/sv-panel.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/components/sv-panel.mjs
 var _sfc_main56 = defineComponent({
   name: "ElSlPanel",
   props: {
@@ -27856,25 +27941,25 @@ var _sfc_main56 = defineComponent({
       required: true
     }
   },
-  setup(props) {
+  setup(props2) {
     const ns = useNamespace("color-svpanel");
     const instance = getCurrentInstance();
     const cursorTop = ref(0);
     const cursorLeft = ref(0);
     const background = ref("hsl(0, 100%, 50%)");
     const colorValue = computed(() => {
-      const hue = props.color.get("hue");
-      const value = props.color.get("value");
+      const hue = props2.color.get("hue");
+      const value = props2.color.get("value");
       return { hue, value };
     });
     function update2() {
-      const saturation = props.color.get("saturation");
-      const value = props.color.get("value");
+      const saturation = props2.color.get("saturation");
+      const value = props2.color.get("value");
       const el = instance.vnode.el;
       const { clientWidth: width, clientHeight: height } = el;
       cursorLeft.value = saturation * width / 100;
       cursorTop.value = (100 - value) * height / 100;
-      background.value = `hsl(${props.color.get("hue")}, 100%, 50%)`;
+      background.value = `hsl(${props2.color.get("hue")}, 100%, 50%)`;
     }
     function handleDrag(event) {
       const el = instance.vnode.el;
@@ -27888,7 +27973,7 @@ var _sfc_main56 = defineComponent({
       top = Math.min(top, rect.height);
       cursorLeft.value = left2;
       cursorTop.value = top;
-      props.color.set({
+      props2.color.set({
         saturation: left2 / rect.width * 100,
         value: 100 - top / rect.height * 100
       });
@@ -27944,7 +28029,7 @@ function _sfc_render7(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var SvPanel = _export_sfc(_sfc_main56, [["render", _sfc_render7], ["__file", "sv-panel.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/color-picker2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/src/color-picker2.mjs
 var __default__44 = defineComponent({
   name: "ElColorPicker"
 });
@@ -27953,13 +28038,13 @@ var _sfc_main57 = defineComponent({
   props: colorPickerProps,
   emits: colorPickerEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const { t } = useLocale();
     const ns = useNamespace("color");
     const { formItem } = useFormItem();
     const colorSize = useFormSize();
     const colorDisabled = useFormDisabled();
-    const { inputId: buttonId, isLabeledByFormItem } = useFormItemInputId(props, {
+    const { inputId: buttonId, isLabeledByFormItem } = useFormItemInputId(props2, {
       formItemContext: formItem
     });
     const hue = ref();
@@ -27968,7 +28053,7 @@ var _sfc_main57 = defineComponent({
     const popper = ref();
     const triggerRef = ref();
     const inputRef = ref();
-    const { isFocused, handleFocus, handleBlur: handleBlur2 } = useFocusController(triggerRef, {
+    const { isFocused, handleFocus, handleBlur } = useFocusController(triggerRef, {
       beforeFocus() {
         return colorDisabled.value;
       },
@@ -27983,24 +28068,24 @@ var _sfc_main57 = defineComponent({
     });
     let shouldActiveChange = true;
     const color = reactive(new Color({
-      enableAlpha: props.showAlpha,
-      format: props.colorFormat || "",
-      value: props.modelValue
+      enableAlpha: props2.showAlpha,
+      format: props2.colorFormat || "",
+      value: props2.modelValue
     }));
     const showPicker = ref(false);
     const showPanelColor = ref(false);
     const customInput = ref("");
     const displayedColor = computed(() => {
-      if (!props.modelValue && !showPanelColor.value) {
+      if (!props2.modelValue && !showPanelColor.value) {
         return "transparent";
       }
-      return displayedRgb(color, props.showAlpha);
+      return displayedRgb(color, props2.showAlpha);
     });
     const currentColor = computed(() => {
-      return !props.modelValue && !showPanelColor.value ? "" : color.value;
+      return !props2.modelValue && !showPanelColor.value ? "" : color.value;
     });
     const buttonAriaLabel = computed(() => {
-      return !isLabeledByFormItem.value ? props.ariaLabel || t("el.colorpicker.defaultLabel") : void 0;
+      return !isLabeledByFormItem.value ? props2.ariaLabel || t("el.colorpicker.defaultLabel") : void 0;
     });
     const buttonAriaLabelledby = computed(() => {
       return isLabeledByFormItem.value ? formItem == null ? void 0 : formItem.labelId : void 0;
@@ -28035,8 +28120,8 @@ var _sfc_main57 = defineComponent({
     }
     function resetColor() {
       nextTick(() => {
-        if (props.modelValue) {
-          color.fromString(props.modelValue);
+        if (props2.modelValue) {
+          color.fromString(props2.modelValue);
         } else {
           color.value = "";
           nextTick(() => {
@@ -28057,15 +28142,15 @@ var _sfc_main57 = defineComponent({
       const value = color.value;
       emit(UPDATE_MODEL_EVENT, value);
       emit("change", value);
-      if (props.validateEvent) {
+      if (props2.validateEvent) {
         formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn(err));
       }
       debounceSetShowPicker(false);
       nextTick(() => {
         const newColor = new Color({
-          enableAlpha: props.showAlpha,
-          format: props.colorFormat || "",
-          value: props.modelValue
+          enableAlpha: props2.showAlpha,
+          format: props2.colorFormat || "",
+          value: props2.modelValue
         });
         if (!color.compare(newColor)) {
           resetColor();
@@ -28076,7 +28161,7 @@ var _sfc_main57 = defineComponent({
       debounceSetShowPicker(false);
       emit(UPDATE_MODEL_EVENT, null);
       emit("change", null);
-      if (props.modelValue !== null && props.validateEvent) {
+      if (props2.modelValue !== null && props2.validateEvent) {
         formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn(err));
       }
       resetColor();
@@ -28114,11 +28199,11 @@ var _sfc_main57 = defineComponent({
       triggerRef.value.blur();
     }
     onMounted(() => {
-      if (props.modelValue) {
+      if (props2.modelValue) {
         customInput.value = currentColor.value;
       }
     });
-    watch(() => props.modelValue, (newVal) => {
+    watch(() => props2.modelValue, (newVal) => {
       if (!newVal) {
         showPanelColor.value = false;
       } else if (newVal && newVal !== color.value) {
@@ -28126,13 +28211,19 @@ var _sfc_main57 = defineComponent({
         color.fromString(newVal);
       }
     });
+    watch(() => [props2.colorFormat, props2.showAlpha], () => {
+      color.enableAlpha = props2.showAlpha;
+      color.format = props2.colorFormat || color.format;
+      color.doOnChange();
+      emit(UPDATE_MODEL_EVENT, color.value);
+    });
     watch(() => currentColor.value, (val) => {
       customInput.value = val;
       shouldActiveChange && emit("activeChange", val);
       shouldActiveChange = true;
     });
     watch(() => color.value, () => {
-      if (!props.modelValue && !showPanelColor.value) {
+      if (!props2.modelValue && !showPanelColor.value) {
         showPanelColor.value = true;
       }
     });
@@ -28264,7 +28355,7 @@ var _sfc_main57 = defineComponent({
             tabindex: unref(colorDisabled) ? -1 : _ctx.tabindex,
             onKeydown: handleKeyDown,
             onFocus: unref(handleFocus),
-            onBlur: unref(handleBlur2)
+            onBlur: unref(handleBlur)
           }), [
             unref(colorDisabled) ? (openBlock(), createElementBlock("div", {
               key: 0,
@@ -28315,10 +28406,10 @@ var _sfc_main57 = defineComponent({
 });
 var ColorPicker = _export_sfc(_sfc_main57, [["__file", "color-picker.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/color-picker/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/color-picker/index.mjs
 var ElColorPicker = withInstall(ColorPicker);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/container/src/container.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/container/src/container.mjs
 var __default__45 = defineComponent({
   name: "ElContainer"
 });
@@ -28330,13 +28421,13 @@ var _sfc_main58 = defineComponent({
     }
   },
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const slots = useSlots();
     const ns = useNamespace("container");
     const isVertical = computed(() => {
-      if (props.direction === "vertical") {
+      if (props2.direction === "vertical") {
         return true;
-      } else if (props.direction === "horizontal") {
+      } else if (props2.direction === "horizontal") {
         return false;
       }
       if (slots && slots.default) {
@@ -28360,7 +28451,7 @@ var _sfc_main58 = defineComponent({
 });
 var Container = _export_sfc(_sfc_main58, [["__file", "container.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/container/src/aside.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/container/src/aside.mjs
 var __default__46 = defineComponent({
   name: "ElAside"
 });
@@ -28373,9 +28464,9 @@ var _sfc_main59 = defineComponent({
     }
   },
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("aside");
-    const style = computed(() => props.width ? ns.cssVarBlock({ width: props.width }) : {});
+    const style = computed(() => props2.width ? ns.cssVarBlock({ width: props2.width }) : {});
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("aside", {
         class: normalizeClass(unref(ns).b()),
@@ -28388,7 +28479,7 @@ var _sfc_main59 = defineComponent({
 });
 var Aside = _export_sfc(_sfc_main59, [["__file", "aside.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/container/src/footer.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/container/src/footer.mjs
 var __default__47 = defineComponent({
   name: "ElFooter"
 });
@@ -28401,9 +28492,9 @@ var _sfc_main60 = defineComponent({
     }
   },
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("footer");
-    const style = computed(() => props.height ? ns.cssVarBlock({ height: props.height }) : {});
+    const style = computed(() => props2.height ? ns.cssVarBlock({ height: props2.height }) : {});
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("footer", {
         class: normalizeClass(unref(ns).b()),
@@ -28416,7 +28507,7 @@ var _sfc_main60 = defineComponent({
 });
 var Footer = _export_sfc(_sfc_main60, [["__file", "footer.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/container/src/header.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/container/src/header.mjs
 var __default__48 = defineComponent({
   name: "ElHeader"
 });
@@ -28429,11 +28520,11 @@ var _sfc_main61 = defineComponent({
     }
   },
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("header");
     const style = computed(() => {
-      return props.height ? ns.cssVarBlock({
-        height: props.height
+      return props2.height ? ns.cssVarBlock({
+        height: props2.height
       }) : {};
     });
     return (_ctx, _cache) => {
@@ -28448,7 +28539,7 @@ var _sfc_main61 = defineComponent({
 });
 var Header = _export_sfc(_sfc_main61, [["__file", "header.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/container/src/main.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/container/src/main.mjs
 var __default__49 = defineComponent({
   name: "ElMain"
 });
@@ -28467,7 +28558,7 @@ var _sfc_main62 = defineComponent({
 });
 var Main = _export_sfc(_sfc_main62, [["__file", "main.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/container/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/container/index.mjs
 var ElContainer = withInstall(Container, {
   Aside,
   Footer,
@@ -28479,7 +28570,7 @@ var ElFooter = withNoopInstall(Footer);
 var ElHeader = withNoopInstall(Header);
 var ElMain = withNoopInstall(Main);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
 var import_dayjs16 = __toESM(require_dayjs_min(), 1);
 var import_customParseFormat2 = __toESM(require_customParseFormat(), 1);
 var import_advancedFormat = __toESM(require_advancedFormat(), 1);
@@ -28490,10 +28581,10 @@ var import_dayOfYear = __toESM(require_dayOfYear(), 1);
 var import_isSameOrAfter = __toESM(require_isSameOrAfter(), 1);
 var import_isSameOrBefore = __toESM(require_isSameOrBefore(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/constants.mjs
 var ROOT_PICKER_INJECTION_KEY = Symbol();
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/date-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/date-picker.mjs
 var datePickerProps = buildProps({
   ...timePickerDefaultProps,
   type: {
@@ -28502,10 +28593,10 @@ var datePickerProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs
 var import_dayjs11 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/shared.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/shared.mjs
 var selectionModes = [
   "date",
   "dates",
@@ -28564,7 +28655,7 @@ var selectionModeWithDefault = (mode) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/panel-date-pick.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/panel-date-pick.mjs
 var panelDatePickProps = buildProps({
   ...panelSharedProps,
   parsedValue: {
@@ -28579,7 +28670,7 @@ var panelDatePickProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/utils.mjs
 var import_dayjs7 = __toESM(require_dayjs_min(), 1);
 var isValidRange2 = (range4) => {
   if (!isArray(range4))
@@ -28683,7 +28774,7 @@ var getValidDateOfYear = (value, lang, disabledDate) => {
   return value;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/basic-date-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/basic-date-table.mjs
 var basicDateTableProps = buildProps({
   ...datePickerSharedProps,
   cellClassName: {
@@ -28694,12 +28785,12 @@ var basicDateTableProps = buildProps({
 });
 var basicDateTableEmits = ["changerange", "pick", "select"];
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/composables/use-basic-date-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/composables/use-basic-date-table.mjs
 var import_dayjs8 = __toESM(require_dayjs_min(), 1);
 var isNormalDay = (type4 = "") => {
   return ["normal", "today"].includes(type4);
 };
-var useBasicDateTable = (props, emit) => {
+var useBasicDateTable = (props2, emit) => {
   const { lang } = useLocale();
   const tbodyRef = ref();
   const currentCellRef = ref();
@@ -28707,13 +28798,13 @@ var useBasicDateTable = (props, emit) => {
   const lastColumn = ref();
   const tableRows = ref([[], [], [], [], [], []]);
   let focusWithClick = false;
-  const firstDayOfWeek = props.date.$locale().weekStart || 7;
-  const WEEKS_CONSTANT = props.date.locale("en").localeData().weekdaysShort().map((_2) => _2.toLowerCase());
+  const firstDayOfWeek = props2.date.$locale().weekStart || 7;
+  const WEEKS_CONSTANT = props2.date.locale("en").localeData().weekdaysShort().map((_2) => _2.toLowerCase());
   const offsetDay = computed(() => {
     return firstDayOfWeek > 3 ? 7 - firstDayOfWeek : -firstDayOfWeek;
   });
   const startDate = computed(() => {
-    const startDayOfMonth = props.date.startOf("month");
+    const startDayOfMonth = props2.date.startOf("month");
     return startDayOfMonth.subtract(startDayOfMonth.day() || 7, "day");
   });
   const WEEKS = computed(() => {
@@ -28725,7 +28816,7 @@ var useBasicDateTable = (props, emit) => {
     });
   });
   const days = computed(() => {
-    const startOfMonth = props.date.startOf("month");
+    const startOfMonth = props2.date.startOf("month");
     const startOfMonthDay = startOfMonth.day() || 7;
     const dateCountOfMonth = startOfMonth.daysInMonth();
     const dateCountOfLastMonth = startOfMonth.subtract(1, "month").daysInMonth();
@@ -28736,7 +28827,7 @@ var useBasicDateTable = (props, emit) => {
     };
   });
   const selectedDate = computed(() => {
-    return props.selectionMode === "dates" ? castArray2(props.parsedValue) : [];
+    return props2.selectionMode === "dates" ? castArray2(props2.parsedValue) : [];
   });
   const setDateText = (cell, { count, rowIndex, columnIndex }) => {
     const { startOfMonthDay, dateCountOfMonth, dateCountOfLastMonth } = unref(days);
@@ -28762,7 +28853,7 @@ var useBasicDateTable = (props, emit) => {
     return false;
   };
   const setCellMetadata = (cell, { columnIndex, rowIndex }, count) => {
-    const { disabledDate, cellClassName } = props;
+    const { disabledDate, cellClassName } = props2;
     const _selectedDate = unref(selectedDate);
     const shouldIncrement = setDateText(cell, { count, rowIndex, columnIndex });
     const cellDate = cell.dayjs.toDate();
@@ -28774,8 +28865,8 @@ var useBasicDateTable = (props, emit) => {
     return shouldIncrement;
   };
   const setRowMetadata = (row) => {
-    if (props.selectionMode === "week") {
-      const [start, end2] = props.showWeekNumber ? [1, 7] : [0, 6];
+    if (props2.selectionMode === "week") {
+      const [start, end2] = props2.showWeekNumber ? [1, 7] : [0, 6];
       const isActive = isWeekActive(row[start + 1]);
       row[start].inRange = isActive;
       row[start].start = isActive;
@@ -28784,7 +28875,7 @@ var useBasicDateTable = (props, emit) => {
     }
   };
   const rows = computed(() => {
-    const { minDate, maxDate, rangeState, showWeekNumber } = props;
+    const { minDate, maxDate, rangeState, showWeekNumber } = props2;
     const offset3 = unref(offsetDay);
     const rows_ = unref(tableRows);
     const dateUnit = "day";
@@ -28815,7 +28906,7 @@ var useBasicDateTable = (props, emit) => {
     });
     return rows_;
   });
-  watch(() => props.date, async () => {
+  watch(() => props2.date, async () => {
     var _a2;
     if ((_a2 = unref(tbodyRef)) == null ? void 0 : _a2.contains(document.activeElement)) {
       await nextTick();
@@ -28827,20 +28918,20 @@ var useBasicDateTable = (props, emit) => {
     return (_a2 = unref(currentCellRef)) == null ? void 0 : _a2.focus();
   };
   const isCurrent = (cell) => {
-    return props.selectionMode === "date" && isNormalDay(cell.type) && cellMatchesDate(cell, props.parsedValue);
+    return props2.selectionMode === "date" && isNormalDay(cell.type) && cellMatchesDate(cell, props2.parsedValue);
   };
   const cellMatchesDate = (cell, date4) => {
     if (!date4)
       return false;
-    return (0, import_dayjs8.default)(date4).locale(unref(lang)).isSame(props.date.date(Number(cell.text)), "day");
+    return (0, import_dayjs8.default)(date4).locale(unref(lang)).isSame(props2.date.date(Number(cell.text)), "day");
   };
   const getDateOfCell = (row, column2) => {
-    const offsetFromStart = row * 7 + (column2 - (props.showWeekNumber ? 1 : 0)) - unref(offsetDay);
+    const offsetFromStart = row * 7 + (column2 - (props2.showWeekNumber ? 1 : 0)) - unref(offsetDay);
     return unref(startDate).add(offsetFromStart, "day");
   };
   const handleMouseMove = (event) => {
     var _a2;
-    if (!props.rangeState.selecting)
+    if (!props2.rangeState.selecting)
       return;
     let target2 = event.target;
     if (target2.tagName === "SPAN") {
@@ -28868,7 +28959,7 @@ var useBasicDateTable = (props, emit) => {
     return !unref(hasCurrent) && (cell == null ? void 0 : cell.text) === 1 && cell.type === "normal" || cell.isCurrent;
   };
   const handleFocus = (event) => {
-    if (focusWithClick || unref(hasCurrent) || props.selectionMode !== "date")
+    if (focusWithClick || unref(hasCurrent) || props2.selectionMode !== "date")
       return;
     handlePickDate(event, true);
   };
@@ -28885,14 +28976,14 @@ var useBasicDateTable = (props, emit) => {
     focusWithClick = false;
   };
   const handleRangePick = (newDate) => {
-    if (!props.rangeState.selecting || !props.minDate) {
+    if (!props2.rangeState.selecting || !props2.minDate) {
       emit("pick", { minDate: newDate, maxDate: null });
       emit("select", true);
     } else {
-      if (newDate >= props.minDate) {
-        emit("pick", { minDate: props.minDate, maxDate: newDate });
+      if (newDate >= props2.minDate) {
+        emit("pick", { minDate: props2.minDate, maxDate: newDate });
       } else {
-        emit("pick", { minDate: newDate, maxDate: props.minDate });
+        emit("pick", { minDate: newDate, maxDate: props2.minDate });
       }
       emit("select", false);
     }
@@ -28908,7 +28999,7 @@ var useBasicDateTable = (props, emit) => {
     });
   };
   const handleDatesPick = (newDate, selected) => {
-    const newValue = selected ? castArray2(props.parsedValue).filter((d2) => (d2 == null ? void 0 : d2.valueOf()) !== newDate.valueOf()) : castArray2(props.parsedValue).concat([newDate]);
+    const newValue = selected ? castArray2(props2.parsedValue).filter((d2) => (d2 == null ? void 0 : d2.valueOf()) !== newDate.valueOf()) : castArray2(props2.parsedValue).concat([newDate]);
     emit("pick", newValue);
   };
   const handlePickDate = (event, isKeyboardMovement = false) => {
@@ -28921,7 +29012,7 @@ var useBasicDateTable = (props, emit) => {
     if (cell.disabled || cell.type === "week")
       return;
     const newDate = getDateOfCell(row, column2);
-    switch (props.selectionMode) {
+    switch (props2.selectionMode) {
       case "range": {
         handleRangePick(newDate);
         break;
@@ -28944,9 +29035,9 @@ var useBasicDateTable = (props, emit) => {
     }
   };
   const isWeekActive = (cell) => {
-    if (props.selectionMode !== "week")
+    if (props2.selectionMode !== "week")
       return false;
-    let newDate = props.date.startOf("day");
+    let newDate = props2.date.startOf("day");
     if (cell.type === "prev-month") {
       newDate = newDate.subtract(1, "month");
     }
@@ -28954,9 +29045,9 @@ var useBasicDateTable = (props, emit) => {
       newDate = newDate.add(1, "month");
     }
     newDate = newDate.date(Number.parseInt(cell.text, 10));
-    if (props.parsedValue && !Array.isArray(props.parsedValue)) {
-      const dayOffset = (props.parsedValue.day() - firstDayOfWeek + 7) % 7 - 1;
-      const weekDate = props.parsedValue.subtract(dayOffset, "day");
+    if (props2.parsedValue && !Array.isArray(props2.parsedValue)) {
+      const dayOffset = (props2.parsedValue.day() - firstDayOfWeek + 7) % 7 - 1;
+      const weekDate = props2.parsedValue.subtract(dayOffset, "day");
       return weekDate.isSame(newDate, "day");
     }
     return false;
@@ -28977,7 +29068,7 @@ var useBasicDateTable = (props, emit) => {
     handleFocus
   };
 };
-var useBasicDateTableDOM = (props, {
+var useBasicDateTableDOM = (props2, {
   isCurrent,
   isWeekActive
 }) => {
@@ -28985,7 +29076,7 @@ var useBasicDateTableDOM = (props, {
   const { t } = useLocale();
   const tableKls = computed(() => [
     ns.b(),
-    { "is-week-mode": props.selectionMode === "week" }
+    { "is-week-mode": props2.selectionMode === "week" }
   ]);
   const tableLabel = computed(() => t("el.datepicker.dateTablePrompt"));
   const weekLabel = computed(() => t("el.datepicker.week"));
@@ -29002,7 +29093,7 @@ var useBasicDateTableDOM = (props, {
     if (isCurrent(cell)) {
       classes.push("current");
     }
-    if (cell.inRange && (isNormalDay(cell.type) || props.selectionMode === "week")) {
+    if (cell.inRange && (isNormalDay(cell.type) || props2.selectionMode === "week")) {
       classes.push("in-range");
       if (cell.start) {
         classes.push("start-date");
@@ -29036,18 +29127,18 @@ var useBasicDateTableDOM = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/basic-cell.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/basic-cell.mjs
 var basicCellProps = buildProps({
   cell: {
     type: definePropType(Object)
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-cell-render.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-cell-render.mjs
 var ElDatePickerCell = defineComponent({
   name: "ElDatePickerCell",
   props: basicCellProps,
-  setup(props) {
+  setup(props2) {
     const ns = useNamespace("date-table-cell");
     const {
       slots
@@ -29055,7 +29146,7 @@ var ElDatePickerCell = defineComponent({
     return () => {
       const {
         cell
-      } = props;
+      } = props2;
       return renderSlot(slots, "default", {
         ...cell
       }, () => {
@@ -29070,13 +29161,13 @@ var ElDatePickerCell = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-date-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-date-table.mjs
 var _sfc_main63 = defineComponent({
   __name: "basic-date-table",
   props: basicDateTableProps,
   emits: basicDateTableEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const {
       WEEKS,
       rows,
@@ -29091,8 +29182,8 @@ var _sfc_main63 = defineComponent({
       handleMouseDown,
       handleMouseMove,
       handleFocus
-    } = useBasicDateTable(props, emit);
-    const { tableLabel, tableKls, weekLabel, getCellClasses, getRowKls, t } = useBasicDateTableDOM(props, {
+    } = useBasicDateTable(props2, emit);
+    const { tableLabel, tableKls, weekLabel, getCellClasses, getRowKls, t } = useBasicDateTableDOM(props2, {
       isCurrent,
       isWeekActive
     });
@@ -29156,27 +29247,27 @@ var _sfc_main63 = defineComponent({
 });
 var DateTable2 = _export_sfc(_sfc_main63, [["__file", "basic-date-table.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs
 var import_dayjs9 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/basic-month-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/basic-month-table.mjs
 var basicMonthTableProps = buildProps({
   ...datePickerSharedProps,
   selectionMode: selectionModeWithDefault("month")
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs
 var _sfc_main64 = defineComponent({
   __name: "basic-month-table",
   props: basicMonthTableProps,
   emits: ["changerange", "pick", "select"],
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("month-table");
     const { t, lang } = useLocale();
     const tbodyRef = ref();
     const currentCellRef = ref();
-    const months = ref(props.date.locale("en").localeData().monthsShort().map((_2) => _2.toLowerCase()));
+    const months = ref(props2.date.locale("en").localeData().monthsShort().map((_2) => _2.toLowerCase()));
     const tableRows = ref([
       [],
       [],
@@ -29203,14 +29294,14 @@ var _sfc_main64 = defineComponent({
           });
           cell.type = "normal";
           const index = i * 4 + j;
-          const calTime = props.date.startOf("year").month(index);
-          const calEndDate = props.rangeState.endDate || props.maxDate || props.rangeState.selecting && props.minDate || null;
-          cell.inRange = !!(props.minDate && calTime.isSameOrAfter(props.minDate, "month") && calEndDate && calTime.isSameOrBefore(calEndDate, "month")) || !!(props.minDate && calTime.isSameOrBefore(props.minDate, "month") && calEndDate && calTime.isSameOrAfter(calEndDate, "month"));
-          if ((_a2 = props.minDate) == null ? void 0 : _a2.isSameOrAfter(calEndDate)) {
+          const calTime = props2.date.startOf("year").month(index);
+          const calEndDate = props2.rangeState.endDate || props2.maxDate || props2.rangeState.selecting && props2.minDate || null;
+          cell.inRange = !!(props2.minDate && calTime.isSameOrAfter(props2.minDate, "month") && calEndDate && calTime.isSameOrBefore(calEndDate, "month")) || !!(props2.minDate && calTime.isSameOrBefore(props2.minDate, "month") && calEndDate && calTime.isSameOrAfter(calEndDate, "month"));
+          if ((_a2 = props2.minDate) == null ? void 0 : _a2.isSameOrAfter(calEndDate)) {
             cell.start = !!(calEndDate && calTime.isSame(calEndDate, "month"));
-            cell.end = props.minDate && calTime.isSame(props.minDate, "month");
+            cell.end = props2.minDate && calTime.isSame(props2.minDate, "month");
           } else {
-            cell.start = !!(props.minDate && calTime.isSame(props.minDate, "month"));
+            cell.start = !!(props2.minDate && calTime.isSame(props2.minDate, "month"));
             cell.end = !!(calEndDate && calTime.isSame(calEndDate, "month"));
           }
           const isToday = now2.isSame(calTime);
@@ -29218,7 +29309,7 @@ var _sfc_main64 = defineComponent({
             cell.type = "today";
           }
           cell.text = index;
-          cell.disabled = ((_b = props.disabledDate) == null ? void 0 : _b.call(props, calTime.toDate())) || false;
+          cell.disabled = ((_b = props2.disabledDate) == null ? void 0 : _b.call(props2, calTime.toDate())) || false;
         }
       }
       return rows2;
@@ -29229,11 +29320,11 @@ var _sfc_main64 = defineComponent({
     };
     const getCellStyle = (cell) => {
       const style = {};
-      const year = props.date.year();
+      const year = props2.date.year();
       const today = /* @__PURE__ */ new Date();
       const month = cell.text;
-      style.disabled = props.disabledDate ? datesInMonth(year, month, lang.value).every(props.disabledDate) : false;
-      style.current = castArray2(props.parsedValue).findIndex((date4) => import_dayjs9.default.isDayjs(date4) && date4.year() === year && date4.month() === month) >= 0;
+      style.disabled = props2.disabledDate ? datesInMonth(year, month, lang.value).every(props2.disabledDate) : false;
+      style.current = castArray2(props2.parsedValue).findIndex((date4) => import_dayjs9.default.isDayjs(date4) && date4.year() === year && date4.month() === month) >= 0;
       style.today = today.getFullYear() === year && today.getMonth() === month;
       if (cell.inRange) {
         style["in-range"] = true;
@@ -29247,13 +29338,13 @@ var _sfc_main64 = defineComponent({
       return style;
     };
     const isSelectedCell = (cell) => {
-      const year = props.date.year();
+      const year = props2.date.year();
       const month = cell.text;
-      return castArray2(props.date).findIndex((date4) => date4.year() === year && date4.month() === month) >= 0;
+      return castArray2(props2.date).findIndex((date4) => date4.year() === year && date4.month() === month) >= 0;
     };
     const handleMouseMove = (event) => {
       var _a2;
-      if (!props.rangeState.selecting)
+      if (!props2.rangeState.selecting)
         return;
       let target2 = event.target;
       if (target2.tagName === "SPAN") {
@@ -29273,7 +29364,7 @@ var _sfc_main64 = defineComponent({
         lastColumn.value = column2;
         emit("changerange", {
           selecting: true,
-          endDate: props.date.startOf("year").month(row * 4 + column2)
+          endDate: props2.date.startOf("year").month(row * 4 + column2)
         });
       }
     };
@@ -29287,24 +29378,24 @@ var _sfc_main64 = defineComponent({
       const column2 = target2.cellIndex;
       const row = target2.parentNode.rowIndex;
       const month = row * 4 + column2;
-      const newDate = props.date.startOf("year").month(month);
-      if (props.selectionMode === "months") {
+      const newDate = props2.date.startOf("year").month(month);
+      if (props2.selectionMode === "months") {
         if (event.type === "keydown") {
-          emit("pick", castArray2(props.parsedValue), false);
+          emit("pick", castArray2(props2.parsedValue), false);
           return;
         }
-        const newMonth = getValidDateOfMonth(props.date.year(), month, lang.value, props.disabledDate);
-        const newValue = hasClass(target2, "current") ? castArray2(props.parsedValue).filter((d2) => (d2 == null ? void 0 : d2.month()) !== newMonth.month()) : castArray2(props.parsedValue).concat([(0, import_dayjs9.default)(newMonth)]);
+        const newMonth = getValidDateOfMonth(props2.date.year(), month, lang.value, props2.disabledDate);
+        const newValue = hasClass(target2, "current") ? castArray2(props2.parsedValue).filter((d2) => (d2 == null ? void 0 : d2.month()) !== newMonth.month()) : castArray2(props2.parsedValue).concat([(0, import_dayjs9.default)(newMonth)]);
         emit("pick", newValue);
-      } else if (props.selectionMode === "range") {
-        if (!props.rangeState.selecting) {
+      } else if (props2.selectionMode === "range") {
+        if (!props2.rangeState.selecting) {
           emit("pick", { minDate: newDate, maxDate: null });
           emit("select", true);
         } else {
-          if (props.minDate && newDate >= props.minDate) {
-            emit("pick", { minDate: props.minDate, maxDate: newDate });
+          if (props2.minDate && newDate >= props2.minDate) {
+            emit("pick", { minDate: props2.minDate, maxDate: newDate });
           } else {
-            emit("pick", { minDate: newDate, maxDate: props.minDate });
+            emit("pick", { minDate: newDate, maxDate: props2.minDate });
           }
           emit("select", false);
         }
@@ -29312,7 +29403,7 @@ var _sfc_main64 = defineComponent({
         emit("pick", month);
       }
     };
-    watch(() => props.date, async () => {
+    watch(() => props2.date, async () => {
       var _a2, _b;
       if ((_a2 = tbodyRef.value) == null ? void 0 : _a2.contains(document.activeElement)) {
         await nextTick();
@@ -29367,22 +29458,22 @@ var _sfc_main64 = defineComponent({
 });
 var MonthTable = _export_sfc(_sfc_main64, [["__file", "basic-month-table.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-year-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-year-table.mjs
 var import_dayjs10 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/basic-year-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/basic-year-table.mjs
 var basicYearTableProps = buildProps({
   ...datePickerSharedProps,
   selectionMode: selectionModeWithDefault("year")
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-year-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-year-table.mjs
 var _sfc_main65 = defineComponent({
   __name: "basic-year-table",
   props: basicYearTableProps,
   emits: ["changerange", "pick", "select"],
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const datesInYear = (year, lang2) => {
       const firstDay = (0, import_dayjs10.default)(String(year)).locale(lang2).startOf("year");
       const lastDay = firstDay.endOf("year");
@@ -29394,7 +29485,7 @@ var _sfc_main65 = defineComponent({
     const tbodyRef = ref();
     const currentCellRef = ref();
     const startYear = computed(() => {
-      return Math.floor(props.date.year() / 10) * 10;
+      return Math.floor(props2.date.year() / 10) * 10;
     });
     const tableRows = ref([[], [], []]);
     const lastRow = ref();
@@ -29425,13 +29516,13 @@ var _sfc_main65 = defineComponent({
           cell.type = "normal";
           const index = i * 4 + j + startYear.value;
           const calTime = (0, import_dayjs10.default)().year(index);
-          const calEndDate = props.rangeState.endDate || props.maxDate || props.rangeState.selecting && props.minDate || null;
-          cell.inRange = !!(props.minDate && calTime.isSameOrAfter(props.minDate, "year") && calEndDate && calTime.isSameOrBefore(calEndDate, "year")) || !!(props.minDate && calTime.isSameOrBefore(props.minDate, "year") && calEndDate && calTime.isSameOrAfter(calEndDate, "year"));
-          if ((_a2 = props.minDate) == null ? void 0 : _a2.isSameOrAfter(calEndDate)) {
+          const calEndDate = props2.rangeState.endDate || props2.maxDate || props2.rangeState.selecting && props2.minDate || null;
+          cell.inRange = !!(props2.minDate && calTime.isSameOrAfter(props2.minDate, "year") && calEndDate && calTime.isSameOrBefore(calEndDate, "year")) || !!(props2.minDate && calTime.isSameOrBefore(props2.minDate, "year") && calEndDate && calTime.isSameOrAfter(calEndDate, "year"));
+          if ((_a2 = props2.minDate) == null ? void 0 : _a2.isSameOrAfter(calEndDate)) {
             cell.start = !!(calEndDate && calTime.isSame(calEndDate, "year"));
-            cell.end = !!(props.minDate && calTime.isSame(props.minDate, "year"));
+            cell.end = !!(props2.minDate && calTime.isSame(props2.minDate, "year"));
           } else {
-            cell.start = !!(props.minDate && calTime.isSame(props.minDate, "year"));
+            cell.start = !!(props2.minDate && calTime.isSame(props2.minDate, "year"));
             cell.end = !!(calEndDate && calTime.isSame(calEndDate, "year"));
           }
           const isToday = now2.isSame(calTime);
@@ -29440,7 +29531,7 @@ var _sfc_main65 = defineComponent({
           }
           cell.text = index;
           const cellDate = calTime.toDate();
-          cell.disabled = props.disabledDate && props.disabledDate(cellDate) || false;
+          cell.disabled = props2.disabledDate && props2.disabledDate(cellDate) || false;
           row[j] = cell;
         }
       }
@@ -29454,9 +29545,9 @@ var _sfc_main65 = defineComponent({
       const kls = {};
       const today = (0, import_dayjs10.default)().locale(lang.value);
       const year = cell.text;
-      kls.disabled = props.disabledDate ? datesInYear(year, lang.value).every(props.disabledDate) : false;
+      kls.disabled = props2.disabledDate ? datesInYear(year, lang.value).every(props2.disabledDate) : false;
       kls.today = today.year() === year;
-      kls.current = castArray2(props.parsedValue).findIndex((d2) => d2.year() === year) >= 0;
+      kls.current = castArray2(props2.parsedValue).findIndex((d2) => d2.year() === year) >= 0;
       if (cell.inRange) {
         kls["in-range"] = true;
         if (cell.start) {
@@ -29470,7 +29561,7 @@ var _sfc_main65 = defineComponent({
     };
     const isSelectedCell = (cell) => {
       const year = cell.text;
-      return castArray2(props.date).findIndex((date4) => date4.year() === year) >= 0;
+      return castArray2(props2.date).findIndex((date4) => date4.year() === year) >= 0;
     };
     const handleYearTableClick = (event) => {
       var _a2;
@@ -29481,25 +29572,25 @@ var _sfc_main65 = defineComponent({
       const row = target2.parentNode.rowIndex;
       const selectedYear = row * 4 + column2 + startYear.value;
       const newDate = (0, import_dayjs10.default)().year(selectedYear);
-      if (props.selectionMode === "range") {
-        if (!props.rangeState.selecting) {
+      if (props2.selectionMode === "range") {
+        if (!props2.rangeState.selecting) {
           emit("pick", { minDate: newDate, maxDate: null });
           emit("select", true);
         } else {
-          if (props.minDate && newDate >= props.minDate) {
-            emit("pick", { minDate: props.minDate, maxDate: newDate });
+          if (props2.minDate && newDate >= props2.minDate) {
+            emit("pick", { minDate: props2.minDate, maxDate: newDate });
           } else {
-            emit("pick", { minDate: newDate, maxDate: props.minDate });
+            emit("pick", { minDate: newDate, maxDate: props2.minDate });
           }
           emit("select", false);
         }
-      } else if (props.selectionMode === "years") {
+      } else if (props2.selectionMode === "years") {
         if (event.type === "keydown") {
-          emit("pick", castArray2(props.parsedValue), false);
+          emit("pick", castArray2(props2.parsedValue), false);
           return;
         }
-        const vaildYear = getValidDateOfYear(newDate.startOf("year"), lang.value, props.disabledDate);
-        const newValue = hasClass(target2, "current") ? castArray2(props.parsedValue).filter((d2) => (d2 == null ? void 0 : d2.year()) !== selectedYear) : castArray2(props.parsedValue).concat([vaildYear]);
+        const vaildYear = getValidDateOfYear(newDate.startOf("year"), lang.value, props2.disabledDate);
+        const newValue = hasClass(target2, "current") ? castArray2(props2.parsedValue).filter((d2) => (d2 == null ? void 0 : d2.year()) !== selectedYear) : castArray2(props2.parsedValue).concat([vaildYear]);
         emit("pick", newValue);
       } else {
         emit("pick", selectedYear);
@@ -29507,7 +29598,7 @@ var _sfc_main65 = defineComponent({
     };
     const handleMouseMove = (event) => {
       var _a2;
-      if (!props.rangeState.selecting)
+      if (!props2.rangeState.selecting)
         return;
       const target2 = (_a2 = event.target) == null ? void 0 : _a2.closest("td");
       if (!target2)
@@ -29525,7 +29616,7 @@ var _sfc_main65 = defineComponent({
         });
       }
     };
-    watch(() => props.date, async () => {
+    watch(() => props2.date, async () => {
       var _a2, _b;
       if ((_a2 = tbodyRef.value) == null ? void 0 : _a2.contains(document.activeElement)) {
         await nextTick();
@@ -29575,13 +29666,13 @@ var _sfc_main65 = defineComponent({
 });
 var YearTable = _export_sfc(_sfc_main65, [["__file", "basic-year-table.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs
 var _sfc_main66 = defineComponent({
   __name: "panel-date-pick",
   props: panelDatePickProps,
   emits: ["pick", "set-picker-option", "panel-change"],
   setup(__props, { emit: contextEmit }) {
-    const props = __props;
+    const props2 = __props;
     const timeWithinRange = (_2, __, ___) => true;
     const ppNs = useNamespace("picker-panel");
     const dpNs = useNamespace("date-picker");
@@ -29609,7 +29700,7 @@ var _sfc_main66 = defineComponent({
     const userInputDate = ref(null);
     const userInputTime = ref(null);
     const checkDateWithinRange = (date4) => {
-      return selectableRange.value.length > 0 ? timeWithinRange(date4, selectableRange.value, props.format || "HH:mm:ss") : true;
+      return selectableRange.value.length > 0 ? timeWithinRange(date4, selectableRange.value, props2.format || "HH:mm:ss") : true;
     };
     const formatEmit = (emitDayjs) => {
       if (defaultTime && !visibleTime.value && !isChangeToNow.value && !isShortcut) {
@@ -29636,13 +29727,13 @@ var _sfc_main66 = defineComponent({
     const handleDatePick = async (value, keepOpen) => {
       if (selectionMode.value === "date") {
         value = value;
-        let newDate = props.parsedValue ? props.parsedValue.year(value.year()).month(value.month()).date(value.date()) : value;
+        let newDate = props2.parsedValue ? props2.parsedValue.year(value.year()).month(value.month()).date(value.date()) : value;
         if (!checkDateWithinRange(newDate)) {
           newDate = selectableRange.value[0][0].year(value.year()).month(value.month()).date(value.date());
         }
         innerDate.value = newDate;
         emit(newDate, showTime.value || keepOpen);
-        if (props.type === "datetime") {
+        if (props2.type === "datetime") {
           await nextTick();
           handleFocusPicker();
         }
@@ -29691,7 +29782,7 @@ var _sfc_main66 = defineComponent({
       }
     };
     const selectionMode = computed(() => {
-      const { type: type4 } = props;
+      const { type: type4 } = props2;
       if (["week", "month", "months", "year", "years", "dates"].includes(type4))
         return type4;
       return "date";
@@ -29744,7 +29835,7 @@ var _sfc_main66 = defineComponent({
       await nextTick();
       handleFocusPicker();
     };
-    const showTime = computed(() => props.type === "datetime" || props.type === "datetimerange");
+    const showTime = computed(() => props2.type === "datetime" || props2.type === "datetimerange");
     const footerVisible = computed(() => {
       const showDateFooter = showTime.value || selectionMode.value === "dates";
       const showYearFooter = selectionMode.value === "years";
@@ -29757,18 +29848,18 @@ var _sfc_main66 = defineComponent({
     const disabledConfirm = computed(() => {
       if (!disabledDate)
         return false;
-      if (!props.parsedValue)
+      if (!props2.parsedValue)
         return true;
-      if (isArray(props.parsedValue)) {
-        return disabledDate(props.parsedValue[0].toDate());
+      if (isArray(props2.parsedValue)) {
+        return disabledDate(props2.parsedValue[0].toDate());
       }
-      return disabledDate(props.parsedValue.toDate());
+      return disabledDate(props2.parsedValue.toDate());
     });
     const onConfirm = () => {
       if (isMultipleType.value) {
-        emit(props.parsedValue);
+        emit(props2.parsedValue);
       } else {
-        let result2 = props.parsedValue;
+        let result2 = props2.parsedValue;
         if (!result2) {
           const defaultTimeD2 = (0, import_dayjs11.default)(defaultTime).locale(lang.value);
           const defaultValueD = getDefaultValue2();
@@ -29793,24 +29884,24 @@ var _sfc_main66 = defineComponent({
       }
     };
     const timeFormat = computed(() => {
-      return props.timeFormat || extractTimeFormat(props.format);
+      return props2.timeFormat || extractTimeFormat(props2.format);
     });
     const dateFormat = computed(() => {
-      return props.dateFormat || extractDateFormat(props.format);
+      return props2.dateFormat || extractDateFormat(props2.format);
     });
     const visibleTime = computed(() => {
       if (userInputTime.value)
         return userInputTime.value;
-      if (!props.parsedValue && !defaultValue.value)
+      if (!props2.parsedValue && !defaultValue.value)
         return;
-      return (props.parsedValue || innerDate.value).format(timeFormat.value);
+      return (props2.parsedValue || innerDate.value).format(timeFormat.value);
     });
     const visibleDate = computed(() => {
       if (userInputDate.value)
         return userInputDate.value;
-      if (!props.parsedValue && !defaultValue.value)
+      if (!props2.parsedValue && !defaultValue.value)
         return;
-      return (props.parsedValue || innerDate.value).format(dateFormat.value);
+      return (props2.parsedValue || innerDate.value).format(dateFormat.value);
     });
     const timePickerVisible = ref(false);
     const onTimePickerInputFocus = () => {
@@ -29831,7 +29922,7 @@ var _sfc_main66 = defineComponent({
     };
     const handleTimePick = (value, visible, first) => {
       const { hour, minute, second } = getUnits(value);
-      const newDate = props.parsedValue ? props.parsedValue.hour(hour).minute(minute).second(second) : value;
+      const newDate = props2.parsedValue ? props2.parsedValue.hour(hour).minute(minute).second(second) : value;
       innerDate.value = newDate;
       emit(innerDate.value, true);
       if (!first) {
@@ -29864,10 +29955,10 @@ var _sfc_main66 = defineComponent({
       return import_dayjs11.default.isDayjs(date4) && date4.isValid() && (disabledDate ? !disabledDate(date4.toDate()) : true);
     };
     const formatToString = (value) => {
-      return isArray(value) ? value.map((_2) => _2.format(props.format)) : value.format(props.format);
+      return isArray(value) ? value.map((_2) => _2.format(props2.format)) : value.format(props2.format);
     };
     const parseUserInput = (value) => {
-      return (0, import_dayjs11.default)(value, props.format).locale(lang.value);
+      return (0, import_dayjs11.default)(value, props2.format).locale(lang.value);
     };
     const getDefaultValue2 = () => {
       const parseDate2 = (0, import_dayjs11.default)(defaultValue.value).locale(lang.value);
@@ -29984,7 +30075,7 @@ var _sfc_main66 = defineComponent({
         innerDate.value = getDefaultValue2();
       }
     }, { immediate: true });
-    watch(() => props.parsedValue, (val) => {
+    watch(() => props2.parsedValue, (val) => {
       if (val) {
         if (isMultipleType.value)
           return;
@@ -30248,17 +30339,17 @@ var _sfc_main66 = defineComponent({
 });
 var DatePickPanel = _export_sfc(_sfc_main66, [["__file", "panel-date-pick.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs
 var import_dayjs13 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/panel-date-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/panel-date-range.mjs
 var panelDateRangeProps = buildProps({
   ...panelSharedProps,
   ...panelRangeSharedProps,
   visible: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/composables/use-shortcut.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/composables/use-shortcut.mjs
 var import_dayjs12 = __toESM(require_dayjs_min(), 1);
 var useShortcut = (lang) => {
   const { emit } = getCurrentInstance();
@@ -30284,8 +30375,8 @@ var useShortcut = (lang) => {
   return handleShortcutClick;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/composables/use-range-picker.mjs
-var useRangePicker = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/composables/use-range-picker.mjs
+var useRangePicker = (props2, {
   defaultValue,
   leftDate,
   rightDate,
@@ -30334,7 +30425,7 @@ var useRangePicker = (props, {
     const [start, end2] = getDefaultValue(unref(defaultValue), {
       lang: unref(lang),
       unit: unit4,
-      unlinkPanels: props.unlinkPanels
+      unlinkPanels: props2.unlinkPanels
     });
     minDate.value = void 0;
     maxDate.value = void 0;
@@ -30346,7 +30437,7 @@ var useRangePicker = (props, {
       restoreDefault();
     }
   }, { immediate: true });
-  watch(() => props.parsedValue, onReset, { immediate: true });
+  watch(() => props2.parsedValue, onReset, { immediate: true });
   return {
     minDate,
     maxDate,
@@ -30363,7 +30454,7 @@ var useRangePicker = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs
 var unit = "month";
 var _sfc_main67 = defineComponent({
   __name: "panel-date-range",
@@ -30375,7 +30466,7 @@ var _sfc_main67 = defineComponent({
     "panel-change"
   ],
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const pickerBase = inject("EP_PICKER_BASE");
     const { disabledDate, cellClassName, defaultTime, clearable } = pickerBase.props;
     const format2 = toRef(pickerBase.props, "format");
@@ -30396,16 +30487,16 @@ var _sfc_main67 = defineComponent({
       onSelect,
       onReset,
       t
-    } = useRangePicker(props, {
+    } = useRangePicker(props2, {
       defaultValue,
       leftDate,
       rightDate,
       unit,
       onParsedValueChanged
     });
-    watch(() => props.visible, (visible) => {
+    watch(() => props2.visible, (visible) => {
       if (!visible && rangeState.value.selecting) {
-        onReset(props.parsedValue);
+        onReset(props2.parsedValue);
         onSelect(false);
       }
     });
@@ -30465,30 +30556,30 @@ var _sfc_main67 = defineComponent({
       return "";
     });
     const timeFormat = computed(() => {
-      return props.timeFormat || extractTimeFormat(format2.value);
+      return props2.timeFormat || extractTimeFormat(format2.value);
     });
     const dateFormat = computed(() => {
-      return props.dateFormat || extractDateFormat(format2.value);
+      return props2.dateFormat || extractDateFormat(format2.value);
     });
     const isValidValue3 = (date4) => {
       return isValidRange2(date4) && (disabledDate ? !disabledDate(date4[0].toDate()) && !disabledDate(date4[1].toDate()) : true);
     };
     const leftPrevYear = () => {
       leftDate.value = leftDate.value.subtract(1, "year");
-      if (!props.unlinkPanels) {
+      if (!props2.unlinkPanels) {
         rightDate.value = leftDate.value.add(1, "month");
       }
       handlePanelChange("year");
     };
     const leftPrevMonth = () => {
       leftDate.value = leftDate.value.subtract(1, "month");
-      if (!props.unlinkPanels) {
+      if (!props2.unlinkPanels) {
         rightDate.value = leftDate.value.add(1, "month");
       }
       handlePanelChange("month");
     };
     const rightNextYear = () => {
-      if (!props.unlinkPanels) {
+      if (!props2.unlinkPanels) {
         leftDate.value = leftDate.value.add(1, "year");
         rightDate.value = leftDate.value.add(1, "month");
       } else {
@@ -30497,7 +30588,7 @@ var _sfc_main67 = defineComponent({
       handlePanelChange("year");
     };
     const rightNextMonth = () => {
-      if (!props.unlinkPanels) {
+      if (!props2.unlinkPanels) {
         leftDate.value = leftDate.value.add(1, "month");
         rightDate.value = leftDate.value.add(1, "month");
       } else {
@@ -30527,15 +30618,15 @@ var _sfc_main67 = defineComponent({
     const enableMonthArrow = computed(() => {
       const nextMonth = (leftMonth.value + 1) % 12;
       const yearOffset = leftMonth.value + 1 >= 12 ? 1 : 0;
-      return props.unlinkPanels && new Date(leftYear.value + yearOffset, nextMonth) < new Date(rightYear.value, rightMonth.value);
+      return props2.unlinkPanels && new Date(leftYear.value + yearOffset, nextMonth) < new Date(rightYear.value, rightMonth.value);
     });
     const enableYearArrow = computed(() => {
-      return props.unlinkPanels && rightYear.value * 12 + rightMonth.value - (leftYear.value * 12 + leftMonth.value + 1) >= 12;
+      return props2.unlinkPanels && rightYear.value * 12 + rightMonth.value - (leftYear.value * 12 + leftMonth.value + 1) >= 12;
     });
     const btnDisabled = computed(() => {
       return !(minDate.value && maxDate.value && !rangeState.value.selecting && isValidRange2([minDate.value, maxDate.value]));
     });
-    const showTime = computed(() => props.type === "datetime" || props.type === "datetimerange");
+    const showTime = computed(() => props2.type === "datetime" || props2.type === "datetimerange");
     const formatEmit = (emitDayjs, index) => {
       if (!emitDayjs)
         return;
@@ -30578,14 +30669,14 @@ var _sfc_main67 = defineComponent({
         if (type4 === "min") {
           leftDate.value = parsedValueD;
           minDate.value = (minDate.value || leftDate.value).year(parsedValueD.year()).month(parsedValueD.month()).date(parsedValueD.date());
-          if (!props.unlinkPanels && (!maxDate.value || maxDate.value.isBefore(minDate.value))) {
+          if (!props2.unlinkPanels && (!maxDate.value || maxDate.value.isBefore(minDate.value))) {
             rightDate.value = parsedValueD.add(1, "month");
             maxDate.value = minDate.value.add(1, "month");
           }
         } else {
           rightDate.value = parsedValueD;
           maxDate.value = (maxDate.value || rightDate.value).year(parsedValueD.year()).month(parsedValueD.month()).date(parsedValueD.date());
-          if (!props.unlinkPanels && (!minDate.value || minDate.value.isAfter(maxDate.value))) {
+          if (!props2.unlinkPanels && (!minDate.value || minDate.value.isAfter(maxDate.value))) {
             leftDate.value = parsedValueD.subtract(1, "month");
             minDate.value = maxDate.value.subtract(1, "month");
           }
@@ -30658,7 +30749,7 @@ var _sfc_main67 = defineComponent({
       leftDate.value = getDefaultValue(unref(defaultValue), {
         lang: unref(lang),
         unit: "month",
-        unlinkPanels: props.unlinkPanels
+        unlinkPanels: props2.unlinkPanels
       })[0];
       rightDate.value = leftDate.value.add(1, "month");
       maxDate.value = void 0;
@@ -30672,7 +30763,7 @@ var _sfc_main67 = defineComponent({
       return isArray(value) ? value.map((_2) => (0, import_dayjs13.default)(_2, format2.value).locale(lang.value)) : (0, import_dayjs13.default)(value, format2.value).locale(lang.value);
     };
     function onParsedValueChanged(minDate2, maxDate2) {
-      if (props.unlinkPanels && maxDate2) {
+      if (props2.unlinkPanels && maxDate2) {
         const minDateYear = (minDate2 == null ? void 0 : minDate2.year()) || 0;
         const minDateMonth = (minDate2 == null ? void 0 : minDate2.month()) || 0;
         const maxDateYear = maxDate2.year();
@@ -31034,10 +31125,10 @@ var _sfc_main67 = defineComponent({
 });
 var DateRangePickPanel = _export_sfc(_sfc_main67, [["__file", "panel-date-range.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
 var import_dayjs14 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/panel-month-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/panel-month-range.mjs
 var panelMonthRangeProps = buildProps({
   ...panelRangeSharedProps
 });
@@ -31047,7 +31138,7 @@ var panelMonthRangeEmits = [
   "calendar-change"
 ];
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/composables/use-month-range-header.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/composables/use-month-range-header.mjs
 var useMonthRangeHeader = ({
   unlinkPanels,
   leftDate,
@@ -31096,7 +31187,7 @@ var useMonthRangeHeader = ({
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
 var unit2 = "year";
 var __default__50 = defineComponent({
   name: "DatePickerMonthRange"
@@ -31106,7 +31197,7 @@ var _sfc_main68 = defineComponent({
   props: panelMonthRangeProps,
   emits: panelMonthRangeEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const { lang } = useLocale();
     const pickerBase = inject("EP_PICKER_BASE");
     const { shortcuts, disabledDate } = pickerBase.props;
@@ -31124,7 +31215,7 @@ var _sfc_main68 = defineComponent({
       handleRangeConfirm,
       handleShortcutClick,
       onSelect
-    } = useRangePicker(props, {
+    } = useRangePicker(props2, {
       defaultValue,
       leftDate,
       rightDate,
@@ -31142,12 +31233,12 @@ var _sfc_main68 = defineComponent({
       leftYear,
       rightYear
     } = useMonthRangeHeader({
-      unlinkPanels: toRef(props, "unlinkPanels"),
+      unlinkPanels: toRef(props2, "unlinkPanels"),
       leftDate,
       rightDate
     });
     const enableYearArrow = computed(() => {
-      return props.unlinkPanels && rightYear.value > leftYear.value + 1;
+      return props2.unlinkPanels && rightYear.value > leftYear.value + 1;
     });
     const handleRangePick = (val, close2 = true) => {
       const minDate_ = val.minDate;
@@ -31166,7 +31257,7 @@ var _sfc_main68 = defineComponent({
       leftDate.value = getDefaultValue(unref(defaultValue), {
         lang: unref(lang),
         unit: "year",
-        unlinkPanels: props.unlinkPanels
+        unlinkPanels: props2.unlinkPanels
       })[0];
       rightDate.value = leftDate.value.add(1, "year");
       emit("pick", null);
@@ -31178,7 +31269,7 @@ var _sfc_main68 = defineComponent({
       return isArray(value) ? value.map((_2) => (0, import_dayjs14.default)(_2, format2.value).locale(lang.value)) : (0, import_dayjs14.default)(value, format2.value).locale(lang.value);
     };
     function onParsedValueChanged(minDate2, maxDate2) {
-      if (props.unlinkPanels && maxDate2) {
+      if (props2.unlinkPanels && maxDate2) {
         const minDateYear = (minDate2 == null ? void 0 : minDate2.year()) || 0;
         const maxDateYear = maxDate2.year();
         rightDate.value = minDateYear === maxDateYear ? maxDate2.add(1, unit2) : maxDate2;
@@ -31333,10 +31424,10 @@ var _sfc_main68 = defineComponent({
 });
 var MonthRangePickPanel = _export_sfc(_sfc_main68, [["__file", "panel-month-range.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-year-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-year-range.mjs
 var import_dayjs15 = __toESM(require_dayjs_min(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/panel-year-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/props/panel-year-range.mjs
 var panelYearRangeProps = buildProps({
   ...panelRangeSharedProps
 });
@@ -31346,7 +31437,7 @@ var panelYearRangeEmits = [
   "calendar-change"
 ];
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/composables/use-year-range-header.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/composables/use-year-range-header.mjs
 var useYearRangeHeader = ({
   unlinkPanels,
   leftDate,
@@ -31398,7 +31489,7 @@ var useYearRangeHeader = ({
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-year-range.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-year-range.mjs
 var unit3 = "year";
 var __default__51 = defineComponent({
   name: "DatePickerYearRange"
@@ -31408,7 +31499,7 @@ var _sfc_main69 = defineComponent({
   props: panelYearRangeProps,
   emits: panelYearRangeEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const { lang } = useLocale();
     const leftDate = ref((0, import_dayjs15.default)().locale(lang.value));
     const rightDate = ref(leftDate.value.add(10, "year"));
@@ -31455,12 +31546,12 @@ var _sfc_main69 = defineComponent({
       leftYear,
       rightYear
     } = useYearRangeHeader({
-      unlinkPanels: toRef(props, "unlinkPanels"),
+      unlinkPanels: toRef(props2, "unlinkPanels"),
       leftDate,
       rightDate
     });
     const enableYearArrow = computed(() => {
-      return props.unlinkPanels && rightYear.value > leftYear.value + 1;
+      return props2.unlinkPanels && rightYear.value > leftYear.value + 1;
     });
     const minDate = ref();
     const maxDate = ref();
@@ -31504,7 +31595,7 @@ var _sfc_main69 = defineComponent({
       if (isArray(defaultValue.value)) {
         const left2 = (0, import_dayjs15.default)(defaultValue.value[0]);
         let right2 = (0, import_dayjs15.default)(defaultValue.value[1]);
-        if (!props.unlinkPanels) {
+        if (!props2.unlinkPanels) {
           right2 = left2.add(10, unit3);
         }
         return [left2, right2];
@@ -31523,12 +31614,12 @@ var _sfc_main69 = defineComponent({
         rightDate.value = defaultArr[1];
       }
     }, { immediate: true });
-    watch(() => props.parsedValue, (newVal) => {
+    watch(() => props2.parsedValue, (newVal) => {
       if (newVal && newVal.length === 2) {
         minDate.value = newVal[0];
         maxDate.value = newVal[1];
         leftDate.value = minDate.value;
-        if (props.unlinkPanels && maxDate.value) {
+        if (props2.unlinkPanels && maxDate.value) {
           const minDateYear = minDate.value.year();
           const maxDateYear = maxDate.value.year();
           rightDate.value = minDateYear === maxDateYear ? maxDate.value.add(10, "year") : maxDate.value;
@@ -31698,7 +31789,7 @@ var _sfc_main69 = defineComponent({
 });
 var YearRangePickPanel = _export_sfc(_sfc_main69, [["__file", "panel-year-range.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/panel-utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/panel-utils.mjs
 var getPanel = function(type4) {
   switch (type4) {
     case "daterange":
@@ -31717,7 +31808,7 @@ var getPanel = function(type4) {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
 import_dayjs16.default.extend(import_localeData2.default);
 import_dayjs16.default.extend(import_advancedFormat.default);
 import_dayjs16.default.extend(import_customParseFormat2.default);
@@ -31731,13 +31822,13 @@ var DatePicker = defineComponent({
   install: null,
   props: datePickerProps,
   emits: ["update:modelValue"],
-  setup(props, {
+  setup(props2, {
     expose,
     emit,
     slots
   }) {
     const ns = useNamespace("picker-panel");
-    provide("ElPopperOptions", reactive(toRef(props, "popperOptions")));
+    provide("ElPopperOptions", reactive(toRef(props2, "popperOptions")));
     provide(ROOT_PICKER_INJECTION_KEY, {
       slots,
       pickerNs: ns
@@ -31763,11 +31854,11 @@ var DatePicker = defineComponent({
     };
     return () => {
       var _a2;
-      const format2 = (_a2 = props.format) != null ? _a2 : DEFAULT_FORMATS_DATEPICKER[props.type] || DEFAULT_FORMATS_DATE;
-      const Component = getPanel(props.type);
-      return createVNode(CommonPicker, mergeProps(props, {
+      const format2 = (_a2 = props2.format) != null ? _a2 : DEFAULT_FORMATS_DATEPICKER[props2.type] || DEFAULT_FORMATS_DATE;
+      const Component = getPanel(props2.type);
+      return createVNode(CommonPicker, mergeProps(props2, {
         "format": format2,
-        "type": props.type,
+        "type": props2.type,
         "ref": commonPicker,
         "onUpdate:modelValue": onModelValueUpdated
       }), {
@@ -31783,13 +31874,13 @@ var DatePicker = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/date-picker/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/date-picker/index.mjs
 var ElDatePicker = withInstall(DatePicker);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/token.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/token.mjs
 var descriptionsKey = Symbol("elDescriptions");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/descriptions-cell.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/descriptions-cell.mjs
 var ElDescriptionsCell = defineComponent({
   name: "ElDescriptionsCell",
   props: {
@@ -31811,7 +31902,7 @@ var ElDescriptionsCell = defineComponent({
     };
   },
   render() {
-    var _a2, _b, _c, _d, _e, _f, _g;
+    var _a2;
     const item = getNormalizedProps(this.cell);
     const directives = (((_a2 = this.cell) == null ? void 0 : _a2.dirs) || []).map((dire) => {
       const { dir, arg, modifiers, value } = dire;
@@ -31819,8 +31910,14 @@ var ElDescriptionsCell = defineComponent({
     });
     const { border, direction: direction2 } = this.descriptions;
     const isVertical = direction2 === "vertical";
-    const label = ((_d = (_c = (_b = this.cell) == null ? void 0 : _b.children) == null ? void 0 : _c.label) == null ? void 0 : _d.call(_c)) || item.label;
-    const content = (_g = (_f = (_e = this.cell) == null ? void 0 : _e.children) == null ? void 0 : _f.default) == null ? void 0 : _g.call(_f);
+    const renderLabel = () => {
+      var _a22, _b, _c;
+      return ((_c = (_b = (_a22 = this.cell) == null ? void 0 : _a22.children) == null ? void 0 : _b.label) == null ? void 0 : _c.call(_b)) || item.label;
+    };
+    const renderContent = () => {
+      var _a22, _b, _c;
+      return (_c = (_b = (_a22 = this.cell) == null ? void 0 : _a22.children) == null ? void 0 : _b.default) == null ? void 0 : _c.call(_b);
+    };
     const span = item.span;
     const rowspan = item.rowspan;
     const align = item.align ? `is-${item.align}` : "";
@@ -31846,7 +31943,7 @@ var ElDescriptionsCell = defineComponent({
           ],
           colSpan: isVertical ? span : 1,
           rowspan: isVertical ? 1 : rowspan
-        }, label), directives);
+        }, renderLabel()), directives);
       case "content":
         return withDirectives(h(this.tag, {
           style,
@@ -31860,8 +31957,9 @@ var ElDescriptionsCell = defineComponent({
           ],
           colSpan: isVertical ? span : span * 2 - 1,
           rowspan: isVertical ? rowspan * 2 - 1 : rowspan
-        }, content), directives);
-      default:
+        }, renderContent()), directives);
+      default: {
+        const label = renderLabel();
         return withDirectives(h("td", {
           style,
           class: [ns.e("cell"), align],
@@ -31873,13 +31971,14 @@ var ElDescriptionsCell = defineComponent({
           }, label) : void 0,
           h("span", {
             class: [ns.e("content"), className]
-          }, content)
+          }, renderContent())
         ]), directives);
+      }
     }
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/descriptions-row.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/descriptions-row.mjs
 var descriptionsRowProps = buildProps({
   row: {
     type: definePropType(Array),
@@ -31887,7 +31986,7 @@ var descriptionsRowProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/descriptions-row2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/descriptions-row2.mjs
 var __default__52 = defineComponent({
   name: "ElDescriptionsRow"
 });
@@ -31948,7 +32047,7 @@ var _sfc_main70 = defineComponent({
 });
 var ElDescriptionsRow = _export_sfc(_sfc_main70, [["__file", "descriptions-row.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/description.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/description.mjs
 var descriptionProps = buildProps({
   border: Boolean,
   column: {
@@ -31971,7 +32070,7 @@ var descriptionProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/description2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/description2.mjs
 var __default__53 = defineComponent({
   name: "ElDescriptions"
 });
@@ -31979,11 +32078,11 @@ var _sfc_main71 = defineComponent({
   ...__default__53,
   props: descriptionProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("descriptions");
     const descriptionsSize = useFormSize();
     const slots = useSlots();
-    provide(descriptionsKey, props);
+    provide(descriptionsKey, props2);
     const descriptionKls = computed(() => [ns.b(), ns.m(descriptionsSize.value)]);
     const filledNode = (node, span, count, isLast = false) => {
       if (!node.props) {
@@ -32006,7 +32105,7 @@ var _sfc_main71 = defineComponent({
       });
       const rows = [];
       let temp = [];
-      let count = props.column;
+      let count = props2.column;
       let totalSpan = 0;
       const rowspanTemp = [];
       children.forEach((node, index) => {
@@ -32030,7 +32129,7 @@ var _sfc_main71 = defineComponent({
           totalSpan += span > count ? count : span;
         }
         if (index === children.length - 1) {
-          const lastSpan = props.column - totalSpan % props.column;
+          const lastSpan = props2.column - totalSpan % props2.column;
           temp.push(filledNode(node, lastSpan, count, true));
           rows.push(temp);
           return;
@@ -32041,7 +32140,7 @@ var _sfc_main71 = defineComponent({
         } else {
           temp.push(filledNode(node, span, count));
           rows.push(temp);
-          count = props.column;
+          count = props2.column;
           temp = [];
         }
       });
@@ -32092,7 +32191,7 @@ var _sfc_main71 = defineComponent({
 });
 var Descriptions = _export_sfc(_sfc_main71, [["__file", "description.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/description-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/descriptions/src/description-item.mjs
 var descriptionItemProps = buildProps({
   label: {
     type: String,
@@ -32136,13 +32235,13 @@ var DescriptionItem = defineComponent({
   props: descriptionItemProps
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/descriptions/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/descriptions/index.mjs
 var ElDescriptions = withInstall(Descriptions, {
   DescriptionsItem: DescriptionItem
 });
 var ElDescriptionsItem = withNoopInstall(DescriptionItem);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/overlay/src/overlay.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/overlay/src/overlay.mjs
 var overlayProps = buildProps({
   mask: {
     type: Boolean,
@@ -32168,25 +32267,25 @@ var Overlay = defineComponent({
   name: "ElOverlay",
   props: overlayProps,
   emits: overlayEmits,
-  setup(props, { slots, emit }) {
+  setup(props2, { slots, emit }) {
     const ns = useNamespace(BLOCK);
     const onMaskClick = (e) => {
       emit("click", e);
     };
-    const { onClick, onMousedown, onMouseup } = useSameTarget(props.customMaskEvent ? void 0 : onMaskClick);
+    const { onClick, onMousedown, onMouseup } = useSameTarget(props2.customMaskEvent ? void 0 : onMaskClick);
     return () => {
-      return props.mask ? createVNode("div", {
-        class: [ns.b(), props.overlayClass],
+      return props2.mask ? createVNode("div", {
+        class: [ns.b(), props2.overlayClass],
         style: {
-          zIndex: props.zIndex
+          zIndex: props2.zIndex
         },
         onClick,
         onMousedown,
         onMouseup
       }, [renderSlot(slots, "default")], PatchFlags.STYLE | PatchFlags.CLASS | PatchFlags.PROPS, ["onClick", "onMouseup", "onMousedown"]) : h("div", {
-        class: props.overlayClass,
+        class: props2.overlayClass,
         style: {
-          zIndex: props.zIndex,
+          zIndex: props2.zIndex,
           position: "fixed",
           top: "0px",
           right: "0px",
@@ -32198,13 +32297,13 @@ var Overlay = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/overlay/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/overlay/index.mjs
 var ElOverlay = Overlay;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/constants.mjs
 var dialogInjectionKey = Symbol("dialogInjectionKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/dialog-content.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs
 var dialogContentProps = buildProps({
   center: Boolean,
   alignCenter: Boolean,
@@ -32231,28 +32330,28 @@ var dialogContentEmits = {
   close: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/dialog-content.mjs
 var __default__54 = defineComponent({ name: "ElDialogContent" });
 var _sfc_main72 = defineComponent({
   ...__default__54,
   props: dialogContentProps,
   emits: dialogContentEmits,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const { t } = useLocale();
     const { Close } = CloseComponents;
     const { dialogRef, headerRef, bodyId, ns, style } = inject(dialogInjectionKey);
     const { focusTrapRef } = inject(FOCUS_TRAP_INJECTION_KEY);
     const dialogKls = computed(() => [
       ns.b(),
-      ns.is("fullscreen", props.fullscreen),
-      ns.is("draggable", props.draggable),
-      ns.is("align-center", props.alignCenter),
-      { [ns.m("center")]: props.center }
+      ns.is("fullscreen", props2.fullscreen),
+      ns.is("draggable", props2.draggable),
+      ns.is("align-center", props2.alignCenter),
+      { [ns.m("center")]: props2.center }
     ]);
     const composedDialogRef = composeRefs(focusTrapRef, dialogRef);
-    const draggable2 = computed(() => props.draggable);
-    const overflow = computed(() => props.overflow);
+    const draggable2 = computed(() => props2.draggable);
+    const overflow = computed(() => props2.overflow);
     const { resetPosition } = useDraggable(dialogRef, headerRef, draggable2, overflow);
     expose({
       resetPosition
@@ -32311,7 +32410,7 @@ var _sfc_main72 = defineComponent({
 });
 var ElDialogContent = _export_sfc(_sfc_main72, [["__file", "dialog-content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/dialog.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/dialog.mjs
 var dialogProps = buildProps({
   ...dialogContentProps,
   appendToBody: Boolean,
@@ -32374,8 +32473,8 @@ var dialogEmits = {
   closeAutoFocus: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/use-dialog.mjs
-var useDialog = (props, targetRef) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/use-dialog.mjs
+var useDialog = (props2, targetRef) => {
   var _a2;
   const instance = getCurrentInstance();
   const emit = instance.emit;
@@ -32386,25 +32485,25 @@ var useDialog = (props, targetRef) => {
   const visible = ref(false);
   const closed = ref(false);
   const rendered = ref(false);
-  const zIndex2 = ref((_a2 = props.zIndex) != null ? _a2 : nextZIndex());
+  const zIndex2 = ref((_a2 = props2.zIndex) != null ? _a2 : nextZIndex());
   let openTimer = void 0;
   let closeTimer = void 0;
   const namespace = useGlobalConfig("namespace", defaultNamespace);
   const style = computed(() => {
     const style2 = {};
     const varPrefix = `--${namespace.value}-dialog`;
-    if (!props.fullscreen) {
-      if (props.top) {
-        style2[`${varPrefix}-margin-top`] = props.top;
+    if (!props2.fullscreen) {
+      if (props2.top) {
+        style2[`${varPrefix}-margin-top`] = props2.top;
       }
-      if (props.width) {
-        style2[`${varPrefix}-width`] = addUnit(props.width);
+      if (props2.width) {
+        style2[`${varPrefix}-width`] = addUnit(props2.width);
       }
     }
     return style2;
   });
   const overlayDialogStyle = computed(() => {
-    if (props.alignCenter) {
+    if (props2.alignCenter) {
       return { display: "flex" };
     }
     return {};
@@ -32415,7 +32514,7 @@ var useDialog = (props, targetRef) => {
   function afterLeave() {
     emit("closed");
     emit(UPDATE_MODEL_EVENT, false);
-    if (props.destroyOnClose) {
+    if (props2.destroyOnClose) {
       rendered.value = false;
     }
   }
@@ -32425,9 +32524,9 @@ var useDialog = (props, targetRef) => {
   function open() {
     closeTimer == null ? void 0 : closeTimer();
     openTimer == null ? void 0 : openTimer();
-    if (props.openDelay && props.openDelay > 0) {
+    if (props2.openDelay && props2.openDelay > 0) {
       ;
-      ({ stop: openTimer } = useTimeoutFn(() => doOpen(), props.openDelay));
+      ({ stop: openTimer } = useTimeoutFn(() => doOpen(), props2.openDelay));
     } else {
       doOpen();
     }
@@ -32435,9 +32534,9 @@ var useDialog = (props, targetRef) => {
   function close2() {
     openTimer == null ? void 0 : openTimer();
     closeTimer == null ? void 0 : closeTimer();
-    if (props.closeDelay && props.closeDelay > 0) {
+    if (props2.closeDelay && props2.closeDelay > 0) {
       ;
-      ({ stop: closeTimer } = useTimeoutFn(() => doClose(), props.closeDelay));
+      ({ stop: closeTimer } = useTimeoutFn(() => doClose(), props2.closeDelay));
     } else {
       doClose();
     }
@@ -32449,14 +32548,14 @@ var useDialog = (props, targetRef) => {
       closed.value = true;
       visible.value = false;
     }
-    if (props.beforeClose) {
-      props.beforeClose(hide2);
+    if (props2.beforeClose) {
+      props2.beforeClose(hide2);
     } else {
       close2();
     }
   }
   function onModalClick() {
-    if (props.closeOnClickModal) {
+    if (props2.closeOnClickModal) {
       handleClose();
     }
   }
@@ -32480,20 +32579,20 @@ var useDialog = (props, targetRef) => {
       event.preventDefault();
     }
   }
-  if (props.lockScroll) {
+  if (props2.lockScroll) {
     useLockscreen(visible);
   }
   function onCloseRequested() {
-    if (props.closeOnPressEscape) {
+    if (props2.closeOnPressEscape) {
       handleClose();
     }
   }
-  watch(() => props.modelValue, (val) => {
+  watch(() => props2.modelValue, (val) => {
     if (val) {
       closed.value = false;
       open();
       rendered.value = true;
-      zIndex2.value = isUndefined_default(props.zIndex) ? nextZIndex() : zIndex2.value++;
+      zIndex2.value = isUndefined_default(props2.zIndex) ? nextZIndex() : zIndex2.value++;
       nextTick(() => {
         emit("open");
         if (targetRef.value) {
@@ -32506,7 +32605,7 @@ var useDialog = (props, targetRef) => {
       }
     }
   });
-  watch(() => props.fullscreen, (val) => {
+  watch(() => props2.fullscreen, (val) => {
     if (!targetRef.value)
       return;
     if (val) {
@@ -32517,7 +32616,7 @@ var useDialog = (props, targetRef) => {
     }
   });
   onMounted(() => {
-    if (props.modelValue) {
+    if (props2.modelValue) {
       visible.value = true;
       rendered.value = true;
       open();
@@ -32546,7 +32645,7 @@ var useDialog = (props, targetRef) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/dialog2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dialog/src/dialog2.mjs
 var __default__55 = defineComponent({
   name: "ElDialog",
   inheritAttrs: false
@@ -32556,7 +32655,7 @@ var _sfc_main73 = defineComponent({
   props: dialogProps,
   emits: dialogEmits,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const slots = useSlots();
     useDeprecated({
       scope: "el-dialog",
@@ -32586,7 +32685,7 @@ var _sfc_main73 = defineComponent({
       onCloseAutoFocus,
       onCloseRequested,
       onFocusoutPrevented
-    } = useDialog(props, dialogRef);
+    } = useDialog(props2, dialogRef);
     provide(dialogInjectionKey, {
       dialogRef,
       headerRef,
@@ -32596,7 +32695,7 @@ var _sfc_main73 = defineComponent({
       style
     });
     const overlayEvent = useSameTarget(onModalClick);
-    const draggable2 = computed(() => props.draggable && !props.fullscreen);
+    const draggable2 = computed(() => props2.draggable && !props2.fullscreen);
     const resetPosition = () => {
       var _a2;
       (_a2 = dialogContentRef.value) == null ? void 0 : _a2.resetPosition();
@@ -32705,10 +32804,10 @@ var _sfc_main73 = defineComponent({
 });
 var Dialog = _export_sfc(_sfc_main73, [["__file", "dialog.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dialog/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dialog/index.mjs
 var ElDialog = withInstall(Dialog);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/divider/src/divider.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/divider/src/divider.mjs
 var dividerProps = buildProps({
   direction: {
     type: String,
@@ -32726,7 +32825,7 @@ var dividerProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/divider/src/divider2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/divider/src/divider2.mjs
 var __default__56 = defineComponent({
   name: "ElDivider"
 });
@@ -32734,11 +32833,11 @@ var _sfc_main74 = defineComponent({
   ...__default__56,
   props: dividerProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("divider");
     const dividerStyle = computed(() => {
       return ns.cssVar({
-        "border-style": props.borderStyle
+        "border-style": props2.borderStyle
       });
     });
     return (_ctx, _cache) => {
@@ -32759,10 +32858,10 @@ var _sfc_main74 = defineComponent({
 });
 var Divider = _export_sfc(_sfc_main74, [["__file", "divider.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/divider/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/divider/index.mjs
 var ElDivider = withInstall(Divider);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/drawer/src/drawer.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/drawer/src/drawer.mjs
 var drawerProps = buildProps({
   ...dialogProps,
   direction: {
@@ -32789,7 +32888,7 @@ var drawerProps = buildProps({
 });
 var drawerEmits = dialogEmits;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/drawer/src/drawer2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/drawer/src/drawer2.mjs
 var __default__57 = defineComponent({
   name: "ElDrawer",
   inheritAttrs: false
@@ -32799,7 +32898,7 @@ var _sfc_main75 = defineComponent({
   props: drawerProps,
   emits: drawerEmits,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const slots = useSlots();
     useDeprecated({
       scope: "el-drawer",
@@ -32827,9 +32926,9 @@ var _sfc_main75 = defineComponent({
       onFocusoutPrevented,
       onCloseRequested,
       handleClose
-    } = useDialog(props, drawerRef);
-    const isHorizontal2 = computed(() => props.direction === "rtl" || props.direction === "ltr");
-    const drawerSize = computed(() => addUnit(props.size));
+    } = useDialog(props2, drawerRef);
+    const isHorizontal2 = computed(() => props2.direction === "rtl" || props2.direction === "ltr");
+    const drawerSize = computed(() => addUnit(props2.size));
     expose({
       handleClose,
       afterEnter,
@@ -32957,10 +33056,10 @@ var _sfc_main75 = defineComponent({
 });
 var Drawer = _export_sfc(_sfc_main75, [["__file", "drawer.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/drawer/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/drawer/index.mjs
 var ElDrawer = withInstall(Drawer);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collection/src/collection2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collection/src/collection.mjs
 var _sfc_main76 = defineComponent({
   inheritAttrs: false
 });
@@ -32969,7 +33068,7 @@ function _sfc_render8(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var Collection = _export_sfc(_sfc_main76, [["render", _sfc_render8], ["__file", "collection.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collection/src/collection-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collection/src/collection-item.mjs
 var _sfc_main77 = defineComponent({
   name: "ElCollectionItem",
   inheritAttrs: false
@@ -32979,7 +33078,7 @@ function _sfc_render9(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var CollectionItem = _export_sfc(_sfc_main77, [["render", _sfc_render9], ["__file", "collection-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/collection/src/collection.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/collection/src/collection2.mjs
 var COLLECTION_ITEM_SIGN = `data-el-collection-item`;
 var createCollectionWithScope = (name) => {
   const COLLECTION_NAME = `El${name}Collection`;
@@ -33039,7 +33138,7 @@ var createCollectionWithScope = (name) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group.mjs
 var rovingFocusGroupProps = buildProps({
   style: { type: definePropType([String, Array, Object]) },
   currentTabId: {
@@ -33066,11 +33165,11 @@ var {
   COLLECTION_ITEM_INJECTION_KEY
 } = createCollectionWithScope("RovingFocusGroup");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/tokens.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/tokens.mjs
 var ROVING_FOCUS_GROUP_INJECTION_KEY = Symbol("elRovingFocusGroup");
 var ROVING_FOCUS_GROUP_ITEM_INJECTION_KEY = Symbol("elRovingFocusGroupItem");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/utils.mjs
 var MAP_KEY_TO_FOCUS_INTENT = {
   ArrowLeft: "prev",
   ArrowUp: "prev",
@@ -33115,7 +33214,7 @@ var focusFirst = (elements) => {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group-impl.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group-impl.mjs
 var CURRENT_TAB_ID_CHANGE_EVT = "currentTabIdChange";
 var ENTRY_FOCUS_EVT = "rovingFocusGroup.entryFocus";
 var EVT_OPTS = { bubbles: false, cancelable: true };
@@ -33124,9 +33223,9 @@ var _sfc_main78 = defineComponent({
   inheritAttrs: false,
   props: rovingFocusGroupProps,
   emits: [CURRENT_TAB_ID_CHANGE_EVT, "entryFocus"],
-  setup(props, { emit }) {
+  setup(props2, { emit }) {
     var _a2;
-    const currentTabbedId = ref((_a2 = props.currentTabId || props.defaultCurrentTabId) != null ? _a2 : null);
+    const currentTabbedId = ref((_a2 = props2.currentTabId || props2.defaultCurrentTabId) != null ? _a2 : null);
     const isBackingOut = ref(false);
     const isClickFocus = ref(false);
     const rovingFocusGroupRef = ref(null);
@@ -33136,7 +33235,7 @@ var _sfc_main78 = defineComponent({
         {
           outline: "none"
         },
-        props.style
+        props2.style
       ];
     });
     const onItemFocus = (tabbedId) => {
@@ -33147,13 +33246,13 @@ var _sfc_main78 = defineComponent({
     };
     const onMousedown = composeEventHandlers((e) => {
       var _a22;
-      (_a22 = props.onMousedown) == null ? void 0 : _a22.call(props, e);
+      (_a22 = props2.onMousedown) == null ? void 0 : _a22.call(props2, e);
     }, () => {
       isClickFocus.value = true;
     });
     const onFocus = composeEventHandlers((e) => {
       var _a22;
-      (_a22 = props.onFocus) == null ? void 0 : _a22.call(props, e);
+      (_a22 = props2.onFocus) == null ? void 0 : _a22.call(props2, e);
     }, (e) => {
       const isKeyboardFocus = !unref(isClickFocus);
       const { target: target2, currentTarget } = e;
@@ -33173,7 +33272,7 @@ var _sfc_main78 = defineComponent({
     });
     const onBlur = composeEventHandlers((e) => {
       var _a22;
-      (_a22 = props.onBlur) == null ? void 0 : _a22.call(props, e);
+      (_a22 = props2.onBlur) == null ? void 0 : _a22.call(props2, e);
     }, () => {
       isBackingOut.value = false;
     });
@@ -33182,21 +33281,21 @@ var _sfc_main78 = defineComponent({
     };
     provide(ROVING_FOCUS_GROUP_INJECTION_KEY, {
       currentTabbedId: readonly(currentTabbedId),
-      loop: toRef(props, "loop"),
+      loop: toRef(props2, "loop"),
       tabIndex: computed(() => {
         return unref(isBackingOut) ? -1 : 0;
       }),
       rovingFocusGroupRef,
       rovingFocusGroupRootStyle,
-      orientation: toRef(props, "orientation"),
-      dir: toRef(props, "dir"),
+      orientation: toRef(props2, "orientation"),
+      dir: toRef(props2, "dir"),
       onItemFocus,
       onItemShiftTab,
       onBlur,
       onFocus,
       onMousedown
     });
-    watch(() => props.currentTabId, (val) => {
+    watch(() => props2.currentTabId, (val) => {
       currentTabbedId.value = val != null ? val : null;
     });
     useEventListener(rovingFocusGroupRef, ENTRY_FOCUS_EVT, handleEntryFocus);
@@ -33207,7 +33306,7 @@ function _sfc_render10(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElRovingFocusGroupImpl = _export_sfc(_sfc_main78, [["render", _sfc_render10], ["__file", "roving-focus-group-impl.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group2.mjs
 var _sfc_main79 = defineComponent({
   name: "ElRovingFocusGroup",
   components: {
@@ -33232,7 +33331,7 @@ function _sfc_render11(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElRovingFocusGroup = _export_sfc(_sfc_main79, [["render", _sfc_render11], ["__file", "roving-focus-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-item.mjs
 var _sfc_main80 = defineComponent({
   components: {
     ElRovingFocusCollectionItem: ElCollectionItem
@@ -33248,7 +33347,7 @@ var _sfc_main80 = defineComponent({
     }
   },
   emits: ["mousedown", "focus", "keydown"],
-  setup(props, { emit }) {
+  setup(props2, { emit }) {
     const { currentTabbedId, loop, onItemFocus, onItemShiftTab } = inject(ROVING_FOCUS_GROUP_INJECTION_KEY, void 0);
     const { getItems } = inject(COLLECTION_INJECTION_KEY, void 0);
     const id = useId();
@@ -33256,7 +33355,7 @@ var _sfc_main80 = defineComponent({
     const handleMousedown = composeEventHandlers((e) => {
       emit("mousedown", e);
     }, (e) => {
-      if (!props.focusable) {
+      if (!props2.focusable) {
         e.preventDefault();
       } else {
         onItemFocus(unref(id));
@@ -33336,7 +33435,7 @@ function _sfc_render12(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElRovingFocusItem = _export_sfc(_sfc_main80, [["render", _sfc_render12], ["__file", "roving-focus-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/dropdown.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/dropdown.mjs
 var dropdownProps = buildProps({
   trigger: useTooltipTriggerProps.trigger,
   effect: {
@@ -33427,10 +33526,10 @@ var {
   COLLECTION_ITEM_INJECTION_KEY: COLLECTION_ITEM_INJECTION_KEY2
 } = createCollectionWithScope("Dropdown");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/tokens.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/tokens.mjs
 var DROPDOWN_INJECTION_KEY = Symbol("elDropdown");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs
 var { ButtonGroup: ElButtonGroup2 } = ElButton;
 var _sfc_main81 = defineComponent({
   name: "ElDropdown",
@@ -33447,7 +33546,7 @@ var _sfc_main81 = defineComponent({
   },
   props: dropdownProps,
   emits: ["visible-change", "click", "command"],
-  setup(props, { emit }) {
+  setup(props2, { emit }) {
     const _instance = getCurrentInstance();
     const ns = useNamespace("dropdown");
     const { t } = useLocale();
@@ -33460,12 +33559,12 @@ var _sfc_main81 = defineComponent({
     const isUsingKeyboard = ref(false);
     const triggerKeys = [EVENT_CODE.enter, EVENT_CODE.space, EVENT_CODE.down];
     const wrapStyle = computed(() => ({
-      maxHeight: addUnit(props.maxHeight)
+      maxHeight: addUnit(props2.maxHeight)
     }));
     const dropdownTriggerKls = computed(() => [ns.m(dropdownSize.value)]);
-    const trigger = computed(() => castArray_default(props.trigger));
+    const trigger = computed(() => castArray_default(props2.trigger));
     const defaultTriggerId = useId().value;
-    const triggerId = computed(() => props.id || defaultTriggerId);
+    const triggerId = computed(() => props2.id || defaultTriggerId);
     watch([triggeringElementRef, trigger], ([triggeringElement, trigger2], [prevTriggeringElement]) => {
       var _a2, _b, _c;
       if ((_a2 = prevTriggeringElement == null ? void 0 : prevTriggeringElement.$el) == null ? void 0 : _a2.removeEventListener) {
@@ -33532,7 +33631,7 @@ var _sfc_main81 = defineComponent({
     }
     provide(DROPDOWN_INJECTION_KEY, {
       contentRef,
-      role: computed(() => props.role),
+      role: computed(() => props2.role),
       triggerId,
       isUsingKeyboard,
       onItemEnter,
@@ -33543,8 +33642,8 @@ var _sfc_main81 = defineComponent({
       dropdownSize,
       handleClick,
       commandHandler,
-      trigger: toRef(props, "trigger"),
-      hideOnClick: toRef(props, "hideOnClick")
+      trigger: toRef(props2, "trigger"),
+      hideOnClick: toRef(props2, "hideOnClick")
     });
     const onFocusAfterTrapped = (e) => {
       var _a2, _b;
@@ -33717,7 +33816,7 @@ function _sfc_render13(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var Dropdown = _export_sfc(_sfc_main81, [["render", _sfc_render13], ["__file", "dropdown.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/dropdown-item-impl.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/dropdown-item-impl.mjs
 var _sfc_main82 = defineComponent({
   name: "DropdownItemImpl",
   components: {
@@ -33801,7 +33900,7 @@ function _sfc_render14(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElDropdownItemImpl = _export_sfc(_sfc_main82, [["render", _sfc_render14], ["__file", "dropdown-item-impl.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/useDropdown.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/useDropdown.mjs
 var useDropdown = () => {
   const elDropdown = inject("elDropdown", {});
   const _elDropdownSize = computed(() => elDropdown == null ? void 0 : elDropdown.dropdownSize);
@@ -33811,7 +33910,7 @@ var useDropdown = () => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/dropdown-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/dropdown-item.mjs
 var _sfc_main83 = defineComponent({
   name: "ElDropdownItem",
   components: {
@@ -33822,7 +33921,7 @@ var _sfc_main83 = defineComponent({
   inheritAttrs: false,
   props: dropdownItemProps,
   emits: ["pointermove", "pointerleave", "click"],
-  setup(props, { emit, attrs }) {
+  setup(props2, { emit, attrs }) {
     const { elDropdown } = useDropdown();
     const _instance = getCurrentInstance();
     const itemRef = ref(null);
@@ -33835,7 +33934,7 @@ var _sfc_main83 = defineComponent({
       emit("pointermove", e);
       return e.defaultPrevented;
     }, whenMouse((e) => {
-      if (props.disabled) {
+      if (props2.disabled) {
         onItemLeave(e);
         return;
       }
@@ -33853,23 +33952,23 @@ var _sfc_main83 = defineComponent({
       return e.defaultPrevented;
     }, whenMouse(onItemLeave));
     const handleClick = composeEventHandlers((e) => {
-      if (props.disabled) {
+      if (props2.disabled) {
         return;
       }
       emit("click", e);
       return e.type !== "keydown" && e.defaultPrevented;
     }, (e) => {
       var _a2, _b, _c;
-      if (props.disabled) {
+      if (props2.disabled) {
         e.stopImmediatePropagation();
         return;
       }
       if ((_a2 = elDropdown == null ? void 0 : elDropdown.hideOnClick) == null ? void 0 : _a2.value) {
         (_b = elDropdown.handleClick) == null ? void 0 : _b.call(elDropdown);
       }
-      (_c = elDropdown.commandHandler) == null ? void 0 : _c.call(elDropdown, props.command, _instance, e);
+      (_c = elDropdown.commandHandler) == null ? void 0 : _c.call(elDropdown, props2.command, _instance, e);
     });
-    const propsAndAttrs = computed(() => ({ ...props, ...attrs }));
+    const propsAndAttrs = computed(() => ({ ...props2, ...attrs }));
     return {
       handleClick,
       handlePointerMove,
@@ -33912,11 +34011,11 @@ function _sfc_render15(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var DropdownItem = _export_sfc(_sfc_main83, [["render", _sfc_render15], ["__file", "dropdown-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/dropdown-menu.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dropdown/src/dropdown-menu.mjs
 var _sfc_main84 = defineComponent({
   name: "ElDropdownMenu",
   props: dropdownMenuProps,
-  setup(props) {
+  setup(props2) {
     const ns = useNamespace("dropdown");
     const { _elDropdownSize } = useDropdown();
     const size3 = _elDropdownSize.value;
@@ -33938,7 +34037,7 @@ var _sfc_main84 = defineComponent({
     const dropdownListWrapperRef = composeRefs(contentRef, dropdownCollectionRef, focusTrapRef, rovingFocusGroupRef, rovingFocusGroupCollectionRef);
     const composedKeydown = composeEventHandlers((e) => {
       var _a2;
-      (_a2 = props.onKeydown) == null ? void 0 : _a2.call(props, e);
+      (_a2 = props2.onKeydown) == null ? void 0 : _a2.call(props2, e);
     }, (e) => {
       const { currentTarget, code, target: target2 } = e;
       const isKeydownContained = currentTarget.contains(target2);
@@ -33994,7 +34093,7 @@ function _sfc_render16(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var DropdownMenu = _export_sfc(_sfc_main84, [["render", _sfc_render16], ["__file", "dropdown-menu.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/dropdown/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/dropdown/index.mjs
 var ElDropdown = withInstall(Dropdown, {
   DropdownItem,
   DropdownMenu
@@ -34002,7 +34101,7 @@ var ElDropdown = withInstall(Dropdown, {
 var ElDropdownItem = withNoopInstall(DropdownItem);
 var ElDropdownMenu = withNoopInstall(DropdownMenu);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/empty/src/img-empty.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/empty/src/img-empty.mjs
 var __default__58 = defineComponent({
   name: "ImgEmpty"
 });
@@ -34157,7 +34256,7 @@ var _sfc_main85 = defineComponent({
 });
 var ImgEmpty = _export_sfc(_sfc_main85, [["__file", "img-empty.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/empty/src/empty.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/empty/src/empty2.mjs
 var emptyProps = buildProps({
   image: {
     type: String,
@@ -34170,7 +34269,7 @@ var emptyProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/empty/src/empty2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/empty/src/empty.mjs
 var __default__59 = defineComponent({
   name: "ElEmpty"
 });
@@ -34178,12 +34277,12 @@ var _sfc_main86 = defineComponent({
   ...__default__59,
   props: emptyProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const { t } = useLocale();
     const ns = useNamespace("empty");
-    const emptyDescription = computed(() => props.description || t("el.table.emptyText"));
+    const emptyDescription = computed(() => props2.description || t("el.table.emptyText"));
     const imageStyle = computed(() => ({
-      width: addUnit(props.imageSize)
+      width: addUnit(props2.imageSize)
     }));
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
@@ -34218,10 +34317,10 @@ var _sfc_main86 = defineComponent({
 });
 var Empty = _export_sfc(_sfc_main86, [["__file", "empty.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/empty/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/empty/index.mjs
 var ElEmpty = withInstall(Empty);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/image-viewer/src/image-viewer.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/image-viewer/src/image-viewer.mjs
 var imageViewerProps = buildProps({
   urlList: {
     type: definePropType(Array),
@@ -34266,7 +34365,7 @@ var imageViewerEmits = {
   rotate: (deg) => isNumber3(deg)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/image-viewer/src/image-viewer2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/image-viewer/src/image-viewer2.mjs
 var __default__60 = defineComponent({
   name: "ElImageViewer"
 });
@@ -34276,7 +34375,7 @@ var _sfc_main87 = defineComponent({
   emits: imageViewerEmits,
   setup(__props, { expose, emit }) {
     var _a2;
-    const props = __props;
+    const props2 = __props;
     const modes = {
       CONTAIN: {
         name: "contain",
@@ -34294,7 +34393,7 @@ var _sfc_main87 = defineComponent({
     const imgRefs = ref([]);
     const scopeEventListener = effectScope();
     const loading = ref(true);
-    const activeIndex = ref(props.initialIndex);
+    const activeIndex = ref(props2.initialIndex);
     const mode = shallowRef(modes.CONTAIN);
     const transform2 = ref({
       scale: 1,
@@ -34303,29 +34402,29 @@ var _sfc_main87 = defineComponent({
       offsetY: 0,
       enableTransition: false
     });
-    const zIndex2 = ref((_a2 = props.zIndex) != null ? _a2 : nextZIndex());
+    const zIndex2 = ref((_a2 = props2.zIndex) != null ? _a2 : nextZIndex());
     const isSingle = computed(() => {
-      const { urlList } = props;
+      const { urlList } = props2;
       return urlList.length <= 1;
     });
     const isFirst = computed(() => {
       return activeIndex.value === 0;
     });
     const isLast = computed(() => {
-      return activeIndex.value === props.urlList.length - 1;
+      return activeIndex.value === props2.urlList.length - 1;
     });
     const currentImg = computed(() => {
-      return props.urlList[activeIndex.value];
+      return props2.urlList[activeIndex.value];
     });
     const arrowPrevKls = computed(() => [
       ns.e("btn"),
       ns.e("prev"),
-      ns.is("disabled", !props.infinite && isFirst.value)
+      ns.is("disabled", !props2.infinite && isFirst.value)
     ]);
     const arrowNextKls = computed(() => [
       ns.e("btn"),
       ns.e("next"),
-      ns.is("disabled", !props.infinite && isLast.value)
+      ns.is("disabled", !props2.infinite && isLast.value)
     ]);
     const imgStyle = computed(() => {
       const { scale, deg, offsetX, offsetY, enableTransition } = transform2.value;
@@ -34353,7 +34452,7 @@ var _sfc_main87 = defineComponent({
       const keydownHandler = throttle_default((e) => {
         switch (e.code) {
           case EVENT_CODE.esc:
-            props.closeOnPressEscape && hide2();
+            props2.closeOnPressEscape && hide2();
             break;
           case EVENT_CODE.space:
             toggleMode();
@@ -34375,7 +34474,7 @@ var _sfc_main87 = defineComponent({
       const mousewheelHandler = throttle_default((e) => {
         const delta = e.deltaY || e.deltaX;
         handleActions(delta < 0 ? "zoomIn" : "zoomOut", {
-          zoomRate: props.zoomRate,
+          zoomRate: props2.zoomRate,
           enableTransition: false
         });
       });
@@ -34435,25 +34534,25 @@ var _sfc_main87 = defineComponent({
       reset();
     }
     function setActiveItem(index) {
-      const len = props.urlList.length;
+      const len = props2.urlList.length;
       activeIndex.value = (index + len) % len;
     }
     function prev() {
-      if (isFirst.value && !props.infinite)
+      if (isFirst.value && !props2.infinite)
         return;
       setActiveItem(activeIndex.value - 1);
     }
     function next() {
-      if (isLast.value && !props.infinite)
+      if (isLast.value && !props2.infinite)
         return;
       setActiveItem(activeIndex.value + 1);
     }
     function handleActions(action, options = {}) {
       if (loading.value)
         return;
-      const { minScale, maxScale } = props;
+      const { minScale, maxScale } = props2;
       const { zoomRate, rotateDeg, enableTransition } = {
-        zoomRate: props.zoomRate,
+        zoomRate: props2.zoomRate,
         rotateDeg: 90,
         enableTransition: true,
         ...options
@@ -34646,10 +34745,10 @@ var _sfc_main87 = defineComponent({
 });
 var ImageViewer = _export_sfc(_sfc_main87, [["__file", "image-viewer.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/image-viewer/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/image-viewer/index.mjs
 var ElImageViewer = withInstall(ImageViewer);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/image/src/image.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/image/src/image.mjs
 var imageProps = buildProps({
   hideOnClickModal: Boolean,
   src: {
@@ -34713,7 +34812,7 @@ var imageEmits = {
   show: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/image/src/image2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/image/src/image2.mjs
 var __default__61 = defineComponent({
   name: "ElImage",
   inheritAttrs: false
@@ -34723,7 +34822,7 @@ var _sfc_main88 = defineComponent({
   props: imageProps,
   emits: imageEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     let prevOverflow = "";
     const { t } = useLocale();
     const ns = useNamespace("image");
@@ -34752,18 +34851,18 @@ var _sfc_main88 = defineComponent({
       isLoading.value && ns.is("loading")
     ]);
     const imageStyle = computed(() => {
-      const { fit } = props;
+      const { fit } = props2;
       if (isClient && fit) {
         return { objectFit: fit };
       }
       return {};
     });
     const preview = computed(() => {
-      const { previewSrcList } = props;
+      const { previewSrcList } = props2;
       return Array.isArray(previewSrcList) && previewSrcList.length > 0;
     });
     const imageIndex = computed(() => {
-      const { previewSrcList, initialIndex } = props;
+      const { previewSrcList, initialIndex } = props2;
       let previewIndex = initialIndex;
       if (initialIndex > previewSrcList.length - 1) {
         previewIndex = 0;
@@ -34771,16 +34870,16 @@ var _sfc_main88 = defineComponent({
       return previewIndex;
     });
     const isManual = computed(() => {
-      if (props.loading === "eager")
+      if (props2.loading === "eager")
         return false;
-      return !supportLoading && props.loading === "lazy" || props.lazy;
+      return !supportLoading && props2.loading === "lazy" || props2.lazy;
     });
     const loadImage = () => {
       if (!isClient)
         return;
       isLoading.value = true;
       hasLoadError.value = false;
-      imageSrc.value = props.src;
+      imageSrc.value = props2.src;
     };
     function handleLoad(event) {
       isLoading.value = false;
@@ -34804,7 +34903,7 @@ var _sfc_main88 = defineComponent({
       if (!isClient)
         return;
       await nextTick();
-      const { scrollContainer } = props;
+      const { scrollContainer } = props2;
       if (isElement2(scrollContainer)) {
         _scrollContainer.value = scrollContainer;
       } else if (isString2(scrollContainer) && scrollContainer !== "") {
@@ -34854,7 +34953,7 @@ var _sfc_main88 = defineComponent({
     function switchViewer(val) {
       emit("switch", val);
     }
-    watch(() => props.src, () => {
+    watch(() => props2.src, () => {
       if (isManual.value) {
         isLoading.value = true;
         hasLoadError.value = false;
@@ -34935,10 +35034,10 @@ var _sfc_main88 = defineComponent({
 });
 var Image2 = _export_sfc(_sfc_main88, [["__file", "image.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/image/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/image/index.mjs
 var ElImage = withInstall(Image2);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/input-number/src/input-number.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/input-number/src/input-number.mjs
 var inputNumberProps = buildProps({
   id: {
     type: String,
@@ -34995,7 +35094,7 @@ var inputNumberEmits = {
   [UPDATE_MODEL_EVENT]: (val) => isNumber3(val) || isNil_default(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/input-number/src/input-number2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/input-number/src/input-number2.mjs
 var __default__62 = defineComponent({
   name: "ElInputNumber"
 });
@@ -35004,30 +35103,30 @@ var _sfc_main89 = defineComponent({
   props: inputNumberProps,
   emits: inputNumberEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const { t } = useLocale();
     const ns = useNamespace("input-number");
     const input = ref();
     const data = reactive({
-      currentValue: props.modelValue,
+      currentValue: props2.modelValue,
       userInput: null
     });
     const { formItem } = useFormItem();
-    const minDisabled = computed(() => isNumber3(props.modelValue) && props.modelValue <= props.min);
-    const maxDisabled = computed(() => isNumber3(props.modelValue) && props.modelValue >= props.max);
+    const minDisabled = computed(() => isNumber3(props2.modelValue) && props2.modelValue <= props2.min);
+    const maxDisabled = computed(() => isNumber3(props2.modelValue) && props2.modelValue >= props2.max);
     const numPrecision = computed(() => {
-      const stepPrecision = getPrecision(props.step);
-      if (!isUndefined2(props.precision)) {
-        if (stepPrecision > props.precision) {
+      const stepPrecision = getPrecision(props2.step);
+      if (!isUndefined2(props2.precision)) {
+        if (stepPrecision > props2.precision) {
           debugWarn("InputNumber", "precision should not be less than the decimal places of step");
         }
-        return props.precision;
+        return props2.precision;
       } else {
-        return Math.max(getPrecision(props.modelValue), stepPrecision);
+        return Math.max(getPrecision(props2.modelValue), stepPrecision);
       }
     });
     const controlsAtRight = computed(() => {
-      return props.controls && props.controlsPosition === "right";
+      return props2.controls && props2.controlsPosition === "right";
     });
     const inputNumberSize = useFormSize();
     const inputNumberDisabled = useFormDisabled();
@@ -35041,8 +35140,8 @@ var _sfc_main89 = defineComponent({
       if (isNumber3(currentValue)) {
         if (Number.isNaN(currentValue))
           return "";
-        if (!isUndefined2(props.precision)) {
-          currentValue = currentValue.toFixed(props.precision);
+        if (!isUndefined2(props2.precision)) {
+          currentValue = currentValue.toFixed(props2.precision);
         }
       }
       return currentValue;
@@ -35080,10 +35179,10 @@ var _sfc_main89 = defineComponent({
     const ensurePrecision = (val, coefficient = 1) => {
       if (!isNumber3(val))
         return data.currentValue;
-      return toPrecision(val + props.step * coefficient);
+      return toPrecision(val + props2.step * coefficient);
     };
     const increase = () => {
-      if (props.readonly || inputNumberDisabled.value || maxDisabled.value)
+      if (props2.readonly || inputNumberDisabled.value || maxDisabled.value)
         return;
       const value = Number(displayValue.value) || 0;
       const newVal = ensurePrecision(value);
@@ -35092,7 +35191,7 @@ var _sfc_main89 = defineComponent({
       setCurrentValueToModelValue();
     };
     const decrease = () => {
-      if (props.readonly || inputNumberDisabled.value || minDisabled.value)
+      if (props2.readonly || inputNumberDisabled.value || minDisabled.value)
         return;
       const value = Number(displayValue.value) || 0;
       const newVal = ensurePrecision(value, -1);
@@ -35101,7 +35200,7 @@ var _sfc_main89 = defineComponent({
       setCurrentValueToModelValue();
     };
     const verifyValue = (value, update2) => {
-      const { max: max4, min: min4, step, precision, stepStrictly, valueOnClear } = props;
+      const { max: max4, min: min4, step, precision, stepStrictly, valueOnClear } = props2;
       if (max4 < min4) {
         throwError("InputNumber", "min should not be greater than max.");
       }
@@ -35117,6 +35216,9 @@ var _sfc_main89 = defineComponent({
       }
       if (stepStrictly) {
         newVal = toPrecision(Math.round(newVal / step) * step, precision);
+        if (newVal !== value) {
+          update2 && emit(UPDATE_MODEL_EVENT, newVal);
+        }
       }
       if (!isUndefined2(precision)) {
         newVal = toPrecision(newVal, precision);
@@ -35142,7 +35244,7 @@ var _sfc_main89 = defineComponent({
       if (oldVal !== newVal) {
         emit(CHANGE_EVENT, newVal, oldVal);
       }
-      if (props.validateEvent) {
+      if (props2.validateEvent) {
         (_a2 = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a2.call(formItem, "change").catch((err) => debugWarn(err));
       }
       data.currentValue = newVal;
@@ -35172,24 +35274,24 @@ var _sfc_main89 = defineComponent({
     const handleFocus = (event) => {
       emit("focus", event);
     };
-    const handleBlur2 = (event) => {
+    const handleBlur = (event) => {
       var _a2;
       data.userInput = null;
       emit("blur", event);
-      if (props.validateEvent) {
+      if (props2.validateEvent) {
         (_a2 = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a2.call(formItem, "blur").catch((err) => debugWarn(err));
       }
     };
     const setCurrentValueToModelValue = () => {
-      if (data.currentValue !== props.modelValue) {
-        data.currentValue = props.modelValue;
+      if (data.currentValue !== props2.modelValue) {
+        data.currentValue = props2.modelValue;
       }
     };
     const handleWheel = (e) => {
       if (document.activeElement === e.target)
         e.preventDefault();
     };
-    watch(() => props.modelValue, (value, oldValue) => {
+    watch(() => props2.modelValue, (value, oldValue) => {
       const newValue = verifyValue(value, true);
       if (data.userInput === null && newValue !== oldValue) {
         data.currentValue = newValue;
@@ -35197,7 +35299,7 @@ var _sfc_main89 = defineComponent({
     }, { immediate: true });
     onMounted(() => {
       var _a2;
-      const { min: min4, max: max4, modelValue } = props;
+      const { min: min4, max: max4, modelValue } = props2;
       const innerInput = (_a2 = input.value) == null ? void 0 : _a2.input;
       innerInput.setAttribute("role", "spinbutton");
       if (Number.isFinite(max4)) {
@@ -35298,21 +35400,34 @@ var _sfc_main89 = defineComponent({
             withKeys(withModifiers(increase, ["prevent"]), ["up"]),
             withKeys(withModifiers(decrease, ["prevent"]), ["down"])
           ],
-          onBlur: handleBlur2,
+          onBlur: handleBlur,
           onFocus: handleFocus,
           onInput: handleInput,
           onChange: handleInputChange
-        }, null, 8, ["id", "step", "model-value", "placeholder", "readonly", "disabled", "size", "max", "min", "name", "aria-label", "onKeydown"])
+        }, createSlots({ _: 2 }, [
+          _ctx.$slots.prefix ? {
+            name: "prefix",
+            fn: withCtx(() => [
+              renderSlot(_ctx.$slots, "prefix")
+            ])
+          } : void 0,
+          _ctx.$slots.suffix ? {
+            name: "suffix",
+            fn: withCtx(() => [
+              renderSlot(_ctx.$slots, "suffix")
+            ])
+          } : void 0
+        ]), 1032, ["id", "step", "model-value", "placeholder", "readonly", "disabled", "size", "max", "min", "name", "aria-label", "onKeydown"])
       ], 42, ["onDragstart"]);
     };
   }
 });
 var InputNumber = _export_sfc(_sfc_main89, [["__file", "input-number.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/input-number/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/input-number/index.mjs
 var ElInputNumber = withInstall(InputNumber);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/link/src/link.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/link/src/link2.mjs
 var linkProps = buildProps({
   type: {
     type: String,
@@ -35337,7 +35452,7 @@ var linkEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/link/src/link2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/link/src/link.mjs
 var __default__63 = defineComponent({
   name: "ElLink"
 });
@@ -35346,16 +35461,16 @@ var _sfc_main90 = defineComponent({
   props: linkProps,
   emits: linkEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("link");
     const linkKls = computed(() => [
       ns.b(),
-      ns.m(props.type),
-      ns.is("disabled", props.disabled),
-      ns.is("underline", props.underline && !props.disabled)
+      ns.m(props2.type),
+      ns.is("disabled", props2.disabled),
+      ns.is("underline", props2.underline && !props2.disabled)
     ]);
     function handleClick(event) {
-      if (!props.disabled)
+      if (!props2.disabled)
         emit("click", event);
     }
     return (_ctx, _cache) => {
@@ -35384,10 +35499,10 @@ var _sfc_main90 = defineComponent({
 });
 var Link = _export_sfc(_sfc_main90, [["__file", "link.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/link/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/link/index.mjs
 var ElLink = withInstall(Link);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/utils/submenu.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/utils/submenu.mjs
 var SubMenu = class {
   constructor(parent2, domNode) {
     this.parent = parent2;
@@ -35447,7 +35562,7 @@ var SubMenu = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/utils/menu-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/utils/menu-item.mjs
 var MenuItem = class {
   constructor(domNode, namespace) {
     this.domNode = domNode;
@@ -35497,7 +35612,7 @@ var MenuItem = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/utils/menu-bar.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/utils/menu-bar.mjs
 var Menu = class {
   constructor(domNode, namespace) {
     this.domNode = domNode;
@@ -35513,7 +35628,7 @@ var Menu = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu-collapse-transition.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu-collapse-transition.mjs
 var _sfc_main91 = defineComponent({
   name: "ElMenuCollapseTransition",
   setup() {
@@ -35568,7 +35683,7 @@ function _sfc_render17(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElMenuCollapseTransition = _export_sfc(_sfc_main91, [["render", _sfc_render17], ["__file", "menu-collapse-transition.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/use-menu.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/use-menu.mjs
 function useMenu(instance, currentIndex) {
   const indexPath = computed(() => {
     let parent2 = instance.parent;
@@ -35594,10 +35709,10 @@ function useMenu(instance, currentIndex) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/use-menu-color.mjs
-function useMenuColor(props) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/use-menu-color.mjs
+function useMenuColor(props2) {
   const menuBarColor = computed(() => {
-    const color = props.backgroundColor;
+    const color = props2.backgroundColor;
     if (!color) {
       return "";
     } else {
@@ -35607,22 +35722,22 @@ function useMenuColor(props) {
   return menuBarColor;
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/use-menu-css-var.mjs
-var useMenuCssVar = (props, level) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/use-menu-css-var.mjs
+var useMenuCssVar = (props2, level) => {
   const ns = useNamespace("menu");
   return computed(() => {
     return ns.cssVarBlock({
-      "text-color": props.textColor || "",
-      "hover-text-color": props.textColor || "",
-      "bg-color": props.backgroundColor || "",
-      "hover-bg-color": useMenuColor(props).value || "",
-      "active-color": props.activeTextColor || "",
+      "text-color": props2.textColor || "",
+      "hover-text-color": props2.textColor || "",
+      "bg-color": props2.backgroundColor || "",
+      "hover-bg-color": useMenuColor(props2).value || "",
+      "active-color": props2.activeTextColor || "",
       level: `${level}`
     });
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/sub-menu.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/sub-menu.mjs
 var subMenuProps = buildProps({
   index: {
     type: String,
@@ -35654,9 +35769,9 @@ var COMPONENT_NAME12 = "ElSubMenu";
 var SubMenu2 = defineComponent({
   name: COMPONENT_NAME12,
   props: subMenuProps,
-  setup(props, { slots, expose }) {
+  setup(props2, { slots, expose }) {
     const instance = getCurrentInstance();
-    const { indexPath, parentMenu } = useMenu(instance, computed(() => props.index));
+    const { indexPath, parentMenu } = useMenu(instance, computed(() => props2.index));
     const nsMenu = useNamespace("menu");
     const nsSubMenu = useNamespace("sub-menu");
     const rootMenu = inject("rootMenu");
@@ -35673,13 +35788,13 @@ var SubMenu2 = defineComponent({
     const vPopper = ref(null);
     const currentPlacement = computed(() => mode.value === "horizontal" && isFirstLevel.value ? "bottom-start" : "right-start");
     const subMenuTitleIcon = computed(() => {
-      return mode.value === "horizontal" && isFirstLevel.value || mode.value === "vertical" && !rootMenu.props.collapse ? props.expandCloseIcon && props.expandOpenIcon ? opened.value ? props.expandOpenIcon : props.expandCloseIcon : arrow_down_default : props.collapseCloseIcon && props.collapseOpenIcon ? opened.value ? props.collapseOpenIcon : props.collapseCloseIcon : arrow_right_default;
+      return mode.value === "horizontal" && isFirstLevel.value || mode.value === "vertical" && !rootMenu.props.collapse ? props2.expandCloseIcon && props2.expandOpenIcon ? opened.value ? props2.expandOpenIcon : props2.expandCloseIcon : arrow_down_default : props2.collapseCloseIcon && props2.collapseOpenIcon ? opened.value ? props2.collapseOpenIcon : props2.collapseCloseIcon : arrow_right_default;
     });
     const isFirstLevel = computed(() => {
       return subMenu.level === 0;
     });
     const appendToBody = computed(() => {
-      const value = props.teleported;
+      const value = props2.teleported;
       return value === void 0 ? isFirstLevel.value : value;
     });
     const menuTransitionName = computed(() => rootMenu.props.collapse ? `${nsMenu.namespace.value}-zoom-in-left` : `${nsMenu.namespace.value}-zoom-in-top`);
@@ -35700,7 +35815,7 @@ var SubMenu2 = defineComponent({
       "top-start",
       "top-end"
     ]);
-    const opened = computed(() => rootMenu.openedMenus.includes(props.index));
+    const opened = computed(() => rootMenu.openedMenus.includes(props2.index));
     const active = computed(() => {
       let isActive = false;
       Object.values(items.value).forEach((item2) => {
@@ -35717,26 +35832,26 @@ var SubMenu2 = defineComponent({
     });
     const mode = computed(() => rootMenu.props.mode);
     const item = reactive({
-      index: props.index,
+      index: props2.index,
       indexPath,
       active
     });
     const ulStyle = useMenuCssVar(rootMenu.props, subMenu.level + 1);
     const subMenuPopperOffset = computed(() => {
       var _a2;
-      return (_a2 = props.popperOffset) != null ? _a2 : rootMenu.props.popperOffset;
+      return (_a2 = props2.popperOffset) != null ? _a2 : rootMenu.props.popperOffset;
     });
     const subMenuPopperClass = computed(() => {
       var _a2;
-      return (_a2 = props.popperClass) != null ? _a2 : rootMenu.props.popperClass;
+      return (_a2 = props2.popperClass) != null ? _a2 : rootMenu.props.popperClass;
     });
     const subMenuShowTimeout = computed(() => {
       var _a2;
-      return (_a2 = props.showTimeout) != null ? _a2 : rootMenu.props.showTimeout;
+      return (_a2 = props2.showTimeout) != null ? _a2 : rootMenu.props.showTimeout;
     });
     const subMenuHideTimeout = computed(() => {
       var _a2;
-      return (_a2 = props.hideTimeout) != null ? _a2 : rootMenu.props.hideTimeout;
+      return (_a2 = props2.hideTimeout) != null ? _a2 : rootMenu.props.hideTimeout;
     });
     const doDestroy = () => {
       var _a2, _b, _c;
@@ -35748,10 +35863,10 @@ var SubMenu2 = defineComponent({
       }
     };
     const handleClick = () => {
-      if (rootMenu.props.menuTrigger === "hover" && rootMenu.props.mode === "horizontal" || rootMenu.props.collapse && rootMenu.props.mode === "vertical" || props.disabled)
+      if (rootMenu.props.menuTrigger === "hover" && rootMenu.props.mode === "horizontal" || rootMenu.props.collapse && rootMenu.props.mode === "vertical" || props2.disabled)
         return;
       rootMenu.handleSubMenuClick({
-        index: props.index,
+        index: props2.index,
         indexPath: indexPath.value,
         active: active.value
       });
@@ -35761,14 +35876,14 @@ var SubMenu2 = defineComponent({
       if (event.type === "focus") {
         return;
       }
-      if (rootMenu.props.menuTrigger === "click" && rootMenu.props.mode === "horizontal" || !rootMenu.props.collapse && rootMenu.props.mode === "vertical" || props.disabled) {
+      if (rootMenu.props.menuTrigger === "click" && rootMenu.props.mode === "horizontal" || !rootMenu.props.collapse && rootMenu.props.mode === "vertical" || props2.disabled) {
         subMenu.mouseInChild.value = true;
         return;
       }
       subMenu.mouseInChild.value = true;
       timeout == null ? void 0 : timeout();
       ({ stop: timeout } = useTimeoutFn(() => {
-        rootMenu.openMenu(props.index, indexPath.value);
+        rootMenu.openMenu(props2.index, indexPath.value);
       }, showTimeout));
       if (appendToBody.value) {
         (_a2 = parentMenu.value.vnode.el) == null ? void 0 : _a2.dispatchEvent(new MouseEvent("mouseenter"));
@@ -35782,7 +35897,7 @@ var SubMenu2 = defineComponent({
       }
       timeout == null ? void 0 : timeout();
       subMenu.mouseInChild.value = false;
-      ({ stop: timeout } = useTimeoutFn(() => !mouseInChild.value && rootMenu.closeMenu(props.index, indexPath.value), subMenuHideTimeout.value));
+      ({ stop: timeout } = useTimeoutFn(() => !mouseInChild.value && rootMenu.closeMenu(props2.index, indexPath.value), subMenuHideTimeout.value));
       if (appendToBody.value && deepDispatch) {
         (_a2 = subMenu.handleMouseleave) == null ? void 0 : _a2.call(subMenu, true);
       }
@@ -35821,7 +35936,7 @@ var SubMenu2 = defineComponent({
         h(ElIcon, {
           class: nsSubMenu.e("icon-arrow"),
           style: {
-            transform: opened.value ? props.expandCloseIcon && props.expandOpenIcon || props.collapseCloseIcon && props.collapseOpenIcon && rootMenu.props.collapse ? "none" : "rotateZ(180deg)" : "none"
+            transform: opened.value ? props2.expandCloseIcon && props2.expandOpenIcon || props2.collapseCloseIcon && props2.collapseOpenIcon && rootMenu.props.collapse ? "none" : "rotateZ(180deg)" : "none"
           }
         }, {
           default: () => isString2(subMenuTitleIcon.value) ? h(instance.appContext.components[subMenuTitleIcon.value]) : h(subMenuTitleIcon.value)
@@ -35890,7 +36005,7 @@ var SubMenu2 = defineComponent({
           nsSubMenu.b(),
           nsSubMenu.is("active", active.value),
           nsSubMenu.is("opened", opened.value),
-          nsSubMenu.is("disabled", props.disabled)
+          nsSubMenu.is("disabled", props2.disabled)
         ],
         role: "menuitem",
         ariaHaspopup: true,
@@ -35903,7 +36018,7 @@ var SubMenu2 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu.mjs
 var menuProps = buildProps({
   mode: {
     type: String,
@@ -35970,23 +36085,23 @@ var Menu2 = defineComponent({
   name: "ElMenu",
   props: menuProps,
   emits: menuEmits,
-  setup(props, { emit, slots, expose }) {
+  setup(props2, { emit, slots, expose }) {
     const instance = getCurrentInstance();
     const router = instance.appContext.config.globalProperties.$router;
     const menu = ref();
     const nsMenu = useNamespace("menu");
     const nsSubMenu = useNamespace("sub-menu");
     const sliceIndex = ref(-1);
-    const openedMenus = ref(props.defaultOpeneds && !props.collapse ? props.defaultOpeneds.slice(0) : []);
-    const activeIndex = ref(props.defaultActive);
+    const openedMenus = ref(props2.defaultOpeneds && !props2.collapse ? props2.defaultOpeneds.slice(0) : []);
+    const activeIndex = ref(props2.defaultActive);
     const items = ref({});
     const subMenus = ref({});
     const isMenuPopup = computed(() => {
-      return props.mode === "horizontal" || props.mode === "vertical" && props.collapse;
+      return props2.mode === "horizontal" || props2.mode === "vertical" && props2.collapse;
     });
     const initMenu = () => {
       const activeItem = activeIndex.value && items.value[activeIndex.value];
-      if (!activeItem || props.mode === "horizontal" || props.collapse)
+      if (!activeItem || props2.mode === "horizontal" || props2.collapse)
         return;
       const indexPath = activeItem.indexPath;
       indexPath.forEach((index) => {
@@ -35997,7 +36112,7 @@ var Menu2 = defineComponent({
     const openMenu = (index, indexPath) => {
       if (openedMenus.value.includes(index))
         return;
-      if (props.uniqueOpened) {
+      if (props2.uniqueOpened) {
         openedMenus.value = openedMenus.value.filter((index2) => indexPath.includes(index2));
       }
       openedMenus.value.push(index);
@@ -36025,13 +36140,13 @@ var Menu2 = defineComponent({
       }
     };
     const handleMenuItemClick = (menuItem) => {
-      if (props.mode === "horizontal" || props.collapse) {
+      if (props2.mode === "horizontal" || props2.collapse) {
         openedMenus.value = [];
       }
       const { index, indexPath } = menuItem;
       if (isNil_default(index) || isNil_default(indexPath))
         return;
-      if (props.router && router) {
+      if (props2.router && router) {
         const route = menuItem.route || index;
         const routerResult = router.push(route).then((res) => {
           if (!res)
@@ -36046,7 +36161,7 @@ var Menu2 = defineComponent({
     };
     const updateActiveIndex = (val) => {
       const itemsInData = items.value;
-      const item = itemsInData[val] || activeIndex.value && itemsInData[activeIndex.value] || itemsInData[props.defaultActive];
+      const item = itemsInData[val] || activeIndex.value && itemsInData[activeIndex.value] || itemsInData[props2.defaultActive];
       if (item) {
         activeIndex.value = item.index;
       } else {
@@ -36102,20 +36217,20 @@ var Menu2 = defineComponent({
       isFirstTimeRender ? callback() : debounce2(callback)();
       isFirstTimeRender = false;
     };
-    watch(() => props.defaultActive, (currentActive) => {
+    watch(() => props2.defaultActive, (currentActive) => {
       if (!items.value[currentActive]) {
         activeIndex.value = "";
       }
       updateActiveIndex(currentActive);
     });
-    watch(() => props.collapse, (value) => {
+    watch(() => props2.collapse, (value) => {
       if (value)
         openedMenus.value = [];
     });
     watch(items.value, initMenu);
     let resizeStopper;
     watchEffect(() => {
-      if (props.mode === "horizontal" && props.ellipsis)
+      if (props2.mode === "horizontal" && props2.ellipsis)
         resizeStopper = useResizeObserver(menu, handleResize).stop;
       else
         resizeStopper == null ? void 0 : resizeStopper();
@@ -36135,7 +36250,7 @@ var Menu2 = defineComponent({
         delete items.value[item.index];
       };
       provide("rootMenu", reactive({
-        props,
+        props: props2,
         openedMenus,
         items,
         subMenus,
@@ -36158,7 +36273,7 @@ var Menu2 = defineComponent({
       });
     }
     onMounted(() => {
-      if (props.mode === "horizontal") {
+      if (props2.mode === "horizontal") {
         new Menu(instance.vnode.el, nsMenu.namespace.value);
       }
     });
@@ -36173,32 +36288,32 @@ var Menu2 = defineComponent({
         handleResize
       });
     }
+    const ulStyle = useMenuCssVar(props2, 0);
     return () => {
       var _a2, _b;
       let slot = (_b = (_a2 = slots.default) == null ? void 0 : _a2.call(slots)) != null ? _b : [];
       const vShowMore = [];
-      if (props.mode === "horizontal" && menu.value) {
+      if (props2.mode === "horizontal" && menu.value) {
         const originalSlot = flattedChildren(slot);
         const slotDefault = sliceIndex.value === -1 ? originalSlot : originalSlot.slice(0, sliceIndex.value);
         const slotMore = sliceIndex.value === -1 ? [] : originalSlot.slice(sliceIndex.value);
-        if ((slotMore == null ? void 0 : slotMore.length) && props.ellipsis) {
+        if ((slotMore == null ? void 0 : slotMore.length) && props2.ellipsis) {
           slot = slotDefault;
           vShowMore.push(h(SubMenu2, {
             index: "sub-menu-more",
             class: nsSubMenu.e("hide-arrow"),
-            popperOffset: props.popperOffset
+            popperOffset: props2.popperOffset
           }, {
             title: () => h(ElIcon, {
               class: nsSubMenu.e("icon-more")
             }, {
-              default: () => h(props.ellipsisIcon)
+              default: () => h(props2.ellipsisIcon)
             }),
             default: () => slotMore
           }));
         }
       }
-      const ulStyle = useMenuCssVar(props, 0);
-      const directives = props.closeOnClickOutside ? [
+      const directives = props2.closeOnClickOutside ? [
         [
           ClickOutside,
           () => {
@@ -36212,17 +36327,17 @@ var Menu2 = defineComponent({
         ]
       ] : [];
       const vMenu = withDirectives(h("ul", {
-        key: String(props.collapse),
+        key: String(props2.collapse),
         role: "menubar",
         ref: menu,
         style: ulStyle.value,
         class: {
           [nsMenu.b()]: true,
-          [nsMenu.m(props.mode)]: true,
-          [nsMenu.m("collapse")]: props.collapse
+          [nsMenu.m(props2.mode)]: true,
+          [nsMenu.m("collapse")]: props2.collapse
         }
       }, [...slot, ...vShowMore]), directives);
-      if (props.collapseTransition && props.mode === "vertical") {
+      if (props2.collapseTransition && props2.mode === "vertical") {
         return h(ElMenuCollapseTransition, () => vMenu);
       }
       return vMenu;
@@ -36230,7 +36345,7 @@ var Menu2 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu-item.mjs
 var menuItemProps = buildProps({
   index: {
     type: definePropType([String, null]),
@@ -36245,7 +36360,7 @@ var menuItemEmits = {
   click: (item) => isString2(item.index) && Array.isArray(item.indexPath)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu-item2.mjs
 var COMPONENT_NAME13 = "ElMenuItem";
 var _sfc_main92 = defineComponent({
   name: COMPONENT_NAME13,
@@ -36254,29 +36369,29 @@ var _sfc_main92 = defineComponent({
   },
   props: menuItemProps,
   emits: menuItemEmits,
-  setup(props, { emit }) {
+  setup(props2, { emit }) {
     const instance = getCurrentInstance();
     const rootMenu = inject("rootMenu");
     const nsMenu = useNamespace("menu");
     const nsMenuItem = useNamespace("menu-item");
     if (!rootMenu)
       throwError(COMPONENT_NAME13, "can not inject root menu");
-    const { parentMenu, indexPath } = useMenu(instance, toRef(props, "index"));
+    const { parentMenu, indexPath } = useMenu(instance, toRef(props2, "index"));
     const subMenu = inject(`subMenu:${parentMenu.value.uid}`);
     if (!subMenu)
       throwError(COMPONENT_NAME13, "can not inject sub menu");
-    const active = computed(() => props.index === rootMenu.activeIndex);
+    const active = computed(() => props2.index === rootMenu.activeIndex);
     const item = reactive({
-      index: props.index,
+      index: props2.index,
       indexPath,
       active
     });
     const handleClick = () => {
-      if (!props.disabled) {
+      if (!props2.disabled) {
         rootMenu.handleMenuItemClick({
-          index: props.index,
+          index: props2.index,
           indexPath: indexPath.value,
-          route: props.route
+          route: props2.route
         });
         emit("click", item);
       }
@@ -36337,12 +36452,12 @@ function _sfc_render18(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var MenuItem2 = _export_sfc(_sfc_main92, [["render", _sfc_render18], ["__file", "menu-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu-item-group.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu-item-group.mjs
 var menuItemGroupProps = {
   title: String
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu-item-group2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/src/menu-item-group2.mjs
 var COMPONENT_NAME14 = "ElMenuItemGroup";
 var _sfc_main93 = defineComponent({
   name: COMPONENT_NAME14,
@@ -36372,7 +36487,7 @@ function _sfc_render19(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var MenuItemGroup = _export_sfc(_sfc_main93, [["render", _sfc_render19], ["__file", "menu-item-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/menu/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/menu/index.mjs
 var ElMenu = withInstall(Menu2, {
   MenuItem: MenuItem2,
   MenuItemGroup,
@@ -36382,7 +36497,7 @@ var ElMenuItem = withNoopInstall(MenuItem2);
 var ElMenuItemGroup = withNoopInstall(MenuItemGroup);
 var ElSubMenu = withNoopInstall(SubMenu2);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/page-header/src/page-header.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/page-header/src/page-header.mjs
 var pageHeaderProps = buildProps({
   icon: {
     type: iconPropType,
@@ -36398,7 +36513,7 @@ var pageHeaderEmits = {
   back: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/page-header/src/page-header2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/page-header/src/page-header2.mjs
 var __default__64 = defineComponent({
   name: "ElPageHeader"
 });
@@ -36495,13 +36610,13 @@ var _sfc_main94 = defineComponent({
 });
 var PageHeader = _export_sfc(_sfc_main94, [["__file", "page-header.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/page-header/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/page-header/index.mjs
 var ElPageHeader = withInstall(PageHeader);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/constants.mjs
 var elPaginationKey = Symbol("elPaginationKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/prev.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/prev.mjs
 var paginationPrevProps = buildProps({
   disabled: Boolean,
   currentPage: {
@@ -36519,7 +36634,7 @@ var paginationPrevEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/prev2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/prev2.mjs
 var __default__65 = defineComponent({
   name: "ElPaginationPrev"
 });
@@ -36528,9 +36643,9 @@ var _sfc_main95 = defineComponent({
   props: paginationPrevProps,
   emits: paginationPrevEmits,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const { t } = useLocale();
-    const internalDisabled = computed(() => props.disabled || props.currentPage <= 1);
+    const internalDisabled = computed(() => props2.disabled || props2.currentPage <= 1);
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("button", {
         type: "button",
@@ -36552,7 +36667,7 @@ var _sfc_main95 = defineComponent({
 });
 var Prev = _export_sfc(_sfc_main95, [["__file", "prev.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/next2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/next.mjs
 var paginationNextProps = buildProps({
   disabled: Boolean,
   currentPage: {
@@ -36571,7 +36686,7 @@ var paginationNextProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/next.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/next2.mjs
 var __default__66 = defineComponent({
   name: "ElPaginationNext"
 });
@@ -36580,9 +36695,9 @@ var _sfc_main96 = defineComponent({
   props: paginationNextProps,
   emits: ["click"],
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const { t } = useLocale();
-    const internalDisabled = computed(() => props.disabled || props.currentPage === props.pageCount || props.pageCount === 0);
+    const internalDisabled = computed(() => props2.disabled || props2.currentPage === props2.pageCount || props2.pageCount === 0);
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("button", {
         type: "button",
@@ -36604,16 +36719,16 @@ var _sfc_main96 = defineComponent({
 });
 var Next = _export_sfc(_sfc_main96, [["__file", "next.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select/src/token.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select/src/token.mjs
 var selectGroupKey = Symbol("ElSelectGroup");
 var selectKey = Symbol("ElSelect");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select/src/useOption.mjs
-function useOption(props, states) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select/src/useOption.mjs
+function useOption(props2, states) {
   const select = inject(selectKey);
   const selectGroup = inject(selectGroupKey, { disabled: false });
   const itemSelected = computed(() => {
-    return contains(castArray_default(select.props.modelValue), props.value);
+    return contains(castArray_default(select.props.modelValue), props2.value);
   });
   const limitReached = computed(() => {
     var _a2;
@@ -36625,17 +36740,17 @@ function useOption(props, states) {
     }
   });
   const currentLabel = computed(() => {
-    return props.label || (isObject2(props.value) ? "" : props.value);
+    return props2.label || (isObject2(props2.value) ? "" : props2.value);
   });
   const currentValue = computed(() => {
-    return props.value || props.label || "";
+    return props2.value || props2.label || "";
   });
   const isDisabled = computed(() => {
-    return props.disabled || states.groupDisabled || limitReached.value;
+    return props2.disabled || states.groupDisabled || limitReached.value;
   });
   const instance = getCurrentInstance();
   const contains = (arr = [], target2) => {
-    if (!isObject2(props.value)) {
+    if (!isObject2(props2.value)) {
       return arr && arr.includes(target2);
     } else {
       const valueKey = select.props.valueKey;
@@ -36645,25 +36760,25 @@ function useOption(props, states) {
     }
   };
   const hoverItem = () => {
-    if (!props.disabled && !selectGroup.disabled) {
+    if (!props2.disabled && !selectGroup.disabled) {
       select.states.hoveringIndex = select.optionsArray.indexOf(instance.proxy);
     }
   };
   const updateOption = (query) => {
     const regexp4 = new RegExp(escapeStringRegexp(query), "i");
-    states.visible = regexp4.test(currentLabel.value) || props.created;
+    states.visible = regexp4.test(currentLabel.value) || props2.created;
   };
   watch(() => currentLabel.value, () => {
-    if (!props.created && !select.props.remote)
+    if (!props2.created && !select.props.remote)
       select.setSelected();
   });
-  watch(() => props.value, (val, oldVal) => {
+  watch(() => props2.value, (val, oldVal) => {
     const { remote, valueKey } = select.props;
     if (val !== oldVal) {
       select.onOptionDestroy(oldVal, instance.proxy);
       select.onOptionCreate(instance.proxy);
     }
-    if (!props.created && !remote) {
+    if (!props2.created && !remote) {
       if (valueKey && isObject2(val) && isObject2(oldVal) && val[valueKey] === oldVal[valueKey]) {
         return;
       }
@@ -36684,7 +36799,7 @@ function useOption(props, states) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select/src/option.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select/src/option.mjs
 var _sfc_main97 = defineComponent({
   name: "ElOption",
   componentName: "ElOption",
@@ -36697,7 +36812,7 @@ var _sfc_main97 = defineComponent({
     created: Boolean,
     disabled: Boolean
   },
-  setup(props) {
+  setup(props2) {
     const ns = useNamespace("select");
     const id = useId();
     const containerKls = computed(() => [
@@ -36719,7 +36834,7 @@ var _sfc_main97 = defineComponent({
       select,
       hoverItem,
       updateOption
-    } = useOption(props, states);
+    } = useOption(props2, states);
     const { visible, hover } = toRefs(states);
     const vm = getCurrentInstance().proxy;
     select.onOptionCreate(vm);
@@ -36778,7 +36893,7 @@ function _sfc_render20(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var Option = _export_sfc(_sfc_main97, [["render", _sfc_render20], ["__file", "option.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select/src/select-dropdown.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select/src/select-dropdown.mjs
 var _sfc_main98 = defineComponent({
   name: "ElSelectDropdown",
   componentName: "ElSelectDropdown",
@@ -36828,9 +36943,9 @@ function _sfc_render21(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElSelectMenu = _export_sfc(_sfc_main98, [["render", _sfc_render21], ["__file", "select-dropdown.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select/src/useSelect.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select/src/useSelect.mjs
 var MINIMUM_INPUT_WIDTH = 11;
-var useSelect = (props, emit) => {
+var useSelect = (props2, emit) => {
   const { t } = useLocale();
   const contentId = useId();
   const nsSelect = useNamespace("select");
@@ -36841,7 +36956,7 @@ var useSelect = (props, emit) => {
     cachedOptions: /* @__PURE__ */ new Map(),
     disabledOptions: /* @__PURE__ */ new Map(),
     optionValues: [],
-    selected: props.multiple ? [] : {},
+    selected: [],
     selectionWidth: 0,
     calculatorWidth: 0,
     collapseItemWidth: 0,
@@ -36872,9 +36987,12 @@ var useSelect = (props, emit) => {
   } = useComposition({
     afterComposition: (e) => onInput(e)
   });
-  const { wrapperRef, isFocused, handleBlur: handleBlur2 } = useFocusController(inputRef, {
+  const { wrapperRef, isFocused } = useFocusController(inputRef, {
+    beforeFocus() {
+      return selectDisabled.value;
+    },
     afterFocus() {
-      if (props.automaticDropdown && !expanded.value) {
+      if (props2.automaticDropdown && !expanded.value) {
         expanded.value = true;
         states.menuVisibleOnFocus = true;
       }
@@ -36891,33 +37009,33 @@ var useSelect = (props, emit) => {
   const expanded = ref(false);
   const hoverOption = ref();
   const { form, formItem } = useFormItem();
-  const { inputId } = useFormItemInputId(props, {
+  const { inputId } = useFormItemInputId(props2, {
     formItemContext: formItem
   });
-  const { valueOnClear, isEmptyValue: isEmptyValue2 } = useEmptyValues(props);
-  const selectDisabled = computed(() => props.disabled || (form == null ? void 0 : form.disabled));
+  const { valueOnClear, isEmptyValue: isEmptyValue2 } = useEmptyValues(props2);
+  const selectDisabled = computed(() => props2.disabled || (form == null ? void 0 : form.disabled));
   const hasModelValue = computed(() => {
-    return isArray(props.modelValue) ? props.modelValue.length > 0 : !isEmptyValue2(props.modelValue);
+    return isArray(props2.modelValue) ? props2.modelValue.length > 0 : !isEmptyValue2(props2.modelValue);
   });
   const showClose = computed(() => {
-    return props.clearable && !selectDisabled.value && states.inputHovering && hasModelValue.value;
+    return props2.clearable && !selectDisabled.value && states.inputHovering && hasModelValue.value;
   });
-  const iconComponent = computed(() => props.remote && props.filterable && !props.remoteShowSuffix ? "" : props.suffixIcon);
+  const iconComponent = computed(() => props2.remote && props2.filterable && !props2.remoteShowSuffix ? "" : props2.suffixIcon);
   const iconReverse = computed(() => nsSelect.is("reverse", iconComponent.value && expanded.value));
   const validateState = computed(() => (formItem == null ? void 0 : formItem.validateState) || "");
   const validateIcon = computed(() => ValidateComponentsMap[validateState.value]);
-  const debounce$1 = computed(() => props.remote ? 300 : 0);
+  const debounce$1 = computed(() => props2.remote ? 300 : 0);
   const emptyText = computed(() => {
-    if (props.loading) {
-      return props.loadingText || t("el.select.loading");
+    if (props2.loading) {
+      return props2.loadingText || t("el.select.loading");
     } else {
-      if (props.remote && !states.inputValue && states.options.size === 0)
+      if (props2.remote && !states.inputValue && states.options.size === 0)
         return false;
-      if (props.filterable && states.inputValue && states.options.size > 0 && filteredOptionsCount.value === 0) {
-        return props.noMatchText || t("el.select.noMatch");
+      if (props2.filterable && states.inputValue && states.options.size > 0 && filteredOptionsCount.value === 0) {
+        return props2.noMatchText || t("el.select.noMatch");
       }
       if (states.options.size === 0) {
-        return props.noDataText || t("el.select.noData");
+        return props2.noDataText || t("el.select.noData");
       }
     }
     return null;
@@ -36941,12 +37059,12 @@ var useSelect = (props, emit) => {
     }).some((option) => {
       return option.currentLabel === states.inputValue;
     });
-    return props.filterable && props.allowCreate && states.inputValue !== "" && !hasExistingOption;
+    return props2.filterable && props2.allowCreate && states.inputValue !== "" && !hasExistingOption;
   });
   const updateOptions2 = () => {
-    if (props.filterable && isFunction2(props.filterMethod))
+    if (props2.filterable && isFunction2(props2.filterMethod))
       return;
-    if (props.filterable && props.remote && isFunction2(props.remoteMethod))
+    if (props2.filterable && props2.remote && isFunction2(props2.remoteMethod))
       return;
     optionsArray.value.forEach((option) => {
       var _a2;
@@ -36964,27 +37082,27 @@ var useSelect = (props, emit) => {
     }
   });
   const shouldShowPlaceholder = computed(() => {
-    if (props.multiple && !isUndefined2(props.modelValue)) {
-      return castArray_default(props.modelValue).length === 0 && !states.inputValue;
+    if (props2.multiple && !isUndefined2(props2.modelValue)) {
+      return castArray_default(props2.modelValue).length === 0 && !states.inputValue;
     }
-    const value = isArray(props.modelValue) ? props.modelValue[0] : props.modelValue;
-    return props.filterable || isUndefined2(value) ? !states.inputValue : true;
+    const value = isArray(props2.modelValue) ? props2.modelValue[0] : props2.modelValue;
+    return props2.filterable || isUndefined2(value) ? !states.inputValue : true;
   });
   const currentPlaceholder = computed(() => {
     var _a2;
-    const _placeholder = (_a2 = props.placeholder) != null ? _a2 : t("el.select.placeholder");
-    return props.multiple || !hasModelValue.value ? _placeholder : states.selectedLabel;
+    const _placeholder = (_a2 = props2.placeholder) != null ? _a2 : t("el.select.placeholder");
+    return props2.multiple || !hasModelValue.value ? _placeholder : states.selectedLabel;
   });
   const mouseEnterEventName = computed(() => isIOS ? null : "mouseenter");
-  watch(() => props.modelValue, (val, oldVal) => {
-    if (props.multiple) {
-      if (props.filterable && !props.reserveKeyword) {
+  watch(() => props2.modelValue, (val, oldVal) => {
+    if (props2.multiple) {
+      if (props2.filterable && !props2.reserveKeyword) {
         states.inputValue = "";
         handleQueryChange("");
       }
     }
     setSelected();
-    if (!isEqual_default(val, oldVal) && props.validateEvent) {
+    if (!isEqual_default(val, oldVal) && props2.validateEvent) {
       formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn(err));
     }
   }, {
@@ -37006,10 +37124,10 @@ var useSelect = (props, emit) => {
     if (!isClient)
       return;
     const inputs = ((_a2 = selectRef.value) == null ? void 0 : _a2.querySelectorAll("input")) || [];
-    if (!props.filterable && !props.defaultFirstOption && !isUndefined2(props.modelValue) || !Array.from(inputs).includes(document.activeElement)) {
+    if (!props2.filterable && !props2.defaultFirstOption && !isUndefined2(props2.modelValue) || !Array.from(inputs).includes(document.activeElement)) {
       setSelected();
     }
-    if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptionsCount.value) {
+    if (props2.defaultFirstOption && (props2.filterable || props2.remote) && filteredOptionsCount.value) {
       checkDefaultFirstOption();
     }
   }, {
@@ -37035,12 +37153,12 @@ var useSelect = (props, emit) => {
       return;
     }
     states.previousQuery = val;
-    if (props.filterable && isFunction2(props.filterMethod)) {
-      props.filterMethod(val);
-    } else if (props.filterable && props.remote && isFunction2(props.remoteMethod)) {
-      props.remoteMethod(val);
+    if (props2.filterable && isFunction2(props2.filterMethod)) {
+      props2.filterMethod(val);
+    } else if (props2.filterable && props2.remote && isFunction2(props2.remoteMethod)) {
+      props2.remoteMethod(val);
     }
-    if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptionsCount.value) {
+    if (props2.defaultFirstOption && (props2.filterable || props2.remote) && filteredOptionsCount.value) {
       nextTick(checkDefaultFirstOption);
     } else {
       nextTick(updateHoveringIndex);
@@ -37053,18 +37171,18 @@ var useSelect = (props, emit) => {
     states.hoveringIndex = getValueIndex(optionsArray.value, userCreatedOption || firstOriginOption);
   };
   const setSelected = () => {
-    if (!props.multiple) {
-      const value = isArray(props.modelValue) ? props.modelValue[0] : props.modelValue;
+    if (!props2.multiple) {
+      const value = isArray(props2.modelValue) ? props2.modelValue[0] : props2.modelValue;
       const option = getOption(value);
       states.selectedLabel = option.currentLabel;
-      states.selected = option;
+      states.selected = [option];
       return;
     } else {
       states.selectedLabel = "";
     }
     const result2 = [];
-    if (!isUndefined2(props.modelValue)) {
-      castArray_default(props.modelValue).forEach((value) => {
+    if (!isUndefined2(props2.modelValue)) {
+      castArray_default(props2.modelValue).forEach((value) => {
         result2.push(getOption(value));
       });
     }
@@ -37077,7 +37195,7 @@ var useSelect = (props, emit) => {
     const isUndefined22 = toRawType(value).toLowerCase() === "undefined";
     for (let i = states.cachedOptions.size - 1; i >= 0; i--) {
       const cachedOption = cachedOptionsArray.value[i];
-      const isEqualValue = isObjectValue ? get_default(cachedOption.value, props.valueKey) === get_default(value, props.valueKey) : cachedOption.value === value;
+      const isEqualValue = isObjectValue ? get_default(cachedOption.value, props2.valueKey) === get_default(value, props2.valueKey) : cachedOption.value === value;
       if (isEqualValue) {
         option = {
           value,
@@ -37099,13 +37217,7 @@ var useSelect = (props, emit) => {
     return newOption;
   };
   const updateHoveringIndex = () => {
-    if (!props.multiple) {
-      states.hoveringIndex = optionsArray.value.findIndex((item) => {
-        return getValueKey(item) === getValueKey(states.selected);
-      });
-    } else {
-      states.hoveringIndex = optionsArray.value.findIndex((item) => states.selected.some((selected) => getValueKey(selected) === getValueKey(item)));
-    }
+    states.hoveringIndex = optionsArray.value.findIndex((item) => states.selected.some((selected) => getValueKey(selected) === getValueKey(item)));
   };
   const resetSelectionWidth = () => {
     states.selectionWidth = selectionRef.value.getBoundingClientRect().width;
@@ -37132,7 +37244,7 @@ var useSelect = (props, emit) => {
   };
   const onInput = (event) => {
     states.inputValue = event.target.value;
-    if (props.remote) {
+    if (props2.remote) {
       debouncedOnInputChange();
     } else {
       return onInputChange();
@@ -37142,18 +37254,18 @@ var useSelect = (props, emit) => {
     onInputChange();
   }, debounce$1.value);
   const emitChange = (val) => {
-    if (!isEqual_default(props.modelValue, val)) {
+    if (!isEqual_default(props2.modelValue, val)) {
       emit(CHANGE_EVENT, val);
     }
   };
   const getLastNotDisabledIndex = (value) => findLastIndex_default(value, (it2) => !states.disabledOptions.has(it2));
   const deletePrevTag = (e) => {
-    if (!props.multiple)
+    if (!props2.multiple)
       return;
     if (e.code === EVENT_CODE.delete)
       return;
     if (e.target.value.length <= 0) {
-      const value = castArray_default(props.modelValue).slice();
+      const value = castArray_default(props2.modelValue).slice();
       const lastNotDisabledIndex = getLastNotDisabledIndex(value);
       if (lastNotDisabledIndex < 0)
         return;
@@ -37167,7 +37279,7 @@ var useSelect = (props, emit) => {
   const deleteTag = (event, tag) => {
     const index = states.selected.indexOf(tag);
     if (index > -1 && !selectDisabled.value) {
-      const value = castArray_default(props.modelValue).slice();
+      const value = castArray_default(props2.modelValue).slice();
       value.splice(index, 1);
       emit(UPDATE_MODEL_EVENT, value);
       emitChange(value);
@@ -37178,8 +37290,8 @@ var useSelect = (props, emit) => {
   };
   const deleteSelected = (event) => {
     event.stopPropagation();
-    const value = props.multiple ? [] : valueOnClear.value;
-    if (props.multiple) {
+    const value = props2.multiple ? [] : valueOnClear.value;
+    if (props2.multiple) {
       for (const item of states.selected) {
         if (item.isDisabled)
           value.push(item.value);
@@ -37194,12 +37306,12 @@ var useSelect = (props, emit) => {
   };
   const handleOptionSelect = (option) => {
     var _a2;
-    if (props.multiple) {
-      const value = castArray_default((_a2 = props.modelValue) != null ? _a2 : []).slice();
+    if (props2.multiple) {
+      const value = castArray_default((_a2 = props2.modelValue) != null ? _a2 : []).slice();
       const optionIndex = getValueIndex(value, option.value);
       if (optionIndex > -1) {
         value.splice(optionIndex, 1);
-      } else if (props.multipleLimit <= 0 || value.length < props.multipleLimit) {
+      } else if (props2.multipleLimit <= 0 || value.length < props2.multipleLimit) {
         value.push(option.value);
       }
       emit(UPDATE_MODEL_EVENT, value);
@@ -37207,7 +37319,7 @@ var useSelect = (props, emit) => {
       if (option.created) {
         handleQueryChange("");
       }
-      if (props.filterable && !props.reserveKeyword) {
+      if (props2.filterable && !props2.reserveKeyword) {
         states.inputValue = "";
       }
     } else {
@@ -37225,7 +37337,7 @@ var useSelect = (props, emit) => {
   const getValueIndex = (arr = [], value) => {
     if (!isObject2(value))
       return arr.indexOf(value);
-    const valueKey = props.valueKey;
+    const valueKey = props2.valueKey;
     let index = -1;
     arr.some((item, i) => {
       if (toRaw(get_default(item, valueKey)) === get_default(value, valueKey)) {
@@ -37277,17 +37389,15 @@ var useSelect = (props, emit) => {
     (_a2 = inputRef.value) == null ? void 0 : _a2.focus();
   };
   const blur = () => {
-    handleClickOutside();
+    var _a2;
+    (_a2 = inputRef.value) == null ? void 0 : _a2.blur();
   };
   const handleClearClick = (event) => {
     deleteSelected(event);
   };
-  const handleClickOutside = (event) => {
+  const handleClickOutside = () => {
     expanded.value = false;
-    if (isFocused.value) {
-      const _event2 = new FocusEvent("focus", event);
-      nextTick(() => handleBlur2(_event2));
-    }
+    isFocused.value && blur();
   };
   const handleEsc = () => {
     if (states.inputValue.length > 0) {
@@ -37317,20 +37427,20 @@ var useSelect = (props, emit) => {
     }
   };
   const getValueKey = (item) => {
-    return isObject2(item.value) ? get_default(item.value, props.valueKey) : item.value;
+    return isObject2(item.value) ? get_default(item.value, props2.valueKey) : item.value;
   };
   const optionsAllDisabled = computed(() => optionsArray.value.filter((option) => option.visible).every((option) => option.disabled));
   const showTagList = computed(() => {
-    if (!props.multiple) {
+    if (!props2.multiple) {
       return [];
     }
-    return props.collapseTags ? states.selected.slice(0, props.maxCollapseTags) : states.selected;
+    return props2.collapseTags ? states.selected.slice(0, props2.maxCollapseTags) : states.selected;
   });
   const collapseTagList = computed(() => {
-    if (!props.multiple) {
+    if (!props2.multiple) {
       return [];
     }
-    return props.collapseTags ? states.selected.slice(props.maxCollapseTags) : [];
+    return props2.collapseTags ? states.selected.slice(props2.maxCollapseTags) : [];
   });
   const navigateOptions = (direction2) => {
     if (!expanded.value) {
@@ -37366,7 +37476,7 @@ var useSelect = (props, emit) => {
   };
   const tagStyle = computed(() => {
     const gapWidth = getGapWidth();
-    const maxWidth = collapseItemRef.value && props.maxCollapseTags === 1 ? states.selectionWidth - states.collapseItemWidth - gapWidth : states.selectionWidth;
+    const maxWidth = collapseItemRef.value && props2.maxCollapseTags === 1 ? states.selectionWidth - states.collapseItemWidth - gapWidth : states.selectionWidth;
     return { maxWidth: `${maxWidth}px` };
   });
   const collapseTagStyle = computed(() => {
@@ -37459,7 +37569,7 @@ var useSelect = (props, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select/src/options.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select/src/options.mjs
 var ElOptions = defineComponent({
   name: "ElOptions",
   setup(_2, { slots }) {
@@ -37498,7 +37608,7 @@ var ElOptions = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select/src/select.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select/src/select2.mjs
 var SelectProps = buildProps({
   name: String,
   id: String,
@@ -37588,11 +37698,12 @@ var SelectProps = buildProps({
     type: definePropType(Array),
     default: ["bottom-start", "top-start", "right", "left"]
   },
+  appendTo: String,
   ...useEmptyValuesProps,
   ...useAriaProps(["ariaLabel"])
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select/src/select2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select/src/select.mjs
 var COMPONENT_NAME15 = "ElSelect";
 var _sfc_main99 = defineComponent({
   name: COMPONENT_NAME15,
@@ -37617,10 +37728,22 @@ var _sfc_main99 = defineComponent({
     "focus",
     "blur"
   ],
-  setup(props, { emit }) {
-    const API = useSelect(props, emit);
+  setup(props2, { emit }) {
+    const modelValue = computed(() => {
+      const { modelValue: rawModelValue, multiple } = props2;
+      const fallback = multiple ? [] : void 0;
+      if (isArray(rawModelValue)) {
+        return multiple ? rawModelValue : fallback;
+      }
+      return multiple ? fallback : rawModelValue;
+    });
+    const _props = reactive({
+      ...toRefs(props2),
+      modelValue
+    });
+    const API = useSelect(_props, emit);
     provide(selectKey, reactive({
-      props,
+      props: _props,
       states: API.states,
       optionsArray: API.optionsArray,
       handleOptionSelect: API.handleOptionSelect,
@@ -37630,7 +37753,8 @@ var _sfc_main99 = defineComponent({
       setSelected: API.setSelected
     }));
     return {
-      ...API
+      ...API,
+      modelValue
     };
   }
 });
@@ -37664,6 +37788,7 @@ function _sfc_render22(_ctx, _cache, $props, $setup, $data, $options) {
       "stop-popper-mouse-event": false,
       "gpu-acceleration": false,
       persistent: _ctx.persistent,
+      "append-to": _ctx.appendTo,
       onBeforeShow: _ctx.handleMenuEnter,
       onHide: ($event) => _ctx.states.isBeforeHide = false
     }, {
@@ -37969,14 +38094,14 @@ function _sfc_render22(_ctx, _cache, $props, $setup, $data, $options) {
         }, 512)
       ]),
       _: 3
-    }, 8, ["visible", "placement", "teleported", "popper-class", "popper-options", "fallback-placements", "effect", "transition", "persistent", "onBeforeShow", "onHide"])
+    }, 8, ["visible", "placement", "teleported", "popper-class", "popper-options", "fallback-placements", "effect", "transition", "persistent", "append-to", "onBeforeShow", "onHide"])
   ], 16, ["onMouseleave"])), [
     [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
   ]);
 }
 var Select = _export_sfc(_sfc_main99, [["render", _sfc_render22], ["__file", "select.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select/src/option-group.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select/src/option-group.mjs
 var _sfc_main100 = defineComponent({
   name: "ElOptionGroup",
   componentName: "ElOptionGroup",
@@ -37984,13 +38109,13 @@ var _sfc_main100 = defineComponent({
     label: String,
     disabled: Boolean
   },
-  setup(props) {
+  setup(props2) {
     const ns = useNamespace("select");
     const groupRef = ref(null);
     const instance = getCurrentInstance();
     const children = ref([]);
     provide(selectGroupKey, reactive({
-      ...toRefs(props)
+      ...toRefs(props2)
     }));
     const visible = computed(() => children.value.some((option) => option.visible === true));
     const isOption = (node) => {
@@ -38051,7 +38176,7 @@ function _sfc_render23(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var OptionGroup = _export_sfc(_sfc_main100, [["render", _sfc_render23], ["__file", "option-group.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select/index.mjs
 var ElSelect = withInstall(Select, {
   Option,
   OptionGroup
@@ -38059,10 +38184,10 @@ var ElSelect = withInstall(Select, {
 var ElOption = withNoopInstall(Option);
 var ElOptionGroup = withNoopInstall(OptionGroup);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/usePagination.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/usePagination.mjs
 var usePagination = () => inject(elPaginationKey, {});
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/sizes.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/sizes2.mjs
 var paginationSizesProps = buildProps({
   pageSize: {
     type: Number,
@@ -38080,10 +38205,11 @@ var paginationSizesProps = buildProps({
   size: {
     type: String,
     values: componentSizes
-  }
+  },
+  appendSizeTo: String
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/sizes2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/sizes.mjs
 var __default__67 = defineComponent({
   name: "ElPaginationSizes"
 });
@@ -38092,23 +38218,23 @@ var _sfc_main101 = defineComponent({
   props: paginationSizesProps,
   emits: ["page-size-change"],
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const { t } = useLocale();
     const ns = useNamespace("pagination");
     const pagination = usePagination();
-    const innerPageSize = ref(props.pageSize);
-    watch(() => props.pageSizes, (newVal, oldVal) => {
+    const innerPageSize = ref(props2.pageSize);
+    watch(() => props2.pageSizes, (newVal, oldVal) => {
       if (isEqual_default(newVal, oldVal))
         return;
       if (Array.isArray(newVal)) {
-        const pageSize = newVal.includes(props.pageSize) ? props.pageSize : props.pageSizes[0];
+        const pageSize = newVal.includes(props2.pageSize) ? props2.pageSize : props2.pageSizes[0];
         emit("page-size-change", pageSize);
       }
     });
-    watch(() => props.pageSize, (newVal) => {
+    watch(() => props2.pageSize, (newVal) => {
       innerPageSize.value = newVal;
     });
-    const innerPageSizes = computed(() => props.pageSizes);
+    const innerPageSizes = computed(() => props2.pageSizes);
     function handleChange(val) {
       var _a2;
       if (val !== innerPageSize.value) {
@@ -38127,6 +38253,7 @@ var _sfc_main101 = defineComponent({
           size: _ctx.size,
           teleported: _ctx.teleported,
           "validate-event": false,
+          "append-to": _ctx.appendSizeTo,
           onChange: handleChange
         }, {
           default: withCtx(() => [
@@ -38139,14 +38266,14 @@ var _sfc_main101 = defineComponent({
             }), 128))
           ]),
           _: 1
-        }, 8, ["model-value", "disabled", "popper-class", "size", "teleported"])
+        }, 8, ["model-value", "disabled", "popper-class", "size", "teleported", "append-to"])
       ], 2);
     };
   }
 });
 var Sizes = _export_sfc(_sfc_main101, [["__file", "sizes.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/jumper.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/jumper.mjs
 var paginationJumperProps = buildProps({
   size: {
     type: String,
@@ -38154,7 +38281,7 @@ var paginationJumperProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/jumper2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/jumper2.mjs
 var __default__68 = defineComponent({
   name: "ElPaginationJumper"
 });
@@ -38208,7 +38335,7 @@ var _sfc_main102 = defineComponent({
 });
 var Jumper = _export_sfc(_sfc_main102, [["__file", "jumper.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/total.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/total2.mjs
 var paginationTotalProps = buildProps({
   total: {
     type: Number,
@@ -38216,7 +38343,7 @@ var paginationTotalProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/total2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/total.mjs
 var __default__69 = defineComponent({
   name: "ElPaginationTotal"
 });
@@ -38239,7 +38366,7 @@ var _sfc_main103 = defineComponent({
 });
 var Total = _export_sfc(_sfc_main103, [["__file", "total.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/pager.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/pager.mjs
 var paginationPagerProps = buildProps({
   currentPage: {
     type: Number,
@@ -38256,7 +38383,7 @@ var paginationPagerProps = buildProps({
   disabled: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/pager2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/components/pager2.mjs
 var __default__70 = defineComponent({
   name: "ElPaginationPager"
 });
@@ -38265,7 +38392,7 @@ var _sfc_main104 = defineComponent({
   props: paginationPagerProps,
   emits: ["change"],
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const nsPager = useNamespace("pager");
     const nsIcon = useNamespace("icon");
     const { t } = useLocale();
@@ -38276,10 +38403,10 @@ var _sfc_main104 = defineComponent({
     const quickPrevFocus = ref(false);
     const quickNextFocus = ref(false);
     const pagers = computed(() => {
-      const pagerCount = props.pagerCount;
+      const pagerCount = props2.pagerCount;
       const halfPagerCount = (pagerCount - 1) / 2;
-      const currentPage = Number(props.currentPage);
-      const pageCount = Number(props.pageCount);
+      const currentPage = Number(props2.currentPage);
+      const pageCount = Number(props2.pageCount);
       let showPrevMore2 = false;
       let showNextMore2 = false;
       if (pageCount > pagerCount) {
@@ -38316,30 +38443,30 @@ var _sfc_main104 = defineComponent({
       "more",
       "btn-quickprev",
       nsIcon.b(),
-      nsPager.is("disabled", props.disabled)
+      nsPager.is("disabled", props2.disabled)
     ]);
     const nextMoreKls = computed(() => [
       "more",
       "btn-quicknext",
       nsIcon.b(),
-      nsPager.is("disabled", props.disabled)
+      nsPager.is("disabled", props2.disabled)
     ]);
-    const tabindex = computed(() => props.disabled ? -1 : 0);
+    const tabindex = computed(() => props2.disabled ? -1 : 0);
     watchEffect(() => {
-      const halfPagerCount = (props.pagerCount - 1) / 2;
+      const halfPagerCount = (props2.pagerCount - 1) / 2;
       showPrevMore.value = false;
       showNextMore.value = false;
-      if (props.pageCount > props.pagerCount) {
-        if (props.currentPage > props.pagerCount - halfPagerCount) {
+      if (props2.pageCount > props2.pagerCount) {
+        if (props2.currentPage > props2.pagerCount - halfPagerCount) {
           showPrevMore.value = true;
         }
-        if (props.currentPage < props.pageCount - halfPagerCount) {
+        if (props2.currentPage < props2.pageCount - halfPagerCount) {
           showNextMore.value = true;
         }
       }
     });
     function onMouseEnter(forward = false) {
-      if (props.disabled)
+      if (props2.disabled)
         return;
       if (forward) {
         quickPrevHover.value = true;
@@ -38358,7 +38485,7 @@ var _sfc_main104 = defineComponent({
       const target2 = e.target;
       if (target2.tagName.toLowerCase() === "li" && Array.from(target2.classList).includes("number")) {
         const newPage = Number(target2.textContent);
-        if (newPage !== props.currentPage) {
+        if (newPage !== props2.currentPage) {
           emit("change", newPage);
         }
       } else if (target2.tagName.toLowerCase() === "li" && Array.from(target2.classList).includes("more")) {
@@ -38367,13 +38494,13 @@ var _sfc_main104 = defineComponent({
     }
     function onPagerClick(event) {
       const target2 = event.target;
-      if (target2.tagName.toLowerCase() === "ul" || props.disabled) {
+      if (target2.tagName.toLowerCase() === "ul" || props2.disabled) {
         return;
       }
       let newPage = Number(target2.textContent);
-      const pageCount = props.pageCount;
-      const currentPage = props.currentPage;
-      const pagerCountOffset = props.pagerCount - 2;
+      const pageCount = props2.pageCount;
+      const currentPage = props2.currentPage;
+      const pagerCountOffset = props2.pagerCount - 2;
       if (target2.className.includes("more")) {
         if (target2.className.includes("quickprev")) {
           newPage = currentPage - pagerCountOffset;
@@ -38461,7 +38588,7 @@ var _sfc_main104 = defineComponent({
 });
 var Pager = _export_sfc(_sfc_main104, [["__file", "pager.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/pagination.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/src/pagination.mjs
 var isAbsent = (v2) => typeof v2 !== "number";
 var paginationProps = buildProps({
   pageSize: Number,
@@ -38513,7 +38640,8 @@ var paginationProps = buildProps({
   size: useSizeProp,
   background: Boolean,
   disabled: Boolean,
-  hideOnSinglePage: Boolean
+  hideOnSinglePage: Boolean,
+  appendSizeTo: String
 });
 var paginationEmits = {
   "update:current-page": (val) => isNumber3(val),
@@ -38529,13 +38657,14 @@ var Pagination = defineComponent({
   name: componentName,
   props: paginationProps,
   emits: paginationEmits,
-  setup(props, { emit, slots }) {
+  setup(props2, { emit, slots }) {
     const { t } = useLocale();
     const ns = useNamespace("pagination");
     const vnodeProps = getCurrentInstance().vnode.props || {};
+    const _globalSize = useGlobalSize();
     const _size = computed(() => {
       var _a2;
-      return props.small ? "small" : (_a2 = props.size) != null ? _a2 : useGlobalSize().value;
+      return props2.small ? "small" : (_a2 = props2.size) != null ? _a2 : _globalSize.value;
     });
     useDeprecated({
       from: "small",
@@ -38543,20 +38672,20 @@ var Pagination = defineComponent({
       version: "3.0.0",
       scope: "el-pagination",
       ref: "https://element-plus.org/zh-CN/component/pagination.html"
-    }, computed(() => !!props.small));
+    }, computed(() => !!props2.small));
     const hasCurrentPageListener = "onUpdate:currentPage" in vnodeProps || "onUpdate:current-page" in vnodeProps || "onCurrentChange" in vnodeProps;
     const hasPageSizeListener = "onUpdate:pageSize" in vnodeProps || "onUpdate:page-size" in vnodeProps || "onSizeChange" in vnodeProps;
     const assertValidUsage = computed(() => {
-      if (isAbsent(props.total) && isAbsent(props.pageCount))
+      if (isAbsent(props2.total) && isAbsent(props2.pageCount))
         return false;
-      if (!isAbsent(props.currentPage) && !hasCurrentPageListener)
+      if (!isAbsent(props2.currentPage) && !hasCurrentPageListener)
         return false;
-      if (props.layout.includes("sizes")) {
-        if (!isAbsent(props.pageCount)) {
+      if (props2.layout.includes("sizes")) {
+        if (!isAbsent(props2.pageCount)) {
           if (!hasPageSizeListener)
             return false;
-        } else if (!isAbsent(props.total)) {
-          if (!isAbsent(props.pageSize)) {
+        } else if (!isAbsent(props2.total)) {
+          if (!isAbsent(props2.pageSize)) {
             if (!hasPageSizeListener) {
               return false;
             }
@@ -38566,14 +38695,14 @@ var Pagination = defineComponent({
       }
       return true;
     });
-    const innerPageSize = ref(isAbsent(props.defaultPageSize) ? 10 : props.defaultPageSize);
-    const innerCurrentPage = ref(isAbsent(props.defaultCurrentPage) ? 1 : props.defaultCurrentPage);
+    const innerPageSize = ref(isAbsent(props2.defaultPageSize) ? 10 : props2.defaultPageSize);
+    const innerCurrentPage = ref(isAbsent(props2.defaultCurrentPage) ? 1 : props2.defaultCurrentPage);
     const pageSizeBridge = computed({
       get() {
-        return isAbsent(props.pageSize) ? innerPageSize.value : props.pageSize;
+        return isAbsent(props2.pageSize) ? innerPageSize.value : props2.pageSize;
       },
       set(v2) {
-        if (isAbsent(props.pageSize)) {
+        if (isAbsent(props2.pageSize)) {
           innerPageSize.value = v2;
         }
         if (hasPageSizeListener) {
@@ -38584,16 +38713,16 @@ var Pagination = defineComponent({
     });
     const pageCountBridge = computed(() => {
       let pageCount = 0;
-      if (!isAbsent(props.pageCount)) {
-        pageCount = props.pageCount;
-      } else if (!isAbsent(props.total)) {
-        pageCount = Math.max(1, Math.ceil(props.total / pageSizeBridge.value));
+      if (!isAbsent(props2.pageCount)) {
+        pageCount = props2.pageCount;
+      } else if (!isAbsent(props2.total)) {
+        pageCount = Math.max(1, Math.ceil(props2.total / pageSizeBridge.value));
       }
       return pageCount;
     });
     const currentPageBridge = computed({
       get() {
-        return isAbsent(props.currentPage) ? innerCurrentPage.value : props.currentPage;
+        return isAbsent(props2.currentPage) ? innerCurrentPage.value : props2.currentPage;
       },
       set(v2) {
         let newCurrentPage = v2;
@@ -38602,7 +38731,7 @@ var Pagination = defineComponent({
         } else if (v2 > pageCountBridge.value) {
           newCurrentPage = pageCountBridge.value;
         }
-        if (isAbsent(props.currentPage)) {
+        if (isAbsent(props2.currentPage)) {
           innerCurrentPage.value = newCurrentPage;
         }
         if (hasCurrentPageListener) {
@@ -38629,13 +38758,13 @@ var Pagination = defineComponent({
       }
     }
     function prev() {
-      if (props.disabled)
+      if (props2.disabled)
         return;
       currentPageBridge.value -= 1;
       emit("prev-click", currentPageBridge.value);
     }
     function next() {
-      if (props.disabled)
+      if (props2.disabled)
         return;
       currentPageBridge.value += 1;
       emit("next-click", currentPageBridge.value);
@@ -38650,7 +38779,7 @@ var Pagination = defineComponent({
     }
     provide(elPaginationKey, {
       pageCount: pageCountBridge,
-      disabled: computed(() => props.disabled),
+      disabled: computed(() => props2.disabled),
       currentPage: currentPageBridge,
       changeEvent: handleCurrentChange2,
       handleSizeChange
@@ -38661,19 +38790,19 @@ var Pagination = defineComponent({
         debugWarn(componentName, t("el.pagination.deprecationWarning"));
         return null;
       }
-      if (!props.layout)
+      if (!props2.layout)
         return null;
-      if (props.hideOnSinglePage && pageCountBridge.value <= 1)
+      if (props2.hideOnSinglePage && pageCountBridge.value <= 1)
         return null;
       const rootChildren = [];
       const rightWrapperChildren = [];
       const rightWrapperRoot = h("div", { class: ns.e("rightwrapper") }, rightWrapperChildren);
       const TEMPLATE_MAP = {
         prev: h(Prev, {
-          disabled: props.disabled,
+          disabled: props2.disabled,
           currentPage: currentPageBridge.value,
-          prevText: props.prevText,
-          prevIcon: props.prevIcon,
+          prevText: props2.prevText,
+          prevIcon: props2.prevIcon,
           onClick: prev
         }),
         jumper: h(Jumper, {
@@ -38682,30 +38811,31 @@ var Pagination = defineComponent({
         pager: h(Pager, {
           currentPage: currentPageBridge.value,
           pageCount: pageCountBridge.value,
-          pagerCount: props.pagerCount,
+          pagerCount: props2.pagerCount,
           onChange: handleCurrentChange2,
-          disabled: props.disabled
+          disabled: props2.disabled
         }),
         next: h(Next, {
-          disabled: props.disabled,
+          disabled: props2.disabled,
           currentPage: currentPageBridge.value,
           pageCount: pageCountBridge.value,
-          nextText: props.nextText,
-          nextIcon: props.nextIcon,
+          nextText: props2.nextText,
+          nextIcon: props2.nextIcon,
           onClick: next
         }),
         sizes: h(Sizes, {
           pageSize: pageSizeBridge.value,
-          pageSizes: props.pageSizes,
-          popperClass: props.popperClass,
-          disabled: props.disabled,
-          teleported: props.teleported,
-          size: _size.value
+          pageSizes: props2.pageSizes,
+          popperClass: props2.popperClass,
+          disabled: props2.disabled,
+          teleported: props2.teleported,
+          size: _size.value,
+          appendSizeTo: props2.appendSizeTo
         }),
         slot: (_b = (_a2 = slots == null ? void 0 : slots.default) == null ? void 0 : _a2.call(slots)) != null ? _b : null,
-        total: h(Total, { total: isAbsent(props.total) ? 0 : props.total })
+        total: h(Total, { total: isAbsent(props2.total) ? 0 : props2.total })
       };
-      const components = props.layout.split(",").map((item) => item.trim());
+      const components = props2.layout.split(",").map((item) => item.trim());
       let haveRightWrapper = false;
       components.forEach((c2) => {
         if (c2 === "->") {
@@ -38728,7 +38858,7 @@ var Pagination = defineComponent({
       return h("div", {
         class: [
           ns.b(),
-          ns.is("background", props.background),
+          ns.is("background", props2.background),
           ns.m(_size.value)
         ]
       }, rootChildren);
@@ -38736,10 +38866,10 @@ var Pagination = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/pagination/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/pagination/index.mjs
 var ElPagination = withInstall(Pagination);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popconfirm/src/popconfirm.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popconfirm/src/popconfirm.mjs
 var popconfirmProps = buildProps({
   title: String,
   confirmButtonText: String,
@@ -38782,7 +38912,7 @@ var popconfirmEmits = {
   cancel: (e) => e instanceof MouseEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popconfirm/src/popconfirm2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popconfirm/src/popconfirm2.mjs
 var __default__71 = defineComponent({
   name: "ElPopconfirm"
 });
@@ -38791,7 +38921,7 @@ var _sfc_main105 = defineComponent({
   props: popconfirmProps,
   emits: popconfirmEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const { t } = useLocale();
     const ns = useNamespace("popconfirm");
     const tooltipRef = ref();
@@ -38801,7 +38931,7 @@ var _sfc_main105 = defineComponent({
     };
     const style = computed(() => {
       return {
-        width: addUnit(props.width)
+        width: addUnit(props2.width)
       };
     });
     const confirm = (e) => {
@@ -38812,8 +38942,8 @@ var _sfc_main105 = defineComponent({
       emit("cancel", e);
       hidePopper();
     };
-    const finalConfirmButtonText = computed(() => props.confirmButtonText || t("el.popconfirm.confirmButtonText"));
-    const finalCancelButtonText = computed(() => props.cancelButtonText || t("el.popconfirm.cancelButtonText"));
+    const finalConfirmButtonText = computed(() => props2.confirmButtonText || t("el.popconfirm.confirmButtonText"));
+    const finalCancelButtonText = computed(() => props2.cancelButtonText || t("el.popconfirm.cancelButtonText"));
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(ElTooltip), mergeProps({
         ref_key: "tooltipRef",
@@ -38890,10 +39020,10 @@ var _sfc_main105 = defineComponent({
 });
 var Popconfirm = _export_sfc(_sfc_main105, [["__file", "popconfirm.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popconfirm/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popconfirm/index.mjs
 var ElPopconfirm = withInstall(Popconfirm);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popover/src/popover.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popover/src/popover2.mjs
 var popoverProps = buildProps({
   trigger: useTooltipTriggerProps.trigger,
   placement: dropdownProps.placement,
@@ -38955,7 +39085,7 @@ var popoverEmits = {
   "after-leave": () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popover/src/popover2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popover/src/popover.mjs
 var updateEventKeyRaw = `onUpdate:visible`;
 var __default__72 = defineComponent({
   name: "ElPopover"
@@ -38965,9 +39095,9 @@ var _sfc_main106 = defineComponent({
   props: popoverProps,
   emits: popoverEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const onUpdateVisible = computed(() => {
-      return props[updateEventKeyRaw];
+      return props2[updateEventKeyRaw];
     });
     const ns = useNamespace("popover");
     const tooltipRef = ref();
@@ -38978,16 +39108,16 @@ var _sfc_main106 = defineComponent({
     const style = computed(() => {
       return [
         {
-          width: addUnit(props.width)
+          width: addUnit(props2.width)
         },
-        props.popperStyle
+        props2.popperStyle
       ];
     });
     const kls = computed(() => {
-      return [ns.b(), props.popperClass, { [ns.m("plain")]: !!props.content }];
+      return [ns.b(), props2.popperClass, { [ns.m("plain")]: !!props2.content }];
     });
     const gpuAcceleration = computed(() => {
-      return props.transition === `${ns.namespace.value}-fade-in-linear`;
+      return props2.transition === `${ns.namespace.value}-fade-in-linear`;
     });
     const hide2 = () => {
       var _a2;
@@ -39062,7 +39192,7 @@ var _sfc_main106 = defineComponent({
 });
 var Popover = _export_sfc(_sfc_main106, [["__file", "popover.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popover/src/directive.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popover/src/directive.mjs
 var attachEvents = (el, binding) => {
   const popperComponent = binding.arg || binding.value;
   const popover = popperComponent == null ? void 0 : popperComponent.popperRef;
@@ -39080,13 +39210,13 @@ var PopoverDirective = {
 };
 var VPopover = "popover";
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/popover/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/popover/index.mjs
 var ElPopoverDirective = withInstallDirective(PopoverDirective, VPopover);
 var ElPopover = withInstall(Popover, {
   directive: ElPopoverDirective
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/progress/src/progress.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/progress/src/progress2.mjs
 var progressProps = buildProps({
   type: {
     type: String,
@@ -39141,7 +39271,7 @@ var progressProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/progress/src/progress2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/progress/src/progress.mjs
 var __default__73 = defineComponent({
   name: "ElProgress"
 });
@@ -39149,7 +39279,7 @@ var _sfc_main107 = defineComponent({
   ...__default__73,
   props: progressProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const STATUS_COLOR_MAP = {
       success: "#13ce66",
       exception: "#ff4949",
@@ -39159,10 +39289,10 @@ var _sfc_main107 = defineComponent({
     const ns = useNamespace("progress");
     const barStyle = computed(() => {
       const barStyle2 = {
-        width: `${props.percentage}%`,
-        animationDuration: `${props.duration}s`
+        width: `${props2.percentage}%`,
+        animationDuration: `${props2.duration}s`
       };
-      const color = getCurrentColor(props.percentage);
+      const color = getCurrentColor(props2.percentage);
       if (color.includes("gradient")) {
         barStyle2.background = color;
       } else {
@@ -39170,16 +39300,16 @@ var _sfc_main107 = defineComponent({
       }
       return barStyle2;
     });
-    const relativeStrokeWidth = computed(() => (props.strokeWidth / props.width * 100).toFixed(1));
+    const relativeStrokeWidth = computed(() => (props2.strokeWidth / props2.width * 100).toFixed(1));
     const radius = computed(() => {
-      if (["circle", "dashboard"].includes(props.type)) {
+      if (["circle", "dashboard"].includes(props2.type)) {
         return Number.parseInt(`${50 - Number.parseFloat(relativeStrokeWidth.value) / 2}`, 10);
       }
       return 0;
     });
     const trackPath = computed(() => {
       const r = radius.value;
-      const isDashboard = props.type === "dashboard";
+      const isDashboard = props2.type === "dashboard";
       return `
           M 50 50
           m 0 ${isDashboard ? "" : "-"}${r}
@@ -39188,7 +39318,7 @@ var _sfc_main107 = defineComponent({
           `;
     });
     const perimeter = computed(() => 2 * Math.PI * radius.value);
-    const rate = computed(() => props.type === "dashboard" ? 0.75 : 1);
+    const rate = computed(() => props2.type === "dashboard" ? 0.75 : 1);
     const strokeDashoffset = computed(() => {
       const offset3 = -1 * perimeter.value * (1 - rate.value) / 2;
       return `${offset3}px`;
@@ -39198,33 +39328,33 @@ var _sfc_main107 = defineComponent({
       strokeDashoffset: strokeDashoffset.value
     }));
     const circlePathStyle = computed(() => ({
-      strokeDasharray: `${perimeter.value * rate.value * (props.percentage / 100)}px, ${perimeter.value}px`,
+      strokeDasharray: `${perimeter.value * rate.value * (props2.percentage / 100)}px, ${perimeter.value}px`,
       strokeDashoffset: strokeDashoffset.value,
       transition: "stroke-dasharray 0.6s ease 0s, stroke 0.6s ease, opacity ease 0.6s"
     }));
     const stroke = computed(() => {
       let ret;
-      if (props.color) {
-        ret = getCurrentColor(props.percentage);
+      if (props2.color) {
+        ret = getCurrentColor(props2.percentage);
       } else {
-        ret = STATUS_COLOR_MAP[props.status] || STATUS_COLOR_MAP.default;
+        ret = STATUS_COLOR_MAP[props2.status] || STATUS_COLOR_MAP.default;
       }
       return ret;
     });
     const statusIcon = computed(() => {
-      if (props.status === "warning") {
+      if (props2.status === "warning") {
         return warning_filled_default;
       }
-      if (props.type === "line") {
-        return props.status === "success" ? circle_check_default : circle_close_default;
+      if (props2.type === "line") {
+        return props2.status === "success" ? circle_check_default : circle_close_default;
       } else {
-        return props.status === "success" ? check_default : close_default;
+        return props2.status === "success" ? check_default : close_default;
       }
     });
     const progressTextSize = computed(() => {
-      return props.type === "line" ? 12 + props.strokeWidth * 0.4 : props.width * 0.111111 + 2;
+      return props2.type === "line" ? 12 + props2.strokeWidth * 0.4 : props2.width * 0.111111 + 2;
     });
-    const content = computed(() => props.format(props.percentage));
+    const content = computed(() => props2.format(props2.percentage));
     function getColors(color) {
       const span = 100 / color.length;
       const seriesColors = color.map((seriesColor, index) => {
@@ -39240,7 +39370,7 @@ var _sfc_main107 = defineComponent({
     }
     const getCurrentColor = (percentage) => {
       var _a2;
-      const { color } = props;
+      const { color } = props2;
       if (isFunction2(color)) {
         return color(percentage);
       } else if (isString2(color)) {
@@ -39344,10 +39474,10 @@ var _sfc_main107 = defineComponent({
 });
 var Progress = _export_sfc(_sfc_main107, [["__file", "progress.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/progress/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/progress/index.mjs
 var ElProgress = withInstall(Progress);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/rate/src/rate.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/rate/src/rate2.mjs
 var rateProps = buildProps({
   modelValue: {
     type: Number,
@@ -39424,7 +39554,7 @@ var rateEmits = {
   [UPDATE_MODEL_EVENT]: (value) => isNumber3(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/rate/src/rate2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/rate/src/rate.mjs
 var __default__74 = defineComponent({
   name: "ElRate"
 });
@@ -39433,7 +39563,7 @@ var _sfc_main108 = defineComponent({
   props: rateProps,
   emits: rateEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     function getValueFromMap(value, map2) {
       const isExcludedObject = (val) => isObject2(val);
       const matchedKeys = Object.keys(map2).map((key) => +key).filter((key) => {
@@ -39448,36 +39578,36 @@ var _sfc_main108 = defineComponent({
     const formItemContext = inject(formItemContextKey, void 0);
     const rateSize = useFormSize();
     const ns = useNamespace("rate");
-    const { inputId, isLabeledByFormItem } = useFormItemInputId(props, {
+    const { inputId, isLabeledByFormItem } = useFormItemInputId(props2, {
       formItemContext
     });
-    const currentValue = ref(props.modelValue);
+    const currentValue = ref(props2.modelValue);
     const hoverIndex = ref(-1);
     const pointerAtLeftHalf = ref(true);
     const rateClasses = computed(() => [ns.b(), ns.m(rateSize.value)]);
-    const rateDisabled = computed(() => props.disabled || (formContext == null ? void 0 : formContext.disabled));
+    const rateDisabled = computed(() => props2.disabled || (formContext == null ? void 0 : formContext.disabled));
     const rateStyles = computed(() => {
       return ns.cssVarBlock({
-        "void-color": props.voidColor,
-        "disabled-void-color": props.disabledVoidColor,
+        "void-color": props2.voidColor,
+        "disabled-void-color": props2.disabledVoidColor,
         "fill-color": activeColor.value
       });
     });
     const text = computed(() => {
       let result2 = "";
-      if (props.showScore) {
-        result2 = props.scoreTemplate.replace(/\{\s*value\s*\}/, rateDisabled.value ? `${props.modelValue}` : `${currentValue.value}`);
-      } else if (props.showText) {
-        result2 = props.texts[Math.ceil(currentValue.value) - 1];
+      if (props2.showScore) {
+        result2 = props2.scoreTemplate.replace(/\{\s*value\s*\}/, rateDisabled.value ? `${props2.modelValue}` : `${currentValue.value}`);
+      } else if (props2.showText) {
+        result2 = props2.texts[Math.ceil(currentValue.value) - 1];
       }
       return result2;
     });
-    const valueDecimal = computed(() => props.modelValue * 100 - Math.floor(props.modelValue) * 100);
-    const colorMap = computed(() => isArray(props.colors) ? {
-      [props.lowThreshold]: props.colors[0],
-      [props.highThreshold]: { value: props.colors[1], excluded: true },
-      [props.max]: props.colors[2]
-    } : props.colors);
+    const valueDecimal = computed(() => props2.modelValue * 100 - Math.floor(props2.modelValue) * 100);
+    const colorMap = computed(() => isArray(props2.colors) ? {
+      [props2.lowThreshold]: props2.colors[0],
+      [props2.highThreshold]: { value: props2.colors[1], excluded: true },
+      [props2.max]: props2.colors[2]
+    } : props2.colors);
     const activeColor = computed(() => {
       const color = getValueFromMap(currentValue.value, colorMap.value);
       return isObject2(color) ? "" : color;
@@ -39486,7 +39616,7 @@ var _sfc_main108 = defineComponent({
       let width = "";
       if (rateDisabled.value) {
         width = `${valueDecimal.value}%`;
-      } else if (props.allowHalf) {
+      } else if (props2.allowHalf) {
         width = "50%";
       }
       return {
@@ -39495,31 +39625,31 @@ var _sfc_main108 = defineComponent({
       };
     });
     const componentMap = computed(() => {
-      let icons = isArray(props.icons) ? [...props.icons] : { ...props.icons };
+      let icons = isArray(props2.icons) ? [...props2.icons] : { ...props2.icons };
       icons = markRaw(icons);
       return isArray(icons) ? {
-        [props.lowThreshold]: icons[0],
-        [props.highThreshold]: {
+        [props2.lowThreshold]: icons[0],
+        [props2.highThreshold]: {
           value: icons[1],
           excluded: true
         },
-        [props.max]: icons[2]
+        [props2.max]: icons[2]
       } : icons;
     });
-    const decimalIconComponent = computed(() => getValueFromMap(props.modelValue, componentMap.value));
-    const voidComponent = computed(() => rateDisabled.value ? isString2(props.disabledVoidIcon) ? props.disabledVoidIcon : markRaw(props.disabledVoidIcon) : isString2(props.voidIcon) ? props.voidIcon : markRaw(props.voidIcon));
+    const decimalIconComponent = computed(() => getValueFromMap(props2.modelValue, componentMap.value));
+    const voidComponent = computed(() => rateDisabled.value ? isString2(props2.disabledVoidIcon) ? props2.disabledVoidIcon : markRaw(props2.disabledVoidIcon) : isString2(props2.voidIcon) ? props2.voidIcon : markRaw(props2.voidIcon));
     const activeComponent = computed(() => getValueFromMap(currentValue.value, componentMap.value));
     function showDecimalIcon(item) {
-      const showWhenDisabled = rateDisabled.value && valueDecimal.value > 0 && item - 1 < props.modelValue && item > props.modelValue;
-      const showWhenAllowHalf = props.allowHalf && pointerAtLeftHalf.value && item - 0.5 <= currentValue.value && item > currentValue.value;
+      const showWhenDisabled = rateDisabled.value && valueDecimal.value > 0 && item - 1 < props2.modelValue && item > props2.modelValue;
+      const showWhenAllowHalf = props2.allowHalf && pointerAtLeftHalf.value && item - 0.5 <= currentValue.value && item > currentValue.value;
       return showWhenDisabled || showWhenAllowHalf;
     }
     function emitValue(value) {
-      if (props.clearable && value === props.modelValue) {
+      if (props2.clearable && value === props2.modelValue) {
         value = 0;
       }
       emit(UPDATE_MODEL_EVENT, value);
-      if (props.modelValue !== value) {
+      if (props2.modelValue !== value) {
         emit("change", value);
       }
     }
@@ -39527,7 +39657,7 @@ var _sfc_main108 = defineComponent({
       if (rateDisabled.value) {
         return;
       }
-      if (props.allowHalf && pointerAtLeftHalf.value) {
+      if (props2.allowHalf && pointerAtLeftHalf.value) {
         emitValue(currentValue.value);
       } else {
         emitValue(value);
@@ -39540,7 +39670,7 @@ var _sfc_main108 = defineComponent({
       let _currentValue = currentValue.value;
       const code = e.code;
       if (code === EVENT_CODE.up || code === EVENT_CODE.right) {
-        if (props.allowHalf) {
+        if (props2.allowHalf) {
           _currentValue += 0.5;
         } else {
           _currentValue += 1;
@@ -39548,7 +39678,7 @@ var _sfc_main108 = defineComponent({
         e.stopPropagation();
         e.preventDefault();
       } else if (code === EVENT_CODE.left || code === EVENT_CODE.down) {
-        if (props.allowHalf) {
+        if (props2.allowHalf) {
           _currentValue -= 0.5;
         } else {
           _currentValue -= 1;
@@ -39557,7 +39687,7 @@ var _sfc_main108 = defineComponent({
         e.preventDefault();
       }
       _currentValue = _currentValue < 0 ? 0 : _currentValue;
-      _currentValue = _currentValue > props.max ? props.max : _currentValue;
+      _currentValue = _currentValue > props2.max ? props2.max : _currentValue;
       emit(UPDATE_MODEL_EVENT, _currentValue);
       emit("change", _currentValue);
       return _currentValue;
@@ -39566,7 +39696,7 @@ var _sfc_main108 = defineComponent({
       if (rateDisabled.value) {
         return;
       }
-      if (props.allowHalf && event) {
+      if (props2.allowHalf && event) {
         let target2 = event.target;
         if (hasClass(target2, ns.e("item"))) {
           target2 = target2.querySelector(`.${ns.e("icon")}`);
@@ -39585,17 +39715,17 @@ var _sfc_main108 = defineComponent({
       if (rateDisabled.value) {
         return;
       }
-      if (props.allowHalf) {
-        pointerAtLeftHalf.value = props.modelValue !== Math.floor(props.modelValue);
+      if (props2.allowHalf) {
+        pointerAtLeftHalf.value = props2.modelValue !== Math.floor(props2.modelValue);
       }
-      currentValue.value = props.modelValue;
+      currentValue.value = props2.modelValue;
       hoverIndex.value = -1;
     }
-    watch(() => props.modelValue, (val) => {
+    watch(() => props2.modelValue, (val) => {
       currentValue.value = val;
-      pointerAtLeftHalf.value = props.modelValue !== Math.floor(props.modelValue);
+      pointerAtLeftHalf.value = props2.modelValue !== Math.floor(props2.modelValue);
     });
-    if (!props.modelValue) {
+    if (!props2.modelValue) {
       emit(UPDATE_MODEL_EVENT, 0);
     }
     expose({
@@ -39672,10 +39802,10 @@ var _sfc_main108 = defineComponent({
 });
 var Rate = _export_sfc(_sfc_main108, [["__file", "rate.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/rate/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/rate/index.mjs
 var ElRate = withInstall(Rate);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/result/src/result.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/result/src/result.mjs
 var IconMap = {
   success: "icon-success",
   warning: "icon-warning",
@@ -39704,7 +39834,7 @@ var resultProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/result/src/result2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/result/src/result2.mjs
 var __default__75 = defineComponent({
   name: "ElResult"
 });
@@ -39712,10 +39842,10 @@ var _sfc_main109 = defineComponent({
   ...__default__75,
   props: resultProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("result");
     const resultIcon = computed(() => {
-      const icon = props.icon;
+      const icon = props2.icon;
       const iconClass = icon && IconMap[icon] ? IconMap[icon] : "icon-info";
       const iconComponent = IconComponentMap[iconClass] || IconComponentMap["icon-info"];
       return {
@@ -39765,7 +39895,7 @@ var _sfc_main109 = defineComponent({
 });
 var Result = _export_sfc(_sfc_main109, [["__file", "result.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/result/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/result/index.mjs
 var ElResult = withInstall(Result);
 
 // ../node_modules/.pnpm/memoize-one@6.0.0/node_modules/memoize-one/dist/memoize-one.esm.js
@@ -39819,17 +39949,17 @@ function memoizeOne(resultFn, isEqual3) {
   return memoized;
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/hooks/use-cache.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/hooks/use-cache.mjs
 var useCache = () => {
   const vm = getCurrentInstance();
-  const props = vm.proxy.$props;
+  const props2 = vm.proxy.$props;
   return computed(() => {
     const _getItemStyleCache = (_2, __, ___) => ({});
-    return props.perfMode ? memoize_default(_getItemStyleCache) : memoizeOne(_getItemStyleCache);
+    return props2.perfMode ? memoize_default(_getItemStyleCache) : memoizeOne(_getItemStyleCache);
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/defaults.mjs
 var DEFAULT_DYNAMIC_LIST_ITEM_SIZE = 50;
 var ITEM_RENDER_EVT = "itemRendered";
 var SCROLL_EVT = "scroll";
@@ -39861,7 +39991,7 @@ var ScrollbarDirKey = {
 };
 var SCROLLBAR_MIN_SIZE = 20;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/hooks/use-wheel.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/hooks/use-wheel.mjs
 var LayoutKeys = {
   [HORIZONTAL]: "deltaX",
   [VERTICAL]: "deltaY"
@@ -39893,7 +40023,7 @@ var useWheel = ({ atEndEdge, atStartEdge, layout: layout2 }, onWheelDelta) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/props.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/props.mjs
 var itemSize = buildProp({
   type: definePropType([Number, Function]),
   required: true
@@ -40028,7 +40158,7 @@ var virtualizedScrollbarProps = buildProps({
   visible: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/utils.mjs
 var getScrollDir = (prev, cur) => prev < cur ? FORWARD : BACKWARD;
 var isHorizontal = (dir) => dir === LTR || dir === RTL || dir === HORIZONTAL;
 var isRTL2 = (dir) => dir === RTL;
@@ -40077,13 +40207,13 @@ function renderThumbStyle2({ move, size: size3, bar }, layout2) {
   return style;
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/components/scrollbar.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/components/scrollbar.mjs
 var ScrollBar = defineComponent({
   name: "ElVirtualScrollBar",
   props: virtualizedScrollbarProps,
   emits: ["scroll", "start-move", "stop-move"],
-  setup(props, { emit }) {
-    const GAP2 = computed(() => props.startGap + props.endGap);
+  setup(props2, { emit }) {
+    const GAP2 = computed(() => props2.startGap + props2.endGap);
     const nsVirtualScrollbar = useNamespace("virtual-scrollbar");
     const nsScrollbar = useNamespace("scrollbar");
     const trackRef = ref();
@@ -40094,20 +40224,20 @@ var ScrollBar = defineComponent({
       isDragging: false,
       traveled: 0
     });
-    const bar = computed(() => BAR_MAP[props.layout]);
-    const trackSize = computed(() => props.clientSize - unref(GAP2));
+    const bar = computed(() => BAR_MAP[props2.layout]);
+    const trackSize = computed(() => props2.clientSize - unref(GAP2));
     const trackStyle = computed(() => ({
       position: "absolute",
-      width: `${HORIZONTAL === props.layout ? trackSize.value : props.scrollbarSize}px`,
-      height: `${HORIZONTAL === props.layout ? props.scrollbarSize : trackSize.value}px`,
-      [ScrollbarDirKey[props.layout]]: "2px",
+      width: `${HORIZONTAL === props2.layout ? trackSize.value : props2.scrollbarSize}px`,
+      height: `${HORIZONTAL === props2.layout ? props2.scrollbarSize : trackSize.value}px`,
+      [ScrollbarDirKey[props2.layout]]: "2px",
       right: "2px",
       bottom: "2px",
       borderRadius: "4px"
     }));
     const thumbSize = computed(() => {
-      const ratio = props.ratio;
-      const clientSize = props.clientSize;
+      const ratio = props2.ratio;
+      const clientSize = props2.clientSize;
       if (ratio >= 100) {
         return Number.POSITIVE_INFINITY;
       }
@@ -40128,10 +40258,10 @@ var ScrollBar = defineComponent({
         bar: bar.value,
         size: thumb,
         move: state.traveled
-      }, props.layout);
+      }, props2.layout);
       return style;
     });
-    const totalSteps = computed(() => Math.floor(props.clientSize - thumbSize.value - unref(GAP2)));
+    const totalSteps = computed(() => Math.floor(props2.clientSize - thumbSize.value - unref(GAP2)));
     const attachEvents2 = () => {
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
@@ -40184,7 +40314,7 @@ var ScrollBar = defineComponent({
       const thumbClickPosition = thumbRef.value[bar.value.offset] - prevPage;
       const distance = offset3 - thumbClickPosition;
       frameHandle = rAF(() => {
-        state.traveled = Math.max(props.startGap, Math.min(distance, totalSteps.value));
+        state.traveled = Math.max(props2.startGap, Math.min(distance, totalSteps.value));
         emit("scroll", distance, totalSteps.value);
       });
     };
@@ -40195,7 +40325,7 @@ var ScrollBar = defineComponent({
       state.traveled = Math.max(0, Math.min(distance, totalSteps.value));
       emit("scroll", distance, totalSteps.value);
     };
-    watch(() => props.scrollFrom, (v2) => {
+    watch(() => props2.scrollFrom, (v2) => {
       if (state.isDragging)
         return;
       state.traveled = Math.ceil(v2 * totalSteps.value);
@@ -40209,8 +40339,8 @@ var ScrollBar = defineComponent({
         ref: trackRef,
         class: [
           nsVirtualScrollbar.b(),
-          props.class,
-          (props.alwaysOn || state.isDragging) && "always-on"
+          props2.class,
+          (props2.alwaysOn || state.isDragging) && "always-on"
         ],
         style: trackStyle.value,
         onMousedown: withModifiers(clickTrackHandler, ["stop", "prevent"]),
@@ -40225,7 +40355,7 @@ var ScrollBar = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/builders/build-list.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/builders/build-list.mjs
 var createList = ({
   name,
   getOffset: getOffset3,
@@ -40242,11 +40372,11 @@ var createList = ({
     name: name != null ? name : "ElVirtualList",
     props: virtualizedListProps,
     emits: [ITEM_RENDER_EVT, SCROLL_EVT],
-    setup(props, { emit, expose }) {
-      validateProps(props);
+    setup(props2, { emit, expose }) {
+      validateProps(props2);
       const instance = getCurrentInstance();
       const ns = useNamespace("vl");
-      const dynamicSizeCache = ref(initCache(props, instance));
+      const dynamicSizeCache = ref(initCache(props2, instance));
       const getItemStyleCache = useCache();
       const windowRef = ref();
       const innerRef = ref();
@@ -40254,19 +40384,19 @@ var createList = ({
       const states = ref({
         isScrolling: false,
         scrollDir: "forward",
-        scrollOffset: isNumber3(props.initScrollOffset) ? props.initScrollOffset : 0,
+        scrollOffset: isNumber3(props2.initScrollOffset) ? props2.initScrollOffset : 0,
         updateRequested: false,
         isScrollbarDragging: false,
-        scrollbarAlwaysOn: props.scrollbarAlwaysOn
+        scrollbarAlwaysOn: props2.scrollbarAlwaysOn
       });
       const itemsToRender = computed(() => {
-        const { total: total2, cache: cache2 } = props;
+        const { total: total2, cache: cache2 } = props2;
         const { isScrolling, scrollDir, scrollOffset } = unref(states);
         if (total2 === 0) {
           return [0, 0, 0, 0];
         }
-        const startIndex = getStartIndexForOffset(props, scrollOffset, unref(dynamicSizeCache));
-        const stopIndex = getStopIndexForStartIndex(props, startIndex, scrollOffset, unref(dynamicSizeCache));
+        const startIndex = getStartIndexForOffset(props2, scrollOffset, unref(dynamicSizeCache));
+        const stopIndex = getStopIndexForStartIndex(props2, startIndex, scrollOffset, unref(dynamicSizeCache));
         const cacheBackward = !isScrolling || scrollDir === BACKWARD ? Math.max(1, cache2) : 1;
         const cacheForward = !isScrolling || scrollDir === FORWARD ? Math.max(1, cache2) : 1;
         return [
@@ -40276,8 +40406,8 @@ var createList = ({
           stopIndex
         ];
       });
-      const estimatedTotalSize = computed(() => getEstimatedTotalSize2(props, unref(dynamicSizeCache)));
-      const _isHorizontal = computed(() => isHorizontal(props.layout));
+      const estimatedTotalSize = computed(() => getEstimatedTotalSize2(props2, unref(dynamicSizeCache)));
+      const _isHorizontal = computed(() => isHorizontal(props2.layout));
       const windowStyle = computed(() => [
         {
           position: "relative",
@@ -40286,11 +40416,11 @@ var createList = ({
           willChange: "transform"
         },
         {
-          direction: props.direction,
-          height: isNumber3(props.height) ? `${props.height}px` : props.height,
-          width: isNumber3(props.width) ? `${props.width}px` : props.width
+          direction: props2.direction,
+          height: isNumber3(props2.height) ? `${props2.height}px` : props2.height,
+          width: isNumber3(props2.width) ? `${props2.width}px` : props2.width
         },
-        props.style
+        props2.style
       ]);
       const innerStyle = computed(() => {
         const size3 = unref(estimatedTotalSize);
@@ -40301,11 +40431,11 @@ var createList = ({
           width: horizontal ? `${size3}px` : "100%"
         };
       });
-      const clientSize = computed(() => _isHorizontal.value ? props.width : props.height);
+      const clientSize = computed(() => _isHorizontal.value ? props2.width : props2.height);
       const { onWheel } = useWheel({
         atStartEdge: computed(() => states.value.scrollOffset <= 0),
         atEndEdge: computed(() => states.value.scrollOffset >= estimatedTotalSize.value),
-        layout: computed(() => props.layout)
+        layout: computed(() => props2.layout)
       }, (offset3) => {
         var _a2, _b;
         ;
@@ -40316,7 +40446,7 @@ var createList = ({
         passive: false
       });
       const emitEvents = () => {
-        const { total: total2 } = props;
+        const { total: total2 } = props2;
         if (total2 > 0) {
           const [cacheStart, cacheEnd, visibleStart, visibleEnd] = unref(itemsToRender);
           emit(ITEM_RENDER_EVT, cacheStart, cacheEnd, visibleStart, visibleEnd);
@@ -40346,7 +40476,7 @@ var createList = ({
         if (_states.scrollOffset === scrollLeft) {
           return;
         }
-        const { direction: direction2 } = props;
+        const { direction: direction2 } = props2;
         let scrollOffset = scrollLeft;
         if (direction2 === RTL) {
           switch (getRTLOffsetType()) {
@@ -40393,18 +40523,18 @@ var createList = ({
       };
       const scrollToItem = (idx, alignment = AUTO_ALIGNMENT) => {
         const { scrollOffset } = unref(states);
-        idx = Math.max(0, Math.min(idx, props.total - 1));
-        scrollTo(getOffset3(props, idx, alignment, scrollOffset, unref(dynamicSizeCache)));
+        idx = Math.max(0, Math.min(idx, props2.total - 1));
+        scrollTo(getOffset3(props2, idx, alignment, scrollOffset, unref(dynamicSizeCache)));
       };
       const getItemStyle = (idx) => {
-        const { direction: direction2, itemSize: itemSize3, layout: layout2 } = props;
+        const { direction: direction2, itemSize: itemSize3, layout: layout2 } = props2;
         const itemStyleCache = getItemStyleCache.value(clearCache && itemSize3, clearCache && layout2, clearCache && direction2);
         let style;
         if (hasOwn2(itemStyleCache, String(idx))) {
           style = itemStyleCache[idx];
         } else {
-          const offset3 = getItemOffset(props, idx, unref(dynamicSizeCache));
-          const size3 = getItemSize(props, idx, unref(dynamicSizeCache));
+          const offset3 = getItemOffset(props2, idx, unref(dynamicSizeCache));
+          const size3 = getItemSize(props2, idx, unref(dynamicSizeCache));
           const horizontal = unref(_isHorizontal);
           const isRtl = direction2 === RTL;
           const offsetHorizontal = horizontal ? offset3 : 0;
@@ -40434,7 +40564,7 @@ var createList = ({
       onMounted(() => {
         if (!isClient)
           return;
-        const { initScrollOffset: initScrollOffset2 } = props;
+        const { initScrollOffset: initScrollOffset2 } = props2;
         const windowElement = unref(windowRef);
         if (isNumber3(initScrollOffset2) && windowElement) {
           if (unref(_isHorizontal)) {
@@ -40446,7 +40576,7 @@ var createList = ({
         emitEvents();
       });
       onUpdated(() => {
-        const { direction: direction2, layout: layout2 } = props;
+        const { direction: direction2, layout: layout2 } = props2;
         const { scrollOffset, updateRequested } = unref(states);
         const windowElement = unref(windowRef);
         if (updateRequested && windowElement) {
@@ -40575,7 +40705,7 @@ var createList = ({
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-list.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-list.mjs
 var FixedSizeList = createList({
   name: "ElFixedSizeList",
   getItemOffset: ({ itemSize: itemSize3 }, index) => index * itemSize3,
@@ -40645,10 +40775,10 @@ var FixedSizeList = createList({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-list.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-list.mjs
 var SCOPE5 = "ElDynamicSizeList";
-var getItemFromCache = (props, index, listCache) => {
-  const { itemSize: itemSize3 } = props;
+var getItemFromCache = (props2, index, listCache) => {
+  const { itemSize: itemSize3 } = props2;
   const { items, lastVisitedIndex } = listCache;
   if (index > lastVisitedIndex) {
     let offset3 = 0;
@@ -40668,18 +40798,18 @@ var getItemFromCache = (props, index, listCache) => {
   }
   return items[index];
 };
-var findItem = (props, listCache, offset3) => {
+var findItem = (props2, listCache, offset3) => {
   const { items, lastVisitedIndex } = listCache;
   const lastVisitedOffset = lastVisitedIndex > 0 ? items[lastVisitedIndex].offset : 0;
   if (lastVisitedOffset >= offset3) {
-    return bs(props, listCache, 0, lastVisitedIndex, offset3);
+    return bs(props2, listCache, 0, lastVisitedIndex, offset3);
   }
-  return es(props, listCache, Math.max(0, lastVisitedIndex), offset3);
+  return es(props2, listCache, Math.max(0, lastVisitedIndex), offset3);
 };
-var bs = (props, listCache, low, high, offset3) => {
+var bs = (props2, listCache, low, high, offset3) => {
   while (low <= high) {
     const mid = low + Math.floor((high - low) / 2);
-    const currentOffset = getItemFromCache(props, mid, listCache).offset;
+    const currentOffset = getItemFromCache(props2, mid, listCache).offset;
     if (currentOffset === offset3) {
       return mid;
     } else if (currentOffset < offset3) {
@@ -40690,14 +40820,14 @@ var bs = (props, listCache, low, high, offset3) => {
   }
   return Math.max(0, low - 1);
 };
-var es = (props, listCache, index, offset3) => {
-  const { total: total2 } = props;
+var es = (props2, listCache, index, offset3) => {
+  const { total: total2 } = props2;
   let exponent = 1;
-  while (index < total2 && getItemFromCache(props, index, listCache).offset < offset3) {
+  while (index < total2 && getItemFromCache(props2, index, listCache).offset < offset3) {
     index += exponent;
     exponent *= 2;
   }
-  return bs(props, listCache, Math.floor(index / 2), Math.min(index, total2 - 1), offset3);
+  return bs(props2, listCache, Math.floor(index / 2), Math.min(index, total2 - 1), offset3);
 };
 var getEstimatedTotalSize = ({ total: total2 }, { items, estimatedItemSize: estimatedItemSize2, lastVisitedIndex }) => {
   let totalSizeOfMeasuredItems = 0;
@@ -40714,14 +40844,14 @@ var getEstimatedTotalSize = ({ total: total2 }, { items, estimatedItemSize: esti
 };
 var DynamicSizeList = createList({
   name: "ElDynamicSizeList",
-  getItemOffset: (props, index, listCache) => getItemFromCache(props, index, listCache).offset,
+  getItemOffset: (props2, index, listCache) => getItemFromCache(props2, index, listCache).offset,
   getItemSize: (_2, index, { items }) => items[index].size,
   getEstimatedTotalSize,
-  getOffset: (props, index, alignment, scrollOffset, listCache) => {
-    const { height, layout: layout2, width } = props;
+  getOffset: (props2, index, alignment, scrollOffset, listCache) => {
+    const { height, layout: layout2, width } = props2;
     const size3 = isHorizontal(layout2) ? width : height;
-    const item = getItemFromCache(props, index, listCache);
-    const estimatedTotalSize = getEstimatedTotalSize(props, listCache);
+    const item = getItemFromCache(props2, index, listCache);
+    const estimatedTotalSize = getEstimatedTotalSize(props2, listCache);
     const maxOffset = Math.max(0, Math.min(estimatedTotalSize - size3, item.offset));
     const minOffset = Math.max(0, item.offset - size3 + item.size);
     if (alignment === SMART_ALIGNMENT) {
@@ -40753,17 +40883,17 @@ var DynamicSizeList = createList({
       }
     }
   },
-  getStartIndexForOffset: (props, offset3, listCache) => findItem(props, listCache, offset3),
-  getStopIndexForStartIndex: (props, startIndex, scrollOffset, listCache) => {
-    const { height, total: total2, layout: layout2, width } = props;
+  getStartIndexForOffset: (props2, offset3, listCache) => findItem(props2, listCache, offset3),
+  getStopIndexForStartIndex: (props2, startIndex, scrollOffset, listCache) => {
+    const { height, total: total2, layout: layout2, width } = props2;
     const size3 = isHorizontal(layout2) ? width : height;
-    const item = getItemFromCache(props, startIndex, listCache);
+    const item = getItemFromCache(props2, startIndex, listCache);
     const maxOffset = scrollOffset + size3;
     let offset3 = item.offset + item.size;
     let stopIndex = startIndex;
     while (stopIndex < total2 - 1 && offset3 < maxOffset) {
       stopIndex++;
-      offset3 += getItemFromCache(props, stopIndex, listCache).size;
+      offset3 += getItemFromCache(props2, stopIndex, listCache).size;
     }
     return stopIndex;
   },
@@ -40795,7 +40925,7 @@ var DynamicSizeList = createList({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/hooks/use-grid-wheel.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/hooks/use-grid-wheel.mjs
 var useGridWheel = ({ atXEndEdge, atXStartEdge, atYEndEdge, atYStartEdge }, onWheelDelta) => {
   let frameHandle = null;
   let xOffset = 0;
@@ -40835,7 +40965,7 @@ var useGridWheel = ({ atXEndEdge, atXStartEdge, atYEndEdge, atYStartEdge }, onWh
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/builders/build-grid.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/builders/build-grid.mjs
 var createGrid = ({
   name,
   clearCache,
@@ -40857,11 +40987,11 @@ var createGrid = ({
     name: name != null ? name : "ElVirtualList",
     props: virtualizedGridProps,
     emits: [ITEM_RENDER_EVT, SCROLL_EVT],
-    setup(props, { emit, expose, slots }) {
+    setup(props2, { emit, expose, slots }) {
       const ns = useNamespace("vl");
-      validateProps(props);
+      validateProps(props2);
       const instance = getCurrentInstance();
-      const cache2 = ref(initCache(props, instance));
+      const cache2 = ref(initCache(props2, instance));
       injectToInstance == null ? void 0 : injectToInstance(instance, cache2);
       const windowRef = ref();
       const hScrollbar = ref();
@@ -40869,23 +40999,23 @@ var createGrid = ({
       const innerRef = ref(null);
       const states = ref({
         isScrolling: false,
-        scrollLeft: isNumber3(props.initScrollLeft) ? props.initScrollLeft : 0,
-        scrollTop: isNumber3(props.initScrollTop) ? props.initScrollTop : 0,
+        scrollLeft: isNumber3(props2.initScrollLeft) ? props2.initScrollLeft : 0,
+        scrollTop: isNumber3(props2.initScrollTop) ? props2.initScrollTop : 0,
         updateRequested: false,
         xAxisScrollDir: FORWARD,
         yAxisScrollDir: FORWARD
       });
       const getItemStyleCache = useCache();
-      const parsedHeight = computed(() => Number.parseInt(`${props.height}`, 10));
-      const parsedWidth = computed(() => Number.parseInt(`${props.width}`, 10));
+      const parsedHeight = computed(() => Number.parseInt(`${props2.height}`, 10));
+      const parsedWidth = computed(() => Number.parseInt(`${props2.width}`, 10));
       const columnsToRender = computed(() => {
-        const { totalColumn, totalRow, columnCache } = props;
+        const { totalColumn, totalRow, columnCache } = props2;
         const { isScrolling, xAxisScrollDir, scrollLeft } = unref(states);
         if (totalColumn === 0 || totalRow === 0) {
           return [0, 0, 0, 0];
         }
-        const startIndex = getColumnStartIndexForOffset(props, scrollLeft, unref(cache2));
-        const stopIndex = getColumnStopIndexForStartIndex(props, startIndex, scrollLeft, unref(cache2));
+        const startIndex = getColumnStartIndexForOffset(props2, scrollLeft, unref(cache2));
+        const stopIndex = getColumnStopIndexForStartIndex(props2, startIndex, scrollLeft, unref(cache2));
         const cacheBackward = !isScrolling || xAxisScrollDir === BACKWARD ? Math.max(1, columnCache) : 1;
         const cacheForward = !isScrolling || xAxisScrollDir === FORWARD ? Math.max(1, columnCache) : 1;
         return [
@@ -40896,13 +41026,13 @@ var createGrid = ({
         ];
       });
       const rowsToRender = computed(() => {
-        const { totalColumn, totalRow, rowCache } = props;
+        const { totalColumn, totalRow, rowCache } = props2;
         const { isScrolling, yAxisScrollDir, scrollTop } = unref(states);
         if (totalColumn === 0 || totalRow === 0) {
           return [0, 0, 0, 0];
         }
-        const startIndex = getRowStartIndexForOffset(props, scrollTop, unref(cache2));
-        const stopIndex = getRowStopIndexForStartIndex(props, startIndex, scrollTop, unref(cache2));
+        const startIndex = getRowStartIndexForOffset(props2, scrollTop, unref(cache2));
+        const stopIndex = getRowStopIndexForStartIndex(props2, startIndex, scrollTop, unref(cache2));
         const cacheBackward = !isScrolling || yAxisScrollDir === BACKWARD ? Math.max(1, rowCache) : 1;
         const cacheForward = !isScrolling || yAxisScrollDir === FORWARD ? Math.max(1, rowCache) : 1;
         return [
@@ -40912,8 +41042,8 @@ var createGrid = ({
           stopIndex
         ];
       });
-      const estimatedTotalHeight = computed(() => getEstimatedTotalHeight2(props, unref(cache2)));
-      const estimatedTotalWidth = computed(() => getEstimatedTotalWidth2(props, unref(cache2)));
+      const estimatedTotalHeight = computed(() => getEstimatedTotalHeight2(props2, unref(cache2)));
+      const estimatedTotalWidth = computed(() => getEstimatedTotalWidth2(props2, unref(cache2)));
       const windowStyle = computed(() => {
         var _a2;
         return [
@@ -40924,11 +41054,11 @@ var createGrid = ({
             willChange: "transform"
           },
           {
-            direction: props.direction,
-            height: isNumber3(props.height) ? `${props.height}px` : props.height,
-            width: isNumber3(props.width) ? `${props.width}px` : props.width
+            direction: props2.direction,
+            height: isNumber3(props2.height) ? `${props2.height}px` : props2.height,
+            width: isNumber3(props2.width) ? `${props2.width}px` : props2.width
           },
-          (_a2 = props.style) != null ? _a2 : {}
+          (_a2 = props2.style) != null ? _a2 : {}
         ];
       });
       const innerStyle = computed(() => {
@@ -40941,7 +41071,7 @@ var createGrid = ({
         };
       });
       const emitEvents = () => {
-        const { totalColumn, totalRow } = props;
+        const { totalColumn, totalRow } = props2;
         if (totalColumn > 0 && totalRow > 0) {
           const [
             columnCacheStart,
@@ -40990,7 +41120,7 @@ var createGrid = ({
           return;
         }
         let _scrollLeft = scrollLeft;
-        if (isRTL2(props.direction)) {
+        if (isRTL2(props2.direction)) {
           switch (getRTLOffsetType()) {
             case RTL_OFFSET_NAG:
               _scrollLeft = -scrollLeft;
@@ -41070,29 +41200,29 @@ var createGrid = ({
       };
       const scrollToItem = (rowIndex = 0, columnIdx = 0, alignment = AUTO_ALIGNMENT) => {
         const _states = unref(states);
-        columnIdx = Math.max(0, Math.min(columnIdx, props.totalColumn - 1));
-        rowIndex = Math.max(0, Math.min(rowIndex, props.totalRow - 1));
+        columnIdx = Math.max(0, Math.min(columnIdx, props2.totalColumn - 1));
+        rowIndex = Math.max(0, Math.min(rowIndex, props2.totalRow - 1));
         const scrollBarWidth2 = getScrollBarWidth(ns.namespace.value);
         const _cache = unref(cache2);
-        const estimatedHeight = getEstimatedTotalHeight2(props, _cache);
-        const estimatedWidth = getEstimatedTotalWidth2(props, _cache);
+        const estimatedHeight = getEstimatedTotalHeight2(props2, _cache);
+        const estimatedWidth = getEstimatedTotalWidth2(props2, _cache);
         scrollTo({
-          scrollLeft: getColumnOffset(props, columnIdx, alignment, _states.scrollLeft, _cache, estimatedWidth > props.width ? scrollBarWidth2 : 0),
-          scrollTop: getRowOffset(props, rowIndex, alignment, _states.scrollTop, _cache, estimatedHeight > props.height ? scrollBarWidth2 : 0)
+          scrollLeft: getColumnOffset(props2, columnIdx, alignment, _states.scrollLeft, _cache, estimatedWidth > props2.width ? scrollBarWidth2 : 0),
+          scrollTop: getRowOffset(props2, rowIndex, alignment, _states.scrollTop, _cache, estimatedHeight > props2.height ? scrollBarWidth2 : 0)
         });
       };
       const getItemStyle = (rowIndex, columnIndex) => {
-        const { columnWidth, direction: direction2, rowHeight } = props;
+        const { columnWidth, direction: direction2, rowHeight } = props2;
         const itemStyleCache = getItemStyleCache.value(clearCache && columnWidth, clearCache && rowHeight, clearCache && direction2);
         const key = `${rowIndex},${columnIndex}`;
         if (hasOwn2(itemStyleCache, key)) {
           return itemStyleCache[key];
         } else {
-          const [, left2] = getColumnPosition(props, columnIndex, unref(cache2));
+          const [, left2] = getColumnPosition(props2, columnIndex, unref(cache2));
           const _cache = unref(cache2);
           const rtl = isRTL2(direction2);
-          const [height, top] = getRowPosition(props, rowIndex, _cache);
-          const [width] = getColumnPosition(props, columnIndex, _cache);
+          const [height, top] = getRowPosition(props2, rowIndex, _cache);
+          const [width] = getColumnPosition(props2, columnIndex, _cache);
           itemStyleCache[key] = {
             position: "absolute",
             left: rtl ? void 0 : `${left2}px`,
@@ -41113,7 +41243,7 @@ var createGrid = ({
       onMounted(() => {
         if (!isClient)
           return;
-        const { initScrollLeft, initScrollTop } = props;
+        const { initScrollLeft, initScrollTop } = props2;
         const windowElement = unref(windowRef);
         if (windowElement) {
           if (isNumber3(initScrollLeft)) {
@@ -41126,7 +41256,7 @@ var createGrid = ({
         emitEvents();
       });
       const onUpdated2 = () => {
-        const { direction: direction2 } = props;
+        const { direction: direction2 } = props2;
         const { scrollLeft, scrollTop, updateRequested } = unref(states);
         const windowElement = unref(windowRef);
         if (updateRequested && windowElement) {
@@ -41171,7 +41301,7 @@ var createGrid = ({
           scrollbarEndGap,
           totalColumn,
           totalRow
-        } = props;
+        } = props2;
         const width = unref(parsedWidth);
         const height = unref(parsedHeight);
         const estimatedWidth = unref(estimatedTotalWidth);
@@ -41214,7 +41344,7 @@ var createGrid = ({
         var _a2;
         const [columnStart, columnEnd] = unref(columnsToRender);
         const [rowStart, rowEnd] = unref(rowsToRender);
-        const { data, totalColumn, totalRow, useIsScrolling, itemKey } = props;
+        const { data, totalColumn, totalRow, useIsScrolling, itemKey } = props2;
         const children = [];
         if (totalRow > 0 && totalColumn > 0) {
           for (let row = rowStart; row <= rowEnd; row++) {
@@ -41233,7 +41363,7 @@ var createGrid = ({
         return children;
       };
       const renderInner = () => {
-        const Inner = resolveDynamicComponent(props.innerElement);
+        const Inner = resolveDynamicComponent(props2.innerElement);
         const children = renderItems();
         return [
           h(Inner, {
@@ -41245,16 +41375,16 @@ var createGrid = ({
         ];
       };
       const renderWindow = () => {
-        const Container2 = resolveDynamicComponent(props.containerElement);
+        const Container2 = resolveDynamicComponent(props2.containerElement);
         const { horizontalScrollbar, verticalScrollbar } = renderScrollbars();
         const Inner = renderInner();
         return h("div", {
           key: 0,
           class: ns.e("wrapper"),
-          role: props.role
+          role: props2.role
         }, [
           h(Container2, {
-            class: props.className,
+            class: props2.className,
             style: unref(windowStyle),
             onScroll,
             ref: windowRef
@@ -41268,7 +41398,7 @@ var createGrid = ({
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-grid.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-grid.mjs
 var SCOPE6 = "ElFixedSizeGrid";
 var FixedSizeGrid = createGrid({
   name: "ElFixedSizeGrid",
@@ -41394,7 +41524,7 @@ var FixedSizeGrid = createGrid({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-grid.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-grid.mjs
 var { max: max3, min: min3, floor: floor3 } = Math;
 var SCOPE7 = "ElDynamicSizeGrid";
 var ACCESS_SIZER_KEY_MAP = {
@@ -41405,10 +41535,10 @@ var ACCESS_LAST_VISITED_KEY_MAP = {
   column: "lastVisitedColumnIndex",
   row: "lastVisitedRowIndex"
 };
-var getItemFromCache2 = (props, index, gridCache, type4) => {
+var getItemFromCache2 = (props2, index, gridCache, type4) => {
   const [cachedItems, sizer, lastVisited] = [
     gridCache[type4],
-    props[ACCESS_SIZER_KEY_MAP[type4]],
+    props2[ACCESS_SIZER_KEY_MAP[type4]],
     gridCache[ACCESS_LAST_VISITED_KEY_MAP[type4]]
   ];
   if (index > lastVisited) {
@@ -41429,10 +41559,10 @@ var getItemFromCache2 = (props, index, gridCache, type4) => {
   }
   return cachedItems[index];
 };
-var bs2 = (props, gridCache, low, high, offset3, type4) => {
+var bs2 = (props2, gridCache, low, high, offset3, type4) => {
   while (low <= high) {
     const mid = low + floor3((high - low) / 2);
-    const currentOffset = getItemFromCache2(props, mid, gridCache, type4).offset;
+    const currentOffset = getItemFromCache2(props2, mid, gridCache, type4).offset;
     if (currentOffset === offset3) {
       return mid;
     } else if (currentOffset < offset3) {
@@ -41443,25 +41573,25 @@ var bs2 = (props, gridCache, low, high, offset3, type4) => {
   }
   return max3(0, low - 1);
 };
-var es2 = (props, gridCache, idx, offset3, type4) => {
-  const total2 = type4 === "column" ? props.totalColumn : props.totalRow;
+var es2 = (props2, gridCache, idx, offset3, type4) => {
+  const total2 = type4 === "column" ? props2.totalColumn : props2.totalRow;
   let exponent = 1;
-  while (idx < total2 && getItemFromCache2(props, idx, gridCache, type4).offset < offset3) {
+  while (idx < total2 && getItemFromCache2(props2, idx, gridCache, type4).offset < offset3) {
     idx += exponent;
     exponent *= 2;
   }
-  return bs2(props, gridCache, floor3(idx / 2), min3(idx, total2 - 1), offset3, type4);
+  return bs2(props2, gridCache, floor3(idx / 2), min3(idx, total2 - 1), offset3, type4);
 };
-var findItem2 = (props, gridCache, offset3, type4) => {
+var findItem2 = (props2, gridCache, offset3, type4) => {
   const [cache2, lastVisitedIndex] = [
     gridCache[type4],
     gridCache[ACCESS_LAST_VISITED_KEY_MAP[type4]]
   ];
   const lastVisitedItemOffset = lastVisitedIndex > 0 ? cache2[lastVisitedIndex].offset : 0;
   if (lastVisitedItemOffset >= offset3) {
-    return bs2(props, gridCache, 0, lastVisitedIndex, offset3, type4);
+    return bs2(props2, gridCache, 0, lastVisitedIndex, offset3, type4);
   }
-  return es2(props, gridCache, max3(0, lastVisitedIndex), offset3, type4);
+  return es2(props2, gridCache, max3(0, lastVisitedIndex), offset3, type4);
 };
 var getEstimatedTotalHeight = ({ totalRow }, { estimatedRowHeight, lastVisitedRowIndex, row }) => {
   let sizeOfVisitedRows = 0;
@@ -41493,13 +41623,13 @@ var ACCESS_ESTIMATED_SIZE_KEY_MAP = {
   column: getEstimatedTotalWidth,
   row: getEstimatedTotalHeight
 };
-var getOffset = (props, index, alignment, scrollOffset, cache2, type4, scrollBarWidth2) => {
+var getOffset = (props2, index, alignment, scrollOffset, cache2, type4, scrollBarWidth2) => {
   const [size3, estimatedSizeAssociates] = [
-    type4 === "row" ? props.height : props.width,
+    type4 === "row" ? props2.height : props2.width,
     ACCESS_ESTIMATED_SIZE_KEY_MAP[type4]
   ];
-  const item = getItemFromCache2(props, index, cache2, type4);
-  const estimatedSize = estimatedSizeAssociates(props, cache2);
+  const item = getItemFromCache2(props2, index, cache2, type4);
+  const estimatedSize = estimatedSizeAssociates(props2, cache2);
   const maxOffset = max3(0, min3(estimatedSize - size3, item.offset));
   const minOffset = max3(0, item.offset - size3 + scrollBarWidth2 + item.size);
   if (alignment === SMART_ALIGNMENT) {
@@ -41535,40 +41665,40 @@ var getOffset = (props, index, alignment, scrollOffset, cache2, type4, scrollBar
 };
 var DynamicSizeGrid = createGrid({
   name: "ElDynamicSizeGrid",
-  getColumnPosition: (props, idx, cache2) => {
-    const item = getItemFromCache2(props, idx, cache2, "column");
+  getColumnPosition: (props2, idx, cache2) => {
+    const item = getItemFromCache2(props2, idx, cache2, "column");
     return [item.size, item.offset];
   },
-  getRowPosition: (props, idx, cache2) => {
-    const item = getItemFromCache2(props, idx, cache2, "row");
+  getRowPosition: (props2, idx, cache2) => {
+    const item = getItemFromCache2(props2, idx, cache2, "row");
     return [item.size, item.offset];
   },
-  getColumnOffset: (props, columnIndex, alignment, scrollLeft, cache2, scrollBarWidth2) => getOffset(props, columnIndex, alignment, scrollLeft, cache2, "column", scrollBarWidth2),
-  getRowOffset: (props, rowIndex, alignment, scrollTop, cache2, scrollBarWidth2) => getOffset(props, rowIndex, alignment, scrollTop, cache2, "row", scrollBarWidth2),
-  getColumnStartIndexForOffset: (props, scrollLeft, cache2) => findItem2(props, cache2, scrollLeft, "column"),
-  getColumnStopIndexForStartIndex: (props, startIndex, scrollLeft, cache2) => {
-    const item = getItemFromCache2(props, startIndex, cache2, "column");
-    const maxOffset = scrollLeft + props.width;
+  getColumnOffset: (props2, columnIndex, alignment, scrollLeft, cache2, scrollBarWidth2) => getOffset(props2, columnIndex, alignment, scrollLeft, cache2, "column", scrollBarWidth2),
+  getRowOffset: (props2, rowIndex, alignment, scrollTop, cache2, scrollBarWidth2) => getOffset(props2, rowIndex, alignment, scrollTop, cache2, "row", scrollBarWidth2),
+  getColumnStartIndexForOffset: (props2, scrollLeft, cache2) => findItem2(props2, cache2, scrollLeft, "column"),
+  getColumnStopIndexForStartIndex: (props2, startIndex, scrollLeft, cache2) => {
+    const item = getItemFromCache2(props2, startIndex, cache2, "column");
+    const maxOffset = scrollLeft + props2.width;
     let offset3 = item.offset + item.size;
     let stopIndex = startIndex;
-    while (stopIndex < props.totalColumn - 1 && offset3 < maxOffset) {
+    while (stopIndex < props2.totalColumn - 1 && offset3 < maxOffset) {
       stopIndex++;
-      offset3 += getItemFromCache2(props, startIndex, cache2, "column").size;
+      offset3 += getItemFromCache2(props2, startIndex, cache2, "column").size;
     }
     return stopIndex;
   },
   getEstimatedTotalHeight,
   getEstimatedTotalWidth,
-  getRowStartIndexForOffset: (props, scrollTop, cache2) => findItem2(props, cache2, scrollTop, "row"),
-  getRowStopIndexForStartIndex: (props, startIndex, scrollTop, cache2) => {
-    const { totalRow, height } = props;
-    const item = getItemFromCache2(props, startIndex, cache2, "row");
+  getRowStartIndexForOffset: (props2, scrollTop, cache2) => findItem2(props2, cache2, scrollTop, "row"),
+  getRowStopIndexForStartIndex: (props2, startIndex, scrollTop, cache2) => {
+    const { totalRow, height } = props2;
+    const item = getItemFromCache2(props2, startIndex, cache2, "row");
     const maxOffset = scrollTop + height;
     let offset3 = item.size + item.offset;
     let stopIndex = startIndex;
     while (stopIndex < totalRow - 1 && offset3 < maxOffset) {
       stopIndex++;
-      offset3 += getItemFromCache2(props, stopIndex, cache2, "row").size;
+      offset3 += getItemFromCache2(props2, stopIndex, cache2, "row").size;
     }
     return stopIndex;
   },
@@ -41635,14 +41765,16 @@ var DynamicSizeGrid = createGrid({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/group-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/group-item.mjs
 var _sfc_main110 = defineComponent({
   props: {
     item: {
       type: Object,
       required: true
     },
-    style: Object,
+    style: {
+      type: Object
+    },
     height: Number
   },
   setup() {
@@ -41655,36 +41787,36 @@ var _sfc_main110 = defineComponent({
 function _sfc_render24(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.ns.be("group", "title")),
-    style: normalizeStyle([_ctx.style, { lineHeight: `${_ctx.height}px` }])
+    style: normalizeStyle({ ..._ctx.style, lineHeight: `${_ctx.height}px` })
   }, toDisplayString(_ctx.item.label), 7);
 }
 var GroupItem = _export_sfc(_sfc_main110, [["render", _sfc_render24], ["__file", "group-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/useOption.mjs
-function useOption2(props, { emit }) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/useOption.mjs
+function useOption2(props2, { emit }) {
   return {
     hoverItem: () => {
-      if (!props.disabled) {
-        emit("hover", props.index);
+      if (!props2.disabled) {
+        emit("hover", props2.index);
       }
     },
     selectOptionClick: () => {
-      if (!props.disabled) {
-        emit("select", props.item, props.index);
+      if (!props2.disabled) {
+        emit("select", props2.item, props2.index);
       }
     }
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/useProps.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/useProps.mjs
 var defaultProps = {
   label: "label",
   value: "value",
   disabled: "disabled",
   options: "options"
 };
-function useProps(props) {
-  const aliasProps = computed(() => ({ ...defaultProps, ...props.props }));
+function useProps(props2) {
+  const aliasProps = computed(() => ({ ...defaultProps, ...props2.props }));
   const getLabel = (option) => get_default(option, aliasProps.value.label);
   const getValue3 = (option) => get_default(option, aliasProps.value.value);
   const getDisabled = (option) => get_default(option, aliasProps.value.disabled);
@@ -41698,7 +41830,7 @@ function useProps(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/defaults.mjs
 var SelectProps2 = buildProps({
   allowCreate: Boolean,
   autocomplete: {
@@ -41818,18 +41950,31 @@ var OptionProps = buildProps({
   selected: Boolean,
   created: Boolean
 });
+var selectEmits = {
+  [UPDATE_MODEL_EVENT]: (val) => true,
+  [CHANGE_EVENT]: (val) => true,
+  "remove-tag": (val) => true,
+  "visible-change": (visible) => true,
+  focus: (evt) => evt instanceof FocusEvent,
+  blur: (evt) => evt instanceof FocusEvent,
+  clear: () => true
+};
+var optionEmits = {
+  hover: (index) => isNumber3(index),
+  select: (val, index) => true
+};
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/token.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/token.mjs
 var selectV2InjectionKey = Symbol("ElSelectV2Injection");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/option-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/option-item.mjs
 var _sfc_main111 = defineComponent({
   props: OptionProps,
-  emits: ["select", "hover"],
-  setup(props, { emit }) {
+  emits: optionEmits,
+  setup(props2, { emit }) {
     const select = inject(selectV2InjectionKey);
     const ns = useNamespace("select");
-    const { hoverItem, selectOptionClick } = useOption2(props, { emit });
+    const { hoverItem, selectOptionClick } = useOption2(props2, { emit });
     const { getLabel } = useProps(select.props);
     return {
       ns,
@@ -41864,19 +42009,20 @@ function _sfc_render25(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var OptionItem = _export_sfc(_sfc_main111, [["render", _sfc_render25], ["__file", "option-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/select-dropdown.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/select-dropdown.mjs
+var props = {
+  loading: Boolean,
+  data: {
+    type: Array,
+    required: true
+  },
+  hoveringIndex: Number,
+  width: Number
+};
 var ElSelectMenu2 = defineComponent({
   name: "ElSelectDropdown",
-  props: {
-    loading: Boolean,
-    data: {
-      type: Array,
-      required: true
-    },
-    hoveringIndex: Number,
-    width: Number
-  },
-  setup(props, {
+  props,
+  setup(props2, {
     slots,
     expose
   }) {
@@ -41889,7 +42035,7 @@ var ElSelectMenu2 = defineComponent({
     } = useProps(select.props);
     const cachedHeights = ref([]);
     const listRef = ref();
-    const size3 = computed(() => props.data.length);
+    const size3 = computed(() => props2.data.length);
     watch(() => size3.value, () => {
       var _a2, _b;
       (_b = (_a2 = select.tooltipRef.value).updatePopper) == null ? void 0 : _b.call(_a2);
@@ -41943,7 +42089,7 @@ var ElSelectMenu2 = defineComponent({
       } = select.props;
       return disabled || !selected && (multiple ? multipleLimit > 0 && modelValue.length >= multipleLimit : false);
     };
-    const isItemHovering = (target2) => props.hoveringIndex === target2;
+    const isItemHovering = (target2) => props2.hoveringIndex === target2;
     const scrollToItem = (index) => {
       const list = listRef.value;
       if (list) {
@@ -41956,7 +42102,7 @@ var ElSelectMenu2 = defineComponent({
         list.resetScrollTop();
       }
     };
-    expose({
+    const exposed = {
       listRef,
       isSized,
       isItemDisabled,
@@ -41964,7 +42110,8 @@ var ElSelectMenu2 = defineComponent({
       isItemSelected,
       scrollToItem,
       resetScrollTop
-    });
+    };
+    expose(exposed);
     const Item = (itemProps) => {
       const {
         index,
@@ -42003,9 +42150,9 @@ var ElSelectMenu2 = defineComponent({
         "onSelect": onSelect,
         "onHover": onHover
       }), {
-        default: (props2) => {
+        default: (props3) => {
           var _a2;
-          return ((_a2 = slots.default) == null ? void 0 : _a2.call(slots, props2)) || createVNode("span", null, [getLabel(item)]);
+          return ((_a2 = slots.default) == null ? void 0 : _a2.call(slots, props3)) || createVNode("span", null, [getLabel(item)]);
         }
       });
     };
@@ -42020,7 +42167,6 @@ var ElSelectMenu2 = defineComponent({
       onKeyboardNavigate("backward");
     };
     const onEscOrTab = () => {
-      select.expanded = false;
     };
     const onKeydown = (e) => {
       const {
@@ -42062,7 +42208,7 @@ var ElSelectMenu2 = defineComponent({
       const {
         data,
         width
-      } = props;
+      } = props2;
       const {
         height,
         multiple,
@@ -42085,29 +42231,29 @@ var ElSelectMenu2 = defineComponent({
         "total": data.length,
         "onKeydown": onKeydown
       }), {
-        default: (props2) => createVNode(Item, props2, null)
+        default: (props3) => createVNode(Item, props3, null)
       }), (_d = slots.footer) == null ? void 0 : _d.call(slots)]);
     };
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/useAllowCreate.mjs
-function useAllowCreate(props, states) {
-  const { aliasProps, getLabel, getValue: getValue3 } = useProps(props);
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/useAllowCreate.mjs
+function useAllowCreate(props2, states) {
+  const { aliasProps, getLabel, getValue: getValue3 } = useProps(props2);
   const createOptionCount = ref(0);
-  const cachedSelectedOption = ref(null);
+  const cachedSelectedOption = ref();
   const enableAllowCreateMode = computed(() => {
-    return props.allowCreate && props.filterable;
+    return props2.allowCreate && props2.filterable;
   });
   function hasExistingOption(query) {
     const hasOption = (option) => getLabel(option) === query;
-    return props.options && props.options.some(hasOption) || states.createdOptions.some(hasOption);
+    return props2.options && props2.options.some(hasOption) || states.createdOptions.some(hasOption);
   }
   function selectNewOption(option) {
     if (!enableAllowCreateMode.value) {
       return;
     }
-    if (props.multiple && option.created) {
+    if (props2.multiple && option.created) {
       createOptionCount.value++;
     } else {
       cachedSelectedOption.value = option;
@@ -42131,7 +42277,7 @@ function useAllowCreate(props, states) {
           states.createdOptions.push(newOption);
         }
       } else {
-        if (props.multiple) {
+        if (props2.multiple) {
           states.createdOptions.length = createOptionCount.value;
         } else {
           const selectedOption = cachedSelectedOption.value;
@@ -42144,7 +42290,7 @@ function useAllowCreate(props, states) {
     }
   }
   function removeNewOption(option) {
-    if (!enableAllowCreateMode.value || !option || !option.created || option.created && props.reserveKeyword && states.inputValue === getLabel(option)) {
+    if (!enableAllowCreateMode.value || !option || !option.created || option.created && props2.reserveKeyword && states.inputValue === getLabel(option)) {
       return;
     }
     const idx = states.createdOptions.findIndex((it2) => getValue3(it2) === getValue3(option));
@@ -42167,18 +42313,18 @@ function useAllowCreate(props, states) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/useSelect.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/useSelect.mjs
 var MINIMUM_INPUT_WIDTH2 = 11;
-var useSelect2 = (props, emit) => {
+var useSelect2 = (props2, emit) => {
   const { t } = useLocale();
   const nsSelect = useNamespace("select");
   const nsInput = useNamespace("input");
   const { form: elForm, formItem: elFormItem } = useFormItem();
-  const { inputId } = useFormItemInputId(props, {
+  const { inputId } = useFormItemInputId(props2, {
     formItemContext: elFormItem
   });
-  const { aliasProps, getLabel, getValue: getValue3, getDisabled, getOptions } = useProps(props);
-  const { valueOnClear, isEmptyValue: isEmptyValue2 } = useEmptyValues(props);
+  const { aliasProps, getLabel, getValue: getValue3, getDisabled, getOptions } = useProps(props2);
+  const { valueOnClear, isEmptyValue: isEmptyValue2 } = useEmptyValues(props2);
   const states = reactive({
     inputValue: "",
     cachedOptions: [],
@@ -42195,17 +42341,17 @@ var useSelect2 = (props, emit) => {
     isBeforeHide: false
   });
   const popperSize = ref(-1);
-  const selectRef = ref(null);
-  const selectionRef = ref(null);
-  const tooltipRef = ref(null);
-  const tagTooltipRef = ref(null);
-  const inputRef = ref(null);
-  const calculatorRef = ref(null);
-  const prefixRef = ref(null);
-  const suffixRef = ref(null);
-  const menuRef = ref(null);
-  const tagMenuRef = ref(null);
-  const collapseItemRef = ref(null);
+  const selectRef = ref();
+  const selectionRef = ref();
+  const tooltipRef = ref();
+  const tagTooltipRef = ref();
+  const inputRef = ref();
+  const calculatorRef = ref();
+  const prefixRef = ref();
+  const suffixRef = ref();
+  const menuRef = ref();
+  const tagMenuRef = ref();
+  const collapseItemRef = ref();
   const {
     isComposing,
     handleCompositionStart,
@@ -42215,8 +42361,11 @@ var useSelect2 = (props, emit) => {
     afterComposition: (e) => onInput(e)
   });
   const { wrapperRef, isFocused } = useFocusController(inputRef, {
+    beforeFocus() {
+      return selectDisabled.value;
+    },
     afterFocus() {
-      if (props.automaticDropdown && !expanded.value) {
+      if (props2.automaticDropdown && !expanded.value) {
         expanded.value = true;
         states.menuVisibleOnFocus = true;
       }
@@ -42233,50 +42382,54 @@ var useSelect2 = (props, emit) => {
   const allOptions = ref([]);
   const filteredOptions = ref([]);
   const expanded = ref(false);
-  const selectDisabled = computed(() => props.disabled || (elForm == null ? void 0 : elForm.disabled));
+  const selectDisabled = computed(() => props2.disabled || (elForm == null ? void 0 : elForm.disabled));
   const popupHeight = computed(() => {
-    const totalHeight = filteredOptions.value.length * props.itemHeight;
-    return totalHeight > props.height ? props.height : totalHeight;
+    const totalHeight = filteredOptions.value.length * props2.itemHeight;
+    return totalHeight > props2.height ? props2.height : totalHeight;
   });
   const hasModelValue = computed(() => {
-    return props.multiple ? isArray(props.modelValue) && props.modelValue.length > 0 : !isEmptyValue2(props.modelValue);
+    return props2.multiple ? isArray(props2.modelValue) && props2.modelValue.length > 0 : !isEmptyValue2(props2.modelValue);
   });
   const showClearBtn = computed(() => {
-    return props.clearable && !selectDisabled.value && states.inputHovering && hasModelValue.value;
+    return props2.clearable && !selectDisabled.value && states.inputHovering && hasModelValue.value;
   });
-  const iconComponent = computed(() => props.remote && props.filterable ? "" : arrow_down_default);
+  const iconComponent = computed(() => props2.remote && props2.filterable ? "" : arrow_down_default);
   const iconReverse = computed(() => iconComponent.value && nsSelect.is("reverse", expanded.value));
   const validateState = computed(() => (elFormItem == null ? void 0 : elFormItem.validateState) || "");
-  const validateIcon = computed(() => ValidateComponentsMap[validateState.value]);
-  const debounce$1 = computed(() => props.remote ? 300 : 0);
+  const validateIcon = computed(() => {
+    if (!validateState.value)
+      return;
+    return ValidateComponentsMap[validateState.value];
+  });
+  const debounce$1 = computed(() => props2.remote ? 300 : 0);
   const emptyText = computed(() => {
-    if (props.loading) {
-      return props.loadingText || t("el.select.loading");
+    if (props2.loading) {
+      return props2.loadingText || t("el.select.loading");
     } else {
-      if (props.remote && !states.inputValue && allOptions.value.length === 0)
+      if (props2.remote && !states.inputValue && allOptions.value.length === 0)
         return false;
-      if (props.filterable && states.inputValue && allOptions.value.length > 0 && filteredOptions.value.length === 0) {
-        return props.noMatchText || t("el.select.noMatch");
+      if (props2.filterable && states.inputValue && allOptions.value.length > 0 && filteredOptions.value.length === 0) {
+        return props2.noMatchText || t("el.select.noMatch");
       }
       if (allOptions.value.length === 0) {
-        return props.noDataText || t("el.select.noData");
+        return props2.noDataText || t("el.select.noData");
       }
     }
     return null;
   });
   const filterOptions = (query) => {
     const isValidOption = (o2) => {
-      if (props.filterable && isFunction2(props.filterMethod))
+      if (props2.filterable && isFunction2(props2.filterMethod))
         return true;
-      if (props.filterable && props.remote && isFunction2(props.remoteMethod))
+      if (props2.filterable && props2.remote && isFunction2(props2.remoteMethod))
         return true;
       const regexp4 = new RegExp(escapeStringRegexp(query), "i");
       return query ? regexp4.test(getLabel(o2) || "") : true;
     };
-    if (props.loading) {
+    if (props2.loading) {
       return [];
     }
-    return [...states.createdOptions, ...props.options].reduce((all, item) => {
+    return [...states.createdOptions, ...props2.options].reduce((all, item) => {
       const options = getOptions(item);
       if (isArray(options)) {
         const filtered = options.filter(isValidOption);
@@ -42286,7 +42439,7 @@ var useSelect2 = (props, emit) => {
             type: "Group"
           }, ...filtered);
         }
-      } else if (props.remote || isValidOption(item)) {
+      } else if (props2.remote || isValidOption(item)) {
         all.push(item);
       }
       return all;
@@ -42325,7 +42478,7 @@ var useSelect2 = (props, emit) => {
   };
   const tagStyle = computed(() => {
     const gapWidth = getGapWidth();
-    const maxWidth = collapseItemRef.value && props.maxCollapseTags === 1 ? states.selectionWidth - states.collapseItemWidth - gapWidth : states.selectionWidth;
+    const maxWidth = collapseItemRef.value && props2.maxCollapseTags === 1 ? states.selectionWidth - states.collapseItemWidth - gapWidth : states.selectionWidth;
     return { maxWidth: `${maxWidth}px` };
   });
   const collapseTagStyle = computed(() => {
@@ -42335,30 +42488,30 @@ var useSelect2 = (props, emit) => {
     width: `${Math.max(states.calculatorWidth, MINIMUM_INPUT_WIDTH2)}px`
   }));
   const shouldShowPlaceholder = computed(() => {
-    if (isArray(props.modelValue)) {
-      return props.modelValue.length === 0 && !states.inputValue;
+    if (isArray(props2.modelValue)) {
+      return props2.modelValue.length === 0 && !states.inputValue;
     }
-    return props.filterable ? !states.inputValue : true;
+    return props2.filterable ? !states.inputValue : true;
   });
   const currentPlaceholder = computed(() => {
     var _a2;
-    const _placeholder = (_a2 = props.placeholder) != null ? _a2 : t("el.select.placeholder");
-    return props.multiple || !hasModelValue.value ? _placeholder : states.selectedLabel;
+    const _placeholder = (_a2 = props2.placeholder) != null ? _a2 : t("el.select.placeholder");
+    return props2.multiple || !hasModelValue.value ? _placeholder : states.selectedLabel;
   });
   const popperRef = computed(() => {
     var _a2, _b;
     return (_b = (_a2 = tooltipRef.value) == null ? void 0 : _a2.popperRef) == null ? void 0 : _b.contentRef;
   });
   const indexRef = computed(() => {
-    if (props.multiple) {
-      const len = props.modelValue.length;
-      if (props.modelValue.length > 0 && filteredOptionsValueMap.value.has(props.modelValue[len - 1])) {
-        const { index } = filteredOptionsValueMap.value.get(props.modelValue[len - 1]);
+    if (props2.multiple) {
+      const len = props2.modelValue.length;
+      if (props2.modelValue.length > 0 && filteredOptionsValueMap.value.has(props2.modelValue[len - 1])) {
+        const { index } = filteredOptionsValueMap.value.get(props2.modelValue[len - 1]);
         return index;
       }
     } else {
-      if (props.modelValue && filteredOptionsValueMap.value.has(props.modelValue)) {
-        const { index } = filteredOptionsValueMap.value.get(props.modelValue);
+      if (props2.modelValue && filteredOptionsValueMap.value.has(props2.modelValue)) {
+        const { index } = filteredOptionsValueMap.value.get(props2.modelValue);
         return index;
       }
     }
@@ -42373,23 +42526,23 @@ var useSelect2 = (props, emit) => {
     }
   });
   const showTagList = computed(() => {
-    if (!props.multiple) {
+    if (!props2.multiple) {
       return [];
     }
-    return props.collapseTags ? states.cachedOptions.slice(0, props.maxCollapseTags) : states.cachedOptions;
+    return props2.collapseTags ? states.cachedOptions.slice(0, props2.maxCollapseTags) : states.cachedOptions;
   });
   const collapseTagList = computed(() => {
-    if (!props.multiple) {
+    if (!props2.multiple) {
       return [];
     }
-    return props.collapseTags ? states.cachedOptions.slice(props.maxCollapseTags) : [];
+    return props2.collapseTags ? states.cachedOptions.slice(props2.maxCollapseTags) : [];
   });
   const {
     createNewOption,
     removeNewOption,
     selectNewOption,
     clearAllNewOption
-  } = useAllowCreate(props, states);
+  } = useAllowCreate(props2, states);
   const toggleMenu = () => {
     if (selectDisabled.value)
       return;
@@ -42412,12 +42565,12 @@ var useSelect2 = (props, emit) => {
       return;
     }
     states.previousQuery = val;
-    if (props.filterable && isFunction2(props.filterMethod)) {
-      props.filterMethod(val);
-    } else if (props.filterable && props.remote && isFunction2(props.remoteMethod)) {
-      props.remoteMethod(val);
+    if (props2.filterable && isFunction2(props2.filterMethod)) {
+      props2.filterMethod(val);
+    } else if (props2.filterable && props2.remote && isFunction2(props2.remoteMethod)) {
+      props2.remoteMethod(val);
     }
-    if (props.defaultFirstOption && (props.filterable || props.remote) && filteredOptions.value.length) {
+    if (props2.defaultFirstOption && (props2.filterable || props2.remote) && filteredOptions.value.length) {
       nextTick(checkDefaultFirstOption);
     } else {
       nextTick(updateHoveringIndex);
@@ -42430,20 +42583,20 @@ var useSelect2 = (props, emit) => {
     states.hoveringIndex = getValueIndex(filteredOptions.value, userCreatedOption || firstOriginOption);
   };
   const emitChange = (val) => {
-    if (!isEqual_default(props.modelValue, val)) {
+    if (!isEqual_default(props2.modelValue, val)) {
       emit(CHANGE_EVENT, val);
     }
   };
   const update2 = (val) => {
     emit(UPDATE_MODEL_EVENT, val);
     emitChange(val);
-    states.previousValue = props.multiple ? String(val) : val;
+    states.previousValue = props2.multiple ? String(val) : val;
   };
   const getValueIndex = (arr = [], value) => {
     if (!isObject2(value)) {
       return arr.indexOf(value);
     }
-    const valueKey = props.valueKey;
+    const valueKey = props2.valueKey;
     let index = -1;
     arr.some((item, i) => {
       if (get_default(item, valueKey) === get_default(value, valueKey)) {
@@ -42455,7 +42608,7 @@ var useSelect2 = (props, emit) => {
     return index;
   };
   const getValueKey = (item) => {
-    return isObject2(item) ? get_default(item, props.valueKey) : item;
+    return isObject2(item) ? get_default(item, props2.valueKey) : item;
   };
   const handleResize = () => {
     calculatePopperSize();
@@ -42478,8 +42631,8 @@ var useSelect2 = (props, emit) => {
     (_b = (_a2 = tagTooltipRef.value) == null ? void 0 : _a2.updatePopper) == null ? void 0 : _b.call(_a2);
   };
   const onSelect = (option) => {
-    if (props.multiple) {
-      let selectedOptions = props.modelValue.slice();
+    if (props2.multiple) {
+      let selectedOptions = props2.modelValue.slice();
       const index = getValueIndex(selectedOptions, getValue3(option));
       if (index > -1) {
         selectedOptions = [
@@ -42488,7 +42641,7 @@ var useSelect2 = (props, emit) => {
         ];
         states.cachedOptions.splice(index, 1);
         removeNewOption(option);
-      } else if (props.multipleLimit <= 0 || selectedOptions.length < props.multipleLimit) {
+      } else if (props2.multipleLimit <= 0 || selectedOptions.length < props2.multipleLimit) {
         selectedOptions = [...selectedOptions, getValue3(option)];
         states.cachedOptions.push(option);
         selectNewOption(option);
@@ -42497,7 +42650,7 @@ var useSelect2 = (props, emit) => {
       if (option.created) {
         handleQueryChange("");
       }
-      if (props.filterable && !props.reserveKeyword) {
+      if (props2.filterable && !props2.reserveKeyword) {
         states.inputValue = "";
       }
     } else {
@@ -42512,12 +42665,12 @@ var useSelect2 = (props, emit) => {
     focus();
   };
   const deleteTag = (event, option) => {
-    let selectedOptions = props.modelValue.slice();
+    let selectedOptions = props2.modelValue.slice();
     const index = getValueIndex(selectedOptions, getValue3(option));
     if (index > -1 && !selectDisabled.value) {
       selectedOptions = [
-        ...props.modelValue.slice(0, index),
-        ...props.modelValue.slice(index + 1)
+        ...props2.modelValue.slice(0, index),
+        ...props2.modelValue.slice(index + 1)
       ];
       states.cachedOptions.splice(index, 1);
       update2(selectedOptions);
@@ -42544,13 +42697,13 @@ var useSelect2 = (props, emit) => {
   };
   const getLastNotDisabledIndex = (value) => findLastIndex_default(value, (it2) => !states.cachedOptions.some((option) => getValue3(option) === it2 && getDisabled(option)));
   const handleDel = (e) => {
-    if (!props.multiple)
+    if (!props2.multiple)
       return;
     if (e.code === EVENT_CODE.delete)
       return;
     if (states.inputValue.length === 0) {
       e.preventDefault();
-      const selected = props.modelValue.slice();
+      const selected = props2.modelValue.slice();
       const lastNotDisabledIndex = getLastNotDisabledIndex(selected);
       if (lastNotDisabledIndex < 0)
         return;
@@ -42565,12 +42718,12 @@ var useSelect2 = (props, emit) => {
   };
   const handleClear = () => {
     let emptyValue;
-    if (isArray(props.modelValue)) {
+    if (isArray(props2.modelValue)) {
       emptyValue = [];
     } else {
       emptyValue = valueOnClear.value;
     }
-    if (props.multiple) {
+    if (props2.multiple) {
       states.cachedOptions = [];
     } else {
       states.selectedLabel = "";
@@ -42620,31 +42773,28 @@ var useSelect2 = (props, emit) => {
     }
   };
   const onHoverOption = (idx) => {
-    states.hoveringIndex = idx;
+    states.hoveringIndex = idx != null ? idx : -1;
   };
   const updateHoveringIndex = () => {
-    if (!props.multiple) {
+    if (!props2.multiple) {
       states.hoveringIndex = filteredOptions.value.findIndex((item) => {
-        return getValueKey(item) === getValueKey(props.modelValue);
+        return getValueKey(item) === getValueKey(props2.modelValue);
       });
     } else {
-      states.hoveringIndex = filteredOptions.value.findIndex((item) => props.modelValue.some((modelValue) => getValueKey(modelValue) === getValueKey(item)));
+      states.hoveringIndex = filteredOptions.value.findIndex((item) => props2.modelValue.some((modelValue) => getValueKey(modelValue) === getValueKey(item)));
     }
   };
   const onInput = (event) => {
     states.inputValue = event.target.value;
-    if (props.remote) {
+    if (props2.remote) {
       debouncedOnInputChange();
     } else {
       return onInputChange();
     }
   };
-  const handleClickOutside = (event) => {
+  const handleClickOutside = () => {
     expanded.value = false;
-    if (isFocused.value) {
-      const _event2 = new FocusEvent("focus", event);
-      handleBlur(_event2);
-    }
+    isFocused.value && blur();
   };
   const handleMenuEnter = () => {
     states.isBeforeHide = false;
@@ -42657,11 +42807,17 @@ var useSelect2 = (props, emit) => {
   const scrollToItem = (index) => {
     menuRef.value.scrollToItem(index);
   };
-  const getOption = (value) => {
+  const getOption = (value, cachedOptions) => {
     const selectValue = getValueKey(value);
     if (allOptionsValueMap.value.has(selectValue)) {
       const { option } = allOptionsValueMap.value.get(selectValue);
       return option;
+    }
+    if (cachedOptions && cachedOptions.length) {
+      const option = cachedOptions.find((option2) => getValueKey(getValue3(option2)) === selectValue);
+      if (option) {
+        return option;
+      }
     }
     return {
       [aliasProps.value.value]: value,
@@ -42669,12 +42825,13 @@ var useSelect2 = (props, emit) => {
     };
   };
   const initStates = () => {
-    if (props.multiple) {
-      if (props.modelValue.length > 0) {
+    if (props2.multiple) {
+      if (props2.modelValue.length > 0) {
+        const cachedOptions = states.cachedOptions.slice();
         states.cachedOptions.length = 0;
-        states.previousValue = props.modelValue.toString();
-        for (const value of props.modelValue) {
-          const option = getOption(value);
+        states.previousValue = props2.modelValue.toString();
+        for (const value of props2.modelValue) {
+          const option = getOption(value, cachedOptions);
           states.cachedOptions.push(option);
         }
       } else {
@@ -42683,13 +42840,13 @@ var useSelect2 = (props, emit) => {
       }
     } else {
       if (hasModelValue.value) {
-        states.previousValue = props.modelValue;
+        states.previousValue = props2.modelValue;
         const options = filteredOptions.value;
-        const selectedItemIndex = options.findIndex((option) => getValueKey(getValue3(option)) === getValueKey(props.modelValue));
+        const selectedItemIndex = options.findIndex((option) => getValueKey(getValue3(option)) === getValueKey(props2.modelValue));
         if (~selectedItemIndex) {
           states.selectedLabel = getLabel(options[selectedItemIndex]);
         } else {
-          states.selectedLabel = getValueKey(props.modelValue);
+          states.selectedLabel = getValueKey(props2.modelValue);
         }
       } else {
         states.selectedLabel = "";
@@ -42710,18 +42867,18 @@ var useSelect2 = (props, emit) => {
     }
     emit("visible-change", val);
   });
-  watch(() => props.modelValue, (val, oldVal) => {
+  watch(() => props2.modelValue, (val, oldVal) => {
     var _a2;
-    if (!val || props.multiple && val.toString() !== states.previousValue || !props.multiple && getValueKey(val) !== getValueKey(states.previousValue)) {
+    if (!val || props2.multiple && val.toString() !== states.previousValue || !props2.multiple && getValueKey(val) !== getValueKey(states.previousValue)) {
       initStates();
     }
-    if (!isEqual_default(val, oldVal) && props.validateEvent) {
+    if (!isEqual_default(val, oldVal) && props2.validateEvent) {
       (_a2 = elFormItem == null ? void 0 : elFormItem.validate) == null ? void 0 : _a2.call(elFormItem, "change").catch((err) => debugWarn(err));
     }
   }, {
     deep: true
   });
-  watch(() => props.options, () => {
+  watch(() => props2.options, () => {
     const input = inputRef.value;
     if (!input || input && document.activeElement !== input) {
       initStates();
@@ -42739,7 +42896,7 @@ var useSelect2 = (props, emit) => {
     updateOptions2();
   });
   watchEffect(() => {
-    const { valueKey, options } = props;
+    const { valueKey, options } = props2;
     const duplicateValue = /* @__PURE__ */ new Map();
     for (const item of options) {
       const optionValue = getValue3(item);
@@ -42840,7 +42997,7 @@ var useSelect2 = (props, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/select.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/src/select.mjs
 var _sfc_main112 = defineComponent({
   name: "ElSelectV2",
   components: {
@@ -42851,18 +43008,10 @@ var _sfc_main112 = defineComponent({
   },
   directives: { ClickOutside },
   props: SelectProps2,
-  emits: [
-    UPDATE_MODEL_EVENT,
-    CHANGE_EVENT,
-    "remove-tag",
-    "clear",
-    "visible-change",
-    "focus",
-    "blur"
-  ],
-  setup(props, { emit }) {
+  emits: selectEmits,
+  setup(props2, { emit }) {
     const modelValue = computed(() => {
-      const { modelValue: rawModelValue, multiple } = props;
+      const { modelValue: rawModelValue, multiple } = props2;
       const fallback = multiple ? [] : void 0;
       if (isArray(rawModelValue)) {
         return multiple ? rawModelValue : fallback;
@@ -42870,15 +43019,16 @@ var _sfc_main112 = defineComponent({
       return multiple ? fallback : rawModelValue;
     });
     const API = useSelect2(reactive({
-      ...toRefs(props),
+      ...toRefs(props2),
       modelValue
     }), emit);
     provide(selectV2InjectionKey, {
       props: reactive({
-        ...toRefs(props),
+        ...toRefs(props2),
         height: API.popupHeight,
         modelValue
       }),
+      expanded: API.expanded,
       tooltipRef: API.tooltipRef,
       onSelect: API.onSelect,
       onHover: API.onHover,
@@ -43220,10 +43370,10 @@ function _sfc_render26(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var Select2 = _export_sfc(_sfc_main112, [["render", _sfc_render26], ["__file", "select.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/select-v2/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/select-v2/index.mjs
 var ElSelectV2 = withInstall(Select2);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/skeleton/src/skeleton.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/skeleton/src/skeleton.mjs
 var skeletonProps = buildProps({
   animated: {
     type: Boolean,
@@ -43246,7 +43396,7 @@ var skeletonProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/skeleton/src/skeleton-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/skeleton/src/skeleton-item.mjs
 var skeletonItemProps = buildProps({
   variant: {
     type: String,
@@ -43265,7 +43415,7 @@ var skeletonItemProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/skeleton/src/skeleton-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/skeleton/src/skeleton-item2.mjs
 var __default__76 = defineComponent({
   name: "ElSkeletonItem"
 });
@@ -43285,7 +43435,7 @@ var _sfc_main113 = defineComponent({
 });
 var SkeletonItem = _export_sfc(_sfc_main113, [["__file", "skeleton-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/skeleton/src/skeleton2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/skeleton/src/skeleton2.mjs
 var __default__77 = defineComponent({
   name: "ElSkeleton"
 });
@@ -43293,9 +43443,9 @@ var _sfc_main114 = defineComponent({
   ...__default__77,
   props: skeletonProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("skeleton");
-    const uiLoading = useThrottleRender(toRef(props, "loading"), props.throttle);
+    const uiLoading = useThrottleRender(toRef(props2, "loading"), props2.throttle);
     expose({
       uiLoading
     });
@@ -43330,16 +43480,16 @@ var _sfc_main114 = defineComponent({
 });
 var Skeleton = _export_sfc(_sfc_main114, [["__file", "skeleton.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/skeleton/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/skeleton/index.mjs
 var ElSkeleton = withInstall(Skeleton, {
   SkeletonItem
 });
 var ElSkeletonItem = withNoopInstall(SkeletonItem);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/constants.mjs
 var sliderContextKey = Symbol("sliderContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/slider.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/slider2.mjs
 var sliderProps = buildProps({
   modelValue: {
     type: definePropType([Number, Array]),
@@ -43422,24 +43572,24 @@ var sliderEmits = {
   [CHANGE_EVENT]: isValidValue
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-lifecycle.mjs
-var useLifecycle = (props, initData, resetSize) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-lifecycle.mjs
+var useLifecycle = (props2, initData, resetSize) => {
   const sliderWrapper = ref();
   onMounted(async () => {
-    if (props.range) {
-      if (Array.isArray(props.modelValue)) {
-        initData.firstValue = Math.max(props.min, props.modelValue[0]);
-        initData.secondValue = Math.min(props.max, props.modelValue[1]);
+    if (props2.range) {
+      if (Array.isArray(props2.modelValue)) {
+        initData.firstValue = Math.max(props2.min, props2.modelValue[0]);
+        initData.secondValue = Math.min(props2.max, props2.modelValue[1]);
       } else {
-        initData.firstValue = props.min;
-        initData.secondValue = props.max;
+        initData.firstValue = props2.min;
+        initData.secondValue = props2.max;
       }
       initData.oldValue = [initData.firstValue, initData.secondValue];
     } else {
-      if (typeof props.modelValue !== "number" || Number.isNaN(props.modelValue)) {
-        initData.firstValue = props.min;
+      if (typeof props2.modelValue !== "number" || Number.isNaN(props2.modelValue)) {
+        initData.firstValue = props2.min;
       } else {
-        initData.firstValue = Math.min(props.max, Math.max(props.min, props.modelValue));
+        initData.firstValue = Math.min(props2.max, Math.max(props2.min, props2.modelValue));
       }
       initData.oldValue = initData.firstValue;
     }
@@ -43452,23 +43602,23 @@ var useLifecycle = (props, initData, resetSize) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-marks.mjs
-var useMarks = (props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-marks.mjs
+var useMarks = (props2) => {
   return computed(() => {
-    if (!props.marks) {
+    if (!props2.marks) {
       return [];
     }
-    const marksKeys = Object.keys(props.marks);
-    return marksKeys.map(Number.parseFloat).sort((a2, b2) => a2 - b2).filter((point) => point <= props.max && point >= props.min).map((point) => ({
+    const marksKeys = Object.keys(props2.marks);
+    return marksKeys.map(Number.parseFloat).sort((a2, b2) => a2 - b2).filter((point) => point <= props2.max && point >= props2.min).map((point) => ({
       point,
-      position: (point - props.min) * 100 / (props.max - props.min),
-      mark: props.marks[point]
+      position: (point - props2.min) * 100 / (props2.max - props2.min),
+      mark: props2.marks[point]
     }));
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-slide.mjs
-var useSlide = (props, initData, emit) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-slide.mjs
+var useSlide = (props2, initData, emit) => {
   const { form: elForm, formItem: elFormItem } = useFormItem();
   const slider = shallowRef();
   const firstButton = ref();
@@ -43478,7 +43628,7 @@ var useSlide = (props, initData, emit) => {
     secondButton
   };
   const sliderDisabled = computed(() => {
-    return props.disabled || (elForm == null ? void 0 : elForm.disabled) || false;
+    return props2.disabled || (elForm == null ? void 0 : elForm.disabled) || false;
   });
   const minValue = computed(() => {
     return Math.min(initData.firstValue, initData.secondValue);
@@ -43487,16 +43637,16 @@ var useSlide = (props, initData, emit) => {
     return Math.max(initData.firstValue, initData.secondValue);
   });
   const barSize = computed(() => {
-    return props.range ? `${100 * (maxValue.value - minValue.value) / (props.max - props.min)}%` : `${100 * (initData.firstValue - props.min) / (props.max - props.min)}%`;
+    return props2.range ? `${100 * (maxValue.value - minValue.value) / (props2.max - props2.min)}%` : `${100 * (initData.firstValue - props2.min) / (props2.max - props2.min)}%`;
   });
   const barStart = computed(() => {
-    return props.range ? `${100 * (minValue.value - props.min) / (props.max - props.min)}%` : "0%";
+    return props2.range ? `${100 * (minValue.value - props2.min) / (props2.max - props2.min)}%` : "0%";
   });
   const runwayStyle = computed(() => {
-    return props.vertical ? { height: props.height } : {};
+    return props2.vertical ? { height: props2.height } : {};
   });
   const barStyle = computed(() => {
-    return props.vertical ? {
+    return props2.vertical ? {
       height: barSize.value,
       bottom: barStart.value
     } : {
@@ -43506,12 +43656,12 @@ var useSlide = (props, initData, emit) => {
   });
   const resetSize = () => {
     if (slider.value) {
-      initData.sliderSize = slider.value[`client${props.vertical ? "Height" : "Width"}`];
+      initData.sliderSize = slider.value[`client${props2.vertical ? "Height" : "Width"}`];
     }
   };
   const getButtonRefByPercent = (percent) => {
-    const targetValue = props.min + percent * (props.max - props.min) / 100;
-    if (!props.range) {
+    const targetValue = props2.min + percent * (props2.max - props2.min) / 100;
+    if (!props2.range) {
       return firstButton;
     }
     let buttonRefName;
@@ -43528,12 +43678,12 @@ var useSlide = (props, initData, emit) => {
     return buttonRef;
   };
   const setFirstValue = (firstValue) => {
-    initData.firstValue = firstValue != null ? firstValue : props.min;
-    _emit(props.range ? [minValue.value, maxValue.value] : firstValue != null ? firstValue : props.min);
+    initData.firstValue = firstValue != null ? firstValue : props2.min;
+    _emit(props2.range ? [minValue.value, maxValue.value] : firstValue != null ? firstValue : props2.min);
   };
   const setSecondValue = (secondValue) => {
     initData.secondValue = secondValue;
-    if (props.range) {
+    if (props2.range) {
       _emit([minValue.value, maxValue.value]);
     }
   };
@@ -43543,7 +43693,7 @@ var useSlide = (props, initData, emit) => {
   };
   const emitChange = async () => {
     await nextTick();
-    emit(CHANGE_EVENT, props.range ? [minValue.value, maxValue.value] : props.modelValue);
+    emit(CHANGE_EVENT, props2.range ? [minValue.value, maxValue.value] : props2.modelValue);
   };
   const handleSliderPointerEvent = (event) => {
     var _a2, _b, _c, _d, _e, _f;
@@ -43551,7 +43701,7 @@ var useSlide = (props, initData, emit) => {
       return;
     resetSize();
     let newPercent = 0;
-    if (props.vertical) {
+    if (props2.vertical) {
       const clientY = (_c = (_b = (_a2 = event.touches) == null ? void 0 : _a2.item(0)) == null ? void 0 : _b.clientY) != null ? _c : event.clientY;
       const sliderOffsetBottom = slider.value.getBoundingClientRect().bottom;
       newPercent = (sliderOffsetBottom - clientY) / initData.sliderSize * 100;
@@ -43610,16 +43760,16 @@ var useSlide = (props, initData, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-slider-button.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-slider-button.mjs
 var { left, down, right, up, home, end, pageUp, pageDown } = EVENT_CODE;
-var useTooltip = (props, formatTooltip, showTooltip) => {
+var useTooltip = (props2, formatTooltip, showTooltip) => {
   const tooltip = ref();
   const tooltipVisible = ref(false);
   const enableFormat = computed(() => {
     return formatTooltip.value instanceof Function;
   });
   const formatValue = computed(() => {
-    return enableFormat.value && formatTooltip.value(props.modelValue) || props.modelValue;
+    return enableFormat.value && formatTooltip.value(props2.modelValue) || props2.modelValue;
   });
   const displayTooltip = debounce_default(() => {
     showTooltip.value && (tooltipVisible.value = true);
@@ -43635,7 +43785,7 @@ var useTooltip = (props, formatTooltip, showTooltip) => {
     hideTooltip
   };
 };
-var useSliderButton = (props, initData, emit) => {
+var useSliderButton = (props2, initData, emit) => {
   const {
     disabled,
     min: min4,
@@ -43649,13 +43799,13 @@ var useSliderButton = (props, initData, emit) => {
     resetSize,
     updateDragging
   } = inject(sliderContextKey);
-  const { tooltip, tooltipVisible, formatValue, displayTooltip, hideTooltip } = useTooltip(props, formatTooltip, showTooltip);
+  const { tooltip, tooltipVisible, formatValue, displayTooltip, hideTooltip } = useTooltip(props2, formatTooltip, showTooltip);
   const button = ref();
   const currentPosition = computed(() => {
-    return `${(props.modelValue - min4.value) / (max4.value - min4.value) * 100}%`;
+    return `${(props2.modelValue - min4.value) / (max4.value - min4.value) * 100}%`;
   });
   const wrapperStyle = computed(() => {
-    return props.vertical ? { bottom: currentPosition.value } : { left: currentPosition.value };
+    return props2.vertical ? { bottom: currentPosition.value } : { left: currentPosition.value };
   });
   const handleMouseEnter = () => {
     initData.hovering = true;
@@ -43748,7 +43898,7 @@ var useSliderButton = (props, initData, emit) => {
     initData.dragging = true;
     initData.isClick = true;
     const { clientX, clientY } = getClientXY2(event);
-    if (props.vertical) {
+    if (props2.vertical) {
       initData.startY = clientY;
     } else {
       initData.startX = clientX;
@@ -43763,7 +43913,7 @@ var useSliderButton = (props, initData, emit) => {
       resetSize();
       let diff;
       const { clientX, clientY } = getClientXY2(event);
-      if (props.vertical) {
+      if (props2.vertical) {
         initData.currentY = clientY;
         diff = (initData.startY - initData.currentY) / sliderSize.value * 100;
       } else {
@@ -43805,11 +43955,11 @@ var useSliderButton = (props, initData, emit) => {
     const steps = Math.round(newPosition / lengthPerStep);
     let value = steps * lengthPerStep * (max4.value - min4.value) * 0.01 + min4.value;
     value = Number.parseFloat(value.toFixed(precision.value));
-    if (value !== props.modelValue) {
+    if (value !== props2.modelValue) {
       emit(UPDATE_MODEL_EVENT, value);
     }
-    if (!initData.dragging && props.modelValue !== initData.oldValue) {
-      initData.oldValue = props.modelValue;
+    if (!initData.dragging && props2.modelValue !== initData.oldValue) {
+      initData.oldValue = props2.modelValue;
     }
     await nextTick();
     initData.dragging && displayTooltip();
@@ -43835,28 +43985,28 @@ var useSliderButton = (props, initData, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-stops.mjs
-var useStops = (props, initData, minValue, maxValue) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-stops.mjs
+var useStops = (props2, initData, minValue, maxValue) => {
   const stops = computed(() => {
-    if (!props.showStops || props.min > props.max)
+    if (!props2.showStops || props2.min > props2.max)
       return [];
-    if (props.step === 0) {
+    if (props2.step === 0) {
       debugWarn("ElSlider", "step should not be 0.");
       return [];
     }
-    const stopCount = (props.max - props.min) / props.step;
-    const stepWidth = 100 * props.step / (props.max - props.min);
+    const stopCount = (props2.max - props2.min) / props2.step;
+    const stepWidth = 100 * props2.step / (props2.max - props2.min);
     const result2 = Array.from({ length: stopCount - 1 }).map((_2, index) => (index + 1) * stepWidth);
-    if (props.range) {
+    if (props2.range) {
       return result2.filter((step) => {
-        return step < 100 * (minValue.value - props.min) / (props.max - props.min) || step > 100 * (maxValue.value - props.min) / (props.max - props.min);
+        return step < 100 * (minValue.value - props2.min) / (props2.max - props2.min) || step > 100 * (maxValue.value - props2.min) / (props2.max - props2.min);
       });
     } else {
-      return result2.filter((step) => step > 100 * (initData.firstValue - props.min) / (props.max - props.min));
+      return result2.filter((step) => step > 100 * (initData.firstValue - props2.min) / (props2.max - props2.min));
     }
   });
   const getStopStyle = (position) => {
-    return props.vertical ? { bottom: `${position}%` } : { left: `${position}%` };
+    return props2.vertical ? { bottom: `${position}%` } : { left: `${position}%` };
   };
   return {
     stops,
@@ -43864,53 +44014,53 @@ var useStops = (props, initData, minValue, maxValue) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-watch.mjs
-var useWatch = (props, initData, minValue, maxValue, emit, elFormItem) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/composables/use-watch.mjs
+var useWatch = (props2, initData, minValue, maxValue, emit, elFormItem) => {
   const _emit = (val) => {
     emit(UPDATE_MODEL_EVENT, val);
     emit(INPUT_EVENT, val);
   };
   const valueChanged = () => {
-    if (props.range) {
+    if (props2.range) {
       return ![minValue.value, maxValue.value].every((item, index) => item === initData.oldValue[index]);
     } else {
-      return props.modelValue !== initData.oldValue;
+      return props2.modelValue !== initData.oldValue;
     }
   };
   const setValues = () => {
     var _a2, _b;
-    if (props.min > props.max) {
+    if (props2.min > props2.max) {
       throwError("Slider", "min should not be greater than max.");
     }
-    const val = props.modelValue;
-    if (props.range && Array.isArray(val)) {
-      if (val[1] < props.min) {
-        _emit([props.min, props.min]);
-      } else if (val[0] > props.max) {
-        _emit([props.max, props.max]);
-      } else if (val[0] < props.min) {
-        _emit([props.min, val[1]]);
-      } else if (val[1] > props.max) {
-        _emit([val[0], props.max]);
+    const val = props2.modelValue;
+    if (props2.range && Array.isArray(val)) {
+      if (val[1] < props2.min) {
+        _emit([props2.min, props2.min]);
+      } else if (val[0] > props2.max) {
+        _emit([props2.max, props2.max]);
+      } else if (val[0] < props2.min) {
+        _emit([props2.min, val[1]]);
+      } else if (val[1] > props2.max) {
+        _emit([val[0], props2.max]);
       } else {
         initData.firstValue = val[0];
         initData.secondValue = val[1];
         if (valueChanged()) {
-          if (props.validateEvent) {
+          if (props2.validateEvent) {
             (_a2 = elFormItem == null ? void 0 : elFormItem.validate) == null ? void 0 : _a2.call(elFormItem, "change").catch((err) => debugWarn(err));
           }
           initData.oldValue = val.slice();
         }
       }
-    } else if (!props.range && typeof val === "number" && !Number.isNaN(val)) {
-      if (val < props.min) {
-        _emit(props.min);
-      } else if (val > props.max) {
-        _emit(props.max);
+    } else if (!props2.range && typeof val === "number" && !Number.isNaN(val)) {
+      if (val < props2.min) {
+        _emit(props2.min);
+      } else if (val > props2.max) {
+        _emit(props2.max);
       } else {
         initData.firstValue = val;
         if (valueChanged()) {
-          if (props.validateEvent) {
+          if (props2.validateEvent) {
             (_b = elFormItem == null ? void 0 : elFormItem.validate) == null ? void 0 : _b.call(elFormItem, "change").catch((err) => debugWarn(err));
           }
           initData.oldValue = val;
@@ -43924,7 +44074,7 @@ var useWatch = (props, initData, minValue, maxValue, emit, elFormItem) => {
       setValues();
     }
   });
-  watch(() => props.modelValue, (val, oldVal) => {
+  watch(() => props2.modelValue, (val, oldVal) => {
     if (initData.dragging || Array.isArray(val) && Array.isArray(oldVal) && val.every((item, index) => item === oldVal[index]) && initData.firstValue === val[0] && initData.secondValue === val[1]) {
       return;
     }
@@ -43932,12 +44082,12 @@ var useWatch = (props, initData, minValue, maxValue, emit, elFormItem) => {
   }, {
     deep: true
   });
-  watch(() => [props.min, props.max], () => {
+  watch(() => [props2.min, props2.max], () => {
     setValues();
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/button.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/button.mjs
 var sliderButtonProps = buildProps({
   modelValue: {
     type: Number,
@@ -43955,7 +44105,7 @@ var sliderButtonEmits = {
   [UPDATE_MODEL_EVENT]: (value) => isNumber3(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/button2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/button2.mjs
 var __default__78 = defineComponent({
   name: "ElSliderButton"
 });
@@ -43964,7 +44114,7 @@ var _sfc_main115 = defineComponent({
   props: sliderButtonProps,
   emits: sliderButtonEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("slider");
     const initData = reactive({
       hovering: false,
@@ -43976,7 +44126,7 @@ var _sfc_main115 = defineComponent({
       currentY: 0,
       startPosition: 0,
       newPosition: 0,
-      oldValue: props.modelValue
+      oldValue: props2.modelValue
     });
     const {
       disabled,
@@ -43991,7 +44141,7 @@ var _sfc_main115 = defineComponent({
       onButtonDown,
       onKeyDown,
       setPosition
-    } = useSliderButton(props, initData, emit);
+    } = useSliderButton(props2, initData, emit);
     const { hovering, dragging } = toRefs(initData);
     expose({
       onButtonDown,
@@ -44041,7 +44191,7 @@ var _sfc_main115 = defineComponent({
 });
 var SliderButton = _export_sfc(_sfc_main115, [["__file", "button.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/marker.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/marker.mjs
 var sliderMarkerProps = buildProps({
   mark: {
     type: definePropType([String, Object]),
@@ -44051,12 +44201,12 @@ var sliderMarkerProps = buildProps({
 var SliderMarker = defineComponent({
   name: "ElSliderMarker",
   props: sliderMarkerProps,
-  setup(props) {
+  setup(props2) {
     const ns = useNamespace("slider");
     const label = computed(() => {
-      return isString2(props.mark) ? props.mark : props.mark.label;
+      return isString2(props2.mark) ? props2.mark : props2.mark.label;
     });
-    const style = computed(() => isString2(props.mark) ? void 0 : props.mark.style);
+    const style = computed(() => isString2(props2.mark) ? void 0 : props2.mark.style);
     return () => h("div", {
       class: ns.e("marks-text"),
       style: style.value
@@ -44064,7 +44214,7 @@ var SliderMarker = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/src/slider2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/src/slider.mjs
 var __default__79 = defineComponent({
   name: "ElSlider"
 });
@@ -44073,7 +44223,7 @@ var _sfc_main116 = defineComponent({
   props: sliderProps,
   emits: sliderEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("slider");
     const { t } = useLocale();
     const initData = reactive({
@@ -44101,51 +44251,51 @@ var _sfc_main116 = defineComponent({
       onSliderMarkerDown,
       setFirstValue,
       setSecondValue
-    } = useSlide(props, initData, emit);
-    const { stops, getStopStyle } = useStops(props, initData, minValue, maxValue);
-    const { inputId, isLabeledByFormItem } = useFormItemInputId(props, {
+    } = useSlide(props2, initData, emit);
+    const { stops, getStopStyle } = useStops(props2, initData, minValue, maxValue);
+    const { inputId, isLabeledByFormItem } = useFormItemInputId(props2, {
       formItemContext: elFormItem
     });
     const sliderWrapperSize = useFormSize();
-    const sliderInputSize = computed(() => props.inputSize || sliderWrapperSize.value);
+    const sliderInputSize = computed(() => props2.inputSize || sliderWrapperSize.value);
     const groupLabel = computed(() => {
-      return props.ariaLabel || t("el.slider.defaultLabel", {
-        min: props.min,
-        max: props.max
+      return props2.ariaLabel || t("el.slider.defaultLabel", {
+        min: props2.min,
+        max: props2.max
       });
     });
     const firstButtonLabel = computed(() => {
-      if (props.range) {
-        return props.rangeStartLabel || t("el.slider.defaultRangeStartLabel");
+      if (props2.range) {
+        return props2.rangeStartLabel || t("el.slider.defaultRangeStartLabel");
       } else {
         return groupLabel.value;
       }
     });
     const firstValueText = computed(() => {
-      return props.formatValueText ? props.formatValueText(firstValue.value) : `${firstValue.value}`;
+      return props2.formatValueText ? props2.formatValueText(firstValue.value) : `${firstValue.value}`;
     });
     const secondButtonLabel = computed(() => {
-      return props.rangeEndLabel || t("el.slider.defaultRangeEndLabel");
+      return props2.rangeEndLabel || t("el.slider.defaultRangeEndLabel");
     });
     const secondValueText = computed(() => {
-      return props.formatValueText ? props.formatValueText(secondValue.value) : `${secondValue.value}`;
+      return props2.formatValueText ? props2.formatValueText(secondValue.value) : `${secondValue.value}`;
     });
     const sliderKls = computed(() => [
       ns.b(),
       ns.m(sliderWrapperSize.value),
-      ns.is("vertical", props.vertical),
-      { [ns.m("with-input")]: props.showInput }
+      ns.is("vertical", props2.vertical),
+      { [ns.m("with-input")]: props2.showInput }
     ]);
-    const markList = useMarks(props);
-    useWatch(props, initData, minValue, maxValue, emit, elFormItem);
+    const markList = useMarks(props2);
+    useWatch(props2, initData, minValue, maxValue, emit, elFormItem);
     const precision = computed(() => {
-      const precisions = [props.min, props.max, props.step].map((item) => {
+      const precisions = [props2.min, props2.max, props2.step].map((item) => {
         const decimal = `${item}`.split(".")[1];
         return decimal ? decimal.length : 0;
       });
       return Math.max.apply(null, precisions);
     });
-    const { sliderWrapper } = useLifecycle(props, initData, resetSize);
+    const { sliderWrapper } = useLifecycle(props2, initData, resetSize);
     const { firstValue, secondValue, sliderSize } = toRefs(initData);
     const updateDragging = (val) => {
       initData.dragging = val;
@@ -44157,7 +44307,7 @@ var _sfc_main116 = defineComponent({
       passive: false
     });
     provide(sliderContextKey, {
-      ...toRefs(props),
+      ...toRefs(props2),
       sliderSize,
       disabled: sliderDisabled,
       precision,
@@ -44287,10 +44437,10 @@ var _sfc_main116 = defineComponent({
 });
 var Slider = _export_sfc(_sfc_main116, [["__file", "slider.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/slider/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/slider/index.mjs
 var ElSlider = withInstall(Slider);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/space/src/item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/space/src/item.mjs
 var spaceItemProps = buildProps({
   prefixCls: {
     type: String
@@ -44299,40 +44449,40 @@ var spaceItemProps = buildProps({
 var SpaceItem = defineComponent({
   name: "ElSpaceItem",
   props: spaceItemProps,
-  setup(props, { slots }) {
+  setup(props2, { slots }) {
     const ns = useNamespace("space");
-    const classes = computed(() => `${props.prefixCls || ns.b()}__item`);
+    const classes = computed(() => `${props2.prefixCls || ns.b()}__item`);
     return () => h("div", { class: classes.value }, renderSlot(slots, "default"));
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/space/src/use-space.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/space/src/use-space.mjs
 var SIZE_MAP = {
   small: 8,
   default: 12,
   large: 16
 };
-function useSpace(props) {
+function useSpace(props2) {
   const ns = useNamespace("space");
-  const classes = computed(() => [ns.b(), ns.m(props.direction), props.class]);
+  const classes = computed(() => [ns.b(), ns.m(props2.direction), props2.class]);
   const horizontalSize = ref(0);
   const verticalSize = ref(0);
   const containerStyle = computed(() => {
-    const wrapKls = props.wrap || props.fill ? { flexWrap: "wrap" } : {};
+    const wrapKls = props2.wrap || props2.fill ? { flexWrap: "wrap" } : {};
     const alignment = {
-      alignItems: props.alignment
+      alignItems: props2.alignment
     };
     const gap = {
       rowGap: `${verticalSize.value}px`,
       columnGap: `${horizontalSize.value}px`
     };
-    return [wrapKls, alignment, gap, props.style];
+    return [wrapKls, alignment, gap, props2.style];
   });
   const itemStyle = computed(() => {
-    return props.fill ? { flexGrow: 1, minWidth: `${props.fillRatio}%` } : {};
+    return props2.fill ? { flexGrow: 1, minWidth: `${props2.fillRatio}%` } : {};
   });
   watchEffect(() => {
-    const { size: size3 = "small", wrap: wrap2, direction: dir, fill: fill2 } = props;
+    const { size: size3 = "small", wrap: wrap2, direction: dir, fill: fill2 } = props2;
     if (isArray(size3)) {
       const [h3 = 0, v2 = 0] = size3;
       horizontalSize.value = h3;
@@ -44364,7 +44514,7 @@ function useSpace(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/space/src/space.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/space/src/space.mjs
 var spaceProps = buildProps({
   direction: {
     type: String,
@@ -44412,10 +44562,10 @@ var spaceProps = buildProps({
 var Space = defineComponent({
   name: "ElSpace",
   props: spaceProps,
-  setup(props, { slots }) {
-    const { classes, containerStyle, itemStyle } = useSpace(props);
+  setup(props2, { slots }) {
+    const { classes, containerStyle, itemStyle } = useSpace(props2);
     function extractChildren(children, parentKey = "", extractedChildren = []) {
-      const { prefixCls } = props;
+      const { prefixCls } = props2;
       children.forEach((child, loopKey) => {
         if (isFragment(child)) {
           if (isArray(child.children)) {
@@ -44447,7 +44597,7 @@ var Space = defineComponent({
     }
     return () => {
       var _a2;
-      const { spacer, direction: direction2 } = props;
+      const { spacer, direction: direction2 } = props2;
       const children = renderSlot(slots, "default", { key: 0 }, () => []);
       if (((_a2 = children.children) != null ? _a2 : []).length === 0)
         return null;
@@ -44481,10 +44631,10 @@ var Space = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/space/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/space/index.mjs
 var ElSpace = withInstall(Space);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/statistic/src/statistic.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/statistic/src/statistic.mjs
 var statisticProps = buildProps({
   decimalSeparator: {
     type: String,
@@ -44511,7 +44661,7 @@ var statisticProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/statistic/src/statistic2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/statistic/src/statistic2.mjs
 var __default__80 = defineComponent({
   name: "ElStatistic"
 });
@@ -44519,10 +44669,10 @@ var _sfc_main117 = defineComponent({
   ...__default__80,
   props: statisticProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("statistic");
     const displayValue = computed(() => {
-      const { value, formatter: formatter2, precision, decimalSeparator, groupSeparator } = props;
+      const { value, formatter: formatter2, precision, decimalSeparator, groupSeparator } = props2;
       if (isFunction2(formatter2))
         return formatter2(value);
       if (!isNumber3(value) || Number.isNaN(value))
@@ -44577,10 +44727,10 @@ var _sfc_main117 = defineComponent({
 });
 var Statistic = _export_sfc(_sfc_main117, [["__file", "statistic.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/statistic/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/statistic/index.mjs
 var ElStatistic = withInstall(Statistic);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/countdown/src/countdown.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/countdown/src/countdown.mjs
 var countdownProps = buildProps({
   format: {
     type: String,
@@ -44602,7 +44752,7 @@ var countdownEmits = {
   [CHANGE_EVENT]: (value) => isNumber3(value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/countdown/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/countdown/src/utils.mjs
 var timeUnits2 = [
   ["Y", 1e3 * 60 * 60 * 24 * 365],
   ["M", 1e3 * 60 * 60 * 24 * 30],
@@ -44630,7 +44780,7 @@ var formatTime = (timestamp2, format2) => {
   return replacedText.replace(escapeRegex, "$1");
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/countdown/src/countdown2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/countdown/src/countdown2.mjs
 var __default__81 = defineComponent({
   name: "ElCountdown"
 });
@@ -44639,11 +44789,11 @@ var _sfc_main118 = defineComponent({
   props: countdownProps,
   emits: countdownEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     let timer;
     const rawValue = ref(0);
-    const displayValue = computed(() => formatTime(rawValue.value, props.format));
-    const formatter2 = (val) => formatTime(val, props.format);
+    const displayValue = computed(() => formatTime(rawValue.value, props2.format));
+    const formatter2 = (val) => formatTime(val, props2.format);
     const stopTimer = () => {
       if (timer) {
         cAF(timer);
@@ -44651,7 +44801,7 @@ var _sfc_main118 = defineComponent({
       }
     };
     const startTimer = () => {
-      const timestamp2 = getTime(props.value);
+      const timestamp2 = getTime(props2.value);
       const frameFunc = () => {
         let diff = timestamp2 - Date.now();
         emit("change", diff);
@@ -44667,8 +44817,8 @@ var _sfc_main118 = defineComponent({
       timer = rAF(frameFunc);
     };
     onMounted(() => {
-      rawValue.value = getTime(props.value) - Date.now();
-      watch(() => [props.value, props.format], () => {
+      rawValue.value = getTime(props2.value) - Date.now();
+      watch(() => [props2.value, props2.format], () => {
         stopTimer();
         startTimer();
       }, {
@@ -44704,10 +44854,10 @@ var _sfc_main118 = defineComponent({
 });
 var Countdown = _export_sfc(_sfc_main118, [["__file", "countdown.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/countdown/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/countdown/index.mjs
 var ElCountdown = withInstall(Countdown);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/steps/src/steps.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/steps/src/steps2.mjs
 var stepsProps = buildProps({
   space: {
     type: [Number, String],
@@ -44743,7 +44893,7 @@ var stepsEmits = {
   [CHANGE_EVENT]: (newVal, oldVal) => [newVal, oldVal].every(isNumber3)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/steps/src/steps2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/steps/src/steps.mjs
 var __default__82 = defineComponent({
   name: "ElSteps"
 });
@@ -44752,7 +44902,7 @@ var _sfc_main119 = defineComponent({
   props: stepsProps,
   emits: stepsEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("steps");
     const {
       children: steps,
@@ -44764,8 +44914,8 @@ var _sfc_main119 = defineComponent({
         instance.setIndex(index);
       });
     });
-    provide("ElSteps", { props, steps, addStep, removeStep });
-    watch(() => props.active, (newVal, oldVal) => {
+    provide("ElSteps", { props: props2, steps, addStep, removeStep });
+    watch(() => props2.active, (newVal, oldVal) => {
       emit(CHANGE_EVENT, newVal, oldVal);
     });
     return (_ctx, _cache) => {
@@ -44779,7 +44929,7 @@ var _sfc_main119 = defineComponent({
 });
 var Steps = _export_sfc(_sfc_main119, [["__file", "steps.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/steps/src/item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/steps/src/item2.mjs
 var stepProps = buildProps({
   title: {
     type: String,
@@ -44799,7 +44949,7 @@ var stepProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/steps/src/item2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/steps/src/item.mjs
 var __default__83 = defineComponent({
   name: "ElStep"
 });
@@ -44807,7 +44957,7 @@ var _sfc_main120 = defineComponent({
   ...__default__83,
   props: stepProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("step");
     const index = ref(-1);
     const lineStyle = ref({});
@@ -44827,7 +44977,7 @@ var _sfc_main120 = defineComponent({
       parent2.removeStep(stepItemState.uid);
     });
     const currentStatus = computed(() => {
-      return props.status || internalStatus.value;
+      return props2.status || internalStatus.value;
     });
     const prevStatus = computed(() => {
       const prevStep = parent2.steps.value[index.value - 1];
@@ -44985,13 +45135,13 @@ var _sfc_main120 = defineComponent({
 });
 var Step = _export_sfc(_sfc_main120, [["__file", "item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/steps/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/steps/index.mjs
 var ElSteps = withInstall(Steps, {
   Step
 });
 var ElStep = withNoopInstall(Step);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/switch/src/switch.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/switch/src/switch2.mjs
 var switchProps = buildProps({
   modelValue: {
     type: [Boolean, String, Number],
@@ -45059,7 +45209,7 @@ var switchEmits = {
   [INPUT_EVENT]: (val) => isBoolean2(val) || isString2(val) || isNumber3(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/switch/src/switch2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/switch/src/switch.mjs
 var COMPONENT_NAME16 = "ElSwitch";
 var __default__84 = defineComponent({
   name: COMPONENT_NAME16
@@ -45069,15 +45219,15 @@ var _sfc_main121 = defineComponent({
   props: switchProps,
   emits: switchEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const { formItem } = useFormItem();
     const switchSize = useFormSize();
     const ns = useNamespace("switch");
-    const { inputId } = useFormItemInputId(props, {
+    const { inputId } = useFormItemInputId(props2, {
       formItemContext: formItem
     });
-    const switchDisabled = useFormDisabled(computed(() => props.loading));
-    const isControlled = ref(props.modelValue !== false);
+    const switchDisabled = useFormDisabled(computed(() => props2.loading));
+    const isControlled = ref(props2.modelValue !== false);
     const input = ref();
     const core = ref();
     const switchKls = computed(() => [
@@ -45097,29 +45247,29 @@ var _sfc_main121 = defineComponent({
       ns.is("active", checked.value)
     ]);
     const coreStyle = computed(() => ({
-      width: addUnit(props.width)
+      width: addUnit(props2.width)
     }));
-    watch(() => props.modelValue, () => {
+    watch(() => props2.modelValue, () => {
       isControlled.value = true;
     });
     const actualValue = computed(() => {
-      return isControlled.value ? props.modelValue : false;
+      return isControlled.value ? props2.modelValue : false;
     });
-    const checked = computed(() => actualValue.value === props.activeValue);
-    if (![props.activeValue, props.inactiveValue].includes(actualValue.value)) {
-      emit(UPDATE_MODEL_EVENT, props.inactiveValue);
-      emit(CHANGE_EVENT, props.inactiveValue);
-      emit(INPUT_EVENT, props.inactiveValue);
+    const checked = computed(() => actualValue.value === props2.activeValue);
+    if (![props2.activeValue, props2.inactiveValue].includes(actualValue.value)) {
+      emit(UPDATE_MODEL_EVENT, props2.inactiveValue);
+      emit(CHANGE_EVENT, props2.inactiveValue);
+      emit(INPUT_EVENT, props2.inactiveValue);
     }
     watch(checked, (val) => {
       var _a2;
       input.value.checked = val;
-      if (props.validateEvent) {
+      if (props2.validateEvent) {
         (_a2 = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a2.call(formItem, "change").catch((err) => debugWarn(err));
       }
     });
     const handleChange = () => {
-      const val = checked.value ? props.inactiveValue : props.activeValue;
+      const val = checked.value ? props2.inactiveValue : props2.activeValue;
       emit(UPDATE_MODEL_EVENT, val);
       emit(CHANGE_EVENT, val);
       emit(INPUT_EVENT, val);
@@ -45130,7 +45280,7 @@ var _sfc_main121 = defineComponent({
     const switchValue = () => {
       if (switchDisabled.value)
         return;
-      const { beforeChange } = props;
+      const { beforeChange } = props2;
       if (!beforeChange) {
         handleChange();
         return;
@@ -45277,10 +45427,10 @@ var _sfc_main121 = defineComponent({
 });
 var Switch = _export_sfc(_sfc_main121, [["__file", "switch.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/switch/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/switch/index.mjs
 var ElSwitch = withInstall(Switch);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/util.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/util.mjs
 var getCell = function(event) {
   var _a2;
   return (_a2 = event.target) == null ? void 0 : _a2.closest("td");
@@ -45525,7 +45675,7 @@ function walkTreeNode(root2, cb, childrenKey = "children", lazyKey = "hasChildre
   });
 }
 var removePopper = null;
-function createTablePopper(props, popperContent, trigger, table) {
+function createTablePopper(props2, popperContent, trigger, table) {
   if ((removePopper == null ? void 0 : removePopper.trigger) === trigger) {
     return;
   }
@@ -45534,7 +45684,7 @@ function createTablePopper(props, popperContent, trigger, table) {
   const ns = parentNode == null ? void 0 : parentNode.dataset.prefix;
   const popperOptions = {
     strategy: "fixed",
-    ...props.popperOptions
+    ...props2.popperOptions
   };
   const vm = createVNode(ElTooltip, {
     content: popperContent,
@@ -45545,7 +45695,7 @@ function createTablePopper(props, popperContent, trigger, table) {
     transition: "none",
     offset: 0,
     hideAfter: 0,
-    ...props,
+    ...props2,
     popperOptions,
     onHide: () => {
       removePopper == null ? void 0 : removePopper();
@@ -45655,7 +45805,7 @@ var ensurePosition = (style, key) => {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/expand.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/expand.mjs
 function useExpand(watcherData) {
   const instance = getCurrentInstance();
   const defaultExpandAll = ref(false);
@@ -45718,7 +45868,7 @@ function useExpand(watcherData) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/current.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/current.mjs
 function useCurrent(watcherData) {
   const instance = getCurrentInstance();
   const _currentRowKey = ref(null);
@@ -45784,7 +45934,7 @@ function useCurrent(watcherData) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/tree.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/tree.mjs
 function useTree(watcherData) {
   const expandRowKeys = ref([]);
   const treeData = ref({});
@@ -45959,12 +46109,23 @@ function useTree(watcherData) {
       });
     }
   };
+  const updateKeyChildren = (key, data) => {
+    const { lazy: lazy2, rowKey: rowKey2 } = instance.props;
+    if (!lazy2)
+      return;
+    if (!rowKey2)
+      throw new Error("[Table] rowKey is required in updateKeyChild");
+    if (lazyTreeNodeMap.value[key]) {
+      lazyTreeNodeMap.value[key] = data;
+    }
+  };
   return {
     loadData,
     loadOrToggle,
     toggleTreeExpansion,
     updateTreeExpandKeys,
     updateTreeData,
+    updateKeyChildren,
     normalize,
     states: {
       expandRowKeys,
@@ -45979,7 +46140,7 @@ function useTree(watcherData) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/watcher.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/watcher.mjs
 var sortData = (data, states) => {
   const sortingColumn = states.sortingColumn;
   if (!sortingColumn || typeof sortingColumn.sortable === "string") {
@@ -46043,15 +46204,30 @@ function useWatcher() {
       updateChildFixed(childColumn);
     });
   };
+  let selectionInitialFixed = void 0;
   const updateColumns = () => {
     _columns.value.forEach((column2) => {
       updateChildFixed(column2);
     });
     fixedColumns.value = _columns.value.filter((column2) => column2.fixed === true || column2.fixed === "left");
     rightFixedColumns.value = _columns.value.filter((column2) => column2.fixed === "right");
-    if (fixedColumns.value.length > 0 && _columns.value[0] && _columns.value[0].type === "selection" && !_columns.value[0].fixed) {
-      _columns.value[0].fixed = true;
-      fixedColumns.value.unshift(_columns.value[0]);
+    if (isUndefined2(selectionInitialFixed) && _columns.value[0] && _columns.value[0].type === "selection") {
+      selectionInitialFixed = Boolean(_columns.value[0].fixed);
+    }
+    if (fixedColumns.value.length > 0 && _columns.value[0] && _columns.value[0].type === "selection") {
+      if (!_columns.value[0].fixed) {
+        _columns.value[0].fixed = true;
+        fixedColumns.value.unshift(_columns.value[0]);
+      } else {
+        const hasNotSelectionColumns = fixedColumns.value.some((column2) => column2.type !== "selection");
+        if (!hasNotSelectionColumns) {
+          _columns.value[0].fixed = selectionInitialFixed;
+          if (!selectionInitialFixed)
+            fixedColumns.value.shift();
+        } else {
+          selectionInitialFixed = void 0;
+        }
+      }
     }
     const notFixedColumns = _columns.value.filter((column2) => !column2.fixed);
     originColumns.value = [].concat(fixedColumns.value).concat(notFixedColumns).concat(rightFixedColumns.value);
@@ -46108,13 +46284,13 @@ function useWatcher() {
   const getSelectionRows = () => {
     return (selection.value || []).slice();
   };
-  const toggleRowSelection = (row, selected, emitChange = true) => {
+  const toggleRowSelection = (row, selected, emitChange = true, ignoreSelectable = false) => {
     var _a22, _b, _c, _d;
     const treeProps2 = {
       children: (_b = (_a22 = instance == null ? void 0 : instance.store) == null ? void 0 : _a22.states) == null ? void 0 : _b.childrenColumnName.value,
       checkStrictly: (_d = (_c = instance == null ? void 0 : instance.store) == null ? void 0 : _c.states) == null ? void 0 : _d.checkStrictly.value
     };
-    const changed = toggleRowStatus(selection.value, row, selected, treeProps2);
+    const changed = toggleRowStatus(selection.value, row, selected, treeProps2, ignoreSelectable ? void 0 : selectable.value);
     if (changed) {
       const newSelection = (selection.value || []).slice();
       if (emitChange) {
@@ -46323,6 +46499,7 @@ function useWatcher() {
     updateTreeExpandKeys,
     toggleTreeExpansion,
     updateTreeData,
+    updateKeyChildren,
     loadOrToggle,
     states: treeStates
   } = useTree({
@@ -46380,6 +46557,7 @@ function useWatcher() {
     updateCurrentRowData,
     loadOrToggle,
     updateTreeData,
+    updateKeyChildren,
     states: {
       tableSize,
       rowKey: rowKey2,
@@ -46416,7 +46594,7 @@ function useWatcher() {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/index.mjs
 function replaceColumn(array4, column2) {
   return array4.map((item) => {
     var _a2;
@@ -46598,7 +46776,7 @@ function useStore() {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/helper.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/store/helper.mjs
 var InitialStateMap = {
   rowKey: "rowKey",
   defaultExpandAll: "defaultExpandAll",
@@ -46619,21 +46797,21 @@ var InitialStateMap = {
     default: false
   }
 };
-function createStore(table, props) {
+function createStore(table, props2) {
   if (!table) {
     throw new Error("Table is required.");
   }
   const store = useStore();
   store.toggleAllSelection = debounce_default(store._toggleAllSelection, 10);
   Object.keys(InitialStateMap).forEach((key) => {
-    handleValue(getArrKeysValue(props, key), key, store);
+    handleValue(getArrKeysValue(props2, key), key, store);
   });
-  proxyTableProps(store, props);
+  proxyTableProps(store, props2);
   return store;
 }
-function proxyTableProps(store, props) {
+function proxyTableProps(store, props2) {
   Object.keys(InitialStateMap).forEach((key) => {
-    watch(() => getArrKeysValue(props, key), (value) => {
+    watch(() => getArrKeysValue(props2, key), (value) => {
       handleValue(value, key, store);
     });
   });
@@ -46647,20 +46825,20 @@ function handleValue(value, propsKey, store) {
   }
   store.states[storeKey].value = newVal;
 }
-function getArrKeysValue(props, keys3) {
+function getArrKeysValue(props2, keys3) {
   if (keys3.includes(".")) {
     const keyList = keys3.split(".");
-    let value = props;
+    let value = props2;
     keyList.forEach((key) => {
       value = value[key];
     });
     return value;
   } else {
-    return props[keys3];
+    return props2[keys3];
   }
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-layout.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-layout.mjs
 var TableLayout = class {
   constructor(options) {
     this.observers = [];
@@ -46852,7 +47030,7 @@ var TableLayout = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/filter-panel.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/filter-panel.mjs
 var { CheckboxGroup: ElCheckboxGroup2 } = ElCheckbox;
 var _sfc_main122 = defineComponent({
   name: "ElTableFilterPanel",
@@ -46879,31 +47057,34 @@ var _sfc_main122 = defineComponent({
     },
     upDataColumn: {
       type: Function
+    },
+    appendTo: {
+      type: String
     }
   },
-  setup(props) {
+  setup(props2) {
     const instance = getCurrentInstance();
     const { t } = useLocale();
     const ns = useNamespace("table-filter");
     const parent2 = instance == null ? void 0 : instance.parent;
-    if (!parent2.filterPanels.value[props.column.id]) {
-      parent2.filterPanels.value[props.column.id] = instance;
+    if (!parent2.filterPanels.value[props2.column.id]) {
+      parent2.filterPanels.value[props2.column.id] = instance;
     }
     const tooltipVisible = ref(false);
     const tooltip = ref(null);
     const filters = computed(() => {
-      return props.column && props.column.filters;
+      return props2.column && props2.column.filters;
     });
     const filterClassName = computed(() => {
-      if (props.column.filterClassName) {
-        return `${ns.b()} ${props.column.filterClassName}`;
+      if (props2.column.filterClassName) {
+        return `${ns.b()} ${props2.column.filterClassName}`;
       }
       return ns.b();
     });
     const filterValue = computed({
       get: () => {
         var _a2;
-        return (((_a2 = props.column) == null ? void 0 : _a2.filteredValue) || [])[0];
+        return (((_a2 = props2.column) == null ? void 0 : _a2.filteredValue) || [])[0];
       },
       set: (value) => {
         if (filteredValue.value) {
@@ -46917,20 +47098,20 @@ var _sfc_main122 = defineComponent({
     });
     const filteredValue = computed({
       get() {
-        if (props.column) {
-          return props.column.filteredValue || [];
+        if (props2.column) {
+          return props2.column.filteredValue || [];
         }
         return [];
       },
       set(value) {
-        if (props.column) {
-          props.upDataColumn("filteredValue", value);
+        if (props2.column) {
+          props2.upDataColumn("filteredValue", value);
         }
       }
     });
     const multiple = computed(() => {
-      if (props.column) {
-        return props.column.filterMultiple;
+      if (props2.column) {
+        return props2.column.filterMultiple;
       }
       return true;
     });
@@ -46966,15 +47147,15 @@ var _sfc_main122 = defineComponent({
       hidden();
     };
     const confirmFilter = (filteredValue2) => {
-      props.store.commit("filterChange", {
-        column: props.column,
+      props2.store.commit("filterChange", {
+        column: props2.column,
         values: filteredValue2
       });
-      props.store.updateAllSelected();
+      props2.store.updateAllSelected();
     };
     watch(tooltipVisible, (value) => {
-      if (props.column) {
-        props.upDataColumn("filterOpened", value);
+      if (props2.column) {
+        props2.upDataColumn("filterOpened", value);
       }
     }, {
       immediate: true
@@ -47023,7 +47204,8 @@ function _sfc_render27(_ctx, _cache, $props, $setup, $data, $options) {
     effect: "light",
     pure: "",
     "popper-class": _ctx.filterClassName,
-    persistent: ""
+    persistent: "",
+    "append-to": _ctx.appendTo
   }, {
     content: withCtx(() => [
       _ctx.multiple ? (openBlock(), createElementBlock("div", { key: 0 }, [
@@ -47116,11 +47298,11 @@ function _sfc_render27(_ctx, _cache, $props, $setup, $data, $options) {
       ])
     ]),
     _: 3
-  }, 8, ["visible", "placement", "popper-class"]);
+  }, 8, ["visible", "placement", "popper-class", "append-to"]);
 }
 var FilterPanel = _export_sfc(_sfc_main122, [["render", _sfc_render27], ["__file", "filter-panel.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/layout-observer.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/layout-observer.mjs
 function useLayoutObserver(root2) {
   const instance = getCurrentInstance();
   onBeforeMount(() => {
@@ -47184,11 +47366,11 @@ function useLayoutObserver(root2) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/tokens.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/tokens.mjs
 var TABLE_INJECTION_KEY = Symbol("ElTable");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-header/event-helper.mjs
-function useEvent(props, emit) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-header/event-helper.mjs
+function useEvent(props2, emit) {
   const instance = getCurrentInstance();
   const parent2 = inject(TABLE_INJECTION_KEY);
   const handleFilterClick = (event) => {
@@ -47214,7 +47396,7 @@ function useEvent(props, emit) {
       return;
     if (column2.children && column2.children.length > 0)
       return;
-    if (draggingColumn.value && props.border) {
+    if (draggingColumn.value && props2.border) {
       dragging.value = true;
       const table = parent2;
       emit("set-drag-visible", true);
@@ -47251,7 +47433,7 @@ function useEvent(props, emit) {
           column2.width = column2.realWidth = columnWidth;
           table == null ? void 0 : table.emit("header-dragend", column2.width, startLeft - startColumnLeft, column2, event);
           requestAnimationFrame(() => {
-            props.store.scheduleLayout(false, true);
+            props2.store.scheduleLayout(false, true);
           });
           document.body.style.cursor = "";
           dragging.value = false;
@@ -47281,7 +47463,7 @@ function useEvent(props, emit) {
     const target2 = el == null ? void 0 : el.closest("th");
     if (!column2 || !column2.resizable)
       return;
-    if (!dragging.value && props.border) {
+    if (!dragging.value && props2.border) {
       const rect = target2.getBoundingClientRect();
       const bodyStyle = document.body.style;
       if (rect.width > 12 && rect.right - event.pageX < 8) {
@@ -47327,7 +47509,7 @@ function useEvent(props, emit) {
     if (["ascending", "descending"].some((str) => hasClass(clickTarget, str) && !column2.sortOrders.includes(str))) {
       return;
     }
-    const states = props.store.states;
+    const states = props2.store.states;
     let sortProp = states.sortProp.value;
     let sortOrder;
     const sortingColumn = states.sortingColumn.value;
@@ -47358,8 +47540,8 @@ function useEvent(props, emit) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-header/style.helper.mjs
-function useStyle(props) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-header/style.helper.mjs
+function useStyle(props2) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const ns = useNamespace("table");
   const getHeaderRowStyle = (rowIndex) => {
@@ -47390,13 +47572,13 @@ function useStyle(props) {
         column: column2
       });
     }
-    const fixedStyle = getFixedColumnOffset(columnIndex, column2.fixed, props.store, row);
+    const fixedStyle = getFixedColumnOffset(columnIndex, column2.fixed, props2.store, row);
     ensurePosition(fixedStyle, "left");
     ensurePosition(fixedStyle, "right");
     return Object.assign({}, headerCellStyles, fixedStyle);
   };
   const getHeaderCellClass = (rowIndex, columnIndex, row, column2) => {
-    const fixedClasses = getFixedColumnsClass(ns.b(), columnIndex, column2.fixed, props.store, row);
+    const fixedClasses = getFixedColumnsClass(ns.b(), columnIndex, column2.fixed, props2.store, row);
     const classes = [
       column2.id,
       column2.order,
@@ -47433,7 +47615,7 @@ function useStyle(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-header/utils-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-header/utils-helper.mjs
 var getAllColumns = (columns2) => {
   const result2 = [];
   columns2.forEach((column2) => {
@@ -47486,10 +47668,10 @@ var convertToRows = (originColumns) => {
   });
   return rows;
 };
-function useUtils(props) {
+function useUtils(props2) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const columnRows = computed(() => {
-    return convertToRows(props.store.states.originColumns.value);
+    return convertToRows(props2.store.states.originColumns.value);
   });
   const isGroup = computed(() => {
     const result2 = columnRows.value.length > 1;
@@ -47509,7 +47691,7 @@ function useUtils(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-header/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-header/index.mjs
 var TableHeader = defineComponent({
   name: "ElTableHeader",
   components: {
@@ -47533,9 +47715,12 @@ var TableHeader = defineComponent({
           order: ""
         };
       }
+    },
+    appendFilterPanelTo: {
+      type: String
     }
   },
-  setup(props, { emit }) {
+  setup(props2, { emit }) {
     const instance = getCurrentInstance();
     const parent2 = inject(TABLE_INJECTION_KEY);
     const ns = useNamespace("table");
@@ -47544,7 +47729,7 @@ var TableHeader = defineComponent({
     onMounted(async () => {
       await nextTick();
       await nextTick();
-      const { prop, order } = props.defaultSort;
+      const { prop, order } = props2.defaultSort;
       parent2 == null ? void 0 : parent2.store.commit("sort", { prop, order, init: true });
     });
     const {
@@ -47555,14 +47740,14 @@ var TableHeader = defineComponent({
       handleMouseOut,
       handleSortClick,
       handleFilterClick
-    } = useEvent(props, emit);
+    } = useEvent(props2, emit);
     const {
       getHeaderRowStyle,
       getHeaderRowClass,
       getHeaderCellStyle,
       getHeaderCellClass
-    } = useStyle(props);
-    const { isGroup, toggleAllSelection, columnRows } = useUtils(props);
+    } = useStyle(props2);
+    const { isGroup, toggleAllSelection, columnRows } = useUtils(props2);
     instance.state = {
       onColumnsChange,
       onScrollableChange
@@ -47663,6 +47848,7 @@ var TableHeader = defineComponent({
           column2.filterable && h(FilterPanel, {
             store,
             placement: column2.filterPlacement || "bottom-start",
+            appendTo: $parent.appendFilterPanelTo,
             column: column2,
             upDataColumn: (key, value) => {
               column2[key] = value;
@@ -47678,11 +47864,11 @@ var TableHeader = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-body/events-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-body/events-helper.mjs
 function isGreaterThan(a2, b2, epsilon = 0.03) {
   return a2 - b2 > epsilon;
 }
-function useEvents(props) {
+function useEvents(props2) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const tooltipContent = ref("");
   const tooltipTrigger = ref(h("div"));
@@ -47694,7 +47880,7 @@ function useEvents(props) {
     const namespace = (_a2 = table == null ? void 0 : table.vnode.el) == null ? void 0 : _a2.dataset.prefix;
     if (cell) {
       column2 = getColumnByCell({
-        columns: props.store.states.columns.value
+        columns: props2.store.states.columns.value
       }, cell, namespace);
       if (column2) {
         table == null ? void 0 : table.emit(`cell-${name}`, row, column2, cell, event);
@@ -47706,17 +47892,17 @@ function useEvents(props) {
     handleEvent(event, row, "dblclick");
   };
   const handleClick = (event, row) => {
-    props.store.commit("setCurrentRow", row);
+    props2.store.commit("setCurrentRow", row);
     handleEvent(event, row, "click");
   };
   const handleContextMenu = (event, row) => {
     handleEvent(event, row, "contextmenu");
   };
   const handleMouseEnter = debounce_default((index) => {
-    props.store.commit("setHoverRow", index);
+    props2.store.commit("setHoverRow", index);
   }, 30);
   const handleMouseLeave = debounce_default(() => {
-    props.store.commit("setHoverRow", null);
+    props2.store.commit("setHoverRow", null);
   }, 30);
   const getPadding = (el) => {
     const style = window.getComputedStyle(el, null);
@@ -47748,7 +47934,7 @@ function useEvents(props) {
     const namespace = (_a2 = table == null ? void 0 : table.vnode.el) == null ? void 0 : _a2.dataset.prefix;
     if (cell) {
       const column2 = getColumnByCell({
-        columns: props.store.states.columns.value
+        columns: props2.store.states.columns.value
       }, cell, namespace);
       if (cell.rowSpan > 1) {
         toggleRowClassByCell(cell.rowSpan, event, addClass);
@@ -47798,8 +47984,8 @@ function useEvents(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-body/styles-helper.mjs
-function useStyles(props) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-body/styles-helper.mjs
+function useStyles(props2) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const ns = useNamespace("table");
   const getRowStyle = (row, rowIndex) => {
@@ -47814,10 +48000,10 @@ function useStyles(props) {
   };
   const getRowClass = (row, rowIndex) => {
     const classes = [ns.e("row")];
-    if ((parent2 == null ? void 0 : parent2.props.highlightCurrentRow) && row === props.store.states.currentRow.value) {
+    if ((parent2 == null ? void 0 : parent2.props.highlightCurrentRow) && row === props2.store.states.currentRow.value) {
       classes.push("current-row");
     }
-    if (props.stripe && rowIndex % 2 === 1) {
+    if (props2.stripe && rowIndex % 2 === 1) {
       classes.push(ns.em("row", "striped"));
     }
     const rowClassName = parent2 == null ? void 0 : parent2.props.rowClassName;
@@ -47842,13 +48028,13 @@ function useStyles(props) {
         column: column2
       });
     }
-    const fixedStyle = getFixedColumnOffset(columnIndex, props == null ? void 0 : props.fixed, props.store);
+    const fixedStyle = getFixedColumnOffset(columnIndex, props2 == null ? void 0 : props2.fixed, props2.store);
     ensurePosition(fixedStyle, "left");
     ensurePosition(fixedStyle, "right");
     return Object.assign({}, cellStyles, fixedStyle);
   };
   const getCellClass = (rowIndex, columnIndex, row, column2, offset3) => {
-    const fixedClasses = getFixedColumnsClass(ns.b(), columnIndex, props == null ? void 0 : props.fixed, props.store, void 0, offset3);
+    const fixedClasses = getFixedColumnsClass(ns.b(), columnIndex, props2 == null ? void 0 : props2.fixed, props2.store, void 0, offset3);
     const classes = [column2.id, column2.align, column2.className, ...fixedClasses];
     const cellClassName = parent2 == null ? void 0 : parent2.props.cellClassName;
     if (typeof cellClassName === "string") {
@@ -47902,8 +48088,8 @@ function useStyles(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-body/render-helper.mjs
-function useRender(props) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-body/render-helper.mjs
+function useRender(props2) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const ns = useNamespace("table");
   const {
@@ -47916,7 +48102,7 @@ function useRender(props) {
     handleCellMouseLeave,
     tooltipContent,
     tooltipTrigger
-  } = useEvents(props);
+  } = useEvents(props2);
   const {
     getRowStyle,
     getRowClass,
@@ -47924,9 +48110,9 @@ function useRender(props) {
     getCellClass,
     getSpan,
     getColspanRealWidth
-  } = useStyles(props);
+  } = useStyles(props2);
   const firstDefaultColumnIndex = computed(() => {
-    return props.store.states.columns.value.findIndex(({ type: type4 }) => type4 === "default");
+    return props2.store.states.columns.value.findIndex(({ type: type4 }) => type4 === "default");
   });
   const getKeyOfRow = (row, index) => {
     const rowKey2 = parent2.props.rowKey;
@@ -47936,7 +48122,7 @@ function useRender(props) {
     return index;
   };
   const rowRender = (row, $index, treeRowData, expanded = false) => {
-    const { tooltipEffect, tooltipOptions, store } = props;
+    const { tooltipEffect, tooltipOptions, store } = props2;
     const { indent, columns: columns2 } = store.states;
     const rowClasses = getRowClass(row, $index);
     let display = true;
@@ -47964,8 +48150,8 @@ function useRender(props) {
       const columnData = Object.assign({}, column2);
       columnData.realWidth = getColspanRealWidth(columns2.value, colspan, cellIndex);
       const data = {
-        store: props.store,
-        _self: props.context || parent2,
+        store: props2.store,
+        _self: props2.context || parent2,
         column: columnData,
         row,
         $index,
@@ -48008,7 +48194,7 @@ function useRender(props) {
     return column2.renderCell(data);
   };
   const wrappedRowRender = (row, $index) => {
-    const store = props.store;
+    const store = props2.store;
     const { isRowExpanded, assertRowKey } = store;
     const { treeData, lazyTreeNodeMap, childrenColumnName, rowKey: rowKey2 } = store.states;
     const columns2 = store.states.columns.value;
@@ -48110,7 +48296,7 @@ function useRender(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-body/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-body/defaults.mjs
 var defaultProps2 = {
   store: {
     required: true,
@@ -48134,18 +48320,18 @@ var defaultProps2 = {
   highlight: Boolean
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-body/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-body/index.mjs
 var TableBody = defineComponent({
   name: "ElTableBody",
   props: defaultProps2,
-  setup(props) {
+  setup(props2) {
     const instance = getCurrentInstance();
     const parent2 = inject(TABLE_INJECTION_KEY);
     const ns = useNamespace("table");
-    const { wrappedRowRender, tooltipContent, tooltipTrigger } = useRender(props);
+    const { wrappedRowRender, tooltipContent, tooltipTrigger } = useRender(props2);
     const { onColumnsChange, onScrollableChange } = useLayoutObserver(parent2);
     const hoveredCellList = [];
-    watch(props.store.states.hoverRow, (newVal, oldVal) => {
+    watch(props2.store.states.hoverRow, (newVal, oldVal) => {
       var _a2;
       const el = instance == null ? void 0 : instance.vnode.el;
       const rows = Array.from((el == null ? void 0 : el.children) || []).filter((e) => e == null ? void 0 : e.classList.contains(`${ns.e("row")}`));
@@ -48181,7 +48367,7 @@ var TableBody = defineComponent({
         hoveredCellList.forEach((item) => removeClass(item, "hover-cell"));
         hoveredCellList.length = 0;
       }
-      if (!props.store.states.isComplex.value || !isClient)
+      if (!props2.store.states.isComplex.value || !isClient)
         return;
       rAF(() => {
         const oldRow = rows[oldVal];
@@ -48218,7 +48404,7 @@ var TableBody = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-footer/mapState-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-footer/mapState-helper.mjs
 function useMapState() {
   const table = inject(TABLE_INJECTION_KEY);
   const store = table == null ? void 0 : table.store;
@@ -48247,8 +48433,8 @@ function useMapState() {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-footer/style-helper.mjs
-function useStyle2(props) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-footer/style-helper.mjs
+function useStyle2(props2) {
   const { columns: columns2 } = useMapState();
   const ns = useNamespace("table");
   const getCellClasses = (columns22, cellIndex) => {
@@ -48258,7 +48444,7 @@ function useStyle2(props) {
       column2.id,
       column2.align,
       column2.labelClassName,
-      ...getFixedColumnsClass(ns.b(), cellIndex, column2.fixed, props.store)
+      ...getFixedColumnsClass(ns.b(), cellIndex, column2.fixed, props2.store)
     ];
     if (column2.className) {
       classes.push(column2.className);
@@ -48269,7 +48455,7 @@ function useStyle2(props) {
     return classes;
   };
   const getCellStyles = (column2, cellIndex) => {
-    const fixedStyle = getFixedColumnOffset(cellIndex, column2.fixed, props.store);
+    const fixedStyle = getFixedColumnOffset(cellIndex, column2.fixed, props2.store);
     ensurePosition(fixedStyle, "left");
     ensurePosition(fixedStyle, "right");
     return fixedStyle;
@@ -48281,7 +48467,7 @@ function useStyle2(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-footer/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-footer/index.mjs
 var TableFooter = defineComponent({
   name: "ElTableFooter",
   props: {
@@ -48306,8 +48492,8 @@ var TableFooter = defineComponent({
       }
     }
   },
-  setup(props) {
-    const { getCellClasses, getCellStyles, columns: columns2 } = useStyle2(props);
+  setup(props2) {
+    const { getCellClasses, getCellStyles, columns: columns2 } = useStyle2(props2);
     const ns = useNamespace("table");
     return {
       ns,
@@ -48374,7 +48560,7 @@ var TableFooter = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table/utils-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table/utils-helper.mjs
 function useUtils2(store) {
   const setCurrentRow = (row) => {
     store.commit("setCurrentRow", row);
@@ -48382,8 +48568,8 @@ function useUtils2(store) {
   const getSelectionRows = () => {
     return store.getSelectionRows();
   };
-  const toggleRowSelection = (row, selected) => {
-    store.toggleRowSelection(row, selected, false);
+  const toggleRowSelection = (row, selected, ignoreSelectable = true) => {
+    store.toggleRowSelection(row, selected, false, ignoreSelectable);
     store.updateAllSelected();
   };
   const clearSelection = () => {
@@ -48404,6 +48590,9 @@ function useUtils2(store) {
   const sort = (prop, order) => {
     store.commit("sort", { prop, order });
   };
+  const updateKeyChildren = (key, data) => {
+    store.updateKeyChildren(key, data);
+  };
   return {
     setCurrentRow,
     getSelectionRows,
@@ -48413,12 +48602,13 @@ function useUtils2(store) {
     toggleAllSelection,
     toggleRowExpansion,
     clearSort,
-    sort
+    sort,
+    updateKeyChildren
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table/style-helper.mjs
-function useStyle3(props, layout2, store, table) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table/style-helper.mjs
+function useStyle3(props2, layout2, store, table) {
   const isHidden2 = ref(false);
   const renderExpanded = ref(null);
   const resizeProxyVisible = ref(false);
@@ -48442,27 +48632,27 @@ function useStyle3(props, layout2, store, table) {
   const footerScrollHeight = ref(0);
   const appendScrollHeight = ref(0);
   watchEffect(() => {
-    layout2.setHeight(props.height);
+    layout2.setHeight(props2.height);
   });
   watchEffect(() => {
-    layout2.setMaxHeight(props.maxHeight);
+    layout2.setMaxHeight(props2.maxHeight);
   });
-  watch(() => [props.currentRowKey, store.states.rowKey], ([currentRowKey, rowKey2]) => {
+  watch(() => [props2.currentRowKey, store.states.rowKey], ([currentRowKey, rowKey2]) => {
     if (!unref(rowKey2) || !unref(currentRowKey))
       return;
     store.setCurrentRowKey(`${currentRowKey}`);
   }, {
     immediate: true
   });
-  watch(() => props.data, (data) => {
+  watch(() => props2.data, (data) => {
     table.store.commit("setData", data);
   }, {
     immediate: true,
     deep: true
   });
   watchEffect(() => {
-    if (props.expandRowKeys) {
-      store.setExpandRowKeysAdapter(props.expandRowKeys);
+    if (props2.expandRowKeys) {
+      store.setExpandRowKeysAdapter(props2.expandRowKeys);
     }
   });
   const handleMouseLeave = () => {
@@ -48477,7 +48667,7 @@ function useStyle3(props, layout2, store, table) {
     }
   };
   const shouldUpdateHeight = computed(() => {
-    return props.height || props.maxHeight || store.states.fixedColumns.value.length > 0 || store.states.rightFixedColumns.value.length > 0;
+    return props2.height || props2.maxHeight || store.states.fixedColumns.value.length > 0 || store.states.rightFixedColumns.value.length > 0;
   });
   const tableBodyStyles = computed(() => {
     return {
@@ -48498,13 +48688,13 @@ function useStyle3(props, layout2, store, table) {
     requestAnimationFrame(doLayout);
     const el = table.vnode.el;
     const tableHeader = table.refs.headerWrapper;
-    if (props.flexible && el && el.parentElement) {
+    if (props2.flexible && el && el.parentElement) {
       el.parentElement.style.minWidth = "0";
     }
     resizeState.value = {
       width: tableWidth.value = el.offsetWidth,
       height: el.offsetHeight,
-      headerHeight: props.showHeader && tableHeader ? tableHeader.offsetHeight : null
+      headerHeight: props2.showHeader && tableHeader ? tableHeader.offsetHeight : null
     };
     store.states.columns.value.forEach((column2) => {
       if (column2.filteredValue && column2.filteredValue.length) {
@@ -48568,7 +48758,7 @@ function useStyle3(props, layout2, store, table) {
         passive: true
       });
     }
-    if (props.fit) {
+    if (props2.fit) {
       useResizeObserver(table.vnode.el, resizeListener);
     } else {
       useEventListener(window, "resize", resizeListener);
@@ -48595,11 +48785,11 @@ function useStyle3(props, layout2, store, table) {
       shouldUpdateLayout = true;
     }
     const height = el.offsetHeight;
-    if ((props.height || shouldUpdateHeight.value) && oldHeight !== height) {
+    if ((props2.height || shouldUpdateHeight.value) && oldHeight !== height) {
       shouldUpdateLayout = true;
     }
-    const tableHeader = props.tableLayout === "fixed" ? table.refs.headerWrapper : (_a2 = table.refs.tableHeaderRef) == null ? void 0 : _a2.$el;
-    if (props.showHeader && (tableHeader == null ? void 0 : tableHeader.offsetHeight) !== oldHeaderHeight) {
+    const tableHeader = props2.tableLayout === "fixed" ? table.refs.headerWrapper : (_a2 = table.refs.tableHeaderRef) == null ? void 0 : _a2.$el;
+    if (props2.showHeader && (tableHeader == null ? void 0 : tableHeader.offsetHeight) !== oldHeaderHeight) {
       shouldUpdateLayout = true;
     }
     tableScrollHeight.value = ((_b = table.refs.tableWrapper) == null ? void 0 : _b.scrollHeight) || 0;
@@ -48611,7 +48801,7 @@ function useStyle3(props, layout2, store, table) {
       resizeState.value = {
         width,
         height,
-        headerHeight: props.showHeader && (tableHeader == null ? void 0 : tableHeader.offsetHeight) || 0
+        headerHeight: props2.showHeader && (tableHeader == null ? void 0 : tableHeader.offsetHeight) || 0
       };
       doLayout();
     }
@@ -48622,15 +48812,15 @@ function useStyle3(props, layout2, store, table) {
     return bodyWidth_.value ? `${bodyWidth_.value - (scrollY.value ? gutterWidth : 0)}px` : "";
   });
   const tableLayout = computed(() => {
-    if (props.maxHeight)
+    if (props2.maxHeight)
       return "fixed";
-    return props.tableLayout;
+    return props2.tableLayout;
   });
   const emptyBlockStyle = computed(() => {
-    if (props.data && props.data.length)
+    if (props2.data && props2.data.length)
       return null;
     let height = "100%";
-    if (props.height && bodyScrollHeight.value) {
+    if (props2.height && bodyScrollHeight.value) {
       height = `${bodyScrollHeight.value}px`;
     }
     const width = tableWidth.value;
@@ -48640,32 +48830,32 @@ function useStyle3(props, layout2, store, table) {
     };
   });
   const tableInnerStyle = computed(() => {
-    if (props.height) {
+    if (props2.height) {
       return {
-        height: !Number.isNaN(Number(props.height)) ? `${props.height}px` : props.height
+        height: !Number.isNaN(Number(props2.height)) ? `${props2.height}px` : props2.height
       };
     }
-    if (props.maxHeight) {
+    if (props2.maxHeight) {
       return {
-        maxHeight: !Number.isNaN(Number(props.maxHeight)) ? `${props.maxHeight}px` : props.maxHeight
+        maxHeight: !Number.isNaN(Number(props2.maxHeight)) ? `${props2.maxHeight}px` : props2.maxHeight
       };
     }
     return {};
   });
   const scrollbarStyle = computed(() => {
-    if (props.height) {
+    if (props2.height) {
       return {
         height: "100%"
       };
     }
-    if (props.maxHeight) {
-      if (!Number.isNaN(Number(props.maxHeight))) {
+    if (props2.maxHeight) {
+      if (!Number.isNaN(Number(props2.maxHeight))) {
         return {
-          maxHeight: `${props.maxHeight - headerScrollHeight.value - footerScrollHeight.value}px`
+          maxHeight: `${props2.maxHeight - headerScrollHeight.value - footerScrollHeight.value}px`
         };
       } else {
         return {
-          maxHeight: `calc(${props.maxHeight} - ${headerScrollHeight.value + footerScrollHeight.value}px)`
+          maxHeight: `calc(${props2.maxHeight} - ${headerScrollHeight.value + footerScrollHeight.value}px)`
         };
       }
     }
@@ -48708,7 +48898,7 @@ function useStyle3(props, layout2, store, table) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table/key-render-helper.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table/key-render-helper.mjs
 function useKeyRender(table) {
   const observer = ref();
   const initWatchDom = () => {
@@ -48730,7 +48920,7 @@ function useKeyRender(table) {
   });
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table/defaults.mjs
 var defaultProps3 = {
   data: {
     type: Array,
@@ -48805,13 +48995,18 @@ var defaultProps3 = {
   },
   scrollbarAlwaysOn: Boolean,
   flexible: Boolean,
-  showOverflowTooltip: [Boolean, Object]
+  showOverflowTooltip: [Boolean, Object],
+  appendFilterPanelTo: String,
+  scrollbarTabindex: {
+    type: [Number, String],
+    default: void 0
+  }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/h-helper.mjs
-function hColgroup(props) {
-  const isAuto = props.tableLayout === "auto";
-  let columns2 = props.columns || [];
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/h-helper.mjs
+function hColgroup(props2) {
+  const isAuto = props2.tableLayout === "auto";
+  let columns2 = props2.columns || [];
   if (isAuto) {
     if (columns2.every((column2) => column2.width === void 0)) {
       columns2 = [];
@@ -48819,7 +49014,7 @@ function hColgroup(props) {
   }
   const getPropsData = (column2) => {
     const propsData = {
-      key: `${props.tableLayout}_${column2.id}`,
+      key: `${props2.tableLayout}_${column2.id}`,
       style: {},
       name: void 0
     };
@@ -48836,7 +49031,7 @@ function hColgroup(props) {
 }
 hColgroup.props = ["columns", "tableLayout"];
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/composables/use-scrollbar.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/composables/use-scrollbar.mjs
 var useScrollbar = () => {
   const scrollBarRef = ref();
   const scrollTo = (options, yCoord) => {
@@ -48861,7 +49056,7 @@ var useScrollbar = () => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table.mjs
 var tableIdSeed = 1;
 var _sfc_main123 = defineComponent({
   name: "ElTable",
@@ -48896,18 +49091,18 @@ var _sfc_main123 = defineComponent({
     "header-dragend",
     "expand-change"
   ],
-  setup(props) {
+  setup(props2) {
     const { t } = useLocale();
     const ns = useNamespace("table");
     const table = getCurrentInstance();
     provide(TABLE_INJECTION_KEY, table);
-    const store = createStore(table, props);
+    const store = createStore(table, props2);
     table.store = store;
     const layout2 = new TableLayout({
       store: table.store,
       table,
-      fit: props.fit,
-      showHeader: props.showHeader
+      fit: props2.fit,
+      showHeader: props2.showHeader
     });
     table.layout = layout2;
     const isEmpty3 = computed(() => (store.states.data.value || []).length === 0);
@@ -48920,7 +49115,8 @@ var _sfc_main123 = defineComponent({
       toggleAllSelection,
       toggleRowExpansion,
       clearSort,
-      sort
+      sort,
+      updateKeyChildren
     } = useUtils2(store);
     const {
       isHidden: isHidden2,
@@ -48941,7 +49137,7 @@ var _sfc_main123 = defineComponent({
       scrollbarViewStyle,
       tableInnerStyle,
       scrollbarStyle
-    } = useStyle3(props, layout2, store, table);
+    } = useStyle3(props2, layout2, store, table);
     const { scrollBarRef, scrollTo, setScrollLeft, setScrollTop } = useScrollbar();
     const debouncedUpdateLayout = debounce_default(doLayout, 50);
     const tableId = `${ns.namespace.value}-table_${tableIdSeed++}`;
@@ -48954,11 +49150,11 @@ var _sfc_main123 = defineComponent({
     };
     const computedSumText = computed(() => {
       var _a2;
-      return (_a2 = props.sumText) != null ? _a2 : t("el.table.sumText");
+      return (_a2 = props2.sumText) != null ? _a2 : t("el.table.sumText");
     });
     const computedEmptyText = computed(() => {
       var _a2;
-      return (_a2 = props.emptyText) != null ? _a2 : t("el.table.emptyText");
+      return (_a2 = props2.emptyText) != null ? _a2 : t("el.table.emptyText");
     });
     const columns2 = computed(() => {
       return convertToRows(store.states.originColumns.value)[0];
@@ -48994,6 +49190,7 @@ var _sfc_main123 = defineComponent({
       clearSort,
       doLayout,
       sort,
+      updateKeyChildren,
       t,
       setDragVisible,
       context: table,
@@ -49074,8 +49271,9 @@ function _sfc_render28(_ctx, _cache, $props, $setup, $data, $options) {
             border: _ctx.border,
             "default-sort": _ctx.defaultSort,
             store: _ctx.store,
+            "append-filter-panel-to": _ctx.appendFilterPanelTo,
             onSetDragVisible: _ctx.setDragVisible
-          }, null, 8, ["border", "default-sort", "store", "onSetDragVisible"])
+          }, null, 8, ["border", "default-sort", "store", "append-filter-panel-to", "onSetDragVisible"])
         ], 6)
       ], 2)), [
         [_directive_mousewheel, _ctx.handleHeaderFooterMousewheel]
@@ -49088,7 +49286,8 @@ function _sfc_render28(_ctx, _cache, $props, $setup, $data, $options) {
           ref: "scrollBarRef",
           "view-style": _ctx.scrollbarViewStyle,
           "wrap-style": _ctx.scrollbarStyle,
-          always: _ctx.scrollbarAlwaysOn
+          always: _ctx.scrollbarAlwaysOn,
+          tabindex: _ctx.scrollbarTabindex
         }, {
           default: withCtx(() => [
             createBaseVNode("table", {
@@ -49113,8 +49312,9 @@ function _sfc_render28(_ctx, _cache, $props, $setup, $data, $options) {
                 border: _ctx.border,
                 "default-sort": _ctx.defaultSort,
                 store: _ctx.store,
+                "append-filter-panel-to": _ctx.appendFilterPanelTo,
                 onSetDragVisible: _ctx.setDragVisible
-              }, null, 8, ["class", "border", "default-sort", "store", "onSetDragVisible"])) : createCommentVNode("v-if", true),
+              }, null, 8, ["class", "border", "default-sort", "store", "append-filter-panel-to", "onSetDragVisible"])) : createCommentVNode("v-if", true),
               createVNode(_component_table_body, {
                 context: _ctx.context,
                 highlight: _ctx.highlightCurrentRow,
@@ -49158,7 +49358,7 @@ function _sfc_render28(_ctx, _cache, $props, $setup, $data, $options) {
             ], 2)) : createCommentVNode("v-if", true)
           ]),
           _: 3
-        }, 8, ["view-style", "wrap-style", "always"])
+        }, 8, ["view-style", "wrap-style", "always", "tabindex"])
       ], 2),
       _ctx.showSummary && _ctx.tableLayout === "fixed" ? withDirectives((openBlock(), createElementBlock("div", {
         key: 1,
@@ -49203,7 +49403,7 @@ function _sfc_render28(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var Table = _export_sfc(_sfc_main123, [["render", _sfc_render28], ["__file", "table.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/config.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/config.mjs
 var defaultClassNames = {
   selection: "table-column--selection",
   expand: "table__expand-column"
@@ -49397,9 +49597,9 @@ function treeCellPrefix({
   return ele;
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-column/watcher-helper.mjs
-function getAllAliases(props, aliases) {
-  return props.reduce((prev, cur) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-column/watcher-helper.mjs
+function getAllAliases(props2, aliases) {
+  return props2.reduce((prev, cur) => {
     prev[cur] = cur;
     return prev;
   }, aliases);
@@ -49407,12 +49607,12 @@ function getAllAliases(props, aliases) {
 function useWatcher2(owner, props_) {
   const instance = getCurrentInstance();
   const registerComplexWatchers = () => {
-    const props = ["fixed"];
+    const props2 = ["fixed"];
     const aliases = {
       realWidth: "width",
       realMinWidth: "minWidth"
     };
-    const allAliases = getAllAliases(props, aliases);
+    const allAliases = getAllAliases(props2, aliases);
     Object.keys(allAliases).forEach((key) => {
       const columnKey = aliases[key];
       if (hasOwn2(props_, columnKey)) {
@@ -49433,7 +49633,7 @@ function useWatcher2(owner, props_) {
     });
   };
   const registerNormalWatchers = () => {
-    const props = [
+    const props2 = [
       "label",
       "filters",
       "filterMultiple",
@@ -49451,7 +49651,7 @@ function useWatcher2(owner, props_) {
       align: "realAlign",
       headerAlign: "realHeaderAlign"
     };
-    const allAliases = getAllAliases(props, aliases);
+    const allAliases = getAllAliases(props2, aliases);
     Object.keys(allAliases).forEach((key) => {
       const columnKey = aliases[key];
       if (hasOwn2(props_, columnKey)) {
@@ -49467,8 +49667,8 @@ function useWatcher2(owner, props_) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-column/render-helper.mjs
-function useRender2(props, slots, owner) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-column/render-helper.mjs
+function useRender2(props2, slots, owner) {
   const instance = getCurrentInstance();
   const columnId = ref("");
   const isSubColumn = ref(false);
@@ -49476,11 +49676,11 @@ function useRender2(props, slots, owner) {
   const realHeaderAlign = ref();
   const ns = useNamespace("table");
   watchEffect(() => {
-    realAlign.value = props.align ? `is-${props.align}` : null;
+    realAlign.value = props2.align ? `is-${props2.align}` : null;
     realAlign.value;
   });
   watchEffect(() => {
-    realHeaderAlign.value = props.headerAlign ? `is-${props.headerAlign}` : realAlign.value;
+    realHeaderAlign.value = props2.headerAlign ? `is-${props2.headerAlign}` : realAlign.value;
     realHeaderAlign.value;
   });
   const columnOrTableParent = computed(() => {
@@ -49498,8 +49698,8 @@ function useRender2(props, slots, owner) {
     const treeDataValue = treeData.value;
     return treeDataValue && Object.keys(treeDataValue).length > 0;
   });
-  const realWidth = ref(parseWidth(props.width));
-  const realMinWidth = ref(parseMinWidth(props.minWidth));
+  const realWidth = ref(parseWidth(props2.width));
+  const realMinWidth = ref(parseMinWidth(props2.minWidth));
   const setColumnWidth = (column2) => {
     if (realWidth.value)
       column2.width = realWidth.value;
@@ -49545,7 +49745,7 @@ function useRender2(props, slots, owner) {
     }
   };
   const setColumnRenders = (column2) => {
-    if (props.renderHeader) {
+    if (props2.renderHeader) {
       debugWarn("TableColumn", "Comparing to render-header, scoped-slot header is easier to use. We recommend users to use scoped-slot header.");
     } else if (column2.type !== "selection") {
       column2.renderHeader = (scope) => {
@@ -49580,18 +49780,18 @@ function useRender2(props, slots, owner) {
         const firstUserColumnIndex = columns2.value.findIndex((item) => item.type === "default");
         const shouldCreatePlaceholder = hasTreeColumn.value && data.cellIndex === firstUserColumnIndex;
         const prefix = treeCellPrefix(data, shouldCreatePlaceholder);
-        const props2 = {
+        const props22 = {
           class: "cell",
           style: {}
         };
         if (column2.showOverflowTooltip) {
-          props2.class = `${props2.class} ${unref(ns.namespace)}-tooltip`;
-          props2.style = {
+          props22.class = `${props22.class} ${unref(ns.namespace)}-tooltip`;
+          props22.style = {
             width: `${(data.column.realWidth || Number(data.column.width)) - 1}px`
           };
         }
         checkSubColumn(children);
-        return h("div", props2, [prefix, children]);
+        return h("div", props22, [prefix, children]);
       };
     }
     return column2;
@@ -49600,7 +49800,7 @@ function useRender2(props, slots, owner) {
     return propsKey.reduce((prev, cur) => {
       if (Array.isArray(cur)) {
         cur.forEach((key) => {
-          prev[key] = props[key];
+          prev[key] = props2[key];
         });
       }
       return prev;
@@ -49627,7 +49827,7 @@ function useRender2(props, slots, owner) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-column/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-column/defaults.mjs
 var defaultProps4 = {
   type: {
     type: String,
@@ -49689,7 +49889,7 @@ var defaultProps4 = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-column/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/src/table-column/index.mjs
 var columnIdSeed = 1;
 var ElTableColumn = defineComponent({
   name: "ElTableColumn",
@@ -49697,7 +49897,7 @@ var ElTableColumn = defineComponent({
     ElCheckbox
   },
   props: defaultProps4,
-  setup(props, { slots }) {
+  setup(props2, { slots }) {
     const instance = getCurrentInstance();
     const columnConfig = ref({});
     const owner = computed(() => {
@@ -49707,7 +49907,7 @@ var ElTableColumn = defineComponent({
       }
       return parent22;
     });
-    const { registerNormalWatchers, registerComplexWatchers } = useWatcher2(owner, props);
+    const { registerNormalWatchers, registerComplexWatchers } = useWatcher2(owner, props2);
     const {
       columnId,
       isSubColumn,
@@ -49720,23 +49920,23 @@ var ElTableColumn = defineComponent({
       getColumnElIndex,
       realAlign,
       updateColumnOrder
-    } = useRender2(props, slots, owner);
+    } = useRender2(props2, slots, owner);
     const parent2 = columnOrTableParent.value;
     columnId.value = `${parent2.tableId || parent2.columnId}_column_${columnIdSeed++}`;
     onBeforeMount(() => {
       isSubColumn.value = owner.value !== parent2;
-      const type4 = props.type || "default";
-      const sortable = props.sortable === "" ? true : props.sortable;
-      const showOverflowTooltip = isUndefined2(props.showOverflowTooltip) ? parent2.props.showOverflowTooltip : props.showOverflowTooltip;
+      const type4 = props2.type || "default";
+      const sortable = props2.sortable === "" ? true : props2.sortable;
+      const showOverflowTooltip = isUndefined2(props2.showOverflowTooltip) ? parent2.props.showOverflowTooltip : props2.showOverflowTooltip;
       const defaults2 = {
         ...cellStarts[type4],
         id: columnId.value,
         type: type4,
-        property: props.prop || props.property,
+        property: props2.prop || props2.property,
         align: realAlign,
         headerAlign: realHeaderAlign,
         showOverflowTooltip,
-        filterable: props.filters || props.filterMethod,
+        filterable: props2.filters || props2.filterMethod,
         filteredValue: [],
         filterPlacement: "",
         filterClassName: "",
@@ -49744,7 +49944,7 @@ var ElTableColumn = defineComponent({
         isSubColumn: false,
         filterOpened: false,
         sortable,
-        index: props.index,
+        index: props2.index,
         rawColumnKey: instance.vnode.key
       };
       const basicProps = [
@@ -49787,7 +49987,8 @@ var ElTableColumn = defineComponent({
       columnIndex > -1 && owner.value.store.commit("insertColumn", columnConfig.value, isSubColumn.value ? parent22.columnConfig.value : null, updateColumnOrder);
     });
     onBeforeUnmount(() => {
-      const columnIndex = columnConfig.value.getColumnIndex();
+      const getColumnIndex = columnConfig.value.getColumnIndex;
+      const columnIndex = getColumnIndex ? getColumnIndex() : -1;
       columnIndex > -1 && owner.value.store.commit("removeColumn", columnConfig.value, isSubColumn.value ? parent2.columnConfig.value : null, updateColumnOrder);
     });
     instance.columnId = columnId.value;
@@ -49824,13 +50025,13 @@ var ElTableColumn = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table/index.mjs
 var ElTable = withInstall(Table, {
   TableColumn: ElTableColumn
 });
 var ElTableColumn2 = withNoopInstall(ElTableColumn);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/constants.mjs
 var SortOrder = ((SortOrder2) => {
   SortOrder2["ASC"] = "asc";
   SortOrder2["DESC"] = "desc";
@@ -49858,10 +50059,10 @@ var oppositeOrderMap = {
   /* ASC */
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/private.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/private.mjs
 var placeholderSign = Symbol("placeholder");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/utils.mjs
 var calcColumnStyle = (column2, fixedColumn, fixed) => {
   var _a2;
   const flex = {
@@ -49890,10 +50091,17 @@ var calcColumnStyle = (column2, fixedColumn, fixed) => {
   return style;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-columns.mjs
-function useColumns(props, columns2, fixed) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-columns.mjs
+function useColumns(props2, columns2, fixed) {
+  const _columns = computed(() => unref(columns2).map((column2, index) => {
+    var _a2, _b;
+    return {
+      ...column2,
+      key: (_b = (_a2 = column2.key) != null ? _a2 : column2.dataKey) != null ? _b : index
+    };
+  }));
   const visibleColumns = computed(() => {
-    return unref(columns2).filter((column2) => !column2.hidden);
+    return unref(_columns).filter((column2) => !column2.hidden);
   });
   const fixedColumnsOnLeft = computed(() => unref(visibleColumns).filter((column2) => column2.fixed === "left" || column2.fixed === true));
   const fixedColumnsOnRight = computed(() => unref(visibleColumns).filter((column2) => column2.fixed === "right"));
@@ -49921,9 +50129,8 @@ function useColumns(props, columns2, fixed) {
     return unref(fixedColumnsOnLeft).length || unref(fixedColumnsOnRight).length;
   });
   const columnsStyles = computed(() => {
-    const _columns = unref(columns2);
-    return _columns.reduce((style, column2) => {
-      style[column2.key] = calcColumnStyle(column2, unref(fixed), props.fixed);
+    return unref(_columns).reduce((style, column2) => {
+      style[column2.key] = calcColumnStyle(column2, unref(fixed), props2.fixed);
       return style;
     }, {});
   });
@@ -49931,7 +50138,7 @@ function useColumns(props, columns2, fixed) {
     return unref(visibleColumns).reduce((width, column2) => width + column2.width, 0);
   });
   const getColumn = (key) => {
-    return unref(columns2).find((column2) => column2.key === key);
+    return unref(_columns).find((column2) => column2.key === key);
   };
   const getColumnStyle = (key) => {
     return unref(columnsStyles)[key];
@@ -49944,17 +50151,17 @@ function useColumns(props, columns2, fixed) {
     const { key } = e.currentTarget.dataset;
     if (!key)
       return;
-    const { sortState, sortBy: sortBy2 } = props;
+    const { sortState, sortBy: sortBy2 } = props2;
     let order = SortOrder.ASC;
     if (isObject2(sortState)) {
       order = oppositeOrderMap[sortState[key]];
     } else {
       order = oppositeOrderMap[sortBy2.order];
     }
-    (_a2 = props.onColumnSort) == null ? void 0 : _a2.call(props, { column: getColumn(key), key, order });
+    (_a2 = props2.onColumnSort) == null ? void 0 : _a2.call(props2, { column: getColumn(key), key, order });
   }
   return {
-    columns: columns2,
+    columns: _columns,
     columnsStyles,
     columnsTotalWidth,
     fixedColumnsOnLeft,
@@ -49970,8 +50177,8 @@ function useColumns(props, columns2, fixed) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-scrollbar.mjs
-var useScrollbar2 = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-scrollbar.mjs
+var useScrollbar2 = (props2, {
   mainTableRef,
   leftTableRef,
   rightTableRef,
@@ -50001,7 +50208,7 @@ var useScrollbar2 = (props, {
   function onScroll(params) {
     var _a2;
     scrollTo(params);
-    (_a2 = props.onScroll) == null ? void 0 : _a2.call(props, params);
+    (_a2 = props2.onScroll) == null ? void 0 : _a2.call(props2, params);
   }
   function onVerticalScroll({ scrollTop }) {
     const { scrollTop: currentScrollTop } = unref(scrollPos);
@@ -50027,8 +50234,8 @@ var useScrollbar2 = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-row.mjs
-var useRow = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-row.mjs
+var useRow = (props2, {
   mainTableRef,
   leftTableRef,
   rightTableRef,
@@ -50039,7 +50246,7 @@ var useRow = (props, {
   const vm = getCurrentInstance();
   const { emit } = vm;
   const isResetting = shallowRef(false);
-  const expandedRowKeys = ref(props.defaultExpandedRowKeys || []);
+  const expandedRowKeys = ref(props2.defaultExpandedRowKeys || []);
   const lastRenderedRowIndex = ref(-1);
   const resetIndex = shallowRef(null);
   const rowHeights = ref({});
@@ -50047,10 +50254,10 @@ var useRow = (props, {
   const leftTableHeights = shallowRef({});
   const mainTableHeights = shallowRef({});
   const rightTableHeights = shallowRef({});
-  const isDynamic = computed(() => isNumber3(props.estimatedRowHeight));
+  const isDynamic = computed(() => isNumber3(props2.estimatedRowHeight));
   function onRowsRendered(params) {
     var _a2;
-    (_a2 = props.onRowsRendered) == null ? void 0 : _a2.call(props, params);
+    (_a2 = props2.onRowsRendered) == null ? void 0 : _a2.call(props2, params);
     if (params.rowCacheEnd > unref(lastRenderedRowIndex)) {
       lastRenderedRowIndex.value = params.rowCacheEnd;
     }
@@ -50087,13 +50294,13 @@ var useRow = (props, {
     }
     expandedRowKeys.value = _expandedRowKeys;
     emit("update:expandedRowKeys", _expandedRowKeys);
-    (_a2 = props.onRowExpand) == null ? void 0 : _a2.call(props, {
+    (_a2 = props2.onRowExpand) == null ? void 0 : _a2.call(props2, {
       expanded,
       rowData,
       rowIndex,
       rowKey: rowKey2
     });
-    (_b = props.onExpandedRowsChange) == null ? void 0 : _b.call(props, _expandedRowKeys);
+    (_b = props2.onExpandedRowsChange) == null ? void 0 : _b.call(props2, _expandedRowKeys);
   }
   const flushingRowHeights = debounce_default(() => {
     var _a2, _b, _c, _d;
@@ -50158,12 +50365,12 @@ var useRow = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-data.mjs
-var useData = (props, { expandedRowKeys, lastRenderedRowIndex, resetAfterIndex }) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-data.mjs
+var useData = (props2, { expandedRowKeys, lastRenderedRowIndex, resetAfterIndex }) => {
   const depthMap = ref({});
   const flattenedData = computed(() => {
     const depths = {};
-    const { data: data2, rowKey: rowKey2 } = props;
+    const { data: data2, rowKey: rowKey2 } = props2;
     const _expandedRowKeys = unref(expandedRowKeys);
     if (!_expandedRowKeys || !_expandedRowKeys.length)
       return data2;
@@ -50184,7 +50391,7 @@ var useData = (props, { expandedRowKeys, lastRenderedRowIndex, resetAfterIndex }
     return array4;
   });
   const data = computed(() => {
-    const { data: data2, expandColumnKey: expandColumnKey2 } = props;
+    const { data: data2, expandColumnKey: expandColumnKey2 } = props2;
     return expandColumnKey2 ? unref(flattenedData) : data2;
   });
   watch(data, (val, prev) => {
@@ -50199,7 +50406,7 @@ var useData = (props, { expandedRowKeys, lastRenderedRowIndex, resetAfterIndex }
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/utils.mjs
 var sumReducer = (sum22, num) => sum22 + num;
 var sum2 = (listLike) => {
   return isArray(listLike) ? listLike.reduce(sumReducer, 0) : listLike;
@@ -50214,23 +50421,23 @@ var enforceUnit = (style) => {
   });
   return style;
 };
-var componentToSlot = (ComponentLike) => isVNode(ComponentLike) ? (props) => h(ComponentLike, props) : ComponentLike;
+var componentToSlot = (ComponentLike) => isVNode(ComponentLike) ? (props2) => h(ComponentLike, props2) : ComponentLike;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-styles.mjs
-var useStyles2 = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-styles.mjs
+var useStyles2 = (props2, {
   columnsTotalWidth,
   data,
   fixedColumnsOnLeft,
   fixedColumnsOnRight
 }) => {
   const bodyWidth = computed(() => {
-    const { fixed, width, vScrollbarSize } = props;
+    const { fixed, width, vScrollbarSize } = props2;
     const ret = width - vScrollbarSize;
     return fixed ? Math.max(Math.round(unref(columnsTotalWidth)), ret) : ret;
   });
-  const headerWidth = computed(() => unref(bodyWidth) + props.vScrollbarSize);
+  const headerWidth = computed(() => unref(bodyWidth) + props2.vScrollbarSize);
   const mainTableHeight = computed(() => {
-    const { height = 0, maxHeight = 0, footerHeight: footerHeight2, hScrollbarSize } = props;
+    const { height = 0, maxHeight = 0, footerHeight: footerHeight2, hScrollbarSize } = props2;
     if (maxHeight > 0) {
       const _fixedRowsHeight = unref(fixedRowsHeight);
       const _rowsHeight = unref(rowsHeight);
@@ -50241,7 +50448,7 @@ var useStyles2 = (props, {
     return height - footerHeight2;
   });
   const rowsHeight = computed(() => {
-    const { rowHeight, estimatedRowHeight } = props;
+    const { rowHeight, estimatedRowHeight } = props2;
     const _data = unref(data);
     if (isNumber3(estimatedRowHeight)) {
       return _data.length * estimatedRowHeight;
@@ -50249,7 +50456,7 @@ var useStyles2 = (props, {
     return _data.length * rowHeight;
   });
   const fixedTableHeight = computed(() => {
-    const { maxHeight } = props;
+    const { maxHeight } = props2;
     const tableHeight = unref(mainTableHeight);
     if (isNumber3(maxHeight) && maxHeight > 0)
       return tableHeight;
@@ -50259,27 +50466,27 @@ var useStyles2 = (props, {
   const mapColumn = (column2) => column2.width;
   const leftTableWidth = computed(() => sum2(unref(fixedColumnsOnLeft).map(mapColumn)));
   const rightTableWidth = computed(() => sum2(unref(fixedColumnsOnRight).map(mapColumn)));
-  const headerHeight = computed(() => sum2(props.headerHeight));
+  const headerHeight = computed(() => sum2(props2.headerHeight));
   const fixedRowsHeight = computed(() => {
     var _a2;
-    return (((_a2 = props.fixedData) == null ? void 0 : _a2.length) || 0) * props.rowHeight;
+    return (((_a2 = props2.fixedData) == null ? void 0 : _a2.length) || 0) * props2.rowHeight;
   });
   const windowHeight = computed(() => {
     return unref(mainTableHeight) - unref(headerHeight) - unref(fixedRowsHeight);
   });
   const rootStyle = computed(() => {
-    const { style = {}, height, width } = props;
+    const { style = {}, height, width } = props2;
     return enforceUnit({
       ...style,
       height,
       width
     });
   });
-  const footerHeight = computed(() => enforceUnit({ height: props.footerHeight }));
+  const footerHeight = computed(() => enforceUnit({ height: props2.footerHeight }));
   const emptyStyle = computed(() => ({
     top: addUnit(unref(headerHeight)),
-    bottom: addUnit(props.footerHeight),
-    width: addUnit(props.width)
+    bottom: addUnit(props2.footerHeight),
+    width: addUnit(props2.width)
   }));
   return {
     bodyWidth,
@@ -50297,8 +50504,8 @@ var useStyles2 = (props, {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-auto-resize.mjs
-var useAutoResize = (props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/composables/use-auto-resize.mjs
+var useAutoResize = (props2) => {
   const sizer = ref();
   const width$ = ref(0);
   const height$ = ref(0);
@@ -50320,7 +50527,7 @@ var useAutoResize = (props) => {
   });
   watch([width$, height$], ([width, height]) => {
     var _a2;
-    (_a2 = props.onResize) == null ? void 0 : _a2.call(props, {
+    (_a2 = props2.onResize) == null ? void 0 : _a2.call(props2, {
       width,
       height
     });
@@ -50332,8 +50539,8 @@ var useAutoResize = (props) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/use-table.mjs
-function useTable(props) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/use-table.mjs
+function useTable(props2) {
   const mainTableRef = ref();
   const leftTableRef = ref();
   const rightTableRef = ref();
@@ -50346,7 +50553,7 @@ function useTable(props) {
     hasFixedColumns,
     mainColumns,
     onColumnSorted
-  } = useColumns(props, toRef(props, "columns"), toRef(props, "fixed"));
+  } = useColumns(props2, toRef(props2, "columns"), toRef(props2, "fixed"));
   const {
     scrollTo,
     scrollToLeft,
@@ -50355,7 +50562,7 @@ function useTable(props) {
     onScroll,
     onVerticalScroll,
     scrollPos
-  } = useScrollbar2(props, {
+  } = useScrollbar2(props2, {
     mainTableRef,
     leftTableRef,
     rightTableRef,
@@ -50375,7 +50582,7 @@ function useTable(props) {
     onRowHeightChange,
     onRowHovered,
     onRowsRendered
-  } = useRow(props, {
+  } = useRow(props2, {
     mainTableRef,
     leftTableRef,
     rightTableRef,
@@ -50383,7 +50590,7 @@ function useTable(props) {
     ns,
     isScrolling
   });
-  const { data, depthMap } = useData(props, {
+  const { data, depthMap } = useData(props2, {
     expandedRowKeys,
     lastRenderedRowIndex,
     resetAfterIndex
@@ -50401,7 +50608,7 @@ function useTable(props) {
     emptyStyle,
     rootStyle,
     headerHeight
-  } = useStyles2(props, {
+  } = useStyles2(props2, {
     columnsTotalWidth,
     data,
     fixedColumnsOnLeft,
@@ -50410,27 +50617,27 @@ function useTable(props) {
   const containerRef = ref();
   const showEmpty = computed(() => {
     const noData = unref(data).length === 0;
-    return isArray(props.fixedData) ? props.fixedData.length === 0 && noData : noData;
+    return isArray(props2.fixedData) ? props2.fixedData.length === 0 && noData : noData;
   });
   function getRowHeight(rowIndex) {
-    const { estimatedRowHeight, rowHeight, rowKey: rowKey2 } = props;
+    const { estimatedRowHeight, rowHeight, rowKey: rowKey2 } = props2;
     if (!estimatedRowHeight)
       return rowHeight;
     return unref(rowHeights)[unref(data)[rowIndex][rowKey2]] || estimatedRowHeight;
   }
   function onMaybeEndReached() {
-    const { onEndReached } = props;
+    const { onEndReached } = props2;
     if (!onEndReached)
       return;
     const { scrollTop } = unref(scrollPos);
     const _totalHeight = unref(rowsHeight);
     const clientHeight = unref(windowHeight);
-    const heightUntilEnd = _totalHeight - (scrollTop + clientHeight) + props.hScrollbarSize;
+    const heightUntilEnd = _totalHeight - (scrollTop + clientHeight) + props2.hScrollbarSize;
     if (unref(lastRenderedRowIndex) >= 0 && _totalHeight === scrollTop + unref(mainTableHeight) - unref(headerHeight)) {
       onEndReached(heightUntilEnd);
     }
   }
-  watch(() => props.expandedRowKeys, (val) => expandedRowKeys.value = val, {
+  watch(() => props2.expandedRowKeys, (val) => expandedRowKeys.value = val, {
     deep: true
   });
   return {
@@ -50476,10 +50683,10 @@ function useTable(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/tokens.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/tokens.mjs
 var TableV2InjectionKey = Symbol("tableV2");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/common.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/common.mjs
 var classType = String;
 var columns = {
   type: definePropType(Array),
@@ -50512,7 +50719,7 @@ var styleType = {
   type: definePropType(Object)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/row.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/row.mjs
 var tableV2RowProps = buildProps({
   class: String,
   columns,
@@ -50553,7 +50760,7 @@ var tableV2RowProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/header.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/header.mjs
 var requiredNumberType = {
   type: Number,
   required: true
@@ -50581,7 +50788,7 @@ var tableV2HeaderProps = buildProps({
   width: requiredNumberType
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/grid.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/grid.mjs
 var tableV2GridProps = buildProps({
   columns,
   data: dataType,
@@ -50614,7 +50821,7 @@ var tableV2GridProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/table.mjs
 var tableV2Props = buildProps({
   cache: tableV2GridProps.cache,
   estimatedRowHeight: tableV2RowProps.estimatedRowHeight,
@@ -50710,19 +50917,19 @@ var tableV2Props = buildProps({
   rowEventHandlers: tableV2RowProps.rowEventHandlers
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/cell.mjs
-var TableV2Cell = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/cell.mjs
+var TableV2Cell = (props2, {
   slots
 }) => {
   var _a2;
   const {
     cellData,
     style
-  } = props;
+  } = props2;
   const displayText = ((_a2 = cellData == null ? void 0 : cellData.toString) == null ? void 0 : _a2.call(cellData)) || "";
-  const defaultSlot = renderSlot(slots, "default", props, () => [displayText]);
+  const defaultSlot = renderSlot(slots, "default", props2, () => [displayText]);
   return createVNode("div", {
-    "class": props.class,
+    "class": props2.class,
     "title": displayText,
     "style": style
   }, [defaultSlot]);
@@ -50730,20 +50937,20 @@ var TableV2Cell = (props, {
 TableV2Cell.displayName = "ElTableV2Cell";
 TableV2Cell.inheritAttrs = false;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/header-cell.mjs
-var HeaderCell = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/header-cell.mjs
+var HeaderCell = (props2, {
   slots
-}) => renderSlot(slots, "default", props, () => {
+}) => renderSlot(slots, "default", props2, () => {
   var _a2, _b;
   return [createVNode("div", {
-    "class": props.class,
-    "title": (_a2 = props.column) == null ? void 0 : _a2.title
-  }, [(_b = props.column) == null ? void 0 : _b.title])];
+    "class": props2.class,
+    "title": (_a2 = props2.column) == null ? void 0 : _a2.title
+  }, [(_b = props2.column) == null ? void 0 : _b.title])];
 });
 HeaderCell.displayName = "ElTableV2HeaderCell";
 HeaderCell.inheritAttrs = false;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/header-row.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/header-row.mjs
 var tableV2HeaderRowProps = buildProps({
   class: String,
   columns,
@@ -50755,11 +50962,11 @@ var tableV2HeaderRowProps = buildProps({
   style: { type: definePropType(Object) }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/header-row.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/header-row.mjs
 var TableV2HeaderRow = defineComponent({
   name: "ElTableV2HeaderRow",
   props: tableV2HeaderRowProps,
-  setup(props, {
+  setup(props2, {
     slots
   }) {
     return () => {
@@ -50768,7 +50975,7 @@ var TableV2HeaderRow = defineComponent({
         columnsStyles,
         headerIndex,
         style
-      } = props;
+      } = props2;
       let Cells = columns2.map((column2, columnIndex) => {
         return slots.cell({
           columns: columns2,
@@ -50791,7 +50998,7 @@ var TableV2HeaderRow = defineComponent({
         });
       }
       return createVNode("div", {
-        "class": props.class,
+        "class": props2.class,
         "style": style,
         "role": "row"
       }, [Cells]);
@@ -50799,26 +51006,26 @@ var TableV2HeaderRow = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/header.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/header.mjs
 var COMPONENT_NAME17 = "ElTableV2Header";
 var TableV2Header = defineComponent({
   name: COMPONENT_NAME17,
   props: tableV2HeaderProps,
-  setup(props, {
+  setup(props2, {
     slots,
     expose
   }) {
     const ns = useNamespace("table-v2");
     const headerRef = ref();
     const headerStyle = computed(() => enforceUnit({
-      width: props.width,
-      height: props.height
+      width: props2.width,
+      height: props2.height
     }));
     const rowStyle = computed(() => enforceUnit({
-      width: props.rowWidth,
-      height: props.height
+      width: props2.rowWidth,
+      height: props2.height
     }));
-    const headerHeights = computed(() => castArray_default(unref(props.headerHeight)));
+    const headerHeights = computed(() => castArray_default(unref(props2.headerHeight)));
     const scrollToLeft = (left2) => {
       const headerEl = unref(headerRef);
       nextTick(() => {
@@ -50833,7 +51040,7 @@ var TableV2Header = defineComponent({
         columns: columns2,
         fixedHeaderData,
         rowHeight
-      } = props;
+      } = props2;
       return fixedHeaderData == null ? void 0 : fixedHeaderData.map((fixedRowData, fixedRowIndex) => {
         var _a2;
         const style = enforceUnit({
@@ -50853,7 +51060,7 @@ var TableV2Header = defineComponent({
       const dynamicRowClassName = ns.e("dynamic-header-row");
       const {
         columns: columns2
-      } = props;
+      } = props2;
       return unref(headerHeights).map((rowHeight, rowIndex) => {
         var _a2;
         const style = enforceUnit({
@@ -50872,11 +51079,11 @@ var TableV2Header = defineComponent({
       scrollToLeft
     });
     return () => {
-      if (props.height <= 0)
+      if (props2.height <= 0)
         return;
       return createVNode("div", {
         "ref": headerRef,
-        "class": props.class,
+        "class": props2.class,
         "style": unref(headerStyle),
         "role": "rowgroup"
       }, [createVNode("div", {
@@ -50887,15 +51094,15 @@ var TableV2Header = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/row.mjs
-var useTableRow = (props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/row.mjs
+var useTableRow = (props2) => {
   const {
     isScrolling
   } = inject(TableV2InjectionKey);
   const measured = ref(false);
   const rowRef = ref();
   const measurable = computed(() => {
-    return isNumber3(props.estimatedRowHeight) && props.rowIndex >= 0;
+    return isNumber3(props2.estimatedRowHeight) && props2.rowIndex >= 0;
   });
   const doMeasure = (isInit = false) => {
     const $rowRef = unref(rowRef);
@@ -50907,7 +51114,7 @@ var useTableRow = (props) => {
       rowKey: rowKey2,
       rowIndex,
       style
-    } = props;
+    } = props2;
     const {
       height
     } = $rowRef.getBoundingClientRect();
@@ -50930,8 +51137,8 @@ var useTableRow = (props) => {
       rowIndex,
       rowKey: rowKey2,
       onRowHover
-    } = props;
-    const handlers2 = props.rowEventHandlers || {};
+    } = props2;
+    const handlers2 = props2.rowEventHandlers || {};
     const eventHandlers2 = {};
     Object.entries(handlers2).forEach(([eventName, handler]) => {
       if (isFunction2(handler)) {
@@ -50978,7 +51185,7 @@ var useTableRow = (props) => {
       rowData,
       rowIndex,
       rowKey: rowKey2
-    } = props;
+    } = props2;
     onRowExpand == null ? void 0 : onRowExpand({
       expanded,
       rowData,
@@ -51004,7 +51211,7 @@ var COMPONENT_NAME18 = "ElTableV2TableRow";
 var TableV2Row = defineComponent({
   name: COMPONENT_NAME18,
   props: tableV2RowProps,
-  setup(props, {
+  setup(props2, {
     expose,
     slots,
     attrs
@@ -51016,7 +51223,7 @@ var TableV2Row = defineComponent({
       measured,
       rowRef,
       onExpand
-    } = useTableRow(props);
+    } = useTableRow(props2);
     expose({
       onExpand
     });
@@ -51029,7 +51236,7 @@ var TableV2Row = defineComponent({
         rowData,
         rowIndex,
         style
-      } = props;
+      } = props2;
       let ColumnCells = columns2.map((column2, columnIndex) => {
         const expandable = isArray(rowData.children) && rowData.children.length > 0 && column2.key === expandColumnKey2;
         return slots.cell({
@@ -51072,14 +51279,14 @@ var TableV2Row = defineComponent({
         const _measured = unref(measured);
         return createVNode("div", mergeProps({
           "ref": rowRef,
-          "class": props.class,
+          "class": props2.class,
           "style": _measured ? style : exceptHeightStyle,
           "role": "row"
         }, attrs, unref(eventHandlers)), [ColumnCells]);
       }
       return createVNode("div", mergeProps(attrs, {
         "ref": rowRef,
-        "class": props.class,
+        "class": props2.class,
         "style": style,
         "role": "row"
       }, unref(eventHandlers)), [ColumnCells]);
@@ -51087,31 +51294,31 @@ var TableV2Row = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/sort-icon.mjs
-var SortIcon = (props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/sort-icon.mjs
+var SortIcon = (props2) => {
   const {
     sortOrder
-  } = props;
+  } = props2;
   return createVNode(ElIcon, {
     "size": 14,
-    "class": props.class
+    "class": props2.class
   }, {
     default: () => [sortOrder === SortOrder.ASC ? createVNode(sort_up_default, null, null) : createVNode(sort_down_default, null, null)]
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/expand-icon.mjs
-var ExpandIcon = (props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/expand-icon.mjs
+var ExpandIcon = (props2) => {
   const {
     expanded,
     expandable,
     onExpand,
     style,
     size: size3
-  } = props;
+  } = props2;
   const expandIconProps = {
     onClick: expandable ? () => onExpand(!expanded) : void 0,
-    class: props.class
+    class: props2.class
   };
   return createVNode(ElIcon, mergeProps(expandIconProps, {
     "size": size3,
@@ -51121,9 +51328,9 @@ var ExpandIcon = (props) => {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/table-grid.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/table-grid.mjs
 var COMPONENT_NAME19 = "ElTableV2Grid";
-var useTableGrid = (props) => {
+var useTableGrid = (props2) => {
   const headerRef = ref();
   const bodyRef = ref();
   const totalHeight = computed(() => {
@@ -51131,7 +51338,7 @@ var useTableGrid = (props) => {
       data,
       rowHeight,
       estimatedRowHeight
-    } = props;
+    } = props2;
     if (estimatedRowHeight) {
       return;
     }
@@ -51141,14 +51348,14 @@ var useTableGrid = (props) => {
     const {
       fixedData,
       rowHeight
-    } = props;
+    } = props2;
     return ((fixedData == null ? void 0 : fixedData.length) || 0) * rowHeight;
   });
-  const headerHeight = computed(() => sum2(props.headerHeight));
+  const headerHeight = computed(() => sum2(props2.headerHeight));
   const gridHeight = computed(() => {
     const {
       height
-    } = props;
+    } = props2;
     return Math.max(0, height - unref(headerHeight) - unref(fixedRowHeight));
   });
   const hasHeader = computed(() => {
@@ -51157,7 +51364,7 @@ var useTableGrid = (props) => {
   const itemKey = ({
     data,
     rowIndex
-  }) => data[rowIndex][props.rowKey];
+  }) => data[rowIndex][props2.rowKey];
   function onItemRendered({
     rowCacheStart,
     rowCacheEnd,
@@ -51165,7 +51372,7 @@ var useTableGrid = (props) => {
     rowVisibleEnd
   }) {
     var _a2;
-    (_a2 = props.onRowsRendered) == null ? void 0 : _a2.call(props, {
+    (_a2 = props2.onRowsRendered) == null ? void 0 : _a2.call(props2, {
       rowCacheStart,
       rowCacheEnd,
       rowVisibleStart,
@@ -51225,7 +51432,7 @@ var useTableGrid = (props) => {
 var TableGrid = defineComponent({
   name: COMPONENT_NAME19,
   props: tableV2GridProps,
-  setup(props, {
+  setup(props2, {
     slots,
     expose
   }) {
@@ -51247,7 +51454,7 @@ var TableGrid = defineComponent({
       scrollTo,
       scrollToTop,
       scrollToRow
-    } = useTableGrid(props);
+    } = useTableGrid(props2);
     expose({
       forceUpdate,
       totalHeight,
@@ -51256,7 +51463,7 @@ var TableGrid = defineComponent({
       scrollToRow,
       resetAfterRowIndex
     });
-    const getColumnWidth = () => props.bodyWidth;
+    const getColumnWidth = () => props2.bodyWidth;
     return () => {
       const {
         cache: cache2,
@@ -51276,13 +51483,13 @@ var TableGrid = defineComponent({
         width,
         getRowHeight,
         onScroll
-      } = props;
+      } = props2;
       const isDynamicRowEnabled = isNumber3(estimatedRowHeight);
       const Grid = isDynamicRowEnabled ? DynamicSizeGrid : FixedSizeGrid;
       const _headerHeight = unref(headerHeight);
       return createVNode("div", {
         "role": "table",
-        "class": [ns.e("table"), props.class],
+        "class": [ns.e("table"), props2.class],
         "style": style
       }, [createVNode(Grid, {
         "ref": bodyRef,
@@ -51320,7 +51527,7 @@ var TableGrid = defineComponent({
         "class": ns.e("header-wrapper"),
         "columns": columns2,
         "headerData": data,
-        "headerHeight": props.headerHeight,
+        "headerHeight": props2.headerHeight,
         "fixedHeaderData": fixedData,
         "rowWidth": headerWidth,
         "rowHeight": rowHeight,
@@ -51334,17 +51541,17 @@ var TableGrid = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/main-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/main-table.mjs
 function _isSlot(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
-var MainTable = (props, {
+var MainTable = (props2, {
   slots
 }) => {
   const {
     mainTableRef,
     ...rest2
-  } = props;
+  } = props2;
   return createVNode(TableGrid, mergeProps({
     "ref": mainTableRef
   }, rest2), _isSlot(slots) ? slots : {
@@ -51352,19 +51559,19 @@ var MainTable = (props, {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/left-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/left-table.mjs
 function _isSlot2(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
-var LeftTable = (props, {
+var LeftTable = (props2, {
   slots
 }) => {
-  if (!props.columns.length)
+  if (!props2.columns.length)
     return;
   const {
     leftTableRef,
     ...rest2
-  } = props;
+  } = props2;
   return createVNode(TableGrid, mergeProps({
     "ref": leftTableRef
   }, rest2), _isSlot2(slots) ? slots : {
@@ -51372,19 +51579,19 @@ var LeftTable = (props, {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/right-table.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/right-table.mjs
 function _isSlot3(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
-var LeftTable2 = (props, {
+var LeftTable2 = (props2, {
   slots
 }) => {
-  if (!props.columns.length)
+  if (!props2.columns.length)
     return;
   const {
     rightTableRef,
     ...rest2
-  } = props;
+  } = props2;
   return createVNode(TableGrid, mergeProps({
     "ref": rightTableRef
   }, rest2), _isSlot3(slots) ? slots : {
@@ -51392,11 +51599,11 @@ var LeftTable2 = (props, {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/row.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/row.mjs
 function _isSlot4(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
-var RowRenderer = (props, {
+var RowRenderer = (props2, {
   slots
 }) => {
   const {
@@ -51418,7 +51625,7 @@ var RowRenderer = (props, {
     ns,
     onRowHovered,
     onRowExpanded
-  } = props;
+  } = props2;
   const rowKls = tryCall(rowClass, {
     columns: columns2,
     rowData,
@@ -51483,7 +51690,7 @@ var RowRenderer = (props, {
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/cell.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/cell.mjs
 var CellRenderer = ({
   columns: columns2,
   column: column2,
@@ -51572,7 +51779,7 @@ var CellRenderer = ({
 };
 CellRenderer.inheritAttrs = false;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/header.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/header.mjs
 function _isSlot5(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
@@ -51607,8 +51814,8 @@ var HeaderRenderer = ({
   });
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/header-cell.mjs
-var HeaderCellRenderer = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/header-cell.mjs
+var HeaderCellRenderer = (props2, {
   slots
 }) => {
   const {
@@ -51616,7 +51823,7 @@ var HeaderCellRenderer = (props, {
     ns,
     style,
     onColumnSorted
-  } = props;
+  } = props2;
   const cellStyle = enforceUnit(style);
   if (column2.placeholderSign === placeholderSign) {
     return createVNode("div", {
@@ -51630,7 +51837,7 @@ var HeaderCellRenderer = (props, {
     sortable
   } = column2;
   const cellProps = {
-    ...props,
+    ...props2,
     class: ns.e("header-cell-text")
   };
   const columnCellRenderer = componentToSlot(headerCellRenderer);
@@ -51639,7 +51846,7 @@ var HeaderCellRenderer = (props, {
     sortBy: sortBy2,
     sortState,
     headerCellProps
-  } = props;
+  } = props2;
   let sorting, sortOrder;
   if (sortState) {
     const order = sortState[column2.key];
@@ -51649,9 +51856,9 @@ var HeaderCellRenderer = (props, {
     sorting = column2.key === sortBy2.key;
     sortOrder = sorting ? sortBy2.order : SortOrder.ASC;
   }
-  const cellKls = [ns.e("header-cell"), tryCall(headerClass, props, ""), column2.align === Alignment.CENTER && ns.is("align-center"), column2.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
+  const cellKls = [ns.e("header-cell"), tryCall(headerClass, props2, ""), column2.align === Alignment.CENTER && ns.is("align-center"), column2.align === Alignment.RIGHT && ns.is("align-right"), sortable && ns.is("sortable")];
   const cellWrapperProps = {
-    ...tryCall(headerCellProps, props),
+    ...tryCall(headerCellProps, props2),
     onClick: column2.sortable ? onColumnSorted : void 0,
     class: cellKls,
     style: cellStyle,
@@ -51665,43 +51872,43 @@ var HeaderCellRenderer = (props, {
   }, null)]);
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/footer.mjs
-var Footer2 = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/footer.mjs
+var Footer2 = (props2, {
   slots
 }) => {
   var _a2;
   return createVNode("div", {
-    "class": props.class,
-    "style": props.style
+    "class": props2.class,
+    "style": props2.style
   }, [(_a2 = slots.default) == null ? void 0 : _a2.call(slots)]);
 };
 Footer2.displayName = "ElTableV2Footer";
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/empty.mjs
-var Footer3 = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/empty.mjs
+var Footer3 = (props2, {
   slots
 }) => {
   const defaultSlot = renderSlot(slots, "default", {}, () => [createVNode(ElEmpty, null, null)]);
   return createVNode("div", {
-    "class": props.class,
-    "style": props.style
+    "class": props2.class,
+    "style": props2.style
   }, [defaultSlot]);
 };
 Footer3.displayName = "ElTableV2Empty";
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/overlay.mjs
-var Overlay2 = (props, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/renderers/overlay.mjs
+var Overlay2 = (props2, {
   slots
 }) => {
   var _a2;
   return createVNode("div", {
-    "class": props.class,
-    "style": props.style
+    "class": props2.class,
+    "style": props2.style
   }, [(_a2 = slots.default) == null ? void 0 : _a2.call(slots)]);
 };
 Overlay2.displayName = "ElTableV2Overlay";
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/table-v2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/table-v2.mjs
 function _isSlot6(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
@@ -51709,7 +51916,7 @@ var COMPONENT_NAME20 = "ElTableV2";
 var TableV2 = defineComponent({
   name: COMPONENT_NAME20,
   props: tableV2Props,
-  setup(props, {
+  setup(props2, {
     slots,
     expose
   }) {
@@ -51751,7 +51958,7 @@ var TableV2 = defineComponent({
       onRowsRendered,
       onScroll,
       onVerticalScroll
-    } = useTable(props);
+    } = useTable(props2);
     expose({
       scrollTo,
       scrollToLeft,
@@ -51787,7 +51994,7 @@ var TableV2 = defineComponent({
         useIsScrolling,
         vScrollbarSize,
         width
-      } = props;
+      } = props2;
       const _data = unref(data);
       const mainTableProps = {
         cache: cache2,
@@ -51899,7 +52106,7 @@ var TableV2 = defineComponent({
         onColumnSorted
       };
       const tableSlots = {
-        row: (props2) => createVNode(RowRenderer, mergeProps(props2, tableRowProps), {
+        row: (props22) => createVNode(RowRenderer, mergeProps(props22, tableRowProps), {
           row: slots.row,
           cell: (props3) => {
             let _slot;
@@ -51912,7 +52119,7 @@ var TableV2 = defineComponent({
             }), null);
           }
         }),
-        header: (props2) => createVNode(HeaderRenderer, mergeProps(props2, tableHeaderProps), {
+        header: (props22) => createVNode(HeaderRenderer, mergeProps(props22, tableHeaderProps), {
           header: slots.header,
           cell: (props3) => {
             let _slot2;
@@ -51926,7 +52133,7 @@ var TableV2 = defineComponent({
           }
         })
       };
-      const rootKls = [props.class, ns.b(), ns.e("root"), {
+      const rootKls = [props2.class, ns.b(), ns.e("root"), {
         [ns.is("dynamic")]: unref(isDynamic)
       }];
       const footerProps = {
@@ -51958,7 +52165,7 @@ var TableV2 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/auto-resizer.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/auto-resizer.mjs
 var autoResizerProps = buildProps({
   disableWidth: Boolean,
   disableHeight: Boolean,
@@ -51967,11 +52174,11 @@ var autoResizerProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/auto-resizer.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/src/components/auto-resizer.mjs
 var AutoResizer = defineComponent({
   name: "ElAutoResizer",
   props: autoResizerProps,
-  setup(props, {
+  setup(props2, {
     slots
   }) {
     const ns = useNamespace("auto-resizer");
@@ -51979,7 +52186,7 @@ var AutoResizer = defineComponent({
       height,
       width,
       sizer
-    } = useAutoResize(props);
+    } = useAutoResize(props2);
     const style = {
       width: "100%",
       height: "100%"
@@ -51998,14 +52205,14 @@ var AutoResizer = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/table-v2/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/table-v2/index.mjs
 var ElTableV2 = withInstall(TableV2);
 var ElAutoResizer = withInstall(AutoResizer);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/constants.mjs
 var tabsRootContextKey = Symbol("tabsRootContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tab-bar.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tab-bar2.mjs
 var tabBarProps = buildProps({
   tabs: {
     type: definePropType(Array),
@@ -52013,7 +52220,7 @@ var tabBarProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tab-bar2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tab-bar.mjs
 var COMPONENT_NAME21 = "ElTabBar";
 var __default__85 = defineComponent({
   name: COMPONENT_NAME21
@@ -52022,7 +52229,7 @@ var _sfc_main124 = defineComponent({
   ...__default__85,
   props: tabBarProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const instance = getCurrentInstance();
     const rootTabs = inject(tabsRootContextKey);
     if (!rootTabs)
@@ -52036,7 +52243,7 @@ var _sfc_main124 = defineComponent({
       const sizeName = ["top", "bottom"].includes(rootTabs.props.tabPosition) ? "width" : "height";
       const sizeDir = sizeName === "width" ? "x" : "y";
       const position = sizeDir === "x" ? "left" : "top";
-      props.tabs.every((tab) => {
+      props2.tabs.every((tab) => {
         var _a2, _b;
         const $el = (_b = (_a2 = instance.parent) == null ? void 0 : _a2.refs) == null ? void 0 : _b[`tab-${tab.uid}`];
         if (!$el)
@@ -52059,11 +52266,34 @@ var _sfc_main124 = defineComponent({
       };
     };
     const update2 = () => barStyle.value = getBarStyle();
-    watch(() => props.tabs, async () => {
+    const saveObserver = [];
+    const observerTabs = () => {
+      var _a2;
+      saveObserver.forEach((observer) => observer.stop());
+      saveObserver.length = 0;
+      const list = (_a2 = instance.parent) == null ? void 0 : _a2.refs;
+      if (!list)
+        return;
+      for (const key in list) {
+        if (key.startsWith("tab-")) {
+          const _el = list[key];
+          if (_el) {
+            saveObserver.push(useResizeObserver(_el, update2));
+          }
+        }
+      }
+    };
+    watch(() => props2.tabs, async () => {
       await nextTick();
       update2();
+      observerTabs();
     }, { immediate: true });
-    useResizeObserver(barRef, () => update2());
+    const barObserever = useResizeObserver(barRef, () => update2());
+    onBeforeUnmount(() => {
+      saveObserver.forEach((observer) => observer.stop());
+      saveObserver.length = 0;
+      barObserever.stop();
+    });
     expose({
       ref: barRef,
       update: update2
@@ -52080,7 +52310,7 @@ var _sfc_main124 = defineComponent({
 });
 var TabBar = _export_sfc(_sfc_main124, [["__file", "tab-bar.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tab-nav.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tab-nav.mjs
 var tabNavProps = buildProps({
   panes: {
     type: definePropType(Array),
@@ -52107,7 +52337,7 @@ var TabNav = defineComponent({
   name: COMPONENT_NAME22,
   props: tabNavProps,
   emits: tabNavEmits,
-  setup(props, {
+  setup(props2, {
     expose,
     emit
   }) {
@@ -52190,7 +52420,7 @@ var TabNav = defineComponent({
       var _a2;
       if (!nav$.value || !navScroll$.value)
         return;
-      props.stretch && ((_a2 = tabBarRef.value) == null ? void 0 : _a2.update());
+      props2.stretch && ((_a2 = tabBarRef.value) == null ? void 0 : _a2.update());
       const navSize = nav$.value[`offset${capitalize3(sizeName.value)}`];
       const containerSize = navScroll$.value[`offset${capitalize3(sizeName.value)}`];
       const currentOffset = navOffset.value;
@@ -52278,12 +52508,12 @@ var TabNav = defineComponent({
       }, [createVNode(ElIcon, null, {
         default: () => [createVNode(arrow_right_default, null, null)]
       })])] : null;
-      const tabs = props.panes.map((pane, index) => {
+      const tabs = props2.panes.map((pane, index) => {
         var _a2, _b, _c, _d;
         const uid2 = pane.uid;
         const disabled = pane.props.disabled;
         const tabName = (_b = (_a2 = pane.props.name) != null ? _a2 : pane.index) != null ? _b : `${index}`;
-        const closable = !disabled && (pane.isClosable || props.editable);
+        const closable = !disabled && (pane.isClosable || props2.editable);
         pane.index = `${index}`;
         const btnClose = closable ? createVNode(ElIcon, {
           "class": "is-icon-close",
@@ -52322,20 +52552,20 @@ var TabNav = defineComponent({
         "class": ns.e("nav-scroll"),
         "ref": navScroll$
       }, [createVNode("div", {
-        "class": [ns.e("nav"), ns.is(rootTabs.props.tabPosition), ns.is("stretch", props.stretch && ["top", "bottom"].includes(rootTabs.props.tabPosition))],
+        "class": [ns.e("nav"), ns.is(rootTabs.props.tabPosition), ns.is("stretch", props2.stretch && ["top", "bottom"].includes(rootTabs.props.tabPosition))],
         "ref": nav$,
         "style": navStyle.value,
         "role": "tablist",
         "onKeydown": changeTab
-      }, [...[!props.type ? createVNode(TabBar, {
+      }, [...[!props2.type ? createVNode(TabBar, {
         "ref": tabBarRef,
-        "tabs": [...props.panes]
+        "tabs": [...props2.panes]
       }, null) : null, tabs]])])]);
     };
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tabs.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tabs.mjs
 var tabsProps = buildProps({
   type: {
     type: String,
@@ -52372,27 +52602,27 @@ var Tabs = defineComponent({
   name: "ElTabs",
   props: tabsProps,
   emits: tabsEmits,
-  setup(props, {
+  setup(props2, {
     emit,
     slots,
     expose
   }) {
     var _a2;
     const ns = useNamespace("tabs");
-    const isVertical = computed(() => ["left", "right"].includes(props.tabPosition));
+    const isVertical = computed(() => ["left", "right"].includes(props2.tabPosition));
     const {
       children: panes,
       addChild: sortPane,
       removeChild: unregisterPane
     } = useOrderedChildren(getCurrentInstance(), "ElTabPane");
     const nav$ = ref();
-    const currentName = ref((_a2 = props.modelValue) != null ? _a2 : "0");
+    const currentName = ref((_a2 = props2.modelValue) != null ? _a2 : "0");
     const setCurrentName = async (value, trigger = false) => {
       var _a22, _b, _c;
       if (currentName.value === value || isUndefined2(value))
         return;
       try {
-        const canLeave = await ((_a22 = props.beforeLeave) == null ? void 0 : _a22.call(props, value, currentName.value));
+        const canLeave = await ((_a22 = props2.beforeLeave) == null ? void 0 : _a22.call(props2, value, currentName.value));
         if (canLeave !== false) {
           currentName.value = value;
           if (trigger) {
@@ -52421,14 +52651,14 @@ var Tabs = defineComponent({
       emit("edit", void 0, "add");
       emit("tabAdd");
     };
-    watch(() => props.modelValue, (modelValue) => setCurrentName(modelValue));
+    watch(() => props2.modelValue, (modelValue) => setCurrentName(modelValue));
     watch(currentName, async () => {
       var _a22;
       await nextTick();
       (_a22 = nav$.value) == null ? void 0 : _a22.scrollToActiveTab();
     });
     provide(tabsRootContextKey, {
-      props,
+      props: props2,
       currentName,
       registerPane: (pane) => {
         panes.value.push(pane);
@@ -52446,7 +52676,7 @@ var Tabs = defineComponent({
     };
     return () => {
       const addSlot = slots["add-icon"];
-      const newButton = props.editable || props.addable ? createVNode("div", {
+      const newButton = props2.editable || props2.addable ? createVNode("div", {
         "class": [ns.e("new-tab"), isVertical.value && ns.e("new-tab-vertical")],
         "tabindex": "0",
         "onClick": handleTabAdd,
@@ -52460,17 +52690,17 @@ var Tabs = defineComponent({
         default: () => [createVNode(plus_default, null, null)]
       })]) : null;
       const header = createVNode("div", {
-        "class": [ns.e("header"), isVertical.value && ns.e("header-vertical"), ns.is(props.tabPosition)]
+        "class": [ns.e("header"), isVertical.value && ns.e("header-vertical"), ns.is(props2.tabPosition)]
       }, [createVNode(TabNavRenderer, {
         "render": () => {
           const hasLabelSlot = panes.value.some((pane) => pane.slots.label);
           return createVNode(TabNav, {
             ref: nav$,
             currentName: currentName.value,
-            editable: props.editable,
-            type: props.type,
+            editable: props2.editable,
+            type: props2.type,
             panes: panes.value,
-            stretch: props.stretch,
+            stretch: props2.stretch,
             onTabClick: handleTabClick,
             onTabRemove: handleTabRemove
           }, {
@@ -52482,16 +52712,16 @@ var Tabs = defineComponent({
         "class": ns.e("content")
       }, [renderSlot(slots, "default")]);
       return createVNode("div", {
-        "class": [ns.b(), ns.m(props.tabPosition), {
-          [ns.m("card")]: props.type === "card",
-          [ns.m("border-card")]: props.type === "border-card"
+        "class": [ns.b(), ns.m(props2.tabPosition), {
+          [ns.m("card")]: props2.type === "card",
+          [ns.m("border-card")]: props2.type === "border-card"
         }]
       }, [panels, header]);
     };
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tab-pane.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tab-pane2.mjs
 var tabPaneProps = buildProps({
   label: {
     type: String,
@@ -52505,7 +52735,7 @@ var tabPaneProps = buildProps({
   lazy: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tab-pane2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tabs/src/tab-pane.mjs
 var COMPONENT_NAME23 = "ElTabPane";
 var __default__86 = defineComponent({
   name: COMPONENT_NAME23
@@ -52514,7 +52744,7 @@ var _sfc_main125 = defineComponent({
   ...__default__86,
   props: tabPaneProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const instance = getCurrentInstance();
     const slots = useSlots();
     const tabsRoot = inject(tabsRootContextKey);
@@ -52522,17 +52752,17 @@ var _sfc_main125 = defineComponent({
       throwError(COMPONENT_NAME23, "usage: <el-tabs><el-tab-pane /></el-tabs/>");
     const ns = useNamespace("tab-pane");
     const index = ref();
-    const isClosable = computed(() => props.closable || tabsRoot.props.closable);
+    const isClosable = computed(() => props2.closable || tabsRoot.props.closable);
     const active = computedEager(() => {
       var _a2;
-      return tabsRoot.currentName.value === ((_a2 = props.name) != null ? _a2 : index.value);
+      return tabsRoot.currentName.value === ((_a2 = props2.name) != null ? _a2 : index.value);
     });
     const loaded = ref(active.value);
     const paneName = computed(() => {
       var _a2;
-      return (_a2 = props.name) != null ? _a2 : index.value;
+      return (_a2 = props2.name) != null ? _a2 : index.value;
     });
-    const shouldBeRender = computedEager(() => !props.lazy || loaded.value || active.value);
+    const shouldBeRender = computedEager(() => !props2.lazy || loaded.value || active.value);
     watch(active, (val) => {
       if (val)
         loaded.value = true;
@@ -52540,7 +52770,7 @@ var _sfc_main125 = defineComponent({
     const pane = reactive({
       uid: instance.uid,
       slots,
-      props,
+      props: props2,
       paneName,
       active,
       index,
@@ -52571,13 +52801,13 @@ var _sfc_main125 = defineComponent({
 });
 var TabPane = _export_sfc(_sfc_main125, [["__file", "tab-pane.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tabs/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tabs/index.mjs
 var ElTabs = withInstall(Tabs, {
   TabPane
 });
 var ElTabPane = withNoopInstall(TabPane);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/text/src/text.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/text/src/text.mjs
 var textProps = buildProps({
   type: {
     type: String,
@@ -52599,7 +52829,7 @@ var textProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/text/src/text2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/text/src/text2.mjs
 var __default__87 = defineComponent({
   name: "ElText"
 });
@@ -52607,15 +52837,15 @@ var _sfc_main126 = defineComponent({
   ...__default__87,
   props: textProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const textSize = useFormSize();
     const ns = useNamespace("text");
     const textKls = computed(() => [
       ns.b(),
-      ns.m(props.type),
+      ns.m(props2.type),
       ns.m(textSize.value),
-      ns.is("truncated", props.truncated),
-      ns.is("line-clamp", !isUndefined2(props.lineClamp))
+      ns.is("truncated", props2.truncated),
+      ns.is("line-clamp", !isUndefined2(props2.lineClamp))
     ]);
     return (_ctx, _cache) => {
       return openBlock(), createBlock(resolveDynamicComponent(_ctx.tag), {
@@ -52632,14 +52862,14 @@ var _sfc_main126 = defineComponent({
 });
 var Text2 = _export_sfc(_sfc_main126, [["__file", "text.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/text/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/text/index.mjs
 var ElText = withInstall(Text2);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
 var import_dayjs17 = __toESM(require_dayjs_min(), 1);
 var import_customParseFormat3 = __toESM(require_customParseFormat(), 1);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-select/src/time-select.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-select/src/time-select.mjs
 var timeSelectProps = buildProps({
   format: {
     type: String,
@@ -52687,7 +52917,7 @@ var timeSelectProps = buildProps({
   ...useEmptyValuesProps
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-select/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-select/src/utils.mjs
 var parseTime = (time) => {
   const values2 = (time || "").split(":");
   if (values2.length >= 2) {
@@ -52744,7 +52974,7 @@ var nextTime = (time, step) => {
   return formatTime2(next);
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
 var __default__88 = defineComponent({
   name: "ElTimeSelect"
 });
@@ -52753,41 +52983,41 @@ var _sfc_main127 = defineComponent({
   props: timeSelectProps,
   emits: ["change", "blur", "focus", "clear", "update:modelValue"],
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     import_dayjs17.default.extend(import_customParseFormat3.default);
     const { Option: ElOption2 } = ElSelect;
     const nsInput = useNamespace("input");
     const select = ref();
     const _disabled = useFormDisabled();
     const { lang } = useLocale();
-    const value = computed(() => props.modelValue);
+    const value = computed(() => props2.modelValue);
     const start = computed(() => {
-      const time = parseTime(props.start);
+      const time = parseTime(props2.start);
       return time ? formatTime2(time) : null;
     });
     const end2 = computed(() => {
-      const time = parseTime(props.end);
+      const time = parseTime(props2.end);
       return time ? formatTime2(time) : null;
     });
     const step = computed(() => {
-      const time = parseTime(props.step);
+      const time = parseTime(props2.step);
       return time ? formatTime2(time) : null;
     });
     const minTime = computed(() => {
-      const time = parseTime(props.minTime || "");
+      const time = parseTime(props2.minTime || "");
       return time ? formatTime2(time) : null;
     });
     const maxTime = computed(() => {
-      const time = parseTime(props.maxTime || "");
+      const time = parseTime(props2.maxTime || "");
       return time ? formatTime2(time) : null;
     });
     const items = computed(() => {
       const result2 = [];
-      if (props.start && props.end && props.step) {
+      if (props2.start && props2.end && props2.step) {
         let current = start.value;
         let currentTime;
         while (current && end2.value && compareTime(current, end2.value) <= 0) {
-          currentTime = (0, import_dayjs17.default)(current, "HH:mm").locale(lang.value).format(props.format);
+          currentTime = (0, import_dayjs17.default)(current, "HH:mm").locale(lang.value).format(props2.format);
           result2.push({
             value: currentTime,
             disabled: compareTime(current, minTime.value || "-1:-1") <= 0 || compareTime(current, maxTime.value || "100:100") >= 0
@@ -52858,10 +53088,10 @@ var _sfc_main127 = defineComponent({
 });
 var TimeSelect = _export_sfc(_sfc_main127, [["__file", "time-select.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/time-select/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/time-select/index.mjs
 var ElTimeSelect = withInstall(TimeSelect);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/timeline/src/timeline.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/timeline/src/timeline.mjs
 var Timeline = defineComponent({
   name: "ElTimeline",
   setup(_2, { slots }) {
@@ -52873,7 +53103,7 @@ var Timeline = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/timeline/src/timeline-item.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/timeline/src/timeline-item.mjs
 var timelineItemProps = buildProps({
   timestamp: {
     type: String,
@@ -52906,7 +53136,7 @@ var timelineItemProps = buildProps({
   hollow: Boolean
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/timeline/src/timeline-item2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/timeline/src/timeline-item2.mjs
 var __default__89 = defineComponent({
   name: "ElTimelineItem"
 });
@@ -52914,13 +53144,13 @@ var _sfc_main128 = defineComponent({
   ...__default__89,
   props: timelineItemProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("timeline-item");
     const defaultNodeKls = computed(() => [
       ns.e("node"),
-      ns.em("node", props.size || ""),
-      ns.em("node", props.type || ""),
-      ns.is("hollow", props.hollow)
+      ns.em("node", props2.size || ""),
+      ns.em("node", props2.type || ""),
+      ns.is("hollow", props2.hollow)
     ]);
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("li", {
@@ -52975,13 +53205,13 @@ var _sfc_main128 = defineComponent({
 });
 var TimelineItem = _export_sfc(_sfc_main128, [["__file", "timeline-item.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/timeline/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/timeline/index.mjs
 var ElTimeline = withInstall(Timeline, {
   TimelineItem
 });
 var ElTimelineItem = withNoopInstall(TimelineItem);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/common.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/common.mjs
 var tooltipV2CommonProps = buildProps({
   nowrap: Boolean
 });
@@ -52994,7 +53224,7 @@ var TooltipV2Sides = ((TooltipV2Sides2) => {
 })(TooltipV2Sides || {});
 var tooltipV2Sides = Object.values(TooltipV2Sides);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/arrow.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/arrow.mjs
 var tooltipV2ArrowProps = buildProps({
   width: {
     type: Number,
@@ -53017,7 +53247,7 @@ var tooltipV2ArrowSpecialProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/content.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/content.mjs
 var tooltipV2Strategies = ["absolute", "fixed"];
 var tooltipV2Placements = [
   "top-start",
@@ -53065,7 +53295,7 @@ var tooltipV2ContentProps = buildProps({
   ...useAriaProps(["ariaLabel"])
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/root.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/root.mjs
 var tooltipV2RootProps = buildProps({
   delayDuration: {
     type: Number,
@@ -53084,7 +53314,7 @@ var tooltipV2RootProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/trigger.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/trigger.mjs
 var EventHandler = {
   type: definePropType(Function)
 };
@@ -53097,7 +53327,7 @@ var tooltipV2TriggerProps = buildProps({
   onMouseLeave: EventHandler
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/tooltip.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/tooltip.mjs
 var tooltipV2Props = buildProps({
   ...tooltipV2RootProps,
   ...tooltipV2ArrowProps,
@@ -53116,12 +53346,12 @@ var tooltipV2Props = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/constants.mjs
 var tooltipV2RootKey = Symbol("tooltipV2");
 var tooltipV2ContentKey = Symbol("tooltipV2Content");
 var TOOLTIP_V2_OPEN = "tooltip_v2.open";
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/root2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/root2.mjs
 var __default__90 = defineComponent({
   name: "ElTooltipV2Root"
 });
@@ -53129,21 +53359,21 @@ var _sfc_main129 = defineComponent({
   ...__default__90,
   props: tooltipV2RootProps,
   setup(__props, { expose }) {
-    const props = __props;
-    const _open = ref(props.defaultOpen);
+    const props2 = __props;
+    const _open = ref(props2.defaultOpen);
     const triggerRef = ref(null);
     const open = computed({
-      get: () => isPropAbsent(props.open) ? _open.value : props.open,
+      get: () => isPropAbsent(props2.open) ? _open.value : props2.open,
       set: (open2) => {
         var _a2;
         _open.value = open2;
-        (_a2 = props["onUpdate:open"]) == null ? void 0 : _a2.call(props, open2);
+        (_a2 = props2["onUpdate:open"]) == null ? void 0 : _a2.call(props2, open2);
       }
     });
-    const isOpenDelayed = computed(() => isNumber3(props.delayDuration) && props.delayDuration > 0);
+    const isOpenDelayed = computed(() => isNumber3(props2.delayDuration) && props2.delayDuration > 0);
     const { start: onDelayedOpen, stop: clearTimer } = useTimeoutFn(() => {
       open.value = true;
-    }, computed(() => props.delayDuration), {
+    }, computed(() => props2.delayDuration), {
       immediate: false
     });
     const ns = useNamespace("tooltip-v2");
@@ -53166,7 +53396,7 @@ var _sfc_main129 = defineComponent({
         document.dispatchEvent(new CustomEvent(TOOLTIP_V2_OPEN));
         onOpen();
       }
-      (_a2 = props.onOpenChange) == null ? void 0 : _a2.call(props, open2);
+      (_a2 = props2.onOpenChange) == null ? void 0 : _a2.call(props2, open2);
     };
     watch(open, onChange);
     onMounted(() => {
@@ -53195,7 +53425,7 @@ var _sfc_main129 = defineComponent({
 });
 var TooltipV2Root = _export_sfc(_sfc_main129, [["__file", "root.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/arrow2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/arrow2.mjs
 var __default__91 = defineComponent({
   name: "ElTooltipV2Arrow"
 });
@@ -53206,11 +53436,11 @@ var _sfc_main130 = defineComponent({
     ...tooltipV2ArrowSpecialProps
   },
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const { ns } = inject(tooltipV2RootKey);
     const { arrowRef } = inject(tooltipV2ContentKey);
     const arrowStyle = computed(() => {
-      const { style, width, height } = props;
+      const { style, width, height } = props2;
       const namespace = ns.namespace.value;
       return {
         [`--${namespace}-tooltip-v2-arrow-width`]: `${width}px`,
@@ -53232,7 +53462,7 @@ var _sfc_main130 = defineComponent({
 });
 var TooltipV2Arrow = _export_sfc(_sfc_main130, [["__file", "arrow.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden.mjs
 var visualHiddenProps = buildProps({
   style: {
     type: definePropType([String, Object, Array]),
@@ -53240,7 +53470,7 @@ var visualHiddenProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden2.mjs
 var __default__92 = defineComponent({
   name: "ElVisuallyHidden"
 });
@@ -53248,10 +53478,10 @@ var _sfc_main131 = defineComponent({
   ...__default__92,
   props: visualHiddenProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const computedStyle = computed(() => {
       return [
-        props.style,
+        props2.style,
         {
           position: "absolute",
           border: 0,
@@ -53275,7 +53505,7 @@ var _sfc_main131 = defineComponent({
 });
 var ElVisuallyHidden = _export_sfc(_sfc_main131, [["__file", "visual-hidden.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/content2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/content2.mjs
 var __default__93 = defineComponent({
   name: "ElTooltipV2Content"
 });
@@ -53283,17 +53513,17 @@ var _sfc_main132 = defineComponent({
   ...__default__93,
   props: { ...tooltipV2ContentProps, ...tooltipV2CommonProps },
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const { triggerRef, contentId } = inject(tooltipV2RootKey);
-    const placement = ref(props.placement);
-    const strategy = ref(props.strategy);
+    const placement = ref(props2.placement);
+    const strategy = ref(props2.strategy);
     const arrowRef = ref(null);
     const { referenceRef, contentRef, middlewareData, x: x2, y, update: update2 } = useFloating({
       placement,
       strategy,
       middleware: computed(() => {
-        const middleware = [offset2(props.offset)];
-        if (props.showArrow) {
+        const middleware = [offset2(props2.offset)];
+        if (props2.showArrow) {
           middleware.push(arrowMiddleware({
             arrowRef
           }));
@@ -53315,7 +53545,7 @@ var _sfc_main132 = defineComponent({
       };
     });
     const arrowStyle = computed(() => {
-      if (!props.showArrow)
+      if (!props2.showArrow)
         return {};
       const { arrow: arrow3 } = unref(middlewareData);
       return {
@@ -53325,14 +53555,14 @@ var _sfc_main132 = defineComponent({
     });
     const contentClass = computed(() => [
       ns.e("content"),
-      ns.is("dark", props.effect === "dark"),
+      ns.is("dark", props2.effect === "dark"),
       ns.is(unref(strategy)),
-      props.contentClass
+      props2.contentClass
     ]);
     watch(arrowRef, () => update2());
-    watch(() => props.placement, (val) => placement.value = val);
+    watch(() => props2.placement, (val) => placement.value = val);
     onMounted(() => {
-      watch(() => props.reference || triggerRef.value, (el) => {
+      watch(() => props2.reference || triggerRef.value, (el) => {
         referenceRef.value = el || void 0;
       }, {
         immediate: true
@@ -53377,7 +53607,7 @@ var _sfc_main132 = defineComponent({
 });
 var TooltipV2Content = _export_sfc(_sfc_main132, [["__file", "content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/forward-ref.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/forward-ref.mjs
 var forwardRefProps = buildProps({
   setRef: {
     type: definePropType(Function),
@@ -53387,21 +53617,21 @@ var forwardRefProps = buildProps({
 });
 var ForwardRef = defineComponent({
   props: forwardRefProps,
-  setup(props, {
+  setup(props2, {
     slots
   }) {
     const fragmentRef = ref();
     const setRef = composeRefs(fragmentRef, (el) => {
       if (el) {
-        props.setRef(el.nextElementSibling);
+        props2.setRef(el.nextElementSibling);
       } else {
-        props.setRef(null);
+        props2.setRef(null);
       }
     });
     return () => {
       var _a2;
       const [firstChild] = ((_a2 = slots.default) == null ? void 0 : _a2.call(slots)) || [];
-      const child = props.onlyChild ? ensureOnlyChild(firstChild.children) : firstChild.children;
+      const child = props2.onlyChild ? ensureOnlyChild(firstChild.children) : firstChild.children;
       return createVNode(Fragment, {
         "ref": setRef
       }, [child]);
@@ -53409,7 +53639,7 @@ var ForwardRef = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/trigger2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/trigger2.mjs
 var __default__94 = defineComponent({
   name: "ElTooltipV2Trigger"
 });
@@ -53420,7 +53650,7 @@ var _sfc_main133 = defineComponent({
     ...tooltipV2TriggerProps
   },
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const { onClose, onOpen, onDelayOpen, triggerRef, contentId } = inject(tooltipV2RootKey);
     let isMousedown = false;
     const setTriggerRef = (el) => {
@@ -53429,19 +53659,19 @@ var _sfc_main133 = defineComponent({
     const onMouseup = () => {
       isMousedown = false;
     };
-    const onMouseenter = composeEventHandlers(props.onMouseEnter, onDelayOpen);
-    const onMouseleave = composeEventHandlers(props.onMouseLeave, onClose);
-    const onMousedown = composeEventHandlers(props.onMouseDown, () => {
+    const onMouseenter = composeEventHandlers(props2.onMouseEnter, onDelayOpen);
+    const onMouseleave = composeEventHandlers(props2.onMouseLeave, onClose);
+    const onMousedown = composeEventHandlers(props2.onMouseDown, () => {
       onClose();
       isMousedown = true;
       document.addEventListener("mouseup", onMouseup, { once: true });
     });
-    const onFocus = composeEventHandlers(props.onFocus, () => {
+    const onFocus = composeEventHandlers(props2.onFocus, () => {
       if (!isMousedown)
         onOpen();
     });
-    const onBlur = composeEventHandlers(props.onBlur, onClose);
-    const onClick = composeEventHandlers(props.onClick, (e) => {
+    const onBlur = composeEventHandlers(props2.onBlur, onClose);
+    const onClick = composeEventHandlers(props2.onClick, (e) => {
       if (e.detail === 0)
         onClose();
     });
@@ -53493,7 +53723,7 @@ var _sfc_main133 = defineComponent({
 });
 var TooltipV2Trigger = _export_sfc(_sfc_main133, [["__file", "trigger.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/tooltip2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/src/tooltip2.mjs
 var __default__95 = defineComponent({
   name: "ElTooltipV2"
 });
@@ -53501,8 +53731,8 @@ var _sfc_main134 = defineComponent({
   ...__default__95,
   props: tooltipV2Props,
   setup(__props) {
-    const props = __props;
-    const refedProps = toRefs(props);
+    const props2 = __props;
+    const refedProps = toRefs(props2);
     const arrowProps = reactive(pick_default(refedProps, Object.keys(tooltipV2ArrowProps)));
     const contentProps = reactive(pick_default(refedProps, Object.keys(tooltipV2ContentProps)));
     const rootProps = reactive(pick_default(refedProps, Object.keys(tooltipV2RootProps)));
@@ -53562,10 +53792,10 @@ var _sfc_main134 = defineComponent({
 });
 var TooltipV2 = _export_sfc(_sfc_main134, [["__file", "tooltip.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tooltip-v2/index.mjs
 var ElTooltipV2 = withInstall(TooltipV2);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/transfer.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/transfer2.mjs
 var LEFT_CHECK_CHANGE_EVENT = "left-check-change";
 var RIGHT_CHECK_CHANGE_EVENT = "right-check-change";
 var transferProps = buildProps({
@@ -53631,7 +53861,7 @@ var transferEmits = {
   [RIGHT_CHECK_CHANGE_EVENT]: transferCheckedChangeFn
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/transfer-panel.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/transfer-panel.mjs
 var CHECKED_CHANGE_EVENT = "checked-change";
 var transferPanelProps = buildProps({
   data: transferProps.data,
@@ -53650,8 +53880,8 @@ var transferPanelEmits = {
   [CHECKED_CHANGE_EVENT]: transferCheckedChangeFn
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/composables/use-props-alias.mjs
-var usePropsAlias = (props) => {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/composables/use-props-alias.mjs
+var usePropsAlias = (props2) => {
   const initProps = {
     label: "label",
     key: "key",
@@ -53659,17 +53889,17 @@ var usePropsAlias = (props) => {
   };
   return computed(() => ({
     ...initProps,
-    ...props.props
+    ...props2.props
   }));
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/composables/use-check.mjs
-var useCheck = (props, panelState, emit) => {
-  const propsAlias = usePropsAlias(props);
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/composables/use-check.mjs
+var useCheck = (props2, panelState, emit) => {
+  const propsAlias = usePropsAlias(props2);
   const filteredData = computed(() => {
-    return props.data.filter((item) => {
-      if (isFunction2(props.filterMethod)) {
-        return props.filterMethod(panelState.query, item);
+    return props2.data.filter((item) => {
+      if (isFunction2(props2.filterMethod)) {
+        return props2.filterMethod(panelState.query, item);
       } else {
         const label = String(item[propsAlias.value.label] || item[propsAlias.value.key]);
         return label.toLowerCase().includes(panelState.query.toLowerCase());
@@ -53679,8 +53909,8 @@ var useCheck = (props, panelState, emit) => {
   const checkableData = computed(() => filteredData.value.filter((item) => !item[propsAlias.value.disabled]));
   const checkedSummary = computed(() => {
     const checkedLength = panelState.checked.length;
-    const dataLength = props.data.length;
-    const { noChecked, hasChecked } = props.format;
+    const dataLength = props2.data.length;
+    const { noChecked, hasChecked } = props2.format;
     if (noChecked && hasChecked) {
       return checkedLength > 0 ? hasChecked.replace(/\${checked}/g, checkedLength.toString()).replace(/\${total}/g, dataLength.toString()) : noChecked.replace(/\${total}/g, dataLength.toString());
     } else {
@@ -53711,7 +53941,7 @@ var useCheck = (props, panelState, emit) => {
   watch(checkableData, () => {
     updateAllChecked();
   });
-  watch(() => props.data, () => {
+  watch(() => props2.data, () => {
     const checked = [];
     const filteredDataKeys = filteredData.value.map((item) => item[propsAlias.value.key]);
     panelState.checked.forEach((item) => {
@@ -53722,7 +53952,7 @@ var useCheck = (props, panelState, emit) => {
     panelState.checkChangeByUser = false;
     panelState.checked = checked;
   });
-  watch(() => props.defaultChecked, (val, oldVal) => {
+  watch(() => props2.defaultChecked, (val, oldVal) => {
     if (oldVal && val.length === oldVal.length && val.every((item) => oldVal.includes(item)))
       return;
     const checked = [];
@@ -53747,7 +53977,7 @@ var useCheck = (props, panelState, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/composables/use-checked-change.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/composables/use-checked-change.mjs
 var useCheckedChange = (checkedState, emit) => {
   const onSourceCheckedChange = (val, movedKeys) => {
     checkedState.leftChecked = val;
@@ -53767,16 +53997,16 @@ var useCheckedChange = (checkedState, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/composables/use-computed-data.mjs
-var useComputedData = (props) => {
-  const propsAlias = usePropsAlias(props);
-  const dataObj = computed(() => props.data.reduce((o2, cur) => (o2[cur[propsAlias.value.key]] = cur) && o2, {}));
-  const sourceData = computed(() => props.data.filter((item) => !props.modelValue.includes(item[propsAlias.value.key])));
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/composables/use-computed-data.mjs
+var useComputedData = (props2) => {
+  const propsAlias = usePropsAlias(props2);
+  const dataObj = computed(() => props2.data.reduce((o2, cur) => (o2[cur[propsAlias.value.key]] = cur) && o2, {}));
+  const sourceData = computed(() => props2.data.filter((item) => !props2.modelValue.includes(item[propsAlias.value.key])));
   const targetData = computed(() => {
-    if (props.targetOrder === "original") {
-      return props.data.filter((item) => props.modelValue.includes(item[propsAlias.value.key]));
+    if (props2.targetOrder === "original") {
+      return props2.data.filter((item) => props2.modelValue.includes(item[propsAlias.value.key]));
     } else {
-      return props.modelValue.reduce((arr, cur) => {
+      return props2.modelValue.reduce((arr, cur) => {
         const val = dataObj.value[cur];
         if (val) {
           arr.push(val);
@@ -53791,15 +54021,15 @@ var useComputedData = (props) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/composables/use-move.mjs
-var useMove = (props, checkedState, emit) => {
-  const propsAlias = usePropsAlias(props);
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/composables/use-move.mjs
+var useMove = (props2, checkedState, emit) => {
+  const propsAlias = usePropsAlias(props2);
   const _emit = (value, direction2, movedKeys) => {
     emit(UPDATE_MODEL_EVENT, value);
     emit(CHANGE_EVENT, value, direction2, movedKeys);
   };
   const addToLeft = () => {
-    const currentValue = props.modelValue.slice();
+    const currentValue = props2.modelValue.slice();
     checkedState.rightChecked.forEach((item) => {
       const index = currentValue.indexOf(item);
       if (index > -1) {
@@ -53809,14 +54039,14 @@ var useMove = (props, checkedState, emit) => {
     _emit(currentValue, "left", checkedState.rightChecked);
   };
   const addToRight = () => {
-    let currentValue = props.modelValue.slice();
-    const itemsToBeMoved = props.data.filter((item) => {
+    let currentValue = props2.modelValue.slice();
+    const itemsToBeMoved = props2.data.filter((item) => {
       const itemKey = item[propsAlias.value.key];
-      return checkedState.leftChecked.includes(itemKey) && !props.modelValue.includes(itemKey);
+      return checkedState.leftChecked.includes(itemKey) && !props2.modelValue.includes(itemKey);
     }).map((item) => item[propsAlias.value.key]);
-    currentValue = props.targetOrder === "unshift" ? itemsToBeMoved.concat(currentValue) : currentValue.concat(itemsToBeMoved);
-    if (props.targetOrder === "original") {
-      currentValue = props.data.filter((item) => currentValue.includes(item[propsAlias.value.key])).map((item) => item[propsAlias.value.key]);
+    currentValue = props2.targetOrder === "unshift" ? itemsToBeMoved.concat(currentValue) : currentValue.concat(itemsToBeMoved);
+    if (props2.targetOrder === "original") {
+      currentValue = props2.data.filter((item) => currentValue.includes(item[propsAlias.value.key])).map((item) => item[propsAlias.value.key]);
     }
     _emit(currentValue, "right", checkedState.leftChecked);
   };
@@ -53826,7 +54056,7 @@ var useMove = (props, checkedState, emit) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/transfer-panel2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/transfer-panel2.mjs
 var __default__96 = defineComponent({
   name: "ElTransferPanel"
 });
@@ -53835,7 +54065,7 @@ var _sfc_main135 = defineComponent({
   props: transferPanelProps,
   emits: transferPanelEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const slots = useSlots();
     const OptionContent = ({ option }) => option;
     const { t } = useLocale();
@@ -53846,13 +54076,13 @@ var _sfc_main135 = defineComponent({
       query: "",
       checkChangeByUser: true
     });
-    const propsAlias = usePropsAlias(props);
+    const propsAlias = usePropsAlias(props2);
     const {
       filteredData,
       checkedSummary,
       isIndeterminate,
       handleAllCheckedChange
-    } = useCheck(props, panelState, emit);
+    } = useCheck(props2, panelState, emit);
     const hasNoMatch = computed(() => !isEmpty2(panelState.query) && isEmpty2(filteredData.value));
     const hasFooter = computed(() => !isEmpty2(slots.default()[0].children));
     const { checked, allChecked, query } = toRefs(panelState);
@@ -53943,7 +54173,7 @@ var _sfc_main135 = defineComponent({
 });
 var TransferPanel = _export_sfc(_sfc_main135, [["__file", "transfer-panel.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/transfer2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/transfer/src/transfer.mjs
 var __default__97 = defineComponent({
   name: "ElTransfer"
 });
@@ -53952,7 +54182,7 @@ var _sfc_main136 = defineComponent({
   props: transferProps,
   emits: transferEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const slots = useSlots();
     const { t } = useLocale();
     const ns = useNamespace("transfer");
@@ -53961,10 +54191,10 @@ var _sfc_main136 = defineComponent({
       leftChecked: [],
       rightChecked: []
     });
-    const propsAlias = usePropsAlias(props);
-    const { sourceData, targetData } = useComputedData(props);
+    const propsAlias = usePropsAlias(props2);
+    const { sourceData, targetData } = useComputedData(props2);
     const { onSourceCheckedChange, onTargetCheckedChange } = useCheckedChange(checkedState, emit);
-    const { addToLeft, addToRight } = useMove(props, checkedState, emit);
+    const { addToLeft, addToRight } = useMove(props2, checkedState, emit);
     const leftPanel = ref();
     const rightPanel = ref();
     const clearQuery = (which) => {
@@ -53977,19 +54207,19 @@ var _sfc_main136 = defineComponent({
           break;
       }
     };
-    const hasButtonTexts = computed(() => props.buttonTexts.length === 2);
-    const leftPanelTitle = computed(() => props.titles[0] || t("el.transfer.titles.0"));
-    const rightPanelTitle = computed(() => props.titles[1] || t("el.transfer.titles.1"));
-    const panelFilterPlaceholder = computed(() => props.filterPlaceholder || t("el.transfer.filterPlaceholder"));
-    watch(() => props.modelValue, () => {
+    const hasButtonTexts = computed(() => props2.buttonTexts.length === 2);
+    const leftPanelTitle = computed(() => props2.titles[0] || t("el.transfer.titles.0"));
+    const rightPanelTitle = computed(() => props2.titles[1] || t("el.transfer.titles.1"));
+    const panelFilterPlaceholder = computed(() => props2.filterPlaceholder || t("el.transfer.filterPlaceholder"));
+    watch(() => props2.modelValue, () => {
       var _a2;
-      if (props.validateEvent) {
+      if (props2.validateEvent) {
         (_a2 = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a2.call(formItem, "change").catch((err) => debugWarn(err));
       }
     });
     const optionRender = computed(() => (option) => {
-      if (props.renderContent)
-        return props.renderContent(h, option);
+      if (props2.renderContent)
+        return props2.renderContent(h, option);
       if (slots.default)
         return slots.default({ option });
       return h("span", option[propsAlias.value.label] || option[propsAlias.value.key]);
@@ -54014,7 +54244,7 @@ var _sfc_main136 = defineComponent({
           format: _ctx.format,
           "filter-method": _ctx.filterMethod,
           "default-checked": _ctx.leftDefaultChecked,
-          props: props.props,
+          props: props2.props,
           onCheckedChange: unref(onSourceCheckedChange)
         }, {
           default: withCtx(() => [
@@ -54071,7 +54301,7 @@ var _sfc_main136 = defineComponent({
           "filter-method": _ctx.filterMethod,
           title: unref(rightPanelTitle),
           "default-checked": _ctx.rightDefaultChecked,
-          props: props.props,
+          props: props2.props,
           onCheckedChange: unref(onTargetCheckedChange)
         }, {
           default: withCtx(() => [
@@ -54085,10 +54315,10 @@ var _sfc_main136 = defineComponent({
 });
 var Transfer = _export_sfc(_sfc_main136, [["__file", "transfer.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/transfer/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/transfer/index.mjs
 var ElTransfer = withInstall(Transfer);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/util.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/util.mjs
 var NODE_KEY = "$treeNodeId";
 var markNodeData = function(node, data) {
   if (!data || data[NODE_KEY])
@@ -54114,7 +54344,7 @@ var handleCurrentChange = (store, emit, setCurrent) => {
   emit("current-change", currentNode ? currentNode.data : null, currentNode);
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/node.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/node.mjs
 var getChildState = (node) => {
   let all = true;
   let none = true;
@@ -54155,9 +54385,9 @@ var reInitChecked = function(node) {
   }
 };
 var getPropertyFromData = function(node, prop) {
-  const props = node.store.props;
+  const props2 = node.store.props;
   const data = node.data || {};
-  const config = props[prop];
+  const config = props2[prop];
   if (typeof config === "function") {
     return config(data, node);
   } else if (typeof config === "string") {
@@ -54199,8 +54429,8 @@ var Node3 = class _Node {
       throw new Error("[Node]store is required!");
     }
     store.registerNode(this);
-    const props = store.props;
-    if (props && typeof props.isLeaf !== "undefined") {
+    const props2 = store.props;
+    if (props2 && typeof props2.isLeaf !== "undefined") {
       const isLeaf2 = getPropertyFromData(this, "isLeaf");
       if (typeof isLeaf2 === "boolean") {
         this.isLeafByUser = isLeaf2;
@@ -54476,10 +54706,10 @@ var Node3 = class _Node {
     const data = this.data;
     if (!data)
       return null;
-    const props = this.store.props;
+    const props2 = this.store.props;
     let children = "children";
-    if (props) {
-      children = props.children || "children";
+    if (props2) {
+      children = props2.children || "children";
     }
     if (data[children] === void 0) {
       data[children] = null;
@@ -54552,7 +54782,7 @@ var Node3 = class _Node {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/tree-store.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/tree-store.mjs
 var TreeStore = class {
   constructor(options) {
     this.currentNode = null;
@@ -54865,7 +55095,7 @@ var TreeStore = class {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree/src/tree-node-content.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree/src/tree-node-content.mjs
 var _sfc_main137 = defineComponent({
   name: "ElTreeNodeContent",
   props: {
@@ -54875,14 +55105,14 @@ var _sfc_main137 = defineComponent({
     },
     renderContent: Function
   },
-  setup(props) {
+  setup(props2) {
     const ns = useNamespace("tree");
     const nodeInstance = inject("NodeInstance");
     const tree = inject("RootTree");
     return () => {
-      const node = props.node;
+      const node = props2.node;
       const { data, store } = node;
-      return props.renderContent ? props.renderContent(h, { _self: nodeInstance, node, data, store }) : renderSlot(tree.ctx.slots, "default", { node, data }, () => [
+      return props2.renderContent ? props2.renderContent(h, { _self: nodeInstance, node, data, store }) : renderSlot(tree.ctx.slots, "default", { node, data }, () => [
         h("span", { class: ns.be("node", "label") }, [node.label])
       ]);
     };
@@ -54890,13 +55120,13 @@ var _sfc_main137 = defineComponent({
 });
 var NodeContent2 = _export_sfc(_sfc_main137, [["__file", "tree-node-content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/useNodeExpandEventBroadcast.mjs
-function useNodeExpandEventBroadcast(props) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/useNodeExpandEventBroadcast.mjs
+function useNodeExpandEventBroadcast(props2) {
   const parentNodeMap = inject("TreeNodeMap", null);
   const currentNodeMap = {
     treeNodeExpand: (node) => {
-      if (props.node !== node) {
-        props.node.collapse();
+      if (props2.node !== node) {
+        props2.node.collapse();
       }
     },
     children: []
@@ -54907,7 +55137,7 @@ function useNodeExpandEventBroadcast(props) {
   provide("TreeNodeMap", currentNodeMap);
   return {
     broadcastExpanded: (node) => {
-      if (!props.accordion)
+      if (!props2.accordion)
         return;
       for (const childNode of currentNodeMap.children) {
         childNode.treeNodeExpand(node);
@@ -54916,9 +55146,9 @@ function useNodeExpandEventBroadcast(props) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/useDragNode.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/useDragNode.mjs
 var dragEventsKey = Symbol("dragEvents");
-function useDragNodeHandler({ props, ctx, el$, dropIndicator$, store }) {
+function useDragNodeHandler({ props: props2, ctx, el$, dropIndicator$, store }) {
   const ns = useNamespace("tree");
   const dragState = ref({
     showDropIndicator: false,
@@ -54928,7 +55158,7 @@ function useDragNodeHandler({ props, ctx, el$, dropIndicator$, store }) {
     dropType: null
   });
   const treeNodeDragStart = ({ event, treeNode }) => {
-    if (typeof props.allowDrag === "function" && !props.allowDrag(treeNode.node)) {
+    if (typeof props2.allowDrag === "function" && !props2.allowDrag(treeNode.node)) {
       event.preventDefault();
       return false;
     }
@@ -54953,10 +55183,10 @@ function useDragNodeHandler({ props, ctx, el$, dropIndicator$, store }) {
     let dropInner = true;
     let dropNext = true;
     let userAllowDropInner = true;
-    if (typeof props.allowDrop === "function") {
-      dropPrev = props.allowDrop(draggingNode.node, dropNode.node, "prev");
-      userAllowDropInner = dropInner = props.allowDrop(draggingNode.node, dropNode.node, "inner");
-      dropNext = props.allowDrop(draggingNode.node, dropNode.node, "next");
+    if (typeof props2.allowDrop === "function") {
+      dropPrev = props2.allowDrop(draggingNode.node, dropNode.node, "prev");
+      userAllowDropInner = dropInner = props2.allowDrop(draggingNode.node, dropNode.node, "inner");
+      dropNext = props2.allowDrop(draggingNode.node, dropNode.node, "next");
     }
     event.dataTransfer.dropEffect = dropInner || dropPrev || dropNext ? "move" : "none";
     if ((dropPrev || dropInner || dropNext) && (oldDropNode == null ? void 0 : oldDropNode.node.id) !== dropNode.node.id) {
@@ -55070,7 +55300,7 @@ function useDragNodeHandler({ props, ctx, el$, dropIndicator$, store }) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree/src/tree-node.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree/src/tree-node.mjs
 var _sfc_main138 = defineComponent({
   name: "ElTreeNode",
   components: {
@@ -55098,9 +55328,9 @@ var _sfc_main138 = defineComponent({
     }
   },
   emits: ["node-expand"],
-  setup(props, ctx) {
+  setup(props2, ctx) {
     const ns = useNamespace("tree");
-    const { broadcastExpanded } = useNodeExpandEventBroadcast(props);
+    const { broadcastExpanded } = useNodeExpandEventBroadcast(props2);
     const tree = inject("RootTree");
     const expanded = ref(false);
     const childNodeRendered = ref(false);
@@ -55113,25 +55343,25 @@ var _sfc_main138 = defineComponent({
     if (!tree) {
       debugWarn("Tree", "Can not find node's tree.");
     }
-    if (props.node.expanded) {
+    if (props2.node.expanded) {
       expanded.value = true;
       childNodeRendered.value = true;
     }
     const childrenKey = tree.props.props["children"] || "children";
     watch(() => {
-      const children = props.node.data[childrenKey];
+      const children = props2.node.data[childrenKey];
       return children && [...children];
     }, () => {
-      props.node.updateChildren();
+      props2.node.updateChildren();
     });
-    watch(() => props.node.indeterminate, (val) => {
-      handleSelectChange(props.node.checked, val);
+    watch(() => props2.node.indeterminate, (val) => {
+      handleSelectChange(props2.node.checked, val);
     });
-    watch(() => props.node.checked, (val) => {
-      handleSelectChange(val, props.node.indeterminate);
+    watch(() => props2.node.checked, (val) => {
+      handleSelectChange(val, props2.node.indeterminate);
     });
-    watch(() => props.node.childNodes.length, () => props.node.reInitChecked());
-    watch(() => props.node.expanded, (val) => {
+    watch(() => props2.node.childNodes.length, () => props2.node.reInitChecked());
+    watch(() => props2.node.expanded, (val) => {
       nextTick(() => expanded.value = val);
       if (val) {
         childNodeRendered.value = true;
@@ -55141,7 +55371,7 @@ var _sfc_main138 = defineComponent({
       return getNodeKey(tree.props.nodeKey, node.data);
     };
     const getNodeClass = (node) => {
-      const nodeClassFunc = props.props.class;
+      const nodeClassFunc = props2.props.class;
       if (!nodeClassFunc) {
         return {};
       }
@@ -55160,47 +55390,48 @@ var _sfc_main138 = defineComponent({
     };
     const handleSelectChange = (checked, indeterminate) => {
       if (oldChecked.value !== checked || oldIndeterminate.value !== indeterminate) {
-        tree.ctx.emit("check-change", props.node.data, checked, indeterminate);
+        tree.ctx.emit("check-change", props2.node.data, checked, indeterminate);
       }
       oldChecked.value = checked;
       oldIndeterminate.value = indeterminate;
     };
     const handleClick = (e) => {
-      handleCurrentChange(tree.store, tree.ctx.emit, () => tree.store.value.setCurrentNode(props.node));
-      tree.currentNode.value = props.node;
+      handleCurrentChange(tree.store, tree.ctx.emit, () => tree.store.value.setCurrentNode(props2.node));
+      tree.currentNode.value = props2.node;
       if (tree.props.expandOnClickNode) {
         handleExpandIconClick();
       }
-      if (tree.props.checkOnClickNode && !props.node.disabled) {
+      if (tree.props.checkOnClickNode && !props2.node.disabled) {
         handleCheckChange(null, {
-          target: { checked: !props.node.checked }
+          target: { checked: !props2.node.checked }
         });
       }
-      tree.ctx.emit("node-click", props.node.data, props.node, instance, e);
+      tree.ctx.emit("node-click", props2.node.data, props2.node, instance, e);
     };
     const handleContextMenu = (event) => {
       if (tree.instance.vnode.props["onNodeContextmenu"]) {
         event.stopPropagation();
         event.preventDefault();
       }
-      tree.ctx.emit("node-contextmenu", event, props.node.data, props.node, instance);
+      tree.ctx.emit("node-contextmenu", event, props2.node.data, props2.node, instance);
     };
     const handleExpandIconClick = () => {
-      if (props.node.isLeaf)
+      if (props2.node.isLeaf)
         return;
       if (expanded.value) {
-        tree.ctx.emit("node-collapse", props.node.data, props.node, instance);
-        props.node.collapse();
+        tree.ctx.emit("node-collapse", props2.node.data, props2.node, instance);
+        props2.node.collapse();
       } else {
-        props.node.expand();
-        ctx.emit("node-expand", props.node.data, props.node, instance);
+        props2.node.expand(() => {
+          ctx.emit("node-expand", props2.node.data, props2.node, instance);
+        });
       }
     };
     const handleCheckChange = (value, ev) => {
-      props.node.setChecked(ev.target.checked, !tree.props.checkStrictly);
+      props2.node.setChecked(ev.target.checked, !tree.props.checkStrictly);
       nextTick(() => {
         const store = tree.store.value;
-        tree.ctx.emit("check", props.node.data, {
+        tree.ctx.emit("check", props2.node.data, {
           checkedNodes: store.getCheckedNodes(),
           checkedKeys: store.getCheckedKeys(),
           halfCheckedNodes: store.getHalfCheckedNodes(),
@@ -55215,7 +55446,7 @@ var _sfc_main138 = defineComponent({
     const handleDragStart = (event) => {
       if (!tree.props.draggable)
         return;
-      dragEvents.treeNodeDragStart({ event, treeNode: props });
+      dragEvents.treeNodeDragStart({ event, treeNode: props2 });
     };
     const handleDragOver = (event) => {
       event.preventDefault();
@@ -55223,7 +55454,7 @@ var _sfc_main138 = defineComponent({
         return;
       dragEvents.treeNodeDragOver({
         event,
-        treeNode: { $el: node$.value, node: props.node }
+        treeNode: { $el: node$.value, node: props2.node }
       });
     };
     const handleDrop = (event) => {
@@ -55365,7 +55596,7 @@ function _sfc_render29(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var ElTreeNode = _export_sfc(_sfc_main138, [["render", _sfc_render29], ["__file", "tree-node.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/useKeydown.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree/src/model/useKeydown.mjs
 function useKeydown({ el$ }, store) {
   const ns = useNamespace("tree");
   const treeItems = shallowRef([]);
@@ -55449,7 +55680,7 @@ function useKeydown({ el$ }, store) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree/src/tree.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree/src/tree.mjs
 var _sfc_main139 = defineComponent({
   name: "ElTree",
   components: { ElTreeNode },
@@ -55534,33 +55765,33 @@ var _sfc_main139 = defineComponent({
     "node-drag-enter",
     "node-drag-over"
   ],
-  setup(props, ctx) {
+  setup(props2, ctx) {
     const { t } = useLocale();
     const ns = useNamespace("tree");
     const selectInfo = inject(selectKey, null);
     const store = ref(new TreeStore({
-      key: props.nodeKey,
-      data: props.data,
-      lazy: props.lazy,
-      props: props.props,
-      load: props.load,
-      currentNodeKey: props.currentNodeKey,
-      checkStrictly: props.checkStrictly,
-      checkDescendants: props.checkDescendants,
-      defaultCheckedKeys: props.defaultCheckedKeys,
-      defaultExpandedKeys: props.defaultExpandedKeys,
-      autoExpandParent: props.autoExpandParent,
-      defaultExpandAll: props.defaultExpandAll,
-      filterNodeMethod: props.filterNodeMethod
+      key: props2.nodeKey,
+      data: props2.data,
+      lazy: props2.lazy,
+      props: props2.props,
+      load: props2.load,
+      currentNodeKey: props2.currentNodeKey,
+      checkStrictly: props2.checkStrictly,
+      checkDescendants: props2.checkDescendants,
+      defaultCheckedKeys: props2.defaultCheckedKeys,
+      defaultExpandedKeys: props2.defaultExpandedKeys,
+      autoExpandParent: props2.autoExpandParent,
+      defaultExpandAll: props2.defaultExpandAll,
+      filterNodeMethod: props2.filterNodeMethod
     }));
     store.value.initialize();
     const root2 = ref(store.value.root);
     const currentNode = ref(null);
     const el$ = ref(null);
     const dropIndicator$ = ref(null);
-    const { broadcastExpanded } = useNodeExpandEventBroadcast(props);
+    const { broadcastExpanded } = useNodeExpandEventBroadcast(props2);
     const { dragState } = useDragNodeHandler({
-      props,
+      props: props2,
       ctx,
       el$,
       dropIndicator$,
@@ -55572,31 +55803,31 @@ var _sfc_main139 = defineComponent({
       const hasFilteredOptions = selectInfo ? selectInfo.hasFilteredOptions !== 0 : false;
       return (!childNodes || childNodes.length === 0 || childNodes.every(({ visible }) => !visible)) && !hasFilteredOptions;
     });
-    watch(() => props.currentNodeKey, (newVal) => {
+    watch(() => props2.currentNodeKey, (newVal) => {
       store.value.setCurrentNodeKey(newVal);
     });
-    watch(() => props.defaultCheckedKeys, (newVal) => {
+    watch(() => props2.defaultCheckedKeys, (newVal) => {
       store.value.setDefaultCheckedKey(newVal);
     });
-    watch(() => props.defaultExpandedKeys, (newVal) => {
+    watch(() => props2.defaultExpandedKeys, (newVal) => {
       store.value.setDefaultExpandedKeys(newVal);
     });
-    watch(() => props.data, (newVal) => {
+    watch(() => props2.data, (newVal) => {
       store.value.setData(newVal);
     }, { deep: true });
-    watch(() => props.checkStrictly, (newVal) => {
+    watch(() => props2.checkStrictly, (newVal) => {
       store.value.checkStrictly = newVal;
     });
     const filter2 = (value) => {
-      if (!props.filterNodeMethod)
+      if (!props2.filterNodeMethod)
         throw new Error("[Tree] filterNodeMethod is required when filter");
       store.value.filter(value);
     };
     const getNodeKey$1 = (node) => {
-      return getNodeKey(props.nodeKey, node.data);
+      return getNodeKey(props2.nodeKey, node.data);
     };
     const getNodePath = (data) => {
-      if (!props.nodeKey)
+      if (!props2.nodeKey)
         throw new Error("[Tree] nodeKey is required in getNodePath");
       const node = store.value.getNode(data);
       if (!node)
@@ -55620,18 +55851,18 @@ var _sfc_main139 = defineComponent({
       return currentNode2 ? currentNode2.data : null;
     };
     const getCurrentKey = () => {
-      if (!props.nodeKey)
+      if (!props2.nodeKey)
         throw new Error("[Tree] nodeKey is required in getCurrentKey");
       const currentNode2 = getCurrentNode();
-      return currentNode2 ? currentNode2[props.nodeKey] : null;
+      return currentNode2 ? currentNode2[props2.nodeKey] : null;
     };
     const setCheckedNodes = (nodes, leafOnly) => {
-      if (!props.nodeKey)
+      if (!props2.nodeKey)
         throw new Error("[Tree] nodeKey is required in setCheckedNodes");
       store.value.setCheckedNodes(nodes, leafOnly);
     };
     const setCheckedKeys = (keys3, leafOnly) => {
-      if (!props.nodeKey)
+      if (!props2.nodeKey)
         throw new Error("[Tree] nodeKey is required in setCheckedKeys");
       store.value.setCheckedKeys(keys3, leafOnly);
     };
@@ -55645,7 +55876,7 @@ var _sfc_main139 = defineComponent({
       return store.value.getHalfCheckedKeys();
     };
     const setCurrentNode = (node, shouldAutoExpandParent = true) => {
-      if (!props.nodeKey)
+      if (!props2.nodeKey)
         throw new Error("[Tree] nodeKey is required in setCurrentNode");
       handleCurrentChange(store, ctx.emit, () => {
         broadcastExpanded(node);
@@ -55653,7 +55884,7 @@ var _sfc_main139 = defineComponent({
       });
     };
     const setCurrentKey = (key, shouldAutoExpandParent = true) => {
-      if (!props.nodeKey)
+      if (!props2.nodeKey)
         throw new Error("[Tree] nodeKey is required in setCurrentKey");
       handleCurrentChange(store, ctx.emit, () => {
         broadcastExpanded();
@@ -55680,13 +55911,13 @@ var _sfc_main139 = defineComponent({
       ctx.emit("node-expand", nodeData, node, instance);
     };
     const updateKeyChildren = (key, data) => {
-      if (!props.nodeKey)
+      if (!props2.nodeKey)
         throw new Error("[Tree] nodeKey is required in updateKeyChild");
       store.value.updateChildren(key, data);
     };
     provide("RootTree", {
       ctx,
-      props,
+      props: props2,
       store,
       root: root2,
       currentNode,
@@ -55775,18 +56006,18 @@ function _sfc_render30(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var Tree = _export_sfc(_sfc_main139, [["render", _sfc_render30], ["__file", "tree.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree/index.mjs
 var ElTree = withInstall(Tree);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/select.mjs
-var useSelect3 = (props, { attrs, emit }, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/select.mjs
+var useSelect3 = (props2, { attrs, emit }, {
   select,
   tree,
   key
 }) => {
   const ns = useNamespace("tree-select");
-  watch(() => props.data, () => {
-    if (props.filterable) {
+  watch(() => props2.data, () => {
+    if (props2.filterable) {
       nextTick(() => {
         var _a2, _b;
         (_b = tree.value) == null ? void 0 : _b.filter((_a2 = select.value) == null ? void 0 : _a2.states.inputValue);
@@ -55794,22 +56025,22 @@ var useSelect3 = (props, { attrs, emit }, {
     }
   }, { flush: "post" });
   const result2 = {
-    ...pick_default(toRefs(props), Object.keys(ElSelect.props)),
+    ...pick_default(toRefs(props2), Object.keys(ElSelect.props)),
     ...attrs,
     "onUpdate:modelValue": (value) => emit(UPDATE_MODEL_EVENT, value),
     valueKey: key,
     popperClass: computed(() => {
       const classes = [ns.e("popper")];
-      if (props.popperClass)
-        classes.push(props.popperClass);
+      if (props2.popperClass)
+        classes.push(props2.popperClass);
       return classes.join(" ");
     }),
     filterMethod: (keyword = "") => {
       var _a2;
-      if (props.filterMethod) {
-        props.filterMethod(keyword);
-      } else if (props.remoteMethod) {
-        props.remoteMethod(keyword);
+      if (props2.filterMethod) {
+        props2.filterMethod(keyword);
+      } else if (props2.remoteMethod) {
+        props2.remoteMethod(keyword);
       } else {
         (_a2 = tree.value) == null ? void 0 : _a2.filter(keyword);
       }
@@ -55818,11 +56049,11 @@ var useSelect3 = (props, { attrs, emit }, {
   return result2;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/tree-select-option.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/tree-select-option.mjs
 var component = defineComponent({
   extends: ElOption,
-  setup(props, ctx) {
-    const result2 = ElOption.setup(props, ctx);
+  setup(props2, ctx) {
+    const result2 = ElOption.setup(props2, ctx);
     delete result2.selectOptionClick;
     const vm = getCurrentInstance().proxy;
     nextTick(() => {
@@ -55844,7 +56075,7 @@ var component = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/utils.mjs
 function isValidValue2(val) {
   return val || val === 0;
 }
@@ -55880,18 +56111,18 @@ function treeEach(treeData, callback, getChildren, parent2) {
   }
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/tree.mjs
-var useTree2 = (props, { attrs, slots, emit }, {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/tree.mjs
+var useTree2 = (props2, { attrs, slots, emit }, {
   select,
   tree,
   key
 }) => {
-  watch(() => props.modelValue, () => {
-    if (props.showCheckbox) {
+  watch(() => props2.modelValue, () => {
+    if (props2.showCheckbox) {
       nextTick(() => {
         const treeInstance = tree.value;
-        if (treeInstance && !isEqual_default(treeInstance.getCheckedKeys(), toValidArray(props.modelValue))) {
-          treeInstance.setCheckedKeys(toValidArray(props.modelValue));
+        if (treeInstance && !isEqual_default(treeInstance.getCheckedKeys(), toValidArray(props2.modelValue))) {
+          treeInstance.setCheckedKeys(toValidArray(props2.modelValue));
         }
       });
     }
@@ -55905,7 +56136,7 @@ var useTree2 = (props, { attrs, slots, emit }, {
     children: "children",
     disabled: "disabled",
     isLeaf: "isLeaf",
-    ...props.props
+    ...props2.props
   }));
   const getNodeValByProp = (prop, data) => {
     var _a2;
@@ -55916,14 +56147,14 @@ var useTree2 = (props, { attrs, slots, emit }, {
       return data[propVal];
     }
   };
-  const defaultExpandedParentKeys = toValidArray(props.modelValue).map((value) => {
-    return treeFind(props.data || [], (data) => getNodeValByProp("value", data) === value, (data) => getNodeValByProp("children", data), (data, index, array4, parent2) => parent2 && getNodeValByProp("value", parent2));
+  const defaultExpandedParentKeys = toValidArray(props2.modelValue).map((value) => {
+    return treeFind(props2.data || [], (data) => getNodeValByProp("value", data) === value, (data) => getNodeValByProp("children", data), (data, index, array4, parent2) => parent2 && getNodeValByProp("value", parent2));
   }).filter((item) => isValidValue2(item));
   const cacheOptions = computed(() => {
-    if (!props.renderAfterExpand && !props.lazy)
+    if (!props2.renderAfterExpand && !props2.lazy)
       return [];
     const options = [];
-    treeEach(props.data.concat(props.cacheData), (node) => {
+    treeEach(props2.data.concat(props2.cacheData), (node) => {
       const value = getNodeValByProp("value", node);
       options.push({
         value,
@@ -55933,15 +56164,23 @@ var useTree2 = (props, { attrs, slots, emit }, {
     }, (data) => getNodeValByProp("children", data));
     return options;
   });
+  const getChildCheckedKeys = () => {
+    var _a2;
+    return (_a2 = tree.value) == null ? void 0 : _a2.getCheckedKeys().filter((checkedKey) => {
+      var _a22;
+      const node = (_a22 = tree.value) == null ? void 0 : _a22.getNode(checkedKey);
+      return !isNil_default(node) && isEmpty2(node.childNodes);
+    });
+  };
   return {
-    ...pick_default(toRefs(props), Object.keys(ElTree.props)),
+    ...pick_default(toRefs(props2), Object.keys(ElTree.props)),
     ...attrs,
     nodeKey: key,
     expandOnClickNode: computed(() => {
-      return !props.checkStrictly && props.expandOnClickNode;
+      return !props2.checkStrictly && props2.expandOnClickNode;
     }),
     defaultExpandedKeys: computed(() => {
-      return props.defaultExpandedKeys ? props.defaultExpandedKeys.concat(defaultExpandedParentKeys) : defaultExpandedParentKeys;
+      return props2.defaultExpandedKeys ? props2.defaultExpandedKeys.concat(defaultExpandedParentKeys) : defaultExpandedParentKeys;
     }),
     renderContent: (h3, { node, data, store }) => {
       return h3(component, {
@@ -55949,11 +56188,11 @@ var useTree2 = (props, { attrs, slots, emit }, {
         label: getNodeValByProp("label", data),
         disabled: getNodeValByProp("disabled", data),
         visible: node.visible
-      }, props.renderContent ? () => props.renderContent(h3, { node, data, store }) : slots.default ? () => slots.default({ node, data, store }) : void 0);
+      }, props2.renderContent ? () => props2.renderContent(h3, { node, data, store }) : slots.default ? () => slots.default({ node, data, store }) : void 0);
     },
     filterNodeMethod: (value, data, node) => {
-      if (props.filterNodeMethod)
-        return props.filterNodeMethod(value, data, node);
+      if (props2.filterNodeMethod)
+        return props2.filterNodeMethod(value, data, node);
       if (!value)
         return true;
       const regexp4 = new RegExp(escapeStringRegexp(value), "i");
@@ -55962,43 +56201,44 @@ var useTree2 = (props, { attrs, slots, emit }, {
     onNodeClick: (data, node, e) => {
       var _a2, _b, _c, _d;
       (_a2 = attrs.onNodeClick) == null ? void 0 : _a2.call(attrs, data, node, e);
-      if (props.showCheckbox && props.checkOnClickNode)
+      if (props2.showCheckbox && props2.checkOnClickNode)
         return;
-      if (!props.showCheckbox && (props.checkStrictly || node.isLeaf)) {
+      if (!props2.showCheckbox && (props2.checkStrictly || node.isLeaf)) {
         if (!getNodeValByProp("disabled", data)) {
           const option = (_b = select.value) == null ? void 0 : _b.states.options.get(getNodeValByProp("value", data));
           (_c = select.value) == null ? void 0 : _c.handleOptionSelect(option);
         }
-      } else if (props.expandOnClickNode) {
+      } else if (props2.expandOnClickNode) {
         e.proxy.handleExpandIconClick();
       }
       (_d = select.value) == null ? void 0 : _d.focus();
     },
     onCheck: (data, params) => {
       var _a2;
-      if (!props.showCheckbox)
+      if (!props2.showCheckbox)
         return;
       const dataValue = getNodeValByProp("value", data);
       const dataMap = {};
       treeEach([tree.value.store.root], (node) => dataMap[node.key] = node, (node) => node.childNodes);
       const uncachedCheckedKeys = params.checkedKeys;
-      const cachedKeys = props.multiple ? toValidArray(props.modelValue).filter((item) => !(item in dataMap) && !uncachedCheckedKeys.includes(item)) : [];
+      const cachedKeys = props2.multiple ? toValidArray(props2.modelValue).filter((item) => !(item in dataMap) && !uncachedCheckedKeys.includes(item)) : [];
       const checkedKeys = cachedKeys.concat(uncachedCheckedKeys);
-      if (props.checkStrictly) {
-        emit(UPDATE_MODEL_EVENT, props.multiple ? checkedKeys : checkedKeys.includes(dataValue) ? dataValue : void 0);
+      if (props2.checkStrictly) {
+        emit(UPDATE_MODEL_EVENT, props2.multiple ? checkedKeys : checkedKeys.includes(dataValue) ? dataValue : void 0);
       } else {
-        if (props.multiple) {
-          emit(UPDATE_MODEL_EVENT, cachedKeys.concat(tree.value.getCheckedKeys(true)));
+        if (props2.multiple) {
+          const childKeys = getChildCheckedKeys();
+          emit(UPDATE_MODEL_EVENT, cachedKeys.concat(childKeys));
         } else {
           const firstLeaf = treeFind([data], (data2) => !isValidArray(getNodeValByProp("children", data2)) && !getNodeValByProp("disabled", data2), (data2) => getNodeValByProp("children", data2));
           const firstLeafKey = firstLeaf ? getNodeValByProp("value", firstLeaf) : void 0;
-          const hasCheckedChild = isValidValue2(props.modelValue) && !!treeFind([data], (data2) => getNodeValByProp("value", data2) === props.modelValue, (data2) => getNodeValByProp("children", data2));
-          emit(UPDATE_MODEL_EVENT, firstLeafKey === props.modelValue || hasCheckedChild ? void 0 : firstLeafKey);
+          const hasCheckedChild = isValidValue2(props2.modelValue) && !!treeFind([data], (data2) => getNodeValByProp("value", data2) === props2.modelValue, (data2) => getNodeValByProp("children", data2));
+          emit(UPDATE_MODEL_EVENT, firstLeafKey === props2.modelValue || hasCheckedChild ? void 0 : firstLeafKey);
         }
       }
       nextTick(() => {
         var _a22;
-        const checkedKeys2 = toValidArray(props.modelValue);
+        const checkedKeys2 = toValidArray(props2.modelValue);
         tree.value.setCheckedKeys(checkedKeys2);
         (_a22 = attrs.onCheck) == null ? void 0 : _a22.call(attrs, data, {
           checkedKeys: tree.value.getCheckedKeys(),
@@ -56009,11 +56249,25 @@ var useTree2 = (props, { attrs, slots, emit }, {
       });
       (_a2 = select.value) == null ? void 0 : _a2.focus();
     },
+    onNodeExpand: (data, node, e) => {
+      var _a2;
+      (_a2 = attrs.onNodeExpand) == null ? void 0 : _a2.call(attrs, data, node, e);
+      nextTick(() => {
+        if (!props2.checkStrictly && props2.lazy && props2.multiple && node.checked) {
+          const dataMap = {};
+          const uncachedCheckedKeys = tree.value.getCheckedKeys();
+          treeEach([tree.value.store.root], (node2) => dataMap[node2.key] = node2, (node2) => node2.childNodes);
+          const cachedKeys = toValidArray(props2.modelValue).filter((item) => !(item in dataMap) && !uncachedCheckedKeys.includes(item));
+          const childKeys = getChildCheckedKeys();
+          emit(UPDATE_MODEL_EVENT, cachedKeys.concat(childKeys));
+        }
+      });
+    },
     cacheOptions
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/cache-options.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/cache-options.mjs
 var CacheOptions = defineComponent({
   props: {
     data: {
@@ -56021,11 +56275,11 @@ var CacheOptions = defineComponent({
       default: () => []
     }
   },
-  setup(props) {
+  setup(props2) {
     const select = inject(selectKey);
-    watch(() => props.data, () => {
+    watch(() => props2.data, () => {
       var _a2;
-      props.data.forEach((item) => {
+      props2.data.forEach((item) => {
         if (!select.states.cachedOptions.has(item.value)) {
           select.states.cachedOptions.set(item.value, item);
         }
@@ -56039,7 +56293,7 @@ var CacheOptions = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/tree-select.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-select/src/tree-select.mjs
 var _sfc_main140 = defineComponent({
   name: "ElTreeSelect",
   inheritAttrs: false,
@@ -56051,13 +56305,13 @@ var _sfc_main140 = defineComponent({
       default: () => []
     }
   },
-  setup(props, context) {
+  setup(props2, context) {
     const { slots, expose } = context;
     const select = ref();
     const tree = ref();
-    const key = computed(() => props.nodeKey || props.valueKey || "value");
-    const selectProps = useSelect3(props, context, { select, tree, key });
-    const { cacheOptions, ...treeProps2 } = useTree2(props, context, {
+    const key = computed(() => props2.nodeKey || props2.valueKey || "value");
+    const selectProps = useSelect3(props2, context, { select, tree, key });
+    const { cacheOptions, ...treeProps2 } = useTree2(props2, context, {
       select,
       tree,
       key
@@ -56106,10 +56360,10 @@ var _sfc_main140 = defineComponent({
 });
 var TreeSelect = _export_sfc(_sfc_main140, [["__file", "tree-select.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-select/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-select/index.mjs
 var ElTreeSelect = withInstall(TreeSelect);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/virtual-tree.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/virtual-tree.mjs
 var ROOT_TREE_INJECTION_KEY = Symbol();
 var EMPTY_NODE = {
   key: -1,
@@ -56247,6 +56501,7 @@ var treeNodeContentProps = buildProps({
   }
 });
 var NODE_CLICK = "node-click";
+var NODE_DROP = "node-drop";
 var NODE_EXPAND = "node-expand";
 var NODE_COLLAPSE = "node-collapse";
 var CURRENT_CHANGE = "current-change";
@@ -56255,6 +56510,7 @@ var NODE_CHECK_CHANGE = "check-change";
 var NODE_CONTEXTMENU = "node-contextmenu";
 var treeEmits = {
   [NODE_CLICK]: (data, node, e) => data && node && e,
+  [NODE_DROP]: (data, node, e) => data && node && e,
   [NODE_EXPAND]: (data, node) => data && node,
   [NODE_COLLAPSE]: (data, node) => data && node,
   [CURRENT_CHANGE]: (data, node) => data && node,
@@ -56264,24 +56520,25 @@ var treeEmits = {
 };
 var treeNodeEmits = {
   click: (node, e) => !!(node && e),
+  drop: (node, e) => !!(node && e),
   toggle: (node) => !!node,
   check: (node, checked) => node && typeof checked === "boolean"
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/composables/useCheck.mjs
-function useCheck2(props, tree) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/composables/useCheck.mjs
+function useCheck2(props2, tree) {
   const checkedKeys = ref(/* @__PURE__ */ new Set());
   const indeterminateKeys = ref(/* @__PURE__ */ new Set());
   const { emit } = getCurrentInstance();
-  watch([() => tree.value, () => props.defaultCheckedKeys], () => {
+  watch([() => tree.value, () => props2.defaultCheckedKeys], () => {
     return nextTick(() => {
-      _setCheckedKeys(props.defaultCheckedKeys);
+      _setCheckedKeys(props2.defaultCheckedKeys);
     });
   }, {
     immediate: true
   });
   const updateCheckedKeys = () => {
-    if (!tree.value || !props.showCheckbox || props.checkStrictly) {
+    if (!tree.value || !props2.showCheckbox || props2.checkStrictly) {
       return;
     }
     const { levelTreeNodeMap, maxLevel } = tree.value;
@@ -56329,7 +56586,7 @@ function useCheck2(props, tree) {
     const toggle = (node2, checked) => {
       checkedKeySet[checked ? SetOperationEnum.ADD : SetOperationEnum.DELETE](node2.key);
       const children = node2.children;
-      if (!props.checkStrictly && children) {
+      if (!props2.checkStrictly && children) {
         children.forEach((childNode) => {
           if (!childNode.disabled) {
             toggle(childNode, checked);
@@ -56369,7 +56626,7 @@ function useCheck2(props, tree) {
   function getChecked(leafOnly = false) {
     const checkedNodes = [];
     const keys3 = [];
-    if ((tree == null ? void 0 : tree.value) && props.showCheckbox) {
+    if ((tree == null ? void 0 : tree.value) && props2.showCheckbox) {
       const { treeNodeMap } = tree.value;
       checkedKeys.value.forEach((key) => {
         const node = treeNodeMap.get(key);
@@ -56387,7 +56644,7 @@ function useCheck2(props, tree) {
   function getHalfChecked() {
     const halfCheckedNodes = [];
     const halfCheckedKeys = [];
-    if ((tree == null ? void 0 : tree.value) && props.showCheckbox) {
+    if ((tree == null ? void 0 : tree.value) && props2.showCheckbox) {
       const { treeNodeMap } = tree.value;
       indeterminateKeys.value.forEach((key) => {
         const node = treeNodeMap.get(key);
@@ -56410,7 +56667,7 @@ function useCheck2(props, tree) {
     });
   }
   function setChecked(key, isChecked2) {
-    if ((tree == null ? void 0 : tree.value) && props.showCheckbox) {
+    if ((tree == null ? void 0 : tree.value) && props2.showCheckbox) {
       const node = tree.value.treeNodeMap.get(key);
       if (node) {
         toggleCheckbox(node, isChecked2, false);
@@ -56420,7 +56677,7 @@ function useCheck2(props, tree) {
   function _setCheckedKeys(keys3) {
     if (tree == null ? void 0 : tree.value) {
       const { treeNodeMap } = tree.value;
-      if (props.showCheckbox && treeNodeMap && keys3) {
+      if (props2.showCheckbox && treeNodeMap && keys3) {
         for (const key of keys3) {
           const node = treeNodeMap.get(key);
           if (node && !isChecked(node)) {
@@ -56444,12 +56701,12 @@ function useCheck2(props, tree) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/composables/useFilter.mjs
-function useFilter(props, tree) {
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/composables/useFilter.mjs
+function useFilter(props2, tree) {
   const hiddenNodeKeySet = ref(/* @__PURE__ */ new Set([]));
   const hiddenExpandIconKeySet = ref(/* @__PURE__ */ new Set([]));
   const filterable = computed(() => {
-    return isFunction2(props.filterMethod);
+    return isFunction2(props2.filterMethod);
   });
   function doFilter(query) {
     var _a2;
@@ -56461,7 +56718,7 @@ function useFilter(props, tree) {
     const hiddenKeys = hiddenNodeKeySet.value;
     const family = [];
     const nodes = ((_a2 = tree.value) == null ? void 0 : _a2.treeNodes) || [];
-    const filter2 = props.filterMethod;
+    const filter2 = props2.filterMethod;
     hiddenKeys.clear();
     function traverse(nodes2) {
       nodes2.forEach((node) => {
@@ -56512,18 +56769,18 @@ function useFilter(props, tree) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/composables/useTree.mjs
-function useTree3(props, emit) {
-  const expandedKeySet = ref(new Set(props.defaultExpandedKeys));
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/composables/useTree.mjs
+function useTree3(props2, emit) {
+  const expandedKeySet = ref(new Set(props2.defaultExpandedKeys));
   const currentKey = ref();
   const tree = shallowRef();
   const listRef = ref();
-  watch(() => props.currentNodeKey, (key) => {
+  watch(() => props2.currentNodeKey, (key) => {
     currentKey.value = key;
   }, {
     immediate: true
   });
-  watch(() => props.data, (data) => {
+  watch(() => props2.data, (data) => {
     setData2(data);
   }, {
     immediate: true
@@ -56538,53 +56795,45 @@ function useTree3(props, emit) {
     getHalfCheckedNodes,
     setChecked,
     setCheckedKeys
-  } = useCheck2(props, tree);
-  const { doFilter, hiddenNodeKeySet, isForceHiddenExpandIcon } = useFilter(props, tree);
+  } = useCheck2(props2, tree);
+  const { doFilter, hiddenNodeKeySet, isForceHiddenExpandIcon } = useFilter(props2, tree);
   const valueKey = computed(() => {
     var _a2;
-    return ((_a2 = props.props) == null ? void 0 : _a2.value) || TreeOptionsEnum.KEY;
+    return ((_a2 = props2.props) == null ? void 0 : _a2.value) || TreeOptionsEnum.KEY;
   });
   const childrenKey = computed(() => {
     var _a2;
-    return ((_a2 = props.props) == null ? void 0 : _a2.children) || TreeOptionsEnum.CHILDREN;
+    return ((_a2 = props2.props) == null ? void 0 : _a2.children) || TreeOptionsEnum.CHILDREN;
   });
   const disabledKey = computed(() => {
     var _a2;
-    return ((_a2 = props.props) == null ? void 0 : _a2.disabled) || TreeOptionsEnum.DISABLED;
+    return ((_a2 = props2.props) == null ? void 0 : _a2.disabled) || TreeOptionsEnum.DISABLED;
   });
   const labelKey = computed(() => {
     var _a2;
-    return ((_a2 = props.props) == null ? void 0 : _a2.label) || TreeOptionsEnum.LABEL;
+    return ((_a2 = props2.props) == null ? void 0 : _a2.label) || TreeOptionsEnum.LABEL;
   });
   const flattenTree = computed(() => {
+    var _a2;
     const expandedKeys = expandedKeySet.value;
     const hiddenKeys = hiddenNodeKeySet.value;
     const flattenNodes = [];
-    const nodes = tree.value && tree.value.treeNodes || [];
-    function traverse() {
-      const stack = [];
-      for (let i = nodes.length - 1; i >= 0; --i) {
-        stack.push(nodes[i]);
-      }
-      while (stack.length) {
-        const node = stack.pop();
-        if (!node)
-          continue;
-        if (!hiddenKeys.has(node.key)) {
-          flattenNodes.push(node);
-        }
-        if (expandedKeys.has(node.key)) {
-          const children = node.children;
-          if (children) {
-            const length = children.length;
-            for (let i = length - 1; i >= 0; --i) {
-              stack.push(children[i]);
-            }
-          }
+    const nodes = ((_a2 = tree.value) == null ? void 0 : _a2.treeNodes) || [];
+    const stack = [];
+    for (let i = nodes.length - 1; i >= 0; --i) {
+      stack.push(nodes[i]);
+    }
+    while (stack.length) {
+      const node = stack.pop();
+      if (hiddenKeys.has(node.key))
+        continue;
+      flattenNodes.push(node);
+      if (node.children && expandedKeys.has(node.key)) {
+        for (let i = node.children.length - 1; i >= 0; --i) {
+          stack.push(node.children[i]);
         }
       }
     }
-    traverse();
     return flattenNodes;
   });
   const isNotEmpty = computed(() => {
@@ -56662,17 +56911,29 @@ function useTree3(props, emit) {
     }
   }
   function setExpandedKeys(keys3) {
-    expandedKeySet.value = new Set(keys3);
+    const expandedKeys = /* @__PURE__ */ new Set();
+    const nodeMap = tree.value.treeNodeMap;
+    keys3.forEach((k) => {
+      let node = nodeMap.get(k);
+      while (node && !expandedKeys.has(node.key)) {
+        expandedKeys.add(node.key);
+        node = node.parent;
+      }
+    });
+    expandedKeySet.value = expandedKeys;
   }
   function handleNodeClick(node, e) {
     emit(NODE_CLICK, node.data, node, e);
     handleCurrentChange2(node);
-    if (props.expandOnClickNode) {
+    if (props2.expandOnClickNode) {
       toggleExpand(node);
     }
-    if (props.showCheckbox && props.checkOnClickNode && !node.disabled) {
+    if (props2.showCheckbox && props2.checkOnClickNode && !node.disabled) {
       toggleCheckbox(node, !isChecked(node), true);
     }
+  }
+  function handleNodeDrop(node, e) {
+    emit(NODE_DROP, node.data, node, e);
   }
   function handleCurrentChange2(node) {
     if (!isCurrent(node)) {
@@ -56685,7 +56946,7 @@ function useTree3(props, emit) {
   }
   function expandNode(node) {
     const keySet = expandedKeySet.value;
-    if (tree.value && props.accordion) {
+    if (tree.value && props2.accordion) {
       const { treeNodeMap } = tree.value;
       keySet.forEach((key) => {
         const treeNode = treeNodeMap.get(key);
@@ -56757,6 +57018,7 @@ function useTree3(props, emit) {
     isCurrent,
     isForceHiddenExpandIcon,
     handleNodeClick,
+    handleNodeDrop,
     handleNodeCheck,
     getCurrentNode,
     getCurrentKey,
@@ -56778,22 +57040,22 @@ function useTree3(props, emit) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/tree-node-content.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/tree-node-content.mjs
 var ElNodeContent = defineComponent({
   name: "ElTreeNodeContent",
   props: treeNodeContentProps,
-  setup(props) {
+  setup(props2) {
     const tree = inject(ROOT_TREE_INJECTION_KEY);
     const ns = useNamespace("tree");
     return () => {
-      const node = props.node;
+      const node = props2.node;
       const { data } = node;
       return (tree == null ? void 0 : tree.ctx.slots.default) ? tree.ctx.slots.default({ node, data }) : h("span", { class: ns.be("node", "label") }, [node == null ? void 0 : node.label]);
     };
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/tree-node.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/tree-node.mjs
 var __default__98 = defineComponent({
   name: "ElTreeNode"
 });
@@ -56802,7 +57064,7 @@ var _sfc_main141 = defineComponent({
   props: treeNodeProps,
   emits: treeNodeEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const tree = inject(ROOT_TREE_INJECTION_KEY);
     const ns = useNamespace("tree");
     const indent = computed(() => {
@@ -56814,13 +57076,16 @@ var _sfc_main141 = defineComponent({
       return (_a2 = tree == null ? void 0 : tree.props.icon) != null ? _a2 : caret_right_default;
     });
     const handleClick = (e) => {
-      emit("click", props.node, e);
+      emit("click", props2.node, e);
+    };
+    const handleDrop = (e) => {
+      emit("drop", props2.node, e);
     };
     const handleExpandIconClick = () => {
-      emit("toggle", props.node);
+      emit("toggle", props2.node);
     };
     const handleCheckChange = (value) => {
-      emit("check", props.node, value);
+      emit("check", props2.node, value);
     };
     const handleContextMenu = (event) => {
       var _a2, _b, _c, _d;
@@ -56828,7 +57093,7 @@ var _sfc_main141 = defineComponent({
         event.stopPropagation();
         event.preventDefault();
       }
-      tree == null ? void 0 : tree.ctx.emit(NODE_CONTEXTMENU, event, (_d = props.node) == null ? void 0 : _d.data, props.node);
+      tree == null ? void 0 : tree.ctx.emit(NODE_CONTEXTMENU, event, (_d = props2.node) == null ? void 0 : _d.data, props2.node);
     };
     return (_ctx, _cache) => {
       var _a2, _b, _c;
@@ -56848,7 +57113,12 @@ var _sfc_main141 = defineComponent({
         "aria-checked": _ctx.checked,
         "data-key": (_a2 = _ctx.node) == null ? void 0 : _a2.key,
         onClick: withModifiers(handleClick, ["stop"]),
-        onContextmenu: handleContextMenu
+        onContextmenu: handleContextMenu,
+        onDragover: withModifiers(() => {
+        }, ["prevent"]),
+        onDragenter: withModifiers(() => {
+        }, ["prevent"]),
+        onDrop: withModifiers(handleDrop, ["stop"])
       }, [
         createBaseVNode("div", {
           class: normalizeClass(unref(ns).be("node", "content")),
@@ -56885,13 +57155,13 @@ var _sfc_main141 = defineComponent({
           }, null, 8, ["model-value", "indeterminate", "disabled", "onClick"])) : createCommentVNode("v-if", true),
           createVNode(unref(ElNodeContent), { node: _ctx.node }, null, 8, ["node"])
         ], 6)
-      ], 42, ["aria-expanded", "aria-disabled", "aria-checked", "data-key", "onClick"]);
+      ], 42, ["aria-expanded", "aria-disabled", "aria-checked", "data-key", "onClick", "onDragover", "onDragenter", "onDrop"]);
     };
   }
 });
 var ElTreeNode2 = _export_sfc(_sfc_main141, [["__file", "tree-node.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/tree.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/src/tree.mjs
 var __default__99 = defineComponent({
   name: "ElTreeV2"
 });
@@ -56900,15 +57170,15 @@ var _sfc_main142 = defineComponent({
   props: treeProps,
   emits: treeEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const slots = useSlots();
-    const treeNodeSize = computed(() => props.itemSize);
+    const treeNodeSize = computed(() => props2.itemSize);
     provide(ROOT_TREE_INJECTION_KEY, {
       ctx: {
         emit,
         slots
       },
-      props,
+      props: props2,
       instance: getCurrentInstance()
     });
     provide(formItemContextKey, void 0);
@@ -56926,6 +57196,7 @@ var _sfc_main142 = defineComponent({
       isCurrent,
       isForceHiddenExpandIcon,
       handleNodeClick,
+      handleNodeDrop,
       handleNodeCheck,
       toggleCheckbox,
       getCurrentNode,
@@ -56945,7 +57216,7 @@ var _sfc_main142 = defineComponent({
       setExpandedKeys,
       scrollToNode,
       scrollTo
-    } = useTree3(props, emit);
+    } = useTree3(props2, emit);
     expose({
       toggleCheckbox,
       getCurrentNode,
@@ -56998,8 +57269,9 @@ var _sfc_main142 = defineComponent({
               "hidden-expand-icon": unref(isForceHiddenExpandIcon)(data[index]),
               onClick: unref(handleNodeClick),
               onToggle: unref(toggleExpand),
-              onCheck: unref(handleNodeCheck)
-            }, null, 8, ["style", "node", "expanded", "show-checkbox", "checked", "indeterminate", "item-size", "disabled", "current", "hidden-expand-icon", "onClick", "onToggle", "onCheck"]))
+              onCheck: unref(handleNodeCheck),
+              onDrop: unref(handleNodeDrop)
+            }, null, 8, ["style", "node", "expanded", "show-checkbox", "checked", "indeterminate", "item-size", "disabled", "current", "hidden-expand-icon", "onClick", "onToggle", "onCheck", "onDrop"]))
           ]),
           _: 1
         }, 8, ["class-name", "data", "total", "height", "item-size", "perf-mode"])) : (openBlock(), createElementBlock("div", {
@@ -57016,13 +57288,13 @@ var _sfc_main142 = defineComponent({
 });
 var TreeV2 = _export_sfc(_sfc_main142, [["__file", "tree.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tree-v2/index.mjs
 var ElTreeV2 = withInstall(TreeV2);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/constants.mjs
 var uploadContextKey = Symbol("uploadContextKey");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/ajax.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/ajax.mjs
 var SCOPE8 = "ElUpload";
 var UploadAjaxError = class extends Error {
   constructor(message2, status, method5, url2) {
@@ -57104,7 +57376,7 @@ var ajaxUpload = (option) => {
   return xhr;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload.mjs
 var uploadListTypes = ["text", "picture", "picture-card"];
 var fileId = 1;
 var genFileId = () => Date.now() + fileId++;
@@ -57201,7 +57473,7 @@ var uploadProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-list.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-list.mjs
 var uploadListProps = buildProps({
   files: {
     type: definePropType(Array),
@@ -57228,7 +57500,7 @@ var uploadListEmits = {
   remove: (file) => !!file
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-list2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-list2.mjs
 var __default__100 = defineComponent({
   name: "ElUploadList"
 });
@@ -57237,7 +57509,7 @@ var _sfc_main143 = defineComponent({
   props: uploadListProps,
   emits: uploadListEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const { t } = useLocale();
     const nsUpload = useNamespace("upload");
     const nsIcon = useNamespace("icon");
@@ -57246,8 +57518,8 @@ var _sfc_main143 = defineComponent({
     const focusing = ref(false);
     const containerKls = computed(() => [
       nsUpload.b("list"),
-      nsUpload.bm("list", props.listType),
-      nsUpload.is("disabled", props.disabled)
+      nsUpload.bm("list", props2.listType),
+      nsUpload.is("disabled", props2.disabled)
     ]);
     const handleRemove = (file) => {
       emit("remove", file);
@@ -57395,7 +57667,7 @@ var _sfc_main143 = defineComponent({
 });
 var UploadList = _export_sfc(_sfc_main143, [["__file", "upload-list.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-dragger.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-dragger.mjs
 var uploadDraggerProps = buildProps({
   disabled: {
     type: Boolean,
@@ -57406,7 +57678,7 @@ var uploadDraggerEmits = {
   file: (file) => isArray(file)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-dragger2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-dragger2.mjs
 var COMPONENT_NAME24 = "ElUploadDrag";
 var __default__101 = defineComponent({
   name: COMPONENT_NAME24
@@ -57449,7 +57721,7 @@ var _sfc_main144 = defineComponent({
 });
 var UploadDragger = _export_sfc(_sfc_main144, [["__file", "upload-dragger.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-content.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-content2.mjs
 var uploadContentProps = buildProps({
   ...uploadBaseProps,
   beforeUpload: {
@@ -57482,7 +57754,7 @@ var uploadContentProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-content2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload-content.mjs
 var __default__102 = defineComponent({
   name: "ElUploadContent",
   inheritAttrs: false
@@ -57491,7 +57763,7 @@ var _sfc_main145 = defineComponent({
   ...__default__102,
   props: uploadContentProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("upload");
     const disabled = useFormDisabled();
     const requests = shallowRef({});
@@ -57499,7 +57771,7 @@ var _sfc_main145 = defineComponent({
     const uploadFiles = (files) => {
       if (files.length === 0)
         return;
-      const { autoUpload, limit, fileList, multiple, onStart, onExceed } = props;
+      const { autoUpload, limit, fileList, multiple, onStart, onExceed } = props2;
       if (limit && fileList.length + files.length > limit) {
         onExceed(files, fileList);
         return;
@@ -57517,24 +57789,24 @@ var _sfc_main145 = defineComponent({
     };
     const upload = async (rawFile) => {
       inputRef.value.value = "";
-      if (!props.beforeUpload) {
+      if (!props2.beforeUpload) {
         return doUpload(rawFile);
       }
       let hookResult;
       let beforeData = {};
       try {
-        const originData = props.data;
-        const beforeUploadPromise = props.beforeUpload(rawFile);
-        beforeData = isPlainObject(props.data) ? cloneDeep_default(props.data) : props.data;
+        const originData = props2.data;
+        const beforeUploadPromise = props2.beforeUpload(rawFile);
+        beforeData = isPlainObject(props2.data) ? cloneDeep_default(props2.data) : props2.data;
         hookResult = await beforeUploadPromise;
-        if (isPlainObject(props.data) && isEqual_default(originData, beforeData)) {
-          beforeData = cloneDeep_default(props.data);
+        if (isPlainObject(props2.data) && isEqual_default(originData, beforeData)) {
+          beforeData = cloneDeep_default(props2.data);
         }
       } catch (e) {
         hookResult = false;
       }
       if (hookResult === false) {
-        props.onRemove(rawFile);
+        props2.onRemove(rawFile);
         return;
       }
       let file = rawFile;
@@ -57569,11 +57841,11 @@ var _sfc_main145 = defineComponent({
         onSuccess,
         onError,
         httpRequest
-      } = props;
+      } = props2;
       try {
         beforeData = await resolveData(beforeData != null ? beforeData : data, rawFile);
       } catch (e) {
-        props.onRemove(rawFile);
+        props2.onRemove(rawFile);
         return;
       }
       const { uid: uid2 } = rawFile;
@@ -57671,7 +57943,7 @@ var _sfc_main145 = defineComponent({
 });
 var UploadContent = _export_sfc(_sfc_main145, [["__file", "upload-content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/use-handlers.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/use-handlers.mjs
 var SCOPE9 = "ElUpload";
 var revokeFileObjectURL = (file) => {
   var _a2;
@@ -57679,8 +57951,8 @@ var revokeFileObjectURL = (file) => {
     URL.revokeObjectURL(file.url);
   }
 };
-var useHandlers = (props, uploadRef) => {
-  const uploadFiles = useVModel(props, "fileList", void 0, { passive: true });
+var useHandlers = (props2, uploadRef) => {
+  const uploadFiles = useVModel(props2, "fileList", void 0, { passive: true });
   const getFile = (rawFile) => uploadFiles.value.find((file) => file.uid === rawFile.uid);
   function abort(file) {
     var _a2;
@@ -57699,14 +57971,14 @@ var useHandlers = (props, uploadRef) => {
     console.error(err);
     file.status = "fail";
     removeFile(file);
-    props.onError(err, file, uploadFiles.value);
-    props.onChange(file, uploadFiles.value);
+    props2.onError(err, file, uploadFiles.value);
+    props2.onChange(file, uploadFiles.value);
   };
   const handleProgress = (evt, rawFile) => {
     const file = getFile(rawFile);
     if (!file)
       return;
-    props.onProgress(evt, file, uploadFiles.value);
+    props2.onProgress(evt, file, uploadFiles.value);
     file.status = "uploading";
     file.percentage = Math.round(evt.percent);
   };
@@ -57716,8 +57988,8 @@ var useHandlers = (props, uploadRef) => {
       return;
     file.status = "success";
     file.response = response;
-    props.onSuccess(response, file, uploadFiles.value);
-    props.onChange(file, uploadFiles.value);
+    props2.onSuccess(response, file, uploadFiles.value);
+    props2.onChange(file, uploadFiles.value);
   };
   const handleStart = (file) => {
     if (isNil_default(file.uid))
@@ -57730,16 +58002,16 @@ var useHandlers = (props, uploadRef) => {
       raw: file,
       uid: file.uid
     };
-    if (props.listType === "picture-card" || props.listType === "picture") {
+    if (props2.listType === "picture-card" || props2.listType === "picture") {
       try {
         uploadFile.url = URL.createObjectURL(file);
       } catch (err) {
         debugWarn(SCOPE9, err.message);
-        props.onError(err, uploadFile, uploadFiles.value);
+        props2.onError(err, uploadFile, uploadFiles.value);
       }
     }
     uploadFiles.value = [...uploadFiles.value, uploadFile];
-    props.onChange(uploadFile, uploadFiles.value);
+    props2.onChange(uploadFile, uploadFiles.value);
   };
   const handleRemove = async (file) => {
     const uploadFile = file instanceof File ? getFile(file) : file;
@@ -57748,11 +58020,11 @@ var useHandlers = (props, uploadRef) => {
     const doRemove = (file2) => {
       abort(file2);
       removeFile(file2);
-      props.onRemove(file2, uploadFiles.value);
+      props2.onRemove(file2, uploadFiles.value);
       revokeFileObjectURL(file2);
     };
-    if (props.beforeRemove) {
-      const before2 = await props.beforeRemove(uploadFile, uploadFiles.value);
+    if (props2.beforeRemove) {
+      const before2 = await props2.beforeRemove(uploadFile, uploadFiles.value);
       if (before2 !== false)
         doRemove(uploadFile);
     } else {
@@ -57765,7 +58037,7 @@ var useHandlers = (props, uploadRef) => {
       return raw && ((_a2 = uploadRef.value) == null ? void 0 : _a2.upload(raw));
     });
   }
-  watch(() => props.listType, (val) => {
+  watch(() => props2.listType, (val) => {
     if (val !== "picture-card" && val !== "picture") {
       return;
     }
@@ -57775,7 +58047,7 @@ var useHandlers = (props, uploadRef) => {
         try {
           file.url = URL.createObjectURL(raw);
         } catch (err) {
-          props.onError(err, file, uploadFiles.value);
+          props2.onError(err, file, uploadFiles.value);
         }
       }
       return file;
@@ -57801,7 +58073,7 @@ var useHandlers = (props, uploadRef) => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/src/upload2.mjs
 var __default__103 = defineComponent({
   name: "ElUpload"
 });
@@ -57809,7 +58081,7 @@ var _sfc_main146 = defineComponent({
   ...__default__103,
   props: uploadProps,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const disabled = useFormDisabled();
     const uploadRef = shallowRef();
     const {
@@ -57823,10 +58095,10 @@ var _sfc_main146 = defineComponent({
       handleSuccess,
       handleProgress,
       revokeFileObjectURL: revokeFileObjectURL2
-    } = useHandlers(props, uploadRef);
-    const isPictureCard = computed(() => props.listType === "picture-card");
+    } = useHandlers(props2, uploadRef);
+    const isPictureCard = computed(() => props2.listType === "picture-card");
     const uploadContentProps2 = computed(() => ({
-      ...props,
+      ...props2,
       fileList: uploadFiles.value,
       onStart: handleStart,
       onProgress: handleProgress,
@@ -57838,7 +58110,7 @@ var _sfc_main146 = defineComponent({
       uploadFiles.value.forEach(revokeFileObjectURL2);
     });
     provide(uploadContextKey, {
-      accept: toRef(props, "accept")
+      accept: toRef(props2, "accept")
     });
     expose({
       abort,
@@ -57920,10 +58192,10 @@ var _sfc_main146 = defineComponent({
 });
 var Upload = _export_sfc(_sfc_main146, [["__file", "upload.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/upload/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/upload/index.mjs
 var ElUpload = withInstall(Upload);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/watermark/src/watermark.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/watermark/src/watermark.mjs
 var watermarkProps = buildProps({
   zIndex: {
     type: Number,
@@ -57952,7 +58224,7 @@ var watermarkProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/watermark/src/utils.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/watermark/src/utils.mjs
 function toLowercaseSeparator(key) {
   return key.replace(/([A-Z])/g, "-$1").toLowerCase();
 }
@@ -57973,7 +58245,7 @@ var reRendering = (mutation, watermarkElement) => {
   return flag;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/watermark/src/useClips.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/watermark/src/useClips.mjs
 var FontGap = 3;
 function prepareCanvas(width, height, ratio = 1) {
   const canvas = document.createElement("canvas");
@@ -58062,7 +58334,7 @@ function useClips() {
   return getClips;
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/watermark/src/watermark2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/watermark/src/watermark2.mjs
 var __default__104 = defineComponent({
   name: "ElWatermark"
 });
@@ -58070,53 +58342,53 @@ var _sfc_main147 = defineComponent({
   ...__default__104,
   props: watermarkProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const style = {
       position: "relative"
     };
     const color = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.font) == null ? void 0 : _a2.color) != null ? _b : "rgba(0,0,0,.15)";
+      return (_b = (_a2 = props2.font) == null ? void 0 : _a2.color) != null ? _b : "rgba(0,0,0,.15)";
     });
     const fontSize = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.font) == null ? void 0 : _a2.fontSize) != null ? _b : 16;
+      return (_b = (_a2 = props2.font) == null ? void 0 : _a2.fontSize) != null ? _b : 16;
     });
     const fontWeight = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.font) == null ? void 0 : _a2.fontWeight) != null ? _b : "normal";
+      return (_b = (_a2 = props2.font) == null ? void 0 : _a2.fontWeight) != null ? _b : "normal";
     });
     const fontStyle = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.font) == null ? void 0 : _a2.fontStyle) != null ? _b : "normal";
+      return (_b = (_a2 = props2.font) == null ? void 0 : _a2.fontStyle) != null ? _b : "normal";
     });
     const fontFamily = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.font) == null ? void 0 : _a2.fontFamily) != null ? _b : "sans-serif";
+      return (_b = (_a2 = props2.font) == null ? void 0 : _a2.fontFamily) != null ? _b : "sans-serif";
     });
     const textAlign = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.font) == null ? void 0 : _a2.textAlign) != null ? _b : "center";
+      return (_b = (_a2 = props2.font) == null ? void 0 : _a2.textAlign) != null ? _b : "center";
     });
     const textBaseline = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.font) == null ? void 0 : _a2.textBaseline) != null ? _b : "hanging";
+      return (_b = (_a2 = props2.font) == null ? void 0 : _a2.textBaseline) != null ? _b : "hanging";
     });
-    const gapX = computed(() => props.gap[0]);
-    const gapY = computed(() => props.gap[1]);
+    const gapX = computed(() => props2.gap[0]);
+    const gapY = computed(() => props2.gap[1]);
     const gapXCenter = computed(() => gapX.value / 2);
     const gapYCenter = computed(() => gapY.value / 2);
     const offsetLeft = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.offset) == null ? void 0 : _a2[0]) != null ? _b : gapXCenter.value;
+      return (_b = (_a2 = props2.offset) == null ? void 0 : _a2[0]) != null ? _b : gapXCenter.value;
     });
     const offsetTop = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.offset) == null ? void 0 : _a2[1]) != null ? _b : gapYCenter.value;
+      return (_b = (_a2 = props2.offset) == null ? void 0 : _a2[1]) != null ? _b : gapYCenter.value;
     });
     const getMarkStyle = () => {
       const markStyle = {
-        zIndex: props.zIndex,
+        zIndex: props2.zIndex,
         position: "absolute",
         left: 0,
         top: 0,
@@ -58167,10 +58439,10 @@ var _sfc_main147 = defineComponent({
     const getMarkSize = (ctx) => {
       let defaultWidth = 120;
       let defaultHeight = 64;
-      const image = props.image;
-      const content = props.content;
-      const width = props.width;
-      const height = props.height;
+      const image = props2.image;
+      const content = props2.content;
+      const width = props2.width;
+      const height = props2.height;
       if (!image && ctx.measureText) {
         ctx.font = `${Number(fontSize.value)}px ${fontFamily.value}`;
         const contents = Array.isArray(content) ? content : [content];
@@ -58190,9 +58462,9 @@ var _sfc_main147 = defineComponent({
     const renderWatermark = () => {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
-      const image = props.image;
-      const content = props.content;
-      const rotate = props.rotate;
+      const image = props2.image;
+      const content = props2.content;
+      const rotate = props2.rotate;
       if (ctx) {
         if (!watermarkRef.value) {
           watermarkRef.value = document.createElement("div");
@@ -58230,7 +58502,7 @@ var _sfc_main147 = defineComponent({
     onMounted(() => {
       renderWatermark();
     });
-    watch(() => props, () => {
+    watch(() => props2, () => {
       renderWatermark();
     }, {
       deep: true,
@@ -58268,10 +58540,10 @@ var _sfc_main147 = defineComponent({
 });
 var Watermark = _export_sfc(_sfc_main147, [["__file", "watermark.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/watermark/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/watermark/index.mjs
 var ElWatermark = withInstall(Watermark);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/src/mask.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/src/mask.mjs
 var maskProps = buildProps({
   zIndex: {
     type: Number,
@@ -58291,7 +58563,7 @@ var maskProps = buildProps({
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/src/helper.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/src/helper.mjs
 var useTarget = (target2, open, gap, mergedMask, scrollIntoViewOptions) => {
   const posInfo = ref(null);
   const getTargetEl = () => {
@@ -58492,7 +58764,7 @@ var overflowMiddleware = () => {
   };
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/src/mask2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/src/mask2.mjs
 var __default__105 = defineComponent({
   name: "ElTourMask",
   inheritAttrs: false
@@ -58501,11 +58773,11 @@ var _sfc_main148 = defineComponent({
   ...__default__105,
   props: maskProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const { ns } = inject(tourKey);
     const radius = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.pos) == null ? void 0 : _a2.radius) != null ? _b : 2;
+      return (_b = (_a2 = props2.pos) == null ? void 0 : _a2.radius) != null ? _b : 2;
     });
     const roundInfo = computed(() => {
       const v2 = radius.value;
@@ -58523,16 +58795,16 @@ var _sfc_main148 = defineComponent({
       const info = roundInfo.value;
       const _path = `M${width},0 L0,0 L0,${height} L${width},${height} L${width},0 Z`;
       const _radius = radius.value;
-      return props.pos ? `${_path} M${props.pos.left + _radius},${props.pos.top} h${props.pos.width - _radius * 2} ${info.topRight} v${props.pos.height - _radius * 2} ${info.bottomRight} h${-props.pos.width + _radius * 2} ${info.bottomLeft} v${-props.pos.height + _radius * 2} ${info.topLeft} z` : _path;
+      return props2.pos ? `${_path} M${props2.pos.left + _radius},${props2.pos.top} h${props2.pos.width - _radius * 2} ${info.topRight} v${props2.pos.height - _radius * 2} ${info.bottomRight} h${-props2.pos.width + _radius * 2} ${info.bottomLeft} v${-props2.pos.height + _radius * 2} ${info.topLeft} z` : _path;
     });
     const pathStyle = computed(() => {
       return {
-        fill: props.fill,
+        fill: props2.fill,
         pointerEvents: "auto",
         cursor: "auto"
       };
     });
-    useLockscreen(toRef(props, "visible"), {
+    useLockscreen(toRef(props2, "visible"), {
       ns
     });
     return (_ctx, _cache) => {
@@ -58565,7 +58837,7 @@ var _sfc_main148 = defineComponent({
 });
 var ElTourMask = _export_sfc(_sfc_main148, [["__file", "mask.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/src/content.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/src/content.mjs
 var tourStrategies = ["absolute", "fixed"];
 var tourPlacements = [
   "top-start",
@@ -58610,7 +58882,7 @@ var tourContentEmits = {
   close: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/src/content2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/src/content2.mjs
 var __default__106 = defineComponent({
   name: "ElTourContent"
 });
@@ -58619,15 +58891,15 @@ var _sfc_main149 = defineComponent({
   props: tourContentProps,
   emits: tourContentEmits,
   setup(__props, { emit }) {
-    const props = __props;
-    const placement = ref(props.placement);
-    const strategy = ref(props.strategy);
+    const props2 = __props;
+    const placement = ref(props2.placement);
+    const strategy = ref(props2.strategy);
     const contentRef = ref(null);
     const arrowRef = ref(null);
-    watch(() => props.placement, () => {
-      placement.value = props.placement;
+    watch(() => props2.placement, () => {
+      placement.value = props2.placement;
     });
-    const { contentStyle, arrowStyle } = useFloating2(toRef(props, "reference"), contentRef, arrowRef, placement, strategy, toRef(props, "offset"), toRef(props, "zIndex"), toRef(props, "showArrow"));
+    const { contentStyle, arrowStyle } = useFloating2(toRef(props2, "reference"), contentRef, arrowRef, placement, strategy, toRef(props2, "offset"), toRef(props2, "zIndex"), toRef(props2, "showArrow"));
     const side = computed(() => {
       return placement.value.split("-")[0];
     });
@@ -58675,7 +58947,7 @@ var _sfc_main149 = defineComponent({
 });
 var ElTourContent = _export_sfc(_sfc_main149, [["__file", "content.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/src/steps.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/src/steps.mjs
 var ElTourSteps = defineComponent({
   name: "ElTourSteps",
   props: {
@@ -58685,7 +58957,7 @@ var ElTourSteps = defineComponent({
     }
   },
   emits: ["update-total"],
-  setup(props, { slots, emit }) {
+  setup(props2, { slots, emit }) {
     let cacheTotal = 0;
     return () => {
       var _a2, _b;
@@ -58712,14 +58984,14 @@ var ElTourSteps = defineComponent({
         emit("update-total", total2);
       }
       if (result2.length) {
-        return result2[props.current];
+        return result2[props2.current];
       }
       return null;
     };
   }
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/src/tour.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/src/tour.mjs
 var tourProps = buildProps({
   modelValue: Boolean,
   current: {
@@ -58785,7 +59057,7 @@ var tourEmits = {
   change: (current) => isNumber3(current)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/src/tour2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/src/tour2.mjs
 var __default__107 = defineComponent({
   name: "ElTour"
 });
@@ -58794,11 +59066,11 @@ var _sfc_main150 = defineComponent({
   props: tourProps,
   emits: tourEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("tour");
     const total2 = ref(0);
     const currentStep = ref();
-    const current = useVModel(props, "current", emit, {
+    const current = useVModel(props2, "current", emit, {
       passive: true
     });
     const currentTarget = computed(() => {
@@ -58811,44 +59083,44 @@ var _sfc_main150 = defineComponent({
     ]);
     const mergedPlacement = computed(() => {
       var _a2;
-      return ((_a2 = currentStep.value) == null ? void 0 : _a2.placement) || props.placement;
+      return ((_a2 = currentStep.value) == null ? void 0 : _a2.placement) || props2.placement;
     });
     const mergedContentStyle = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = currentStep.value) == null ? void 0 : _a2.contentStyle) != null ? _b : props.contentStyle;
+      return (_b = (_a2 = currentStep.value) == null ? void 0 : _a2.contentStyle) != null ? _b : props2.contentStyle;
     });
     const mergedMask = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = currentStep.value) == null ? void 0 : _a2.mask) != null ? _b : props.mask;
+      return (_b = (_a2 = currentStep.value) == null ? void 0 : _a2.mask) != null ? _b : props2.mask;
     });
-    const mergedShowMask = computed(() => !!mergedMask.value && props.modelValue);
+    const mergedShowMask = computed(() => !!mergedMask.value && props2.modelValue);
     const mergedMaskStyle = computed(() => isBoolean2(mergedMask.value) ? void 0 : mergedMask.value);
     const mergedShowArrow = computed(() => {
       var _a2, _b;
-      return !!currentTarget.value && ((_b = (_a2 = currentStep.value) == null ? void 0 : _a2.showArrow) != null ? _b : props.showArrow);
+      return !!currentTarget.value && ((_b = (_a2 = currentStep.value) == null ? void 0 : _a2.showArrow) != null ? _b : props2.showArrow);
     });
     const mergedScrollIntoViewOptions = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = currentStep.value) == null ? void 0 : _a2.scrollIntoViewOptions) != null ? _b : props.scrollIntoViewOptions;
+      return (_b = (_a2 = currentStep.value) == null ? void 0 : _a2.scrollIntoViewOptions) != null ? _b : props2.scrollIntoViewOptions;
     });
     const mergedType = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = currentStep.value) == null ? void 0 : _a2.type) != null ? _b : props.type;
+      return (_b = (_a2 = currentStep.value) == null ? void 0 : _a2.type) != null ? _b : props2.type;
     });
     const { nextZIndex } = useZIndex();
     const nowZIndex = nextZIndex();
     const mergedZIndex = computed(() => {
       var _a2;
-      return (_a2 = props.zIndex) != null ? _a2 : nowZIndex;
+      return (_a2 = props2.zIndex) != null ? _a2 : nowZIndex;
     });
-    const { mergedPosInfo: pos, triggerTarget } = useTarget(currentTarget, toRef(props, "modelValue"), toRef(props, "gap"), mergedMask, mergedScrollIntoViewOptions);
-    watch(() => props.modelValue, (val) => {
+    const { mergedPosInfo: pos, triggerTarget } = useTarget(currentTarget, toRef(props2, "modelValue"), toRef(props2, "gap"), mergedMask, mergedScrollIntoViewOptions);
+    watch(() => props2.modelValue, (val) => {
       if (!val) {
         current.value = 0;
       }
     });
     const onEscClose = () => {
-      if (props.closeOnPressEscape) {
+      if (props2.closeOnPressEscape) {
         emit("update:modelValue", false);
         emit("close", current.value);
       }
@@ -58861,8 +59133,8 @@ var _sfc_main150 = defineComponent({
       currentStep,
       current,
       total: total2,
-      showClose: toRef(props, "showClose"),
-      closeIcon: toRef(props, "closeIcon"),
+      showClose: toRef(props2, "showClose"),
+      closeIcon: toRef(props2, "closeIcon"),
       mergedType,
       ns,
       slots,
@@ -58933,7 +59205,7 @@ var _sfc_main150 = defineComponent({
 });
 var Tour = _export_sfc(_sfc_main150, [["__file", "tour.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/src/step.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/src/step.mjs
 var tourStepProps = buildProps({
   target: {
     type: definePropType([String, Object, Function])
@@ -58977,7 +59249,7 @@ var tourStepEmits = {
   close: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/src/step2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/src/step2.mjs
 var __default__108 = defineComponent({
   name: "ElTourStep"
 });
@@ -58986,7 +59258,7 @@ var _sfc_main151 = defineComponent({
   props: tourStepProps,
   emits: tourStepEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const { Close } = CloseComponents;
     const { t } = useLocale();
     const {
@@ -59003,18 +59275,18 @@ var _sfc_main151 = defineComponent({
       onFinish: tourOnFinish,
       onChange
     } = inject(tourKey);
-    watch(props, (val) => {
+    watch(props2, (val) => {
       currentStep.value = val;
     }, {
       immediate: true
     });
     const mergedShowClose = computed(() => {
       var _a2;
-      return (_a2 = props.showClose) != null ? _a2 : showClose.value;
+      return (_a2 = props2.showClose) != null ? _a2 : showClose.value;
     });
     const mergedCloseIcon = computed(() => {
       var _a2, _b;
-      return (_b = (_a2 = props.closeIcon) != null ? _a2 : closeIcon.value) != null ? _b : Close;
+      return (_b = (_a2 = props2.closeIcon) != null ? _a2 : closeIcon.value) != null ? _b : Close;
     });
     const filterButtonProps = (btnProps) => {
       if (!btnProps)
@@ -59024,8 +59296,8 @@ var _sfc_main151 = defineComponent({
     const onPrev = () => {
       var _a2, _b;
       current.value -= 1;
-      if ((_a2 = props.prevButtonProps) == null ? void 0 : _a2.onClick) {
-        (_b = props.prevButtonProps) == null ? void 0 : _b.onClick();
+      if ((_a2 = props2.prevButtonProps) == null ? void 0 : _a2.onClick) {
+        (_b = props2.prevButtonProps) == null ? void 0 : _b.onClick();
       }
       onChange();
     };
@@ -59036,8 +59308,8 @@ var _sfc_main151 = defineComponent({
       } else {
         current.value += 1;
       }
-      if ((_a2 = props.nextButtonProps) == null ? void 0 : _a2.onClick) {
-        props.nextButtonProps.onClick();
+      if ((_a2 = props2.nextButtonProps) == null ? void 0 : _a2.onClick) {
+        props2.nextButtonProps.onClick();
       }
       onChange();
     };
@@ -59139,13 +59411,13 @@ var _sfc_main151 = defineComponent({
 });
 var TourStep = _export_sfc(_sfc_main151, [["__file", "step.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/tour/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/tour/index.mjs
 var ElTour = withInstall(Tour, {
   TourStep
 });
 var ElTourStep = withNoopInstall(TourStep);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/anchor/src/anchor.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/anchor/src/anchor.mjs
 var anchorProps = buildProps({
   container: {
     type: definePropType([
@@ -59183,10 +59455,10 @@ var anchorEmits = {
   click: (e, href) => e instanceof MouseEvent && (isString2(href) || isUndefined2(href))
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/anchor/src/constants.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/anchor/src/constants.mjs
 var anchorKey = Symbol("anchor");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/anchor/src/anchor2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/anchor/src/anchor2.mjs
 var __default__109 = defineComponent({
   name: "ElAnchor"
 });
@@ -59195,7 +59467,7 @@ var _sfc_main152 = defineComponent({
   props: anchorProps,
   emits: anchorEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const currentAnchor = ref("");
     const anchorRef = ref(null);
     const markerRef = ref(null);
@@ -59206,8 +59478,8 @@ var _sfc_main152 = defineComponent({
     const ns = useNamespace("anchor");
     const cls = computed(() => [
       ns.b(),
-      props.type === "underline" ? ns.m("underline") : "",
-      ns.m(props.direction)
+      props2.type === "underline" ? ns.m("underline") : "",
+      ns.m(props2.direction)
     ]);
     const addLink = (state) => {
       links[state.href] = state.el;
@@ -59235,8 +59507,8 @@ var _sfc_main152 = defineComponent({
       const scrollEle = getScrollElement(target2, containerEl.value);
       const distance = getOffsetTopDistance(target2, scrollEle);
       const max4 = scrollEle.scrollHeight - scrollEle.clientHeight;
-      const to = Math.min(distance - props.offset, max4);
-      clearAnimate = animateScrollTo(containerEl.value, currentScrollTop, to, props.duration, () => {
+      const to = Math.min(distance - props2.offset, max4);
+      clearAnimate = animateScrollTo(containerEl.value, currentScrollTop, to, props2.duration, () => {
         setTimeout(() => {
           isScrolling = false;
         }, 20);
@@ -59273,7 +59545,7 @@ var _sfc_main152 = defineComponent({
         const scrollEle = getScrollElement(target2, containerEl.value);
         const distance = getOffsetTopDistance(target2, scrollEle);
         anchorTopList.push({
-          top: distance - props.offset - props.bound,
+          top: distance - props2.offset - props2.bound,
           href
         });
       }
@@ -59290,7 +59562,7 @@ var _sfc_main152 = defineComponent({
       }
     };
     const getContainer = () => {
-      const el = getElement(props.container);
+      const el = getElement(props2.container);
       if (!el || isWindow(el)) {
         containerEl.value = window;
       } else {
@@ -59307,7 +59579,7 @@ var _sfc_main152 = defineComponent({
       const anchorRect = anchorRef.value.getBoundingClientRect();
       const markerRect = markerRef.value.getBoundingClientRect();
       const linkRect = currentLinkEl.getBoundingClientRect();
-      if (props.direction === "horizontal") {
+      if (props2.direction === "horizontal") {
         const left2 = linkRect.left - anchorRect.left;
         return {
           left: `${left2}px`,
@@ -59332,12 +59604,12 @@ var _sfc_main152 = defineComponent({
         handleScroll2();
       }
     });
-    watch(() => props.container, () => {
+    watch(() => props2.container, () => {
       getContainer();
     });
     provide(anchorKey, {
       ns,
-      direction: props.direction,
+      direction: props2.direction,
       currentAnchor,
       addLink,
       removeLink,
@@ -59370,13 +59642,13 @@ var _sfc_main152 = defineComponent({
 });
 var Anchor = _export_sfc(_sfc_main152, [["__file", "anchor.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/anchor/src/anchor-link.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/anchor/src/anchor-link.mjs
 var anchorLinkProps = buildProps({
   title: String,
   href: String
 });
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/anchor/src/anchor-link2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/anchor/src/anchor-link2.mjs
 var __default__110 = defineComponent({
   name: "ElAnchorLink"
 });
@@ -59384,7 +59656,7 @@ var _sfc_main153 = defineComponent({
   ...__default__110,
   props: anchorLinkProps,
   setup(__props) {
-    const props = __props;
+    const props2 = __props;
     const linkRef = ref(null);
     const {
       ns,
@@ -59396,12 +59668,12 @@ var _sfc_main153 = defineComponent({
     } = inject(anchorKey);
     const cls = computed(() => [
       ns.e("link"),
-      ns.is("active", currentAnchor.value === props.href)
+      ns.is("active", currentAnchor.value === props2.href)
     ]);
     const handleClick = (e) => {
-      contextHandleClick(e, props.href);
+      contextHandleClick(e, props2.href);
     };
-    watch(() => props.href, (val, oldVal) => {
+    watch(() => props2.href, (val, oldVal) => {
       nextTick(() => {
         if (oldVal)
           removeLink(oldVal);
@@ -59414,7 +59686,7 @@ var _sfc_main153 = defineComponent({
       });
     });
     onMounted(() => {
-      const { href } = props;
+      const { href } = props2;
       if (href) {
         addLink({
           href,
@@ -59423,7 +59695,7 @@ var _sfc_main153 = defineComponent({
       }
     });
     onBeforeUnmount(() => {
-      const { href } = props;
+      const { href } = props2;
       if (href) {
         removeLink(href);
       }
@@ -59455,13 +59727,13 @@ var _sfc_main153 = defineComponent({
 });
 var AnchorLink = _export_sfc(_sfc_main153, [["__file", "anchor-link.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/anchor/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/anchor/index.mjs
 var ElAnchor = withInstall(Anchor, {
   AnchorLink
 });
 var ElAnchorLink = withNoopInstall(AnchorLink);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/segmented/src/segmented.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/segmented/src/segmented2.mjs
 var segmentedProps = buildProps({
   options: {
     type: definePropType(Array),
@@ -59487,7 +59759,7 @@ var segmentedEmits = {
   [CHANGE_EVENT]: (val) => isString2(val) || isNumber3(val) || isBoolean2(val)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/segmented/src/segmented2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/segmented/src/segmented.mjs
 var __default__111 = defineComponent({
   name: "ElSegmented"
 });
@@ -59496,13 +59768,13 @@ var _sfc_main154 = defineComponent({
   props: segmentedProps,
   emits: segmentedEmits,
   setup(__props, { emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("segmented");
     const segmentedId = useId();
     const segmentedSize = useFormSize();
     const _disabled = useFormDisabled();
     const { formItem } = useFormItem();
-    const { inputId, isLabeledByFormItem } = useFormItemInputId(props, {
+    const { inputId, isLabeledByFormItem } = useFormItemInputId(props2, {
       formItemContext: formItem
     });
     const segmentedRef = ref(null);
@@ -59528,10 +59800,10 @@ var _sfc_main154 = defineComponent({
       return !!(_disabled.value || (isObject2(item) ? item.disabled : false));
     };
     const getSelected = (item) => {
-      return props.modelValue === getValue3(item);
+      return props2.modelValue === getValue3(item);
     };
     const getOption = (value) => {
-      return props.options.find((item) => getValue3(item) === value);
+      return props2.options.find((item) => getValue3(item) === value);
     };
     const getItemCls = (item) => {
       return [
@@ -59563,7 +59835,7 @@ var _sfc_main154 = defineComponent({
     const segmentedCls = computed(() => [
       ns.b(),
       ns.m(segmentedSize.value),
-      ns.is("block", props.block)
+      ns.is("block", props2.block)
     ]);
     const selectedStyle = computed(() => ({
       width: `${state.width}px`,
@@ -59572,18 +59844,18 @@ var _sfc_main154 = defineComponent({
     }));
     const selectedCls = computed(() => [
       ns.e("item-selected"),
-      ns.is("disabled", getDisabled(getOption(props.modelValue))),
+      ns.is("disabled", getDisabled(getOption(props2.modelValue))),
       ns.is("focus-visible", state.focusVisible)
     ]);
     const name = computed(() => {
-      return props.name || segmentedId.value;
+      return props2.name || segmentedId.value;
     });
     useResizeObserver(segmentedRef, updateSelect);
     watch(activeElement, updateSelect);
-    watch(() => props.modelValue, () => {
+    watch(() => props2.modelValue, () => {
       var _a2;
       updateSelect();
-      if (props.validateEvent) {
+      if (props2.validateEvent) {
         (_a2 = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a2.call(formItem, "change").catch((err) => debugWarn(err));
       }
     }, {
@@ -59635,10 +59907,10 @@ var _sfc_main154 = defineComponent({
 });
 var Segmented = _export_sfc(_sfc_main154, [["__file", "segmented.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/segmented/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/segmented/index.mjs
 var ElSegmented = withInstall(Segmented);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/mention/src/helper.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/mention/src/helper.mjs
 var filterOption = (pattern4, option) => {
   const lowerCase2 = pattern4.toLowerCase();
   const label = option.label || option.value;
@@ -59785,7 +60057,7 @@ var getCursorPosition = (element, options = {
   return relativePosition;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/mention/src/mention.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/mention/src/mention.mjs
 var mentionProps = buildProps({
   ...inputProps,
   options: {
@@ -59847,7 +60119,7 @@ var mentionEmits = {
   blur: (evt) => evt instanceof FocusEvent
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/mention/src/mention-dropdown.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/mention/src/mention-dropdown.mjs
 var mentionDropdownProps = buildProps({
   options: {
     type: definePropType(Array),
@@ -59862,7 +60134,7 @@ var mentionDropdownEmits = {
   select: (option) => isString2(option.value)
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/mention/src/mention-dropdown2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/mention/src/mention-dropdown2.mjs
 var __default__112 = defineComponent({
   name: "ElMentionDropdown"
 });
@@ -59871,7 +60143,7 @@ var _sfc_main155 = defineComponent({
   props: mentionDropdownProps,
   emits: mentionDropdownEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
+    const props2 = __props;
     const ns = useNamespace("mention");
     const { t } = useLocale();
     const hoveringIndex = ref(-1);
@@ -59881,25 +60153,25 @@ var _sfc_main155 = defineComponent({
     const optionkls = (item, index) => [
       ns.be("dropdown", "item"),
       ns.is("hovering", hoveringIndex.value === index),
-      ns.is("disabled", item.disabled || props.disabled)
+      ns.is("disabled", item.disabled || props2.disabled)
     ];
     const handleSelect = (item) => {
-      if (item.disabled || props.disabled)
+      if (item.disabled || props2.disabled)
         return;
       emit("select", item);
     };
     const handleMouseEnter = (index) => {
       hoveringIndex.value = index;
     };
-    const filteredAllDisabled = computed(() => props.disabled || props.options.every((item) => item.disabled));
-    const hoverOption = computed(() => props.options[hoveringIndex.value]);
+    const filteredAllDisabled = computed(() => props2.disabled || props2.options.every((item) => item.disabled));
+    const hoverOption = computed(() => props2.options[hoveringIndex.value]);
     const selectHoverOption = () => {
       if (!hoverOption.value)
         return;
       emit("select", hoverOption.value);
     };
     const navigateOptions = (direction2) => {
-      const { options } = props;
+      const { options } = props2;
       if (options.length === 0 || filteredAllDisabled.value)
         return;
       if (direction2 === "next") {
@@ -59922,7 +60194,7 @@ var _sfc_main155 = defineComponent({
     };
     const scrollToOption = (option) => {
       var _a2, _b, _c, _d;
-      const { options } = props;
+      const { options } = props2;
       const index = options.findIndex((item) => item.value === option.value);
       const target2 = (_a2 = optionRefs.value) == null ? void 0 : _a2[index];
       if (target2) {
@@ -59934,13 +60206,13 @@ var _sfc_main155 = defineComponent({
       (_d = scrollbarRef.value) == null ? void 0 : _d.handleScroll();
     };
     const resetHoveringIndex = () => {
-      if (filteredAllDisabled.value || props.options.length === 0) {
+      if (filteredAllDisabled.value || props2.options.length === 0) {
         hoveringIndex.value = -1;
       } else {
         hoveringIndex.value = 0;
       }
     };
-    watch(() => props.options, resetHoveringIndex, {
+    watch(() => props2.options, resetHoveringIndex, {
       immediate: true
     });
     expose({
@@ -60023,7 +60295,7 @@ var _sfc_main155 = defineComponent({
 });
 var ElMentionDropdown = _export_sfc(_sfc_main155, [["__file", "mention-dropdown.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/mention/src/mention2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/mention/src/mention2.mjs
 var __default__113 = defineComponent({
   name: "ElMention"
 });
@@ -60032,9 +60304,10 @@ var _sfc_main156 = defineComponent({
   props: mentionProps,
   emits: mentionEmits,
   setup(__props, { expose, emit }) {
-    const props = __props;
-    const passInputProps = computed(() => pick_default(props, Object.keys(inputProps)));
+    const props2 = __props;
+    const passInputProps = computed(() => pick_default(props2, Object.keys(inputProps)));
     const ns = useNamespace("mention");
+    const disabled = useFormDisabled();
     const contentId = useId();
     const elInputRef = ref();
     const tooltipRef = ref();
@@ -60042,16 +60315,16 @@ var _sfc_main156 = defineComponent({
     const visible = ref(false);
     const cursorStyle = ref();
     const mentionCtx = ref();
-    const computedPlacement = computed(() => props.showArrow ? props.placement : `${props.placement}-start`);
-    const computedFallbackPlacements = computed(() => props.showArrow ? ["bottom", "top"] : ["bottom-start", "top-start"]);
+    const computedPlacement = computed(() => props2.showArrow ? props2.placement : `${props2.placement}-start`);
+    const computedFallbackPlacements = computed(() => props2.showArrow ? ["bottom", "top"] : ["bottom-start", "top-start"]);
     const filteredOptions = computed(() => {
-      const { filterOption: filterOption2, options } = props;
+      const { filterOption: filterOption2, options } = props2;
       if (!mentionCtx.value || !filterOption2)
         return options;
       return options.filter((option) => filterOption2(mentionCtx.value.pattern, option));
     });
     const dropdownVisible = computed(() => {
-      return visible.value && (!!filteredOptions.value.length || props.loading);
+      return visible.value && (!!filteredOptions.value.length || props2.loading);
     });
     const hoveringId = computed(() => {
       var _a2;
@@ -60090,14 +60363,14 @@ var _sfc_main156 = defineComponent({
         e.preventDefault();
         visible.value = false;
       } else if (["Backspace"].includes(e.key)) {
-        if (props.whole && mentionCtx.value) {
+        if (props2.whole && mentionCtx.value) {
           const { splitIndex, selectionEnd, pattern: pattern4, prefixIndex, prefix } = mentionCtx.value;
           const inputEl = getInputEl();
           if (!inputEl)
             return;
           const inputValue = inputEl.value;
-          const matchOption = props.options.find((item) => item.value === pattern4);
-          const isWhole = isFunction2(props.checkIsWhole) ? props.checkIsWhole(pattern4, prefix) : matchOption;
+          const matchOption = props2.options.find((item) => item.value === pattern4);
+          const isWhole = isFunction2(props2.checkIsWhole) ? props2.checkIsWhole(pattern4, prefix) : matchOption;
           if (isWhole && splitIndex !== -1 && splitIndex + 1 === selectionEnd) {
             e.preventDefault();
             const newValue = inputValue.slice(0, prefixIndex) + inputValue.slice(splitIndex + 1);
@@ -60113,6 +60386,9 @@ var _sfc_main156 = defineComponent({
       }
     };
     const { wrapperRef } = useFocusController(elInputRef, {
+      beforeFocus() {
+        return disabled.value;
+      },
       afterFocus() {
         syncAfterCursorMove();
       },
@@ -60134,7 +60410,7 @@ var _sfc_main156 = defineComponent({
       if (!inputEl)
         return;
       const inputValue = inputEl.value;
-      const { split: split2 } = props;
+      const { split: split2 } = props2;
       const newEndPart = inputValue.slice(mentionCtx.value.end);
       const alreadySeparated = newEndPart.startsWith(split2);
       const newMiddlePart = `${item.value}${alreadySeparated ? "" : split2}`;
@@ -60151,7 +60427,7 @@ var _sfc_main156 = defineComponent({
     };
     const getInputEl = () => {
       var _a2, _b;
-      return props.type === "textarea" ? (_a2 = elInputRef.value) == null ? void 0 : _a2.textarea : (_b = elInputRef.value) == null ? void 0 : _b.input;
+      return props2.type === "textarea" ? (_a2 = elInputRef.value) == null ? void 0 : _a2.textarea : (_b = elInputRef.value) == null ? void 0 : _b.input;
     };
     const syncAfterCursorMove = () => {
       setTimeout(() => {
@@ -60184,7 +60460,7 @@ var _sfc_main156 = defineComponent({
         visible.value = false;
         return;
       }
-      const { prefix, split: split2 } = props;
+      const { prefix, split: split2 } = props2;
       mentionCtx.value = getMentionCtx(inputEl, prefix, split2);
       if (mentionCtx.value && mentionCtx.value.splitIndex === -1) {
         visible.value = true;
@@ -60207,6 +60483,7 @@ var _sfc_main156 = defineComponent({
           ref_key: "elInputRef",
           ref: elInputRef,
           "model-value": _ctx.modelValue,
+          disabled: unref(disabled),
           role: unref(dropdownVisible) ? "combobox" : void 0,
           "aria-activedescendant": unref(dropdownVisible) ? unref(hoveringId) || "" : void 0,
           "aria-controls": unref(dropdownVisible) ? unref(contentId) : void 0,
@@ -60226,7 +60503,7 @@ var _sfc_main156 = defineComponent({
               ])
             };
           })
-        ]), 1040, ["model-value", "role", "aria-activedescendant", "aria-controls", "aria-expanded", "aria-label", "aria-autocomplete", "aria-haspopup"]),
+        ]), 1040, ["model-value", "disabled", "role", "aria-activedescendant", "aria-controls", "aria-expanded", "aria-label", "aria-autocomplete", "aria-haspopup"]),
         createVNode(unref(ElTooltip), {
           ref_key: "tooltipRef",
           ref: tooltipRef,
@@ -60252,7 +60529,7 @@ var _sfc_main156 = defineComponent({
                 ref_key: "dropdownRef",
                 ref: dropdownRef,
                 options: unref(filteredOptions),
-                disabled: _ctx.disabled,
+                disabled: unref(disabled),
                 loading: _ctx.loading,
                 "content-id": unref(contentId),
                 "aria-label": _ctx.ariaLabel,
@@ -60278,10 +60555,10 @@ var _sfc_main156 = defineComponent({
 });
 var Mention = _export_sfc(_sfc_main156, [["__file", "mention.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/mention/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/mention/index.mjs
 var ElMention = withInstall(Mention);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/component.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/component.mjs
 var Components = [
   ElAffix,
   ElAlert,
@@ -60390,7 +60667,7 @@ var Components = [
   ElMention
 ];
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/infinite-scroll/src/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/infinite-scroll/src/index.mjs
 var SCOPE10 = "ElInfiniteScroll";
 var CHECK_INTERVAL = 50;
 var DEFAULT_DELAY = 200;
@@ -60512,14 +60789,14 @@ var InfiniteScroll = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/infinite-scroll/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/infinite-scroll/index.mjs
 var _InfiniteScroll = InfiniteScroll;
 _InfiniteScroll.install = (app) => {
   app.directive("InfiniteScroll", _InfiniteScroll);
 };
 var ElInfiniteScroll = _InfiniteScroll;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/loading/src/loading.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/loading/src/loading.mjs
 function createLoadingComponent(options) {
   let afterLeaveTimer;
   const afterLeaveFlag = ref(false);
@@ -60634,7 +60911,7 @@ function createLoadingComponent(options) {
   };
 }
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/loading/src/service.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/loading/src/service.mjs
 var fullscreenInstance = void 0;
 var Loading = function(options = {}) {
   if (!isClient)
@@ -60731,7 +61008,7 @@ var addClassList = (options, parent2, instance) => {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/loading/src/directive.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/loading/src/directive.mjs
 var INSTANCE_KEY = Symbol("ElLoading");
 var createInstance = (el, binding) => {
   var _a2, _b, _c, _d;
@@ -60795,7 +61072,7 @@ var vLoading = {
   }
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/loading/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/loading/index.mjs
 var ElLoading = {
   install(app) {
     app.directive("loading", vLoading);
@@ -60805,7 +61082,7 @@ var ElLoading = {
   service: Loading
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/message/src/message.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/message/src/message.mjs
 var messageTypes = ["success", "info", "warning", "error"];
 var messageDefaults = mutable({
   customClass: "",
@@ -60896,7 +61173,7 @@ var messageEmits = {
   destroy: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/message/src/instance.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/message/src/instance.mjs
 var instances = shallowReactive([]);
 var getInstance = (id) => {
   const idx = instances.findIndex((instance) => instance.id === id);
@@ -60918,7 +61195,7 @@ var getOffsetOrSpace = (id, offset3) => {
   return idx > 0 ? 16 : offset3;
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/message/src/message2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/message/src/message2.mjs
 var __default__114 = defineComponent({
   name: "ElMessage"
 });
@@ -60927,7 +61204,7 @@ var _sfc_main157 = defineComponent({
   props: messageProps,
   emits: messageEmits,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const { Close } = TypeComponents;
     const { ns, zIndex: zIndex2 } = useGlobalComponentSettings("message");
     const { currentZIndex, nextZIndex } = zIndex2;
@@ -60935,25 +61212,25 @@ var _sfc_main157 = defineComponent({
     const visible = ref(false);
     const height = ref(0);
     let stopTimer = void 0;
-    const badgeType = computed(() => props.type ? props.type === "error" ? "danger" : props.type : "info");
+    const badgeType = computed(() => props2.type ? props2.type === "error" ? "danger" : props2.type : "info");
     const typeClass = computed(() => {
-      const type4 = props.type;
+      const type4 = props2.type;
       return { [ns.bm("icon", type4)]: type4 && TypeComponentsMap[type4] };
     });
-    const iconComponent = computed(() => props.icon || TypeComponentsMap[props.type] || "");
-    const lastOffset = computed(() => getLastOffset(props.id));
-    const offset3 = computed(() => getOffsetOrSpace(props.id, props.offset) + lastOffset.value);
+    const iconComponent = computed(() => props2.icon || TypeComponentsMap[props2.type] || "");
+    const lastOffset = computed(() => getLastOffset(props2.id));
+    const offset3 = computed(() => getOffsetOrSpace(props2.id, props2.offset) + lastOffset.value);
     const bottom = computed(() => height.value + offset3.value);
     const customStyle = computed(() => ({
       top: `${offset3.value}px`,
       zIndex: currentZIndex.value
     }));
     function startTimer() {
-      if (props.duration === 0)
+      if (props2.duration === 0)
         return;
       ({ stop: stopTimer } = useTimeoutFn(() => {
         close2();
-      }, props.duration));
+      }, props2.duration));
     }
     function clearTimer() {
       stopTimer == null ? void 0 : stopTimer();
@@ -60971,7 +61248,7 @@ var _sfc_main157 = defineComponent({
       nextZIndex();
       visible.value = true;
     });
-    watch(() => props.repeatNum, () => {
+    watch(() => props2.repeatNum, () => {
       clearTimer();
       startTimer();
     });
@@ -61057,7 +61334,7 @@ var _sfc_main157 = defineComponent({
 });
 var MessageConstructor = _export_sfc(_sfc_main157, [["__file", "message.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/message/src/method.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/message/src/method.mjs
 var seed = 1;
 var normalizeOptions = (params) => {
   const options = !params || isString2(params) || isVNode(params) || isFunction2(params) ? { message: params } : params;
@@ -61075,6 +61352,18 @@ var normalizeOptions = (params) => {
     }
     normalized.appendTo = appendTo;
   }
+  if (isBoolean2(messageConfig.grouping) && !normalized.grouping) {
+    normalized.grouping = messageConfig.grouping;
+  }
+  if (isNumber3(messageConfig.duration) && normalized.duration === 3e3) {
+    normalized.duration = messageConfig.duration;
+  }
+  if (isNumber3(messageConfig.offset) && normalized.offset === 16) {
+    normalized.offset = messageConfig.offset;
+  }
+  if (isBoolean2(messageConfig.showClose) && !normalized.showClose) {
+    normalized.showClose = messageConfig.showClose;
+  }
   return normalized;
 };
 var closeMessage = (instance) => {
@@ -61089,7 +61378,7 @@ var createMessage = ({ appendTo, ...options }, context) => {
   const id = `message_${seed++}`;
   const userOnClose = options.onClose;
   const container = document.createElement("div");
-  const props = {
+  const props2 = {
     ...options,
     id,
     onClose: () => {
@@ -61100,8 +61389,8 @@ var createMessage = ({ appendTo, ...options }, context) => {
       render(null, container);
     }
   };
-  const vnode = createVNode(MessageConstructor, props, isFunction2(props.message) || isVNode(props.message) ? {
-    default: isFunction2(props.message) ? props.message : () => props.message
+  const vnode = createVNode(MessageConstructor, props2, isFunction2(props2.message) || isVNode(props2.message) ? {
+    default: isFunction2(props2.message) ? props2.message : () => props2.message
   } : null);
   vnode.appContext = context || message._context;
   render(vnode, container);
@@ -61124,9 +61413,6 @@ var createMessage = ({ appendTo, ...options }, context) => {
 var message = (options = {}, context) => {
   if (!isClient)
     return { close: () => void 0 };
-  if (isNumber3(messageConfig.max) && instances.length >= messageConfig.max) {
-    return { close: () => void 0 };
-  }
   const normalized = normalizeOptions(options);
   if (normalized.grouping && instances.length) {
     const instance2 = instances.find(({ vnode: vm }) => {
@@ -61138,6 +61424,9 @@ var message = (options = {}, context) => {
       instance2.props.type = normalized.type;
       return instance2.handler;
     }
+  }
+  if (isNumber3(messageConfig.max) && instances.length >= messageConfig.max) {
+    return { close: () => void 0 };
   }
   const instance = createMessage(normalized, context);
   instances.push(instance);
@@ -61159,10 +61448,10 @@ function closeAll(type4) {
 message.closeAll = closeAll;
 message._context = null;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/message/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/message/index.mjs
 var ElMessage = withInstallFunction(message, "$message");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/message-box/src/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/message-box/src/index.mjs
 var _sfc_main158 = defineComponent({
   name: "ElMessageBox",
   directives: {
@@ -61223,13 +61512,13 @@ var _sfc_main158 = defineComponent({
     }
   },
   emits: ["vanish", "action"],
-  setup(props, { emit }) {
+  setup(props2, { emit }) {
     const {
       locale,
       zIndex: zIndex2,
       ns,
       size: btnSize
-    } = useGlobalComponentSettings("message-box", computed(() => props.buttonSize));
+    } = useGlobalComponentSettings("message-box", computed(() => props2.buttonSize));
     const { t } = locale;
     const { nextZIndex } = zIndex2;
     const visible = ref(false);
@@ -61286,14 +61575,14 @@ var _sfc_main158 = defineComponent({
     const confirmButtonClasses = computed(() => state.confirmButtonClass);
     watch(() => state.inputValue, async (val) => {
       await nextTick();
-      if (props.boxType === "prompt" && val !== null) {
+      if (props2.boxType === "prompt" && val !== null) {
         validate();
       }
     }, { immediate: true });
     watch(() => visible.value, (val) => {
       var _a2, _b;
       if (val) {
-        if (props.boxType !== "prompt") {
+        if (props2.boxType !== "prompt") {
           if (state.autofocus) {
             focusStartRef.value = (_b = (_a2 = confirmRef.value) == null ? void 0 : _a2.$el) != null ? _b : rootRef.value;
           } else {
@@ -61302,7 +61591,7 @@ var _sfc_main158 = defineComponent({
         }
         state.zIndex = nextZIndex();
       }
-      if (props.boxType !== "prompt")
+      if (props2.boxType !== "prompt")
         return;
       if (val) {
         nextTick().then(() => {
@@ -61320,17 +61609,17 @@ var _sfc_main158 = defineComponent({
         state.validateError = false;
       }
     });
-    const draggable2 = computed(() => props.draggable);
-    const overflow = computed(() => props.overflow);
+    const draggable2 = computed(() => props2.draggable);
+    const overflow = computed(() => props2.overflow);
     useDraggable(rootRef, headerRef, draggable2, overflow);
     onMounted(async () => {
       await nextTick();
-      if (props.closeOnHashChange) {
+      if (props2.closeOnHashChange) {
         window.addEventListener("hashchange", doClose);
       }
     });
     onBeforeUnmount(() => {
-      if (props.closeOnHashChange) {
+      if (props2.closeOnHashChange) {
         window.removeEventListener("hashchange", doClose);
       }
     });
@@ -61344,7 +61633,7 @@ var _sfc_main158 = defineComponent({
       });
     }
     const handleWrapperClick = () => {
-      if (props.closeOnClickModal) {
+      if (props2.closeOnClickModal) {
         handleAction(state.distinguishCancelAndClose ? "close" : "cancel");
       }
     };
@@ -61357,7 +61646,7 @@ var _sfc_main158 = defineComponent({
     };
     const handleAction = (action) => {
       var _a2;
-      if (props.boxType === "prompt" && action === "confirm" && !validate()) {
+      if (props2.boxType === "prompt" && action === "confirm" && !validate()) {
         return;
       }
       state.action = action;
@@ -61368,7 +61657,7 @@ var _sfc_main158 = defineComponent({
       }
     };
     const validate = () => {
-      if (props.boxType === "prompt") {
+      if (props2.boxType === "prompt") {
         const inputPattern = state.inputPattern;
         if (inputPattern && !inputPattern.test(state.inputValue || "")) {
           state.editorErrorMessage = state.inputErrorMessage || t("el.messagebox.error");
@@ -61402,11 +61691,11 @@ var _sfc_main158 = defineComponent({
       handleAction("close");
     };
     const onCloseRequested = () => {
-      if (props.closeOnPressEscape) {
+      if (props2.closeOnPressEscape) {
         handleClose();
       }
     };
-    if (props.lockScroll) {
+    if (props2.lockScroll) {
       useLockscreen(visible);
     }
     return {
@@ -61638,16 +61927,16 @@ function _sfc_render31(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var MessageBoxConstructor = _export_sfc(_sfc_main158, [["render", _sfc_render31], ["__file", "index.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/message-box/src/messageBox.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/message-box/src/messageBox.mjs
 var messageInstance = /* @__PURE__ */ new Map();
-var getAppendToElement = (props) => {
+var getAppendToElement = (props2) => {
   let appendTo = document.body;
-  if (props.appendTo) {
-    if (isString2(props.appendTo)) {
-      appendTo = document.querySelector(props.appendTo);
+  if (props2.appendTo) {
+    if (isString2(props2.appendTo)) {
+      appendTo = document.querySelector(props2.appendTo);
     }
-    if (isElement2(props.appendTo)) {
-      appendTo = props.appendTo;
+    if (isElement2(props2.appendTo)) {
+      appendTo = props2.appendTo;
     }
     if (!isElement2(appendTo)) {
       debugWarn("ElMessageBox", "the appendTo option is not an HTMLElement. Falling back to document.body.");
@@ -61656,13 +61945,13 @@ var getAppendToElement = (props) => {
   }
   return appendTo;
 };
-var initInstance = (props, container, appContext = null) => {
-  const vnode = createVNode(MessageBoxConstructor, props, isFunction2(props.message) || isVNode(props.message) ? {
-    default: isFunction2(props.message) ? props.message : () => props.message
+var initInstance = (props2, container, appContext = null) => {
+  const vnode = createVNode(MessageBoxConstructor, props2, isFunction2(props2.message) || isVNode(props2.message) ? {
+    default: isFunction2(props2.message) ? props2.message : () => props2.message
   } : null);
   vnode.appContext = appContext;
   render(vnode, container);
-  getAppendToElement(props).appendChild(container.firstElementChild);
+  getAppendToElement(props2).appendChild(container.firstElementChild);
   return vnode.component;
 };
 var genContainer = () => {
@@ -61766,7 +62055,7 @@ MessageBox.close = () => {
 };
 MessageBox._context = null;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/message-box/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/message-box/index.mjs
 var _MessageBox = MessageBox;
 _MessageBox.install = (app) => {
   _MessageBox._context = app._context;
@@ -61778,7 +62067,7 @@ _MessageBox.install = (app) => {
 };
 var ElMessageBox = _MessageBox;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/notification/src/notification.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/notification/src/notification2.mjs
 var notificationTypes = [
   "success",
   "info",
@@ -61842,7 +62131,7 @@ var notificationEmits = {
   destroy: () => true
 };
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/notification/src/notification2.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/notification/src/notification.mjs
 var __default__115 = defineComponent({
   name: "ElNotification"
 });
@@ -61851,37 +62140,37 @@ var _sfc_main159 = defineComponent({
   props: notificationProps,
   emits: notificationEmits,
   setup(__props, { expose }) {
-    const props = __props;
+    const props2 = __props;
     const { ns, zIndex: zIndex2 } = useGlobalComponentSettings("notification");
     const { nextZIndex, currentZIndex } = zIndex2;
     const { Close } = CloseComponents;
     const visible = ref(false);
     let timer = void 0;
     const typeClass = computed(() => {
-      const type4 = props.type;
-      return type4 && TypeComponentsMap[props.type] ? ns.m(type4) : "";
+      const type4 = props2.type;
+      return type4 && TypeComponentsMap[props2.type] ? ns.m(type4) : "";
     });
     const iconComponent = computed(() => {
-      if (!props.type)
-        return props.icon;
-      return TypeComponentsMap[props.type] || props.icon;
+      if (!props2.type)
+        return props2.icon;
+      return TypeComponentsMap[props2.type] || props2.icon;
     });
-    const horizontalClass = computed(() => props.position.endsWith("right") ? "right" : "left");
-    const verticalProperty = computed(() => props.position.startsWith("top") ? "top" : "bottom");
+    const horizontalClass = computed(() => props2.position.endsWith("right") ? "right" : "left");
+    const verticalProperty = computed(() => props2.position.startsWith("top") ? "top" : "bottom");
     const positionStyle = computed(() => {
       var _a2;
       return {
-        [verticalProperty.value]: `${props.offset}px`,
-        zIndex: (_a2 = props.zIndex) != null ? _a2 : currentZIndex.value
+        [verticalProperty.value]: `${props2.offset}px`,
+        zIndex: (_a2 = props2.zIndex) != null ? _a2 : currentZIndex.value
       };
     });
     function startTimer() {
-      if (props.duration > 0) {
+      if (props2.duration > 0) {
         ;
         ({ stop: timer } = useTimeoutFn(() => {
           if (visible.value)
             close2();
-        }, props.duration));
+        }, props2.duration));
       }
     }
     function clearTimer() {
@@ -61979,7 +62268,7 @@ var _sfc_main159 = defineComponent({
 });
 var NotificationConstructor = _export_sfc(_sfc_main159, [["__file", "notification.vue"]]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/notification/src/notify.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/notification/src/notify.mjs
 var notifications = {
   "top-left": [],
   "top-right": [],
@@ -62003,7 +62292,7 @@ var notify = function(options = {}, context = null) {
   verticalOffset += GAP_SIZE;
   const id = `notification_${seed2++}`;
   const userOnClose = options.onClose;
-  const props = {
+  const props2 = {
     ...options,
     offset: verticalOffset,
     id,
@@ -62022,8 +62311,8 @@ var notify = function(options = {}, context = null) {
     appendTo = document.body;
   }
   const container = document.createElement("div");
-  const vm = createVNode(NotificationConstructor, props, isVNode(props.message) ? {
-    default: () => props.message
+  const vm = createVNode(NotificationConstructor, props2, isVNode(props2.message) ? {
+    default: () => props2.message
   } : null);
   vm.appContext = context != null ? context : notify._context;
   vm.props.onDestroy = () => {
@@ -62087,10 +62376,10 @@ function closeAll2() {
 notify.closeAll = closeAll2;
 notify._context = null;
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/components/notification/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/components/notification/index.mjs
 var ElNotification = withInstallFunction(notify, "$notify");
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/plugin.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/plugin.mjs
 var Plugins = [
   ElInfiniteScroll,
   ElLoading,
@@ -62100,10 +62389,10 @@ var Plugins = [
   ElPopoverDirective
 ];
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/defaults.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/defaults.mjs
 var installer = makeInstaller([...Components, ...Plugins]);
 
-// ../node_modules/.pnpm/element-plus@2.8.1_vue@3.4.37/node_modules/element-plus/es/index.mjs
+// ../node_modules/.pnpm/element-plus@2.8.4_vue@3.4.37/node_modules/element-plus/es/index.mjs
 var import_dayjs18 = __toESM(require_dayjs_min(), 1);
 var install = installer.install;
 var version3 = installer.version;
@@ -62581,7 +62870,7 @@ export {
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.5.6
+  * @vue/shared v3.5.11
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)

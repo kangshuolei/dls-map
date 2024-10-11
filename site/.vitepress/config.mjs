@@ -160,7 +160,7 @@ export default defineConfig({
       },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://gitee.com/kangshuolei/dls-map' },
+      { icon: 'github', link: 'https://github.com/kangshuolei/dls-map' },
     ],
     // 底部版权部分
     footer: {
