@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-10-09 17:18:54
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-11 17:17:28
+ * @LastEditTime: 2024-10-11 17:25:28
 -->
 <p align="center">
   <img width="256px" src="https://raw.githubusercontent.com/kangshuolei/dls-map-doc/refs/heads/main/earth.svg">
@@ -15,7 +15,7 @@
   <a href="https://www.npmjs.com/package/dls-map" target="_blank">
     <img src="https://img.shields.io/npm/v/dls-map?style=plastic">
   </a>
-   <a href="#badge"><img src="https://img.shields.io/github/languages/top/InhiblabCore/dls-map" alt="language"></a>
+   <a href="#badge"><img src="https://img.shields.io/github/languages/top/kangshuolei/dls-map" alt="language"></a>
   <a href="https://npmcharts.com/compare/dls-map?minimal=true" target="_blank">
     <img src="https://img.shields.io/npm/dm/dls-map?style=plastic">
   </a>
