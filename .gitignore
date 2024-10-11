@@ -4,3 +4,4 @@ site/.vitepress/dist
 site/public/cesium/*
 dls/es/*
 dls/lib/*
+dls/README.md

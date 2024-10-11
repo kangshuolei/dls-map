@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-08-09 09:45:00
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-14 17:31:40
+ * @LastEditTime: 2024-10-11 17:38:47
  */
 import delPath from '../utils/delpath';
 import { series, parallel, src, dest } from 'gulp';
@@ -13,6 +13,7 @@ import run from '../utils/run';
 import { promises as fsPromises } from 'fs';
 import fs from 'fs';
 import path from 'path';
+import { copyFile } from 'fs/promises';
 
 //删除dist
 export const removeDist = () => {
@@ -90,10 +91,21 @@ export const removeTypes = async () => {
   deleteDirectoryRecursive(targetDir);
 };
 
+//赋值 Readme
+export const copyReadme = async () => {
+  copyFile(
+    path.resolve(`${pkgPath}`, 'README.md'),
+    path.resolve(`${pkgPath}/dls`, 'README.md')
+  );
+};
+
 export default series(
   async () => removeDist(),
-  async () => copyTypes(),
+  async () => copyTypes(), //写麻烦了，就先不改了，应该写成 copyReadme 的例子
   async () => buildComponent(),
   async () => removeTypes(),
-  parallel(async () => buildStyle())
+  parallel(
+    async () => buildStyle(),
+    async () => copyReadme()
+  )
 );
