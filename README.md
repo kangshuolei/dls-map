@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-10-09 17:18:54
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-11 17:25:28
+ * @LastEditTime: 2024-10-11 17:57:16
 -->
 <p align="center">
   <img width="256px" src="https://raw.githubusercontent.com/kangshuolei/dls-map-doc/refs/heads/main/earth.svg">
@@ -76,3 +76,6 @@ $ pnpm add dls-map
 ```
 
 如果您的网络环境不好，建议使用 `nrm` 切换所用的包管理器的资源地址，或直接手动更改。
+
+## 🪴 Project Activity
+![Alt](https://repobeats.axiom.co/api/embed/83ab2b9de044e5e7dbe0c90f340aa2c27d7cb880.svg "Repobeats analytics image")
