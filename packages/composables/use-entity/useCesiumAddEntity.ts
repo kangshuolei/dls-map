@@ -1,4 +1,37 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+interface BillboardTypes extends Cesium.Entity.ConstructorOptions {
+  attribute: { [key: string]: any };
+}
+type EntityType = 'billboard' | 'model' | 'point';
+
+interface billboardOptionTypes {
+  type: EntityType; // 新增的字段，表示实体的类型
+  name?: string;
+  width?: number;
+  height?: number;
+  scale?: number;
+  click?: boolean;
+  shengClick?: boolean;
+  doubleClickHeight?: number;
+  attribute?: Record<string, any>;
+  popContent?: string;
+  pointHeight?: number;
+  doubleClickPitch?: number;
+  modelUrl?: string; // 模型URL
+  modelScale?: number; // 模型缩放
+  modelMinimumPixelSize?: number; // 模型的最小像素尺寸
+  imgUrl?: string; // 图片URL
+}
+type LineOptionType = {
+  name?: string;
+  width?: number;
+};
+type wallOptionTypes = {
+  maximumHeights?: number[];
+  minimumHeights?: number[];
+  alpha?: number;
+  MaterialIndex?: 1 | 2 | 3 | 4;
+};
 export function useCesiumEntities(viewer: Cesium.Viewer) {
   const entities = ref<Cesium.Entity[]>([]);
   /**
@@ -17,15 +50,16 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
    * @param {Number} doubleClickHeight 双击高度 可选
    * @param {Object} attribute 点属性 可选
    * @param {String} popContent 单击弹框内容 可选
-   * @param {String} pointHeight 点的高度 可选
+   * @param {Number} pointHeight 点的高度 可选
    * @param {String} doubleClickPitch 双击pitch 可选
    * @return entity
    */
-  function addBillboard(
+  function addPointEntity(
     lon: number,
     lat: number,
-    imgUrl: any,
+    viewer: Cesium.Viewer,
     {
+      type, // 根据类型来确定是点、图片还是模型
       name = 'Point',
       width,
       height,
@@ -37,25 +71,21 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
       popContent,
       pointHeight,
       doubleClickPitch = -90,
-    }: any,
-    viewer: any
-  ) {
+      modelUrl,
+      modelScale = 1,
+      modelMinimumPixelSize = 64,
+      imgUrl, // 图片 URL
+    }: billboardOptionTypes
+  ): Cesium.Entity | boolean {
     let h = pointHeight ? pointHeight : 0;
     if (!viewer) {
       console.error('viewer is undefined');
       return false;
     }
-    let entity = viewer.entities.add({
+
+    let entityConfig: any = {
       name: name,
       position: Cesium.Cartesian3.fromDegrees(lon, lat, h),
-      billboard: {
-        image: imgUrl,
-        width: width,
-        height: height,
-        scale: scale,
-        verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
-        HorizontalOrigin: Cesium.HorizontalOrigin.CENTER,
-      },
       attribute: attribute,
       click: click,
       shengClick: shengClick,
@@ -64,7 +94,54 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
       lat: lat,
       popContent: popContent,
       doubleClickPitch: doubleClickPitch,
-    });
+    };
+
+    // 根据type来判断实体类型，选择不同的配置
+    switch (type) {
+      case 'model': // 如果是模型
+        if (modelUrl) {
+          entityConfig.model = {
+            uri: modelUrl,
+            scale: modelScale,
+            minimumPixelSize: modelMinimumPixelSize,
+          };
+        } else {
+          console.error('Model URL is required for model type');
+          return false;
+        }
+        break;
+
+      case 'billboard': // 如果是图片
+        if (imgUrl) {
+          entityConfig.billboard = {
+            image: imgUrl,
+            width: width,
+            height: height,
+            scale: scale,
+            verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+            horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+          };
+        } else {
+          console.error('Image URL is required for billboard type');
+          return false;
+        }
+        break;
+
+      case 'point': // 如果是点
+        entityConfig.point = {
+          color: Cesium.Color.RED,
+          pixelSize: 10,
+          outlineColor: Cesium.Color.BLACK,
+          outlineWidth: 2,
+        };
+        break;
+
+      default:
+        console.error('Unknown entity type');
+        return false;
+    }
+
+    let entity = viewer.entities.add(entityConfig);
     return entity;
   }
   /**
@@ -75,11 +152,11 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
    * @param {Number} width 宽度
    */
   function addLine(
-    positions: any,
-    material: any,
-    viewer: any,
-    { name = 'Line', width = 3 }
-  ) {
+    positions: number[],
+    material: Cesium.MaterialProperty,
+    viewer: Cesium.Viewer,
+    { name = 'Line', width = 3 }: LineOptionType
+  ): Cesium.Entity | boolean {
     if (!viewer) {
       console.error('viewer is undefined');
       return false;
@@ -107,7 +184,7 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
     latitude: number,
     radius: number,
     color: string,
-    viewer: any,
+    viewer: Cesium.Viewer,
     name = 'Circle'
   ) {
     if (!viewer) {
@@ -138,20 +215,27 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
    * @param MaterialIndex 1：上下移动条纹材质 2：闪烁材质  3：顶部到底部渐变效果  4：左右移动条纹
    */
   function addWall(
-    viewer: any,
-    positions: any,
-    hexColor: any,
-    alpha: any,
-    MaterialIndex: 1 | 2 | 3 | 4,
-    maximumHeights: any = [],
-    minimumHeights: any = []
-  ) {
+    viewer: Cesium.Viewer,
+    positions: number[],
+    hexColor: string,
+    {
+      maximumHeights = [],
+      minimumHeights = [],
+      alpha = 0.5,
+      MaterialIndex = 1,
+    }: wallOptionTypes
+  ): Cesium.Primitive | boolean {
     if (!viewer) {
       console.error('viewer is undefined');
       return false;
     }
     let wallGeometry = null;
-    if (maximumHeights.length && minimumHeights.length) {
+    if (
+      maximumHeights &&
+      minimumHeights &&
+      maximumHeights.length &&
+      minimumHeights.length
+    ) {
       // 1. 创建 WallGeometry 和 WallGeometryInstance
       wallGeometry = new Cesium.WallGeometry({
         positions: Cesium.Cartesian3.fromDegreesArrayHeights(positions),
@@ -272,7 +356,17 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
     entities.value = [];
   };
 
-  //根据指定的 entitity
+  //根据entity删除指定的entity
+  const removeSpecifyEntity = (entitys: Cesium.Entity[]) => {
+    entitys.forEach((entity: Cesium.Entity) => viewer.entities.remove(entity));
+  };
+
+  //根据指定的 Primitive删除指定的 Primitive
+  const removeSpecifyPrimitive = (primitives: Cesium.Primitive[]) => {
+    primitives.forEach((primitive: Cesium.Primitive) =>
+      viewer.scene.primitives.remove(primitive)
+    );
+  };
 
   // 生命周期钩子：在组件挂载时执行
   onMounted(() => {
@@ -285,9 +379,11 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
     console.log('Cesium entities removed.');
   });
   return {
-    addBillboard,
+    addPointEntity,
     addLine,
     addCircle,
     addWall,
+    removeSpecifyEntity,
+    removeSpecifyPrimitive,
   };
 }

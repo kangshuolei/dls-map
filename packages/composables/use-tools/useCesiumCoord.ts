@@ -91,13 +91,9 @@ export function useCesiumCoord() {
         }
       }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
       //鼠标缩放获取相机的高度
-      hander.setInputAction(function (wheelment: any) {
-        coords.height = viewer.camera.positionCartographic.height.toFixed(1);
-        let zoom = heightToZoom(
-          Math.ceil(viewer.camera.positionCartographic.height)
-        );
-        coords.zoomLevel = zoom;
-      }, Cesium.ScreenSpaceEventType.WHEEL);
+      // hander.setInputAction(function (wheelment: any) {
+
+      // }, Cesium.ScreenSpaceEventType.WHEEL);
       //倾斜地球时获取倾斜角度和方向
       viewer.scene.camera.moveEnd.addEventListener(function () {
         //获取相机方向向量
@@ -112,6 +108,12 @@ export function useCesiumCoord() {
         let pitch = camera.pitch;
         //将俯仰角转换为度数
         coords.pitchDegrees = Cesium.Math.toDegrees(pitch).toFixed(0);
+        //获取相机的高度
+        coords.height = viewer.camera.positionCartographic.height.toFixed(1);
+        let zoom = heightToZoom(
+          Math.ceil(viewer.camera.positionCartographic.height)
+        );
+        coords.zoomLevel = zoom;
       });
     }
   }
