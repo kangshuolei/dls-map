@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-29 15:28:30
+ * @LastEditTime: 2024-10-15 14:19:45
 -->
 <template>
   <div class="appMain">
@@ -15,16 +15,21 @@
       ref="dlsMapRef"
       :viewer-width="'100%'"
       :viewer-height="'500px'"
-      @cesium-ready="onCesiumReady"
+      @ready="onReady"
     />
     <div class="operation">
       <el-button @click="handleEcharts" type="primary">加载迁徙图</el-button>
+      <el-button @click="handleDispose" type="primary">销毁</el-button>
+      <el-button @click="handleShow" type="primary">显示</el-button>
+      <el-button @click="handleHide" type="primary">隐藏</el-button>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { CesiumUseEcharts, DlsMap } from 'dls-map';
+import { DlsMap } from '@dls-map/components';
+import { CesiumUseEcharts } from '@dls-map/composables';
+import { useCesiumFlyTo } from 'dls-map';
 import { onMounted, ref, reactive } from 'vue';
 
 const dlsMapRef = ref(null);
@@ -37,6 +42,7 @@ const dataM = reactive<any>({
     tileMatrixSetID: 'GoogleMapsCompatible',
   },
   viewer: null,
+  cesiumChartIns: null,
 });
 
 onMounted(() => {
@@ -44,10 +50,25 @@ onMounted(() => {
   console.log('dlsMapRef', dlsMapRef.value);
 });
 
+//销毁迁徙图
+const handleDispose = () => {
+  dataM.cesiumChartIns.dispose();
+};
+
+//显示迁徙图
+const handleShow = () => {
+  dataM.cesiumChartIns.show();
+};
+
+//隐藏迁徙图9
+const handleHide = () => {
+  dataM.cesiumChartIns.hide();
+};
+
 //加载热力图
-const handleEcharts = () => {
+const handleEcharts = async () => {
   //生成一个echarts
-  const chinaGeoCoordMap = {
+  const chinaGeoCoordMap: any = {
     黑龙江: [127.9688, 45.368],
     内蒙古: [110.3467, 41.4899],
     吉林: [125.8154, 44.2584],
@@ -80,7 +101,7 @@ const handleEcharts = () => {
     海南: [110.3893, 19.8516],
     上海: [121.4648, 31.2891],
   };
-  const chinaDatas = [
+  const chinaDatas: any = [
     [
       {
         name: '黑龙江',
@@ -251,7 +272,7 @@ const handleEcharts = () => {
     ],
   ];
 
-  const convertData = function (data) {
+  const convertData = function (data: any) {
     const res = [];
     for (let i = 0; i < data.length; i++) {
       const dataItem = data[i];
@@ -271,7 +292,7 @@ const handleEcharts = () => {
     }
     return res;
   };
-  const series = [];
+  const series: any = [];
   [['北京市', chinaDatas]].forEach(function (item, i) {
     series.push(
       {
@@ -310,7 +331,7 @@ const handleEcharts = () => {
             show: true,
             position: 'right', //显示位置
             offset: [5, 0], //偏移设置
-            formatter: function (params) {
+            formatter: function (params: any) {
               //圆环显示文字
               return params.data.name;
             },
@@ -321,7 +342,7 @@ const handleEcharts = () => {
           },
         },
         symbol: 'circle',
-        symbolSize: function (val) {
+        symbolSize: function (val: any) {
           return 5 + val[2] * 5; //圆环大小
         },
         itemStyle: {
@@ -330,7 +351,7 @@ const handleEcharts = () => {
             color: '#32ff9d', //颜色
           },
         },
-        data: item[1].map(function (dataItem) {
+        data: item[1].map(function (dataItem: any) {
           return {
             name: dataItem[0].name,
             value: chinaGeoCoordMap[dataItem[0].name].concat([
@@ -387,7 +408,13 @@ const handleEcharts = () => {
     // viewer:viewer,
     series: series,
   };
-  CesiumUseEcharts(Cesium, dataM.viewer, option);
+  dataM.cesiumChartIns = await CesiumUseEcharts(Cesium, dataM.viewer, option);
+  useCesiumFlyTo(dataM.viewer, [116.4551, 40.2539, 10000000]);
+  console.log('cesiumChartIns', dataM.cesiumChartIns);
+};
+
+const onReady = (e: any) => {
+  dataM.viewer = e.viewer;
 };
 
 //cesium初始化完成之后

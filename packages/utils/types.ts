@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-10-08 15:47:41
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-08 16:18:29
+ * @LastEditTime: 2024-10-15 11:19:18
  */
 import { ComponentInternalInstance } from 'vue';
 
@@ -31,4 +31,15 @@ interface DlsViewerProvider {
   postProcessStages: Cesium.PostProcessStageCollection;
 }
 
-export { DlsComponentInternalInstance, DlsViewerProvider };
+interface divValOptions {
+  viewer: Cesium.Viewer;
+  height: number;
+  position: [number, number];
+  dom: HTMLElement | string;
+  id?: string;
+  className?: string;
+  offset?: [number, number];
+  type?: string;
+}
+
+export { DlsComponentInternalInstance, DlsViewerProvider, divValOptions };

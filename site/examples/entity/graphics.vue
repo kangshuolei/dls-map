@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-29 14:21:52
+ * @LastEditTime: 2024-10-15 17:15:08
 -->
 <template>
   <div class="appMain">
@@ -15,26 +15,22 @@
       ref="dlsMapRef"
       :viewer-width="'100%'"
       :viewer-height="'500px'"
-      @cesium-ready="onCesiumReady"
+      @ready="onCesiumReady"
     />
     <div class="operation">
       <el-button @click="handleAddPoint" type="primary">添加点</el-button>
       <el-button @click="handleAddLine" type="primary">添加线</el-button>
       <el-button @click="handleAddCircle" type="primary">添加圆</el-button>
       <el-button @click="handleAddWall" type="primary">添加墙</el-button>
+      <el-button @click="handleRemovePoint" type="primary">删除点</el-button>
+      <el-button @click="handleRemoveWall" type="primary">删除墙</el-button>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {
-  addBillboard,
-  addCircle,
-  addLine,
-  addWall,
-  DlsMap,
-  useCesiumFlyTo,
-} from 'dls-map';
+import { DlsMap } from '@dls-map/components';
+import { useCesiumFlyTo, useCesiumEntities } from '@dls-map/composables';
 import lightSpotImg from '../../assets/images/lightSpot.png';
 import { onMounted, ref, reactive, watch } from 'vue';
 
@@ -48,72 +44,120 @@ const dataM = reactive<any>({
     tileMatrixSetID: 'GoogleMapsCompatible',
   },
   viewer: null,
+  pointEntity: null,
+  wallEntity: null,
 });
+const {
+  addPointEntity,
+  addLine,
+  addCircle,
+  addWall,
+  removeSpecifyEntity,
+  removeSpecifyPrimitive,
+} = useCesiumEntities();
 
 onMounted(() => {
   //获取viewer
   console.log('dlsMapRef', dlsMapRef.value);
 });
 
+//删除点
+const handleRemovePoint = () => {
+  removeSpecifyEntity([dataM.pointEntity], dataM.viewer);
+  dataM.pointEntity = null;
+};
+
+//删除墙
+const handleRemoveWall = () => {
+  removeSpecifyPrimitive([dataM.wallEntity], dataM.viewer);
+  dataM.wallEntity = null;
+};
+
 //添加点
 const handleAddPoint = () => {
-  const option = {
-    name: 'test',
-    scale: 1,
-    doubleClickPitch: -30, // 双击放大偏转角
-    attribute: {
-      // 属性信息，点击通过getPopupCon接受
-      position: [-115.0, 37.0],
-      weizhi: '123',
-      ischangeimg: false,
-    },
-  };
-  addBillboard(-115.0, 37.0, lightSpotImg, option, dataM.viewer);
-  useCesiumFlyTo(dataM.viewer, [-115.0, 37.0, 1000000]);
+  if (!dataM.pointEntity) {
+    //添加的图片类型
+    const pointEntity = addPointEntity(116.4134, 39.911, dataM.viewer, {
+      type: 'billboard',
+      imgUrl: lightSpotImg,
+    });
+    // const pointEntity = addPointEntity(116.4134, 39.911, dataM.viewer, {
+    //   type: 'point',
+    // });
+    dataM.pointEntity = pointEntity;
+    dataM.viewer.flyTo(pointEntity, {
+      duration: 2, // 相机飞行的时间（以秒为单位）
+      offset: new Cesium.HeadingPitchRange(0, -0.5, 500), // 设置偏移角度和距离（可选）
+    });
+  } else {
+    dataM.viewer.flyTo(dataM.pointEntity, {
+      duration: 2, // 相机飞行的时间（以秒为单位）
+      offset: new Cesium.HeadingPitchRange(0, -0.5, 500), // 设置偏移角度和距离（可选）
+    });
+  }
 };
 
 //添加线
 const handleAddLine = () => {
-  let entity = addLine(
+  const lineEntity = addLine(
     [-115.0, 37.0, -115.0, 32.0],
-    Cesium.Color.RED,
+    new Cesium.PolylineDashMaterialProperty({
+      color: Cesium.Color.BLUE, // 虚线的颜色
+      dashLength: 16, // 虚线的每个段的长度
+    }),
     dataM.viewer,
     {}
   );
-  useCesiumFlyTo(dataM.viewer, [-115.0, 37.0, 1000000]);
+  dataM.viewer.flyTo(lineEntity, {
+    duration: 2, // 相机飞行的时间（以秒为单位）
+  });
 };
 
 //添加圆
 const handleAddCircle = () => {
-  let entity = addCircle(
-    -115.0,
-    37.0,
-    100000,
+  const circleEntity = addCircle(
+    116.4134,
+    39.911,
+    10000,
     'rgba(77, 225, 247,0.3)',
     dataM.viewer
   );
-  useCesiumFlyTo(dataM.viewer, [-115.0, 37.0, 1000000]);
+  dataM.viewer.flyTo(circleEntity, {
+    duration: 2, // 相机飞行的时间（以秒为单位）
+    offset: new Cesium.HeadingPitchRange(0, -0.5, 500),
+  });
 };
 
 //添加墙
 const handleAddWall = () => {
-  addWall(
-    dataM.viewer,
-    [
-      -115.0, 37.0, 100000, -115.0, 32.0, 100000, -107.0, 33.0, 100000, -115.0,
-      37.0, 100000,
-    ],
-    '#00FFFF',
-    0.7,
-    1
-  );
+  if (!dataM.wallEntity) {
+    const wallEntity = addWall(
+      dataM.viewer,
+      [
+        -115.0, 37.0, 100000, -115.0, 32.0, 100000, -107.0, 33.0, 100000,
+        -115.0, 37.0, 100000,
+      ],
+      '#00FFFF',
+      { MaterialIndex: 4 }
+    );
+    dataM.wallEntity = wallEntity;
+    dataM.viewer.flyTo(wallEntity, {
+      duration: 2, // 相机飞行的时间（以秒为单位）
+      offset: new Cesium.HeadingPitchRange(0, -0.5, 500),
+    });
+  } else {
+    dataM.viewer.flyTo(dataM.wallEntity, {
+      duration: 2, // 相机飞行的时间（以秒为单位）
+      offset: new Cesium.HeadingPitchRange(0, -0.5, 500),
+    });
+  }
 };
 
 //cesium初始化完成之后
-const onCesiumReady = (viewer: Cesium.Viewer) => {
+const onCesiumReady = (e: any) => {
   //加载地形
-  dataM.viewer = viewer;
-  console.log('执行了', viewer);
+  dataM.viewer = e.viewer;
+  console.log('执行了', e.viewer);
 };
 </script>
 

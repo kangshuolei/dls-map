@@ -4,33 +4,24 @@
  * @description: div.ts
  */
 
-interface ViewerOptions {
-  viewer: any;
-  height: number;
-  position: [number, number];
-  dom: HTMLElement | string;
-  id?: string;
-  className?: string;
-  offset?: [number, number];
-  type?: string;
-}
+import { divValOptions } from '@dls-map/utils/types';
 
 class DlsDivLabel {
-  viewer: any;
+  viewer: Cesium.Viewer;
   height!: number;
   position: any;
   dom!: HTMLElement;
   id?: string;
   className?: string;
   offset?: [number, number];
-  layerData!: ViewerOptions;
+  layerData!: divValOptions;
   vmInstance!: HTMLElement;
   dId?: string;
   show!: boolean;
   _render!: () => void;
   type?: string;
 
-  constructor(val?: ViewerOptions) {
+  constructor(val?: divValOptions) {
     if (val) {
       this.viewer = val.viewer;
       this.height = val.height;

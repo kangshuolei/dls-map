@@ -17,7 +17,7 @@ export default defineConfig({
     [
       'script',
       {
-        src: 'https://cdn.staticfile.net/cesium/1.106.1/Cesium.js',
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/cesium/1.122.0/Cesium.js',
       },
     ],
     [

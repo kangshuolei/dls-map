@@ -22,7 +22,47 @@
         >标绘</dls-button
       >
     </div>
-    <div class="drawLine" @click="handleDrawLine">绘制线段</div>
+    <div class="addEntity">
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleAddEcharts"
+        >加载echarts地图</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleAddPoint"
+        >添加点</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleAddLine"
+        >添加线</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleAddWall"
+        >添加墙</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleAddCircle"
+        >添加圆</dls-button
+      >
+      <dls-button size="midium" type="primary" @click="handleRemoveEntity"
+        >删除实例</dls-button
+      >
+    </div>
+    <!-- <div class="drawLine" @click="handleDrawLine">绘制线段</div>  -->
     <div class="backCenter" @click="handleBackCenter">回到中心点</div>
     <div class="setPitchDegrees" @click="handleSetPitchDegrees">仰角设置</div>
     <div class="eye">
@@ -35,6 +75,7 @@
 import { DlsButton, DlsMap, DlsMapEye } from '@dls-map/components';
 import wallLine from '/static/images/wall_line.png';
 import ArrowImg from '/static/images/arrowImg.png';
+import LightSpot from '/static/images/lightSpot.png';
 import {
   useSwitchMap,
   useCesiumCoord,
@@ -50,9 +91,18 @@ import {
   CesiumBufferAnalyze,
   CesiumTrack,
   useDlsMap,
+  useCesiumEntities,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
 const { listenToMouseMovement, coords } = useCesiumCoord();
+const {
+  addPointEntity,
+  addLine,
+  addCircle,
+  addWall,
+  removeSpecifyEntity,
+  removeSpecifyPrimitive,
+} = useCesiumEntities();
 const dlsMapRef = ref(null);
 const dataM = reactive<any>({
   imageryProvider: {
@@ -65,6 +115,8 @@ const dataM = reactive<any>({
   coords: {},
   viewer: {},
   dlsDivLabel: null,
+  pointEntity: null,
+  wallEntity: null,
 });
 
 watch(coords, (newValue) => {
@@ -83,67 +135,9 @@ onMounted(() => {
   console.log('dlsMapRef', dlsMapRef.value);
   // console.log(dataM.imageryProvider);
 });
-const handleDrawLine = () => {
-  // dlsMapContainer.value.DrawSoildLine(dataM.viewer,'lines', [255, 10, 255], 5)
-};
 
-const handleCesiumPlot = () => {
-  const geometry = new CesiumPlot.Point(Cesium, dataM.viewer, {
-    pixelSize: 10,
-  });
-  console.log('geometry', geometry);
-};
-
-const handleBackCenter = () => {
-  useCesiumFlyTo(dataM.viewer, [116.4134, 39.911, 11000000]);
-};
-
-const handleSetPitchDegrees = () => {
-  // dlsMapContainer.value.handlePitchDegrees(dataM.viewer,-11)
-};
-const onCesiumReady = (e: any) => {
-  console.log('Cesium加载完毕', e);
-};
-
-//cesium初始化完成之后
-const onReady = (e: any) => {
-  dataM.viewer = e.viewer;
-  console.log('e', e);
-  // useSwitchMap({},e)
-  listenToMouseMovement(dataM.viewer);
-
-  if (dataM.dlsDivLabel) {
-    dataM.dlsDivLabel.removeCountryAllDiv('.LayerTitle');
-  }
-  const jsxContent = `
-          <div class="ip-model-style">
-            123
-          </div>
-        `;
-  let className = 'LayerTitle';
-  let val = {
-    viewer: dataM.viewer,
-    position: [116.4134, 39.911],
-    height: 0,
-    offset: [0, -90],
-    dom: jsxContent,
-    className,
-  };
-  dataM.dlsDivLabel = new DlsDivLabel(val);
-  // addRainScene(dataM.viewer);
-  //生成一个线段
-  // addLine([-115.0, 37.0, -115.0, 32.0], Cesium.Color.RED, dataM.viewer, {});
-  //生成一个墙
-  // addWall(
-  //   dataM.viewer,
-  //   [
-  //     -115.0, 37.0, 100000, -115.0, 32.0, 100000, -107.0, 33.0, 100000, -115.0,
-  //     37.0, 100000,
-  //   ],
-  //   '#00FFFF',
-  //   0.7,
-  //   1
-  // );
+//添加echarts
+const handleAddEcharts = () => {
   //生成一个echarts
   const chinaGeoCoordMap = {
     黑龙江: [127.9688, 45.368],
@@ -369,7 +363,7 @@ const onReady = (e: any) => {
     }
     return res;
   };
-  const series = [];
+  const series: any = [];
   [['北京市', chinaDatas]].forEach(function (item, i) {
     series.push(
       {
@@ -486,7 +480,140 @@ const onReady = (e: any) => {
     series: series,
   };
   console.log('Cesium, dataM.viewer, option', Cesium, dataM.viewer, option);
-  // CesiumUseEcharts(Cesium, dataM.viewer, option);
+  CesiumUseEcharts(Cesium, dataM.viewer, option);
+};
+
+//添加点
+const handleAddPoint = () => {
+  //添加的图片类型
+  dataM.pointEntity = addPointEntity(116.4134, 39.911, dataM.viewer, {
+    type: 'billboard',
+    imgUrl: LightSpot,
+  });
+  // const pointEntity = addPointEntity(116.4134, 39.911, dataM.viewer, {
+  //   type: 'point',
+  // });
+  dataM.viewer.flyTo(dataM.pointEntity, {
+    duration: 2, // 相机飞行的时间（以秒为单位）
+    offset: new Cesium.HeadingPitchRange(0, -0.5, 500), // 设置偏移角度和距离（可选）
+  });
+};
+
+//添加线
+const handleAddLine = () => {
+  const lineEntity = addLine(
+    [-115.0, 37.0, -115.0, 32.0],
+    new Cesium.PolylineDashMaterialProperty({
+      color: Cesium.Color.BLUE, // 虚线的颜色
+      dashLength: 16, // 虚线的每个段的长度
+    }),
+    dataM.viewer,
+    {}
+  );
+  dataM.viewer.flyTo(lineEntity, {
+    duration: 2, // 相机飞行的时间（以秒为单位）
+    // offset: new Cesium.HeadingPitchRange(0, -0.5, 500), // 设置偏移角度和距离（可选）
+  });
+};
+
+//添加墙
+const handleAddWall = () => {
+  dataM.wallEntity = addWall(
+    dataM.viewer,
+    [
+      -115.0, 37.0, 100000, -115.0, 32.0, 100000, -107.0, 33.0, 100000, -115.0,
+      37.0, 100000,
+    ],
+    '#00FFFF',
+    { MaterialIndex: 4 }
+  );
+  dataM.viewer.flyTo(dataM.wallEntity, {
+    duration: 2, // 相机飞行的时间（以秒为单位）
+    // offset: new Cesium.HeadingPitchRange(0, -0.5, 500), // 设置偏移角度和距离（可选）
+  });
+};
+
+const handleRemoveEntity = () => {
+  removeSpecifyEntity([dataM.pointEntity], dataM.viewer);
+  removeSpecifyPrimitive([dataM.wallEntity], dataM.viewer);
+};
+
+//添加圆
+const handleAddCircle = () => {
+  const circleEntity = addCircle(
+    116.4134,
+    39.911,
+    10000,
+    'rgba(77, 225, 247,0.3)',
+    dataM.viewer
+  );
+  dataM.viewer.flyTo(circleEntity, {
+    duration: 2, // 相机飞行的时间（以秒为单位）
+    // offset: new Cesium.HeadingPitchRange(0, -0.5, 500), // 设置偏移角度和距离（可选）
+  });
+};
+
+const handleDrawLine = () => {
+  // dlsMapContainer.value.DrawSoildLine(dataM.viewer,'lines', [255, 10, 255], 5)
+};
+
+const handleCesiumPlot = () => {
+  const geometry = new CesiumPlot.Point(Cesium, dataM.viewer, {
+    pixelSize: 10,
+  });
+  console.log('geometry', geometry);
+};
+
+const handleBackCenter = () => {
+  useCesiumFlyTo(dataM.viewer, [116.4134, 39.911, 11000000]);
+};
+
+const handleSetPitchDegrees = () => {
+  // dlsMapContainer.value.handlePitchDegrees(dataM.viewer,-11)
+};
+const onCesiumReady = (e: any) => {
+  console.log('Cesium加载完毕', e);
+};
+
+//cesium初始化完成之后
+const onReady = (e: any) => {
+  dataM.viewer = e.viewer;
+  console.log('e', e);
+  // useSwitchMap({},e)
+  listenToMouseMovement(dataM.viewer);
+
+  if (dataM.dlsDivLabel) {
+    dataM.dlsDivLabel.removeCountryAllDiv('.LayerTitle');
+  }
+  const jsxContent = `
+          <div class="ip-model-style">
+            123
+          </div>
+        `;
+  let className = 'LayerTitle';
+  let val = {
+    viewer: dataM.viewer,
+    position: [116.4134, 39.911],
+    height: 0,
+    offset: [0, -90],
+    dom: jsxContent,
+    className,
+  };
+  dataM.dlsDivLabel = new DlsDivLabel(val);
+  // addRainScene(dataM.viewer);
+  //生成一个线段
+  // addLine([-115.0, 37.0, -115.0, 32.0], Cesium.Color.RED, dataM.viewer, {});
+  //生成一个墙
+  // addWall(
+  //   dataM.viewer,
+  //   [
+  //     -115.0, 37.0, 100000, -115.0, 32.0, 100000, -107.0, 33.0, 100000, -115.0,
+  //     37.0, 100000,
+  //   ],
+  //   '#00FFFF',
+  //   0.7,
+  //   1
+  // );
   // 加载热力图
   let heatData = [
     { lat: 39.258476, lng: 110.219918, value: 42 },
@@ -570,6 +697,19 @@ const onReady = (e: any) => {
     bottom: 5rem;
     right: 0;
     padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .addEntity {
+    cursor: pointer;
+    position: absolute;
+    z-index: 9999;
+    color: #ffffff;
+    top: 0;
+    right: 30rem;
+    width: auto;
+    padding: 0.5rem;
+    gap: 1rem;
+    display: flex;
     background-color: rgba(0, 0, 0, 0.5);
   }
 

@@ -40,7 +40,7 @@ import {
   version,
   watch,
   watchEffect
-} from "./chunk-IYJFJSQY.js";
+} from "./chunk-R4POG3CG.js";
 
 // ../node_modules/.pnpm/@vueuse+shared@11.1.0_vue@3.5.11/node_modules/@vueuse/shared/index.mjs
 function computedEager(fn, options) {
@@ -9285,4 +9285,4 @@ export {
   useWindowScroll,
   useWindowSize
 };
-//# sourceMappingURL=chunk-NUCTZYNJ.js.map
+//# sourceMappingURL=chunk-S2RNCMJK.js.map

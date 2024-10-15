@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-29 16:15:11
+ * @LastEditTime: 2024-10-15 17:51:56
 -->
 <template>
   <div class="appMain">
@@ -15,7 +15,7 @@
       ref="dlsMapRef"
       :viewer-width="'100%'"
       :viewer-height="'500px'"
-      @cesium-ready="onCesiumReady"
+      @ready="onCesiumReady"
     />
     <div class="operation">
       <el-tooltip
@@ -46,17 +46,23 @@
         </template>
       </el-tooltip>
     </div>
+    <div class="eye">
+      <dls-map-eye
+        :base-map="{ width: '200px', height: '150px' }"
+        :marst-viewer="dataM.viewer"
+      />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import {
-  DlsMap,
   DrawSoildLine,
   handlePitchDegrees,
   useCesiumFlyTo,
   useSwitchViewPoint,
-} from 'dls-map';
+} from '@dls-map/composables';
+import { DlsMap, DlsMapEye } from '@dls-map/components';
 import { onMounted, ref, reactive } from 'vue';
 
 import BackCenterImg from '../../assets/images/tools/backCenter.png';
@@ -237,10 +243,10 @@ const handleImg = (data: any) => {
 };
 
 //cesium初始化完成之后
-const onCesiumReady = (viewer: Cesium.Viewer) => {
+const onCesiumReady = (e: any) => {
   //加载地形
-  dataM.viewer = viewer;
-  console.log('执行了', viewer);
+  dataM.viewer = e.viewer;
+  console.log('执行了', e.viewer);
 };
 </script>
 
@@ -248,6 +254,15 @@ const onCesiumReady = (viewer: Cesium.Viewer) => {
 .appMain {
   width: 100%;
   height: 100%;
+  .eye {
+    position: absolute;
+    z-index: 9999;
+    color: #ffffff;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
   .operation {
     position: absolute;
     z-index: 1;

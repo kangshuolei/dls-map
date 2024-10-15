@@ -1,10 +1,20 @@
+//@ts-nocheck
 //因为目前这个只支持echarts 4.x版本
 // 所以没有通过 import 的方式引用 echarts，用 index.html 引入 echart.js的方式引用的
+type canvasConfigTypes = {
+  width?: string;
+  height?: string;
+};
+type optionTypes = {
+  animation: boolean;
+  GLMap: Object;
+  series: any;
+};
 export default async function CesiumUseEcharts(
-  Cesium,
-  viewer,
-  option,
-  canvasConfig
+  Cesium: any,
+  viewer: Cesium.Viewer,
+  option: optionTypes,
+  canvasConfig?: canvasConfigTypes
 ) {
   //结合echarts
   (function (e) {
@@ -244,7 +254,6 @@ export default async function CesiumUseEcharts(
       });
     },
   ]);
-  console.log('echarts', echarts);
 
   //开始
   // 创建一个包装对象
@@ -266,14 +275,14 @@ export default async function CesiumUseEcharts(
     if (this._canvasConfig) {
       e.style.top = '0px';
       e.style.left = '0px';
-      e.style.width = this._canvasConfig.width + 'rem';
-      e.style.height = this._canvasConfig.height + 'rem';
+      e.style.width = this._canvasConfig.width;
+      e.style.height = this._canvasConfig.height;
       e.style.pointerEvents = 'none';
     } else {
       e.style.top = '0px';
       e.style.left = '0px';
-      e.style.width = 120 + 'rem';
-      e.style.height = 55 + 'rem';
+      e.style.width = '100%';
+      e.style.height = '100%';
       e.style.pointerEvents = 'none';
     }
     const l = document.getElementsByClassName('echartMap').length;
@@ -302,10 +311,12 @@ export default async function CesiumUseEcharts(
     return this._overlay;
   };
   hrcEcharts.prototype.show = function () {
-    document.getElementById(this._id).style.visibility = 'visible';
+    document.getElementById(this._echartsContainer.id).style.visibility =
+      'visible';
   };
   hrcEcharts.prototype.hide = function () {
-    document.getElementById(this._id).style.visibility = 'hidden';
+    document.getElementById(this._echartsContainer.id).style.visibility =
+      'hidden';
   };
   let data = new hrcEcharts(viewer, option, canvasConfig);
   return data;

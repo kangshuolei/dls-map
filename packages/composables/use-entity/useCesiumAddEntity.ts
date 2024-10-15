@@ -32,7 +32,7 @@ type wallOptionTypes = {
   alpha?: number;
   MaterialIndex?: 1 | 2 | 3 | 4;
 };
-export function useCesiumEntities(viewer: Cesium.Viewer) {
+export function useCesiumEntities() {
   const entities = ref<Cesium.Entity[]>([]);
   /**
    * viewer 代表 window.viewer , 所以只能在viewer挂在完后使用
@@ -153,7 +153,7 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
    */
   function addLine(
     positions: number[],
-    material: Cesium.MaterialProperty,
+    material: Cesium.MaterialProperty | Cesium.Color,
     viewer: Cesium.Viewer,
     { name = 'Line', width = 3 }: LineOptionType
   ): Cesium.Entity | boolean {
@@ -351,18 +351,24 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
     return wallPrimitive;
   }
   // 移除所有实体
-  const removeAllEntities = () => {
+  const removeAllEntities = (viewer: Cesium.Viewer) => {
     entities.value.forEach((entity) => viewer.entities.remove(entity));
     entities.value = [];
   };
 
   //根据entity删除指定的entity
-  const removeSpecifyEntity = (entitys: Cesium.Entity[]) => {
+  const removeSpecifyEntity = (
+    entitys: Cesium.Entity[],
+    viewer: Cesium.Viewer
+  ) => {
     entitys.forEach((entity: Cesium.Entity) => viewer.entities.remove(entity));
   };
 
   //根据指定的 Primitive删除指定的 Primitive
-  const removeSpecifyPrimitive = (primitives: Cesium.Primitive[]) => {
+  const removeSpecifyPrimitive = (
+    primitives: Cesium.Primitive[],
+    viewer: Cesium.Viewer
+  ) => {
     primitives.forEach((primitive: Cesium.Primitive) =>
       viewer.scene.primitives.remove(primitive)
     );
@@ -375,7 +381,7 @@ export function useCesiumEntities(viewer: Cesium.Viewer) {
 
   // 生命周期钩子：在组件销毁之前执行，移除所有实体
   onBeforeUnmount(() => {
-    removeAllEntities();
+    // removeAllEntities();
     console.log('Cesium entities removed.');
   });
   return {

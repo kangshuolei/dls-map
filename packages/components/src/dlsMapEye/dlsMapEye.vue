@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-30 14:39:00
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-09 17:09:34
+ * @LastEditTime: 2024-10-15 17:47:05
 -->
 <template>
   <div class="eyeMain">
@@ -50,18 +50,34 @@ const loadMapEye = () => {
   //鹰眼
   //小的地球隐藏所有的控件
   data.viewer = new Cesium.Viewer('eyeId', {
-    geocoder: false, //查找位置工具
-    homeButton: false, //返回视角的初始位置
-    sceneModePicker: false, //选择视角的模式：2D,3D,哥伦布视图
-    baseLayerPicker: false, //图层选择选择地图服务还是地形服务
-    navigationHelpButton: false, //导航帮助按钮
-    sceneMode: Cesium.SceneMode.SCENE2D,
-    animation: false, //动画器件，可以旋转地球
+    // 不显示基础图层选择器
+    baseLayerPicker: false,
+    // 不显示地址搜索栏
+    geocoder: false,
+    // 不显示动画控件（如播放、暂停按钮）
+    animation: false,
+    // 启用或禁用场景动画
+    shouldAnimate: true,
+    // 不显示返回主页按钮
+    homeButton: false,
+    // 不显示时间轴
+    timeline: false,
+    // 不显示全屏按钮
+    fullscreenButton: false,
+    // 允许切换2D/3D模式
+    scene3DOnly: false,
+    // 不显示2D/3D视图模式切换按钮
+    sceneModePicker: false,
+    // 不显示导航帮助信息
+    navigationInstructionsInitiallyVisible: false,
+    // 不显示导航帮助按钮
+    navigationHelpButton: false,
+    // 不显示选择指示器
+    selectionIndicator: false,
+    // 不显示信息窗口
     infoBox: false,
-    creditContainer: 'credit', //
-    timeline: false, //下方的时间轴，默认指示当前时间，允许用户点击跳转到指定时间
-    fullscreenButton: false, //全屏显示
-    vrButton: false, // VR 按钮，右下角有个戴眼镜的按钮，点击可以看下效果
+    // 场景模式设置为2D或3D，根据 `mapConfig.sceneMode` 来决定
+    sceneMode: 2,
   });
 
   data.viewer.imageryLayers.addImageryProvider(
@@ -77,6 +93,13 @@ const loadMapEye = () => {
           } as any)
     )
   );
+
+  // 获取 canvas 元素
+  var canvas = data.viewer.scene.canvas;
+
+  // 调整 canvas 的大小
+  canvas.style.width = baseMap.width;
+  canvas.style.height = baseMap.height;
 
   //设置鹰眼图中球属性,禁止拖动旋转等操作
   let control = data.viewer.scene.screenSpaceCameraController;

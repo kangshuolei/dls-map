@@ -40,7 +40,8 @@ import {
   version,
   watch,
   watchEffect
-} from "./chunk-IYJFJSQY.js";
+} from "./chunk-R4POG3CG.js";
+import "./chunk-PPFLRK2V.js";
 import "./chunk-V4OQ3NZ2.js";
 
 // ../node_modules/.pnpm/@vueuse+shared@11.1.0_vue@3.4.37/node_modules/@vueuse/shared/index.mjs

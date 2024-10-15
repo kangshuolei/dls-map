@@ -2,13 +2,13 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-29 15:12:51
+ * @LastEditTime: 2024-10-15 16:58:12
 -->
 <template>
   <div class="appMain">
     <dls-map
       :mapConfig="{
-        id: 'dls-map-layer-terrain',
+        id: 'dls-map-heatmap',
         imageryProvider: dataM.imageryProvider,
         sceneModeNum: 3,
       }"
@@ -19,13 +19,18 @@
     />
     <div class="operation">
       <el-button @click="handleHeatMap" type="primary">加载热力图</el-button>
+      <el-button @click="handleRemoveHeatMap" type="primary">移除</el-button>
+      <el-button @click="handleShowHeatMap" type="primary">显示</el-button>
+      <el-button @click="handleHideHeatMap" type="primary">隐藏</el-button>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { CesiumHeatMap, DlsMap } from 'dls-map';
+import { DlsMap } from 'dls-map';
+import { CesiumHeatMap } from '@dls-map/composables';
 import { onMounted, ref, reactive } from 'vue';
+import { nextTick } from 'vue';
 
 const dlsMapRef = ref(null);
 const dataM = reactive<any>({
@@ -37,12 +42,28 @@ const dataM = reactive<any>({
     tileMatrixSetID: 'GoogleMapsCompatible',
   },
   viewer: null,
+  heatmap: null,
 });
 
 onMounted(() => {
   //获取viewer
   console.log('dlsMapRef', dlsMapRef.value);
 });
+
+//移出热力图
+const handleRemoveHeatMap = () => {
+  dataM.heatmap.remove();
+};
+
+//显示热力图
+const handleShowHeatMap = () => {
+  dataM.heatmap.show();
+};
+
+//隐藏热力图
+const handleHideHeatMap = () => {
+  dataM.heatmap.hide();
+};
 
 //加载热力图
 const handleHeatMap = () => {
@@ -63,17 +84,19 @@ const handleHeatMap = () => {
     { lat: 38.733172, lng: 110.170308, value: 45 },
     { lat: 39.042436, lng: 110.430257, value: 46 },
   ];
-  let heatmap = new CesiumHeatMap(Cesium, dataM.viewer, heatData, {
+  const heatmap = new CesiumHeatMap(Cesium, dataM.viewer, heatData, {
     radius: 30,
     maxOpacity: 0.9,
     minOpacity: 0.2,
     blur: 0.75,
     // gradient: {
-    //     '.5': 'blue',
-    //     '.8': 'red',
-    //     '.95': ''
-    // }
+    //   '.5': 'blue',
+    //   '.8': 'red',
+    //   '.95': '',
+    // },
   });
+  dataM.heatmap = heatmap;
+  console.log('heatmap', dataM.heatmap);
   dataM.viewer.flyTo(heatmap.entity);
 };
 
