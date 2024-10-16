@@ -2,13 +2,13 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-15 17:51:56
+ * @LastEditTime: 2024-10-16 15:03:04
 -->
 <template>
   <div class="appMain">
     <dls-map
       :mapConfig="{
-        id: 'dls-map-layer-terrain',
+        id: 'dls-map-layer-tools',
         imageryProvider: dataM.imageryProvider,
         sceneModeNum: 3,
       }"
@@ -139,7 +139,7 @@ const dataM = reactive<any>({
 });
 
 const tooltip = ref(null);
-const modes = [
+const modes: any = [
   {
     mode: Cesium.SceneMode.SCENE3D,
     type: '3d',
@@ -172,7 +172,6 @@ const handleToolZoomOut = () => {
   camera.zoomOut(1000000);
 };
 const handleToolLayers = (value: any) => {
-  console.log('value', value);
   dataM.viewer.imageryLayers.removeAll();
   Cesium.Ion.defaultAccessToken =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmYThlOTk4Mi1iY2QyLTRlZTItODJjOS0zOWFmOTA5ZTZlZjAiLCJpZCI6NDUyNTUsImlhdCI6MTcyMTI5NDMyNX0.k0XVbL506OHCyG7gI3KTdmMn3wwTYig3k6hJnWuvJag';
@@ -182,10 +181,6 @@ const handleToolLayers = (value: any) => {
         new Cesium.UrlTemplateImageryProvider({
           // 内网-电子图
           url: 'https://webst02.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
-          layer: 'tdtVecBasicLayer',
-          style: 'default',
-          format: 'image/png',
-          tileMatrixSetID: 'GoogleMapsCompatible',
         })
       );
       break;
@@ -194,10 +189,6 @@ const handleToolLayers = (value: any) => {
         new Cesium.UrlTemplateImageryProvider({
           // 内网-电子图
           url: 'https://webst02.is.autonavi.com/appmaptile?style=10&x={x}&y={y}&z={z}',
-          layer: 'tdtVecBasicLayer',
-          style: 'default',
-          format: 'image/png',
-          tileMatrixSetID: 'GoogleMapsCompatible',
         })
       );
       break;
@@ -209,6 +200,7 @@ const handleToolEarth = () => {
   // 切换到下一个模式
   currentModeIndex = (currentModeIndex + 1) % modes.length;
   const type = modes[currentModeIndex].type;
+  console.log('type', type);
   useSwitchViewPoint(type, dataM.viewer);
 };
 const handleToolBackCenter = () => {
@@ -220,15 +212,6 @@ const handleToolLine = () => {
 };
 const handleToolClear = () => {
   dataM.viewer.dataSources.removeAll();
-  // const dataSourcesList = dataM.viewer.dataSources._dataSources
-  // for (let i = 0; i < dataSourcesList.length; i++) {
-  //   if (dataSourcesList[i]._name === "measureLine") {
-  //     dataM.viewer.dataSources.remove(dataSourcesList[i])
-  //   }
-  //   if (dataSourcesList[i]._name === "MyLines") {
-  //     dataM.viewer.dataSources.remove(dataSourcesList[i])
-  //   }
-  // }
 };
 
 onMounted(() => {

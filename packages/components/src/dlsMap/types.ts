@@ -2,10 +2,9 @@
  * @Author: Kang
  * @Date: 2024-09-09 14:49:32
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-09 17:09:59
+ * @LastEditTime: 2024-10-16 17:13:22
  */
 import { ExtractPropTypes, PropType } from 'vue';
-import { DlsViewerProvider } from '@dls-map/utils/types';
 
 export type ViewerConfigType = {
   // 不显示基础图层选择器
@@ -60,7 +59,7 @@ export const mapProps = {
   },
   viewerConfig: {
     type: Object as PropType<ViewerConfigType>,
-    default: () => ({
+    default: (): ViewerConfigType => ({
       // 不显示基础图层选择器
       baseLayerPicker: false,
       // 不显示地址搜索栏

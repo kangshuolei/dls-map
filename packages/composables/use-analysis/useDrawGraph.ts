@@ -1,4 +1,3 @@
-import { addLine } from '../use-entity/useCesiumAddEntity';
 /**
  * 添加实线
  * @param {Array} position 经纬度坐标 [lon,lat, ..., lon,lat] 至少二个经纬度坐标
@@ -22,9 +21,9 @@ function addSoildLine(position: any, option: any = {}) {
  * @param {Number} color 线路宽度 可选
  */
 function DrawSoildLine(
-  viewer: any,
+  viewer: Cesium.Viewer,
   names: string,
-  color: string,
+  color: [number, number, number] | [number, number, number, number],
   width: number
 ) {
   if (!viewer) {
@@ -36,7 +35,8 @@ function DrawSoildLine(
   let lineEntityCollection = new Cesium.CustomDataSource('measureLine');
   viewer.dataSources.add(lineEntityCollection);
   document.body.style.cursor = 'crosshair'; // 鼠标
-  var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+  var handler: Cesium.ScreenSpaceEventHandler =
+    new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
   // 线路配置项
   let option = {
     name: names,
@@ -111,7 +111,10 @@ function DrawSoildLine(
       activeShapePoints = [];
       handler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK);
       handler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
-      handler = handler && handler.destroy();
+      if (handler) {
+        handler.destroy(); // 销毁 handler
+        handler = null; // 将 handler 设为 null
+      }
     }, 500);
   }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
   return layerLine;

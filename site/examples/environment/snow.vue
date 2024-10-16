@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-29 15:19:51
+ * @LastEditTime: 2024-10-16 09:59:12
 -->
 <template>
   <div class="appMain">
@@ -15,16 +15,20 @@
       ref="dlsMapRef"
       :viewer-width="'100%'"
       :viewer-height="'500px'"
-      @cesium-ready="onCesiumReady"
+      @ready="onCesiumReady"
     />
     <div class="operation">
       <el-button @click="handleLoadSnow" type="primary">加载下雪场景</el-button>
+      <el-button @click="handleRemoveSnow" type="primary"
+        >销毁下雪场景</el-button
+      >
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { addSnowScene, DlsMap } from 'dls-map';
+import { DlsMap } from '@dls-map/components';
+import { useEnvironment } from '@dls-map/composables';
 import { onMounted, ref, reactive } from 'vue';
 
 const dlsMapRef = ref(null);
@@ -39,6 +43,8 @@ const dataM = reactive<any>({
   viewer: null,
 });
 
+const { addSnowScene, removeSnowScene } = useEnvironment();
+
 onMounted(() => {
   //获取viewer
   console.log('dlsMapRef', dlsMapRef.value);
@@ -49,11 +55,16 @@ const handleLoadSnow = () => {
   addSnowScene(dataM.viewer);
 };
 
+//销毁下雪场景
+const handleRemoveSnow = () => {
+  removeSnowScene(dataM.viewer);
+};
+
 //cesium初始化完成之后
-const onCesiumReady = (viewer: Cesium.Viewer) => {
+const onCesiumReady = (e: any) => {
   //加载地形
-  dataM.viewer = viewer;
-  console.log('执行了', viewer);
+  dataM.viewer = e.viewer;
+  console.log('执行了', e.viewer);
 };
 </script>
 

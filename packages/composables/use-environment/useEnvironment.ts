@@ -1,3 +1,10 @@
+/*
+ * @Author: Kang
+ * @Date: 2024-08-27 15:47:22
+ * @Last Modified by: Kang
+ * @LastEditTime: 2024-10-16 09:46:29
+ */
+import { ref } from 'vue';
 function FS_Snow() {
   return '#version 300 es\n\
     precision highp float;\n\
@@ -70,26 +77,59 @@ function FS_Rain() {
     }
   `;
 }
-/**
- * 加载下雪场景
- * @param viewer
- */
-function addSnowScene(viewer: any) {
-  let collection = viewer.scene.postProcessStages;
-  let fs_snow = FS_Snow();
-  let snow = new Cesium.PostProcessStage({
-    name: 'czm_snow',
-    fragmentShader: fs_snow,
-  });
-  collection.add(snow);
+export function useEnvironment() {
+  const snowScene = ref<any>(null);
+  const rainScene = ref<any>(null);
+  /**
+   * 加载下雪场景
+   * @param viewer
+   */
+  function addSnowScene(viewer: Cesium.Viewer) {
+    let collection = viewer.scene.postProcessStages;
+    let fs_snow = FS_Snow();
+    let snow = new Cesium.PostProcessStage({
+      name: 'czm_snow',
+      fragmentShader: fs_snow,
+    });
+    collection.add(snow);
+    snowScene.value = snow;
+  }
+  /**
+   * 加载下雨场景
+   * @param viewer
+   */
+  function addRainScene(viewer: Cesium.Viewer) {
+    let collection = viewer.scene.postProcessStages;
+    let fs_rain = FS_Rain();
+    let rain = new Cesium.PostProcessStage({
+      name: 'czm_rain',
+      fragmentShader: fs_rain,
+    });
+    collection.add(rain);
+    rainScene.value = rain;
+  }
+  /**
+   * 删除下雪场景
+   */
+  const removeSnowScene = (viewer: Cesium.Viewer) => {
+    if (snowScene.value) {
+      viewer.scene.postProcessStages.remove(snowScene.value);
+      snowScene.value = null;
+    }
+  };
+  /**
+   * 删除下雨场景
+   */
+  const removeRainScene = (viewer: Cesium.Viewer) => {
+    if (rainScene.value) {
+      viewer.scene.postProcessStages.remove(rainScene.value);
+      rainScene.value = null;
+    }
+  };
+  return {
+    addSnowScene,
+    addRainScene,
+    removeSnowScene,
+    removeRainScene,
+  };
 }
-function addRainScene(viewer: any) {
-  let collection = viewer.scene.postProcessStages;
-  let fs_rain = FS_Rain();
-  let rain = new Cesium.PostProcessStage({
-    name: 'czm_rain',
-    fragmentShader: fs_rain,
-  });
-  collection.add(rain);
-}
-export { addSnowScene, addRainScene };

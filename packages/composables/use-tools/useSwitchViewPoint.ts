@@ -1,3 +1,9 @@
+/*
+ * @Author: Kang
+ * @Date: 2024-07-04 11:39:36
+ * @Last Modified by: Kang
+ * @LastEditTime: 2024-10-16 10:24:04
+ */
 /**
  *
  * @param {*} viewType   //地图的场景类型
@@ -5,7 +11,7 @@
  */
 export function useSwitchViewPoint(
   viewType: '3d' | '2d' | '2.5d',
-  viewer: any
+  viewer: Cesium.Viewer
 ) {
   if (!viewer) {
     console.error('viewer is undefined');

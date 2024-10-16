@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-26 16:49:02
+ * @LastEditTime: 2024-10-16 15:09:43
 -->
 <template>
   <div class="appMain">
@@ -22,7 +22,7 @@
       :viewer-width="'100%'"
       :viewer-height="'100%'"
       ref="dlsMapRef"
-      @cesium-ready="onCesiumReady"
+      @ready="onCesiumReady"
     />
     <div class="coords">
       <canvas id="colorRamp"></canvas>
@@ -67,7 +67,8 @@ onMounted(() => {
 });
 
 //cesium初始化完成之后
-const onCesiumReady = async (viewer: Cesium.Viewer) => {
+const onCesiumReady = async (e: any) => {
+  const viewer = e.viewer;
   // useLoadTerrain(
   //   [
   //     {
