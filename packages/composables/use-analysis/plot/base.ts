@@ -172,7 +172,7 @@ export default class Base {
               this.setState('edit');
               this.type !== 'point' ? this.addControlPoints() : null;
               this.draggable();
-              this.eventDispatcher.dispatchEvent('editStart');
+              this.eventDispatcher.dispatchEvent('editStart', this);
             }
           }
         } catch (e) {

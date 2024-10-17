@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-17 11:43:35
+ * @LastEditTime: 2024-10-17 18:03:21
 -->
 <template>
   <div class="appMain">
@@ -15,7 +15,7 @@
       :viewer-width="'100%'"
       :viewer-height="'500px'"
       ref="dlsMapRef"
-      @cesium-ready="onCesiumReady"
+      @ready="onCesiumReady"
     />
     <!-- 标绘列表 -->
     <div class="plot_list">
@@ -28,12 +28,19 @@
         {{ item.label }}
       </div>
     </div>
+    <!-- 操作列表 -->
+    <div class="operation">
+      <el-button @click="handleShowPlot" type="primary">显示</el-button>
+      <el-button @click="handleHidePlot" type="primary">隐藏</el-button>
+      <el-button @click="handleRemovePlot" type="primary">删除</el-button>
+      <el-button @click="handleAnimationPlot" type="primary">动画</el-button>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { DlsMap } from 'dls-map';
-import { useCesiumCoord, CesiumPlot } from 'dls-map';
+import { DlsMap } from '@dls-map/components';
+import { useCesiumCoord, CesiumPlot } from '@dls-map/composables';
 import { onMounted, ref, reactive } from 'vue';
 
 const { listenToMouseMovement, coords } = useCesiumCoord();
@@ -149,10 +156,57 @@ const dataM = reactive<any>({
   ],
 });
 
+const geometryIns = ref<any>(null);
+
 onMounted(() => {
   //获取viewer
   console.log('dlsMapRef', dlsMapRef.value);
 });
+
+//显示 plot
+const handleShowPlot = () => {
+  geometryIns.value && geometryIns.value.show();
+};
+
+//隐藏 plot
+const handleHidePlot = () => {
+  geometryIns.value &&
+    geometryIns.value.hide({
+      duration: 1000,
+      delay: 0,
+    });
+};
+
+//删除 plot
+const handleRemovePlot = () => {
+  geometryIns.value && geometryIns.value.remove();
+  geometryIns.value = null;
+};
+
+//plot 的生成动画
+const handleAnimationPlot = () => {
+  if (geometryIns.value) {
+    geometryIns.value.startGrowthAnimation();
+  }
+};
+
+const dragStartHandler = () => {};
+
+const drawUpdateHandler = () => {};
+
+const drawEndHandler = () => {
+  console.log('绘制结束');
+  dataM.currentIndex = null;
+};
+
+const editStartHandler = (e: any) => {
+  console.log('编辑开始', e);
+  geometryIns.value = e;
+};
+
+const editEndHandler = (e: any) => {
+  console.log('编辑结束', e);
+};
 
 const handleClickPlot = (data: any, index: number) => {
   dataM.currentIndex = index;
@@ -161,13 +215,20 @@ const handleClickPlot = (data: any, index: number) => {
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
   });
+  geometryIns.value = geometry;
   console.log('geometry', geometry);
+  geometry.on('drawStart', dragStartHandler);
+  geometry.on('drawUpdate', drawUpdateHandler);
+  geometry.on('drawEnd', drawEndHandler);
+  geometry.on('editStart', editStartHandler);
+  geometry.on('editEnd', editEndHandler);
+  // dataM.currentIndex = null;
 };
 
 //cesium初始化完成之后
-const onCesiumReady = (viewer: Cesium.Viewer) => {
-  dataM.viewer = viewer;
-  listenToMouseMovement(viewer);
+const onCesiumReady = (e: any) => {
+  dataM.viewer = e.viewer;
+  // listenToMouseMovement(e.viewer);
 };
 </script>
 
@@ -175,6 +236,16 @@ const onCesiumReady = (viewer: Cesium.Viewer) => {
 .appMain {
   width: 100%;
   height: 100%;
+  .operation {
+    position: absolute;
+    z-index: 1;
+    color: #ffffff;
+    top: 0;
+    right: 0;
+    width: auto;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
   .coords {
     position: absolute;
     z-index: 1;
@@ -194,18 +265,20 @@ const onCesiumReady = (viewer: Cesium.Viewer) => {
     width: auto;
     padding: 0.5rem;
     background-color: rgba(255, 255, 255, 0.5);
-    width: 300px;
+    // width: 250px;
     height: 100%;
     overflow-y: auto;
     .plot_btn {
       cursor: pointer;
       width: auto;
       padding: 5px;
-      background-color: rgb(136, 180, 90);
+      background-color: #3498db;
       margin-bottom: 5px;
+      border-radius: 6px;
+      font-size: 14px;
     }
     .active {
-      background-color: rgb(97, 183, 6);
+      background-color: #0884d7;
     }
   }
 }

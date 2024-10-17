@@ -42233,6 +42233,7 @@ declare namespace Cesium {
    * @param [options.msaaSamples = 1] - If provided, this value controls the rate of multisample antialiasing. Typical multisampling rates are 2, 4, and sometimes 8 samples per pixel. Higher sampling rates of MSAA may impact performance in exchange for improved visual quality. This value only applies to WebGL2 contexts that support multisample render targets.
    */
   export class Scene {
+    verticalExaggeration: number;
     constructor(options: {
       canvas: HTMLCanvasElement;
       contextOptions?: ContextOptions;
