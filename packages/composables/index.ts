@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-07-22 09:02:25
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-16 09:52:18
+ * @LastEditTime: 2024-10-18 17:19:59
  */
 export { useSwitchMap } from './use-layer/useSwitchMap'; //切换图层
 export { useCesiumCoord } from './use-tools/useCesiumCoord'; //获取经纬度、角度等信息
@@ -19,4 +19,5 @@ export { default as CesiumUseEcharts } from './use-coverage/CesiumUseEcharts'; /
 export { default as CesiumHeatMap } from './use-coverage/CesiumHeatmap'; //热力图
 export { default as CesiumBufferAnalyze } from './use-analysis/CesiumBufferAnalyze'; //缓冲区
 export { default as CesiumTrack } from './use-entity/CesiumTrack'; //历史轨迹
-export { default as useDlsMap } from './use-hooks/useDlsMap';
+export { default as useDlsMap } from './use-hooks/useDlsMap'; //获取全局实例
+export { CesiumScpacePoint } from './use-analysis/scpacePoint'; //框选数据分析点位

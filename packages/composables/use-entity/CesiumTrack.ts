@@ -2,15 +2,8 @@ import { groupPoints, twoToCenter } from '@dls-map/utils/index';
 import { rhumbBearing } from '@turf/turf';
 import { ref } from 'vue';
 interface LineData {
-  name: string;
-  startTime: string;
-  endTime: string;
-  positions: Array<number>;
-  lineData: Array<Array<String>>; //没有扁平化的经纬度
+  positions: number[][];
   color: string;
-  shipData: any;
-  ship_cn_name: string;
-  country_name: string;
 }
 let groupArrPoint: any = [];
 
@@ -21,15 +14,14 @@ let groupArrPoint: any = [];
  * @returns
  */
 export default function CesiumTrack(
-  data: Array<LineData>,
-  viewer: any,
-  img: any
+  viewer: Cesium.Viewer,
+  data: LineData[],
+  img: string
 ) {
   return new Promise((resolve, reject) => {
     groupArrPoint = [];
     let lineDataArr: any = [];
     if (!data.length) return false;
-    console.log('dataaaaa', data);
     data.forEach((item: any, index: any) => {
       //生成线
       if (item.color) {
@@ -40,7 +32,7 @@ export default function CesiumTrack(
               item.positions.flat()
             ),
             width: 3,
-            followSurface: false,
+            // followSurface: false,
             material: new Cesium.PolylineArrowMaterialProperty(
               Cesium.Color.fromCssColorString(item.color)
             ),
@@ -65,50 +57,20 @@ export default function CesiumTrack(
 //2.根据线的数据生成点数据
 const handleGeneratePosition = (data: any, color: string, viewer: any) => {
   if (data && data.length) {
-    //就不简化写了，时间紧
-    let startPoint = {
-      point: [data[0].lon, data[0].lat],
-      track_time: '2020-09-03',
-    };
-    let endPoint = {
-      point: [data[data.length - 1].lon, data[data.length - 1].lat],
-      track_time: '2020-09-07',
-    };
-    let dataArr = [startPoint, endPoint];
-    dataArr.forEach((item: any, index: any) => {
-      let tooltip = `
-          <div>
-            <div class="line"></div>
-            <div class="panel">
-              <span class="content">${item.track_time}</span>
-            </div>
-          </div>
-        `;
-      let className = 'LayerPointTime';
-      let val = {
-        viewer,
-        position: [parseFloat(item.point[0]), parseFloat(item.point[1])],
-        height: 0,
-        offset: [0, -60],
-        dom: tooltip,
-        className,
-        type: 'LayerPointTime',
-      };
-      // new divLabel(val);
-    });
+    console.log('dataaa', data);
 
     data.forEach((t: any) => {
       viewer.entities.add({
-        position: Cesium.Cartesian3.fromDegrees(t[0], t[1], 1000),
+        position: Cesium.Cartesian3.fromDegrees(t[0], t[1], 0),
         attribute: {
           data: [],
         },
         point: {
-          zIndex: 99999999,
+          // zIndex: 99999999,
           pixelSize: 6,
           pickable: true,
           color: Cesium.Color.fromCssColorString(color),
-          heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
+          // heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
         },
       });
     });
@@ -138,8 +100,8 @@ const handleGroupArrPoint = (viewer: any, img: any) => {
           rotation: angleInRadians,
           image: img,
           scale: 0.1,
-          alignedAxis: Cesium.Cartesian3.ZERO,
-          heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+          alignedAxis: Cesium.Cartesian3.UNIT_Z,
+          // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
         },
       });
       viewer.scene.requestRender();

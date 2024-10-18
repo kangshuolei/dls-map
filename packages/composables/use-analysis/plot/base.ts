@@ -21,7 +21,7 @@ export default class Base {
   viewer: Cesium.Viewer;
   eventHandler: Cesium.ScreenSpaceEventHandler;
   polygonEntity: Cesium.Entity;
-  geometryPoints: Cesium.Cesium.Cartesian3[] = [];
+  geometryPoints: Cesium.Cartesian3[] = [];
   state: State = 'drawing';
   controlPoints: Cesium.EntityCollection = [];
   controlPointsEventHandler: Cesium.ScreenSpaceEventHandler;
@@ -34,7 +34,7 @@ export default class Base {
   eventDispatcher: EventDispatcher;
   dragEventHandler: Cesium.ScreenSpaceEventHandler;
   entityId: string = '';
-  points: Cesium.Cesium.Cartesian3[] = [];
+  points: Cesium.Cartesian3[] = [];
   styleCache: GeometryStyle | undefined;
   minPointsForShape: number = 0;
   tempLineEntity: Cesium.Entity;
@@ -265,11 +265,11 @@ export default class Base {
     );
   }
 
-  setGeometryPoints(geometryPoints: Cesium.Cesium.Cartesian3[]) {
+  setGeometryPoints(geometryPoints: Cesium.Cartesian3[]) {
     this.geometryPoints = geometryPoints;
   }
 
-  getGeometryPoints(): Cesium.Cesium.Cartesian3[] {
+  getGeometryPoints(): Cesium.Cartesian3[] {
     return this.geometryPoints;
   }
 
@@ -1075,7 +1075,7 @@ export default class Base {
     //Abstract method that must be implemented by subclasses.
   }
 
-  getPoints(): Cesium.Cesium.Cartesian3[] {
+  getPoints(): Cesium.Cartesian3[] {
     //Abstract method that must be implemented by subclasses.
     return [new this.cesium.Cartesian3()];
   }
@@ -1093,9 +1093,7 @@ export default class Base {
     //Abstract method that must be implemented by subclasses.
   }
 
-  createGraphic(
-    points: Cesium.Cesium.Cartesian3[]
-  ): Cesium.Cesium.Cartesian3[] {
+  createGraphic(points: Cesium.Cartesian3[]): Cesium.Cartesian3[] {
     //Abstract method that must be implemented by subclasses.
     return points;
   }

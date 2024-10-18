@@ -2,20 +2,20 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-29 14:42:18
+ * @LastEditTime: 2024-10-18 16:15:14
 -->
 <template>
   <div class="appMain">
     <dls-map
       :mapConfig="{
-        id: 'dls-map-layer-terrain',
+        id: 'dls-map-trajectory',
         imageryProvider: dataM.imageryProvider,
-        sceneModeNum: 3,
+        sceneModeNum: 2,
       }"
       ref="dlsMapRef"
       :viewer-width="'100%'"
       :viewer-height="'500px'"
-      @cesium-ready="onCesiumReady"
+      @ready="onCesiumReady"
     />
     <div class="operation">
       <el-button @click="handleLoadTrajectory" type="primary"
@@ -26,7 +26,8 @@
 </template>
 
 <script lang="ts" setup>
-import { CesiumTrack, DlsMap } from 'dls-map';
+import { DlsMap } from '@dls-map/components';
+import { CesiumTrack, useCesiumFlyTo } from '@dls-map/composables';
 import { onMounted, ref, reactive } from 'vue';
 import ArrowImg from '../../assets/images/arrowImg.png';
 
@@ -50,36 +51,27 @@ onMounted(() => {
 //加载轨迹
 const handleLoadTrajectory = () => {
   //加载轨迹线
-  let data: any = [
+  let data = [
     {
       positions: [
-        [-75.1, 39.57],
-        [-80.12, 25.46],
-        [-85.12, 30.46],
-        [-90.12, 35.46],
-        [-95.12, 40.46],
-      ],
-      color: '#FF0000',
-    },
-    {
-      positions: [
-        [-70.1, 40.57],
-        [-75.12, 35.46],
-        [-80.12, 30.46],
-        [-85.12, 25.46],
-        [-90.12, 20.46],
+        [112.1514, 20.820353],
+        [114.774, 21.7316],
+        [118.114, 23.3144],
+        [122.3759, 27.2888],
+        [123.9299, 32.2732],
       ],
       color: '#FF0000',
     },
   ];
-  CesiumTrack(data, dataM.viewer, ArrowImg).then(() => {});
+  CesiumTrack(dataM.viewer, data, ArrowImg).then(() => {});
+  useCesiumFlyTo(dataM.viewer, [118.1417, 26.8013, 2581065]);
 };
 
 //cesium初始化完成之后
-const onCesiumReady = (viewer: Cesium.Viewer) => {
+const onCesiumReady = (e: any) => {
   //加载地形
-  dataM.viewer = viewer;
-  console.log('执行了', viewer);
+  dataM.viewer = e.viewer;
+  console.log('执行了', e.viewer);
 };
 </script>
 
