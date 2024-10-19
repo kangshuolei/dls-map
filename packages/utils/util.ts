@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-03 16:10:41
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-08 16:07:02
+ * @LastEditTime: 2024-10-19 14:56:28
  */
 import { compare, CompareOperator } from 'compare-versions';
 /**
@@ -98,4 +98,26 @@ export function compareCesiumVersion(
 ) {
   a = a || '1.6.7';
   return compare(a, b, operator);
+}
+
+/**
+ * Cesium.Cartesian3 批量转 经纬度
+ * @param cartesianCoordinates Cesium.Cartesian3[]
+ * @returns  经纬度
+ */
+export function convertToLonLat(cartesianCoordinates: Cesium.Cartesian3[]) {
+  const ellipsoid = Cesium.Ellipsoid.WGS84;
+
+  // 将 Cartesian3 批量转换为经纬度
+  const convertedCoordinates = cartesianCoordinates.map(
+    (cartesian: Cesium.Cartesian3) => {
+      const cartographic = ellipsoid.cartesianToCartographic(cartesian);
+      const longitude = Cesium.Math.toDegrees(cartographic.longitude);
+      const latitude = Cesium.Math.toDegrees(cartographic.latitude);
+      const height = cartographic.height;
+
+      return [longitude, latitude, height];
+    }
+  );
+  return convertedCoordinates;
 }

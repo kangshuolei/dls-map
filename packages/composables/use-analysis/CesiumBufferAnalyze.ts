@@ -1,4 +1,5 @@
-import { buffer, polygon } from '@turf/turf';
+import { buffer, polygon, lineString, point } from '@turf/turf';
+import { convertToLonLat } from '@dls-map/utils';
 
 interface Position {
   lon: number;
@@ -7,19 +8,11 @@ interface Position {
 }
 
 export default class Buffer {
-  viewer: any;
-
+  viewer: Cesium.Viewer;
   drawLayer: any;
-
-  handler: any;
-
   radius = 500000;
 
-  constructor(
-    viewer: any | unknown,
-    radius: number,
-    options = { basePath: '' }
-  ) {
+  constructor(viewer: any | unknown, radius: number) {
     this.viewer = viewer;
     this.radius = radius;
     this.drawLayer = new Cesium.CustomDataSource('measureLayer');
@@ -111,7 +104,7 @@ export default class Buffer {
       let isOnTerrain = false;
       // drillPick
 
-      Object.keys(picks).forEach((i) => {
+      Object.keys(picks).forEach((i: any) => {
         const pick = picks[i];
 
         if (
@@ -177,110 +170,41 @@ export default class Buffer {
     }
   }
 
-  /**
-   * 绘制面
-   */
-  polyBuffer(): Promise<Array<any>> {
-    return new Promise((resolve, reject) => {
-      if (this.viewer) {
-        this.viewer.scene.globe.depthTestAgainstTerrain = true;
-        let positions: any = [];
-        let polyPoint: any = [];
-        const polygonHie = new Cesium.PolygonHierarchy();
-        const polygonEntity: any = new Cesium.Entity();
-
-        if (this.handler) {
-          this.handler.destroy();
-        }
-        this.handler = new Cesium.ScreenSpaceEventHandler(
-          this.viewer.scene.canvas
-        );
-
-        this.handler.setInputAction((movement: any) => {
-          const cartesian = this.getCatesian3FromPX(movement.position);
-          const cartographic = Cesium.Cartographic.fromCartesian(cartesian);
-
-          if (cartesian) {
-            const lon = Cesium.Math.toDegrees(cartographic.longitude);
-            const lat = Cesium.Math.toDegrees(cartographic.latitude);
-            const { height } = cartographic;
-
-            if (positions.length === 0) {
-              polygonHie.positions.push(cartesian.clone());
-              positions.push(cartesian.clone());
-              polyPoint.push([lon, lat, height]);
-            }
-            positions.push(cartesian.clone());
-            polygonHie.positions.push(cartesian.clone());
-            polyPoint.push([lon, lat, height]);
-          }
-        }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-        // mouse_move
-        this.handler.setInputAction((movement: any) => {
-          const cartesian = this.getCatesian3FromPX(movement.endPosition);
-          const cartographic = Cesium.Cartographic.fromCartesian(cartesian);
-          const lon = Cesium.Math.toDegrees(cartographic.longitude);
-          const lat = Cesium.Math.toDegrees(cartographic.latitude);
-          const { height } = cartographic;
-
-          if (positions.length >= 2) {
-            if (cartesian) {
-              positions.pop();
-              positions.push(cartesian);
-              polygonHie.positions.pop();
-              polygonHie.positions.push(cartesian);
-              polyPoint.pop();
-              polyPoint.push([lon, lat, height]);
-            }
-          }
-        }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
-        // left结束绘制
-        this.handler.setInputAction((movement: any) => {
-          if (positions.length > 2) {
-            positions.push(positions[0]);
-            polyPoint.push(polyPoint[0]);
-            const arrData = [...polyPoint];
-            this.addPolygon(positions);
-            this.initPolygonBuffer(polyPoint, this.radius);
-            positions = [];
-            polyPoint = [];
-            polygonHie.positions = [];
-            resolve(arrData);
-          }
-        }, Cesium.ScreenSpaceEventType.RIGHT_CLICK);
-        this.handler.setInputAction((e: any) => {
-          this.clear();
-          // bus.emit('bufferState')
-        }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
-        polygonEntity.polyline = {
-          width: 3,
-          material: Cesium.Color.YELLOW.withAlpha(0.8),
-          clampToGround: true,
-        };
-
-        polygonEntity.polyline.positions = new Cesium.CallbackProperty(
-          () => positions,
-          false
-        );
-        polygonEntity.polygon = {
-          hierarchy: new Cesium.CallbackProperty(() => polygonHie, false),
-          material: Cesium.Color.WHITE.withAlpha(0.1),
-          clampToGround: true,
-        };
-        this.drawLayer.entities.add(polygonEntity);
+  createBuffer(
+    drawPolyogn: Cesium.Cartesian3[],
+    drawType: 'Point' | 'Polyline' | 'Polygon'
+  ) {
+    if (drawType === 'Polygon') {
+      if (
+        drawPolyogn[0].x !== drawPolyogn[drawPolyogn.length - 1].x ||
+        drawPolyogn[0].y !== drawPolyogn[drawPolyogn.length - 1].y ||
+        drawPolyogn[0].z !== drawPolyogn[drawPolyogn.length - 1].z
+      ) {
+        // 如果不一致，添加一个相同的点
+        drawPolyogn.push(drawPolyogn[0]);
       }
-    });
+    }
+    let drawPolyognLatLon = convertToLonLat(drawPolyogn);
+    this.initPolygonBuffer(drawPolyognLatLon, this.radius, drawType);
   }
 
   // 初始化面缓冲
   initPolygonBuffer(
     bufferPolyogn: any,
-    distance: number | undefined
+    distance: number | undefined,
+    drawType: 'Point' | 'Polyline' | 'Polygon'
   ): Promise<Array<any>> {
     return new Promise((resolve, reject) => {
       let degreesArray = this.pointsToDegreesArray(bufferPolyogn);
-
-      const polygonF = polygon([bufferPolyogn]);
+      console.log('bufferPolyogn', bufferPolyogn, drawType);
+      let polygonF = null;
+      if (drawType === 'Polygon') {
+        polygonF = polygon([bufferPolyogn]);
+      } else if (drawType === 'Polyline') {
+        polygonF = lineString(bufferPolyogn);
+      } else if (drawType === 'Point') {
+        polygonF = point([bufferPolyogn]);
+      }
       const buffered = buffer(polygonF, distance, { units: 'meters' });
       const { coordinates } = buffered.geometry;
 
@@ -288,7 +212,6 @@ export default class Buffer {
 
       degreesArray = this.pointsToDegreesArray(points);
       this.addBufferPolyogn(Cesium.Cartesian3.fromDegreesArray(degreesArray));
-      //resolve(Cesium.Cartesian3.fromDegreesArray(degreesArray))
       resolve(bufferPolyogn);
     });
   }
@@ -342,6 +265,5 @@ export default class Buffer {
   // 地图绘制要素清除
   clear = (): void => {
     this.drawLayer.entities.removeAll();
-    return this.handler && this.handler.destroy();
   };
 }

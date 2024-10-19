@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-18 18:02:34
+ * @LastEditTime: 2024-10-19 11:34:28
 -->
 <template>
   <div class="appMain">
@@ -20,7 +20,7 @@
     <div class="operation">
       <el-button @click="handleSpaceRectangle" type="primary">矩形</el-button>
       <el-button @click="handleSpaceCircle" type="primary">圆</el-button>
-      <el-button @click="handleSpacepolygon" type="primary">面</el-button>
+      <el-button @click="handleSpacePolygon" type="primary">面</el-button>
       <el-button @click="handleSpaceRemove" type="primary">清除</el-button>
     </div>
   </div>
@@ -115,11 +115,15 @@ const editEndHandler = (geometryPoints: any) => {
 
 //绘制矩形查询点
 const handleSpaceRectangle = () => {
+  //初始话场景
+  handleSpaceRemove();
+  //绘制矩形
   const geometry = new CesiumPlot['Reactangle'](Cesium, dataM.viewer, {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
   });
+  //标绘结束事件
   geometry.on('drawEnd', drawEndHandler);
   // geometry.on('editEnd', editEndHandler);
   dataM.geometry = geometry;
@@ -127,23 +131,31 @@ const handleSpaceRectangle = () => {
 };
 //绘制圆的查询点
 const handleSpaceCircle = () => {
+  //初始话场景
+  handleSpaceRemove();
+  //绘制点
   const geometry = new CesiumPlot['Circle'](Cesium, dataM.viewer, {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
   });
+  //标绘结束事件
   geometry.on('drawEnd', drawEndHandler);
   // geometry.on('editEnd', editEndHandler);
   dataM.geometry = geometry;
   dataM.geometryCircle = geometry;
 };
 //绘制面的查询点
-const handleSpacepolygon = () => {
+const handleSpacePolygon = () => {
+  //初始话场景
+  handleSpaceRemove();
+  //绘制面
   const geometry = new CesiumPlot['Polygon'](Cesium, dataM.viewer, {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
   });
+  //标绘结束事件
   geometry.on('drawEnd', drawEndHandler);
   // geometry.on('editEnd', editEndHandler);
   dataM.geometry = geometry;
