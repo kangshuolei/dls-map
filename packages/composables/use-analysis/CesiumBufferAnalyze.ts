@@ -196,14 +196,14 @@ export default class Buffer {
   ): Promise<Array<any>> {
     return new Promise((resolve, reject) => {
       let degreesArray = this.pointsToDegreesArray(bufferPolyogn);
-      console.log('bufferPolyogn', bufferPolyogn, drawType);
+      console.log('bufferPolyogn', bufferPolyogn, drawType, bufferPolyogn[0]);
       let polygonF = null;
       if (drawType === 'Polygon') {
         polygonF = polygon([bufferPolyogn]);
       } else if (drawType === 'Polyline') {
         polygonF = lineString(bufferPolyogn);
       } else if (drawType === 'Point') {
-        polygonF = point([bufferPolyogn]);
+        polygonF = point(bufferPolyogn[0]);
       }
       const buffered = buffer(polygonF, distance, { units: 'meters' });
       const { coordinates } = buffered.geometry;

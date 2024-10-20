@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-19 17:57:55
+ * @LastEditTime: 2024-10-20 22:15:51
 -->
 <template>
   <div class="appMain">
@@ -100,7 +100,8 @@ onMounted(() => {
 });
 
 //标绘结束事件
-const drawEndHandler = () => {
+const drawEndHandler = (e: any) => {
+  console.log('eeeeeeeee', e);
   let buffer = new CesiumBufferAnalyze(dataM.viewer, 1000);
   console.log('dataM.geometry.geometryPoints', dataM.geometry.geometryPoints);
   buffer.createBuffer(dataM.geometry.geometryPoints, dataM.drawType);

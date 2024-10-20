@@ -311,6 +311,7 @@ export default class Base {
   drawPoint() {
     if (!this.pointEntity) {
       const points = this.getPoints();
+      this.setGeometryPoints(points);
       const style = this.style as PointStyle;
       this.pointEntity = this.viewer.entities.add({
         position: points[0],
