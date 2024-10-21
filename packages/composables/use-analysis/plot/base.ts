@@ -227,6 +227,8 @@ export default class Base {
       this.setState('edit');
       this.type !== 'point' ? this.addControlPoints() : null;
       this.draggable();
+    } else {
+      this.setState('static');
     }
     const entity = this.polygonEntity || this.lineEntity || this.pointEntity;
     this.entityId = entity.id;

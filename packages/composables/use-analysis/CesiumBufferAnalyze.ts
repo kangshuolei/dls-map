@@ -15,7 +15,7 @@ export default class Buffer {
   maxRadius: number = 999000; // 设置最大值为100（可以根据需要修改）
   drawPolyogn: Cesium.Cartesian3[] = null;
   drawType: DrawTypes;
-  constructor(viewer: Cesium.Viewer | unknown, radius: number) {
+  constructor(viewer: Cesium.Viewer, radius: number) {
     this.viewer = viewer;
     this.radius = this.setRadius(radius);
     this.drawLayer = new Cesium.CustomDataSource('measureLayer');
