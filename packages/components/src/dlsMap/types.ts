@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-09 14:49:32
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-16 17:13:22
+ * @LastEditTime: 2024-10-21 17:24:40
  */
 import { ExtractPropTypes, PropType } from 'vue';
 
@@ -106,6 +106,7 @@ export const mapProps = {
 export const mapEmits = {
   cesiumReady: (payload: typeof Cesium) => true,
   ready: (payload: typeof Cesium) => true,
+  destroyed: (payload: typeof Cesium) => true,
 };
 
 export type mapProps = ExtractPropTypes<typeof mapProps>;

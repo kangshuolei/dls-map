@@ -9,7 +9,7 @@ export default class Circle extends Base {
   points: Cesium.Cartesian3[] = [];
   freehand: boolean;
 
-  constructor(cesium: any, viewer: any, style?: PolygonStyle) {
+  constructor(cesium: any, viewer: Cesium.Viewer, style?: PolygonStyle) {
     super(cesium, viewer, style);
     this.cesium = cesium;
     this.freehand = true;

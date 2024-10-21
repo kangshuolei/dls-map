@@ -125,7 +125,7 @@ function DrawSoildLine(
  * @param {Cesium.Cartesian2} position 鼠标位置
  * @return {Cesium.Cartesian3} 鼠标点击位置的坐标
  */
-function getPosition(viewer: any, position: any) {
+function getPosition(viewer: Cesium.Viewer, position: any) {
   let earthPosition = undefined;
   // 球面
   if (viewer.terrainProvider instanceof Cesium.EllipsoidTerrainProvider) {
@@ -150,7 +150,7 @@ function drawLine(layer: any, positionData: any, option: any) {
     },
   });
 }
-function removeDrawLine(viewer: any) {
+function removeDrawLine(viewer: Cesium.Viewer) {
   if (!viewer) {
     console.error('viewer is undefined');
     return false;

@@ -15,7 +15,7 @@ function isDOMElement(obj: any) {
  * 删除不同类型的图层信息
  * @param type 传不同的type，删除不同的图层，默认是删除所有（['all']）
  */
-export function useRemoveCesium(type = ['all'], viewer: any) {
+export function useRemoveCesium(type = ['all'], viewer: Cesium.Viewer) {
   if (!viewer) {
     console.error('viewer is undefined');
     return false;
@@ -76,7 +76,7 @@ export function useRemoveCesium(type = ['all'], viewer: any) {
       //清空 PostProcessStage
       if (item === 'all' || item === 'PostProcessStage') {
         //清除所有的 entities 实体
-        viewer.scene.postProcessStages.removeAll(true);
+        viewer.scene.postProcessStages.removeAll();
       }
     });
   }
@@ -86,7 +86,7 @@ export function useRemoveCesium(type = ['all'], viewer: any) {
  * 根据name删除entity
  * @param {String} name entity 的 name
  */
-export function clearEntityByname(name: string, viewer: any) {
+export function clearEntityByname(name: string, viewer: Cesium.Viewer) {
   if (!viewer) {
     console.error('viewer is undefined');
     return false;

@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-08-13 21:38:44
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-09 16:31:58
+ * @LastEditTime: 2024-10-21 17:29:23
 -->
 <script lang="ts" setup>
 import './style/index.less';
@@ -60,6 +60,7 @@ onMounted(() => {
 defineExpose({
   dataM,
   viewer,
+  viewerStates,
 });
 </script>
 

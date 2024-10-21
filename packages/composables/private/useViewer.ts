@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-10-08 15:41:17
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-09 17:03:43
+ * @LastEditTime: 2024-10-21 17:28:53
  */
 import {
   DlsComponentInternalInstance,
@@ -93,6 +93,21 @@ export default function (
     });
   };
 
+  const reload = async function () {
+    return unload().then(() => {
+      return load();
+    });
+  };
+
+  const unload = async function () {
+    return new Promise((resolve, reject) => {
+      dlsInstance.viewer && dlsInstance.viewer.destroy();
+      const listener = getInstanceListener(dlsInstance, 'destroyed');
+      listener && emits('destroyed', dlsInstance);
+      resolve(true);
+    });
+  };
+
   onMounted(async () => {
     try {
       await load();
@@ -139,5 +154,8 @@ export default function (
 
   return {
     getServices,
+    load,
+    reload,
+    unload,
   };
 }

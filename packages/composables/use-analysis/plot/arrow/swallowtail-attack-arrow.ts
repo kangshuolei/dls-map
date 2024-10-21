@@ -15,7 +15,7 @@ export default class SwallowtailAttackArrow extends AttackArrow {
   swallowTailFactor: number;
   swallowTailPnt: [number, number];
 
-  constructor(cesium: any, viewer: any, style: PolygonStyle) {
+  constructor(cesium: any, viewer: Cesium.Viewer, style: PolygonStyle) {
     super(cesium, viewer, style);
     this.cesium = cesium;
     this.headHeightFactor = 0.18;

@@ -61,6 +61,37 @@ import Point from './point/point'; //点
 
 import { GeometryStyle } from './interface';
 
+type CesiumPlotParamsType = {
+  cesium: typeof Cesium;
+  viewer: Cesium.Viewer;
+  style: GeometryStyle;
+};
+type CesiumPlotType = {
+  FineArrow: typeof FineArrow;
+  AttackArrow: typeof AttackArrow;
+  SwallowtailAttackArrow: typeof SwallowtailAttackArrow;
+  SquadCombat: typeof SquadCombat;
+  SwallowtailSquadCombat: typeof SwallowtailSquadCombat;
+  StraightArrow: typeof StraightArrow;
+  CurvedArrow: typeof CurvedArrow;
+  AssaultDirection: typeof AssaultDirection;
+  DoubleArrow: typeof DoubleArrow;
+  FreehandLine: typeof FreehandLine;
+  FreehandPolygon: typeof FreehandPolygon;
+  Curve: typeof Curve;
+  Ellipse: typeof Ellipse;
+  Lune: typeof Lune;
+  Reactangle: typeof Reactangle;
+  Triangle: typeof Triangle;
+  Polygon: typeof Polygon;
+  Circle: typeof Circle;
+  Sector: typeof Sector;
+  GatheringPlace: typeof GatheringPlace;
+  Arc: typeof Arc;
+  Polyline: typeof Polyline;
+  ClosedCurve: typeof ClosedCurve;
+  Point: typeof Point;
+};
 const CesiumPlot: any = {
   FineArrow,
   AttackArrow,
@@ -102,7 +133,6 @@ CesiumPlot.createGeometryFromData = (
   viewer: Cesium.Viewer,
   opts: CreateGeometryFromDataOpts
 ) => {
-  console.log('执行了');
   const { type, style, cartesianPoints } = opts;
   const geometry = new CesiumPlot[type](cesium, viewer, style);
 

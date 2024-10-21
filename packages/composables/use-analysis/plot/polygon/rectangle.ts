@@ -7,7 +7,7 @@ import { PolygonStyle } from '../interface';
 export default class Rectangle extends Base {
   points: Cesium.Cartesian3[] = [];
 
-  constructor(cesium: any, viewer: any, style?: PolygonStyle) {
+  constructor(cesium: any, viewer: Cesium.Viewer, style?: PolygonStyle) {
     super(cesium, viewer, style);
     this.cesium = cesium;
     this.setState('drawing');

@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-20 22:15:51
+ * @LastEditTime: 2024-10-21 16:30:51
 -->
 <template>
   <div class="appMain">
@@ -20,7 +20,7 @@
     <div class="operation">
       <div class="bufferRadius">
         <div class="title">缓冲半径：</div>
-        <el-input v-model="dataM.radiusNum">
+        <el-input @change="handleChangeRadius" v-model="dataM.radiusNum">
           <template #append>公里</template>
         </el-input>
       </div>
@@ -41,6 +41,7 @@ import {
   useCesiumEntities,
   useCesiumFlyTo,
   CesiumPlot,
+  CesiumScpacePoint,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive } from 'vue';
 import markBlueImg from '../../assets/images/mark-blue.png';
@@ -90,6 +91,7 @@ const dataM = reactive<any>({
   radiusNum: 1,
   geometry: null,
   drawType: '',
+  buffer: null,
 });
 
 const { addPointEntity } = useCesiumEntities();
@@ -99,36 +101,58 @@ onMounted(() => {
   console.log('dlsMapRef', dlsMapRef.value);
 });
 
+//修改 radius
+const handleChangeRadius = (value: number) => {
+  if (dataM.buffer) {
+    dataM.buffer.clear();
+    dataM.buffer = null;
+  }
+  removeSelect();
+  drawEndHandler();
+};
+
 //标绘结束事件
-const drawEndHandler = (e: any) => {
-  console.log('eeeeeeeee', e);
-  let buffer = new CesiumBufferAnalyze(dataM.viewer, 1000);
-  console.log('dataM.geometry.geometryPoints', dataM.geometry.geometryPoints);
-  buffer.createBuffer(dataM.geometry.geometryPoints, dataM.drawType);
+const drawEndHandler = () => {
+  removeSelect();
+  let buffer = new CesiumBufferAnalyze(dataM.viewer, dataM.radiusNum * 1000);
+  buffer
+    .createBuffer(dataM.geometry.geometryPoints, dataM.drawType)
+    .then((geometryPoints: any) => {
+      const data = CesiumScpacePoint(geometryPoints, dataM.pointEntityArr);
+      if (data && data.length) {
+        data.forEach((item: any) => {
+          item.billboard.image = markRedImg;
+        });
+      }
+    });
+  dataM.buffer = buffer;
 };
 
 //绘制并生成点的缓冲区
 const handleBufferPoint = () => {
+  handleBufferRemove();
   //绘制点
   const geometry = new CesiumPlot['Point'](Cesium, dataM.viewer, {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
+    isEdit: false,
   });
   //标绘结束事件
   geometry.on('drawEnd', drawEndHandler);
   dataM.drawType = 'Point';
   dataM.geometry = geometry;
-  console.log('geometry', geometry);
 };
 
 //绘制并生成线的缓冲区
 const handleBufferLine = () => {
+  handleBufferRemove();
   //绘制点
   const geometry = new CesiumPlot['Polyline'](Cesium, dataM.viewer, {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
+    isEdit: false,
   });
   //标绘结束事件
   geometry.on('drawEnd', drawEndHandler);
@@ -138,11 +162,13 @@ const handleBufferLine = () => {
 
 //绘制并生成面的缓冲区
 const handleBufferPolygon = () => {
+  handleBufferRemove();
   //绘制点
   const geometry = new CesiumPlot['Polygon'](Cesium, dataM.viewer, {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
+    isEdit: false,
   });
   //标绘结束事件
   geometry.on('drawEnd', drawEndHandler);
@@ -151,13 +177,34 @@ const handleBufferPolygon = () => {
 };
 
 //清空缓冲区和其他实例
-const handleBufferRemove = () => {};
+const handleBufferRemove = () => {
+  //清空面
+  if (dataM.geometry) {
+    dataM.geometry.remove();
+    dataM.geometry = null;
+  }
+  //清空缓冲区
+  if (dataM.buffer) {
+    dataM.buffer.clear();
+    dataM.buffer = null;
+  }
+  //恢复点
+  removeSelect();
+};
+
+const removeSelect = () => {
+  //恢复点
+  if (dataM.pointEntityArr && dataM.pointEntityArr.length) {
+    dataM.pointEntityArr.forEach((item: any) => {
+      item.billboard.image = markBlueImg;
+    });
+  }
+};
 
 //cesium初始化完成之后
 const onCesiumReady = (e: any) => {
   //加载地形
   dataM.viewer = e.viewer;
-  console.log('执行了', e.viewer);
   dataM.coordinates.forEach((item: any) => {
     const pointEntity = addPointEntity(item[1], item[0], dataM.viewer, {
       type: 'billboard',

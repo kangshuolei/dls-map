@@ -6,15 +6,18 @@ interface Position {
   lat: number;
   alt: number;
 }
+type DrawTypes = 'Point' | 'Polyline' | 'Polygon';
 
 export default class Buffer {
   viewer: Cesium.Viewer;
-  drawLayer: any;
-  radius = 500000;
-
-  constructor(viewer: any | unknown, radius: number) {
+  drawLayer: Cesium.CustomDataSource;
+  radius: number = 0;
+  maxRadius: number = 999000; // 设置最大值为100（可以根据需要修改）
+  drawPolyogn: Cesium.Cartesian3[] = null;
+  drawType: DrawTypes;
+  constructor(viewer: Cesium.Viewer | unknown, radius: number) {
     this.viewer = viewer;
-    this.radius = radius;
+    this.radius = this.setRadius(radius);
     this.drawLayer = new Cesium.CustomDataSource('measureLayer');
     this.viewer.dataSources.add(this.drawLayer);
   }
@@ -170,22 +173,28 @@ export default class Buffer {
     }
   }
 
-  createBuffer(
-    drawPolyogn: Cesium.Cartesian3[],
-    drawType: 'Point' | 'Polyline' | 'Polygon'
-  ) {
-    if (drawType === 'Polygon') {
-      if (
-        drawPolyogn[0].x !== drawPolyogn[drawPolyogn.length - 1].x ||
-        drawPolyogn[0].y !== drawPolyogn[drawPolyogn.length - 1].y ||
-        drawPolyogn[0].z !== drawPolyogn[drawPolyogn.length - 1].z
-      ) {
-        // 如果不一致，添加一个相同的点
-        drawPolyogn.push(drawPolyogn[0]);
+  async createBuffer(drawPolyogn: Cesium.Cartesian3[], drawType: DrawTypes) {
+    return new Promise((resolve, reject) => {
+      this.drawPolyogn = drawPolyogn;
+      this.drawType = drawType;
+      if (drawType === 'Polygon') {
+        if (
+          drawPolyogn[0].x !== drawPolyogn[drawPolyogn.length - 1].x ||
+          drawPolyogn[0].y !== drawPolyogn[drawPolyogn.length - 1].y ||
+          drawPolyogn[0].z !== drawPolyogn[drawPolyogn.length - 1].z
+        ) {
+          // 如果不一致，添加一个相同的点
+          drawPolyogn.push(drawPolyogn[0]);
+        }
       }
-    }
-    let drawPolyognLatLon = convertToLonLat(drawPolyogn);
-    this.initPolygonBuffer(drawPolyognLatLon, this.radius, drawType);
+      let drawPolyognLatLon = convertToLonLat(drawPolyogn);
+      let bufferPosition = this.initPolygonBuffer(
+        drawPolyognLatLon,
+        this.radius,
+        drawType
+      );
+      resolve(bufferPosition);
+    });
   }
 
   // 初始化面缓冲
@@ -193,27 +202,24 @@ export default class Buffer {
     bufferPolyogn: any,
     distance: number | undefined,
     drawType: 'Point' | 'Polyline' | 'Polygon'
-  ): Promise<Array<any>> {
-    return new Promise((resolve, reject) => {
-      let degreesArray = this.pointsToDegreesArray(bufferPolyogn);
-      console.log('bufferPolyogn', bufferPolyogn, drawType, bufferPolyogn[0]);
-      let polygonF = null;
-      if (drawType === 'Polygon') {
-        polygonF = polygon([bufferPolyogn]);
-      } else if (drawType === 'Polyline') {
-        polygonF = lineString(bufferPolyogn);
-      } else if (drawType === 'Point') {
-        polygonF = point(bufferPolyogn[0]);
-      }
-      const buffered = buffer(polygonF, distance, { units: 'meters' });
-      const { coordinates } = buffered.geometry;
+  ) {
+    let degreesArray = this.pointsToDegreesArray(bufferPolyogn);
+    let polygonF = null;
+    if (drawType === 'Polygon') {
+      polygonF = polygon([bufferPolyogn]);
+    } else if (drawType === 'Polyline') {
+      polygonF = lineString(bufferPolyogn);
+    } else if (drawType === 'Point') {
+      polygonF = point(bufferPolyogn[0]);
+    }
+    const buffered = buffer(polygonF, distance, { units: 'meters' });
+    const { coordinates } = buffered.geometry;
 
-      const points = coordinates[0];
+    const points = coordinates[0];
 
-      degreesArray = this.pointsToDegreesArray(points);
-      this.addBufferPolyogn(Cesium.Cartesian3.fromDegreesArray(degreesArray));
-      resolve(bufferPolyogn);
-    });
+    degreesArray = this.pointsToDegreesArray(points);
+    this.addBufferPolyogn(Cesium.Cartesian3.fromDegreesArray(degreesArray));
+    return Cesium.Cartesian3.fromDegreesArray(degreesArray);
   }
 
   // 添加缓冲面
@@ -224,27 +230,19 @@ export default class Buffer {
         hierarchy: new Cesium.PolygonHierarchy(positions),
         material: Cesium.Color.RED.withAlpha(0.3),
         classificationType: Cesium.ClassificationType.BOTH,
-        clampToGround: true,
+        // clampToGround: true,
       },
     });
   }
 
-  // 添加面
-  addPolygon(positions: any) {
-    this.drawLayer.entities.add({
-      polygon: {
-        hierarchy: new Cesium.PolygonHierarchy(positions),
-        material: Cesium.Color.WHITE.withAlpha(0.1),
-        classificationType: Cesium.ClassificationType.BOTH,
-        clampToGround: true,
-      },
-      polyline: {
-        positions,
-        width: 2,
-        material: Cesium.Color.YELLOW.withAlpha(0.4),
-        clampToGround: true,
-      },
-    });
+  //更新缓冲面
+  updateBuffer(distance: number) {
+    //设置半径
+    this.setRadius(distance);
+    //删除已有的
+    this.clear();
+    //创建新的 缓冲区
+    this.createBuffer(this.drawPolyogn, this.drawType);
   }
 
   // 坐标点格式转换
@@ -259,11 +257,15 @@ export default class Buffer {
     return degreesArray;
   }
 
-  changeRadius(changeDis: number): void {
-    this.radius = changeDis;
+  setRadius(changeDis: number): number {
+    let radius = Math.max(0, Math.min(changeDis, this.maxRadius));
+    this.radius = radius;
+    return radius;
   }
   // 地图绘制要素清除
   clear = (): void => {
-    this.drawLayer.entities.removeAll();
+    if (this.drawLayer.entities) {
+      this.drawLayer.entities.removeAll();
+    }
   };
 }

@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-19 11:34:28
+ * @LastEditTime: 2024-10-21 16:31:07
 -->
 <template>
   <div class="appMain">
@@ -122,6 +122,7 @@ const handleSpaceRectangle = () => {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
+    isEdit: false,
   });
   //标绘结束事件
   geometry.on('drawEnd', drawEndHandler);
@@ -138,6 +139,7 @@ const handleSpaceCircle = () => {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
+    isEdit: false,
   });
   //标绘结束事件
   geometry.on('drawEnd', drawEndHandler);
@@ -154,6 +156,7 @@ const handleSpacePolygon = () => {
     material: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 0.5)'),
     outlineMaterial: Cesium.Color.fromCssColorString('rgba(59, 178, 208, 1)'),
     outlineWidth: 3,
+    isEdit: false,
   });
   //标绘结束事件
   geometry.on('drawEnd', drawEndHandler);

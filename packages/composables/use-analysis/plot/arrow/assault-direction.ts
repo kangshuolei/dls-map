@@ -21,7 +21,7 @@ export default class AssaultDirection extends FineArrow {
   neckAngle: number;
   minPointsForShape: number;
 
-  constructor(cesium: any, viewer: any, style?: PolygonStyle) {
+  constructor(cesium: any, viewer: Cesium.Viewer, style?: PolygonStyle) {
     super(cesium, viewer, style);
     this.cesium = cesium;
     this.tailWidthFactor = 0.08;

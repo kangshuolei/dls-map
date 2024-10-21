@@ -83,15 +83,15 @@ export default defineConfig({
                 text: '加载图形',
                 link: '/components/entity/graphics.md',
               },
+              {
+                text: '标绘',
+                link: '/components/entity/plot.md',
+              },
             ],
           },
           {
             text: '分析类',
             items: [
-              {
-                text: '标绘',
-                link: '/components/analysis/plot.md',
-              },
               {
                 text: '测量',
                 link: '/components/analysis/measure.md',

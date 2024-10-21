@@ -28,7 +28,7 @@ export default class Base {
   lineEntity: Cesium.Entity;
   pointEntity: Cesium.Entity;
   type!: 'polygon' | 'line' | 'point';
-  freehand!: boolean;
+  freehand!: boolean = true;
   style: GeometryStyle | undefined;
   outlineEntity: Cesium.Entity;
   eventDispatcher: EventDispatcher;
@@ -39,11 +39,11 @@ export default class Base {
   minPointsForShape: number = 0;
   tempLineEntity: Cesium.Entity;
 
-  constructor(cesium: Cesium, viewer: Cesium.Viewer, style?: GeometryStyle) {
+  constructor(cesium: Cesium, viewer: Cesium.Viewer, style: GeometryStyle) {
     this.cesium = cesium;
     this.viewer = viewer;
     this.type = this.getType();
-
+    this.style = style;
     this.mergeStyle(style);
     this.cartesianToLnglat = this.cartesianToLnglat.bind(this);
     this.pixelToCartesian = this.pixelToCartesian.bind(this);
@@ -159,24 +159,26 @@ export default class Base {
         }
       } else if (this.state === 'static') {
         //绘制多个形状时，会触发所有形状的单击事件。只有当击中完成的形状时，它才能进入编辑模式。
-        try {
-          if (hitEntities && activeEntity.id === pickedObject.id.id) {
-            const pickedGraphics =
-              this.type === 'line'
-                ? pickedObject.id.polyline
-                : this.type === 'polygon'
-                  ? pickedObject.id.polygon
-                  : pickedObject.id.point;
-            if (this.cesium.defined(pickedGraphics)) {
-              // 点击几何形状。
-              this.setState('edit');
-              this.type !== 'point' ? this.addControlPoints() : null;
-              this.draggable();
-              this.eventDispatcher.dispatchEvent('editStart', this);
+        if (this.style.isEdit !== false) {
+          try {
+            if (hitEntities && activeEntity.id === pickedObject.id.id) {
+              const pickedGraphics =
+                this.type === 'line'
+                  ? pickedObject.id.polyline
+                  : this.type === 'polygon'
+                    ? pickedObject.id.polygon
+                    : pickedObject.id.point;
+              if (this.cesium.defined(pickedGraphics)) {
+                // 点击几何形状。
+                this.setState('edit');
+                this.type !== 'point' ? this.addControlPoints() : null;
+                this.draggable();
+                this.eventDispatcher.dispatchEvent('editStart', this);
+              }
             }
+          } catch (e) {
+            console.log('eeee', e);
           }
-        } catch (e) {
-          console.log('eeee', e);
         }
       }
     }, this.cesium.ScreenSpaceEventType.LEFT_CLICK);
@@ -220,10 +222,12 @@ export default class Base {
       this.viewer.entities.remove(this.lineEntity);
 
     this.removeMoveListener();
-    // 可在初始绘图完成后编辑。
-    this.setState('edit');
-    this.type !== 'point' ? this.addControlPoints() : null;
-    this.draggable();
+    if (this.style.isEdit !== false) {
+      // 可在初始绘图完成后编辑。
+      this.setState('edit');
+      this.type !== 'point' ? this.addControlPoints() : null;
+      this.draggable();
+    }
     const entity = this.polygonEntity || this.lineEntity || this.pointEntity;
     this.entityId = entity.id;
     /**

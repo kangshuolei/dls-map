@@ -55,7 +55,11 @@ export default function CesiumTrack(
   });
 }
 //2.根据线的数据生成点数据
-const handleGeneratePosition = (data: any, color: string, viewer: any) => {
+const handleGeneratePosition = (
+  data: any,
+  color: string,
+  viewer: Cesium.Viewer
+) => {
   if (data && data.length) {
     console.log('dataaa', data);
 
@@ -78,7 +82,7 @@ const handleGeneratePosition = (data: any, color: string, viewer: any) => {
 };
 
 //3.根据每两个坐标生成角度
-const handleGroupArrPoint = (viewer: any, img: any) => {
+const handleGroupArrPoint = (viewer: Cesium.Viewer, img: any) => {
   //通过上面的值，生成每两个点的数组集合，然后计算出两个点的中心点，在给中心点加箭头指向
   // 1.通过上面的值，生成每两个点的数组集合
   //2.根据两个点生成每两个点的中心点

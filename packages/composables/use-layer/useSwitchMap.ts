@@ -5,31 +5,31 @@
  */
 
 type mapInfo = {
-  name: string
-  url: string
-  style: string
-  format: string
+  name: string;
+  url: string;
+  style: string;
+  format: string;
   [key: string]: any;
-}
+};
 
-export function useSwitchMap(data: mapInfo , viewer: any) {
-  if(!viewer) {
-    console.error("viewer is undefined")
-    return false
+export function useSwitchMap(data: mapInfo, viewer: Cesium.Viewer) {
+  if (!viewer) {
+    console.error('viewer is undefined');
+    return false;
   }
   //不能全部删除，因为会影响其他图层
   // viewer.imageryLayers.removeAll();
-  let imageryLayer = viewer.scene.imageryLayers
+  let imageryLayer = viewer.scene.imageryLayers;
   try {
     if (imageryLayer._layers && imageryLayer._layers.length) {
-      imageryLayer._layers.forEach((itemImgery:any) => {
+      imageryLayer._layers.forEach((itemImgery: any) => {
         if (itemImgery._imageryProvider && itemImgery._imageryProvider.url) {
-          imageryLayer.remove(itemImgery)
+          imageryLayer.remove(itemImgery);
         }
-      })
+      });
     }
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
   if (data) {
     viewer.imageryLayers.addImageryProvider(data);
