@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-15 14:19:45
+ * @LastEditTime: 2024-10-22 14:36:23
 -->
 <template>
   <div class="appMain">
@@ -18,7 +18,12 @@
       @ready="onReady"
     />
     <div class="operation">
-      <el-button @click="handleEcharts" type="primary">加载迁徙图</el-button>
+      <el-button @click="handleHotEcharts" type="primary"
+        >加载热力图场景</el-button
+      >
+      <el-button @click="handleEcharts" type="primary"
+        >加载迁徙图场景</el-button
+      >
       <el-button @click="handleDispose" type="primary">销毁</el-button>
       <el-button @click="handleShow" type="primary">显示</el-button>
       <el-button @click="handleHide" type="primary">隐藏</el-button>
@@ -52,21 +57,65 @@ onMounted(() => {
 
 //销毁迁徙图
 const handleDispose = () => {
-  dataM.cesiumChartIns.dispose();
+  dataM.cesiumChartIns && dataM.cesiumChartIns.dispose();
 };
 
 //显示迁徙图
 const handleShow = () => {
-  dataM.cesiumChartIns.show();
+  dataM.cesiumChartIns && dataM.cesiumChartIns.show();
 };
 
 //隐藏迁徙图9
 const handleHide = () => {
-  dataM.cesiumChartIns.hide();
+  dataM.cesiumChartIns && dataM.cesiumChartIns.hide();
+};
+
+//加载热力图场景
+const handleHotEcharts = async () => {
+  handleDispose();
+  let data: any = [
+    { value: [116.4551, 40.2539, 10] },
+    { value: [114.4995, 38.1006, 2] },
+    { value: [117.1582, 36.8701, 4] },
+    { value: [112.3352, 37.9413, 5] },
+    { value: [113.4668, 34.6234, 1] },
+  ];
+  let series: any = [
+    {
+      type: 'effectScatter',
+      coordinateSystem: 'GLMap',
+      zlevel: 2,
+      rippleEffect: {
+        //涟漪特效
+        period: 4, //动画时间，值越小速度越快
+        brushType: 'fill', //波纹绘制方式 stroke, fill
+        scale: 9, //波纹圆环最大限制，值越大波纹越大
+      },
+      symbol: 'circle',
+      symbolSize: function (val: any) {
+        return val[2]; //圆环大小
+      },
+      itemStyle: {
+        normal: {
+          show: false,
+          color: 'red', //颜色
+        },
+      },
+      data,
+    },
+  ];
+  let option = {
+    animation: !1,
+    GLMap: {},
+    series: series,
+  };
+  dataM.cesiumChartIns = await CesiumUseEcharts(Cesium, dataM.viewer, option);
+  useCesiumFlyTo(dataM.viewer, [116.4551, 40.2539, 1000000]);
 };
 
 //加载热力图
 const handleEcharts = async () => {
+  handleDispose();
   //生成一个echarts
   const chinaGeoCoordMap: any = {
     黑龙江: [127.9688, 45.368],
