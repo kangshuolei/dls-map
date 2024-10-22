@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-17 15:20:19
+ * @LastEditTime: 2024-10-22 16:25:52
 -->
 <template>
   <div class="appMain">
@@ -47,7 +47,7 @@ const dataM = reactive<any>({
   viewer: null,
   materialColor: [
     { height: 2000, color: '#B79E6C' },
-    { height: 100.0, color: '#FBFFEE' },
+    { height: 100.0, color: '#FDF6CE' },
     { height: 0.0, color: '#F9FCCA' },
     { height: -500.0, color: '#BDE7AD' },
     { height: -1000.0, color: '#81D2A3' },
@@ -55,9 +55,9 @@ const dataM = reactive<any>({
     { height: -2000.0, color: '#4C9AA0' },
     { height: -2500.0, color: '#437D9A' },
     { height: -4000.0, color: '#3E6194' },
-    { height: -5000.0, color: '#424380' },
-    { height: -8000.0, color: '#392D52' },
-    { height: -10000.0, color: '#291C2F' },
+    { height: -5000.0, color: '#274777' },
+    { height: -8000.0, color: '#112E5B' },
+    { height: -10000.0, color: '#08234C' },
   ],
 });
 
