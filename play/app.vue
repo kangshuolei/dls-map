@@ -65,6 +65,21 @@
     <!-- <div class="drawLine" @click="handleDrawLine">绘制线段</div>  -->
     <div class="backCenter" @click="handleBackCenter">回到中心点</div>
     <div class="setPitchDegrees" @click="handleSetPitchDegrees">仰角设置</div>
+    <div class="tuozhuai">
+      <div
+        class="dataBox"
+        @dragstart.native="dragStart(item, $event)"
+        @dragover.native="dragOver($event)"
+        @drop.native="drop(item, $event)"
+        @dragend.native="dragEnd(item)"
+        draggable="true"
+        :key="index"
+        v-for="(item, index) in dataM.iconData"
+      >
+        <img :src="item.url" />
+        <span>{{ item.title }}</span>
+      </div>
+    </div>
     <div class="eye">
       <dls-map-eye :marst-viewer="dataM.viewer" />
     </div>
@@ -82,8 +97,6 @@ import {
   useCesiumFlyTo,
   DlsDivLabel,
   CesiumPlot,
-  addSnowScene,
-  addRainScene,
   // addLine,
   // addWall,
   CesiumUseEcharts,
@@ -117,6 +130,11 @@ const dataM = reactive<any>({
   dlsDivLabel: null,
   pointEntity: null,
   wallEntity: null,
+  iconData: [
+    { title: '图标1', url: LightSpot },
+    { title: '图标2', url: LightSpot },
+    { title: '图标3', url: LightSpot },
+  ],
 });
 
 watch(coords, (newValue) => {
@@ -125,6 +143,45 @@ watch(coords, (newValue) => {
 
 // const currentData = useDlsMap('dls-map-id');
 // console.log('currentData', currentData);
+
+//在拖拽开始时，通过dragStart函数将当前拖拽的元素保存到dragItem变量中，
+// 并将拖拽的数据以字符串形式存储在数据传输对象中。
+function dragStart(item: any, event: any) {
+  //设置拖拽操作的效果为移动,
+  //这里也可以说一下拖拽的几个效果
+  // 'none': 不允许拖拽操作。
+  // 'copy': 拖拽操作会复制被拖拽的数据。
+  // 'move': 拖拽操作会移动被拖拽的数据。
+  // 'link': 拖拽操作会创建一个指向被拖拽数据的链接。
+  // 在设置 effectAllowed 属性后，可以在 dragstart 和 dragover 事件中使用 dropEffect 属性来指定拖拽操作的效果。
+  event.dataTransfer.effectAllowed = 'move';
+  //并将拖拽的数据以字符串形式存储在数据传输对象中。
+  // 其中，item是一个JavaScript对象，通过JSON.stringify()方法将其转换为字符串。
+  event.dataTransfer.setData('text/plain', JSON.stringify(item));
+}
+
+//在拖拽过程中，使用dragOver函数监听dragover事件，
+// 并调用event.preventDefault()方法，以允许元素被拖拽到新的位置。
+function dragOver(event: any) {
+  console.log('执行');
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'move';
+}
+
+//在拖拽完成时，使用drop函数将拖拽的元素替换到目标位置，并更新list数组。
+function drop(item: any, event: any) {
+  event.preventDefault();
+  /**
+   * 从数据传输对象中获取之前通过 setData() 方法存储的数据，
+   * 通过 JSON.parse() 方法将其转换为对象。
+   * 用于获取在拖拽操作中传递的数据。
+   */
+  console.log('event', event);
+}
+//在拖拽结束时，通过dragEnd函数将dragItem变量重置为null。
+function dragEnd(item: any) {
+  console.log('item', item);
+}
 
 const handleClick = () => {
   console.log('点击了。。。');
@@ -673,7 +730,7 @@ const onReady = (e: any) => {
 };
 </script>
 
-<style>
+<style lang="less" scoped>
 .appMain {
   width: 100%;
   height: 100%;
@@ -734,6 +791,22 @@ const onReady = (e: any) => {
     width: auto;
     padding: 0.5rem;
     background-color: rgba(0, 0, 0, 0.5);
+  }
+  .tuozhuai {
+    cursor: pointer;
+    position: absolute;
+    z-index: 9999;
+    color: #ffffff;
+    top: 0;
+    left: 3rem;
+    width: auto;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    // display: flex;
+    .dataBox {
+      display: flex;
+      align-items: center;
+    }
   }
   .setPitchDegrees {
     cursor: pointer;
