@@ -166,17 +166,19 @@ function dragOver(event: any) {
   console.log('执行');
   event.preventDefault();
   event.dataTransfer.dropEffect = 'move';
+  console.log('执行');
 }
 
 //在拖拽完成时，使用drop函数将拖拽的元素替换到目标位置，并更新list数组。
 function drop(item: any, event: any) {
+  console.log('event', event);
   event.preventDefault();
+  console.log('执行');
   /**
    * 从数据传输对象中获取之前通过 setData() 方法存储的数据，
    * 通过 JSON.parse() 方法将其转换为对象。
    * 用于获取在拖拽操作中传递的数据。
    */
-  console.log('event', event);
 }
 //在拖拽结束时，通过dragEnd函数将dragItem变量重置为null。
 function dragEnd(item: any) {

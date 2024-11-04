@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-11 16:54:34
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-25 14:31:19
+ * @LastEditTime: 2024-11-01 15:45:34
 -->
 # 开始
 
@@ -21,10 +21,12 @@ layer/map
 
 ### Dls-Map 属性
 
-| 名称         | 描述       | 类型     | 默认值 |
-| ------------ | ---------- | -------- | ------ |
-| mapConfig    | 地图参数   | `object` | —      |
-| viewerConfig | viewer参数 | `object` | —      |
+| 名称          | 描述           | 类型     | 默认值 |
+| ------------- | -------------- | -------- | ------ |
+| mapConfig     | 地图参数       | `object` | —      |
+| viewerConfig  | viewer参数     | `object` | —      |
+| viewer-width  | 地图场景的宽度 | `object` | 100%   |
+| viewer-height | 地图场景的高度 | `object` | 100%   |
 
 
 ### Dls-Map Exposes
@@ -35,9 +37,11 @@ layer/map
 
 ### Dls-Map 事件
 
-| 事件名       | 描述           | 类型       |
-| ------------ | -------------- | ---------- |
-| cesium-ready | 地图加载完触发 | `Function` |
+| 事件名       | 描述                     | 类型       |
+| ------------ | ------------------------ | ---------- |
+| cesium-ready | Cesium加载完成之后       | `Function` |
+| ready        | Viewer等实体加载完成之后 | `Function` |
+| destroyed    | 销毁地球                 | `Function` |
 
 
 ### mapConfig 属性
