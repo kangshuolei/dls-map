@@ -84,6 +84,10 @@ export default defineConfig({
                 link: '/components/entity/graphics.md',
               },
               {
+                text: '位置移动',
+                link: '/components/entity/positionMove.md',
+              },
+              {
                 text: '标绘',
                 link: '/components/entity/plot.md',
               },

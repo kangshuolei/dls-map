@@ -66,18 +66,18 @@
     <div class="backCenter" @click="handleBackCenter">回到中心点</div>
     <div class="setPitchDegrees" @click="handleSetPitchDegrees">仰角设置</div>
     <div class="tuozhuai">
-      <div
-        class="dataBox"
-        @dragstart.native="dragStart(item, $event)"
-        @dragover.native="dragOver($event)"
-        @drop.native="drop(item, $event)"
-        @dragend.native="dragEnd(item)"
-        draggable="true"
-        :key="index"
-        v-for="(item, index) in dataM.iconData"
-      >
-        <img :src="item.url" />
-        <span>{{ item.title }}</span>
+      <div>
+        <div
+          draggable
+          @dragstart="dragStart($event, item)"
+          @dragend="dragEnd($event, item)"
+          class="dataBox"
+          :key="index"
+          v-for="(item, index) in dataM.iconData"
+        >
+          <img :src="item.icon" />
+          <span>{{ item.title }}</span>
+        </div>
       </div>
     </div>
     <div class="eye">
@@ -88,9 +88,12 @@
 
 <script lang="ts" setup>
 import { DlsButton, DlsMap, DlsMapEye } from '@dls-map/components';
+import { VueDraggable, DraggableEvent } from 'vue-draggable-plus';
 import wallLine from '/static/images/wall_line.png';
 import ArrowImg from '/static/images/arrowImg.png';
+import MarkBlue from '/static/images/mark-blue.png';
 import LightSpot from '/static/images/lightSpot.png';
+// import modelUrl from '/static/model/huaxiangji.obj';
 import {
   useSwitchMap,
   useCesiumCoord,
@@ -105,6 +108,7 @@ import {
   CesiumTrack,
   useDlsMap,
   useCesiumEntities,
+  CesiumEditEntity,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
 const { listenToMouseMovement, coords } = useCesiumCoord();
@@ -131,10 +135,28 @@ const dataM = reactive<any>({
   pointEntity: null,
   wallEntity: null,
   iconData: [
-    { title: '图标1', url: LightSpot },
-    { title: '图标2', url: LightSpot },
-    { title: '图标3', url: LightSpot },
+    { title: '图标平移1', type: 'billboard', url: MarkBlue, icon: MarkBlue },
+    { title: '图标平移2', type: 'billboard', url: MarkBlue, icon: MarkBlue },
+    {
+      title: '模型旋转',
+      type: 'model',
+      url: '/static/model/huaxiangji.glb',
+      icon: MarkBlue,
+    },
   ],
+  _rStep: 1,
+  _dStep: 1,
+  params: {
+    tx: 0, //模型中心X轴坐标（经度，单位：十进制度）
+    ty: 0, //模型中心Y轴坐标（纬度，单位：十进制度）
+    tz: 0, //模型中心Z轴坐标（高程，单位：米）
+    rx: 0, //X轴（经度）方向旋转角度（单位：度）
+    ry: 0, //Y轴（纬度）方向旋转角度（单位：度）
+    rz: 0, //Z轴（高程）方向旋转角度（单位：度）
+  },
+  _defaultWidth: 15,
+  _coordArrows: {},
+  _coordCircle: [],
 });
 
 watch(coords, (newValue) => {
@@ -143,46 +165,78 @@ watch(coords, (newValue) => {
 
 // const currentData = useDlsMap('dls-map-id');
 // console.log('currentData', currentData);
+// 获取屏幕坐标上的经纬度
+function getLatLonFromScreenPosition(screenX: number, screenY: number) {
+  const scene = dataM.viewer.scene;
+  const cartesian = scene.pickPosition(new Cesium.Cartesian2(screenX, screenY));
+
+  if (cartesian) {
+    const cartographic = Cesium.Cartographic.fromCartesian(cartesian);
+    const latitude = Cesium.Math.toDegrees(cartographic.latitude);
+    const longitude = Cesium.Math.toDegrees(cartographic.longitude);
+    const height = cartographic.height;
+
+    const x = cartesian.x;
+    const y = cartesian.y;
+    const z = cartesian.z;
+    return { latitude, longitude, height, x, y, z };
+  }
+  return null; // 如果未能获取有效位置
+}
 
 //在拖拽开始时，通过dragStart函数将当前拖拽的元素保存到dragItem变量中，
 // 并将拖拽的数据以字符串形式存储在数据传输对象中。
-function dragStart(item: any, event: any) {
-  //设置拖拽操作的效果为移动,
-  //这里也可以说一下拖拽的几个效果
-  // 'none': 不允许拖拽操作。
-  // 'copy': 拖拽操作会复制被拖拽的数据。
-  // 'move': 拖拽操作会移动被拖拽的数据。
-  // 'link': 拖拽操作会创建一个指向被拖拽数据的链接。
-  // 在设置 effectAllowed 属性后，可以在 dragstart 和 dragover 事件中使用 dropEffect 属性来指定拖拽操作的效果。
-  event.dataTransfer.effectAllowed = 'move';
-  //并将拖拽的数据以字符串形式存储在数据传输对象中。
-  // 其中，item是一个JavaScript对象，通过JSON.stringify()方法将其转换为字符串。
-  event.dataTransfer.setData('text/plain', JSON.stringify(item));
+function dragStart(event: any, data: any) {
+  // alert('1');
+  console.log('拖拽开始', event, data);
 }
 
-//在拖拽过程中，使用dragOver函数监听dragover事件，
-// 并调用event.preventDefault()方法，以允许元素被拖拽到新的位置。
-function dragOver(event: any) {
-  console.log('执行');
-  event.preventDefault();
-  event.dataTransfer.dropEffect = 'move';
-  console.log('执行');
-}
-
-//在拖拽完成时，使用drop函数将拖拽的元素替换到目标位置，并更新list数组。
-function drop(item: any, event: any) {
-  console.log('event', event);
-  event.preventDefault();
-  console.log('执行');
-  /**
-   * 从数据传输对象中获取之前通过 setData() 方法存储的数据，
-   * 通过 JSON.parse() 方法将其转换为对象。
-   * 用于获取在拖拽操作中传递的数据。
-   */
-}
 //在拖拽结束时，通过dragEnd函数将dragItem变量重置为null。
-function dragEnd(item: any) {
-  console.log('item', item);
+function dragEnd(event: any, data: any) {
+  console.log('拖拽结束', event, data);
+  const latLon = getLatLonFromScreenPosition(event.x, event.y);
+  let dataArrow = {
+    alt: 10,
+    lat: latLon.latitude,
+    lng: latLon.longitude,
+  };
+  dataM.editB3dm && dataM.editB3dm.destroy();
+  if (data.type === 'billboard') {
+    const arrowEntity = addPointEntity(
+      dataArrow.lng,
+      dataArrow.lat,
+      dataM.viewer,
+      {
+        type: 'billboard',
+        imgUrl: data.url,
+      }
+    );
+    dataM.editB3dm = new CesiumEditEntity(dataM.viewer, arrowEntity, {
+      radiusNum: 100,
+      arrowLength: 120,
+      dStep: 1,
+      rStep: 1,
+    });
+    dataM.editB3dm.editTranslation();
+  } else if (data.type === 'model') {
+    const arrowEntity = addPointEntity(
+      dataArrow.lng,
+      dataArrow.lat,
+      dataM.viewer,
+      {
+        type: 'model',
+        modelUrl: data.url,
+        modelScale: 20,
+      }
+    );
+    dataM.editB3dm = new CesiumEditEntity(dataM.viewer, arrowEntity, {
+      radiusNum: 100,
+      arrowLength: 120,
+      dStep: 1,
+      rStep: 1,
+    });
+    dataM.editB3dm.editRotation();
+  }
 }
 
 const handleClick = () => {
@@ -624,7 +678,7 @@ const handleCesiumPlot = () => {
 };
 
 const handleBackCenter = () => {
-  useCesiumFlyTo(dataM.viewer, [116.4134, 39.911, 11000000]);
+  useCesiumFlyTo(dataM.viewer, [116.4134, 39.911, 1000]);
 };
 
 const handleSetPitchDegrees = () => {
