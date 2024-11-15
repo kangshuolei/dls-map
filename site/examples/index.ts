@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-18 14:32:19
  * @Last Modified by: Kang
- * @LastEditTime: 2024-11-12 15:54:54
+ * @LastEditTime: 2024-11-15 15:26:38
  */
 import type { Component } from 'vue';
 import KkLayerMap from './layer/map.vue';
@@ -22,6 +22,7 @@ import KkLayerPhotography from './layer/photography.vue';
 import KkCoverageLayers from './coverage/layers.vue';
 import KkToolsTools from './tools/tools.vue';
 import KkEntityPositionMove from './entity/positionMove.vue';
+import KkIntegrationThreejs from './integration/threejs.vue';
 
 export const ComponentsGlobals: [string, Component][] = [
   ['KkLayerMap', KkLayerMap],
@@ -41,4 +42,5 @@ export const ComponentsGlobals: [string, Component][] = [
   ['KkCoverageLayers', KkCoverageLayers],
   ['KkToolsTools', KkToolsTools],
   ['KkEntityPositionMove', KkEntityPositionMove],
+  ['KkIntegrationThreejs', KkIntegrationThreejs],
 ];

@@ -158,7 +158,13 @@ export default defineConfig({
             ],
           },
           {
-            text: '其他'
+            text: '集成',
+            items: [
+              {
+                text: 'cesium集成threejs',
+                link: '/components/integration/threejs'
+              }
+            ]
           }
         ],
       },

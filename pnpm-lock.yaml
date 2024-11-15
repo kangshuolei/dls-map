@@ -14,6 +14,7 @@ importers:
       '@types/lodash.clonedeep': ^4.5.9
       '@types/lodash.merge': ^4.6.9
       '@types/node': ^22.1.0
+      '@types/three': ^0.170.0
       '@typescript-eslint/eslint-plugin': ^8.1.0
       '@typescript-eslint/parser': ^8.1.0
       '@vitejs/plugin-vue': ^5.1.2
@@ -35,6 +36,7 @@ importers:
       rollup-plugin-copy: ^3.5.0
       sass: 1.53.0
       sucrase: ^3.35.0
+      three: 0.161.0
       typescript: ^5.5.4
       unplugin-vue-define-options: ^1.5.0
       vite: ^5.3.5
@@ -50,6 +52,7 @@ importers:
       echarts: 5.5.1
       rollup-plugin-copy: 3.5.0
       sass: 1.53.0
+      three: 0.161.0
       unplugin-vue-define-options: 1.5.0_vue@3.4.37
       vue-draggable-plus: 0.5.6
     devDependencies:
@@ -59,6 +62,7 @@ importers:
       '@types/lodash.clonedeep': 4.5.9
       '@types/lodash.merge': 4.6.9
       '@types/node': 22.1.0
+      '@types/three': 0.170.0
       '@typescript-eslint/eslint-plugin': 8.1.0_2ggqsfljd7nzoz546ms2eojxoi
       '@typescript-eslint/parser': 8.1.0_4bd53pel3hvujp77bkfhfwfeqq
       '@vitejs/plugin-vue': 5.1.2_vite@5.4.0+vue@3.4.37
@@ -2550,6 +2554,10 @@ packages:
       tslib: 2.6.3
     dev: false
 
+  /@tweenjs/tween.js/23.1.3:
+    resolution: {integrity: sha512-vJmvvwFxYuGnF2axRtPYocag6Clbb5YS7kLL+SO/TeVFzHqDIWrNKYtcsPMibjDx9O+bu+psAy9NKfWklassUA==}
+    dev: true
+
   /@types/argparse/1.0.38:
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
     dev: true
@@ -2683,10 +2691,25 @@ packages:
     resolution: {integrity: sha512-b79830lW+RZfwaztgs1aVPgbasJ8e7AXtZYHTELNXZPsERt4ymJdjV4OccDbHQAvHrCcFpbF78jkm0R6h/pZVg==}
     dev: false
 
+  /@types/stats.js/0.17.3:
+    resolution: {integrity: sha512-pXNfAD3KHOdif9EQXZ9deK82HVNaXP5ZIF5RP2QG6OQFNTaY2YIetfrE9t528vEreGQvEPRDDc8muaoYeK0SxQ==}
+    dev: true
+
   /@types/streamx/2.9.5:
     resolution: {integrity: sha512-IHYsa6jYrck8VEdSwpY141FTTf6D7boPeMq9jy4qazNrFMA4VbRz/sw5LSsfR7jwdDcx0QKWkUexZvsWBC2eIQ==}
     dependencies:
       '@types/node': 22.1.0
+    dev: true
+
+  /@types/three/0.170.0:
+    resolution: {integrity: sha512-CUm2uckq+zkCY7ZbFpviRttY+6f9fvwm6YqSqPfA5K22s9w7R4VnA3rzJse8kHVvuzLcTx+CjNCs2NYe0QFAyg==}
+    dependencies:
+      '@tweenjs/tween.js': 23.1.3
+      '@types/stats.js': 0.17.3
+      '@types/webxr': 0.5.20
+      '@webgpu/types': 0.1.51
+      fflate: 0.8.2
+      meshoptimizer: 0.18.1
     dev: true
 
   /@types/undertaker-registry/1.0.4:
@@ -2726,6 +2749,10 @@ packages:
 
   /@types/web-bluetooth/0.0.20:
     resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
+
+  /@types/webxr/0.5.20:
+    resolution: {integrity: sha512-JGpU6qiIJQKUuVSKx1GtQnHJGxRjtfGIhzO2ilq43VZZS//f1h1Sgexbdk+Lq+7569a6EYhOWrUpIruR/1Enmg==}
+    dev: true
 
   /@typescript-eslint/eslint-plugin/8.1.0_2ggqsfljd7nzoz546ms2eojxoi:
     resolution: {integrity: sha512-LlNBaHFCEBPHyD4pZXb35mzjGkuGKXU5eeCA1SxvHfiRES0E82dOounfVpL4DCqYvJEKab0bZIA0gCRpdLKkCw==}
@@ -3221,6 +3248,10 @@ packages:
       - '@vue/composition-api'
       - vue
     dev: false
+
+  /@webgpu/types/0.1.51:
+    resolution: {integrity: sha512-ktR3u64NPjwIViNCck+z9QeyN0iPkQCUOQ07ZCV1RzlkfP+olLTeEZ95O1QHS+v4w9vJeY9xj/uJuSphsHy5rQ==}
+    dev: true
 
   /@zouyaoji/heatmap.js/2.0.8:
     resolution: {integrity: sha512-kBQny/zOUFH2OFoVyu6IdGJEcQMENIAASUsaZhk+OuJ9WexsYf6EU2lCyGURcsFly1kTMZKODlV7nBTCgfvJqg==}
@@ -4518,6 +4549,10 @@ packages:
       web-streams-polyfill: 3.3.3
     dev: true
 
+  /fflate/0.8.2:
+    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
+    dev: true
+
   /file-entry-cache/8.0.0:
     resolution: {integrity: sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==}
     engines: {node: '>=16.0.0'}
@@ -5750,6 +5785,10 @@ packages:
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
+
+  /meshoptimizer/0.18.1:
+    resolution: {integrity: sha512-ZhoIoL7TNV4s5B6+rx5mC//fw8/POGyNxS/DZyCJeiZ12ScLfVwRE/GfsxwiTkMYYD5DmK2/JXnEVXqL4rF+Sw==}
+    dev: true
 
   /mgrs/1.0.0:
     resolution: {integrity: sha512-awNbTOqCxK1DBGjalK3xqWIstBZgN6fxsMSiXLs9/spqWkF2pAhb2rrYCFSsr1/tT7PhcDGjZndG8SWYn0byYA==}
@@ -7134,6 +7173,10 @@ packages:
     dependencies:
       any-promise: 1.3.0
     dev: true
+
+  /three/0.161.0:
+    resolution: {integrity: sha512-LC28VFtjbOyEu5b93K0bNRLw1rQlMJ85lilKsYj6dgTu+7i17W+JCCEbvrpmNHF1F3NAUqDSWq50UD7w9H2xQw==}
+    dev: false
 
   /through2/4.0.2:
     resolution: {integrity: sha512-iOqSav00cVxEEICeD7TjLB1sueEL+81Wpzp2bY17uZjZN0pWZPuo4suZ/61VujxmqSGFfgOcNuTZ85QJwNZQpw==}
