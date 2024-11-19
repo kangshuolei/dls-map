@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-11-15 18:02:54
+ * @LastEditTime: 2024-11-19 16:31:25
 -->
 <template>
   <div class="appMain">
@@ -71,7 +71,10 @@ const dataM = reactive<any>({
     {
       title: '模型旋转',
       type: 'model',
-      url: '/assets/model/huaxiangji.glb',
+      url:
+        import.meta.env.MODE === 'development'
+          ? '/huaxiangji.glb'
+          : '/dls-map-doc/huaxiangji.glb',
       icon: HuaXiangJi,
     },
   ],
