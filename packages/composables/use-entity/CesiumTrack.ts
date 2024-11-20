@@ -76,7 +76,7 @@ const handleGeneratePosition = (
           color: Cesium.Color.fromCssColorString(color),
           // heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
         },
-      });
+      } as any);
     });
   }
 };

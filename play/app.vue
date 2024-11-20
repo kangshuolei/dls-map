@@ -27,39 +27,50 @@
         size="midium"
         type="primary"
         class="point"
+        @click="handleLoadWindy('load')"
+        >加载风场</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleLoadWindy('show')"
+        >显示风场</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleLoadWindy('hidden')"
+        >隐藏风场</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleLoadWindy('pause')"
+        >暂停风场</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleLoadWindy('resume')"
+        >恢复风场</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleLoadWindy('destroy')"
+        >销毁风场</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
         @click="handleAddEcharts"
         >加载echarts地图</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleAddPoint"
-        >添加点</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleAddLine"
-        >添加线</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleAddWall"
-        >添加墙</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleAddCircle"
-        >添加圆</dls-button
-      >
-      <dls-button size="midium" type="primary" @click="handleRemoveEntity"
-        >删除实例</dls-button
       >
     </div>
     <!-- <div class="drawLine" @click="handleDrawLine">绘制线段</div>  -->
@@ -93,6 +104,7 @@ import wallLine from '/static/images/wall_line.png';
 import ArrowImg from '/static/images/arrowImg.png';
 import MarkBlue from '/static/images/mark-blue.png';
 import LightSpot from '/static/images/lightSpot.png';
+import windyData from '/static/json/windy/2017121300.json';
 // import modelUrl from '/static/model/huaxiangji.obj';
 import {
   useSwitchMap,
@@ -109,8 +121,10 @@ import {
   useDlsMap,
   useCesiumEntities,
   CesiumEditEntity,
+  Windy,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
+import axios from 'axios';
 const { listenToMouseMovement, coords } = useCesiumCoord();
 const {
   addPointEntity,
@@ -157,6 +171,7 @@ const dataM = reactive<any>({
   _defaultWidth: 15,
   _coordArrows: {},
   _coordCircle: [],
+  windy: null,
 });
 
 watch(coords, (newValue) => {
@@ -248,6 +263,51 @@ onMounted(() => {
   console.log('dlsMapRef', dlsMapRef.value);
   // console.log(dataM.imageryProvider);
 });
+
+const handleLoadWindy = (type: string) => {
+  if (type === 'load') {
+    axios
+      .get('/static/json/windy/2017121300.json')
+      .then((response: any) => {
+        // this.userData = response.data;
+        // var header = response[0].header;
+        console.log('response', response);
+        dataM.windy = new Windy({
+          json: response.data,
+          cesiumViewer: dataM.viewer,
+          speed: 100,
+        });
+        // redraw();
+        dataM.windy.loadWindy();
+        // setTimeout(() => {
+        //   dataM.windy.hideLines();
+        // }, 3000);
+        // setTimeout(() => {
+        //   dataM.windy.showLines();
+        // }, 6000);
+      })
+      .catch((error) => {
+        console.error('There was an error!', error);
+      });
+  } else if (type === 'hidden') {
+    dataM.windy.hideWindy();
+  } else if (type === 'show') {
+    dataM.windy.showWindy();
+  } else if (type === 'pause') {
+    dataM.windy.pauseWindy();
+  } else if (type === 'resume') {
+    dataM.windy.resumeWindy();
+  } else if (type === 'destroy') {
+    dataM.windy.destroyWindy();
+  }
+};
+
+function redraw() {
+  // var timer = null;
+  // timer = setInterval(function () {
+  //   dataM.windy.animate();
+  // }, 300);
+}
 
 //添加echarts
 const handleAddEcharts = () => {

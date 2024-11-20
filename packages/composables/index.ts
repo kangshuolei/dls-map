@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-07-22 09:02:25
  * @Last Modified by: Kang
- * @LastEditTime: 2024-11-11 16:20:11
+ * @LastEditTime: 2024-11-20 10:10:27
  */
 export { useSwitchMap } from './use-layer/useSwitchMap'; //切换图层
 export { useCesiumCoord } from './use-tools/useCesiumCoord'; //获取经纬度、角度等信息
@@ -22,3 +22,4 @@ export { default as CesiumTrack } from './use-entity/CesiumTrack'; //历史轨�
 export { default as useDlsMap } from './use-hooks/useDlsMap'; //获取全局实例
 export { CesiumScpacePoint } from './use-analysis/scpacePoint'; //框选数据分析点位
 export { default as CesiumEditEntity } from './use-entity/CesiumEditEntity'; //编辑点位
+export { default as Windy } from './use-environment/windy/Windy'; //加载风场

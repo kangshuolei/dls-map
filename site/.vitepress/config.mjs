@@ -146,6 +146,10 @@ export default defineConfig({
                 text: '下雪',
                 link: '/components/environment/snow.md',
               },
+              {
+                text: '风场',
+                link: '/components/environment/windy.md'
+              }
             ],
           },
           {
