@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-11-19 16:31:25
+ * @LastEditTime: 2024-11-20 16:35:52
 -->
 <template>
   <div class="appMain">
@@ -73,8 +73,8 @@ const dataM = reactive<any>({
       type: 'model',
       url:
         import.meta.env.MODE === 'development'
-          ? '/huaxiangji.glb'
-          : '/dls-map-doc/huaxiangji.glb',
+          ? '/ao.glb'
+          : '/dls-map-doc/ao.glb',
       icon: HuaXiangJi,
     },
   ],

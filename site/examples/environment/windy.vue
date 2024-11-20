@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-11-20 16:27:40
+ * @LastEditTime: 2024-11-20 16:33:23
 -->
 <template>
   <div class="appMain">
@@ -43,7 +43,7 @@
 <script lang="ts" setup>
 import { DlsMap } from '@dls-map/components';
 import { Windy } from '@dls-map/composables';
-import { onMounted, ref, reactive } from 'vue';
+import { onMounted, ref, reactive, onUnmounted } from 'vue';
 import axios from 'axios';
 
 const dlsMapRef = ref(null);
@@ -95,6 +95,10 @@ const handleLoadWindy = (type: string) => {
     dataM.windy.destroyWindy();
   }
 };
+
+onUnmounted(() => {
+  dataM.windy && dataM.windy.destroyWindy();
+});
 
 //cesium初始化完成之后
 const onCesiumReady = (e: any) => {
