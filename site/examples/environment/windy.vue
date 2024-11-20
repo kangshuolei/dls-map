@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-11-20 16:18:18
+ * @LastEditTime: 2024-11-20 16:27:40
 -->
 <template>
   <div class="appMain">
@@ -66,8 +66,12 @@ onMounted(() => {
 //加载下雨场景
 const handleLoadWindy = (type: string) => {
   if (type === 'load') {
+    let url =
+      import.meta.env.MODE === 'development'
+        ? '/2017121300.json'
+        : '/dls-map-doc/2017121300.json';
     axios
-      .get('../../assets/json/windy/2017121300.json')
+      .get(url)
       .then((response: any) => {
         dataM.windy = new Windy({
           json: response.data,
