@@ -1,0 +1,11 @@
+Model Information:
+* title:	Carbon Frame Bike
+* source:	https://sketchfab.com/3d-models/carbon-frame-bike-398999b3360b4e6997a9aae253d6acbd
+* author:	prefrontal cortex (https://sketchfab.com/prefrontalcortex)
+
+Model License:
+* license type:	CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
+* requirements:	Author must be credited. Modified versions must have the same license. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Carbon Frame Bike" (https://sketchfab.com/3d-models/carbon-frame-bike-398999b3360b4e6997a9aae253d6acbd) by prefrontal cortex (https://sketchfab.com/prefrontalcortex) licensed under CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)

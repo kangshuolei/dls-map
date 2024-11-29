@@ -27,43 +27,8 @@
         size="midium"
         type="primary"
         class="point"
-        @click="handleLoadWindy('load')"
-        >加载风场</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleLoadWindy('show')"
-        >显示风场</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleLoadWindy('hidden')"
-        >隐藏风场</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleLoadWindy('pause')"
-        >暂停风场</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleLoadWindy('resume')"
-        >恢复风场</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleLoadWindy('destroy')"
-        >销毁风场</dls-button
+        @click="handleLoadModel"
+        >加载骨骼动画人</dls-button
       >
       <dls-button
         size="midium"
@@ -138,10 +103,9 @@ const dlsMapRef = ref(null);
 const dataM = reactive<any>({
   imageryProvider: {
     url: 'https://webst02.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
-    layer: 'tdtVecBasicLayer',
-    style: 'default',
-    format: 'image/png',
-    tileMatrixSetID: 'GoogleMapsCompatible',
+    tileWidth: 256,
+    tileHeight: 256,
+    maximumLevel: 20, // 瓦片的最大层级
   },
   coords: {},
   viewer: {},
@@ -174,9 +138,88 @@ const dataM = reactive<any>({
   windy: null,
 });
 
+const moveRate = 50;
+
+// 键盘状态追踪
+let isMovingForward = false;
+let isMovingBackward = false;
+let isMovingLeft = false;
+let isMovingRight = false;
+
+const keys: any = ref({
+  w: false,
+  a: false,
+  s: false,
+  d: false,
+  q: false,
+  e: false,
+});
+
 watch(coords, (newValue) => {
   dataM.coords = newValue;
 });
+
+function createModel(url: string, height: number) {
+  dataM.viewer.entities.removeAll();
+
+  const position = Cesium.Cartesian3.fromDegrees(116.4134, 39.911, height);
+  const heading = Cesium.Math.toRadians(135);
+  const pitch = 0;
+  const roll = 0;
+  const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
+  const orientation = Cesium.Transforms.headingPitchRollQuaternion(
+    position,
+    hpr
+  );
+
+  const entity = dataM.viewer.entities.add({
+    name: url,
+    position: position,
+    orientation: orientation,
+    model: {
+      uri: url,
+      minimumPixelSize: 128,
+      maximumScale: 20000,
+    },
+  });
+  dataM.viewer.trackedEntity = entity;
+}
+
+//加载骨骼动画
+const handleLoadModel = async () => {
+  let animations;
+  const position = Cesium.Cartesian3.fromDegrees(116.4134, 39.911, 0);
+  const headingPositionRoll = new Cesium.HeadingPitchRoll();
+  const fixedFrameTransform = Cesium.Transforms.localFrameToFixedFrameGenerator(
+    'north',
+    'west'
+  );
+  let model = await Cesium.Model.fromGltfAsync({
+    url: 'ux3d_industrial_robot/scene.gltf',
+    scale: 1,
+    modelMatrix: Cesium.Transforms.headingPitchRollToFixedFrame(
+      position,
+      headingPositionRoll,
+      Cesium.Ellipsoid.WGS84,
+      fixedFrameTransform
+    ),
+    minimumPixelSize: 128,
+    gltfCallback: (gltf) => {
+      animations = gltf.animations;
+    },
+  });
+  dataM.viewer.scene.primitives.add(model); // 添加到 Cesium 场景
+  model.readyEvent.addEventListener(() => {
+    model.activeAnimations.add({
+      index: animations.length - 1,
+      loop: Cesium.ModelAnimationLoop.REPEAT,
+      multiplier: 0.5,
+    });
+  });
+
+  // createModel('ux3d_industrial_robot/scene.gltf', 0);
+  useCesiumFlyTo(dataM.viewer, [116.4134, 39.911, 1000]);
+};
 
 // const currentData = useDlsMap('dls-map-id');
 // console.log('currentData', currentData);
@@ -772,7 +815,7 @@ const onReady = (e: any) => {
     dom: jsxContent,
     className,
   };
-  dataM.dlsDivLabel = new DlsDivLabel(val);
+  // dataM.dlsDivLabel = new DlsDivLabel(val);
   // addRainScene(dataM.viewer);
   //生成一个线段
   // addLine([-115.0, 37.0, -115.0, 32.0], Cesium.Color.RED, dataM.viewer, {});

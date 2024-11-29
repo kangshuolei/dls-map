@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-29 15:54:25
+ * @LastEditTime: 2024-11-28 10:31:34
 -->
 <template>
   <div class="appMain">
@@ -17,11 +17,11 @@
       :viewer-height="'500px'"
       @cesium-ready="onCesiumReady"
     />
-    <el-alert
+    <!-- <el-alert
       style="max-width: 300px; top: 0.4rem; left: 0.4rem"
       title="暂无倾斜摄影数据"
       type="info"
-    />
+    /> -->
     <div class="operation">
       <el-button @click="handleLoadPhotography" type="primary"
         >加载倾斜摄影</el-button
@@ -53,11 +53,15 @@ onMounted(() => {
 });
 
 //加载倾斜摄影
-const handleLoadPhotography = () => {
-  ElMessage({
-    type: 'warning',
-    message: '正在开发中.....',
-  });
+const handleLoadPhotography = async () => {
+  const tilesetModel = await Cesium.Cesium3DTileset.fromUrl(
+    '../../assets/3dtiles/data/tileset.json'
+  );
+  dataM.viewer.scene.primitives.add(tilesetModel);
+  dataM.viewer.camera.viewBoundingSphere(
+    tilesetModel.boundingSphere,
+    new Cesium.HeadingPitchRange(0, -0.5, 0)
+  );
 };
 
 //cesium初始化完成之后

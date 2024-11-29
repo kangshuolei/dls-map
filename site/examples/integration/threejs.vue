@@ -26,7 +26,7 @@ import * as THREE from 'three';
 import { TeapotGeometry } from 'three/examples/jsm/geometries/TeapotGeometry.js';
 //一些常量的设置
 const teapotSize = 100;
-const teapotPosition = [129.3653799, 42.9093989];
+const teapotPosition = [116.4134, 39.911];
 const earthRadius = 6378137;
 const dataM = reactive<any>({
   imageryProvider: {
@@ -157,7 +157,7 @@ const initThree = (viewer: any) => {
   axesHelper = new THREE.AxesHelper(earthRadius * 2.5);
 
   //将坐标轴辅助器设置为不可见
-  axesHelper.visible = true;
+  axesHelper.visible = false;
   //将坐标轴辅助器添加到场景中，以便在渲染时呈现出来。
   scene.add(axesHelper);
 
@@ -187,7 +187,7 @@ const initThree = (viewer: any) => {
   threeSphere = new THREE.Mesh(geometry, material);
 
   //将球体对象的可见性设置为 false，即初始状态下不可见。
-  threeSphere.visible = true;
+  threeSphere.visible = false;
   //将球体对象添加到 Three.js 场景中，以便在渲染时呈现出来。
   scene.add(threeSphere);
 
@@ -216,7 +216,8 @@ const initThree = (viewer: any) => {
   //根据给定的经纬度坐标 teapotPosition，创建了一个 Cesium 中的笛卡尔坐标系。
   const wgs84Position = Cesium.Cartesian3.fromDegrees(
     teapotPosition[0],
-    teapotPosition[1]
+    teapotPosition[1],
+    0
   );
 
   //使用 Cesium 中的 Transforms.headingPitchRollToFixedFrame 方法，根据给定的位置和方向创建了一个变换矩阵。

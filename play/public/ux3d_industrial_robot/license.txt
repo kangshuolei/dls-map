@@ -1,0 +1,11 @@
+Model Information:
+* title:	UX3D Industrial Robot
+* source:	https://sketchfab.com/3d-models/ux3d-industrial-robot-d8e8948191684a66a2f31c2e17e3481f
+* author:	UX3D GmbH (https://sketchfab.com/nopper)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "UX3D Industrial Robot" (https://sketchfab.com/3d-models/ux3d-industrial-robot-d8e8948191684a66a2f31c2e17e3481f) by UX3D GmbH (https://sketchfab.com/nopper) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

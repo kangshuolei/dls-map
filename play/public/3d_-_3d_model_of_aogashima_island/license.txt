@@ -1,0 +1,11 @@
+Model Information:
+* title:	青ヶ島 3D地形図 - 3D model of Aogashima Island
+* source:	https://sketchfab.com/3d-models/3d-3d-model-of-aogashima-island-6926daecbee648c7b09c83ec481f8b5e
+* author:	qshiro (https://sketchfab.com/qshiro)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "青ヶ島 3D地形図 - 3D model of Aogashima Island" (https://sketchfab.com/3d-models/3d-3d-model-of-aogashima-island-6926daecbee648c7b09c83ec481f8b5e) by qshiro (https://sketchfab.com/qshiro) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
