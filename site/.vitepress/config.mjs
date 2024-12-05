@@ -156,6 +156,10 @@ export default defineConfig({
             text: '工具类',
             items: [
               {
+                text: '键盘漫游',
+                link: '/components/tools/keyboardRoam.md',
+              },
+              {
                 text: '地图操作工具',
                 link: '/components/tools/tools.md',
               },

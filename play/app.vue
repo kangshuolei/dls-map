@@ -37,6 +37,20 @@
         @click="handleAddEcharts"
         >加载echarts地图</dls-button
       >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleOpenKeyboarRoaming"
+        >开启键盘漫游</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleCloseKeyboarRoaming"
+        >关闭键盘漫游</dls-button
+      >
     </div>
     <!-- <div class="drawLine" @click="handleDrawLine">绘制线段</div>  -->
     <div class="backCenter" @click="handleBackCenter">回到中心点</div>
@@ -87,10 +101,12 @@ import {
   useCesiumEntities,
   CesiumEditEntity,
   Windy,
+  useKeyboardRoam,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
 import axios from 'axios';
 const { listenToMouseMovement, coords } = useCesiumCoord();
+const { keyboardMapRoamingInit, keyboardMapRoamingRemove } = useKeyboardRoam();
 const {
   addPointEntity,
   addLine,
@@ -138,26 +154,17 @@ const dataM = reactive<any>({
   windy: null,
 });
 
-const moveRate = 50;
-
-// 键盘状态追踪
-let isMovingForward = false;
-let isMovingBackward = false;
-let isMovingLeft = false;
-let isMovingRight = false;
-
-const keys: any = ref({
-  w: false,
-  a: false,
-  s: false,
-  d: false,
-  q: false,
-  e: false,
-});
-
 watch(coords, (newValue) => {
   dataM.coords = newValue;
 });
+
+const handleCloseKeyboarRoaming = () => {
+  keyboardMapRoamingRemove();
+};
+
+const handleOpenKeyboarRoaming = () => {
+  keyboardMapRoamingInit(dataM.viewer);
+};
 
 function createModel(url: string, height: number) {
   dataM.viewer.entities.removeAll();

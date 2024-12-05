@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-18 14:32:19
  * @Last Modified by: Kang
- * @LastEditTime: 2024-11-20 16:07:39
+ * @LastEditTime: 2024-12-02 10:39:44
  */
 import type { Component } from 'vue';
 import KkLayerMap from './layer/map.vue';
@@ -24,6 +24,7 @@ import KkToolsTools from './tools/tools.vue';
 import KkEntityPositionMove from './entity/positionMove.vue';
 import KkIntegrationThreejs from './integration/threejs.vue';
 import KkEnvironmentWindy from './environment/windy.vue';
+import KkKeyboardRoam from './tools/keyboardRoam.vue';
 
 export const ComponentsGlobals: [string, Component][] = [
   ['KkLayerMap', KkLayerMap],
@@ -45,4 +46,5 @@ export const ComponentsGlobals: [string, Component][] = [
   ['KkEntityPositionMove', KkEntityPositionMove],
   ['KkIntegrationThreejs', KkIntegrationThreejs],
   ['KkEnvironmentWindy', KkEnvironmentWindy],
+  ['KkToolsKeyboardRoam', KkKeyboardRoam],
 ];
