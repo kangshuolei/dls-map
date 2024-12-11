@@ -53,9 +53,6 @@
     "vue": "^3.4.35"
   },
   "dependencies": {
-    "@dls-map/components": "workspace:^1.0.0",
-    "@dls-map/composables": "workspace:^1.0.0",
-    "@dls-map/utils": "workspace:^1.0.0",
     "@turf/turf": "^7.1.0",
     "compare-versions": "^6.1.1",
     "echarts": "^5.5.1",
