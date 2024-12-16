@@ -4,6 +4,10 @@ interface BillboardTypes extends Cesium.Entity.ConstructorOptions {
 }
 type EntityType = 'billboard' | 'model' | 'point';
 
+type otherOptions = {
+  [key: string]: any;
+};
+
 interface billboardOptionTypes {
   type: EntityType; // 新增的字段，表示实体的类型
   name?: string;
@@ -21,6 +25,11 @@ interface billboardOptionTypes {
   modelScale?: number; // 模型缩放
   modelMinimumPixelSize?: number; // 模型的最小像素尺寸
   imgUrl?: string; // 图片URL
+  pointColor?: Cesium.Color;
+  pointOutLineColor?: Cesium.Color;
+  pointSize?: number;
+  pointOutlineWidth?: number;
+  otherOptions?: otherOptions;
 }
 type LineOptionType = {
   name?: string;
@@ -74,6 +83,11 @@ export function useCesiumEntities() {
       modelScale = 1,
       modelMinimumPixelSize = 64,
       imgUrl, // 图片 URL
+      pointColor = Cesium.Color.RED,
+      pointOutLineColor = Cesium.Color.BLACK,
+      pointSize = 10,
+      pointOutlineWidth = 2,
+      otherOptions,
     }: billboardOptionTypes
   ): Cesium.Entity | boolean {
     let h = pointHeight ? pointHeight : 0;
@@ -103,6 +117,9 @@ export function useCesiumEntities() {
             scale: modelScale,
             minimumPixelSize: modelMinimumPixelSize,
           };
+          otherOptions
+            ? Object.assign(entityConfig.model, { ...otherOptions })
+            : null;
         } else {
           console.error('Model URL is required for model type');
           return false;
@@ -119,6 +136,9 @@ export function useCesiumEntities() {
             verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
             horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
           };
+          otherOptions
+            ? Object.assign(entityConfig.billboard, { ...otherOptions })
+            : null;
         } else {
           console.error('Image URL is required for billboard type');
           return false;
@@ -127,11 +147,14 @@ export function useCesiumEntities() {
 
       case 'point': // 如果是点
         entityConfig.point = {
-          color: Cesium.Color.RED,
-          pixelSize: 10,
-          outlineColor: Cesium.Color.BLACK,
-          outlineWidth: 2,
+          color: pointColor,
+          pixelSize: pointSize,
+          outlineColor: pointOutLineColor,
+          outlineWidth: pointOutlineWidth,
         };
+        otherOptions
+          ? Object.assign(entityConfig.point, { ...otherOptions })
+          : null;
         break;
 
       default:

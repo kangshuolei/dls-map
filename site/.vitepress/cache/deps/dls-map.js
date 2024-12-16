@@ -1,11 +1,11 @@
 import {
+  require_lodash
+} from "./chunk-KNYEOAKQ.js";
+import {
   buffer,
   polygon,
   rhumbBearing
 } from "./chunk-ZUHWOTBE.js";
-import {
-  require_lodash
-} from "./chunk-KNYEOAKQ.js";
 import {
   computed,
   createBlock,

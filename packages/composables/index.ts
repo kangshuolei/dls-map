@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-07-22 09:02:25
  * @Last Modified by: Kang
- * @LastEditTime: 2024-12-02 10:11:28
+ * @LastEditTime: 2024-12-15 22:05:09
  */
 export { useSwitchMap } from './use-layer/useSwitchMap'; //切换图层
 export { useCesiumCoord } from './use-tools/useCesiumCoord'; //获取经纬度、角度等信息
@@ -24,3 +24,4 @@ export { CesiumScpacePoint } from './use-analysis/scpacePoint'; //框选数据�
 export { default as CesiumEditEntity } from './use-entity/CesiumEditEntity'; //编辑点位
 export { default as Windy } from './use-environment/windy/Windy'; //加载风场
 export { useKeyboardRoam } from './use-tools/useKeyboardRoam'; //加载键盘漫游
+export { default as useThree } from './use-coverage/threejs/useThree'; //加载集成threejs场景

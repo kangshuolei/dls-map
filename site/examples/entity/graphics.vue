@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-15 17:15:08
+ * @LastEditTime: 2024-12-16 16:35:48
 -->
 <template>
   <div class="appMain">
@@ -83,6 +83,11 @@ const handleAddPoint = () => {
     });
     // const pointEntity = addPointEntity(116.4134, 39.911, dataM.viewer, {
     //   type: 'point',
+    //   pointColor: Cesium.Color.YELLOW,
+    //   pointSize: 20,
+    //   otherOptions: {
+    //     color: Cesium.Color.PINK,
+    //   },
     // });
     dataM.pointEntity = pointEntity;
     dataM.viewer.flyTo(pointEntity, {

@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-08-13 21:38:44
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-21 17:29:23
+ * @LastEditTime: 2024-12-16 17:15:03
 -->
 <script lang="ts" setup>
 import './style/index.less';
@@ -56,6 +56,17 @@ instance.appContext.config.globalProperties.$DlsMap[containerId.value] =
 
 onMounted(() => {
   dataM.isClient = true;
+  //设置 threejs宽和高
+  if (props.isThreeJSActive) {
+    const canvas = document.getElementById('threeContainerId');
+    // 检查是否成功获取
+    if (canvas instanceof HTMLCanvasElement) {
+      console.log('props', props);
+      canvas.style.width = props.threejsWidth || '100%';
+      canvas.style.height = props.threejsHeight || '100%';
+      console.log('canvas.style', canvas.style.width, canvas.style.height);
+    }
+  }
 });
 defineExpose({
   dataM,
@@ -67,11 +78,21 @@ defineExpose({
 <template>
   <div v-if="dataM.isClient">
     <div
-      v-if="dataM.isCesiumLoaded"
       :id="containerId"
       style="position: absolute; width: 100%; height: 100%"
       class="dlsMapContainer"
     ></div>
-    <LoadingSpinner v-else />
+    <canvas v-if="props.isThreeJSActive" id="threeContainerId"></canvas>
   </div>
 </template>
+
+<style lang="less">
+#threeContainerId {
+  position: absolute;
+  // height: 100%;
+  // width: 100%;
+  margin: 0%;
+  z-index: 10;
+  pointer-events: none;
+}
+</style>

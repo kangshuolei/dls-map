@@ -6,6 +6,7 @@
         imageryProvider: dataM.imageryProvider,
         sceneModeNum: 3,
       }"
+      :isThreeJSActive="true"
       ref="dlsMapRef"
       @cesium-ready="onCesiumReady"
       @ready="onReady"
@@ -29,6 +30,13 @@
         class="point"
         @click="handleLoadModel"
         >加载骨骼动画人</dls-button
+      >
+      <dls-button
+        size="midium"
+        type="primary"
+        class="point"
+        @click="handleLoadThree"
+        >开启threejs场景</dls-button
       >
       <dls-button
         size="midium"
@@ -84,6 +92,9 @@ import ArrowImg from '/static/images/arrowImg.png';
 import MarkBlue from '/static/images/mark-blue.png';
 import LightSpot from '/static/images/lightSpot.png';
 import windyData from '/static/json/windy/2017121300.json';
+import * as THREE from 'three';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 // import modelUrl from '/static/model/huaxiangji.obj';
 import {
   useSwitchMap,
@@ -102,10 +113,12 @@ import {
   CesiumEditEntity,
   Windy,
   useKeyboardRoam,
+  useThree,
 } from '@dls-map/composables';
 import { onMounted, ref, reactive, watch } from 'vue';
 import axios from 'axios';
 const { listenToMouseMovement, coords } = useCesiumCoord();
+const { initThreejs, loadThreejsModel } = useThree();
 const { keyboardMapRoamingInit, keyboardMapRoamingRemove } = useKeyboardRoam();
 const {
   addPointEntity,
@@ -191,6 +204,68 @@ function createModel(url: string, height: number) {
   });
   dataM.viewer.trackedEntity = entity;
 }
+
+//加载threejs场景
+const handleLoadThree = () => {
+  let three = initThreejs(dataM.viewer);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(50, 50, 50);
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // 环境光强度为 0.5
+  three.scene.add(ambientLight);
+  three.scene.add(directionalLight);
+  // 创建 FBXLoader 实例
+  const loader = new GLTFLoader();
+  loader.load(
+    'ao.glb',
+    (gltf) => {
+      // 缩放模型到地球尺度
+      gltf.scene.scale.set(1000, 1000, 1000);
+
+      // 将模型沿 Z 轴平移，并绕 X 轴旋转 90 度
+      gltf.scene.position.z += 1000; // 向 Z 轴平移
+      gltf.scene.rotation.x = Math.PI / 2; // 旋转 90 度以适配 Cesium 的 Y-up 坐标系
+      // 如果模型包含动画
+      if (gltf.animations && gltf.animations.length) {
+        // 创建动画混合器
+        let mixer = new THREE.AnimationMixer(gltf.scene);
+
+        // 为每个动画创建动画动作并播放
+        gltf.animations.forEach((clip) => {
+          mixer.clipAction(clip).play();
+        });
+
+        function animate() {
+          requestAnimationFrame(animate);
+
+          if (mixer) {
+            mixer.update(0.01); // 更新动画，传入每帧的时间差
+          }
+
+          // renderer.render(scene, camera);
+        }
+
+        animate();
+      }
+      let _3Dobjects = loadThreejsModel(
+        { lon: 114.8267, lat: 16.16286 },
+        gltf.scene
+      );
+    },
+    (xhr) => {
+      console.log(
+        `Loading FBX model: ${(xhr.loaded / xhr.total) * 100}% loaded`
+      );
+      if ((xhr.loaded / xhr.total) * 100 === 100) {
+        useCesiumFlyTo(dataM.viewer, [114.8267, 16.16286, 200000]);
+      }
+    },
+    (error) => {
+      console.error('Failed to load FBX model:', error);
+    }
+  );
+  // useCesiumFlyTo(dataM.viewer, [114.7267, 16.16286, 100000]);
+};
 
 //加载骨骼动画
 const handleLoadModel = async () => {

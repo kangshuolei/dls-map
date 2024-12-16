@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-09 14:49:32
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-21 17:24:40
+ * @LastEditTime: 2024-12-16 17:00:15
  */
 import { ExtractPropTypes, PropType } from 'vue';
 
@@ -92,6 +92,18 @@ export const mapProps = {
       sceneMode: 3,
     }),
     // required: false,
+  },
+  isThreeJSActive: {
+    type: Boolean,
+    require: false,
+  },
+  threejsWidth: {
+    type: String,
+    require: false,
+  },
+  threejsHeight: {
+    type: String,
+    require: false,
   },
   viewerWidth: {
     type: String,
