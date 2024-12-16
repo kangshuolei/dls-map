@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-08-13 21:38:44
  * @Last Modified by: Kang
- * @LastEditTime: 2024-12-16 17:15:03
+ * @LastEditTime: 2024-12-16 22:02:11
 -->
 <script lang="ts" setup>
 import './style/index.less';
@@ -89,8 +89,6 @@ defineExpose({
 <style lang="less">
 #threeContainerId {
   position: absolute;
-  // height: 100%;
-  // width: 100%;
   margin: 0%;
   z-index: 10;
   pointer-events: none;
