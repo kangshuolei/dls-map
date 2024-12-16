@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-12-12 20:58:52
  * @Last Modified by: Kang
- * @LastEditTime: 2024-12-16 17:45:21
+ * @LastEditTime: 2024-12-16 17:56:34
 -->
 /** * @name: index * @author: kangshuolei * @date: 2024/2/6 18:44 *
 @description: index */
@@ -123,10 +123,7 @@ const handleLoadModel = () => {
     },
     (xhr) => {
       // 加载进度回调
-      console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-      if ((xhr.loaded / xhr.total) * 100 === 100) {
-        useCesiumFlyTo(dataM.viewer, [116.4134, 39.911, 1000]);
-      }
+      useCesiumFlyTo(dataM.viewer, [116.4134, 39.911, 1000]);
     },
     (error) => {
       // 错误回调
