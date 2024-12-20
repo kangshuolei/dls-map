@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-08-09 09:45:00
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-14 17:30:02
+ * @LastEditTime: 2024-12-20 15:20:22
  */
 import fs from 'fs';
 import { resolve } from 'path';
@@ -21,7 +21,7 @@ const delPath = async (path: string) => {
 
       if (fs.statSync(curPath).isDirectory()) {
         // recurse
-        if (file != 'node_modules') await delPath(curPath);
+       await delPath(curPath);
       } else {
         // delete file
         if (!stayFile.includes(file)) {

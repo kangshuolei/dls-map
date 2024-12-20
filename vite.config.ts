@@ -2,14 +2,11 @@
  * @Author: Kang
  * @Date: 2024-08-09 09:45:00
  * @Last Modified by: Kang
- * @LastEditTime: 2024-09-14 17:32:14
+ * @LastEditTime: 2024-12-20 15:28:13
  */
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
-import { copyFileSync, mkdirSync } from 'fs';
-import copy from 'rollup-plugin-copy';
-import { join } from 'path';
 import DefineOptions from 'unplugin-vue-define-options/vite';
 export default defineConfig({
   build: {
@@ -17,7 +14,7 @@ export default defineConfig({
     minify: true,
     rollupOptions: {
       //忽略打包vue文件
-      external: ['vue', /\.less/, /node_modules/],
+      external: ['vue', /\.less/],
       input: ['./packages/index.ts'],
       output: [
         {

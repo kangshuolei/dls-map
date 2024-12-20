@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-08-09 09:45:00
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-11 17:38:47
+ * @LastEditTime: 2024-12-20 15:22:39
  */
 import delPath from '../utils/delpath';
 import { series, parallel, src, dest } from 'gulp';
@@ -25,8 +25,8 @@ export const buildStyle = () => {
   return src(`${componentPath}/src/**/style/**.less`)
     .pipe(less())
     .pipe(autoprefixer())
-    .pipe(dest(`${pkgPath}/dls/lib/components/src`))
-    .pipe(dest(`${pkgPath}/dls/es/components/src`));
+    .pipe(dest(`${pkgPath}/dls/lib/packages/components/src`))
+    .pipe(dest(`${pkgPath}/dls/es/packages/components/src`));
 };
 
 //打包组件
@@ -105,7 +105,7 @@ export default series(
   async () => buildComponent(),
   async () => removeTypes(),
   parallel(
+    async () => copyReadme(),
     async () => buildStyle(),
-    async () => copyReadme()
   )
 );

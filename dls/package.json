@@ -1,8 +1,8 @@
 {
   "name": "dls-map",
   "version": "1.0.14",
-  "main": "lib/index.js",
-  "module": "es/index.mjs",
+  "main": "lib/packages/index.js",
+  "module": "es/packages/index.mjs",
   "files": [
     "es",
     "lib"
@@ -19,7 +19,7 @@
   "author": "kkk",
   "license": "MIT",
   "description": "dls map - 面向开发人员的基于 Vue 3 的 CesiumJS 组件库",
-  "typings": "lib/index.d.ts",
+  "typings": "lib/packages/index.d.ts",
   "scripts": {
     "release": "release-it"
   },
