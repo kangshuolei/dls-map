@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-08-13 21:38:44
  * @Last Modified by: Kang
- * @LastEditTime: 2024-12-16 22:02:11
+ * @LastEditTime: 2024-12-20 16:27:01
 -->
 <script lang="ts" setup>
 import './style/index.less';
@@ -12,14 +12,12 @@ import {
   reactive,
   defineExpose,
   computed,
-  nextTick,
   getCurrentInstance,
   provide,
 } from 'vue';
 import useViewer from '@dls-map/composables/private/useViewer';
 import { dlsKey } from '@dls-map/utils/config';
 import { mapProps, mapEmits, ViewerConfigType } from './types';
-import LoadingSpinner from './LoadingSpinner.vue';
 import {
   DlsComponentInternalInstance,
   DlsViewerProvider,
@@ -61,10 +59,8 @@ onMounted(() => {
     const canvas = document.getElementById('threeContainerId');
     // 检查是否成功获取
     if (canvas instanceof HTMLCanvasElement) {
-      console.log('props', props);
       canvas.style.width = props.threejsWidth || '100%';
       canvas.style.height = props.threejsHeight || '100%';
-      console.log('canvas.style', canvas.style.width, canvas.style.height);
     }
   }
 });
@@ -86,11 +82,3 @@ defineExpose({
   </div>
 </template>
 
-<style lang="less">
-#threeContainerId {
-  position: absolute;
-  margin: 0%;
-  z-index: 10;
-  pointer-events: none;
-}
-</style>

@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-30 14:39:00
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-15 17:47:05
+ * @LastEditTime: 2024-12-20 16:31:08
 -->
 <template>
   <div class="eyeMain">
@@ -274,13 +274,3 @@ defineExpose({
   viewer: data.viewer,
 });
 </script>
-<style lang="less" scoped>
-.eyeMain {
-  width: 100%;
-  height: 100%;
-  #eyeId {
-    width: 100%;
-    height: 100%;
-  }
-}
-</style>
