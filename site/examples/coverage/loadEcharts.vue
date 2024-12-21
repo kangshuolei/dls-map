@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-22 14:36:23
+ * @LastEditTime: 2024-12-21 20:46:53
 -->
 <template>
   <div class="appMain">
@@ -33,8 +33,8 @@
 
 <script lang="ts" setup>
 import { DlsMap } from '@dls-map/components';
-import { CesiumUseEcharts } from '@dls-map/composables';
-import { useCesiumFlyTo } from 'dls-map';
+import { CesiumUseEcharts, useCesiumFlyTo } from '@dls-map/composables';
+// import { useCesiumFlyTo } from 'dls-map';
 import { onMounted, ref, reactive } from 'vue';
 
 const dlsMapRef = ref(null);

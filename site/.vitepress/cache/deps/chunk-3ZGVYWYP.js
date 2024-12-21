@@ -1,4 +1,4 @@
-// ../node_modules/.pnpm/vitepress@1.4.0/node_modules/vitepress/lib/vue-demi.mjs
+// ../node_modules/.pnpm/vitepress@1.5.0/node_modules/vitepress/lib/vue-demi.mjs
 var isVue2 = false;
 var isVue3 = true;
 function set(target, key, val) {
@@ -33,4 +33,4 @@ vitepress/lib/vue-demi.mjs:
    * @license MIT
    *)
 */
-//# sourceMappingURL=chunk-VBWOPEW6.js.map
+//# sourceMappingURL=chunk-3ZGVYWYP.js.map

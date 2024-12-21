@@ -59,16 +59,23 @@
     "@dls-map/components": "workspace:^1.0.0",
     "@dls-map/composables": "workspace:^1.0.0",
     "@dls-map/utils": "workspace:^1.0.0",
+    "@element-plus/icons-vue": "^2.3.1",
+    "@mdit-vue/shared": "^2.1.3",
     "@turf/turf": "^7.1.0",
     "@vue/shared": "^3.5.13",
     "axios": "^1.7.7",
     "compare-versions": "^6.1.1",
+    "dls-map": "1.0.16",
     "echarts": "^5.5.1",
+    "element-plus": "^2.9.1",
+    "lodash-es": "^4.17.21",
     "lodash-unified": "^1.0.3",
+    "markdown-it-container": "^4.0.0",
     "rollup-plugin-copy": "^3.5.0",
     "sass": "1.53.0",
     "three": "0.161.0",
     "unplugin-vue-define-options": "^1.5.0",
+    "vitepress": "^1.5.0",
     "vue-draggable-plus": "^0.5.6"
   }
 }

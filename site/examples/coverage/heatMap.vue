@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-15 16:58:12
+ * @LastEditTime: 2024-12-21 20:45:32
 -->
 <template>
   <div class="appMain">
@@ -15,7 +15,7 @@
       ref="dlsMapRef"
       :viewer-width="'100%'"
       :viewer-height="'500px'"
-      @cesium-ready="onCesiumReady"
+      @ready="onCesiumReady"
     />
     <div class="operation">
       <el-button @click="handleHeatMap" type="primary">加载热力图</el-button>
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import { DlsMap } from 'dls-map';
+import { DlsMap } from '@dls-map/components';
 import { CesiumHeatMap } from '@dls-map/composables';
 import { onMounted, ref, reactive } from 'vue';
 import { nextTick } from 'vue';
@@ -101,10 +101,10 @@ const handleHeatMap = () => {
 };
 
 //cesium初始化完成之后
-const onCesiumReady = (viewer: Cesium.Viewer) => {
+const onCesiumReady = (e: any) => {
   //加载地形
-  dataM.viewer = viewer;
-  console.log('执行了', viewer);
+  dataM.viewer = e.viewer;
+  console.log('执行了', e.viewer);
 };
 </script>
 

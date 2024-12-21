@@ -1,7 +1,8 @@
-// ../node_modules/.pnpm/@vue+shared@3.4.37/node_modules/@vue/shared/dist/shared.esm-bundler.js
-function makeMap(str, expectsLowerCase) {
-  const set = new Set(str.split(","));
-  return expectsLowerCase ? (val) => set.has(val.toLowerCase()) : (val) => set.has(val);
+// ../node_modules/.pnpm/@vue+shared@3.5.13/node_modules/@vue/shared/dist/shared.esm-bundler.js
+function makeMap(str) {
+  const map = /* @__PURE__ */ Object.create(null);
+  for (const key of str.split(",")) map[key] = 1;
+  return (val) => val in map;
 }
 var EMPTY_OBJ = true ? Object.freeze({}) : {};
 var EMPTY_ARR = true ? Object.freeze([]) : [];
@@ -54,9 +55,11 @@ var cacheStringFunction = (fn) => {
   };
 };
 var camelizeRE = /-(\w)/g;
-var camelize = cacheStringFunction((str) => {
-  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
-});
+var camelize = cacheStringFunction(
+  (str) => {
+    return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
+  }
+);
 var hyphenateRE = /\B([A-Z])/g;
 var hyphenate = cacheStringFunction(
   (str) => str.replace(hyphenateRE, "-$1").toLowerCase()
@@ -64,10 +67,12 @@ var hyphenate = cacheStringFunction(
 var capitalize = cacheStringFunction((str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 });
-var toHandlerKey = cacheStringFunction((str) => {
-  const s = str ? `on${capitalize(str)}` : ``;
-  return s;
-});
+var toHandlerKey = cacheStringFunction(
+  (str) => {
+    const s = str ? `on${capitalize(str)}` : ``;
+    return s;
+  }
+);
 var hasChanged = (value, oldValue) => !Object.is(value, oldValue);
 var invokeArrayFns = (fns, ...arg) => {
   for (let i = 0; i < fns.length; i++) {
@@ -98,6 +103,12 @@ var identRE = /^[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*$/;
 function genPropsAccessExp(name) {
   return identRE.test(name) ? `__props.${name}` : `__props[${JSON.stringify(name)}]`;
 }
+function genCacheKey(source, options) {
+  return source + JSON.stringify(
+    options,
+    (_, val) => typeof val === "function" ? val.toString() : val
+  );
+}
 var PatchFlags = {
   "TEXT": 1,
   "1": "TEXT",
@@ -123,8 +134,8 @@ var PatchFlags = {
   "1024": "DYNAMIC_SLOTS",
   "DEV_ROOT_FRAGMENT": 2048,
   "2048": "DEV_ROOT_FRAGMENT",
-  "HOISTED": -1,
-  "-1": "HOISTED",
+  "CACHED": -1,
+  "-1": "CACHED",
   "BAIL": -2,
   "-2": "BAIL"
 };
@@ -181,7 +192,7 @@ var slotFlagsText = {
   [2]: "DYNAMIC",
   [3]: "FORWARDED"
 };
-var GLOBALS_ALLOWED = "Infinity,undefined,NaN,isFinite,isNaN,parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,BigInt,console,Error";
+var GLOBALS_ALLOWED = "Infinity,undefined,NaN,isFinite,isNaN,parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,BigInt,console,Error,Symbol";
 var isGloballyAllowed = makeMap(GLOBALS_ALLOWED);
 var isGloballyWhitelisted = isGloballyAllowed;
 var range = 2;
@@ -256,10 +267,9 @@ function parseStringStyle(cssText) {
   return ret;
 }
 function stringifyStyle(styles) {
+  if (!styles) return "";
+  if (isString(styles)) return styles;
   let ret = "";
-  if (!styles || isString(styles)) {
-    return ret;
-  }
   for (const key in styles) {
     const value = styles[key];
     if (isString(value) || typeof value === "number") {
@@ -340,6 +350,9 @@ var isKnownHtmlAttr = makeMap(
 var isKnownSvgAttr = makeMap(
   `xmlns,accent-height,accumulate,additive,alignment-baseline,alphabetic,amplitude,arabic-form,ascent,attributeName,attributeType,azimuth,baseFrequency,baseline-shift,baseProfile,bbox,begin,bias,by,calcMode,cap-height,class,clip,clipPathUnits,clip-path,clip-rule,color,color-interpolation,color-interpolation-filters,color-profile,color-rendering,contentScriptType,contentStyleType,crossorigin,cursor,cx,cy,d,decelerate,descent,diffuseConstant,direction,display,divisor,dominant-baseline,dur,dx,dy,edgeMode,elevation,enable-background,end,exponent,fill,fill-opacity,fill-rule,filter,filterRes,filterUnits,flood-color,flood-opacity,font-family,font-size,font-size-adjust,font-stretch,font-style,font-variant,font-weight,format,from,fr,fx,fy,g1,g2,glyph-name,glyph-orientation-horizontal,glyph-orientation-vertical,glyphRef,gradientTransform,gradientUnits,hanging,height,href,hreflang,horiz-adv-x,horiz-origin-x,id,ideographic,image-rendering,in,in2,intercept,k,k1,k2,k3,k4,kernelMatrix,kernelUnitLength,kerning,keyPoints,keySplines,keyTimes,lang,lengthAdjust,letter-spacing,lighting-color,limitingConeAngle,local,marker-end,marker-mid,marker-start,markerHeight,markerUnits,markerWidth,mask,maskContentUnits,maskUnits,mathematical,max,media,method,min,mode,name,numOctaves,offset,opacity,operator,order,orient,orientation,origin,overflow,overline-position,overline-thickness,panose-1,paint-order,path,pathLength,patternContentUnits,patternTransform,patternUnits,ping,pointer-events,points,pointsAtX,pointsAtY,pointsAtZ,preserveAlpha,preserveAspectRatio,primitiveUnits,r,radius,referrerPolicy,refX,refY,rel,rendering-intent,repeatCount,repeatDur,requiredExtensions,requiredFeatures,restart,result,rotate,rx,ry,scale,seed,shape-rendering,slope,spacing,specularConstant,specularExponent,speed,spreadMethod,startOffset,stdDeviation,stemh,stemv,stitchTiles,stop-color,stop-opacity,strikethrough-position,strikethrough-thickness,string,stroke,stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,stroke-opacity,stroke-width,style,surfaceScale,systemLanguage,tabindex,tableValues,target,targetX,targetY,text-anchor,text-decoration,text-rendering,textLength,to,transform,transform-origin,type,u1,u2,underline-position,underline-thickness,unicode,unicode-bidi,unicode-range,units-per-em,v-alphabetic,v-hanging,v-ideographic,v-mathematical,values,vector-effect,version,vert-adv-y,vert-origin-x,vert-origin-y,viewBox,viewTarget,visibility,width,widths,word-spacing,writing-mode,x,x-height,x1,x2,xChannelSelector,xlink:actuate,xlink:arcrole,xlink:href,xlink:role,xlink:show,xlink:title,xlink:type,xmlns:xlink,xml:base,xml:lang,xml:space,y,y1,y2,yChannelSelector,z,zoomAndPan`
 );
+var isKnownMathMLAttr = makeMap(
+  `accent,accentunder,actiontype,align,alignmentscope,altimg,altimg-height,altimg-valign,altimg-width,alttext,bevelled,close,columnsalign,columnlines,columnspan,denomalign,depth,dir,display,displaystyle,encoding,equalcolumns,equalrows,fence,fontstyle,fontweight,form,frame,framespacing,groupalign,height,href,id,indentalign,indentalignfirst,indentalignlast,indentshift,indentshiftfirst,indentshiftlast,indextype,justify,largetop,largeop,lquote,lspace,mathbackground,mathcolor,mathsize,mathvariant,maxsize,minlabelspacing,mode,other,overflow,position,rowalign,rowlines,rowspan,rquote,rspace,scriptlevel,scriptminsize,scriptsizemultiplier,selection,separator,separators,shift,side,src,stackalign,stretchy,subscriptshift,superscriptshift,symmetric,voffset,width,widths,xlink:href,xlink:show,xlink:type,xmlns`
+);
 function isRenderableAttrValue(value) {
   if (value == null) {
     return false;
@@ -389,6 +402,13 @@ function escapeHtml(string) {
 var commentStripRE = /^-?>|<!--|-->|--!>|<!-$/g;
 function escapeHtmlComment(src) {
   return src.replace(commentStripRE, "");
+}
+var cssVarNameEscapeSymbolsRE = /[ !"#$%&'()*+,./:;<=>?@[\\\]^`{|}~]/g;
+function getEscapedCssVarName(key, doubleEscape) {
+  return key.replace(
+    cssVarNameEscapeSymbolsRE,
+    (s) => doubleEscape ? s === '"' ? '\\\\\\"' : `\\\\${s}` : `\\${s}`
+  );
 }
 function looseCompareArrays(a, b) {
   if (a.length !== b.length) return false;
@@ -440,7 +460,7 @@ function looseIndexOf(arr, val) {
   return arr.findIndex((item) => looseEqual(item, val));
 }
 var isRef = (val) => {
-  return !!(val && val.__v_isRef === true);
+  return !!(val && val["__v_isRef"] === true);
 };
 var toDisplayString = (val) => {
   return isString(val) ? val : val == null ? "" : isArray(val) || isObject(val) && (val.toString === objectToString || !isFunction(val.toString)) ? isRef(val) ? toDisplayString(val.value) : JSON.stringify(val, replacer, 2) : String(val);
@@ -517,6 +537,7 @@ export {
   toNumber,
   getGlobalThis,
   genPropsAccessExp,
+  genCacheKey,
   PatchFlags,
   PatchFlagNames,
   ShapeFlags,
@@ -541,9 +562,12 @@ export {
   propsToAttrMap,
   isKnownHtmlAttr,
   isKnownSvgAttr,
+  isKnownMathMLAttr,
   isRenderableAttrValue,
   escapeHtml,
   escapeHtmlComment,
+  cssVarNameEscapeSymbolsRE,
+  getEscapedCssVarName,
   looseEqual,
   looseIndexOf,
   toDisplayString
@@ -552,10 +576,10 @@ export {
 
 @vue/shared/dist/shared.esm-bundler.js:
   (**
-  * @vue/shared v3.4.37
+  * @vue/shared v3.5.13
   * (c) 2018-present Yuxi (Evan) You and Vue contributors
   * @license MIT
   **)
   (*! #__NO_SIDE_EFFECTS__ *)
 */
-//# sourceMappingURL=chunk-PPFLRK2V.js.map
+//# sourceMappingURL=chunk-JVSYCCQQ.js.map
