@@ -7,3 +7,4 @@ dls/es/*
 dls/lib/*
 dls/README.md
 pnpm-lock.yaml
+.vitepress
