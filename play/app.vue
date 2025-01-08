@@ -4,7 +4,7 @@
       :mapConfig="{
         id: 'dls-map-id',
         imageryProvider: dataM.imageryProvider,
-        sceneModeNum: 3,
+        sceneModeNum: 2,
       }"
       :isThreeJSActive="true"
       ref="dlsMapRef"
@@ -181,16 +181,16 @@ const handleis23D = () => {
 const handleMeasureDistance = () => {
   const measureDistance = new MeasureArea(dataM.viewer);
   // 激活测量工具
-  measureDistance.activate((res: any) => {
-    console.log('res', res);
-  });
-  // DrawSoildLine(dataM.viewer, 'lines', [255, 10, 255], 5, {
-  //   positionLabelStyle: { fillColor: Cesium.Color.BLUE },
-  //   polylineStyle: { clampToGround: true },
+  // measureDistance.activate((res: any) => {
+  //   console.log('res', res);
   // });
-  // setTimeout(() => {
-  //   removeDrawLine(dataM.viewer);
-  // }, 5000);
+  DrawSoildLine(dataM.viewer, 'lines', [255, 10, 255], 5, {
+    positionLabelStyle: { fillColor: Cesium.Color.BLUE },
+    polylineStyle: { clampToGround: true },
+  });
+  setTimeout(() => {
+    removeDrawLine(dataM.viewer);
+  }, 5000);
 };
 
 const handleisShowEye = () => {
@@ -885,7 +885,8 @@ const handleCesiumPlot = () => {
   const geometry = new CesiumPlot.Label(Cesium, dataM.viewer, {
     fillColor: Cesium.Color.RED,
     text: '我是文字',
-    isEdit: false,
+    isEdit: true,
+    heightReference: Cesium.HeightReference.NONE,
     font: '26px sans-serif',
   });
   console.log('geometry', geometry);

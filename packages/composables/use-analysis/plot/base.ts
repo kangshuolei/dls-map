@@ -692,6 +692,7 @@ export default class Base {
     this.dragEventHandler.removeInputAction(
       this.cesium.ScreenSpaceEventType.LEFT_UP
     );
+    this.viewer.scene.screenSpaceCameraController.enableTranslate = true;
   }
 
   show(opts: VisibleAnimationOpts) {
