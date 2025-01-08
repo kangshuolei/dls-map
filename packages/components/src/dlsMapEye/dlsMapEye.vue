@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-30 14:39:00
  * @Last Modified by: Kang
- * @LastEditTime: 2025-01-07 16:06:47
+ * @LastEditTime: 2025-01-08 16:35:05
 -->
 <template>
   <div class="eyeMain">
@@ -21,10 +21,16 @@ defineOptions({ name: 'dls-map-eye' });
 
 type dataTypes = {
   viewer: any;
+  syncViewer: any;
+  billboard: any;
+  hander: any;
 };
 
 const data = reactive<dataTypes>({
   viewer: null,
+  syncViewer: null,
+  billboard: null,
+  hander: null,
 });
 
 const props = defineProps(mapEyeProps);
@@ -142,6 +148,7 @@ const loadMapEye = () => {
   const hander = new Cesium.ScreenSpaceEventHandler(
     props.marstViewer.scene.canvas
   );
+  data.hander = hander;
   let zoom = 6;
   hander.setInputAction(function (wheelment: any) {
     zoom = heightToZoom(
@@ -175,9 +182,10 @@ const loadMapEye = () => {
       }, false),
     },
   });
+  data.billboard = billboard;
 
   //设置同步的相关方法
-  let syncViewer = function () {
+  data.syncViewer = function () {
     //获取主地球的视角
     const rect = getViewRange();
     //根据主地球的视角设置鹰眼的视角范围
@@ -213,7 +221,7 @@ const loadMapEye = () => {
     });
   };
   //小的地球同步到啊的地球角度位置等
-  props.marstViewer.scene.preRender.addEventListener(syncViewer); //效果和第三种方式一样，成功
+  props.marstViewer.scene.preRender.addEventListener(data.syncViewer); //效果和第三种方式一样，成功
 };
 
 const getViewRange = () => {
@@ -301,8 +309,27 @@ const getZoomOutRange = (rectangle: Cesium.Rectangle) => {
   return Cesium.Rectangle.fromDegrees(west, south, east, north);
 };
 
+const removeMapEye = () => {
+  if (data.viewer) {
+    // 移除主地球的事件监听器
+    data.syncViewer &&
+      props.marstViewer.scene.preRender.removeEventListener(data.syncViewer);
+
+    // 销毁鹰眼地图实例
+    data.billboard && data.viewer.entities.remove(data.billboard); // 移除所有实体
+    data.viewer.destroy(); // 销毁 viewer 实例
+
+    // 清空 reactive 数据
+    data.viewer = null;
+
+    // 销毁其他引用的对象
+    data.hander && data.hander.destroy(); // 销毁鼠标事件处理器
+  }
+};
+
 defineExpose({
   viewer: data.viewer,
   loadMapEye,
+  removeMapEye,
 });
 </script>

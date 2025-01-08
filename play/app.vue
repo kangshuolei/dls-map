@@ -198,6 +198,9 @@ const handleisShowEye = () => {
   nextTick(() => {
     console.log('dlsMapEyeRef.value', dlsMapEyeRef.value);
     dlsMapEyeRef.value.loadMapEye();
+    // setTimeout(() => {
+    //   dlsMapEyeRef.value.removeMapEye();
+    // }, 5000);
   });
   // dlsMapEyeRef.value.loadMapEye();
 };
