@@ -1,6 +1,6 @@
 {
   "name": "dls-map",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "main": "lib/packages/index.js",
   "module": "es/packages/index.mjs",
   "files": [
