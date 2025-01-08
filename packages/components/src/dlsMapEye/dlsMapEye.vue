@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-30 14:39:00
  * @Last Modified by: Kang
- * @LastEditTime: 2024-12-20 16:31:08
+ * @LastEditTime: 2025-01-07 16:06:47
 -->
 <template>
   <div class="eyeMain">
@@ -16,7 +16,6 @@ import { computed, onMounted, reactive, watch } from 'vue';
 import './style/index.less';
 import { mapEyeProps } from './types';
 import { hexToCesiumColor } from '@dls-map/utils';
-import useDlsMap from '../../../composables/use-hooks/useDlsMap';
 
 defineOptions({ name: 'dls-map-eye' });
 
@@ -31,7 +30,6 @@ const data = reactive<dataTypes>({
 const props = defineProps(mapEyeProps);
 
 const { marstViewer, rangeStyle, positionStyle, baseMap } = props;
-console.log(marstViewer, rangeStyle, positionStyle, baseMap);
 
 const computedValue = computed(() => props.marstViewer);
 
@@ -221,7 +219,40 @@ const loadMapEye = () => {
 const getViewRange = () => {
   var viewer = props.marstViewer;
   var camera = viewer.scene.camera;
-  var range = camera.computeViewRectangle();
+  var range = null;
+  if (viewer.scene.mode === Cesium.SceneMode.SCENE2D) {
+    // 获取画布的宽高
+    const canvas = viewer.scene.canvas;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+
+    // 计算屏幕左下角和右上角的笛卡尔坐标
+    const bottomLeft = camera.pickEllipsoid(
+      new Cesium.Cartesian2(0, height),
+      viewer.scene.globe.ellipsoid
+    );
+    const topRight = camera.pickEllipsoid(
+      new Cesium.Cartesian2(width, 0),
+      viewer.scene.globe.ellipsoid
+    );
+
+    if (bottomLeft && topRight) {
+      // 转换为地理坐标
+      const bottomLeftCartographic =
+        Cesium.Cartographic.fromCartesian(bottomLeft);
+      const topRightCartographic = Cesium.Cartographic.fromCartesian(topRight);
+
+      range = Cesium.Rectangle.fromCartographicArray([
+        bottomLeftCartographic,
+        topRightCartographic,
+      ]);
+    } else {
+      range = Cesium.Rectangle.fromDegrees(-180, -90, 180, 90);
+    }
+  } else {
+    range = camera.computeViewRectangle();
+  }
+
   // 将弧度转换为经纬度
   var west = Cesium.Math.toDegrees(range.west);
   var east = Cesium.Math.toDegrees(range.east);
@@ -272,5 +303,6 @@ const getZoomOutRange = (rectangle: Cesium.Rectangle) => {
 
 defineExpose({
   viewer: data.viewer,
+  loadMapEye,
 });
 </script>

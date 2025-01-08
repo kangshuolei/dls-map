@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-09-04 09:25:58
  * @Last Modified by: Kang
- * @LastEditTime: 2024-10-16 15:09:43
+ * @LastEditTime: 2025-01-07 17:00:53
 -->
 <template>
   <div class="appMain">
@@ -253,7 +253,7 @@ const onCesiumReady = async (e: any) => {
 
   viewer.scene.globe.tileCacheSize = 1000;
 
-  viewer.scene.globe.depthTestAgainstTerrain = true;
+  viewer.scene.globe.depthTestAgainstTerrain = false;
 
   viewer.scene.globe.maximumScreenSpaceError = 1;
 

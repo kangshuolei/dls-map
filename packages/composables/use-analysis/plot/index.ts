@@ -22,6 +22,7 @@ import Arc from './line/arc'; //弓形线
 import Polyline from './line/polyline'; //折线
 import ClosedCurve from './polygon/closed-curve'; //闭合曲面
 import Point from './point/point'; //点
+import Label from './labelText/label'; //文字
 
 //目前没有的
 
@@ -91,6 +92,7 @@ type CesiumPlotType = {
   Polyline: typeof Polyline;
   ClosedCurve: typeof ClosedCurve;
   Point: typeof Point;
+  Label: typeof Label;
 };
 const CesiumPlot: any = {
   FineArrow,
@@ -117,6 +119,7 @@ const CesiumPlot: any = {
   Polyline,
   ClosedCurve,
   Point,
+  Label,
 };
 
 type CreateGeometryFromDataOpts = {

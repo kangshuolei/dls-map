@@ -2,7 +2,7 @@
  * @Author: Kang
  * @Date: 2024-07-22 09:02:25
  * @Last Modified by: Kang
- * @LastEditTime: 2024-12-15 22:05:09
+ * @LastEditTime: 2025-01-08 15:08:50
  */
 export { useSwitchMap } from './use-layer/useSwitchMap'; //切换图层
 export { useCesiumCoord } from './use-tools/useCesiumCoord'; //获取经纬度、角度等信息
@@ -10,7 +10,7 @@ export * from './use-tools/useCesiumUtils'; //一些工具类
 export * from './use-tools/useRemoveCesium'; //删除图层和实例
 export { useSwitchViewPoint } from './use-tools/useSwitchViewPoint'; //切换视角
 export { useLoadTerrain } from './use-layer/useLoadTerrain'; //加载地形
-export * from './use-analysis/useDrawGraph'; //画线测量
+export { useMeasureDistance } from './use-analysis/useMeasureDistance'; //画线测量
 export { useCesiumEntities } from './use-entity/useCesiumAddEntity'; //添加点线
 export { default as DlsDivLabel } from './use-coverage/CesiumSetDiv'; //生成弹框
 export { default as CesiumPlot } from './use-analysis/plot/index'; //标绘
@@ -25,3 +25,4 @@ export { default as CesiumEditEntity } from './use-entity/CesiumEditEntity'; //�
 export { default as Windy } from './use-environment/windy/Windy'; //加载风场
 export { useKeyboardRoam } from './use-tools/useKeyboardRoam'; //加载键盘漫游
 export { default as useThree } from './use-coverage/threejs/useThree'; //加载集成threejs场景
+export { default as MeasureArea } from './use-analysis/MeasureArea'; //面积测量

@@ -1,5 +1,5 @@
 // @ts-ignore
-import * as Cesium from 'cesium';
+// import * as Cesium from 'cesium';
 import {
   State,
   GeometryStyle,
@@ -27,7 +27,8 @@ export default class Base {
   controlPointsEventHandler: Cesium.ScreenSpaceEventHandler;
   lineEntity: Cesium.Entity;
   pointEntity: Cesium.Entity;
-  type!: 'polygon' | 'line' | 'point';
+  labelEntity: Cesium.Entity;
+  type!: 'polygon' | 'line' | 'point' | 'label';
   freehand!: boolean = true;
   style: GeometryStyle | undefined;
   outlineEntity: Cesium.Entity;
@@ -84,6 +85,20 @@ export default class Base {
         },
         style
       );
+    } else if (this.type === 'label') {
+      this.style = Object.assign(
+        {
+          text: '文字',
+          font: '16px sans-serif',
+          fillColor: Cesium.Color.GOLD,
+          style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+          outlineWidth: 2,
+          heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+          verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+          pixelOffset: new Cesium.Cartesian2(20, -20),
+        },
+        style
+      );
     }
     //缓存初始设置以避免由于引用类型分配而修改属性。.
     this.styleCache = cloneDeep(this.style);
@@ -122,6 +137,9 @@ export default class Base {
       }
       if (this.type === 'point') {
         activeEntity = this.pointEntity;
+      }
+      if (this.type === 'label') {
+        activeEntity = this.labelEntity;
       }
 
       if (this.state === 'drawing') {
@@ -167,11 +185,15 @@ export default class Base {
                   ? pickedObject.id.polyline
                   : this.type === 'polygon'
                     ? pickedObject.id.polygon
-                    : pickedObject.id.point;
+                    : this.type === 'point'
+                      ? pickedObject.id.point
+                      : pickedObject.id.label;
               if (this.cesium.defined(pickedGraphics)) {
                 // 点击几何形状。
                 this.setState('edit');
-                this.type !== 'point' ? this.addControlPoints() : null;
+                if (this.type !== 'point' && this.type !== 'label') {
+                  this.addControlPoints();
+                }
                 this.draggable();
                 this.eventDispatcher.dispatchEvent('editStart', this);
               }
@@ -225,12 +247,18 @@ export default class Base {
     if (this.style.isEdit !== false) {
       // 可在初始绘图完成后编辑。
       this.setState('edit');
-      this.type !== 'point' ? this.addControlPoints() : null;
+      if (this.type !== 'point' && this.type !== 'label') {
+        this.addControlPoints();
+      }
       this.draggable();
     } else {
       this.setState('static');
     }
-    const entity = this.polygonEntity || this.lineEntity || this.pointEntity;
+    const entity =
+      this.polygonEntity ||
+      this.lineEntity ||
+      this.pointEntity ||
+      this.labelEntity;
     this.entityId = entity.id;
     /**
      * “我注意到CallbackProperty可能会导致严重的性能问题。
@@ -250,7 +278,7 @@ export default class Base {
     //   this.lineEntity.polyline.positions = this.geometryPoints;
     // }
 
-    this.eventDispatcher.dispatchEvent('drawEnd', this.getPoints());
+    this.eventDispatcher.dispatchEvent('drawEnd', this);
   }
 
   removeClickListener() {
@@ -290,6 +318,10 @@ export default class Base {
           hierarchy: new this.cesium.CallbackProperty(callback, false),
           show: true,
           material: style.material,
+          heightReference:
+            style.heightReference !== undefined
+              ? style.heightReference
+              : this.cesium.HeightReference.CLAMP_TO_GROUND,
         }),
       });
 
@@ -301,7 +333,8 @@ export default class Base {
           }, false),
           width: style.outlineWidth,
           material: style.outlineMaterial,
-          clampToGround: true,
+          clampToGround:
+            style.clampToGround !== undefined ? style.clampToGround : true,
         },
       });
     }
@@ -329,11 +362,23 @@ export default class Base {
       });
     }
   }
+
+  drawLabel() {
+    if (!this.labelEntity) {
+      const points = this.getPoints();
+      this.setGeometryPoints(points);
+      const style = this.style as PointStyle;
+      this.labelEntity = this.viewer.entities.add({
+        position: points[0],
+        label: style,
+      });
+    }
+  }
   addTempLine() {
     if (!this.tempLineEntity) {
       //前两点之间的线样式与轮廓样式匹配。
       const style = this.style as PolygonStyle;
-      const lineStyle = {
+      const lineStyle: any = {
         material: style.outlineMaterial,
         lineWidth: style.outlineWidth,
       };
@@ -356,7 +401,8 @@ export default class Base {
         ),
         width: style.lineWidth,
         material: style.material,
-        clampToGround: true,
+        clampToGround:
+          style.clampToGround !== undefined ? style.clampToGround : true,
       },
     });
     return entity;
@@ -380,6 +426,7 @@ export default class Base {
    *  创建形状时显示关键点，允许拖动这些点来编辑和生成新形状。
    */
   addControlPoints() {
+    let style = this.style;
     const points = this.getPoints();
     this.controlPoints = points.map((position) => {
       // return this.viewer.entities.add({
@@ -392,9 +439,18 @@ export default class Base {
       return this.viewer.entities.add({
         position,
         point: {
-          pixelSize: 10,
-          heightReference: this.cesium.HeightReference.CLAMP_TO_GROUND,
-          color: this.cesium.Color.RED,
+          pixelSize:
+            style.controlPoints && style.controlPoints.pixelSize
+              ? style.controlPoints.pixelSize
+              : 10,
+          heightReference:
+            style.controlPoints && style.controlPoints.heightReference
+              ? style.controlPoints.heightReference
+              : this.cesium.HeightReference.CLAMP_TO_GROUND,
+          color:
+            style.controlPoints && style.controlPoints.color
+              ? style.controlPoints.color
+              : this.cesium.Color.RED,
         },
       });
     });
@@ -423,6 +479,7 @@ export default class Base {
         }
         // 禁用默认相机交互。
         this.viewer.scene.screenSpaceCameraController.enableRotate = false;
+        this.viewer.scene.screenSpaceCameraController.enableTranslate = false;
       }
     }, this.cesium.ScreenSpaceEventType.LEFT_DOWN);
 
@@ -457,6 +514,7 @@ export default class Base {
       }
       isDragging = false;
       draggedIcon = null;
+      this.viewer.scene.screenSpaceCameraController.enableTranslate = true;
       this.viewer.scene.screenSpaceCameraController.enableRotate = true;
     }, this.cesium.ScreenSpaceEventType.LEFT_UP);
   }
@@ -489,6 +547,7 @@ export default class Base {
     );
     // console.log('this.dragEventHandler', this.dragEventHandler);
     this.dragEventHandler.setInputAction((event: any) => {
+      this.viewer.scene.screenSpaceCameraController.enableTranslate = false;
       const pickRay = this.viewer.scene.camera.getPickRay(event.position);
       if (pickRay) {
         // console.log('按下');
@@ -534,6 +593,17 @@ export default class Base {
               new this.cesium.Cartesian3()
             );
             this.pointEntity.position?.setValue(newPosition);
+          }
+          if (this.type === 'label') {
+            const position = this.labelEntity.position?.getValue(
+              this.cesium.JulianDate.now()
+            );
+            const newPosition = this.cesium.Cartesian3.add(
+              position,
+              translation,
+              new this.cesium.Cartesian3()
+            );
+            this.labelEntity.position?.setValue(newPosition);
           }
           const newPoints = this.geometryPoints.map((p) => {
             return this.cesium.Cartesian3.add(
@@ -607,6 +677,7 @@ export default class Base {
       dragging = false;
       startPosition = undefined;
       this.viewer.scene.screenSpaceCameraController.enableRotate = true;
+      this.viewer.scene.screenSpaceCameraController.enableTranslate = true;
     }, this.cesium.ScreenSpaceEventType.LEFT_UP);
   }
 
@@ -1021,8 +1092,8 @@ export default class Base {
     }, delay);
   }
 
-  private getNewPosition(curveControlPoints, t) {
-    curveControlPoints = curveControlPoints.map((item) => {
+  private getNewPosition(curveControlPoints: any, t: any) {
+    curveControlPoints = curveControlPoints.map((item: any) => {
       return this.cartesianToLnglat(item);
     });
     let curvePoints = Utils.getCurvePoints(0.3, curveControlPoints);
@@ -1058,6 +1129,8 @@ export default class Base {
       this.viewer.entities.remove(this.lineEntity);
     } else if (this.type === 'point') {
       this.viewer.entities.remove(this.pointEntity);
+    } else if (this.type === 'label') {
+      this.viewer.entities.remove(this.labelEntity);
     }
     this.removeClickListener();
     this.removeMoveListener();
@@ -1095,7 +1168,7 @@ export default class Base {
     //Abstract method that must be implemented by subclasses.
   }
 
-  getType(): 'polygon' | 'line' | 'point' {
+  getType(): 'polygon' | 'line' | 'point' | 'label' {
     return 'polygon';
     //Abstract method that must be implemented by subclasses.
   }

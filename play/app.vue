@@ -28,36 +28,22 @@
         size="midium"
         type="primary"
         class="point"
-        @click="handleLoadModel"
-        >加载骨骼动画人</dls-button
+        @click="handleisShowEye"
+        >显示/隐藏鹰眼</dls-button
       >
       <dls-button
         size="midium"
         type="primary"
         class="point"
-        @click="handleLoadThree"
-        >开启threejs场景</dls-button
+        @click="handleis23D"
+        >切换2D和3D</dls-button
       >
       <dls-button
         size="midium"
         type="primary"
         class="point"
-        @click="handleAddEcharts"
-        >加载echarts地图</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleOpenKeyboarRoaming"
-        >开启键盘漫游</dls-button
-      >
-      <dls-button
-        size="midium"
-        type="primary"
-        class="point"
-        @click="handleCloseKeyboarRoaming"
-        >关闭键盘漫游</dls-button
+        @click="handleMeasureDistance"
+        >面积测量</dls-button
       >
     </div>
     <!-- <div class="drawLine" @click="handleDrawLine">绘制线段</div>  -->
@@ -79,7 +65,11 @@
       </div>
     </div>
     <div class="eye">
-      <dls-map-eye :marst-viewer="dataM.viewer" />
+      <DlsMapEye
+        ref="dlsMapEyeRef"
+        v-if="dataM.isShowEye"
+        :marst-viewer="dataM.viewer"
+      />
     </div>
   </div>
 </template>
@@ -114,11 +104,15 @@ import {
   Windy,
   useKeyboardRoam,
   useThree,
+  useSwitchViewPoint,
+  MeasureArea,
+  useMeasureDistance,
 } from '@dls-map/composables';
-import { onMounted, ref, reactive, watch } from 'vue';
+import { onMounted, ref, reactive, watch, nextTick } from 'vue';
 import axios from 'axios';
 const { listenToMouseMovement, coords } = useCesiumCoord();
 const { initThreejs, loadThreejsModel } = useThree();
+const { DrawSoildLine, removeDrawLine } = useMeasureDistance();
 const { keyboardMapRoamingInit, keyboardMapRoamingRemove } = useKeyboardRoam();
 const {
   addPointEntity,
@@ -129,6 +123,7 @@ const {
   removeSpecifyPrimitive,
 } = useCesiumEntities();
 const dlsMapRef = ref(null);
+const dlsMapEyeRef = ref(null);
 const dataM = reactive<any>({
   imageryProvider: {
     url: 'https://webst02.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
@@ -136,6 +131,7 @@ const dataM = reactive<any>({
     tileHeight: 256,
     maximumLevel: 20, // 瓦片的最大层级
   },
+  isShowEye: false,
   coords: {},
   viewer: {},
   dlsDivLabel: null,
@@ -177,6 +173,33 @@ const handleCloseKeyboarRoaming = () => {
 
 const handleOpenKeyboarRoaming = () => {
   keyboardMapRoamingInit(dataM.viewer);
+};
+const handleis23D = () => {
+  useSwitchViewPoint('3d', dataM.viewer);
+};
+
+const handleMeasureDistance = () => {
+  const measureDistance = new MeasureArea(dataM.viewer);
+  // 激活测量工具
+  measureDistance.activate((res: any) => {
+    console.log('res', res);
+  });
+  // DrawSoildLine(dataM.viewer, 'lines', [255, 10, 255], 5, {
+  //   positionLabelStyle: { fillColor: Cesium.Color.BLUE },
+  //   polylineStyle: { clampToGround: true },
+  // });
+  // setTimeout(() => {
+  //   removeDrawLine(dataM.viewer);
+  // }, 5000);
+};
+
+const handleisShowEye = () => {
+  dataM.isShowEye = true;
+  nextTick(() => {
+    console.log('dlsMapEyeRef.value', dlsMapEyeRef.value);
+    dlsMapEyeRef.value.loadMapEye();
+  });
+  // dlsMapEyeRef.value.loadMapEye();
 };
 
 function createModel(url: string, height: number) {
@@ -856,8 +879,11 @@ const handleDrawLine = () => {
 };
 
 const handleCesiumPlot = () => {
-  const geometry = new CesiumPlot.Point(Cesium, dataM.viewer, {
-    pixelSize: 10,
+  const geometry = new CesiumPlot.Label(Cesium, dataM.viewer, {
+    fillColor: Cesium.Color.RED,
+    text: '我是文字',
+    isEdit: false,
+    font: '26px sans-serif',
   });
   console.log('geometry', geometry);
 };
@@ -874,11 +900,23 @@ const onCesiumReady = (e: any) => {
 };
 
 //cesium初始化完成之后
-const onReady = (e: any) => {
+const onReady = async (e: any) => {
   dataM.viewer = e.viewer;
   console.log('e', e);
   // useSwitchMap({},e)
   listenToMouseMovement(dataM.viewer);
+  //加载地形
+  dataM.viewer.terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(
+    '/map/newDixing',
+    // 'https://data.mars3d.cn/terrain',
+    {
+      requestVertexNormals: false,
+    }
+  );
+  // dataM.viewer.scene.globe.terrainExaggeration = 10;
+  // dataM.viewer.scene.globe.terrainExaggerationRelativeHeight = 2400.0;
+  // useCesiumFlyTo(dataM.viewer, [114.62, 15.02, 2800]);
+  useCesiumFlyTo(dataM.viewer, [107.5999, 33.9887, 2800]);
 
   if (dataM.dlsDivLabel) {
     dataM.dlsDivLabel.removeCountryAllDiv('.LayerTitle');
@@ -889,7 +927,7 @@ const onReady = (e: any) => {
           </div>
         `;
   let className = 'LayerTitle';
-  let val = {
+  let val: any = {
     viewer: dataM.viewer,
     position: [116.4134, 39.911],
     height: 0,
