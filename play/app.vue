@@ -939,7 +939,7 @@ const onReady = async (e: any) => {
     dom: jsxContent,
     className,
   };
-  // dataM.dlsDivLabel = new DlsDivLabel(val);
+  dataM.dlsDivLabel = new DlsDivLabel(val);
   // addRainScene(dataM.viewer);
   //生成一个线段
   // addLine([-115.0, 37.0, -115.0, 32.0], Cesium.Color.RED, dataM.viewer, {});
@@ -1012,7 +1012,11 @@ const onReady = async (e: any) => {
   CesiumTrack(data, dataM.viewer, ArrowImg).then(() => {});
 };
 </script>
-
+<style lang="less">
+.ip-model-style {
+  // background-color: red;
+}
+</style>
 <style lang="less" scoped>
 .appMain {
   width: 100%;

@@ -15,7 +15,7 @@ class DlsDivLabel {
   className?: string;
   offset?: [number, number];
   layerData!: divValOptions;
-  vmInstance!: HTMLElement;
+  vmInstance!: HTMLElement | any;
   dId?: string;
   show!: boolean;
   _render!: () => void;
@@ -31,8 +31,7 @@ class DlsDivLabel {
         val.height
       );
       this.layerData = val;
-      // this.vmInstance =
-      //   typeof val.dom === 'string' ? this.createDom(val.dom) : val.dom;
+      this.vmInstance = val.dom;
       this.dId = val.id ? val.id : undefined;
       this.className = val.className ? val.className : undefined;
       this.offset = val.offset;
