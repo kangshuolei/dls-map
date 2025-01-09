@@ -129,22 +129,6 @@ class DlsDivLabel {
         const elWidth = this.vmInstance.offsetWidth;
         this.vmInstance.style.left = p_2d.x - elWidth / 2 + 'px';
       }
-
-      const camerPosition = this.viewer.camera.position;
-      let height =
-        this.viewer.scene.globe.ellipsoid.cartesianToCartographic(
-          camerPosition
-        ).height;
-      height += this.viewer.scene.globe.ellipsoid.maximumRadius;
-
-      if (
-        !(Cesium.Cartesian3.distance(camerPosition, this.position) > height) &&
-        this.viewer.camera.positionCartographic.height < 50000000
-      ) {
-        this.vmInstance.style.display = 'block';
-      } else {
-        this.vmInstance.style.display = 'none';
-      }
     }
   }
 
